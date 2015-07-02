@@ -1,5 +1,5 @@
 
-from distutils.core import setup
+from setuptools import setup
 
 
 
@@ -20,7 +20,9 @@ setup(
 	download_url     = 'https://github.com/0todd0000/spm1d/archive/master.zip',
 	packages         = ['spm1d'],
 	package_data     = {'spm1d' : ['examples/*.*', 'data/*.*'] },
+	include_package_data = True,
 	long_description = long_description,
 	keywords         = ['statistics', 'time series analysis'],
 	classifiers      = [],
+	install_requires = ["numpy", "scipy", "matplotlib", "rft1d"]
 ) 
