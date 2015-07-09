@@ -11,7 +11,7 @@ import spm1d
 #(0) Load data:
 dataset      = spm1d.data.uv1d.anova1.SpeedGRFcategorical()
 Y,A          = dataset.get_data()
-Y0,Y1,Y2     = [Y[A==u] for u in np.unique(A)]
+Y1,Y2,Y3     = [Y[A==u] for u in np.unique(A)]
 
 
 #(1) Conduct Post hoc tests:
