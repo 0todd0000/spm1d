@@ -9,6 +9,10 @@ spm1d uses <b>Random Field Theory</b> expectations regarding the behavior of smo
 Software documentation is hosted at:
 [www.spm1d.org](http://spm1d.org)
 
+MATLAB source code is available at:
+https://github.com/0todd0000/spm1dmatlab
+
+
 Issues
 ------
 
