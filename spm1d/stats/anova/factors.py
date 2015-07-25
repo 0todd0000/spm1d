@@ -7,7 +7,7 @@ from matplotlib import pyplot
 
 
 class Factor(object):
-	def __init__(self, A):
+	def __init__(self, A, block_redundant=False):
 		self.A          = np.asarray(A, dtype=int)        #integer vector of factor levels
 		self.J          = None     #number of observations
 		self.u          = None     #unique levels
@@ -18,15 +18,15 @@ class Factor(object):
 		self.isrm       = False    #repeated measures flag
 		self.nested     = None
 		self.balanced   = True
-		self._00_parse()
+		self._00_parse(block_redundant)
 		self._01_check_unbalanced()
 
-	def _00_parse(self):
+	def _00_parse(self, block_redundant):
 		self.J            = self.A.size
 		self.u            = np.unique(self.A)
 		self.n            = self.u.size
 		self.pairs        = np.vstack([self.u[:-1], self.u[1:]]).T
-		if self.n>4:  ### add a redundant term
+		if (self.n>2) and not block_redundant:  ### add a redundant term
 			self.pairs    = np.vstack([self.pairs, self.u[[-1,0]] ])
 		self.nPairs       = self.pairs.shape[0]
 		
@@ -141,8 +141,8 @@ class FactorSubject(Factor):
 
 
 class FactorRM(Factor):
-	def __init__(self, A, S):
-		super(FactorRM, self).__init__(A)
+	def __init__(self, A, S, block_redundant=False):
+		super(FactorRM, self).__init__(A, block_redundant)
 		self.S     = S
 		self.isrm  = True
 

@@ -112,7 +112,7 @@ class _ANOVA(object):
 		SSE,dfE,eij,X0    = self._compute_ss_rm(CE.T)
 		SS            = SS0 - SSE
 		df            = df0 - dfE
-		if df<0:  #df will be less than zero if a redundant term is added to the contrast when there are more than 4 factor levels;  see factors._00_parse. if n>4
+		if df<=0:  #df will be less than zero if a redundant term is added to the contrast when there are more than 4 factor levels;  see factors._00_parse. if n>4
 			df        = contrast.n
 		MS,MSE        = (SS/df), (SSE/dfE)
 		f             = MS / MSE

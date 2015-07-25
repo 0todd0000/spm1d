@@ -8,7 +8,7 @@ import spm1d
 
 #(0) Load data:
 dataset    = spm1d.data.uv0d.anova2onerm.Santa23()
-# dataset    = spm1d.data.uv0d.anova2onerm.Southampton2onerm()
+dataset    = spm1d.data.uv0d.anova2onerm.Southampton2onerm()
 dataset    = spm1d.data.uv0d.anova2onerm.RSXLDrug()
 y,A,B,SUBJ = dataset.Y, dataset.A, dataset.B, dataset.SUBJ
 print dataset

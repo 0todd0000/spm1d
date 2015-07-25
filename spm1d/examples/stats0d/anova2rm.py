@@ -13,7 +13,7 @@ dataset    = spm1d.data.uv0d.anova2rm.Antidepressant()
 # dataset = spm1d.data.uv0d.anova2rm.Southampton2rm()
 
 y,A,B,SUBJ = dataset.get_data()
-# print dataset
+print dataset
 
 
 

@@ -9,8 +9,8 @@ import spm1d
 
 
 #(0) Load data:
-dataset     = spm1d.data.uv0d.anova3onerm.NYUCaffeine()
-dataset    = spm1d.data.uv0d.anova3onerm.Southampton3onerm()
+dataset      = spm1d.data.uv0d.anova3onerm.NYUCaffeine()
+# dataset      = spm1d.data.uv0d.anova3onerm.Southampton3onerm()
 y,A,B,C,SUBJ = dataset.get_data()
 print dataset
 
@@ -28,12 +28,12 @@ print df
 print pvalues
 
 
-#
-# #(2) Plot design:
-# pyplot.close('all')
-# design    = spm1d.stats.anova.designs.ANOVA3tworm(A, B, C, SUBJ)
-# design.plot()
-# pyplot.show()
+
+#(2) Plot design:
+pyplot.close('all')
+design    = spm1d.stats.anova.designs.ANOVA3tworm(A, B, C, SUBJ)
+design.plot()
+pyplot.show()
 
 
 

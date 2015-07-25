@@ -389,9 +389,9 @@ class ANOVA3onerm(ANOVA3rm):
 	def __init__(self, A, B, C, SUBJ):
 		self.X          = None
 		self.S          = FactorSubject(SUBJ)
-		self.A          = FactorRM(A, self.S)
-		self.B          = FactorRM(B, self.S)
-		self.C          = FactorRM(C, self.S)
+		self.A          = FactorRM(A, self.S, block_redundant=True)
+		self.B          = FactorRM(B, self.S, block_redundant=True)
+		self.C          = FactorRM(C, self.S, block_redundant=True)
 		self.J          = self.A.J
 		self.contrasts  = None
 		self._swap      = self.A.n > self.B.n   ### swap A and B factors if needed
