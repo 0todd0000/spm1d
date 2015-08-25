@@ -9,7 +9,11 @@ def _here_stack(Y):
 	A    = np.hstack(  [ [i]*m for i in range(n) ]  )
 	SUBJ = np.hstack(  range(m)*n  )
 	return y, A, SUBJ
-	
+
+
+
+
+
 
 class Abdi2010(_base.DatasetANOVA1rm):
 	def _set_values(self):

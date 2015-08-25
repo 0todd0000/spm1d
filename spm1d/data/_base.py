@@ -9,6 +9,7 @@ def get_datafilepath():
 
 class _Dataset(object):
 	def __init__(self):
+		self._rtol    = 0.001  #relative tolerance (for unit tests)
 		self.STAT     = 'Z'
 		self.design   = None   #design string (e.g. "One-way ANOVA")
 		self.dim      = 0      #data dimensionality (0 or 1)
@@ -37,6 +38,12 @@ class _Dataset(object):
 		ss     = self.get_expected_results_as_string()
 		s     += ss 
 		return s
+	def _printR(self, x, name='x'):
+		print '%s = c(%s)' %(name, str(x.tolist())[1:-1])
+	def _printRs(self, xx, names=('x')):
+		for x,name in zip(xx,names):
+			print
+			self._printR(x, name)
 	def _set_values(self):    #abstract method;  instantiated by all subclasses
 		pass
 	def get_dependent_variable(self):
@@ -127,6 +134,8 @@ class DatasetANOVA2(_DatasetANOVA):
 		self.design = 'Two-way ANOVA'
 	def get_data(self):
 		return self.Y, self.A, self.B
+	def print_variables_R_format(self):
+		self._printRs(self.get_data(), ['Y','A','B'])
 class DatasetANOVA2nested(DatasetANOVA2):
 	def __init__(self):
 		super(DatasetANOVA2nested, self).__init__()
@@ -156,14 +165,21 @@ class DatasetANOVA3nested(DatasetANOVA3):
 	def __init__(self):
 		super(DatasetANOVA3nested, self).__init__()
 		self.design = 'Three-way ANOVA (nested)'
-class DatasetANOVA3onerm(DatasetANOVA3):
+class DatasetANOVA3rm(DatasetANOVA3):
+	def __init__(self):
+		self.rm       = True  #repeated measures
+		super(DatasetANOVA3rm, self).__init__()
+		self.design = 'Three-way ANOVA (repeated measures on all factors)'
+	def get_data(self):
+		return self.Y, self.A, self.B, self.C, self.SUBJ
+	def print_variables_R_format(self):
+		self._printRs(self.get_data(), ['Y','A','B','C','SUBJ'])
+class DatasetANOVA3onerm(DatasetANOVA3rm):
 	def __init__(self):
 		self.rm       = True  #repeated measures
 		super(DatasetANOVA3onerm, self).__init__()
 		self.design = 'Three-way ANOVA (repeated measures on one factor)'
-	def get_data(self):
-		return self.Y, self.A, self.B, self.C, self.SUBJ
-class DatasetANOVA3tworm(DatasetANOVA3onerm):
+class DatasetANOVA3tworm(DatasetANOVA3rm):
 	def __init__(self):
 		super(DatasetANOVA3tworm, self).__init__()
 		self.design = 'Three-way ANOVA (repeated measures on two factors)'

@@ -16,6 +16,7 @@ class SouthamptonNested3(_base.DatasetANOVA3nested):
 		self.z       = 4.02, 5.24, 2.86
 		self.df      = (2,3), (3,6), (6,12)
 		self.p       = 0.142, 0.041, 0.057
+		self._atol   = 0.005
 
 
 

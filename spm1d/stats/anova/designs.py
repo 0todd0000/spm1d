@@ -1,11 +1,64 @@
 
-
+import warnings
 import numpy as np
 from matplotlib import pyplot
 
 
-from factors import Factor,FactorNested,FactorNested2,FactorRM,FactorSubject
-from modelbuilder import ModelBuilder
+from factors import Factor,FactorNested,FactorNested2,FactorNestedTwoWay #FactorRM,FactorSubject
+
+
+
+
+
+
+
+class Contrasts(object):
+	def __init__(self, C, term_labels):
+		self.C           = np.asarray(C, dtype=float)     #contrast matrix
+		self.term_labels = term_labels
+
+	def plot(self, ax=None):
+		ax  = pyplot.gca() if ax==None else ax
+		ax.imshow(self.C, interpolation='nearest', cmap='gray', vmin=-1, vmax=1, aspect='auto')
+		xskip   = self.C.shape[1] / 10 + 1
+		yskip   = self.C.shape[0] / 10 + 1
+		pyplot.setp(ax, xticks=range(0, self.C.shape[1], xskip), yticks=range(0, self.C.shape[0], yskip))
+
+
+
+
+class DesignBuilder(object):
+	def __init__(self, labels=[]):
+		self.COLS    = []
+		self.labels  = list(labels)
+		self.n       = len(self.labels)   #number of main factors
+		self.ncol    = 0  #number of main columns
+		self.nTerms  = 0  #total number of model terms
+		self.colD    = dict(zip(self.labels,  [None]*self.n))
+		self.XD      = dict(zip(self.labels,  [None]*self.n))
+
+
+	def add_main_columns(self, label, X):
+		self.XD[label]   = X
+		i0,n             = self.ncol, X.shape[1]
+		self.colD[label] = np.arange(i0, i0+n)
+		self.COLS.append( range(i0,i0+n) )
+		self.ncol       += n
+		self.nTerms     += 1
+
+	def get_contrasts(self):
+		C         = np.zeros( (self.nTerms, self.ncol) )
+		for i,col in enumerate(self.COLS):
+			C[i,col] = 1
+		return Contrasts(C, self.labels)
+
+	def get_design_matrix(self):
+		X   = np.hstack([self.XD[label]  for label in self.labels])
+		return X
+
+
+
+
 
 
 class _Design(object):
@@ -35,9 +88,6 @@ class _Design(object):
 					ax  = pyplot.axes([0.53,yy[i],0.45,0.2])
 					self.contrasts[ci].plot(ax=ax)
 		pyplot.show()
-		
-
-
 
 
 
@@ -45,52 +95,27 @@ class _Design(object):
 
 class ANOVA1(_Design):
 	def __init__(self, A):
-		self.X          = None       #design matrix
-		self.A          = Factor(A)  #factor levels
-		self.J          = self.A.J   #number of observations
-		self.contrasts  = None       #contrast matrices
+		self.X           = None       #design matrix
+		self.A           = Factor(A)  #factor levels
+		self.J           = self.A.J   #number of observations
+		self.contrasts   = None       #contrast matrix
+		self.term_labels = ['Intercept', 'A']
+		self.f_terms     = [('A','Error')]
 		self._assemble()
 		
 	
 
 	def _assemble(self):
 		### assemble design matrix columns:
-		XA             = self.A.get_design_main()
 		XCONST         = self._get_column_const()
-		### specify model and add design matrix columns:
-		model          = ModelBuilder(labels=['A', 'CONST'])
-		model.add_main_columns('A', XA)
-		model.add_main_columns('CONST', XCONST)
+		XA             = self.A.get_design_main()
+		### specify builder and add design matrix columns:
+		builder        = DesignBuilder(labels=self.term_labels)
+		builder.add_main_columns('Intercept', XCONST)
+		builder.add_main_columns('A', XA)
 		### assemble design matrix and contrasts:
-		self.X         = model.get_design_matrix()
-		self.contrasts = [model.get_contrast('A')]
-
-
-
-	def set_simplified_design(self, with_const=True, difference_contrasts=True):
-		# if self.unbalanced:
-		# 	raise( ValueError('ANOVA error: unable to simplify unbalanced designs') )
-		# self._set_simplified_design_matrix(with_const)
-		# self._set_simplified_contrast()
-		if with_const:
-			XA             = self.A.get_design_main(simplified=True)
-			XCONST         = self._get_column_const()
-			model          = ModelBuilder(labels=['A', 'CONST'])
-			model.add_main_columns('A', XA)
-			model.add_main_columns('CONST', XCONST)
-		else:
-			XA             = self.A.get_design_main(simplified=True)
-			model          = ModelBuilder(labels=['A'])
-			model.add_main_columns('A', XA)
-		### assemble design matrix and contrasts:
-		self.X         = model.get_design_matrix()
-		if difference_contrasts:
-			self.contrasts = [model.get_contrast_difference('A')]
-		else:
-			self.contrasts = [model.get_contrast('A')]
-
-
-
+		self.X         = builder.get_design_matrix()
+		self.contrasts = builder.get_contrasts()
 
 
 
@@ -98,27 +123,31 @@ class ANOVA1(_Design):
 class ANOVA1rm(_Design):
 	def __init__(self, A, SUBJ):
 		self.X          = None          #design matrix
-		self.S          = FactorSubject(SUBJ)  #subjects
-		self.A          = FactorRM(A, self.S)  #factor levels
+		self.S          = Factor(SUBJ)  #subjects
+		self.A          = Factor(A)     #factor levels
 		self.J          = self.A.J      #number of observations
-		self.contrasts  = None          #contrast matrices
+		self.contrasts  = None          #contrast matrix
+		self.term_labels = ['Intercept', 'A', 'S', 'SA']
+		self.f_terms     = [('A','SA')]
 		self._check_balanced()
 		self._assemble()
 
 
 	def _assemble(self):
 		### assemble design matrix columns:
-		XA             = self.A.get_design_main()
 		XCONST         = self._get_column_const()
-		XSA            = self.A.get_design_subject_pooled()
-		### specify model and add design matrix columns:
-		model          = ModelBuilder(labels=['A', 'CONST'], labels_subj=['SA'])
-		model.add_main_columns('A', XA)
-		model.add_main_columns('CONST', XCONST)
-		model.add_subj_columns('SA', XSA)
+		XA             = self.A.get_design_main()
+		XS             = self.S.get_design_main()
+		XSA            = self.A.get_design_interaction(self.S)
+		### specify builder and add design matrix columns:
+		builder        = DesignBuilder(labels=self.term_labels)
+		builder.add_main_columns('Intercept', XCONST)
+		builder.add_main_columns('A', XA)
+		builder.add_main_columns('S', XS)
+		builder.add_main_columns('SA', XSA)
 		### assemble design matrix and contrasts:
-		self.X         = model.get_design_matrix()
-		self.contrasts = [model.get_contrast('A')]
+		self.X         = builder.get_design_matrix()
+		self.contrasts = builder.get_contrasts()
 
 	def _check_balanced(self):
 		if not (self.A.balanced and self.S.balanced):
@@ -134,30 +163,32 @@ class ANOVA1rm(_Design):
 
 class ANOVA2(_Design):
 	def __init__(self, A, B):
-		self.X          = None       #design matrix
-		self.A          = Factor(A)  #factor level vector
-		self.B          = Factor(B)  #factor level vector
-		self.J          = self.A.J   #number of observations
-		self.contrasts  = None
-		self.balanced   = True
+		self.X           = None       #design matrix
+		self.A           = Factor(A)  #factor level vector
+		self.B           = Factor(B)  #factor level vector
+		self.J           = self.A.J   #number of observations
+		self.contrasts   = None
+		self.balanced    = True
+		self.term_labels = ['Intercept', 'A', 'B', 'AB']
+		self.f_terms     = [('A','Error'), ('B','Error'), ('AB','Error')]
 		self._check_balanced()
 		self._assemble()
 
 	def _assemble(self):
 		### assemble design matrix columns:
+		XCONST         = self._get_column_const()
 		XA             = self.A.get_design_main()
 		XB             = self.B.get_design_main()
 		XAB            = self.A.get_design_interaction(self.B)
-		XCONST         = self._get_column_const()
-		### specify model and add design matrix columns:
-		model          = ModelBuilder(labels=['A', 'B', 'AB', 'CONST'])
-		model.add_main_columns('A',  XA)
-		model.add_main_columns('B',  XB)
-		model.add_main_columns('AB', XAB)
-		model.add_main_columns('CONST', XCONST)
+		### specify builder and add design matrix columns:
+		builder          = DesignBuilder(labels=self.term_labels)
+		builder.add_main_columns('Intercept', XCONST)
+		builder.add_main_columns('A',  XA)
+		builder.add_main_columns('B',  XB)
+		builder.add_main_columns('AB', XAB)
 		### assemble design matrix and contrasts:
-		self.X         = model.get_design_matrix()
-		self.contrasts = [model.get_contrast(s)  for s in ['A','B','AB']]
+		self.X         = builder.get_design_matrix()
+		self.contrasts = builder.get_contrasts()
 
 	def _check_balanced(self):
 		if not (self.A.balanced and self.B.balanced):
@@ -178,22 +209,25 @@ class ANOVA2nested(ANOVA2):
 		self.B          = FactorNested(B, self.A)
 		self.J          = self.A.J
 		self.contrasts  = None
+		self.term_labels = ['Intercept', 'A', 'B']
+		self.f_terms     = [('A','B'), ('B','Error')]
 		self._check_balanced()
 		self._assemble()
 
 	def _assemble(self):
 		### assemble design matrix columns:
+		XCONST         = self._get_column_const()
 		XA             = self.A.get_design_main()
 		XB             = self.B.get_design_main()
-		XCONST         = self._get_column_const()
-		### specify model and add design matrix columns:
-		model          = ModelBuilder(labels=['A', 'B', 'CONST'])
-		model.add_main_columns('A',  XA)
-		model.add_main_columns('B',  XB)
-		model.add_main_columns('CONST', XCONST)
+		# XB             = self.B.get_design_main_nested(self.A)
+		### specify builder and add design matrix columns:
+		builder          = DesignBuilder(labels=['Intercept', 'A', 'B'])
+		builder.add_main_columns('Intercept', XCONST)
+		builder.add_main_columns('A',  XA)
+		builder.add_main_columns('B',  XB)
 		### assemble design matrix and contrasts:
-		self.X         = model.get_design_matrix()
-		self.contrasts = [model.get_contrast(s)  for s in ['A','B']]
+		self.X         = builder.get_design_matrix()
+		self.contrasts = builder.get_contrasts()
 
 	def _check_balanced(self):
 		if not (self.A.balanced and self.B.balanced):
@@ -206,39 +240,42 @@ class ANOVA2nested(ANOVA2):
 class ANOVA2rm(ANOVA2):
 	'''Both A and B are RM factors.'''
 	def __init__(self, A, B, SUBJ):
-		self.X          = None
-		self.S          = FactorSubject(SUBJ)
-		self.A          = FactorRM(A, self.S)
-		self.B          = FactorRM(B, self.S)
-		self.J          = self.A.J
-		self.contrasts  = None
+		self.X           = None
+		self.S           = Factor(SUBJ)
+		self.A           = Factor(A)
+		self.B           = Factor(B)
+		self.J           = self.A.J
+		self.contrasts   = None
+		self.term_labels = ['Intercept', 'A', 'B', 'S', 'AB', 'SA', 'SB', 'SAB']
+		self.f_terms     = [('A','SA'), ('B','SB'), ('AB','SAB')]
 		self._check_balanced()
 		self._assemble()
 
 	def _assemble(self):
 		### assemble design matrix columns:
+		XCONST          = self._get_column_const()
 		XA              = self.A.get_design_main()
 		XB              = self.B.get_design_main()
+		XS              = self.S.get_design_main()
 		XAB             = self.A.get_design_interaction(self.B)
-		XCONST          = self._get_column_const()
-		XSA             = self.A.get_design_subject_partitioned()
-		XSB             = self.B.get_design_subject_partitioned()
-		XSAB            = self.A.get_design_subject_interaction(self.B)
-		XSpooled        = self.A.get_design_subject_pooled()
-		### specify model and add design matrix columns:
-		model           = ModelBuilder(labels=['A', 'B', 'AB', 'CONST'], labels_subj=['SA', 'SB', 'SAB', 'SPOOLED'])
-		model.add_main_columns('A', XA)
-		model.add_main_columns('B', XB)
-		model.add_main_columns('AB', XAB)
-		model.add_main_columns('CONST', XCONST)
-		model.add_subj_columns('SA', XSA)
-		model.add_subj_columns('SB', XSB)
-		model.add_subj_columns('SAB', XSAB)
-		model.add_subj_columns('SPOOLED', XSpooled)
+		XSA             = self.A.get_design_interaction(self.S)
+		XSB             = self.B.get_design_interaction(self.S)
+		XSAB            = self.A.get_design_interaction_3way(self.B, self.S)
+		### specify builder and add design matrix columns:
+		builder           = DesignBuilder(labels=self.term_labels)
+		builder.add_main_columns('Intercept', XCONST)
+		builder.add_main_columns('A', XA)
+		builder.add_main_columns('B', XB)
+		builder.add_main_columns('S', XS)
+		builder.add_main_columns('AB', XAB)
+		builder.add_main_columns('SA', XSA)
+		builder.add_main_columns('SB', XSB)
+		builder.add_main_columns('SAB', XSAB)
 		### assemble design matrix and contrasts:
-		self.X         = model.get_design_matrix()
-		self.contrasts = [model.get_contrast_compound(s, ss)  for s,ss in [('A','SA'),('B','SB'),('AB','SAB')]]
-		
+		self.X         = builder.get_design_matrix()
+		self.contrasts = builder.get_contrasts()
+
+
 	def _check_balanced(self):
 		if not (self.A.balanced and self.B.balanced and self.S.balanced):
 			raise( ValueError('Design must be balanced.') )
@@ -249,27 +286,51 @@ class ANOVA2rm(ANOVA2):
 		if not self.S.check_balanced(self.B):
 			raise( ValueError('Design must be balanced.') )
 
+
+	def check_for_single_responses(self):
+		A,B,S  = self.A.A, self.B.A, self.S.A
+		for a in self.A.u:
+			for b in self.B.u:
+				s    = S[(A==a) & (B==b)]
+				if np.unique(s).size == s.size:
+					warnings.warn('\nWARNING:  Only one observation per subject found.  Residuals and inference will be approximate. To avoid approximate residuals: (a) Add multiple observations per subject and per condition, and (b) ensure that all subjects and conditions have the same number of observations.\n', UserWarning, stacklevel=2)
+					continue
+
+
+
 class ANOVA2onerm(ANOVA2rm):
 	'''Only B is an RM factor.'''
+	def __init__(self, A, B, SUBJ):
+		self.X           = None
+		self.A           = Factor(A)
+		self.B           = Factor(B)
+		self.S           = FactorNested(SUBJ, self.A)
+		self.J           = self.A.J
+		self.contrasts   = None
+		self.term_labels = ['Intercept', 'A', 'B', 'S', 'AB', 'SB']
+		self.f_terms     = [('A','S'), ('B','SB'), ('AB','SB')]
+		# self._check_balanced()
+		self._assemble()
+
 	def _assemble(self):
 		### assemble design matrix columns:
+		XCONST          = self._get_column_const()
 		XA              = self.A.get_design_main()
 		XB              = self.B.get_design_main()
+		XS              = self.S.get_design_main()
 		XAB             = self.A.get_design_interaction(self.B)
-		XCONST          = self._get_column_const()
-		XSApooled       = self.A.get_design_subject_pooled()
-		XSB             = self.B.get_design_subject_partitioned()
-		### specify model and add design matrix columns:
-		model           = ModelBuilder(labels=['A', 'B', 'AB', 'CONST'], labels_subj=['SApooled', 'SB'])
-		model.add_main_columns('A', XA)
-		model.add_main_columns('B', XB)
-		model.add_main_columns('AB', XAB)
-		model.add_main_columns('CONST', XCONST)
-		model.add_subj_columns('SApooled', XSApooled)
-		model.add_subj_columns('SB', XSB)
+		XSB             = self.S.get_design_interaction(self.B)
+		### specify builder and add design matrix columns:
+		builder         = DesignBuilder(labels=self.term_labels)
+		builder.add_main_columns('Intercept', XCONST)
+		builder.add_main_columns('A', XA)
+		builder.add_main_columns('B', XB)
+		builder.add_main_columns('S', XS)
+		builder.add_main_columns('AB', XAB)
+		builder.add_main_columns('SB', XSB)
 		### assemble design matrix and contrasts:
-		self.X         = model.get_design_matrix()
-		self.contrasts = [model.get_contrast_compound(s, ss)  for s,ss in [('A','SApooled'),('B','SB'),('AB','SB')]]
+		self.X         = builder.get_design_matrix()
+		self.contrasts = builder.get_contrasts()
 
 
 	def _check_balanced(self):
@@ -291,9 +352,6 @@ class ANOVA2onerm(ANOVA2rm):
 
 
 
-
-
-
 class ANOVA3(_Design):
 	def __init__(self, A, B, C):
 		self.X          = None       #design matrix
@@ -301,12 +359,15 @@ class ANOVA3(_Design):
 		self.B          = Factor(B)  #factor level vector
 		self.C          = Factor(C)  #factor level vector
 		self.J          = self.A.J   #number of observations
+		self.term_labels = ['Intercept', 'A', 'B', 'C', 'AB', 'AC', 'BC', 'ABC']
+		self.f_terms     = [('A','Error'), ('B','Error'), ('C','Error'), ('AB','Error'), ('AC','Error'), ('BC','Error'), ('ABC','Error')]
 		self.contrasts  = None
 		self._check_balanced()
 		self._assemble()
 
 	def _assemble(self):
 		### assemble design matrix columns:
+		XCONST         = self._get_column_const()
 		XA             = self.A.get_design_main()
 		XB             = self.B.get_design_main()
 		XC             = self.C.get_design_main()
@@ -314,20 +375,20 @@ class ANOVA3(_Design):
 		XAC            = self.A.get_design_interaction(self.C)
 		XBC            = self.B.get_design_interaction(self.C)
 		XABC           = self.A.get_design_interaction_3way(self.B, self.C)
-		XCONST         = self._get_column_const()
-		### specify model and add design matrix columns:
-		model          = ModelBuilder(labels=['A', 'B', 'C', 'AB', 'AC', 'BC', 'ABC', 'CONST'])
-		model.add_main_columns('A',  XA)
-		model.add_main_columns('B',  XB)
-		model.add_main_columns('C',  XC)
-		model.add_main_columns('AB', XAB)
-		model.add_main_columns('AC', XAC)
-		model.add_main_columns('BC', XBC)
-		model.add_main_columns('ABC', XABC)
-		model.add_main_columns('CONST', XCONST)
+		### specify builder and add design matrix columns:
+		builder        = DesignBuilder(labels=['Intercept', 'A', 'B', 'C', 'AB', 'AC', 'BC', 'ABC'])
+		builder.add_main_columns('Intercept', XCONST)
+		builder.add_main_columns('A',  XA)
+		builder.add_main_columns('B',  XB)
+		builder.add_main_columns('C',  XC)
+		builder.add_main_columns('AB', XAB)
+		builder.add_main_columns('AC', XAC)
+		builder.add_main_columns('BC', XBC)
+		builder.add_main_columns('ABC', XABC)
 		### assemble design matrix and contrasts:
-		self.X         = model.get_design_matrix()
-		self.contrasts = [model.get_contrast(s)  for s in ['A', 'B', 'C', 'AB', 'AC', 'BC', 'ABC']]
+		self.X         = builder.get_design_matrix()
+		self.contrasts = builder.get_contrasts()
+
 
 	def _check_balanced(self):
 		if not (self.A.balanced and self.B.balanced and self.C.balanced):
@@ -351,24 +412,26 @@ class ANOVA3nested(ANOVA3):
 		self.C          = FactorNested2(C, self.B)
 		self.J          = self.A.J
 		self.contrasts  = None
+		self.term_labels = ['Intercept', 'A', 'B', 'C']
+		self.f_terms     = [('A','B'), ('B','C'), ('C','Error')]
 		self._check_balanced()
 		self._assemble()
 
 	def _assemble(self):
 		### assemble design matrix columns:
+		XCONST         = self._get_column_const()
 		XA             = self.A.get_design_main()
 		XB             = self.B.get_design_main()
 		XC             = self.C.get_design_main()
-		XCONST         = self._get_column_const()
-		### specify model and add design matrix columns:
-		model          = ModelBuilder(labels=['A', 'B', 'C', 'CONST'])
-		model.add_main_columns('A',  XA)
-		model.add_main_columns('B',  XB)
-		model.add_main_columns('C',  XC)
-		model.add_main_columns('CONST', XCONST)
+		### specify builder and add design matrix columns:
+		builder          = DesignBuilder(labels=['Intercept', 'A', 'B', 'C'])
+		builder.add_main_columns('Intercept', XCONST)
+		builder.add_main_columns('A',  XA)
+		builder.add_main_columns('B',  XB)
+		builder.add_main_columns('C',  XC)
 		### assemble design matrix and contrasts:
-		self.X         = model.get_design_matrix()
-		self.contrasts = [model.get_contrast(s)  for s in ['A','B', 'C']]
+		self.X         = builder.get_design_matrix()
+		self.contrasts = builder.get_contrasts()
 
 	def _check_balanced(self):
 		if not (self.A.balanced and self.B.balanced and self.C.balanced):
@@ -379,63 +442,60 @@ class ANOVA3nested(ANOVA3):
 
 
 class ANOVA3rm(ANOVA3):
-	'''A, B and C are all RM factors (not yet implemented).'''
-	pass
-
-
-
-class ANOVA3onerm(ANOVA3rm):
-	'''Only C is an RM factor.'''
+	'''A, B and C are all RM factors.'''
 	def __init__(self, A, B, C, SUBJ):
 		self.X          = None
-		self.S          = FactorSubject(SUBJ)
-		self.A          = FactorRM(A, self.S, block_redundant=True)
-		self.B          = FactorRM(B, self.S, block_redundant=True)
-		self.C          = FactorRM(C, self.S, block_redundant=True)
-		self.J          = self.A.J
-		self.contrasts  = None
-		self._swap      = self.A.n > self.B.n   ### swap A and B factors if needed
+		self.A           = Factor(A)
+		self.B           = Factor(B)
+		self.C           = Factor(C)
+		self.S           = Factor(SUBJ)
+		self.J           = self.A.J
+		self.contrasts   = None
+		self.term_labels = ['Intercept',  'A','B','C','S',  'AB','AC','BC',   'SA','SB','SC',   'SAB','SAC','SBC',  'ABC', 'SABC']
+		self.f_terms     = [('A','SA'), ('B','SB'), ('C','SC'),  ('AB','SAB'), ('AC','SAC'), ('BC','SBC'), ('ABC','SABC')]
 		self._check_balanced()
-		self._swapAB()
 		self._assemble()
-		self._swapAB()
-			
+
 
 	def _assemble(self):
 		### assemble design matrix columns:
+		XCONST          = self._get_column_const()
 		XA              = self.A.get_design_main()
 		XB              = self.B.get_design_main()
 		XC              = self.C.get_design_main()
+		XS              = self.S.get_design_main()
 		XAB             = self.A.get_design_interaction(self.B)
 		XAC             = self.A.get_design_interaction(self.C)
 		XBC             = self.B.get_design_interaction(self.C)
+		XSA             = self.S.get_design_interaction(self.A)
+		XSB             = self.S.get_design_interaction(self.B)
+		XSC             = self.S.get_design_interaction(self.C)
+		XSAB            = self.S.get_design_interaction_3way(self.A, self.B)
+		XSAC            = self.S.get_design_interaction_3way(self.A, self.C)
+		XSBC            = self.S.get_design_interaction_3way(self.B, self.C)
 		XABC            = self.A.get_design_interaction_3way(self.B, self.C)
-		XCONST          = self._get_column_const()
-		XSpooled        = self.A.get_design_subject_pooled()
-		XSC             = self.C.get_design_subject_partitioned()
-		### specify model and add design matrix columns:
-		model           = ModelBuilder(labels=['A','B','C', 'AB','AC','BC', 'ABC', 'CONST'], labels_subj=['Spooled', 'SC'])
-		model.add_main_columns('A', XA)
-		model.add_main_columns('B', XB)
-		model.add_main_columns('C', XC)
-		model.add_main_columns('AB', XAB)
-		model.add_main_columns('AC', XAC)
-		model.add_main_columns('BC', XBC)
-		model.add_main_columns('ABC', XABC)
-		model.add_main_columns('CONST', XCONST)
-		model.add_subj_columns('Spooled', XSpooled)
-		model.add_subj_columns('SC', XSC)
+		XSABC           = self.S.get_design_interaction_4way(self.A, self.B, self.C)
+		### specify builder and add design matrix columns:
+		builder           = DesignBuilder(labels=self.term_labels)
+		builder.add_main_columns('Intercept', XCONST)
+		builder.add_main_columns('A', XA)
+		builder.add_main_columns('B', XB)
+		builder.add_main_columns('C', XC)
+		builder.add_main_columns('S', XS)
+		builder.add_main_columns('AB', XAB)
+		builder.add_main_columns('AC', XAC)
+		builder.add_main_columns('BC', XBC)
+		builder.add_main_columns('SA', XSA)
+		builder.add_main_columns('SB', XSB)
+		builder.add_main_columns('SC', XSC)
+		builder.add_main_columns('SAB', XSAB)
+		builder.add_main_columns('SAC', XSAC)
+		builder.add_main_columns('SBC', XSBC)
+		builder.add_main_columns('ABC', XABC)
+		builder.add_main_columns('SABC', XSABC)
 		### assemble design matrix and contrasts:
-		self.X         = model.get_design_matrix()
-		if self._swap:
-			sspairs        = [('B','Spooled'), ('A','Spooled'), ('C','SC')]
-			sspairs       += [('AB','Spooled'), ('BC','SC'), ('AC','SC')]
-			sspairs       += [('ABC','SC')]
-		else:
-			sspairs        = [('A','Spooled'), ('B','Spooled'), ('C','SC')]
-			sspairs       += [('AB','Spooled'), ('AC','SC'), ('BC','SC')]
-			sspairs       += [('ABC','SC')]
-		self.contrasts = [model.get_contrast_compound(s, ss)  for s,ss in sspairs]
+		self.X         = builder.get_design_matrix()
+		self.contrasts = builder.get_contrasts()
 
 	def _swapAB(self):
 		if self._swap:
@@ -458,70 +518,117 @@ class ANOVA3onerm(ANOVA3rm):
 
 
 
+
+class ANOVA3onerm(ANOVA3rm):
+	'''Only C is an RM factor.'''
+	def __init__(self, A, B, C, SUBJ):
+		self.X           = None
+		self.A           = Factor(A)
+		self.B           = Factor(B)
+		self.C           = Factor(C)
+		self.S           = FactorNestedTwoWay(SUBJ, self.A, self.B)
+		# self.S           = FactorNestedTwoWay(SUBJ, self.B, self.C)
+		self.J           = self.A.J
+		self.contrasts   = None
+		self.term_labels = ['Intercept',  'A','B','C', 'AB','AC','BC',    'ABC', 'S', 'SC']
+		self.f_terms     = [('A','S'), ('B','S'), ('C','SC'),  ('AB','S'), ('AC','SC'), ('BC','SC'), ('ABC','SC')]
+		self._check_balanced()
+		self._assemble()
+
+
+	def _assemble(self):
+		### assemble design matrix columns:
+		XCONST          = self._get_column_const()
+		XA              = self.A.get_design_main()
+		XB              = self.B.get_design_main()
+		XC              = self.C.get_design_main()
+		XS              = self.S.get_design_main()
+		XAB             = self.A.get_design_interaction(self.B)
+		XAC             = self.A.get_design_interaction(self.C)
+		XBC             = self.B.get_design_interaction(self.C)
+		XABC            = self.C.get_design_interaction_3way(self.A, self.B)
+		XSC             = self.S.get_design_interaction(self.C)
+		### specify builder and add design matrix columns:
+		builder           = DesignBuilder(labels=self.term_labels)
+		builder.add_main_columns('Intercept', XCONST)
+		builder.add_main_columns('A', XA)
+		builder.add_main_columns('B', XB)
+		builder.add_main_columns('C', XC)
+		builder.add_main_columns('AB', XAB)
+		builder.add_main_columns('AC', XAC)
+		builder.add_main_columns('BC', XBC)
+		builder.add_main_columns('ABC', XABC)
+		builder.add_main_columns('S', XS)
+		builder.add_main_columns('SC', XSC)
+		### assemble design matrix and contrasts:
+		self.X         = builder.get_design_matrix()
+		self.contrasts = builder.get_contrasts()
+
+	def _check_balanced(self):
+		if not (self.A.balanced and self.B.balanced and self.C.balanced and self.S.balanced):
+			raise( ValueError('Design must be balanced.') )
+		if not self.A.check_balanced(self.B):
+			raise( ValueError('Design must be balanced.') )
+		if not self.A.check_balanced(self.C):
+			raise( ValueError('Design must be balanced.') )
+		if not self.B.check_balanced(self.C):
+			raise( ValueError('Design must be balanced.') )
+		if not self.S.check_balanced_rm(self.C):
+			raise( ValueError('Design must be balanced.') )
+
+
+
+
 class ANOVA3tworm(ANOVA3rm):
 	'''Both B and C are RM factors.'''
 	def __init__(self, A, B, C, SUBJ):
 		self.X          = None
-		self.S          = FactorSubject(SUBJ)
-		self.A          = FactorRM(A, self.S)
-		self.B          = FactorRM(B, self.S)
-		self.C          = FactorRM(C, self.S)
-		self.J          = self.A.J
-		self.contrasts  = None
-		self._swap      = self.B.n > self.C.n   ### swap B and C factors if needed
+		self.A           = Factor(A)
+		self.B           = Factor(B)
+		self.C           = Factor(C)
+		self.S           = FactorNested(SUBJ, self.A)
+		# self.S           = FactorNestedTwoWay(SUBJ, self.B, self.C)
+		self.J           = self.A.J
+		self.contrasts   = None
+		self.term_labels = ['Intercept',  'A','B','C','S',  'AB','AC','BC',  'SB','SC',   'ABC', 'SBC']
+		self.f_terms     = [('A','S'), ('B','SB'), ('C','SC'),  ('AB','SB'), ('AC','SC'), ('BC','SBC'), ('ABC','SBC')]
 		self._check_balanced()
-		self._swapBC()
 		self._assemble()
-		self._swapBC()
-		
-		
+
+
 	def _assemble(self):
 		### assemble design matrix columns:
+		XCONST          = self._get_column_const()
 		XA              = self.A.get_design_main()
 		XB              = self.B.get_design_main()
 		XC              = self.C.get_design_main()
+		XS              = self.S.get_design_main()
 		XAB             = self.A.get_design_interaction(self.B)
 		XAC             = self.A.get_design_interaction(self.C)
 		XBC             = self.B.get_design_interaction(self.C)
+		XSB             = self.S.get_design_interaction(self.B)
+		XSC             = self.S.get_design_interaction(self.C)
 		XABC            = self.A.get_design_interaction_3way(self.B, self.C)
-		XCONST          = self._get_column_const()
-		XSpooled        = self.A.get_design_subject_pooled()
-		XSB             = self.B.get_design_subject_partitioned()
-		XSC             = self.C.get_design_subject_partitioned()
-		XSBC            = self.B.get_design_subject_partitioned3(self.C)
-		### specify model and add design matrix columns:
-		model           = ModelBuilder(labels=['A','B','C', 'AB','AC','BC', 'ABC', 'CONST'], labels_subj=['Spooled', 'SB', 'SC', 'SBC'])
-		model.add_main_columns('A', XA)
-		model.add_main_columns('B', XB)
-		model.add_main_columns('C', XC)
-		model.add_main_columns('AB', XAB)
-		model.add_main_columns('AC', XAC)
-		model.add_main_columns('BC', XBC)
-		model.add_main_columns('ABC', XABC)
-		model.add_main_columns('CONST', XCONST)
-		model.add_subj_columns('Spooled', XSpooled)
-		model.add_subj_columns('SB', XSB)
-		model.add_subj_columns('SC', XSC)
-		model.add_subj_columns('SBC', XSBC)
+		XSBC            = self.S.get_design_interaction_3way(self.B, self.C)
+		### specify builder and add design matrix columns:
+		builder           = DesignBuilder(labels=self.term_labels)
+		builder.add_main_columns('Intercept', XCONST)
+		builder.add_main_columns('A', XA)
+		builder.add_main_columns('B', XB)
+		builder.add_main_columns('C', XC)
+		builder.add_main_columns('S', XS)
+		builder.add_main_columns('AB', XAB)
+		builder.add_main_columns('AC', XAC)
+		builder.add_main_columns('BC', XBC)
+		builder.add_main_columns('SB', XSB)
+		builder.add_main_columns('SC', XSC)
+		builder.add_main_columns('ABC', XABC)
+		builder.add_main_columns('SBC', XSBC)
 		### assemble design matrix and contrasts:
-		self.X         = model.get_design_matrix()
-		if self._swap:
-			sspairs    = [('A','Spooled'), ('C','SC'), ('B','SB')]
-			sspairs   += [('AC','SC'), ('AB','SB'), ('BC','SBC')]
-			sspairs   += [('ABC', 'SBC')]
-		else:
-			sspairs    = [('A','Spooled'), ('B','SB'), ('C','SC')]
-			sspairs   += [('AB','SB'), ('AC','SC'), ('BC','SBC')]
-			sspairs   += [('ABC', 'SBC')]
-
-		self.contrasts = [model.get_contrast_compound(s, ss)  for s,ss in sspairs]
+		self.X         = builder.get_design_matrix()
+		self.contrasts = builder.get_contrasts()
 
 
-	def _swapBC(self):
-		if self._swap:
-			B,C         = self.C, self.B
-			self.B      = B
-			self.C      = C
 
 	def _check_balanced(self):
 		if not (self.A.balanced and self.B.balanced and self.C.balanced and self.S.balanced):
@@ -536,6 +643,8 @@ class ANOVA3tworm(ANOVA3rm):
 			raise( ValueError('Design must be balanced.') )
 		if not self.S.check_balanced_rm(self.C):
 			raise( ValueError('Design must be balanced.') )
+
+
 
 
 

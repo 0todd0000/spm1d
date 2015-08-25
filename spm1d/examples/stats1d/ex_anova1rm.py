@@ -6,24 +6,20 @@ import spm1d
 
 
 
-#(0) Load data:
+#(0) Load dataset:
 dataset      = spm1d.data.uv1d.anova1rm.SpeedGRFcategoricalRM()
 Y,A,SUBJ     = dataset.get_data()
 
 
 
 
-#(1) ANOVA:
+#(1) Run ANOVA:
 alpha        = 0.05
-equal_var    = False
+equal_var    = True
 F            = spm1d.stats.anova1(Y, A, equal_var)
 Frm          = spm1d.stats.anova1rm(Y, A, SUBJ, equal_var)
 Fi           = F.inference(alpha)
 Firm         = Frm.inference(alpha)
-
-# print F.df, Frm.df
-# print Fi.zstar
-# print Firm.zstar
 
 
 

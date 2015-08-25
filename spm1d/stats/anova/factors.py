@@ -1,39 +1,33 @@
 
 
 import numpy as np
-from matplotlib import pyplot
+
+
+
 
 
 
 
 class Factor(object):
-	def __init__(self, A, block_redundant=False):
-		self.A          = np.asarray(A, dtype=int)        #integer vector of factor levels
-		self.J          = None     #number of observations
-		self.u          = None     #unique levels
-		self.n          = None     #number of levels
-		self.pairs      = None     #pairs of factor levels
-		self.nPairs     = None     #number of factor-level pairs
-		self.isnested   = False    #nested flag
-		self.isrm       = False    #repeated measures flag
-		self.nested     = None
-		self.balanced   = True
-		self._00_parse(block_redundant)
+	def __init__(self, A):
+		self.A            = np.asarray(A, dtype=int)        #integer vector of factor levels
+		self.J            = None     #number of observations
+		self.u            = None     #unique levels
+		self.n            = None     #number of levels
+		self.isnested     = False    #nested flag
+		self.nested       = None
+		self.balanced     = True
+		self._00_parse()
 		self._01_check_unbalanced()
 
-	def _00_parse(self, block_redundant):
+	def _00_parse(self):
 		self.J            = self.A.size
 		self.u            = np.unique(self.A)
 		self.n            = self.u.size
-		self.pairs        = np.vstack([self.u[:-1], self.u[1:]]).T
-		if (self.n>2) and not block_redundant:  ### add a redundant term
-			self.pairs    = np.vstack([self.pairs, self.u[[-1,0]] ])
-		self.nPairs       = self.pairs.shape[0]
 		
 	def _01_check_unbalanced(self):
 		nn  = [(self.A==uu).sum()   for uu in self.u]
 		self.balanced = np.all( nn==nn[0] )
-
 
 	def check_balanced(self, other):
 		A,B = self.A, other.A
@@ -74,120 +68,83 @@ class Factor(object):
 
 
 
-	def get_Q(self):
+	def get_Q(self):  #non-sphericity components
 		return [np.matrix(np.diag(self.A==u), dtype=float) for u in self.u]
+	
 	
 	def get_design_interaction(self, other):
 		XAB        = []
 		A,B        = self.A, other.A
-		for uA0,uA1 in self.pairs:
-			for uB0,uB1 in other.pairs:
+		for uB in other.u[1:]:
+			for uA in self.u[1:]:
 				x      = np.zeros(self.J)
-				x[(A==uA0)&(B==uB0)] =  1
-				x[(A==uA0)&(B==uB1)] = -1
-				x[(A==uA1)&(B==uB0)] = -1
-				x[(A==uA1)&(B==uB1)] =  1
+				x[(A==uA)&(B==uB)] =  1
 				XAB.append(x)
 		return np.matrix(XAB).T
 
 
-
-
-	
 	def get_design_interaction_3way(self, other, another):
 		XABC       = []
 		A,B,C      = self.A, other.A, another.A
-		pA,pB,pC   = self.pairs, other.pairs, another.pairs
-		for uA0,uA1 in pA:
-			for uB0,uB1 in pB:
-				for uC0,uC1 in pC:
+		for uC in another.u[1:]:
+			for uB in other.u[1:]:
+				for uA in self.u[1:]:
 					x      = np.zeros(self.J)
 					### part one:
-					x[(A==uA0)&(B==uB0)&(C==uC0)] =  1
-					x[(A==uA0)&(B==uB0)&(C==uC1)] = -1
-					x[(A==uA0)&(B==uB1)&(C==uC0)] = -1
-					x[(A==uA0)&(B==uB1)&(C==uC1)] =  1
-					### part two:
-					x[(A==uA1)&(B==uB0)&(C==uC0)] = -1
-					x[(A==uA1)&(B==uB0)&(C==uC1)] =  1
-					x[(A==uA1)&(B==uB1)&(C==uC0)] =  1
-					x[(A==uA1)&(B==uB1)&(C==uC1)] = -1
+					x[(A==uA)&(B==uB)&(C==uC)] =  1
 					XABC.append(x)
 		return np.matrix(XABC).T
 
-	def get_design_main(self, simplified=False):
+
+	def get_design_interaction_4way(self, other, another, yetanother):
+		X        = []
+		S,A,B,C  = self.A, other.A, another.A, yetanother.A
+		for uC in yetanother.u[1:]:
+			for uB in another.u[1:]:
+				for uA in other.u[1:]:
+					for uS in self.u[1:]:
+						x      = np.zeros(self.J)
+						### part one:
+						x[(A==uA)&(B==uB)&(C==uC)&(S==uS)] =  1
+						X.append(x)
+		return np.matrix(X).T
+
+
+
+	def get_design_main(self):
 		X = []
-		if simplified:
-			for u in self.u:
-				x     = np.zeros(self.J)
-				x[self.A==u] = 1
-				X.append(x)
-		else:
-			for u0,u1 in self.pairs:
-				x        = np.zeros(self.J)
-				x[self.A==u0] =  1
-				x[self.A==u1] = -1
-				X.append(x)
+		for u in self.u[1:]:
+			x        = np.zeros(self.J)
+			x[self.A==u] =  1
+			X.append(x)
 		return np.matrix( X ).T
 
 
-
-
-class FactorSubject(Factor):
-	def __init__(self, S):
-		super(FactorSubject, self).__init__(S)
-
-
-
-
-class FactorRM(Factor):
-	def __init__(self, A, S, block_redundant=False):
-		super(FactorRM, self).__init__(A, block_redundant)
-		self.S     = S
-		self.isrm  = True
-
-	def get_design_subject_pooled(self):
-		return self.S.get_design_main(simplified=True)
+	def get_design_main_nested(self, other):
+		A,S  = other.A, self.A
+		X    = []
+		for uA in other.u:
+			uS = np.unique(S[A==uA])
+			for u in uS[1:]:
+				x        = np.zeros(self.J)
+				x[(A==uA) & (S==u)] =  1
+				X.append(x)
+		return np.matrix( X ).T
 		
-	def get_design_subject_partitioned(self):
-		XS        = []
-		for u0,u1 in self.pairs:
-			for u in self.S.u:
-				x    = np.zeros(self.J)
-				x[(self.A==u0) & (self.S.A==u)] = +1
-				x[(self.A==u1) & (self.S.A==u)] = -1
-				XS.append(x)
-		return np.matrix(XS).T
-
-
-	def get_design_subject_partitioned3(self, other):
-		XS        = []
-		B,C       = self.A, other.A
-		for uB0,uB1 in self.pairs:
-			for uC0,uC1 in other.pairs:
-				for u in self.S.u:
-					x    = np.zeros(self.J)
-					x[(B==uB0) & (C==uC0) & (self.S.A==u)]  = +1
-					x[(B==uB0) & (C==uC1) & (self.S.A==u)]  = -1
-					x[(B==uB1) & (C==uC0) & (self.S.A==u)]  = -1
-					x[(B==uB1) & (C==uC1) & (self.S.A==u)]  = +1
-					XS.append(x)
-		return np.matrix(XS).T
+		
+	def get_design_interaction_nested(self, other, another):
+		A,B,S  = another.A, other.A, self.A
+		XAB        = []
+		for uA in np.unique(A):
+			uS = np.unique(S[A==uA])
 			
-			
-	def get_design_subject_interaction(self, other):
-		XS        = []
-		A,B,S     = self.A, other.A, self.S.A
-		for uA0,uA1 in self.pairs:
-			for uB0,uB1 in other.pairs:
-				for u in self.S.u:
-					x    = np.zeros(self.J)
-					x[(A==uA0)&(B==uB0) & (S==u)] = +1
-					x[(A==uA0)&(B==uB1) & (S==u)] = -1
-					x[(A==uA1)&(B==uB0) & (S==u)] = -1
-					x[(A==uA1)&(B==uB1) & (S==u)] = +1
-					XS.append(x)
-		return np.matrix(XS).T
+			for uB in other.u[1:]:
+				for u in uS[1:]:
+					x      = np.zeros(self.J)
+					x[(A==uA)&(B==uB)&(S==u)] =  1
+					XAB.append(x)
+		return np.matrix(XAB).T
+	
 
 
 
@@ -203,8 +160,6 @@ class FactorNested(Factor):
 		self.J          = self.A.size
 		self.u          = [np.unique(self.A[self.NEST.A==u])  for u in self.NEST.u]
 		self.n          = [u.size for u in self.u]
-		self.pairs      = [np.vstack([u[:-1], u[1:]]).T   for u in self.u]
-		self.nPairs     = [pair.shape[0]  for pair in self.pairs]
 
 	def _01_check_unbalanced(self):
 		pass
@@ -223,18 +178,44 @@ class FactorNested(Factor):
 	def get_design_main(self):
 		A,B   = self.NEST.A, self.A
 		X     = []
-		for u,pairs in zip(self.NEST.u, self.pairs):
-			for u0,u1 in pairs:
+		for uA,UB in zip(self.NEST.u, self.u):
+			for uB in UB[1:]:
 				x        = np.zeros(self.J)
-				x[(A==u)&(B==u0)] =  1
-				x[(A==u)&(B==u1)] = -1
+				x[(A==uA) & (B==uB)] = 1
 				X.append(x)
 		return np.matrix( X ).T
+		
+
+	def get_design_interaction(self, other):
+		A,B,S  = self.NEST.A, other.A, self.A
+		X      = []
+		for uA,US in zip(self.NEST.u, self.u):
+			for uB in other.u[1:]:
+				for uS in US[1:]:
+					x      = np.zeros(self.J)
+					x[(A==uA)&(B==uB)&(S==uS)] =  1
+					X.append(x)
+		return np.matrix(X).T
+
+
+	def get_design_interaction_3way(self, other, another):
+		A,B,C,S  = self.NEST.A, other.A, another.A, self.A
+		X        = []
+		for uA,US in zip(self.NEST.u, self.u):
+			for uB in other.u[1:]:
+				for uC in another.u[1:]:
+					for uS in US[1:]:
+						x      = np.zeros(self.J)
+						x[(A==uA)&(B==uB)&(C==uC)&(S==uS)] =  1
+						X.append(x)
+		return np.matrix(X).T
+
 
 
 
 class FactorNested2(Factor):
 	def __init__(self, A, nestfactor):
+		pass
 		self.NEST0      = nestfactor.NEST
 		self.NEST1      = nestfactor
 		super(FactorNested2, self).__init__(A)
@@ -246,8 +227,6 @@ class FactorNested2(Factor):
 		self.J          = self.A.size
 		self.u          = [[np.unique(C[(A==uuA)&(B==uuB)]) for uuB in uB]  for uuA,uB in zip(uA, UB)]
 		self.n          = [[uu.size for uu in u] for u in self.u]
-		self.pairs      = [[np.vstack([uu[:-1], uu[1:]]).T   for uu in u] for u in self.u]
-		self.nPairs     = [[p.shape[0]  for p in pair] for pair in self.pairs]
 
 	def _01_check_unbalanced(self):
 		pass
@@ -260,17 +239,78 @@ class FactorNested2(Factor):
 					q = np.matrix(np.diag(self.A==uuu), dtype=float)
 					Q.append(q)
 		return Q
-	
+
 	def get_design_main(self):
 		A,B,C = self.NEST0.A, self.NEST1.A, self.A
 		X     = []
-		for uA,UB,PAIRSC in zip(self.NEST0.u, self.NEST1.u, self.pairs):
-			for uB,pairsC in zip(UB,PAIRSC):
-				for u0,u1 in pairsC:
+		for uA,UB,UUC in zip(self.NEST0.u, self.NEST1.u, self.u):
+			for uB,UC in zip(UB, UUC):
+				for uC in UC[1:]:
 					x        = np.zeros(self.J)
-					x[(A==uA)&(B==uB)&(C==u0)] =  1
-					x[(A==uA)&(B==uB)&(C==u1)] =  -1
+					x[(A==uA) & (B==uB) & (C==uC)] = 1
 					X.append(x)
 		return np.matrix( X ).T
+
+
+
+
+class FactorNestedTwoWay(Factor):
+	def __init__(self, SUBJ, A, B):
+		self.NEST0      = A
+		self.NEST1      = B
+		super(FactorNestedTwoWay, self).__init__(SUBJ)
+
+
+	def _00_parse(self):
+		A,B,S           = self.NEST0.A, self.NEST1.A, self.A
+		uA,uB           = self.NEST0.u, self.NEST1.u
+		self.J          = self.A.size
+		self.u          = [[np.unique( S[(A==uuA)&(B==uuB)] )  for uuB in uB] for uuA in uA]
+		self.n          = [[uu.size for uu in u] for u in self.u]
+
+	def _01_check_unbalanced(self):
+		pass
+
+
+	def get_Q(self):
+		pass
+		# Q = []
+		# for u in self.u:
+		# 	for uu in u:
+		# 		for uuu in uu:
+		# 			q = np.matrix(np.diag(self.A==uuu), dtype=float)
+		# 			Q.append(q)
+		# return Q
+
+
+		
+	def get_design_main(self):
+		A,B,S    = self.NEST0.A, self.NEST1.A, self.A
+		uA,uB,uS = np.unique(A), np.unique(B), np.unique(S)
+		X        = []
+		for uuA in uA:
+			for uuB in uB:
+				uS  = np.unique(S[(A==uuA) & (B==uuB)])
+				for uuS in uS[1:]:
+					x        = np.zeros(self.J)
+					x[(A==uuA) & (B==uuB) & (S==uuS)] = 1
+					X.append(x)
+		return np.matrix( X ).T
+
+
+	def get_design_interaction(self, other):
+		A,B,C,S  = self.NEST0.A, self.NEST1.A, other.A, self.A
+		X        = []
+		for uA in self.NEST0.u:
+			for uB in self.NEST1.u[1:]:
+				for uC in other.u:
+					uS = np.unique( S[(A==uA)&(B==uB)&(C==uC)] )
+					for uuS in uS[1:]:
+						x      = np.zeros(self.J)
+						x[(A==uA)&(B==uB)&(C==uC)&(S==uuS)] =  1
+						X.append(x)
+		return np.matrix(X).T
+
+
 
 

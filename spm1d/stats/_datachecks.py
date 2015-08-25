@@ -80,11 +80,14 @@ class DataChecker(object):
 
 
 
-
-class DataCheckerANOVA1(DataChecker):
+class DataCheckerANOVA1List(DataChecker):
 	def __init__(self, YY):
 		self.YY   = YY
 	def check(self):
+		if len(self.YY)==1:
+			raise( ValueError('There must be at least two levels in one-way ANOVA.') )
+		elif len(self.YY)==2:
+			warnings.warn('\nWARNING:  A one-way ANOVA with two levels is equivalent to a two-sample t test. The F statistic is equal to the square of the t statistic.\n', UserWarning, stacklevel=2)
 		[self.check_array(Y)  for Y in self.YY]
 		[self.check_2d(Y) for Y in self.YY]
 		[self.check_size(Y) for Y in self.YY]
@@ -92,6 +95,22 @@ class DataCheckerANOVA1(DataChecker):
 		nGroups  = len(self.YY)
 		for i in range(1, nGroups):
 			self.check_equal_Q(self.YY[0], self.YY[i])
+			
+class DataCheckerANOVA1(DataChecker):
+	def __init__(self, Y, A):
+		self.Y   = Y
+		self.A   = A
+	def check(self):
+		[self.check_array(x)  for x in [self.Y,self.A]]
+		self.check_2d(self.Y)
+		self.check_1d(self.A, 2)
+		if np.unique(self.A).size == 1:
+			raise( ValueError('There must be at least two factor levels in a one-way ANOVA (only one found).') )
+		elif np.unique(self.A).size == 2:
+			warnings.warn('\nWARNING:  A one-way ANOVA with two levels is equivalent to a two-sample t test. The F statistic is equal to the square of the t statistic.\n', UserWarning, stacklevel=2)
+		self.check_size(self.Y)
+		self.check_equal_J(self.Y, self.A)
+		self.check_zero_variance(self.Y)
 
 
 class DataCheckerANOVA2(DataChecker):
@@ -157,9 +176,12 @@ class DataCheckerTtestPaired(DataCheckerTtest2):
 
 
 def check(testname, *args):
-	if testname == 'anova1':
+	if testname == 'anova1list':
 		YY       = args[0]
-		checker  = DataCheckerANOVA1(YY)
+		checker  = DataCheckerANOVA1List(YY)
+	if testname == 'anova1':
+		Y,A      = args
+		checker  = DataCheckerANOVA1(Y, A)
 	if testname == 'anova2':
 		Y,A,B    = args
 		checker  = DataCheckerANOVA2(Y, A, B)

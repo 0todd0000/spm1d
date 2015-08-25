@@ -1,5 +1,4 @@
 
-import os
 from matplotlib import pyplot
 import spm1d
 

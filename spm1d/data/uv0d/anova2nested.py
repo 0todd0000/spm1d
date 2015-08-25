@@ -15,6 +15,7 @@ class QIMacros(_base.DatasetANOVA2nested):  #nested
 		self.z     = 0.111, 45.726
 		self.df    = (1, 6), (6, 24)
 		self.p     = (0.742, 0.000)
+		self._rtol = 0.01
 
 class SouthamptonNested1(_base.DatasetANOVA2nested):
 	def _set_values(self):

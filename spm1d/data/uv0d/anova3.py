@@ -22,6 +22,7 @@ class RSItalian(_base.DatasetANOVA3):
 		self.z     = 0.01749,16.8113,0.51854, 0.70169,9.2541,0.47708, 26.6077
 		self.df    = [(1,88)]*7
 		self.p     = 0.89508, 9.2e-5, 0.47337, 0.40449, 0.0031, 0.49157, 1.5e-6
+		
 
 
 class SouthamptonFullyCrossedMixed(_base.DatasetANOVA3):
@@ -36,6 +37,7 @@ class SouthamptonFullyCrossedMixed(_base.DatasetANOVA3):
 		self.z       = 38.12,0.02,0.99,  7.06,0.42,0.92,  2.06
 		self.df      = (2,12),(1,12),(1,12), (2,12),(2,12),(1,12), (2,12)
 		self.p       = '<0.001', 0.902, 0.338,    0.009, 0.665, 0.357,    0.171
+		self._atol   = 0.01
 
 
 

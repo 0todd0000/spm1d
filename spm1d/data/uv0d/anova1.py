@@ -4,6 +4,24 @@ from .. import _base
 
 
 
+class _BadOneLevel(_base.DatasetANOVA1):
+	def _set_values(self):
+		Y  = np.array( [] )
+		self.Y     = np.array( [643, 469, 484] )
+		self.A     = np.array( [0]*3 )
+		self.expected_warning = False
+		self.expected_class = ValueError
+
+class _BadTwoLevels(_base.DatasetANOVA1):
+	def _set_values(self):
+		Y  = np.array( [] )
+		self.Y     = np.array( [643, 469, 484, 655, 427, 456] )
+		self.A     = np.hstack( [0]*3 + [1]*3 )
+		self.expected_warning = True
+		self.expected_class = UserWarning
+
+
+
 class Cars(_base.DatasetANOVA1):
 	def _set_values(self):
 		self.www     = 'http://cba.ualr.edu/smartstat/topics/anova/example.pdf'
@@ -67,6 +85,7 @@ class Sound(_base.DatasetANOVA1):
 		self.z     = 3.59
 		self.df    = (2, 21)
 		self.p     = 0.0456    #calculated as:  scipy.stats.f.sf(3.59, 2, 21)
+		self._rtol = 0.01
 
 
 class Southampton1(_base.DatasetANOVA1):
