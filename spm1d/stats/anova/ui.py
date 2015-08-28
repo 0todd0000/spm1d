@@ -201,8 +201,7 @@ def anova2rm(Y, A, B, SUBJ, equal_var=True):
 		raise( NotImplementedError('Non-sphericity correction not implemented. To continue you must assume equal variance and set "equal_var=True".') )
 	design  = designs.ANOVA2rm(A, B, SUBJ)
 	model   = models.LinearModel(Y, design.X)
-	if model.dim == 1:
-		design.check_for_single_responses()
+	if (model.dim == 1) and ( design.check_for_single_responses() ):
 		model.fit( approx_residuals=design.contrasts.C[:5] )
 	else:
 		model.fit( )
@@ -241,8 +240,7 @@ def anova2onerm(Y, A, B, SUBJ, equal_var=True):
 		raise( NotImplementedError('Non-sphericity correction not implemented. To continue you must assume equal variance and set "equal_var=True".') )
 	design  = designs.ANOVA2onerm(A, B, SUBJ)
 	model   = models.LinearModel(Y, design.X)
-	if model.dim == 1:
-		design.check_for_single_responses()
+	if (model.dim == 1) and ( design.check_for_single_responses() ):
 		model.fit( approx_residuals=design.contrasts.C[:5] )
 	else:
 		model.fit( )
@@ -346,11 +344,10 @@ def anova3rm(Y, A, B, C, SUBJ, equal_var=True):
 		raise( NotImplementedError('Non-sphericity correction not implemented. To continue you must assume equal variance and set "equal_var=True".') )
 	design  = designs.ANOVA3rm(A, B, C, SUBJ)
 	model   = models.LinearModel(Y, design.X)
-	if model.dim == 1:
-		design.check_for_single_responses()
+	if (model.dim == 1) and ( design.check_for_single_responses() ):
 		model.fit( approx_residuals=design.contrasts.C[:8] )
 	else:
-		model.fit()
+		model.fit( )
 	F       = aov(model, design.contrasts, design.f_terms)
 	return F
 	
@@ -385,11 +382,10 @@ def anova3onerm(Y, A, B, C, SUBJ, equal_var=True):
 		raise( NotImplementedError('Non-sphericity correction not implemented. To continue you must assume equal variance and set "equal_var=True".') )
 	design  = designs.ANOVA3onerm(A, B, C, SUBJ)
 	model   = models.LinearModel(Y, design.X)
-	if model.dim == 1:
-		design.check_for_single_responses()
+	if (model.dim == 1) and ( design.check_for_single_responses() ):
 		model.fit( approx_residuals=design.contrasts.C[:8] )
 	else:
-		model.fit()
+		model.fit( )
 	model.fit()
 	F       = aov(model, design.contrasts, design.f_terms)
 	return F
@@ -425,8 +421,7 @@ def anova3tworm(Y, A, B, C, SUBJ, equal_var=True):
 		raise( NotImplementedError('Non-sphericity correction not implemented. To continue you must assume equal variance and set "equal_var=True".') )
 	design  = designs.ANOVA3tworm(A, B, C, SUBJ)
 	model   = models.LinearModel(Y, design.X)
-	if model.dim == 1:
-		design.check_for_single_responses()
+	if (model.dim == 1) and ( design.check_for_single_responses() ):
 		model.fit( approx_residuals=design.contrasts.C[:8] )
 	else:
 		model.fit( )

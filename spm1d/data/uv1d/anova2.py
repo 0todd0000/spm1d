@@ -46,6 +46,37 @@ class Dorn2012(_base.DatasetANOVA2, _base.Dataset1D):
 		self.p        = None
 
 
+class _SPM1D_ANOVA2_DATASET(_base.DatasetANOVA2, _base.Dataset1D):
+	def _set_values(self):
+		self._set_datafile()
+		Z             = np.load(self.datafile)
+		self.Y,self.A,self.B = Z['Y'], Z['A'], Z['B']
+		Z.close()
+
+
+class SPM1D_ANOVA2_2x2(_SPM1D_ANOVA2_DATASET):
+	def _set_datafile(self):
+		self.datafile = os.path.join(_base.get_datafilepath(), 'spm1d_anova2_2x2.npz')
+class SPM1D_ANOVA2_2x3(_SPM1D_ANOVA2_DATASET):
+	def _set_datafile(self):
+		self.datafile = os.path.join(_base.get_datafilepath(), 'spm1d_anova2_2x3.npz')
+
+class SPM1D_ANOVA2_3x3(_SPM1D_ANOVA2_DATASET):
+	def _set_datafile(self):
+		self.datafile = os.path.join(_base.get_datafilepath(), 'spm1d_anova2_3x3.npz')
+class SPM1D_ANOVA2_3x4(_SPM1D_ANOVA2_DATASET):
+	def _set_datafile(self):
+		self.datafile = os.path.join(_base.get_datafilepath(), 'spm1d_anova2_3x4.npz')
+class SPM1D_ANOVA2_3x5(_SPM1D_ANOVA2_DATASET):
+	def _set_datafile(self):
+		self.datafile = os.path.join(_base.get_datafilepath(), 'spm1d_anova2_3x5.npz')
+
+class SPM1D_ANOVA2_4x4(_SPM1D_ANOVA2_DATASET):
+	def _set_datafile(self):
+		self.datafile = os.path.join(_base.get_datafilepath(), 'spm1d_anova2_4x4.npz')
+class SPM1D_ANOVA2_4x5(_SPM1D_ANOVA2_DATASET):
+	def _set_datafile(self):
+		self.datafile = os.path.join(_base.get_datafilepath(), 'spm1d_anova2_4x5.npz')
 
 
 
