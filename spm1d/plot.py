@@ -397,7 +397,7 @@ def plot_spmi(spmi, ax=None, color='k', facecolor='0.8', plot_thresh=True, plot_
 
 
 
-def plot_spmi_p_values(spmi, ax=None, size=8, offsets=None, autoset_ylim=True):
+def plot_spmi_p_values(spmi, ax=None, size=8, offsets=None, offset_all_clusters=None, autoset_ylim=True):
 	'''
 	Plot an **spm1d** SPM inference object's p values as text (if they exist).
 	
@@ -407,6 +407,7 @@ def plot_spmi_p_values(spmi, ax=None, size=8, offsets=None, autoset_ylim=True):
 	- *ax* --- optional matplotlib.axes object  [default: matplotlib.pyplot.gca()]
 	- *size* --- optional integer specifying font size
 	- *offsets* --- optional list of 2-tuples specifying (x,y) offsets with respect to cluster centroids
+	- *offset_all_clusters* --- optional 2-tuple specifying the (x,y) offset for all clusters, with respect to cluster centroids
 	- *autoset_ylim* --- if True (default), will set the y axis limits so that all text, line and patch objects are visible inside the axes
 	
 	:Returns:
@@ -423,8 +424,14 @@ def plot_spmi_p_values(spmi, ax=None, size=8, offsets=None, autoset_ylim=True):
 	
 	'''
 	ax         = _gca(ax)
-	if offsets == None:
-		offsets = [(0,0)]*len(spmi.p)
+	n          = len(spmi.p)
+	if offsets is None:
+		if offset_all_clusters is None:
+			offsets = [(0,0)]*n
+		else:
+			offsets = [offset_all_clusters]*n
+	if len(offsets) < n:
+		print('WARNING:  there are fewer offsets than clusters.  To set offsets for all clusters use the offset_all_clusters keyword.')
 	for cluster,offset in zip(spmi.clusters, offsets):
 		x,y    = cluster.xy
 		x     += offset[0]
