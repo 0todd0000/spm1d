@@ -61,7 +61,7 @@ def anova1(Y, A=None, equal_var=False):
 	'''
 	if isinstance(Y, (list,tuple)):
 		_datachecks.check('anova1list', Y)
-		A   = np.array([[i]*y.shape[0] for i,y in enumerate(Y)]).flatten()
+		A   = np.hstack([[i]*y.shape[0] for i,y in enumerate(Y)])
 		Y   = np.hstack(Y) if Y[0].ndim==1 else np.vstack(Y)
 	else:
 		_datachecks.check('anova1', Y, A)
