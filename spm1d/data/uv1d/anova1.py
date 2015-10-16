@@ -8,13 +8,18 @@ from .. import _base
 
 
 class SpeedGRFcategorical(_base.DatasetANOVA1, _base.Dataset1D):
+	def __init__(self, subj=0):
+		self.subj     = int(subj)
+		super(SpeedGRFcategorical, self).__init__()
+		
+	
 	def _set_values(self):
 		self.cite     = 'Pataky, T. C., Caravaggi, P., Savage, R., Parker, D., Goulermas, J., Sellers, W., & Crompton, R. (2008). New insights into the plantar pressure correlates of walking speed using pedobarographic statistical parametric mapping (pSPM). Journal of Biomechanics, 41(9), 1987–1994.'
-		fnameY        = os.path.join(_base.get_datafilepath(), 'ex_grf_subj000.npy')
+		fnameY        = os.path.join(_base.get_datafilepath(), 'ex_grf_subj%03d.npy'%self.subj)
 		fnameX        = os.path.join(_base.get_datafilepath(), 'ex_grf_speeds_cond.npy')
 		self.datafile = fnameY
 		self.Y        = np.load(fnameY)
-		self.A        = np.load(fnameX)[:,0]
+		self.A        = np.load(fnameX)[:,self.subj]
 		self.z        = None
 		self.df       = None
 		self.p        = None

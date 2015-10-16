@@ -261,10 +261,10 @@ class DatasetRegress(_DatasetT):
 		return self.Y, self.x
 	def get_expected_results_as_string(self):
 		s      = '  (Expected results)\n'
-		s     += '   %s         :  %s\n' %(self.STAT, self.z)
-		s     += '   df        :  (%s, %s)\n' %self.df
-		s     += '   r         :  %s\n' %(self.r)
-		s     += '   p         :  %s\n' %(self.p)
+		s     += '   %s          :  %s\n' %(self.STAT, self.z)
+		s     += '   df         :  %s\n' %str(self.df)
+		s     += '   r          :  %s\n' %str(self.r)
+		s     += '   p          :  %s\n' %str(self.p)
 		return s
 
 
