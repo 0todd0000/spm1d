@@ -24,5 +24,5 @@ setup(
 	long_description = long_description,
 	keywords         = ['statistics', 'time series analysis'],
 	classifiers      = [],
-	install_requires = ["numpy", "scipy", "matplotlib", "rft1d"]
+	install_requires = ["future", "numpy", "scipy", "matplotlib", "rft1d"]
 ) 
