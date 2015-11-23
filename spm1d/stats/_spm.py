@@ -48,7 +48,10 @@ def _set_docstr(childfn, parentfn, args2remove=None):
 				docstrlist1.append(s)
 		docstrlist1 = [s + '\n\t'  for s in docstrlist1]
 		docstr  = ''.join(docstrlist1)
-	childfn.__func__.__doc__ = docstr
+	try:
+		childfn.__func__.__doc__ = docstr
+	except AttributeError:
+		childfn.__doc__ = docstr
 
 
 eps    = np.finfo(float).eps   #smallest float, used to avoid divide-by-zero errors
