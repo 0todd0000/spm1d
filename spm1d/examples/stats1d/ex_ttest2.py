@@ -1,3 +1,6 @@
+from __future__ import print_function
+from __future__ import division
+from __future__ import absolute_import
 
 from matplotlib import pyplot
 import spm1d
@@ -15,7 +18,7 @@ YA,YB        = dataset.get_data()  #normal and fast walking
 alpha      = 0.05
 t          = spm1d.stats.ttest2(YB, YA, equal_var=True)
 ti         = t.inference(alpha, two_tailed=False, interp=True)
-print ti
+print(ti)
 
 
 

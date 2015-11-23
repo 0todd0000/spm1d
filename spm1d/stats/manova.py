@@ -1,11 +1,14 @@
+from __future__ import absolute_import
+from __future__ import print_function
+from __future__ import division
 
 # __version__ = '0.0.0005'  #2014.08.12
 
 
 from math import sqrt,log
 import numpy as np
-import _mvbase
-import _spm
+from . import _mvbase
+from . import _spm
 
 
 eps        = np.finfo(float).eps   #smallest float, used to avoid divide-by-zero errors
@@ -96,7 +99,7 @@ def manova1(Y, A, equal_var=True):
 		- Non-sphericity correction not implemented. Equal variance must be assumed by setting "equal_var=True".
 	'''
 	if equal_var is not True:
-		raise( UserWarning('Non-sphericity correction not implemented. To continue you must assume equal variance and set "equal_var=True".') )
+		raise UserWarning('Non-sphericity correction not implemented. To continue you must assume equal variance and set "equal_var=True".')
 	u           = np.unique(A)
 	nGroups     = u.size
 	nResponses  = Y.shape[0]

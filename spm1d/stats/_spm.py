@@ -8,6 +8,9 @@ are not meant to be accessed directly by the user.)
 This module contains class definitions for raw SPMs (raw test statistic continua)
 and inference SPMs (thresholded test statistic).
 '''
+from __future__ import print_function
+from __future__ import division
+from __future__ import absolute_import
 
 # Copyright (C) 2014  Todd Pataky
 # _spm.py version: 0.2.0006 (2014/07/09)

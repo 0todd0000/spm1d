@@ -1,10 +1,13 @@
+from __future__ import absolute_import
+from __future__ import print_function
+from __future__ import division
 
 import warnings
 import numpy as np
 from matplotlib import pyplot
 
 
-from factors import Factor,FactorNested,FactorNested2,FactorNestedTwoWay #FactorRM,FactorSubject
+from .factors import Factor,FactorNested,FactorNested2,FactorNestedTwoWay #FactorRM,FactorSubject
 
 
 
@@ -151,9 +154,9 @@ class ANOVA1rm(_Design):
 
 	def _check_balanced(self):
 		if not (self.A.balanced and self.S.balanced):
-			raise( ValueError('Design must be balanced.') )
+			raise ValueError('Design must be balanced.')
 		if not self.S.check_balanced(self.A):
-			raise( ValueError('Design must be balanced.') )
+			raise ValueError('Design must be balanced.')
 
 
 
@@ -193,10 +196,10 @@ class ANOVA2(_Design):
 	def _check_balanced(self):
 		if not (self.A.balanced and self.B.balanced):
 			self.balanced = False
-			raise( ValueError('Design must be balanced.') )
+			raise ValueError('Design must be balanced.')
 		if not self.A.check_balanced(self.B):
 			self.balanced = False
-			raise( ValueError('Design must be balanced.') )
+			raise ValueError('Design must be balanced.')
 
 
 
@@ -231,9 +234,9 @@ class ANOVA2nested(ANOVA2):
 
 	def _check_balanced(self):
 		if not (self.A.balanced and self.B.balanced):
-			raise( ValueError('Design must be balanced.') )
+			raise ValueError('Design must be balanced.')
 		if not self.A.check_balanced_nested(self.B):
-			raise( ValueError('Design must be balanced.') )
+			raise ValueError('Design must be balanced.')
 
 
 
@@ -278,13 +281,13 @@ class ANOVA2rm(ANOVA2):
 
 	def _check_balanced(self):
 		if not (self.A.balanced and self.B.balanced and self.S.balanced):
-			raise( ValueError('Design must be balanced.') )
+			raise ValueError('Design must be balanced.')
 		if not self.A.check_balanced(self.B):
-			raise( ValueError('Design must be balanced.') )
+			raise ValueError('Design must be balanced.')
 		if not self.S.check_balanced(self.A):
-			raise( ValueError('Design must be balanced.') )
+			raise ValueError('Design must be balanced.')
 		if not self.S.check_balanced(self.B):
-			raise( ValueError('Design must be balanced.') )
+			raise ValueError('Design must be balanced.')
 
 
 	def check_for_single_responses(self):
@@ -338,13 +341,13 @@ class ANOVA2onerm(ANOVA2rm):
 
 	def _check_balanced(self):
 		if not (self.A.balanced and self.B.balanced and self.S.balanced):
-			raise( ValueError('Design must be balanced.') )
+			raise ValueError('Design must be balanced.')
 		if not self.A.check_balanced(self.B):
-			raise( ValueError('Design must be balanced.') )
+			raise ValueError('Design must be balanced.')
 		if not self.S.check_balanced_rm(self.A):
-			raise( ValueError('Design must be balanced.') )
+			raise ValueError('Design must be balanced.')
 		if not self.S.check_balanced_rm(self.B):
-			raise( ValueError('Design must be balanced.') )
+			raise ValueError('Design must be balanced.')
 
 
 
@@ -395,13 +398,13 @@ class ANOVA3(_Design):
 
 	def _check_balanced(self):
 		if not (self.A.balanced and self.B.balanced and self.C.balanced):
-			raise( ValueError('Design must be balanced.') )
+			raise ValueError('Design must be balanced.')
 		if not self.A.check_balanced(self.B):
-			raise( ValueError('Design must be balanced.') )
+			raise ValueError('Design must be balanced.')
 		if not self.A.check_balanced(self.C):
-			raise( ValueError('Design must be balanced.') )
+			raise ValueError('Design must be balanced.')
 		if not self.B.check_balanced(self.C):
-			raise( ValueError('Design must be balanced.') )
+			raise ValueError('Design must be balanced.')
 
 
 
@@ -438,9 +441,9 @@ class ANOVA3nested(ANOVA3):
 
 	def _check_balanced(self):
 		if not (self.A.balanced and self.B.balanced and self.C.balanced):
-			raise( ValueError('Design must be balanced.') )
+			raise ValueError
 		if not self.A.check_balanced_nested3(self.B, self.C):
-			raise( ValueError('Design must be balanced.') )
+			raise ValueError
 
 
 
@@ -508,15 +511,15 @@ class ANOVA3rm(ANOVA3):
 
 	def _check_balanced(self):
 		if not (self.A.balanced and self.B.balanced and self.C.balanced and self.S.balanced):
-			raise( ValueError('Design must be balanced.') )
+			raise ValueError('Design must be balanced.')
 		if not self.A.check_balanced(self.B):
-			raise( ValueError('Design must be balanced.') )
+			raise ValueError('Design must be balanced.')
 		if not self.A.check_balanced(self.C):
-			raise( ValueError('Design must be balanced.') )
+			raise ValueError('Design must be balanced.')
 		if not self.B.check_balanced(self.C):
-			raise( ValueError('Design must be balanced.') )
+			raise ValueError('Design must be balanced.')
 		if not self.S.check_balanced_rm(self.C):
-			raise( ValueError('Design must be balanced.') )
+			raise ValueError('Design must be balanced.')
 
 
 	def check_for_single_responses(self):
@@ -583,15 +586,15 @@ class ANOVA3onerm(ANOVA3rm):
 
 	def _check_balanced(self):
 		if not (self.A.balanced and self.B.balanced and self.C.balanced and self.S.balanced):
-			raise( ValueError('Design must be balanced.') )
+			raise ValueError('Design must be balanced.')
 		if not self.A.check_balanced(self.B):
-			raise( ValueError('Design must be balanced.') )
+			raise ValueError('Design must be balanced.')
 		if not self.A.check_balanced(self.C):
-			raise( ValueError('Design must be balanced.') )
+			raise ValueError('Design must be balanced.')
 		if not self.B.check_balanced(self.C):
-			raise( ValueError('Design must be balanced.') )
+			raise ValueError('Design must be balanced.')
 		if not self.S.check_balanced_rm(self.C):
-			raise( ValueError('Design must be balanced.') )
+			raise ValueError('Design must be balanced.')
 
 
 
@@ -649,17 +652,17 @@ class ANOVA3tworm(ANOVA3rm):
 
 	def _check_balanced(self):
 		if not (self.A.balanced and self.B.balanced and self.C.balanced and self.S.balanced):
-			raise( ValueError('Design must be balanced.') )
+			raise ValueError('Design must be balanced.')
 		if not self.A.check_balanced(self.B):
-			raise( ValueError('Design must be balanced.') )
+			raise ValueError('Design must be balanced.')
 		if not self.A.check_balanced(self.C):
-			raise( ValueError('Design must be balanced.') )
+			raise ValueError('Design must be balanced.')
 		if not self.B.check_balanced(self.C):
-			raise( ValueError('Design must be balanced.') )
+			raise ValueError('Design must be balanced.')
 		if not self.S.check_balanced_rm(self.B):
-			raise( ValueError('Design must be balanced.') )
+			raise ValueError('Design must be balanced.')
 		if not self.S.check_balanced_rm(self.C):
-			raise( ValueError('Design must be balanced.') )
+			raise ValueError('Design must be balanced.')
 
 
 

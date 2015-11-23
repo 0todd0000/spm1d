@@ -1,7 +1,10 @@
+from __future__ import absolute_import
+from __future__ import print_function
+from __future__ import division
 
 import numpy as np
-import _mvbase
-import _spm
+from . import _mvbase
+from . import _spm
 
 
 
@@ -97,7 +100,7 @@ def hotellings2(YA, YB, equal_var=True):
 		- Non-sphericity correction not implemented. Equal variance must be assumed by setting "equal_var=True".
 	'''
 	if equal_var is not True:
-		raise( UserWarning('Non-sphericity correction not implemented. To continue you must assume equal variance and set "equal_var=True".') )
+		raise UserWarning('Non-sphericity correction not implemented. To continue you must assume equal variance and set "equal_var=True".')
 	if YA.ndim==2:
 		T2            = _T2_twosample_singlenode(YA, YB)
 		JA,IA         = YA.shape

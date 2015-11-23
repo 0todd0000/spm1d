@@ -4,6 +4,9 @@ Data checking tools.
 (This and all modules whose names start with underscores
 are not meant to be accessed directly by the user.)
 '''
+from __future__ import print_function
+from __future__ import division
+from __future__ import absolute_import
 
 # Copyright (C) 2014  Todd Pataky
 # _datachecks.py version: 0.2.0004 (2014/06/11)
@@ -85,7 +88,7 @@ class DataCheckerANOVA1List(DataChecker):
 		self.YY   = YY
 	def check(self):
 		if len(self.YY)==1:
-			raise( ValueError('There must be at least two levels in one-way ANOVA.') )
+			raise ValueError('There must be at least two levels in one-way ANOVA.')
 		elif len(self.YY)==2:
 			warnings.warn('\nWARNING:  A one-way ANOVA with two levels is equivalent to a two-sample t test. The F statistic is equal to the square of the t statistic.\n', UserWarning, stacklevel=2)
 		[self.check_array(Y)  for Y in self.YY]
@@ -105,7 +108,7 @@ class DataCheckerANOVA1(DataChecker):
 		self.check_2d(self.Y)
 		self.check_1d(self.A, 2)
 		if np.unique(self.A).size == 1:
-			raise( ValueError('There must be at least two factor levels in a one-way ANOVA (only one found).') )
+			raise ValueError('There must be at least two factor levels in a one-way ANOVA (only one found).')
 		elif np.unique(self.A).size == 2:
 			warnings.warn('\nWARNING:  A one-way ANOVA with two levels is equivalent to a two-sample t test. The F statistic is equal to the square of the t statistic.\n', UserWarning, stacklevel=2)
 		self.check_size(self.Y)

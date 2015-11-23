@@ -1,7 +1,10 @@
+from __future__ import absolute_import
+from __future__ import print_function
+from __future__ import division
 
 import warnings
 import numpy as np
-import designs,models
+from . import designs,models
 from .. import _datachecks, _reml, _spm
 
 
@@ -102,7 +105,7 @@ def anova1rm(Y, A, SUBJ, equal_var=True):
 	>>> Fi.plot()
 	'''
 	if not equal_var:
-		raise( NotImplementedError( 'Non-sphericity corrections are not yet implemented. Set "equal_var" to "True" to force an assumption of equal variance.' ) )
+		raise NotImplementedError( 'Non-sphericity corrections are not yet implemented. Set "equal_var" to "True" to force an assumption of equal variance.' )
 	design  = designs.ANOVA1rm(A, SUBJ)
 	model   = models.LinearModel(Y, design.X)
 	model.fit()
@@ -134,7 +137,7 @@ def anova2(Y, A, B, equal_var=True):
 			3. Interaction AB
 	'''
 	if not equal_var:
-		raise( NotImplementedError( 'Non-sphericity corrections are not yet implemented. Set "equal_var" to "True" to force an assumption of equal variance.' ) )
+		raise NotImplementedError( 'Non-sphericity corrections are not yet implemented. Set "equal_var" to "True" to force an assumption of equal variance.' )
 	design  = designs.ANOVA2(A, B)
 	model   = models.LinearModel(Y, design.X)
 	model.fit()
@@ -168,7 +171,7 @@ def anova2nested(Y, A, B, equal_var=True):
 		- there is no interaction term in nested designs.
 	'''
 	if equal_var is not True:
-		raise( NotImplementedError('Non-sphericity correction not implemented. To continue you must assume equal variance and set "equal_var=True".') )
+		raise NotImplementedError('Non-sphericity correction not implemented. To continue you must assume equal variance and set "equal_var=True".') 
 	design  = designs.ANOVA2nested(A, B)
 	model   = models.LinearModel(Y, design.X)
 	model.fit()
@@ -198,7 +201,7 @@ def anova2rm(Y, A, B, SUBJ, equal_var=True):
 		- Non-sphericity correction not implemented. Equal variance must be assumed by setting "equal_var=True".
 	'''
 	if equal_var is not True:
-		raise( NotImplementedError('Non-sphericity correction not implemented. To continue you must assume equal variance and set "equal_var=True".') )
+		raise NotImplementedError('Non-sphericity correction not implemented. To continue you must assume equal variance and set "equal_var=True".') 
 	design  = designs.ANOVA2rm(A, B, SUBJ)
 	model   = models.LinearModel(Y, design.X)
 	if (model.dim == 1) and ( design.check_for_single_responses() ):
@@ -237,7 +240,7 @@ def anova2onerm(Y, A, B, SUBJ, equal_var=True):
 		- Non-sphericity correction not implemented. Equal variance must be assumed by setting "equal_var=True".
 	'''
 	if equal_var is not True:
-		raise( NotImplementedError('Non-sphericity correction not implemented. To continue you must assume equal variance and set "equal_var=True".') )
+		raise NotImplementedError('Non-sphericity correction not implemented. To continue you must assume equal variance and set "equal_var=True".')
 	design  = designs.ANOVA2onerm(A, B, SUBJ)
 	model   = models.LinearModel(Y, design.X)
 	if (model.dim == 1) and ( design.check_for_single_responses() ):
@@ -275,7 +278,7 @@ def anova3(Y, A, B, C, equal_var=True):
 			7. Interaction ABC
 	'''
 	if equal_var is not True:
-		raise( NotImplementedError('Non-sphericity correction not implemented. To continue you must assume equal variance and set "equal_var=True".') )
+		raise NotImplementedError('Non-sphericity correction not implemented. To continue you must assume equal variance and set "equal_var=True".')
 	design  = designs.ANOVA3(A, B, C)
 	model   = models.LinearModel(Y, design.X)
 	model.fit()
@@ -311,7 +314,7 @@ def anova3nested(Y, A, B, C, equal_var=True):
 		- there are no interaction terms in fully-nested designs.
 	'''
 	if equal_var is not True:
-		raise( NotImplementedError('Non-sphericity correction not implemented. To continue you must assume equal variance and set "equal_var=True".') )
+		raise NotImplementedError('Non-sphericity correction not implemented. To continue you must assume equal variance and set "equal_var=True".')
 	design  = designs.ANOVA3nested(A, B, C)
 	model   = models.LinearModel(Y, design.X)
 	model.fit()
@@ -341,7 +344,7 @@ def anova3rm(Y, A, B, C, SUBJ, equal_var=True):
 			7. Interaction ABC
 	'''
 	if equal_var is not True:
-		raise( NotImplementedError('Non-sphericity correction not implemented. To continue you must assume equal variance and set "equal_var=True".') )
+		raise NotImplementedError('Non-sphericity correction not implemented. To continue you must assume equal variance and set "equal_var=True".')
 	design  = designs.ANOVA3rm(A, B, C, SUBJ)
 	model   = models.LinearModel(Y, design.X)
 	if (model.dim == 1) and ( design.check_for_single_responses() ):
@@ -379,7 +382,7 @@ def anova3onerm(Y, A, B, C, SUBJ, equal_var=True):
 		- Non-sphericity correction not implemented. Equal variance must be assumed by setting "equal_var=True".
 	'''
 	if equal_var is not True:
-		raise( NotImplementedError('Non-sphericity correction not implemented. To continue you must assume equal variance and set "equal_var=True".') )
+		raise NotImplementedError('Non-sphericity correction not implemented. To continue you must assume equal variance and set "equal_var=True".')
 	design  = designs.ANOVA3onerm(A, B, C, SUBJ)
 	model   = models.LinearModel(Y, design.X)
 	if (model.dim == 1) and ( design.check_for_single_responses() ):
@@ -418,7 +421,7 @@ def anova3tworm(Y, A, B, C, SUBJ, equal_var=True):
 		- Non-sphericity correction not implemented. Equal variance must be assumed by setting "equal_var=True".
 	'''
 	if equal_var is not True:
-		raise( NotImplementedError('Non-sphericity correction not implemented. To continue you must assume equal variance and set "equal_var=True".') )
+		raise NotImplementedError('Non-sphericity correction not implemented. To continue you must assume equal variance and set "equal_var=True".')
 	design  = designs.ANOVA3tworm(A, B, C, SUBJ)
 	model   = models.LinearModel(Y, design.X)
 	if (model.dim == 1) and ( design.check_for_single_responses() ):

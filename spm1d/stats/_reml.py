@@ -15,6 +15,9 @@ Specific version details:
     $Id: spm_reml.m 1165 2008-02-22 12:45:16Z guillaume $
     authors: John Ashburner & Karl Friston
 '''
+from __future__ import print_function
+from __future__ import division
+from __future__ import absolute_import
 
 # Copyright (C) 2014  Todd Pataky
 # _reml.py version: 0.2.0001 (2014/05/25)

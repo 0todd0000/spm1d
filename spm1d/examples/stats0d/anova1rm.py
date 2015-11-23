@@ -1,3 +1,6 @@
+from __future__ import print_function
+from __future__ import division
+from __future__ import absolute_import
 
 import spm1d
 
@@ -15,12 +18,12 @@ dataset  = spm1d.data.uv0d.anova1rm.Abdi2010()
 # dataset  = spm1d.data.uv0d.anova1rm.Imacelebrity()
 # dataset  = spm1d.data.uv0d.anova1rm.Southampton1rm()
 y,A,SUBJ = dataset.get_data()
-print dataset
+print(dataset)
 
 
 #(1) Run ANOVA:
 F = spm1d.stats.anova1rm(y, A, SUBJ, equal_var=True)
-print F
+print(F)
 
 
 

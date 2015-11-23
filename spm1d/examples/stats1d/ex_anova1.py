@@ -1,3 +1,6 @@
+from __future__ import print_function
+from __future__ import division
+from __future__ import absolute_import
 
 from matplotlib import pyplot
 import spm1d
@@ -15,7 +18,7 @@ Y,A          = dataset.get_data()
 alpha        = 0.05
 F            = spm1d.stats.anova1(Y, A, equal_var=False)
 Fi           = F.inference(alpha, interp=False)
-print Fi
+print(Fi)
 ### alternative syntax:
 # Y0,Y1,Y2     = [Y[A==u] for u in np.unique(A)]
 # F            = spm1d.stats.anova1((Y0,Y1,Y2), equal_var=False)

@@ -17,6 +17,9 @@ SPMs.
 	* scipy.io.loadmat
 	* scipy.io.savemat
 '''
+from __future__ import absolute_import
+from __future__ import print_function
+from __future__ import division
 
 # Copyright (C) 2014  Todd Pataky
 # io.py version: 0.2 (2014/05/01)
@@ -25,7 +28,7 @@ SPMs.
 import numpy as np
 from scipy.io import loadmat as scipy_loadmat
 from scipy.io import savemat as scipy_savemat
-from stats import _spm
+from .stats import _spm
 
 
 
@@ -33,7 +36,7 @@ def _check4pytables():
 	try:
 		import tables
 	except ImportError:
-		raise(ImportError('You must install pytables to use spm1d.io.load'))
+		raise ImportError('You must install pytables to use spm1d.io.load')
 	
 
 

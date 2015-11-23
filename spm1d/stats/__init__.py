@@ -17,15 +17,18 @@ Specifically:
 * Multivariate 1D tests:  **Y** should be ( J x Q x I )
 
 '''
+from __future__ import absolute_import
+from __future__ import print_function
+from __future__ import division
 
-import _spm
+from . import _spm
 
-from t import ttest, ttest_paired, ttest2, regress, glm
+from .t import ttest, ttest_paired, ttest2, regress, glm
 
-from anova import anova1,anova1rm
-from anova import anova2,anova2nested,anova2rm,anova2onerm
-from anova import anova3,anova3nested,anova3rm,anova3tworm,anova3onerm
+from .anova import anova1,anova1rm
+from .anova import anova2,anova2nested,anova2rm,anova2onerm
+from .anova import anova3,anova3nested,anova3rm,anova3tworm,anova3onerm
 
-from hotellings import hotellings, hotellings_paired, hotellings2
-from cca import cca
-from manova import manova1
+from .hotellings import hotellings, hotellings_paired, hotellings2
+from .cca import cca
+from .manova import manova1

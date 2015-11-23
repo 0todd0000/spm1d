@@ -11,6 +11,9 @@ This module contains a variety of convenience functions, including:
 - p_critical_bonf
 - smooth
 '''
+from __future__ import absolute_import
+from __future__ import print_function
+from __future__ import division
 
 # Copyright (C) 2014  Todd Pataky
 # util.py version: 0.2 (2014/05/01)
@@ -18,7 +21,7 @@ This module contains a variety of convenience functions, including:
 
 from math import sqrt,log
 import numpy as np
-from stats._spm import plist2string as p2s
+from .stats._spm import plist2string as p2s
 from scipy.ndimage.filters import gaussian_filter1d
 
 
@@ -44,7 +47,7 @@ def get_dataset(*args):
 		
 		**get_dataset** is deprecated and will be removed from future versions of **spm1d**.  Please access datasets using the "spm1d.data" interface.
 	'''
-	raise( IOError('"get_dataset" is deprecated.  Please access datasets using "spm1d.data".') )
+	raise IOError('"get_dataset" is deprecated.  Please access datasets using "spm1d.data".')
 
 
 

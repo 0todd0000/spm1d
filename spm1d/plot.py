@@ -22,6 +22,9 @@ These include:
 - plot_errorcloud
 - plot_mean_sd
 '''
+from __future__ import print_function
+from __future__ import division
+from __future__ import absolute_import
 
 # Copyright (C) 2014  Todd Pataky
 # plot.py version: 0.2.0005 (2014/06/24)

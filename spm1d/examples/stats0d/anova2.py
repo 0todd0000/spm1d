@@ -1,3 +1,6 @@
+from __future__ import print_function
+from __future__ import division
+from __future__ import absolute_import
 
 import spm1d
 
@@ -17,14 +20,14 @@ dataset   = spm1d.data.uv0d.anova2.Mouse()       #2x2
 # dataset   = spm1d.data.uv0d.anova2.SPM1D4x4()
 # dataset   = spm1d.data.uv0d.anova2.SPM1D4x5()
 y,A,B     = dataset.get_data()
-print dataset
+print(dataset)
 
 
 
 #(1) Run ANOVA:
 F = spm1d.stats.anova2(y, A, B, equal_var=True)
 Fvalues = [f.z for f in F]
-print Fvalues
+print(Fvalues)
 
 
 

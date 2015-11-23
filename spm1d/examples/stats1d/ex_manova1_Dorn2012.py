@@ -1,3 +1,6 @@
+from __future__ import print_function
+from __future__ import division
+from __future__ import absolute_import
 
 from matplotlib import pyplot
 import spm1d
@@ -7,7 +10,7 @@ import spm1d
 #(0) Load data:
 dataset      = spm1d.data.mv1d.manova1.Dorn2012()
 Y,A          = dataset.get_data()  #A:slow, B:fast
-print dataset
+print(dataset)
 
 
 

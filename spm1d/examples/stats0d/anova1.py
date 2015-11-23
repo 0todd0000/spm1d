@@ -1,3 +1,6 @@
+from __future__ import print_function
+from __future__ import division
+from __future__ import absolute_import
 
 import spm1d
 
@@ -14,13 +17,13 @@ dataset = spm1d.data.uv0d.anova1.Cars()
 # dataset = spm1d.data.uv0d.anova1.ConstructionUnequalSampleSizes()
 # dataset = spm1d.data.uv0d.anova1.RSUnequalSampleSizes()
 y,A     = dataset.get_data()
-print dataset
+print(dataset)
 
 
 
 #(1) Run ANOVA
 F = spm1d.stats.anova1(y, A, equal_var=True)
-print F
+print(F)
 
 
 
