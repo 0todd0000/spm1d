@@ -1,0 +1,39 @@
+package:
+  name: spm1d
+  version: {{ environ['GIT_DESCRIBE_TAG'] }}
+
+source:
+   path: ../
+
+
+build:
+  script: python setup.py install
+  number: {{ environ.get('GIT_DESCRIBE_NUMBER', 0) }}
+
+    
+requirements:
+  build:
+    - python
+    - setuptools
+    - scipy
+    - numpy
+    - matplotlib
+    - rft1d >=0.1
+    - nose
+
+  run:
+    - python
+    - scipy >=0.15
+    - numpy >=1.9
+    - matplotlib >=1.4
+    - rft1d >=0.1
+
+#test:
+#  imports:
+#    - spm1d
+
+
+
+about:
+  home: http://www.spm1d.org/
+  license: GPL
