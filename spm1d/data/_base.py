@@ -8,6 +8,7 @@ from builtins import *
 from builtins import zip
 from builtins import str
 from builtins import object
+from future.utils import text_to_native_str
 
 import os
 import numpy as np
@@ -47,7 +48,7 @@ class _Dataset(object):
 			s += '   %s :  %s\n' %tuple(self.note)
 		ss     = self.get_expected_results_as_string()
 		s     += ss 
-		return s
+		return text_to_native_str(s, encoding='utf-8')
 	def _printR(self, x, name='x'):
 		print('%s = c(%s)' %(name, str(x.tolist())[1:-1]))
 	def _printRs(self, xx, names=('x')):
