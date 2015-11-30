@@ -27,6 +27,7 @@ requirements:
     - numpy >=1.9
     - matplotlib >=1.4
     - rft1d >=0.1
+    - pytables
 
 #test:
 #  imports:
