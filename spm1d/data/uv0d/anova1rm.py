@@ -1,6 +1,11 @@
 from __future__ import print_function
 from __future__ import division
 from __future__ import absolute_import
+from __future__ import unicode_literals
+from future import standard_library
+standard_library.install_aliases()
+from builtins import *
+from builtins import range
 
 import numpy as np
 from .. import _base
@@ -10,7 +15,7 @@ def _here_stack(Y):
 	m,n  = Y.shape
 	y    = np.hstack( Y.T )
 	A    = np.hstack(  [ [i]*m for i in range(n) ]  )
-	SUBJ = np.hstack(  range(m)*n  )
+	SUBJ = np.hstack(  list(range(m))*n  )
 	return y, A, SUBJ
 
 

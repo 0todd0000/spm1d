@@ -14,6 +14,11 @@ This module contains a variety of convenience functions, including:
 from __future__ import absolute_import
 from __future__ import print_function
 from __future__ import division
+from __future__ import unicode_literals
+from future import standard_library
+standard_library.install_aliases()
+from builtins import *
+from builtins import range
 
 # Copyright (C) 2014  Todd Pataky
 # util.py version: 0.2 (2014/05/01)
@@ -77,7 +82,7 @@ def interp(y, Q=101):
 	if (y.ndim==2) or (not np.isscalar(y[0])):
 		return np.asarray( [interp(yy, Q)   for yy in y] )
 	else:
-		x0     = range(y.size)
+		x0     = list(range(y.size))
 		x1     = np.linspace(0, y.size, Q)
 		return np.interp(x1, x0, y, left=None, right=None)
 

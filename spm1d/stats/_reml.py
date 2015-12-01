@@ -18,6 +18,11 @@ Specific version details:
 from __future__ import print_function
 from __future__ import division
 from __future__ import absolute_import
+from __future__ import unicode_literals
+from future import standard_library
+standard_library.install_aliases()
+from builtins import *
+from builtins import range
 
 # Copyright (C) 2014  Todd Pataky
 # _reml.py version: 0.2.0001 (2014/05/25)

@@ -20,6 +20,12 @@ SPMs.
 from __future__ import absolute_import
 from __future__ import print_function
 from __future__ import division
+from __future__ import unicode_literals
+from future import standard_library
+standard_library.install_aliases()
+from builtins import *
+from builtins import str
+from builtins import zip
 
 # Copyright (C) 2014  Todd Pataky
 # io.py version: 0.2 (2014/05/01)
@@ -74,7 +80,7 @@ def loadspm(fname):
 	An **spm1d** SPM object.
 	'''
 	Z           = np.load(fname)
-	keys        = Z.keys()
+	keys        = list(Z.keys())
 	STAT        = str( Z['STAT'] )
 	X           = Z['X']
 	beta        = Z['beta']
@@ -155,7 +161,7 @@ def savespm(fname, spm):
 	if isinstance(spm, _spm._SPMinference):
 		fields += ['alpha', 'zstar', 'p', 'nClusters', 'L', 'two_tailed']
 	values      = [eval('spm.%s' %field)  for field in fields]
-	np.savez(fname, **dict(zip(fields,values)) )
+	np.savez(fname, **dict(list(zip(fields,values))) )
 
 
 def savetxt(fname, Y):
