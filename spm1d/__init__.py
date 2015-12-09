@@ -17,11 +17,11 @@ statistical parametric mapping. Journal of Biomechanics.
 
 
 Copyright (C) 2015  Todd Pataky
-Version: 0.3.1.4 (2015/10/16)
+Version: 0.3.1.5 (2015/12/09)
 '''
 
 
-__version__ = '0.3.1.4 (2015/10/16)'
+__version__ = '0.3.1.5 (2015/12/09)'
 
 
 __all__ = ['io', 'plot', 'stats', 'util']

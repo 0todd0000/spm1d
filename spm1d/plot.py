@@ -23,8 +23,8 @@ These include:
 - plot_mean_sd
 '''
 
-# Copyright (C) 2014  Todd Pataky
-# plot.py version: 0.2.0005 (2014/06/24)
+# Copyright (C) 2015  Todd Pataky
+# plot.py version: 0.3.0005 (2015/12/09)
 
 
 from math import pi,sin,cos,acos,atan2
@@ -201,10 +201,18 @@ def plot_filled(y, ax=None, thresh=None, plot_thresh=True, color='k', lw=2, face
 		thresh      = 0
 	x0,y0,ind0      = x.copy(), y.copy(), np.arange(y.size)
 	### threshold:
+	L,n       = ndimage.label(y>thresh)
 	if two_tailed:
-		L,n      = ndimage.label(np.abs(y)>thresh)
-	else:
-		L,n      = ndimage.label(y>thresh)
+		L1,n1 = ndimage.label(y<-thresh)
+		L1[L1>0] += n
+		L    += L1
+		n    += n1
+		### relabel left-to-right:
+		ind1 = np.argsort([(L==(i+1)).argmax()  for i in range(4)])
+		LL   = np.zeros(L.shape)
+		for i,ind in enumerate(ind1):
+			LL[L==(ind+1)] = i+1
+		L    = LL
 	### plot:
 	ax.plot(x0, y0, color=color, lw=lw, label=label)
 	### create patches if needed:
@@ -232,7 +240,6 @@ def plot_filled(y, ax=None, thresh=None, plot_thresh=True, color='k', lw=2, face
 		ax.add_collection(patches)
 		pyplot.setp(patches, facecolor=facecolor, edgecolor=facecolor)
 	#set axis limits:
-	# pyplot.setp(ax, xlim=(x0.min(), x0.max()), ylim=(y0.min(), y0.max()))
 	pyplot.setp(ax, xlim=(x0.min(), x0.max())  )
 	#plot threshold(s):
 	if (thresh!=None) and plot_thresh:
@@ -242,7 +249,6 @@ def plot_filled(y, ax=None, thresh=None, plot_thresh=True, color='k', lw=2, face
 		pyplot.setp(h, color=thresh_color, lw=1, linestyle='--')
 	if autoset_ylim:
 		_set_ylim(ax)
-
 
 
 
