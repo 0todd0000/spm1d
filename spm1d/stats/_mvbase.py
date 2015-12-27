@@ -63,12 +63,14 @@ def _normalize_residuals(R):
 	return R
 
 
-def _resel_counts(R, W):
+def _resel_counts(R, W, roi=None):
 	### construct binary search volume:
-	a            = np.any(np.any(np.abs(R)>0, axis=0), axis=1)  #False indicates no observations at that node
+	B            = np.any(np.any(np.abs(R)>0, axis=0), axis=1)  #False indicates no observations at that node
+	if roi is not None:
+		B      = np.logical_and(B, roi)  #node is true if in ROI and also not NaN
 	### summarize search area geometry:
-	mNodes       = a.sum()
-	mClusters    = ndimage.label(a)[1]
+	mNodes       = B.sum()
+	mClusters    = ndimage.label(B)[1]
 	### define resel counts:
 	rCounts      = []
 	rCounts.append(  mClusters  )

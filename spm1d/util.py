@@ -26,7 +26,6 @@ from scipy.ndimage.filters import gaussian_filter1d
 
 
 
-
 def plist2stringlist(pList):
 	s  = p2s(pList).split(', ')
 	for i,ss in enumerate(s):

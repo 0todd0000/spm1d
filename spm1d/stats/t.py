@@ -12,7 +12,7 @@ eps    = np.finfo(float).eps   #smallest float, used to avoid divide-by-zero err
 
 
 
-def glm(Y, X, c, Q=None):
+def glm(Y, X, c, Q=None, roi=None):
 	'''
 	General linear model (for t contrasts).
 	
@@ -52,10 +52,19 @@ def glm(Y, X, c, Q=None):
 		df = _reml.estimate_df_T(Y, X, eij, Q)
 	eij    = np.asarray(eij)
 	if Y.shape[1] > 1:
-		### estimate field smoothness and geometry:
+		### estimate field smoothness:
 		fwhm   = rft1d.geom.estimate_fwhm(eij)
-		resels = rft1d.geom.resel_counts(eij, fwhm, element_based=False)
-		t      = _spm.SPM_T(t, (1,df), fwhm, resels, np.asarray(X), np.asarray(b), eij)
+		### compute resel counts:
+		if roi is None:
+			resels = rft1d.geom.resel_counts(eij, fwhm, element_based=False)
+		else:
+			B      = np.any( np.isnan(eij), axis=0)  #node is true if NaN
+			B      = np.logical_and(np.logical_not(B), roi)  #node is true if in ROI and also not NaN
+			mask   = np.logical_not(B)  #true for masked-out regions
+			resels = rft1d.geom.resel_counts(mask, fwhm, element_based=False)
+			t      = np.ma.masked_array(t, np.logical_not(roi))
+		### assemble SPM{t} object
+		t      = _spm.SPM_T(t, (1,df), fwhm, resels, np.asarray(X), np.asarray(b), eij, roi=roi)
 	else:
 		t      = _spm.SPM0D_T(t, (1,df))
 	return t
@@ -64,7 +73,7 @@ def glm(Y, X, c, Q=None):
 
 
 
-def regress(Y, x):
+def regress(Y, x, roi=None):
 	'''
 	Simple linear regression.
 	
@@ -96,7 +105,7 @@ def regress(Y, x):
 	X              = np.ones((J,2))
 	X[:,0]         = x
 	c              = [1,0]
-	spmt           = glm(Y, X, c)
+	spmt           = glm(Y, X, c, roi=roi)
 	spmt.r         = spmt.z / (  (J - 2 + spmt.z**2)**0.5)  #t = r * ((J-2)/(1-r*r) )**0.5
 	spmt.isregress = True
 	return spmt
@@ -106,7 +115,7 @@ def regress(Y, x):
 
 
 
-def ttest(Y, y0=None):
+def ttest(Y, y0=None, roi=None):
 	'''
 	One-sample t test.
 	
@@ -136,11 +145,11 @@ def ttest(Y, y0=None):
 	X       = np.ones((J,1))
 	c       = (1)
 	### compute SPM{t}:
-	return glm(Ytemp, X, c)
+	return glm(Ytemp, X, c, roi=roi)
 
 
 
-def ttest_paired(YA, YB):
+def ttest_paired(YA, YB, roi=None):
 	'''
 	Paired t test.
 	
@@ -164,11 +173,11 @@ def ttest_paired(YA, YB):
 	'''
 	YA,YB    = _datachecks.asmatrix(YA), _datachecks.asmatrix(YB)
 	_datachecks.check('ttest_paired', YA, YB)
-	return ttest(YA-YB)
+	return ttest(YA-YB, roi=roi)
 
 
 
-def ttest2(YA, YB, equal_var=False):
+def ttest2(YA, YB, equal_var=False, roi=None):
 	'''
 	Two-sample t test.
 	
@@ -212,7 +221,7 @@ def ttest2(YA, YB, equal_var=False):
 		Q1[JA:,JA:] = q1
 		Q           = [Q0, Q1]
 	### compute SPM{t}:
-	return glm(Y, X, c, Q)
+	return glm(Y, X, c, Q, roi=roi)
 
 
 

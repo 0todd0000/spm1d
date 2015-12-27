@@ -220,7 +220,7 @@ class SPM0Di_X2(_SPM0Dinference):
 
 class _SPM(object):
 	'''Parent class for all SPM.'''
-	def __init__(self, STAT, z, df, fwhm, resels, X, beta, residuals):
+	def __init__(self, STAT, z, df, fwhm, resels, X, beta, residuals, roi=None):
 		z[np.isnan(z)]      = 0
 		self.STAT           = STAT             #test statistic ("T" or "F")
 		self.Q              = z.size           #number of nodes (field size = Q-1)
@@ -231,6 +231,7 @@ class _SPM(object):
 		self.df             = df               #degrees of freedom
 		self.fwhm           = fwhm             #smoothness
 		self.resels         = resels           #resel counts
+		self.roi            = roi              #region of interest
 
 
 	def __repr__(self):
@@ -244,71 +245,160 @@ class _SPM(object):
 		s       += '   SPM.fwhm   :  %.5f\n' %self.fwhm
 		s       += '   SPM.resels :  (%d, %.5f)\n\n\n' %tuple(self.resels)
 		return s
-
-
-	def inference(self, alpha=0.05, cluster_size=0, two_tailed=False, interp=True, circular=False, withBonf=True):
-		a         = 0.5*alpha if two_tailed else alpha
-		if self.STAT == 'T':
-			zstar = rft1d.t.isf(a, self.df[1], self.Q, self.fwhm, withBonf=withBonf)
-		elif self.STAT == 'F':
-			zstar = rft1d.f.isf(a, self.df, self.Q, self.fwhm, withBonf=withBonf)
-		elif self.STAT == 'T2':
-			zstar = rft1d.T2.isf(a, self.df, self.Q, self.fwhm, withBonf=withBonf)
-		elif self.STAT == 'X2':
-			zstar = rft1d.chi2.isf(a, self.df[1], self.Q, self.fwhm, withBonf=withBonf)
-		### compute suprathreshold cluster characteristics:
-		ccalc     = rft1d.geom.ClusterMetricCalculatorInitialized(self.z, zstar, interp=interp, wrap=circular)
-		extents,minima,centroids,L = ccalc.get_all()
-		signs     = [1]*ccalc.n
-		### compute negative cluster characteristics:
-		if two_tailed:
-			ccalc      = rft1d.geom.ClusterMetricCalculatorInitialized(-self.z, zstar, interp=interp, wrap=circular)
-			if ccalc.n > 0:
-				extents1,minima1,centroids1,L1 = ccalc.get_all()
-				extents   += extents1
-				minima    += (-1*np.array(minima1)).tolist()
-				centroids += (np.array(centroids1)*[1,-1]).tolist()
-				L         += L1
-				signs     += [-1]*ccalc.n
-		### set-level inference:
-		nUpcrossings  = len(extents)
-		p_set         = 1.0
-		if nUpcrossings>0:
-			minextent     = min(extents)/self.fwhm
-			if self.STAT == 'T':
-				p_set = rft1d.t.p_set(nUpcrossings, minextent, zstar, self.df[1], self.Q, self.fwhm, withBonf=withBonf)
-			elif self.STAT == 'F':
-				p_set = rft1d.f.p_set(nUpcrossings, minextent, zstar, self.df, self.Q, self.fwhm, withBonf=withBonf)
-			elif self.STAT == 'T2':
-				p_set = rft1d.T2.p_set(nUpcrossings, minextent, zstar, self.df, self.Q, self.fwhm, withBonf=withBonf)
-			elif self.STAT == 'X2':
-				p_set = rft1d.chi2.p_set(nUpcrossings, minextent, zstar, self.df[1], self.Q, self.fwhm, withBonf=withBonf)
+		
+	def _assemble_clusters(self, zstar, B, two_tailed, interp, circular, withBonf):
+		### compute cluster metrics:
+		extents,minima,centroids,L,signs  = self._cluster_metrics(zstar, two_tailed, interp, circular)
 		### cluster-level inference:
 		clusters  = []
 		for extent,minimum,centroid,sign in zip(extents, minima, centroids, signs):
 			xR    = extent / self.fwhm
 			if self.STAT == 'T':
-				p = rft1d.t.p_cluster(xR, sign*minimum, self.df[1], self.Q, self.fwhm, withBonf=withBonf)
+				p = rft1d.t.p_cluster(xR, sign*minimum, self.df[1], B, self.fwhm, withBonf=withBonf)
 			elif self.STAT == 'F':
-				p = rft1d.f.p_cluster(xR, minimum, self.df, self.Q, self.fwhm, withBonf=withBonf)
+				p = rft1d.f.p_cluster(xR, minimum, self.df, B, self.fwhm, withBonf=withBonf)
 			elif self.STAT == 'T2':
-				p = rft1d.T2.p_cluster(xR, minimum, self.df, self.Q, self.fwhm, withBonf=withBonf)
+				p = rft1d.T2.p_cluster(xR, minimum, self.df, B, self.fwhm, withBonf=withBonf)
 			elif self.STAT == 'X2':
-				p = rft1d.chi2.p_cluster(xR, minimum, self.df[1], self.Q, self.fwhm, withBonf=withBonf)
+				p = rft1d.chi2.p_cluster(xR, minimum, self.df[1], B, self.fwhm, withBonf=withBonf)
 			c     = Cluster(extent, xR, minimum, centroid, p)
 			clusters.append(c)
+		return clusters,L
 		
-		### assemble p values:
-		nClusters = len(clusters)
-		p         = [c.P for c in clusters]
+	
+	def _build_spmi(self, alpha, zstar, clusters, L, p_set, two_tailed):
+		nClusters   = len(clusters)
+		p_clusters  = [c.P for c in clusters]
 		if self.STAT == 'T':
-			return SPMi_T(self, alpha, zstar, nClusters, clusters, L, p_set, p, two_tailed)
+			spmi    = SPMi_T(self, alpha,  zstar, nClusters, clusters, L, p_set, p_clusters, two_tailed)
 		elif self.STAT == 'F':
-			return SPMi_F(self, alpha, zstar, nClusters, clusters, L, p_set, p, two_tailed)
+			spmi    = SPMi_F(self, alpha,  zstar, nClusters, clusters, L, p_set, p_clusters, two_tailed)
 		elif self.STAT == 'T2':
-			return SPMi_T2(self, alpha, zstar, nClusters, clusters, L, p_set, p, two_tailed)
+			spmi    = SPMi_T2(self, alpha, zstar, nClusters, clusters, L, p_set, p_clusters, two_tailed)
 		elif self.STAT == 'X2':
-			return SPMi_X2(self, alpha, zstar, nClusters, clusters, L, p_set, p, two_tailed)
+			spmi    = SPMi_X2(self, alpha, zstar, nClusters, clusters, L, p_set, p_clusters, two_tailed)
+		return spmi
+		
+	
+	def _cluster_metrics(self, zstar, two_tailed, interp, circular):
+		### compute cluster metrics (no ROI):
+		if self.roi is None:
+			z         = self.z
+			### compute suprathreshold cluster metrics:
+			ccalc     = rft1d.geom.ClusterMetricCalculatorInitialized(z, zstar, interp=interp, wrap=circular)
+			extents,minima,centroids,L = ccalc.get_all()
+			x01       = ccalc.cluster_endpoints()
+			print x01
+			signs     = [1]*ccalc.n
+			### if two_tailed, compute 'negative' cluster metrics:
+			if two_tailed:
+				ccalc      = rft1d.geom.ClusterMetricCalculatorInitialized(-z, zstar, interp=interp, wrap=circular)
+				if ccalc.n > 0:
+					extents1,minima1,centroids1,L1 = ccalc.get_all()
+					extents   += extents1
+					minima    += (-1*np.array(minima1)).tolist()
+					centroids += (np.array(centroids1)*[1,-1]).tolist()
+					L1[L1>0]  += max(L)
+					L         += L1
+					signs     += [-1]*ccalc.n
+		### compute cluster metrics (ROI):
+		else:
+			z     = np.asarray(self.z)
+			z[np.logical_not(self.roi)] = 0
+			### compute cluster metrics (boolean ROI):
+			if self.roi.dtype == bool:
+				### compute suprathreshold cluster metrics:
+				ccalc     = rft1d.geom.ClusterMetricCalculatorInitialized(z, zstar, interp=interp, wrap=circular)
+				extents,minima,centroids,L = ccalc.get_all()
+				signs     = [1]*ccalc.n
+				### if two_tailed, compute 'negative' cluster metrics:
+				if two_tailed:
+					ccalc      = rft1d.geom.ClusterMetricCalculatorInitialized(-z, zstar, interp=interp, wrap=circular)
+					if ccalc.n > 0:
+						extents1,minima1,centroids1,L1 = ccalc.get_all()
+						extents   += extents1
+						minima    += (-1*np.array(minima1)).tolist()
+						centroids += (np.array(centroids1)*[1,-1]).tolist()
+						L1[L1>0]  += max(L)
+						L         += L1
+						signs     += [-1]*ccalc.n
+			### compute cluster metrics (directional ROI):
+			else:
+				any_pos  =  np.any(self.roi>0)
+				any_neg  =  np.any(self.roi<0)
+				if any_pos:
+					ccalc     = rft1d.geom.ClusterMetricCalculatorInitialized(z, zstar, interp=interp, wrap=circular)
+					extents,minima,centroids,L = ccalc.get_all()
+					signs     = [1]*ccalc.n
+				if any_neg:
+					ccalc     = rft1d.geom.ClusterMetricCalculatorInitialized(-z, zstar, interp=interp, wrap=circular)
+					extents1,minima1,centroids1,L1 = ccalc.get_all()
+					minima1   = -1*np.array(minima1)
+					centroids1 = (np.array(centroids1)*[1,-1]).tolist()
+					signs1    = [-1]*ccalc.n
+				if any_pos and any_neg:
+					extents   += extents1
+					minima    += minima1.tolist()
+					centroids += centroids1
+					L1[L1>0]  += max(L)
+					L         += L1
+					signs     += signs1
+				if not any_pos:
+					extents,minima,centroids,L = extents1,minima1,centroids1,L1
+					signs      = signs1
+		return extents,minima,centroids,L,signs
+		
+	
+	def _isf(self, a, B, withBonf):
+		'''
+		Inverse survival function (random field theory)
+		'''
+		if self.STAT == 'T':
+			zstar = rft1d.t.isf(a, self.df[1], B, self.fwhm, withBonf=withBonf)
+		elif self.STAT == 'F':
+			zstar = rft1d.f.isf(a, self.df, B, self.fwhm, withBonf=withBonf)
+		elif self.STAT == 'T2':
+			zstar = rft1d.T2.isf(a, self.df, B, self.fwhm, withBonf=withBonf)
+		elif self.STAT == 'X2':
+			zstar = rft1d.chi2.isf(a, self.df[1], B, self.fwhm, withBonf=withBonf)
+		return zstar
+
+
+	def _p_set(self, zstar, B, clusters, withBonf):
+		nUpcrossings  = len(clusters)
+		p_set         = 1.0
+		if nUpcrossings>0:
+			extents       = [c.extentR for c in clusters]
+			minextent     = min(extents)
+			if self.STAT == 'T':
+				p_set = rft1d.t.p_set(nUpcrossings, minextent, zstar, self.df[1], B, self.fwhm, withBonf=withBonf)
+			elif self.STAT == 'F':
+				p_set = rft1d.f.p_set(nUpcrossings, minextent, zstar, self.df, B, self.fwhm, withBonf=withBonf)
+			elif self.STAT == 'T2':
+				p_set = rft1d.T2.p_set(nUpcrossings, minextent, zstar, self.df, B, self.fwhm, withBonf=withBonf)
+			elif self.STAT == 'X2':
+				p_set = rft1d.chi2.p_set(nUpcrossings, minextent, zstar, self.df[1], B, self.fwhm, withBonf=withBonf)
+		return p_set
+	
+	
+	def inference(self, alpha=0.05, cluster_size=0, two_tailed=False, interp=True, circular=False, withBonf=True):
+		### check ROI and "two_tailed" compatability:
+		if self.roi is not None:
+			if (self.roi.dtype != bool) and (two_tailed):
+				raise( ValueError('If the ROI contains directional predictions two_tailed must be FALSE.') )
+		### adjust alpha if two-tailed:
+		a          = 0.5*alpha if two_tailed else alpha
+		### compute binary search field:
+		B          = self.Q if self.roi is None else np.asarray(self.roi, dtype=bool)
+		### compute critical threshold:
+		zstar      = self._isf(a, B, withBonf)
+		### cluster-level inference:
+		clusters,L = self._assemble_clusters(zstar, B, two_tailed, interp, circular, withBonf)
+		### set-level inference:
+		p_set      = self._p_set(zstar, B, clusters, withBonf)
+		### build SPM-inference object:
+		spmi       = self._build_spmi(alpha, zstar, clusters, L, p_set, two_tailed)
+		return spmi
 	
 	def plot(self, **kwdargs):
 		return plot_spm(self, **kwdargs)
@@ -355,8 +445,8 @@ class SPM_F(_SPM):
 	
 	:Methods:
 	'''
-	def __init__(self, z, df, fwhm, resels, X, beta, residuals, X0=None):
-		_SPM.__init__(self, 'F', z, df, fwhm, resels, X, beta, residuals)
+	def __init__(self, z, df, fwhm, resels, X, beta, residuals, X0=None, roi=None):
+		_SPM.__init__(self, 'F', z, df, fwhm, resels, X, beta, residuals, roi=roi)
 		self.X0 = X0
 		
 	def inference(self, alpha=0.05, cluster_size=0, interp=True, circular=False):
@@ -403,8 +493,8 @@ class SPM_T(_SPM):
 	
 	:Methods:
 	'''
-	def __init__(self, z, df, fwhm, resels, X, beta, residuals):
-		_SPM.__init__(self, 'T', z, df, fwhm, resels, X, beta, residuals)
+	def __init__(self, z, df, fwhm, resels, X, beta, residuals, roi=None):
+		_SPM.__init__(self, 'T', z, df, fwhm, resels, X, beta, residuals, roi=roi)
 		
 	def inference(self, alpha=0.05, cluster_size=0, two_tailed=True, interp=True, circular=False):
 		'''
@@ -428,8 +518,8 @@ class SPM_T(_SPM):
 
 
 class SPM_T2(_SPM):
-	def __init__(self, z, df, fwhm, resels, X, beta, residuals):
-		super(SPM_T2, self).__init__('T2', z, df, fwhm, resels, X, beta, residuals)
+	def __init__(self, z, df, fwhm, resels, X, beta, residuals, roi=None):
+		super(SPM_T2, self).__init__('T2', z, df, fwhm, resels, X, beta, residuals, roi=roi)
 		
 	
 	# def __repr__(self):
@@ -445,8 +535,8 @@ class SPM_T2(_SPM):
 
 
 class SPM_X2(_SPM):
-	def __init__(self, z, df, fwhm, resels, X, beta, residuals):
-		super(SPM_X2, self).__init__('X2', z, df, fwhm, resels, X, beta, residuals)
+	def __init__(self, z, df, fwhm, resels, X, beta, residuals, roi=None):
+		super(SPM_X2, self).__init__('X2', z, df, fwhm, resels, X, beta, residuals, roi=roi)
 
 
 
@@ -465,7 +555,7 @@ class SPM_X2(_SPM):
 class _SPMinference(_SPM):
 	'''Parent class for SPM inference objects.'''
 	def __init__(self, spm, alpha, zstar, nClusters, clusters, L, p_set, p, two_tailed=False):
-		_SPM.__init__(self, spm.STAT, spm.z, spm.df, spm.fwhm, spm.resels, spm.X, spm.beta, spm.residuals)
+		_SPM.__init__(self, spm.STAT, spm.z, spm.df, spm.fwhm, spm.resels, spm.X, spm.beta, spm.residuals, roi=spm.roi)
 		self.alpha       = alpha       #Type I error rate
 		self.zstar       = zstar       #critical threshold
 		self.h0reject    = nClusters > 0
@@ -475,6 +565,7 @@ class _SPMinference(_SPM):
 		self.p_set       = p_set       #set-level p value
 		self.p           = p           #P values for each cluster
 		self.two_tailed  = two_tailed  #two-tailed test boolean
+		# self.roi         = self.roi    #region of interest
 
 	def __repr__(self):
 		s        = ''

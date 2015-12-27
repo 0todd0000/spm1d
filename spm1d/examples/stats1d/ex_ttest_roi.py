@@ -6,14 +6,14 @@ import spm1d
 #(0) Load dataset:
 dataset    = spm1d.data.uv1d.t1.Random()
 dataset    = spm1d.data.uv1d.t1.SimulatedPataky2015a()
-dataset    = spm1d.data.uv1d.t1.SimulatedPataky2015b()
+# dataset    = spm1d.data.uv1d.t1.SimulatedPataky2015b()
 Y,mu       = dataset.get_data()
 
 
 #(1) Conduct t test:
 alpha      = 0.05
 t          = spm1d.stats.ttest(Y, mu)
-ti         = t.inference(alpha, two_tailed=False, interp=False)
+ti         = t.inference(alpha, two_tailed=False, interp=True)
 
 
 
