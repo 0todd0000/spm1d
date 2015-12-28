@@ -287,8 +287,6 @@ class _SPM(object):
 			### compute suprathreshold cluster metrics:
 			ccalc     = rft1d.geom.ClusterMetricCalculatorInitialized(z, zstar, interp=interp, wrap=circular)
 			extents,minima,centroids,L = ccalc.get_all()
-			x01       = ccalc.cluster_endpoints()
-			print x01
 			signs     = [1]*ccalc.n
 			### if two_tailed, compute 'negative' cluster metrics:
 			if two_tailed:

@@ -194,7 +194,7 @@ def plot_spm_design(spm, ax=None, factor_labels=None, fontsize=10):
 
 
 
-def plot_spmi(spmi, ax=None, color='k', facecolor='0.8', plot_thresh=True, plot_ylabel=True, thresh_color='k', autoset_xlim=True, autoset_ylim=True, label=None):
+def plot_spmi(spmi, ax=None, color='k', facecolor='0.8', lw=2, plot_thresh=True, plot_ylabel=True, thresh_color='k', autoset_xlim=True, autoset_ylim=True, label=None):
 	'''
 	Plot an **spm1d** SPM inference object as a line.
 	
@@ -219,7 +219,7 @@ def plot_spmi(spmi, ax=None, color='k', facecolor='0.8', plot_thresh=True, plot_
 	>>> ti.plot()   # equivalent to "spm1d.plot.plot_spmi(ti)"
 	'''
 	plotter = SPMiPlotter(spmi, ax=ax)
-	plotter.plot(color=color, facecolor=facecolor, label=label)
+	plotter.plot(color=color, lw=lw, facecolor=facecolor, label=label, thresh_color=thresh_color)
 	if plot_ylabel:
 		plotter.plot_ylabel()
 	if autoset_xlim:
