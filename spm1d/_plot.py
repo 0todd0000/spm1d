@@ -77,9 +77,6 @@ class DataPlotter(object):
 	def plot(self, y, **kwdargs):
 		return self.ax.plot(y, **kwdargs)
 	
-	def plot_datum(self):
-		self.ax.axhline(0, color='k', lw=1, linestyle=':')
-
 	def plot_cloud(self, Y, facecolor='0.8', edgecolor='0.8', alpha=0.5):
 		### create patches:
 		y0,y1       = Y
@@ -98,6 +95,19 @@ class DataPlotter(object):
 		pyplot.setp(patches, facecolor=facecolor, edgecolor=edgecolor, alpha=alpha)
 		return patches
 
+	def plot_datum(self):
+		self.ax.axhline(0, color='k', lw=1, linestyle=':')
+
+	def plot_roi(self, roi, ylim=None, facecolor='b', edgecolor='w', alpha=0.5):
+		L,n       = ndimage.label(roi)
+		y0,y1     = self.ax.get_ylim() if ylim is None else ylim
+		poly      = []
+		for i in range(n):
+			x0,x1 = np.argwhere(L==(i+1)).flatten()[[0,-1]]
+			verts = [(x0,y0), (x1,y0), (x1,y1), (x0,y1)]
+			poly.append( Polygon(verts) )
+			pyplot.setp(poly, facecolor=facecolor, edgecolor=edgecolor, alpha=alpha)
+		self.ax.add_collection( PatchCollection(poly, match_original=True) )
 
 
 
@@ -235,15 +245,18 @@ class SPMiPlotter(SPMPlotter):
 				h.append( ax.axhline(-zs) )
 		else:
 			if spmi.roi.dtype == bool:
-				h      = [ax.axhline(zs)]
+				zz     = np.ma.masked_array([zs]*spmi.Q, np.logical_not(spmi.roi))
+				h      = [ax.plot(self.x, zz)]
 				if spmi.two_tailed:
-					h.append( ax.axhline(-zs) )
-			else:
+					h.append( ax.plot(self.x, -zz) )
+			else:  #directional ROI
 				h          = []
 				if np.any(spmi.roi>0):
-					h.append( ax.axhline(zs) )
+					zz     = np.ma.masked_array([zs]*spmi.Q, np.logical_not(spmi.roi>0))
+					h.append( ax.plot(self.x, zz) )
 				if np.any(spmi.roi<0):
-					h.append( ax.axhline(-zs) )
+					zz     = np.ma.masked_array([-zs]*spmi.Q, np.logical_not(spmi.roi<0))
+					h.append( ax.plot(self.x, zz) )
 		pyplot.setp(h, color=color, lw=1, linestyle='--')
 		return h
 		

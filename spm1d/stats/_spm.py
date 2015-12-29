@@ -322,13 +322,18 @@ class _SPM(object):
 						signs     += [-1]*ccalc.n
 			### compute cluster metrics (directional ROI):
 			else:
-				any_pos  =  np.any(self.roi>0)
-				any_neg  =  np.any(self.roi<0)
+				bp,bn    = self.roi>0, self.roi<0
+				any_pos  = np.any(bp) & np.any( self.z[bp]>zstar )
+				any_neg  = np.any(bn) & np.any( self.z[bn]<-zstar )
 				if any_pos:
-					ccalc     = rft1d.geom.ClusterMetricCalculatorInitialized(z, zstar, interp=interp, wrap=circular)
+					zz        = z.copy()
+					zz[self.roi<0] = 0
+					ccalc     = rft1d.geom.ClusterMetricCalculatorInitialized(zz, zstar, interp=interp, wrap=circular)
 					extents,minima,centroids,L = ccalc.get_all()
 					signs     = [1]*ccalc.n
 				if any_neg:
+					zz        = z.copy()
+					zz[self.roi>0] = 0
 					ccalc     = rft1d.geom.ClusterMetricCalculatorInitialized(-z, zstar, interp=interp, wrap=circular)
 					extents1,minima1,centroids1,L1 = ccalc.get_all()
 					minima1   = -1*np.array(minima1)

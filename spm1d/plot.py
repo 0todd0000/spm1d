@@ -127,17 +127,9 @@ def plot_mean_sd(Y, ax=None, x=None, lw=3, linecolor='k', linestyle='-', facecol
 
 
 
-# def plot_roi(roi, ax=None, facecolor='0.7', facealpha=1, edgecolor='w', ylim=None):
-# 	ax        = _gca(ax)
-# 	L,n       = ndimage.label(roi)
-# 	poly      = []
-# 	for i in range(n):
-# 		x0,x1 = np.argwhere(L==(i+1)).flatten()[[0,-1]]
-# 		y0,y1 = ax.get_ylim() if ylim is None else ylim
-# 		verts = [(x0,y0), (x1,y0), (x1,y1), (x0,y1)]
-# 		poly.append( Polygon(verts) )
-# 		pyplot.setp(poly, facecolor=facecolor, edgecolor='w', alpha=facealpha)
-# 	ax.add_collection( PatchCollection(poly, match_original=True) )
+def plot_roi(roi, ax=None, facecolor='0.7', alpha=1, edgecolor='w', ylim=None):
+	plotter   = DataPlotter(ax)
+	plotter.plot_roi(roi, ylim=ylim, facecolor=facecolor, edgecolor=edgecolor, alpha=alpha)
 
 
 
