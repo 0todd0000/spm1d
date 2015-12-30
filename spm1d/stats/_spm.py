@@ -255,6 +255,7 @@ class _SPM(object):
 			xR    = extent / self.fwhm
 			if self.STAT == 'T':
 				p = rft1d.t.p_cluster(xR, sign*minimum, self.df[1], B, self.fwhm, withBonf=withBonf)
+				p = 2*p if two_tailed else p
 			elif self.STAT == 'F':
 				p = rft1d.f.p_cluster(xR, minimum, self.df, B, self.fwhm, withBonf=withBonf)
 			elif self.STAT == 'T2':

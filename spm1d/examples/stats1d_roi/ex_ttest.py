@@ -5,21 +5,29 @@ import spm1d
 
 
 #(0) Load dataset:
-dataset    = spm1d.data.uv1d.t1.SimulatedPataky2015a()
+dataset    = spm1d.data.uv1d.t1.SimulatedPataky2015b()
 Y,mu       = dataset.get_data()
 
 
 #(0a) Create region of interest(ROI):
 roi        = np.array([False]*Y.shape[1])
-roi[70:80] = True
+# roi[70:80] = True
+roi[8:18] = True
 # roi = False
+
+# roi        = np.array([0]*Y.shape[1])
+# roi[9:20] = +1
+# roi[34:38] = -1
+# # roi = False
+
+
 
 
 #(1) Conduct t test:
 alpha      = 0.05
 # t          = spm1d.stats.ttest(Y, mu)
-t          = spm1d.stats.ttest(Y, mu, roi=roi)
-ti         = t.inference(alpha, two_tailed=False, interp=True)
+t          = spm1d.stats.ttest(Y, mu, roi=None)
+ti         = t.inference(alpha, two_tailed=True, interp=False)
 
 
 #(2) Plot:
