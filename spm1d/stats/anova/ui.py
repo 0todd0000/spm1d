@@ -389,7 +389,6 @@ def anova3onerm(Y, A, B, C, SUBJ, equal_var=True):
 		model.fit( approx_residuals=design.contrasts.C[:8] )
 	else:
 		model.fit( )
-	model.fit()
 	F       = aov(model, design.contrasts, design.f_terms)
 	return F
 
