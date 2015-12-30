@@ -105,7 +105,10 @@ def anova1rm(Y, A, SUBJ, equal_var=True):
 		raise( NotImplementedError( 'Non-sphericity corrections are not yet implemented. Set "equal_var" to "True" to force an assumption of equal variance.' ) )
 	design  = designs.ANOVA1rm(A, SUBJ)
 	model   = models.LinearModel(Y, design.X)
-	model.fit()
+	if (model.dim == 1) and ( design.check_for_single_responses() ):
+		model.fit( approx_residuals=design.contrasts.C[:3] )
+	else:
+		model.fit( )
 	F       = aov(model, design.contrasts, design.f_terms)[0]
 	return F
 

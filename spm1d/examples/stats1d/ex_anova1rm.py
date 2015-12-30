@@ -34,7 +34,7 @@ ax0.plot(Y[A==0].T, 'b')
 ax0.plot(Y[A==1].T, 'k')
 ax0.plot(Y[A==2].T, 'r')
 ### plot SPM results:
-Firm.plot(ax=ax1, color='r', facecolor=(0.8,0.3,0.3), label='Within-subjects analysis')
+Firm.plot(ax=ax1, color='r', thresh_color='r', facecolor=(0.8,0.3,0.3), label='Within-subjects analysis')
 Fi.plot(ax=ax1, label='Between-subjects analysis')
 ax1.legend(fontsize=8)
 pyplot.show()
