@@ -10,7 +10,7 @@ and inference SPMs (thresholded test statistic).
 '''
 
 # Copyright (C) 2014  Todd Pataky
-# _spm.py version: 0.2.0006 (2014/07/09)
+# Version: 0.3.1.6 (2015/12/30)
 
 
 import numpy as np
@@ -277,6 +277,7 @@ class _SPM(object):
 			minextent     = min(extents)/self.fwhm
 			if self.STAT == 'T':
 				p_set = rft1d.t.p_set(nUpcrossings, minextent, zstar, self.df[1], self.Q, self.fwhm, withBonf=withBonf)
+				p_set = 2*p_set if two_tailed else p_set
 			elif self.STAT == 'F':
 				p_set = rft1d.f.p_set(nUpcrossings, minextent, zstar, self.df, self.Q, self.fwhm, withBonf=withBonf)
 			elif self.STAT == 'T2':
@@ -289,6 +290,7 @@ class _SPM(object):
 			xR    = extent / self.fwhm
 			if self.STAT == 'T':
 				p = rft1d.t.p_cluster(xR, sign*minimum, self.df[1], self.Q, self.fwhm, withBonf=withBonf)
+				p = 2*p if two_tailed else p
 			elif self.STAT == 'F':
 				p = rft1d.f.p_cluster(xR, minimum, self.df, self.Q, self.fwhm, withBonf=withBonf)
 			elif self.STAT == 'T2':

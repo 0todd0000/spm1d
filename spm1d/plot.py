@@ -24,7 +24,7 @@ These include:
 '''
 
 # Copyright (C) 2015  Todd Pataky
-# plot.py version: 0.3.0005 (2015/12/09)
+# Version: 0.3.1.6 (2015/12/30)
 
 
 from math import pi,sin,cos,acos,atan2
@@ -204,15 +204,16 @@ def plot_filled(y, ax=None, thresh=None, plot_thresh=True, color='k', lw=2, face
 	L,n       = ndimage.label(y>thresh)
 	if two_tailed:
 		L1,n1 = ndimage.label(y<-thresh)
-		L1[L1>0] += n
-		L    += L1
-		n    += n1
-		### relabel left-to-right:
-		ind1 = np.argsort([(L==(i+1)).argmax()  for i in range(4)])
-		LL   = np.zeros(L.shape)
-		for i,ind in enumerate(ind1):
-			LL[L==(ind+1)] = i+1
-		L    = LL
+		if n1>0:
+			L1[L1>0] += n
+			L    += L1
+			n    += n1
+			### relabel left-to-right:
+			ind1 = np.argsort([(L==(i+1)).argmax()  for i in range(4)])
+			LL   = np.zeros(L.shape)
+			for i,ind in enumerate(ind1):
+				LL[L==(ind+1)] = i+1
+			L    = LL
 	### plot:
 	ax.plot(x0, y0, color=color, lw=lw, label=label)
 	### create patches if needed:
