@@ -155,7 +155,16 @@ class ANOVA1rm(_Design):
 		if not self.S.check_balanced(self.A):
 			raise( ValueError('Design must be balanced.') )
 
-
+	def check_for_single_responses(self):
+		A,S  = self.A.A, self.S.A
+		only_single = False
+		for a in self.A.u:
+			s = S[(A==a)]
+			if np.unique(s).size == s.size:
+				only_single = True
+				warnings.warn('\nWARNING:  Only one observation per subject found.  Residuals and inference will be approximate. To avoid approximate residuals: (a) Add multiple observations per subject and per condition, and (b) ensure that all subjects and conditions have the same number of observations.\n', UserWarning, stacklevel=2)
+				continue
+		return only_single
 
 
 
