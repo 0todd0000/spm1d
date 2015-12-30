@@ -13,7 +13,6 @@ Y,A,B        = dataset.get_data()
 
 #(0a) Create region of interest(ROI):
 roi        = np.array([False]*Y.shape[1])
-# roi[40:70] = True
 roi[40:55] = True
 
 
@@ -21,7 +20,7 @@ roi[40:55] = True
 #(1) Conduct ANOVA:
 alpha        = 0.05
 FF           = spm1d.stats.anova2nested(Y, A, B, equal_var=True, roi=roi)
-FFi          = [F.inference(alpha)   for F in FF]
+FFi          = [F.inference(alpha, interp=True)   for F in FF]
 
 
 #(2) Plot results:

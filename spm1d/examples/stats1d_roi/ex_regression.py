@@ -6,7 +6,6 @@ import spm1d
 
 
 #(0) Load dataset:
-dataset    = spm1d.data.uv1d.regress.SimulatedPataky2015c()
 dataset    = spm1d.data.uv1d.regress.SpeedGRF()
 Y,x        = dataset.get_data()
 

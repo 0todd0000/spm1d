@@ -12,12 +12,12 @@ Y,A          = dataset.get_data()
 
 #(0a) Create region of interest(ROI):
 roi        = np.array([False]*Y.shape[1])
-roi[88:]   = True
+roi[85:]   = True
 
 
 #(1) Run ANOVA:
 alpha        = 0.05
-F            = spm1d.stats.anova1(Y, A, equal_var=False, roi=roi)
+F            = spm1d.stats.anova1(Y, A, equal_var=True, roi=roi)
 Fi           = F.inference(alpha, interp=True)
 print Fi
 

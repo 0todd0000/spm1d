@@ -19,7 +19,7 @@ roi[:20]   = True
 #(1) Conduct ANOVA:
 alpha        = 0.05
 FF           = spm1d.stats.anova2rm(Y, A, B, SUBJ, equal_var=True, roi=roi)
-FFi          = [F.inference(alpha)   for F in FF]
+FFi          = [F.inference(alpha, interp=True)   for F in FF]
 
 
 #(2) Plot results:

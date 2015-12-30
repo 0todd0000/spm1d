@@ -5,48 +5,35 @@ import spm1d
 
 
 #(0) Load dataset:
-dataset    = spm1d.data.uv1d.t1.SimulatedPataky2015b()
+dataset    = spm1d.data.uv1d.t1.SimulatedPataky2015a()
 Y,mu       = dataset.get_data()
 
 
 #(0a) Create region of interest(ROI):
 roi        = np.array([False]*Y.shape[1])
-# roi[70:80] = True
-roi[8:18] = True
-# roi = False
-
-# roi        = np.array([0]*Y.shape[1])
-# roi[9:20] = +1
-# roi[34:38] = -1
-# # roi = False
-
+roi[70:80] = True
 
 
 
 #(1) Conduct t test:
 alpha      = 0.05
-# t          = spm1d.stats.ttest(Y, mu)
-t          = spm1d.stats.ttest(Y, mu, roi=None)
-ti         = t.inference(alpha, two_tailed=True, interp=False)
+t          = spm1d.stats.ttest(Y, mu, roi=roi)
+ti         = t.inference(alpha, two_tailed=False, interp=True)
 
 
 #(2) Plot:
 pyplot.close('all')
-### plot mean and SD:
 pyplot.figure( figsize=(8, 3.5) )
-pyplot.get_current_fig_manager().window.move(0, 0)
+### plot mean and SD:
 ax     = pyplot.axes( (0.1, 0.15, 0.35, 0.8) )
 spm1d.plot.plot_mean_sd(Y, roi=roi)
-# spm1d.plot.plot_roi(roi, facecolor='b', facealpha=0.6)
 ax.axhline(y=0, color='k', linestyle=':')
 ax.set_xlabel('Measurement domain (%)')
 ax.set_ylabel('Dependent Variable')
-
 ### plot SPM results:
 ax     = pyplot.axes((0.55,0.15,0.35,0.8))
-# t.plot()
 ti.plot()
 ti.plot_threshold_label(fontsize=8)
 ti.plot_p_values(size=10, offsets=[(0,0.3)])	
-# ax.set_xlabel('Measurement domain (%)')
+ax.set_xlabel('Measurement domain (%)')
 pyplot.show()
