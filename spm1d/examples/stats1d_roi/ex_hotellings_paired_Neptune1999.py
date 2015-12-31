@@ -22,6 +22,7 @@ roi[20:50] = True
 alpha        = 0.05
 T2           = spm1d.stats.hotellings_paired(YA, YB, roi=roi)
 T2i          = T2.inference(0.05)
+print(T2i)
 
 
 

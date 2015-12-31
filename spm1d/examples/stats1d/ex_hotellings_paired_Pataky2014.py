@@ -15,7 +15,7 @@ print dataset
 alpha        = 0.05
 T2           = spm1d.stats.hotellings_paired(YA, YB)
 T2i          = T2.inference(0.05)
-
+print(T2i)
 
 
 #(2) Plot:

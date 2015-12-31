@@ -29,6 +29,7 @@ roi[60:]   = True
 alpha      = 0.05
 t          = spm1d.stats.glm(Y, X, c, roi=roi)
 ti         = t.inference(alpha, two_tailed=False, interp=True)
+print(ti)
 
 
 

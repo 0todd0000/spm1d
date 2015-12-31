@@ -16,7 +16,7 @@ print dataset
 alpha        = 0.05
 X2           = spm1d.stats.cca(Y, x)
 X2i          = X2.inference(0.05)
-
+print(X2i)
 
 
 #(2) Plot:

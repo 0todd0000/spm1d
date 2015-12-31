@@ -13,7 +13,7 @@ YA,YB        = dataset.get_data()  #normal and fast walking
 #(1) Conduct t test:
 alpha      = 0.05
 t          = spm1d.stats.ttest_paired(YA, YB)
-ti         = t.inference(alpha, two_tailed=False, interp=True)
+ti         = t.inference(alpha, two_tailed=True, interp=True)
 
 
 
