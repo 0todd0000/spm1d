@@ -12,9 +12,9 @@ Y,A          = dataset.get_data()
 
 
 #(1) Run ANOVA:
-alpha        = 0.05
+alpha        = 0.0005
 F            = spm1d.stats.anova1(Y, A, equal_var=False)
-Fi           = F.inference(alpha, interp=False)
+Fi           = F.inference(alpha, interp=True, circular=False)
 print Fi
 ### alternative syntax:
 # Y0,Y1,Y2     = [Y[A==u] for u in np.unique(A)]

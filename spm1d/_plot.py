@@ -129,6 +129,7 @@ class SPMPlotter(DataPlotter):
 	def plot(self, color='k', lw=3, label=None):
 		self.plot_field(color=color, lw=lw, label=label)
 		self.plot_datum()
+		self._set_ylim()
 
 	def plot_design(self, factor_labels=None, fontsize=10):
 		def scaleColumns(X):
@@ -147,7 +148,6 @@ class SPMPlotter(DataPlotter):
 			pyplot.setp(tx, ha='center', va='bottom', color='k', fontsize=fontsize)
 		self.ax.axis('normal')
 		self.ax.axis('off')
-	
 	
 	def plot_field(self, **kwdargs):
 		keys   = kwdargs.keys()
@@ -180,43 +180,26 @@ class SPMPlotter(DataPlotter):
 class SPMiPlotter(SPMPlotter):
 	def __init__(self, spmi, ax=None):
 		super(SPMiPlotter, self).__init__(spmi, ax)
-		
+	
 	def plot(self, color='k', lw=3, facecolor='0.7', thresh_color='k', label=None):
 		self.plot_field(color=color, lw=lw, label=label)
 		self.plot_datum()
 		self.plot_threshold(color=thresh_color)
 		self.plot_cluster_patches(facecolor=facecolor)
+		self._set_ylim()
 
 	def plot_cluster_patches(self, facecolor='0.8'):
-		spmi       = self.spm
-		x0,z0,ind0 = self.x.copy(), self.z.copy(), np.arange(spmi.Q)
-		if self.ismasked:
-			z0[np.logical_not(spmi.roi)] = 0
-		if spmi.nClusters > 0:
-			polyg = []
-			for i,c in enumerate(spmi.clusters):
-				csign       = np.sign( float(c.xy[1]) )
-				b           = spmi.L==i+1
-				ind,x,z     = ind0[b].tolist(), x0[b].tolist(), z0[b].tolist()
-				### insert extra nodes for interpolation:
-				x           = [x[0]] + x + [x[-1]]
-				z           = [csign*spmi.zstar] + z + [csign*spmi.zstar]
-				### interpolate if necessary:
-				if (ind[0]  != ind0[0]):
-					if not np.ma.is_masked(  spmi.z[ ind[0]-1 ]  ):
-						dx      = x0[ind[0]] - x0[ind[0]-1]
-						dy      = (csign*spmi.zstar - z0[ind[0]])  / (z0[ind[0]] - z0[ind[0]-1])
-						x[0]   += dy*dx
-				if (ind[-1] != ind0[-1]):
-					if not np.ma.is_masked(  spmi.z[ ind[-1]+1 ]  ):
-						dx      = x0[ind[-1]+1] - x0[ind[-1]]
-						dy      = (csign*spmi.zstar - z0[ind[-1]])  / (z0[ind[-1]+1] - z0[ind[-1]])
-						x[-1]  += dy*dx
+		polyg      = []
+		for cluster in self.spm.clusters:
+			x,z    = cluster.get_patch_vertices()
+			polyg.append(  Polygon(zip(x,z))  )
+			if cluster.iswrapped:
+				x,z    = cluster._other.get_patch_vertices()
 				polyg.append(  Polygon(zip(x,z))  )
-			patches         = PatchCollection(polyg, edgecolors=None)
-			self.ax.add_collection(patches)
-			pyplot.setp(patches, facecolor=facecolor, edgecolor=facecolor)
-	
+		patches    = PatchCollection(polyg, edgecolors=None)
+		self.ax.add_collection(patches)
+		pyplot.setp(patches, facecolor=facecolor, edgecolor=facecolor)
+
 	def plot_p_values(self, size=8, offsets=None, offset_all_clusters=None):
 		n          = len(self.spm.p)
 		if offsets is None:
@@ -236,7 +219,6 @@ class SPMiPlotter(SPMPlotter):
 			h.append(hh)
 		return h
 
-	
 	def plot_threshold(self, color='k'):
 		ax,zs,spmi = self.ax, self.spm.zstar, self.spm
 		if spmi.roi is None:
@@ -259,7 +241,7 @@ class SPMiPlotter(SPMPlotter):
 					h.append( ax.plot(self.x, zz) )
 		pyplot.setp(h, color=color, lw=1, linestyle='--')
 		return h
-		
+
 	def plot_threshold_label(self, lower=False, pos=None, **kwdargs):
 		spmi      = self.spm
 		if pos is None:

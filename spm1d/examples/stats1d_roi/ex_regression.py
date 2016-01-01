@@ -21,7 +21,7 @@ roi[20:55] = True
 #(1) Conduct regression:
 alpha      = 0.05
 t          = spm1d.stats.regress(Y, x, roi=roi)
-ti         = t.inference(alpha, two_tailed=False, interp=True)
+ti         = t.inference(alpha, two_tailed=True, interp=True)
 
 
 
