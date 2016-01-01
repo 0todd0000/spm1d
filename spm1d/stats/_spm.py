@@ -12,7 +12,7 @@ and inference SPMs (thresholded test statistic).
 # Copyright (C) 2014  Todd Pataky
 # _spm.py version: 0.2.0006 (2014/07/09)
 
-
+from math import floor,ceil
 import numpy as np
 from scipy import ndimage,optimize,stats
 from .. plot import plot_spm, plot_spm_design
@@ -60,25 +60,90 @@ eps    = np.finfo(float).eps   #smallest float, used to avoid divide-by-zero err
 (0)  CLUSTER CLASS DEFINITION
 #################
 '''
+# class ClusterOld(object):
+# 	def __init__(self, m, mr, h, xy, p):
+# 		self.extent  = m       #cluster size (absolute)
+# 		self.extentR = mr      #cluster size (resels)
+# 		self.h       = h       #cluster height (minimum above threshold)
+# 		self.xy      = tuple(xy)      #cluster centroid
+# 		self.P       = p       #probability value (based on h and extentR)
+# 	def __repr__(self):
+# 		s        = ''
+# 		s       += 'Cluster at location: (%.3f, %.3f)\n' %self.xy
+# 		s       += '   extent          :  %d\n' %self.extent
+# 		s       += '   extent (resels) :  %.5f\n' %self.extentR
+# 		s       += '   height (min)    :  %.5f\n' %self.h
+# 		if self.P==None:
+# 			s   += '   P               :  None\n\n'
+# 		else:
+# 			s   += '   P               :  %.5f\n\n' %self.P
+# 		return s
+
+
+
 class Cluster(object):
-	def __init__(self, m, mr, h, xy, p):
-		self.extent  = m       #cluster size (absolute)
-		self.extentR = mr      #cluster size (resels)
-		self.h       = h       #cluster height (minimum above threshold)
-		self.xy      = tuple(xy)      #cluster centroid
-		self.P       = p       #probability value (based on h and extentR)
+	def __init__(self, x, z, u, interp=True):
+		self._X        = x
+		self._Z        = z
+		self._u        = u
+		self._interp   = interp
+		self.P         = None       #probability value (based on h and extentR)
+		self.csign     = np.sign(u)
+		self.endpoints = None
+		self.extent    = None       #cluster size (absolute)
+		self.extentR   = None      #cluster size (resels)
+		self.h         = None       #cluster height (minimum above threshold)
+		self.iswrapped = False
+		self.xy        = None      #cluster centroid
+		self._assemble()
+		
 	def __repr__(self):
 		s        = ''
 		s       += 'Cluster at location: (%.3f, %.3f)\n' %self.xy
-		s       += '   extent          :  %d\n' %self.extent
-		s       += '   extent (resels) :  %.5f\n' %self.extentR
+		if self._interp:
+			s   += '   endpoints       :  (%.3f, %.3f)\n' %self.endpoints
+			s   += '   extent          :  %.3f\n' %self.extent
+		else:
+			s   += '   endpoints       :  (%d, %d)\n' %self.endpoints
+			s   += '   extent          :  %d\n' %self.extent
+		if self.extentR is None:
+			s   += '   extent (resels) :  None\n'
+		else:
+			s   += '   extent (resels) :  %.5f\n' %self.extentR
 		s       += '   height (min)    :  %.5f\n' %self.h
-		if self.P==None:
+		if self.P is None:
 			s   += '   P               :  None\n\n'
 		else:
 			s   += '   P               :  %.5f\n\n' %self.P
 		return s
 
+	def _assemble(self):
+		x0,x1               = self._X[0], self._X[-1]
+		z                   = self._Z
+		if not self._interp:
+			x0,x1           = int(ceil(x0)), int(floor(x1))
+			z               = z[1:-1]
+		self.endpoints      = x0, x1
+		self.extent         = x1 - x0
+		if self.extent==0:  #to reproduce results from previous versions, minimum extent must be one (when not interpolated)
+			self.extent     = 1
+		self.h              = z.min()
+		x,z                 = self._X, self._Z
+		self.xy             = (x*z).sum() / z.sum(),  z.mean()
+
+	def inference(self, STAT, df, fwhm, resels, two_tailed, withBonf, nNodes):
+		self.extentR        = float(self.extent) / fwhm
+		k,u                 = self.extentR, self.h
+		if STAT == 'T':
+			p = rft1d.t.p_cluster(k, u, df[1], nNodes, fwhm, withBonf=withBonf)
+			p = 2*p if two_tailed else p
+		elif STAT == 'F':
+			p = rft1d.f.p_cluster(k, u, df, nNodes, fwhm, withBonf=withBonf)
+		elif STAT == 'T2':
+			p = rft1d.T2.p_cluster(k, u, df, nNodes, fwhm, withBonf=withBonf)
+		elif STAT == 'X2':
+			p = rft1d.chi2.p_cluster(k, u, df[1], nNodes, fwhm, withBonf=withBonf)
+		self.P    = p
 
 
 
@@ -246,25 +311,25 @@ class _SPM(object):
 		s       += '   SPM.resels :  (%d, %.5f)\n\n\n' %tuple(self.resels)
 		return s
 		
-	def _assemble_clusters(self, zstar, B, two_tailed, interp, circular, withBonf):
-		### compute cluster metrics:
-		extents,minima,centroids,L,signs  = self._cluster_metrics(zstar, two_tailed, interp, circular)
-		### cluster-level inference:
-		clusters  = []
-		for extent,minimum,centroid,sign in zip(extents, minima, centroids, signs):
-			xR    = extent / self.fwhm
-			if self.STAT == 'T':
-				p = rft1d.t.p_cluster(xR, sign*minimum, self.df[1], B, self.fwhm, withBonf=withBonf)
-				p = 2*p if two_tailed else p
-			elif self.STAT == 'F':
-				p = rft1d.f.p_cluster(xR, minimum, self.df, B, self.fwhm, withBonf=withBonf)
-			elif self.STAT == 'T2':
-				p = rft1d.T2.p_cluster(xR, minimum, self.df, B, self.fwhm, withBonf=withBonf)
-			elif self.STAT == 'X2':
-				p = rft1d.chi2.p_cluster(xR, minimum, self.df[1], B, self.fwhm, withBonf=withBonf)
-			c     = Cluster(extent, xR, minimum, centroid, p)
-			clusters.append(c)
-		return clusters,L
+	# def _assemble_clusters(self, zstar, B, two_tailed, interp, circular, withBonf):
+	# 	### compute cluster metrics:
+	# 	extents,minima,centroids,L,signs  = self._cluster_metrics(zstar, two_tailed, interp, circular)
+	# 	### cluster-level inference:
+	# 	clusters  = []
+	# 	for extent,minimum,centroid,sign in zip(extents, minima, centroids, signs):
+	# 		xR    = extent / self.fwhm
+	# 		if self.STAT == 'T':
+	# 			p = rft1d.t.p_cluster(xR, sign*minimum, self.df[1], B, self.fwhm, withBonf=withBonf)
+	# 			p = 2*p if two_tailed else p
+	# 		elif self.STAT == 'F':
+	# 			p = rft1d.f.p_cluster(xR, minimum, self.df, B, self.fwhm, withBonf=withBonf)
+	# 		elif self.STAT == 'T2':
+	# 			p = rft1d.T2.p_cluster(xR, minimum, self.df, B, self.fwhm, withBonf=withBonf)
+	# 		elif self.STAT == 'X2':
+	# 			p = rft1d.chi2.p_cluster(xR, minimum, self.df[1], B, self.fwhm, withBonf=withBonf)
+	# 		c     = Cluster(extent, xR, minimum, centroid, p)
+	# 		clusters.append(c)
+	# 	return clusters,L
 		
 	
 	def _build_spmi(self, alpha, zstar, clusters, L, p_set, two_tailed):
@@ -281,76 +346,76 @@ class _SPM(object):
 		return spmi
 		
 	
-	def _cluster_metrics(self, zstar, two_tailed, interp, circular):
-		### compute cluster metrics (no ROI):
-		if self.roi is None:
-			z         = self.z
-			### compute suprathreshold cluster metrics:
-			ccalc     = rft1d.geom.ClusterMetricCalculatorInitialized(z, zstar, interp=interp, wrap=circular)
-			extents,minima,centroids,L = ccalc.get_all()
-			signs     = [1]*ccalc.n
-			### if two_tailed, compute 'negative' cluster metrics:
-			if two_tailed:
-				ccalc      = rft1d.geom.ClusterMetricCalculatorInitialized(-z, zstar, interp=interp, wrap=circular)
-				if ccalc.n > 0:
-					extents1,minima1,centroids1,L1 = ccalc.get_all()
-					extents   += extents1
-					minima    += (-1*np.array(minima1)).tolist()
-					centroids += (np.array(centroids1)*[1,-1]).tolist()
-					L1[L1>0]  += max(L)
-					L         += L1
-					signs     += [-1]*ccalc.n
-		### compute cluster metrics (ROI):
-		else:
-			z     = np.asarray(self.z)
-			z[np.logical_not(self.roi)] = 0
-			### compute cluster metrics (boolean ROI):
-			if self.roi.dtype == bool:
-				### compute suprathreshold cluster metrics:
-				ccalc     = rft1d.geom.ClusterMetricCalculatorInitialized(z, zstar, interp=interp, wrap=circular)
-				extents,minima,centroids,L = ccalc.get_all()
-				signs     = [1]*ccalc.n
-				### if two_tailed, compute 'negative' cluster metrics:
-				if two_tailed:
-					ccalc      = rft1d.geom.ClusterMetricCalculatorInitialized(-z, zstar, interp=interp, wrap=circular)
-					if ccalc.n > 0:
-						extents1,minima1,centroids1,L1 = ccalc.get_all()
-						extents   += extents1
-						minima    += (-1*np.array(minima1)).tolist()
-						centroids += (np.array(centroids1)*[1,-1]).tolist()
-						L1[L1>0]  += max(L)
-						L         += L1
-						signs     += [-1]*ccalc.n
-			### compute cluster metrics (directional ROI):
-			else:
-				bp,bn    = self.roi>0, self.roi<0
-				any_pos  = np.any(bp) & np.any( self.z[bp]>zstar )
-				any_neg  = np.any(bn) & np.any( self.z[bn]<-zstar )
-				if any_pos:
-					zz        = z.copy()
-					zz[self.roi<0] = 0
-					ccalc     = rft1d.geom.ClusterMetricCalculatorInitialized(zz, zstar, interp=interp, wrap=circular)
-					extents,minima,centroids,L = ccalc.get_all()
-					signs     = [1]*ccalc.n
-				if any_neg:
-					zz        = z.copy()
-					zz[self.roi>0] = 0
-					ccalc     = rft1d.geom.ClusterMetricCalculatorInitialized(-z, zstar, interp=interp, wrap=circular)
-					extents1,minima1,centroids1,L1 = ccalc.get_all()
-					minima1   = -1*np.array(minima1)
-					centroids1 = (np.array(centroids1)*[1,-1]).tolist()
-					signs1    = [-1]*ccalc.n
-				if any_pos and any_neg:
-					extents   += extents1
-					minima    += minima1.tolist()
-					centroids += centroids1
-					L1[L1>0]  += max(L)
-					L         += L1
-					signs     += signs1
-				if not any_pos:
-					extents,minima,centroids,L = extents1,minima1,centroids1,L1
-					signs      = signs1
-		return extents,minima,centroids,L,signs
+	# def _cluster_metrics(self, zstar, two_tailed, interp, circular):
+	# 	### compute cluster metrics (no ROI):
+	# 	if self.roi is None:
+	# 		z         = self.z
+	# 		### compute suprathreshold cluster metrics:
+	# 		ccalc     = rft1d.geom.ClusterMetricCalculatorInitialized(z, zstar, interp=interp, wrap=circular)
+	# 		extents,minima,centroids,L = ccalc.get_all()
+	# 		signs     = [1]*ccalc.n
+	# 		### if two_tailed, compute 'negative' cluster metrics:
+	# 		if two_tailed:
+	# 			ccalc      = rft1d.geom.ClusterMetricCalculatorInitialized(-z, zstar, interp=interp, wrap=circular)
+	# 			if ccalc.n > 0:
+	# 				extents1,minima1,centroids1,L1 = ccalc.get_all()
+	# 				extents   += extents1
+	# 				minima    += (-1*np.array(minima1)).tolist()
+	# 				centroids += (np.array(centroids1)*[1,-1]).tolist()
+	# 				L1[L1>0]  += max(L)
+	# 				L         += L1
+	# 				signs     += [-1]*ccalc.n
+	# 	### compute cluster metrics (ROI):
+	# 	else:
+	# 		z     = np.asarray(self.z)
+	# 		z[np.logical_not(self.roi)] = 0
+	# 		### compute cluster metrics (boolean ROI):
+	# 		if self.roi.dtype == bool:
+	# 			### compute suprathreshold cluster metrics:
+	# 			ccalc     = rft1d.geom.ClusterMetricCalculatorInitialized(z, zstar, interp=interp, wrap=circular)
+	# 			extents,minima,centroids,L = ccalc.get_all()
+	# 			signs     = [1]*ccalc.n
+	# 			### if two_tailed, compute 'negative' cluster metrics:
+	# 			if two_tailed:
+	# 				ccalc      = rft1d.geom.ClusterMetricCalculatorInitialized(-z, zstar, interp=interp, wrap=circular)
+	# 				if ccalc.n > 0:
+	# 					extents1,minima1,centroids1,L1 = ccalc.get_all()
+	# 					extents   += extents1
+	# 					minima    += (-1*np.array(minima1)).tolist()
+	# 					centroids += (np.array(centroids1)*[1,-1]).tolist()
+	# 					L1[L1>0]  += max(L)
+	# 					L         += L1
+	# 					signs     += [-1]*ccalc.n
+	# 		### compute cluster metrics (directional ROI):
+	# 		else:
+	# 			bp,bn    = self.roi>0, self.roi<0
+	# 			any_pos  = np.any(bp) & np.any( self.z[bp]>zstar )
+	# 			any_neg  = np.any(bn) & np.any( self.z[bn]<-zstar )
+	# 			if any_pos:
+	# 				zz        = z.copy()
+	# 				zz[self.roi<0] = 0
+	# 				ccalc     = rft1d.geom.ClusterMetricCalculatorInitialized(zz, zstar, interp=interp, wrap=circular)
+	# 				extents,minima,centroids,L = ccalc.get_all()
+	# 				signs     = [1]*ccalc.n
+	# 			if any_neg:
+	# 				zz        = z.copy()
+	# 				zz[self.roi>0] = 0
+	# 				ccalc     = rft1d.geom.ClusterMetricCalculatorInitialized(-z, zstar, interp=interp, wrap=circular)
+	# 				extents1,minima1,centroids1,L1 = ccalc.get_all()
+	# 				minima1   = -1*np.array(minima1)
+	# 				centroids1 = (np.array(centroids1)*[1,-1]).tolist()
+	# 				signs1    = [-1]*ccalc.n
+	# 			if any_pos and any_neg:
+	# 				extents   += extents1
+	# 				minima    += minima1.tolist()
+	# 				centroids += centroids1
+	# 				L1[L1>0]  += max(L)
+	# 				L         += L1
+	# 				signs     += signs1
+	# 			if not any_pos:
+	# 				extents,minima,centroids,L = extents1,minima1,centroids1,L1
+	# 				signs      = signs1
+	# 	return extents,minima,centroids,L,signs
 		
 	
 	def _isf(self, a, B, withBonf):
@@ -384,25 +449,76 @@ class _SPM(object):
 				p_set = rft1d.chi2.p_set(nUpcrossings, minextent, zstar, self.df[1], B, self.fwhm, withBonf=withBonf)
 		return p_set
 	
+	def _cluster_geom(self, u, interp, circular, csign=+1):
+		Q,Z      = self.Q, self.z
+		X        = np.arange(Q)
+		B        = self.z >= u
+		L,n      = rft1d.geom.bwlabel(B)
+		clusters = []
+		for i in range(n):
+			b    = L==(i+1)
+			x,z  = X[b].tolist(), Z[b].tolist()
+			# interpolate to threshold u using similar triangles method
+			# (interpolate for plotting whether or not "interp" is true)
+			if (x[0]>0) and not np.isnan( Z[x[0]-1] ):  #first cluster point not continuum edge && previous point not outside ROI
+				z0,z1  = Z[x[0]-1], Z[x[0]]
+				dx     = (z1-u) / (z1-z0)
+				x      = [x[0]-dx] + x
+				z      = [u] +z
+			if (x[-1]<Q-1) and not np.isnan( Z[x[-1]+1] ):  #last cluster point not continuum edge && next point not outside ROI
+				z0,z1  = Z[x[-1]], Z[x[-1]+1]
+				dx     = (z0-u) / (z0-z1)
+				x     += [x[-1]+dx]
+				z     += [u]
+			# create cluster:
+			x,z  = np.array(x), csign*np.array(z)
+			clusters.append(  Cluster(x, z, csign*u, interp) )
+		#merge clusters if necessary (circular fields only)
+		return clusters
+	
+	def _get_clusters(self, zstar, check_neg, interp, circular):
+		clusters      = self._cluster_geom(zstar, interp, circular, csign=+1)
+		if check_neg:
+			clustersn = self._cluster_geom(zstar, interp, circular, csign=-1)
+			clusters += clustersn
+		return clusters
+	
+	
+	
+	def _cluster_inference(self, clusters, two_tailed, withBonf):
+		p = []
+		for cluster in clusters:
+			cluster.inference(self.STAT, self.df, self.fwhm, self.resels, two_tailed, withBonf, self.Q)
+			p.append( cluster.P )
+		return clusters,p
+	
 	
 	def inference(self, alpha=0.05, cluster_size=0, two_tailed=False, interp=True, circular=False, withBonf=True):
+		check_neg  = two_tailed
 		### check ROI and "two_tailed" compatability:
 		if self.roi is not None:
 			if (self.roi.dtype != bool) and (two_tailed):
 				raise( ValueError('If the ROI contains directional predictions two_tailed must be FALSE.') )
-		### adjust alpha if two-tailed:
-		a          = 0.5*alpha if two_tailed else alpha
-		### compute binary search field:
-		B          = self.Q if self.roi is None else np.asarray(self.roi, dtype=bool)
-		### compute critical threshold:
+			else:
+				check_neg  = np.any( self.roi == -1 )
+		a          = 0.5*alpha if two_tailed else alpha  ### adjusted alpha (two-tailed)
+		B          = self.Q if self.roi is None else np.asarray(self.roi, dtype=bool)  #binary search field
 		zstar      = self._isf(a, B, withBonf)
-		### cluster-level inference:
-		clusters,L = self._assemble_clusters(zstar, B, two_tailed, interp, circular, withBonf)
-		### set-level inference:
+		clusters   = self._get_clusters(zstar, check_neg, interp, circular)
+		clusters,p = self._cluster_inference(clusters, two_tailed, withBonf)
 		p_set      = self._p_set(zstar, B, clusters, withBonf)
-		### build SPM-inference object:
+		L = None
 		spmi       = self._build_spmi(alpha, zstar, clusters, L, p_set, two_tailed)
 		return spmi
+		# ### compute critical threshold:
+		# zstar      = self._isf(a, B, withBonf)
+		# ### cluster-level inference:
+		# clusters,L = self._assemble_clusters(zstar, B, two_tailed, interp, circular, withBonf)
+		# ### set-level inference:
+		# p_set      = self._p_set(zstar, B, clusters, withBonf)
+		# ### build SPM-inference object:
+		# spmi       = self._build_spmi(alpha, zstar, clusters, L, p_set, two_tailed)
+		# return spmi
 	
 	def plot(self, **kwdargs):
 		return plot_spm(self, **kwdargs)
