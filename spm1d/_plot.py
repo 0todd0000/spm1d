@@ -189,16 +189,17 @@ class SPMiPlotter(SPMPlotter):
 		self._set_ylim()
 
 	def plot_cluster_patches(self, facecolor='0.8'):
-		polyg      = []
-		for cluster in self.spm.clusters:
-			x,z    = cluster.get_patch_vertices()
-			polyg.append(  Polygon(zip(x,z))  )
-			if cluster.iswrapped:
-				x,z    = cluster._other.get_patch_vertices()
+		if self.spm.nClusters > 0:
+			polyg      = []
+			for cluster in self.spm.clusters:
+				x,z    = cluster.get_patch_vertices()
 				polyg.append(  Polygon(zip(x,z))  )
-		patches    = PatchCollection(polyg, edgecolors=None)
-		self.ax.add_collection(patches)
-		pyplot.setp(patches, facecolor=facecolor, edgecolor=facecolor)
+				if cluster.iswrapped:
+					x,z    = cluster._other.get_patch_vertices()
+					polyg.append(  Polygon(zip(x,z))  )
+			patches    = PatchCollection(polyg, edgecolors=None)
+			self.ax.add_collection(patches)
+			pyplot.setp(patches, facecolor=facecolor, edgecolor=facecolor)
 
 	def plot_p_values(self, size=8, offsets=None, offset_all_clusters=None):
 		n          = len(self.spm.p)

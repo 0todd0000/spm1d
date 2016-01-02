@@ -121,7 +121,7 @@ class Cluster(object):
 		self.extent         = x1 - x0
 		if self.extent==0:  #to reproduce results from previous versions, minimum extent must be one (when not interpolated)
 			self.extent     = 1
-		self.h              = z.min()
+		self.h              = (self.csign*z).min()
 		x,z                 = self._X, self._Z
 		self.xy             = (x*z).sum() / z.sum(),  z.mean()
 
@@ -140,7 +140,7 @@ class Cluster(object):
 		k,u                 = self.extentR, self.h
 		if STAT == 'T':
 			p = rft1d.t.p_cluster_resels(k, u, df[1], resels, withBonf=withBonf, nNodes=nNodes)
-			p = 2*p if two_tailed else p
+			p = min(1, 2*p) if two_tailed else p
 		elif STAT == 'F':
 			p = rft1d.f.p_cluster_resels(k, u, df, resels, withBonf=withBonf, nNodes=nNodes)
 		elif STAT == 'T2':
@@ -342,11 +342,11 @@ class _SPM(object):
 		if np.ma.is_masked(Z):
 			i    = Z.mask
 			Z    = np.array(Z)
-			B    = csign*Z >= u
+			B    = (csign*Z) >= u
 			B[i] = False
 			Z[i] = np.nan
 		else:
-			B    = csign*Z >= u
+			B    = (csign*Z) >= u
 		Z        = csign*Z
 		L,n      = rft1d.geom.bwlabel(B)
 		clusters = []
@@ -403,7 +403,7 @@ class _SPM(object):
 			zstar = rft1d.chi2.isf_resels(a, self.df[1], self.resels, withBonf=withBonf, nNodes=self.Q)
 		return zstar
 
-	def _setlevel_inference(self, zstar, clusters, withBonf):
+	def _setlevel_inference(self, zstar, clusters, two_tailed, withBonf):
 		nUpcrossings  = len(clusters)
 		p_set         = 1.0
 		if nUpcrossings>0:
@@ -411,6 +411,7 @@ class _SPM(object):
 			minextent     = min(extents)
 			if self.STAT == 'T':
 				p_set = rft1d.t.p_set_resels(nUpcrossings, minextent, zstar, self.df[1], self.resels, withBonf=withBonf, nNodes=self.Q)
+				p_set = min(1, 2*p_set) if two_tailed else p_set
 			elif self.STAT == 'F':
 				p_set = rft1d.f.p_set_resels(nUpcrossings, minextent, zstar, self.df, self.resels, withBonf=withBonf, nNodes=self.Q)
 			elif self.STAT == 'T2':
@@ -433,7 +434,7 @@ class _SPM(object):
 		zstar      = self._isf(a, withBonf)  #critical threshold (RFT inverse survival function)
 		clusters   = self._get_clusters(zstar, check_neg, interp, circular)  #assemble all suprathreshold clusters
 		clusters   = self._cluster_inference(clusters, two_tailed, withBonf)  #conduct cluster-level inference
-		p_set      = self._setlevel_inference(zstar, clusters, withBonf)  #conduct set-level inference
+		p_set      = self._setlevel_inference(zstar, clusters, two_tailed, withBonf)  #conduct set-level inference
 		spmi       = self._build_spmi(alpha, zstar, clusters, p_set, two_tailed)    #assemble SPMi object
 		return spmi
 	
