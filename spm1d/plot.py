@@ -23,8 +23,8 @@ These include:
 - plot_mean_sd
 '''
 
-# Copyright (C) 2015  Todd Pataky
-# plot.py version: 0.3.0005 (2015/12/09)
+# Copyright (C) 2016  Todd Pataky
+# plot.py version: 0.3.2 (2016/01/03)
 
 
 

@@ -1,3 +1,10 @@
+'''
+ANOVA computational core using an R-like linear model interface.
+'''
+
+# Copyright (C) 2016  Todd Pataky
+# models.py version: 0.3.2 (2016/01/03)
+
 
 import numpy as np
 import rft1d

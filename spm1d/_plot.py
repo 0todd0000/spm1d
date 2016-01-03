@@ -5,8 +5,8 @@ This module contains classes for low-level plotting.
 Users should access plotting functions through spm1d.plot (not spm1d._plot).
 '''
 
-# Copyright (C) 2015  Todd Pataky
-# plot.py version: 0.3.0005 (2015/12/09)
+# Copyright (C) 2016  Todd Pataky
+# _plot.py version: 0.3.2 (2016/01/03)
 
 
 from copy import copy,deepcopy

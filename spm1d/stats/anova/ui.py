@@ -1,3 +1,10 @@
+'''
+High-level ANOVA user interface.
+'''
+
+# Copyright (C) 2016  Todd Pataky
+# ui.py version: 0.3.2 (2016/01/03)
+
 
 import warnings
 import numpy as np

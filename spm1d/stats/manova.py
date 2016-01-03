@@ -1,5 +1,11 @@
+'''
+MANOVA
+'''
 
-# __version__ = '0.0.0005'  #2014.08.12
+# Copyright (C) 2016  Todd Pataky
+# manova.py version: 0.3.2 (2016/01/03)
+
+
 
 
 from math import sqrt,log

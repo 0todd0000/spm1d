@@ -12,8 +12,9 @@ This module contains a variety of convenience functions, including:
 - smooth
 '''
 
-# Copyright (C) 2014  Todd Pataky
-# util.py version: 0.2 (2014/05/01)
+# Copyright (C) 2016  Todd Pataky
+# util.py version: 0.3.2 (2016/01/03)
+
 
 
 from math import sqrt,log

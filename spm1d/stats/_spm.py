@@ -9,8 +9,9 @@ This module contains class definitions for raw SPMs (raw test statistic continua
 and inference SPMs (thresholded test statistic).
 '''
 
-# Copyright (C) 2014  Todd Pataky
-# _spm.py version: 0.2.0006 (2014/07/09)
+# Copyright (C) 2016  Todd Pataky
+# _spm.py version: 0.3.2 (2016/01/03)
+
 
 from math import floor,ceil
 import numpy as np

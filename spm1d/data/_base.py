@@ -1,3 +1,10 @@
+'''
+Base classes for all built-in datasets.
+'''
+
+# Copyright (C) 2016  Todd Pataky
+# designs.py version: 0.3.2 (2016/01/03)
+
 
 import os
 import numpy as np
