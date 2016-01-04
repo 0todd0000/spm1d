@@ -411,19 +411,13 @@ class _SPM(object):
 			extents       = [c.extentR for c in clusters]
 			minextent     = min(extents)
 			if self.STAT == 'T':
-<<<<<<< HEAD
 				p_set = rft1d.t.p_set_resels(nUpcrossings, minextent, zstar, self.df[1], self.resels, withBonf=withBonf, nNodes=self.Q)
 				p_set = min(1, 2*p_set) if two_tailed else p_set
-=======
-				p_set = rft1d.t.p_set(nUpcrossings, minextent, zstar, self.df[1], self.Q, self.fwhm, withBonf=withBonf)
-				p_set = 2*p_set if two_tailed else p_set
->>>>>>> master
 			elif self.STAT == 'F':
 				p_set = rft1d.f.p_set_resels(nUpcrossings, minextent, zstar, self.df, self.resels, withBonf=withBonf, nNodes=self.Q)
 			elif self.STAT == 'T2':
 				p_set = rft1d.T2.p_set_resels(nUpcrossings, minextent, zstar, self.df, self.resels, withBonf=withBonf, nNodes=self.Q)
 			elif self.STAT == 'X2':
-<<<<<<< HEAD
 				p_set = rft1d.chi2.p_set_resels(nUpcrossings, minextent, zstar, self.df[1], self.resels, withBonf=withBonf, nNodes=self.Q)
 		return p_set
 	
@@ -444,37 +438,7 @@ class _SPM(object):
 		p_set      = self._setlevel_inference(zstar, clusters, two_tailed, withBonf)  #conduct set-level inference
 		spmi       = self._build_spmi(alpha, zstar, clusters, p_set, two_tailed)    #assemble SPMi object
 		return spmi
-=======
-				p_set = rft1d.chi2.p_set(nUpcrossings, minextent, zstar, self.df[1], self.Q, self.fwhm, withBonf=withBonf)
-		### cluster-level inference:
-		clusters  = []
-		for extent,minimum,centroid,sign in zip(extents, minima, centroids, signs):
-			xR    = extent / self.fwhm
-			if self.STAT == 'T':
-				p = rft1d.t.p_cluster(xR, sign*minimum, self.df[1], self.Q, self.fwhm, withBonf=withBonf)
-				p = 2*p if two_tailed else p
-			elif self.STAT == 'F':
-				p = rft1d.f.p_cluster(xR, minimum, self.df, self.Q, self.fwhm, withBonf=withBonf)
-			elif self.STAT == 'T2':
-				p = rft1d.T2.p_cluster(xR, minimum, self.df, self.Q, self.fwhm, withBonf=withBonf)
-			elif self.STAT == 'X2':
-				p = rft1d.chi2.p_cluster(xR, minimum, self.df[1], self.Q, self.fwhm, withBonf=withBonf)
-			c     = Cluster(extent, xR, minimum, centroid, p)
-			clusters.append(c)
-		
-		### assemble p values:
-		nClusters = len(clusters)
-		p         = [c.P for c in clusters]
-		if self.STAT == 'T':
-			return SPMi_T(self, alpha, zstar, nClusters, clusters, L, p_set, p, two_tailed)
-		elif self.STAT == 'F':
-			return SPMi_F(self, alpha, zstar, nClusters, clusters, L, p_set, p, two_tailed)
-		elif self.STAT == 'T2':
-			return SPMi_T2(self, alpha, zstar, nClusters, clusters, L, p_set, p, two_tailed)
-		elif self.STAT == 'X2':
-			return SPMi_X2(self, alpha, zstar, nClusters, clusters, L, p_set, p, two_tailed)
->>>>>>> master
-	
+
 	def plot(self, **kwdargs):
 		return plot_spm(self, **kwdargs)
 		
