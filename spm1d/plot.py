@@ -79,6 +79,73 @@ def plot_errorcloud(datum, sd, ax=None, x=None, facecolor='0.8', edgecolor='0.8'
 
 
 
+<<<<<<< HEAD
+=======
+def plot_filled(y, ax=None, thresh=None, plot_thresh=True, color='k', lw=2, facecolor='0.8', two_tailed=False, thresh_color='k', autoset_ylim=True, label=None):
+	'''
+	Plot a filled cluster.
+	
+	(This function should only be used through **spm1d.plot.plot_spmi**)
+	'''
+	y        = np.asarray(y, dtype=float)
+	x        = _getQ(None, y.size)
+	ax       = _gca(ax)
+	if thresh==None:
+		thresh      = 0
+	x0,y0,ind0      = x.copy(), y.copy(), np.arange(y.size)
+	### threshold:
+	L,n       = ndimage.label(y>thresh)
+	if two_tailed:
+		L1,n1 = ndimage.label(y<-thresh)
+		if n1>0:
+			L1[L1>0] += n
+			L    += L1
+			n    += n1
+			### relabel left-to-right:
+			ind1 = np.argsort([(L==(i+1)).argmax()  for i in range(4)])
+			LL   = np.zeros(L.shape)
+			for i,ind in enumerate(ind1):
+				LL[L==(ind+1)] = i+1
+			L    = LL
+	### plot:
+	ax.plot(x0, y0, color=color, lw=lw, label=label)
+	### create patches if needed:
+	if n>0:
+		polyg = []
+		for i in range(n):
+			ind         = ind0[L==i+1].tolist()
+			x           = x0[L==i+1].tolist()
+			y           = y0[L==i+1].tolist()
+			csign       = np.sign(y[0])
+			### insert extra nodes for interpolation:
+			x           = [x[0]] + x + [x[-1]]
+			y           = [csign*thresh] + y + [csign*thresh]
+			### interpolate if necessary:
+			if ind[0]  != ind0[0]:
+				dx      = x0[ind[0]] - x0[ind[0]-1]
+				dy      = (csign*thresh - y0[ind[0]])  / (y0[ind[0]] - y0[ind[0]-1])
+				x[0]   += dy*dx
+			if ind[-1] != ind0[-1]:
+				dx      = x0[ind[-1]+1] - x0[ind[-1]]
+				dy      = (csign*thresh - y0[ind[-1]])  / (y0[ind[-1]+1] - y0[ind[-1]])
+				x[-1]  += dy*dx
+			polyg.append(  Polygon(zip(x,y))  )
+		patches         = PatchCollection(polyg, edgecolors=None)
+		ax.add_collection(patches)
+		pyplot.setp(patches, facecolor=facecolor, edgecolor=facecolor)
+	#set axis limits:
+	pyplot.setp(ax, xlim=(x0.min(), x0.max())  )
+	#plot threshold(s):
+	if (thresh!=None) and plot_thresh:
+		h      = [ax.hlines(thresh, x0.min(), x0.max())]
+		if two_tailed:
+			h.append( ax.hlines(-thresh, x0.min(), x0.max()) )
+		pyplot.setp(h, color=thresh_color, lw=1, linestyle='--')
+	if autoset_ylim:
+		_set_ylim(ax)
+
+
+>>>>>>> master
 
 
 def plot_mean_sd(Y, ax=None, x=None, lw=3, linecolor='k', linestyle='-', facecolor='0.8', edgecolor='0.8', alpha=0.5, label=None, autoset_ylim=True, roi=None):
