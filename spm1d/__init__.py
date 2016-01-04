@@ -16,18 +16,16 @@ www.fil.ion.ucl.ac.uk/spm/
 statistical parametric mapping. Journal of Biomechanics.
 
 
-Copyright (C) 2015  Todd Pataky
-Version: 0.3.1.8 (2015/12/30)
+Copyright (C) 2016  Todd Pataky
+Version: 0.3.2 (2016/01/03)
 '''
 
 
-__version__ = '0.3.1.8 (2015/12/30)'
+__version__ = '0.3.2 (2016/01/03)'
 
 
 __all__ = ['io', 'plot', 'stats', 'util']
 
 
 import data, io, plot, stats, util
-
-
 

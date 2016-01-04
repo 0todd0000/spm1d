@@ -1,5 +1,11 @@
+'''
+MANOVA
+'''
 
-# __version__ = '0.0.0005'  #2014.08.12
+# Copyright (C) 2016  Todd Pataky
+# manova.py version: 0.3.2 (2016/01/03)
+
+
 
 
 from math import sqrt,log
@@ -80,7 +86,7 @@ def _manova1_single_node_efficient(Y, GROUP, X, Xi, X0, X0i, nGroups):
 
 
 
-def manova1(Y, A, equal_var=True):
+def manova1(Y, A, equal_var=True, roi=None):
 	'''
 	Two-way repeated-measures ANOVA.
 	
@@ -120,11 +126,12 @@ def manova1(Y, A, equal_var=True):
 		nNodes      = Y.shape[1]
 		nComponents = Y.shape[2]
 		X2          = np.array([_manova1_single_node_efficient(Y[:,i,:], A, X, Xi, X0, X0i, nGroups)  for i in range(nNodes)])
+		X2          = X2 if roi is None else np.ma.masked_array(X2, np.logical_not(roi))
 		R           = _mvbase._get_residuals_manova1(Y, A)
 		fwhm        = _mvbase._fwhm(R)
-		resels      = _mvbase._resel_counts(R, fwhm)
+		resels      = _mvbase._resel_counts(R, fwhm, roi=roi)
 		df          = nComponents*( nGroups-1 )
-		return _spm.SPM_X2(X2, (1,df), fwhm, resels, None, None, R)
+		return _spm.SPM_X2(X2, (1,df), fwhm, resels, None, None, R, roi=roi)
 
 
 

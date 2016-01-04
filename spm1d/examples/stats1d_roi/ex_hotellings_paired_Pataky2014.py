@@ -1,4 +1,5 @@
 
+import numpy as np
 from matplotlib import pyplot
 import spm1d
 
@@ -11,11 +12,17 @@ print dataset
 
 
 
+#(0a) Create region of interest(ROI):
+roi        = np.array([False]*YA.shape[1])
+roi[50:80] = True
+
+
+
 #(1) Conduct test:
 alpha        = 0.05
-T2           = spm1d.stats.hotellings_paired(YA, YB)
+T2           = spm1d.stats.hotellings_paired(YA, YB, roi=roi)
 T2i          = T2.inference(0.05)
-print(T2i)
+
 
 
 #(2) Plot:

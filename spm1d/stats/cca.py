@@ -1,3 +1,9 @@
+'''
+CANONICAL CORRELATION ANALYSIS
+'''
+
+# Copyright (C) 2016  Todd Pataky
+# cca.py version: 0.3.2 (2016/01/03)
 
 from math import sqrt,log
 import numpy as np
@@ -92,7 +98,7 @@ def _cca_single_node_efficient(y, x, Rz, XXXiX):
 	return x2
 
 
-def cca(Y, x):
+def cca(Y, x, roi=None):
 	'''
 	Canonical correlation analysis (CCA).
 	
@@ -119,11 +125,12 @@ def cca(Y, x):
 		return _spm.SPM0D_X2(X2, df)
 	else:
 		X2         = np.array([_cca_single_node_efficient(Y[:,q,:], x, Rz, XXXiX)   for q in range(Y.shape[1])])
+		X2         = X2 if roi is None else np.ma.masked_array(X2, np.logical_not(roi))
 		R          = _mvbase._get_residuals_regression(Y, x)
 		fwhm       = _mvbase._fwhm(R)
-		resels     = _mvbase._resel_counts(R, fwhm)
+		resels     = _mvbase._resel_counts(R, fwhm, roi=roi)
 		df         = 1, Y.shape[2]
-		return _spm.SPM_X2(X2, df, fwhm, resels, None, None, R)
+		return _spm.SPM_X2(X2, df, fwhm, resels, None, None, R, roi=roi)
 
 
 

@@ -23,123 +23,21 @@ These include:
 - plot_mean_sd
 '''
 
-# Copyright (C) 2015  Todd Pataky
-# Version: 0.3.1.6 (2015/12/30)
+# Copyright (C) 2016  Todd Pataky
+# plot.py version: 0.3.2 (2016/01/03)
 
 
-from math import pi,sin,cos,acos,atan2
+
+
 import numpy as np
-from scipy import ndimage
-import matplotlib
-from matplotlib import pyplot, cm as colormaps
-from matplotlib.patches import Polygon
-from matplotlib.collections import PatchCollection
-
-
-eps    = np.finfo(float).eps   #smallest float, used to avoid divide-by-zero errors
-
-
-
-def _gca(ax):
-	if ax==None:
-		ax = pyplot.gca()
-	return ax
-def _getQ(x, Q):
-	if x==None:
-		x    = np.arange(Q)
-	return x
-def _set_ylim(ax, pad=0.075):
-	def minmax(x):
-		return min(x), max(x)
-	ymin,ymax   = +1e10, -1e10
-	for line in ax.lines:
-		y0,y1   = minmax( line.get_data()[1] )
-		ymin    = min(y0, ymin)
-		ymax    = max(y1, ymax)
-	for collection in ax.collections:
-		datalim = collection.get_datalim(ax.transData)
-		y0,y1   = minmax(  np.asarray(datalim)[:,1]  )
-		ymin    = min(y0, ymin)
-		ymax    = max(y1, ymax)
-	for text in ax.texts:
-		r       = matplotlib.backend_bases.RendererBase()
-		bbox    = text.get_window_extent(r)
-		y0,y1   = ax.transData.inverted().transform(bbox)[:,1]
-		ymin    = min(y0, ymin)
-		ymax    = max(y1, ymax)
-	dy = 0.075*(ymax-ymin)
-	ax.set_ylim(ymin-dy, ymax+dy)
-def _stat2str(STAT):
-	if STAT=='T':
-		s    = 't'
-	else:
-		s    = STAT
-	return s
-def p2string(p):
-	return 'p < 0.001' if p<0.0005 else 'p = %.03f'%p
-	
+from _plot import DataPlotter, SPMPlotter, SPMiPlotter
 
 
 
 
 
 
-def plot_cloud(Y, ax=None, facecolor='0.8', edgecolor='0.8', alpha=0.5, autoset_ylim=True):
-	'''
-	Plot an arbitrary 1D cloud.
-	
-	:Parameters:
-	
-	- *Y* --- a (2 x Q) numpy array containing y coordinates of the cloud's top and bottom surfaces, respectively
-	- *ax* --- optional matplotlib.axes object
-	- *facecolor* --- optional face color (for the SD cloud)
-	- *edgecolor* --- optional edge color (for the SD cloud)
-	- *alpha* --- optional face alpha value (for the SD cloud)
-	- *autoset_ylim* --- if True (default), will set the y axis limits so that all text, line and patch objects are visible inside the axes
-
-	:Returns:
-	
-	- a **matplotlib.collections.PatchCollection** object
-	
-	:Example:
-	
-	>>> import numpy as np
-	>>> from matplotlib import pyplot
-	
-	>>> y_top     = np.random.rand(50)
-	>>> y_bottom  = -0.5 * np.ones(50)
-	>>> Y         = np.vstack([y_top, y_bottom])
-	>>> spm1d.plot.plot_cloud(Y)
-	>>> pyplot.xlim(0, 50)
-	>>> pyplot.ylim(-1, 1)
-	'''
-	x           = _getQ(None, Y.shape[1])
-	ax          = _gca(ax)
-	### create patches:
-	y0,y1       = Y
-	x,y0,y1     = x.tolist(), y0.tolist(), y1.tolist()
-	x           = [x[0]]  + x  + [x[-1]]
-	y0          = [y0[0]] + y0 + [y0[-1]]
-	y1          = [y1[0]] + y1 + [y1[-1]]
-	y1.reverse()
-	### concatenate:
-	x1          = np.copy(x).tolist()
-	x1.reverse()
-	x,y         = x + x1, y0 + y1
-	patches     = PatchCollection([Polygon(zip(x,y))], edgecolors=None)
-	### plot:
-	ax.add_collection(patches)
-	pyplot.setp(patches, facecolor=facecolor, edgecolor=edgecolor, alpha=alpha)
-	if autoset_ylim:
-		_set_ylim(ax)
-	return patches
-
-
-
-
-
-
-def plot_errorcloud(datum, sd, ax=None, facecolor='0.8', edgecolor='0.8', alpha=0.5, autoset_ylim=True, perpendicular=False):
+def plot_errorcloud(datum, sd, ax=None, x=None, facecolor='0.8', edgecolor='0.8', alpha=0.5, autoset_ylim=True):
 	'''
 	Plot an arbitrary error cloud surrounding a datum continuum.
 	
@@ -148,6 +46,7 @@ def plot_errorcloud(datum, sd, ax=None, facecolor='0.8', edgecolor='0.8', alpha=
 	- *datum* --- a 1D list or numpy array
 	- *sd* --- a 1D list or numpy array
 	- *ax* --- optional matplotlib.axes object
+	- *x* --- optional vector of x positions  [default: np.arange(datum.size)]
 	- *facecolor* --- optional face color (for the SD cloud)
 	- *edgecolor* --- optional edge color (for the SD cloud)
 	- *alpha* --- optional face alpha value (for the SD cloud)
@@ -167,27 +66,21 @@ def plot_errorcloud(datum, sd, ax=None, facecolor='0.8', edgecolor='0.8', alpha=
 	>>> spm1d.plot.plot_errorcloud(a, b)
 	>>> pyplot.xlim(0, 50)
 	'''
-	ax       = _gca(ax)
+	plotter  = DataPlotter(ax)
+	plotter._set_x(x, datum.size)
 	y,s      = np.asarray(datum, dtype=float), np.asarray(sd, dtype=float)
 	Y        = np.array([y+s, y-s])
-	h        = plot_cloud(Y, ax, facecolor, edgecolor, alpha, autoset_ylim=False)
-	# if perpendicular:
-	# 	w        = 0.2
-	# 	x        = _getQ(None, y.size)
-	# 	line     = ThickSegmentedLine(x, y, sd=s)
-	# 	h        = line.plot(vertical_ends=True, lw=3)
-	#
-	# else:
-	# 	Y        = np.array([y+s, y-s])
-	# 	h        = plot_cloud(Y, ax, facecolor, edgecolor, alpha, autoset_ylim=False)
+	h        = plotter.plot_cloud(Y, facecolor, edgecolor, alpha)
 	if autoset_ylim:
-		_set_ylim(ax)
+		plotter._set_ylim(ax)
 	return h
 
 
 
 
 
+<<<<<<< HEAD
+=======
 def plot_filled(y, ax=None, thresh=None, plot_thresh=True, color='k', lw=2, facecolor='0.8', two_tailed=False, thresh_color='k', autoset_ylim=True, label=None):
 	'''
 	Plot a filled cluster.
@@ -252,11 +145,10 @@ def plot_filled(y, ax=None, thresh=None, plot_thresh=True, color='k', lw=2, face
 		_set_ylim(ax)
 
 
+>>>>>>> master
 
 
-
-
-def plot_mean_sd(Y, ax=None, lw=3, linecolor='k', linestyle='-', facecolor='0.8', edgecolor='0.8', alpha=0.5, label=None, autoset_ylim=True, perpendicular=True):
+def plot_mean_sd(Y, ax=None, x=None, lw=3, linecolor='k', linestyle='-', facecolor='0.8', edgecolor='0.8', alpha=0.5, label=None, autoset_ylim=True, roi=None):
 	'''
 	Plot mean continuum with standard deviation cloud.
 	
@@ -264,6 +156,7 @@ def plot_mean_sd(Y, ax=None, lw=3, linecolor='k', linestyle='-', facecolor='0.8'
 	
 	- *Y* --- a (J x Q) numpy array
 	- *ax* --- optional matplotlib.axes object  [default: matplotlib.pyplot.gca()]
+	- *x* --- optional vector of x positions  [default: np.arange(Y.shape[1])]
 	- *lw* --- optional integer specify line width
 	- *linecolor* --- optional line color specifier (for the mean continuum)
 	- *linestyle* --- optional line style specifier (for the mean continuum)
@@ -272,6 +165,7 @@ def plot_mean_sd(Y, ax=None, lw=3, linecolor='k', linestyle='-', facecolor='0.8'
 	- *alpha* --- optional face alpha value (for the SD cloud)
 	- *label* --- optional string to label the mean continuum (for use with matplotlib.pyplot.legend())
 	- *autoset_ylim* --- if True (default), will set the y axis limits so that all text, line and patch objects are visible inside the axes
+	- *roi* --- optional region-of-interest vector (either boolean OR vector of (-1, 0, +1))
 	
 	:Returns:
 	
@@ -282,23 +176,32 @@ def plot_mean_sd(Y, ax=None, lw=3, linecolor='k', linestyle='-', facecolor='0.8'
 	>>> Y  = np.random.randn(10,101)
 	>>> spm1d.plot.plot_mean_sd(Y)
 	'''
-	x        = _getQ(None, Y.shape[1])
-	ax       = _gca(ax)
+	plotter  = DataPlotter(ax)
+	plotter._set_x(x, Y.shape[1])
+	### plot mean and SD:
+	Y        = Y if roi is None else np.ma.masked_array(   Y, np.vstack([np.logical_not(roi)]*Y.shape[0])   )
 	m,s      = Y.mean(axis=0), Y.std(ddof=1, axis=0)
-	h        = ax.plot(x, m, color=linecolor, lw=lw, linestyle=linestyle)[0]
-	if label:
+	h        = plotter.plot(m, color=linecolor, lw=lw, linestyle=linestyle)[0]
+	if label is not None:
 		h.set_label(label)
-	plot_errorcloud(m, s, ax, facecolor, edgecolor, alpha, autoset_ylim=False, perpendicular=perpendicular)
-	pyplot.setp(ax, xlim=(x.min(), x.max())  )
+	### plot SD:
+	Y        = np.array([m+s, m-s])
+	hc       = plotter.plot_cloud(Y, facecolor, edgecolor, alpha)
 	if autoset_ylim:
-		_set_ylim(ax)
+		plotter._set_axlim()
+	return h,hc
 
 
 
 
+def plot_roi(roi, ax=None, facecolor='0.7', alpha=1, edgecolor='w', ylim=None):
+	plotter   = DataPlotter(ax)
+	plotter.plot_roi(roi, ylim=ylim, facecolor=facecolor, edgecolor=edgecolor, alpha=alpha)
 
 
-def plot_spm(spm, ax=None, plot_ylabel=True, autoset_ylim=True, **kwdargs):
+
+
+def plot_spm(spm, ax=None, plot_ylabel=True, autoset_xlim=True, autoset_ylim=True, **kwdargs):
 	'''
 	Plot an **spm1d** SPM object as a line.
 	
@@ -320,19 +223,15 @@ def plot_spm(spm, ax=None, plot_ylabel=True, autoset_ylim=True, **kwdargs):
 	>>> line  = t.plot()   # equivalent to "line = spm1d.plot.plot_spm(t)"
 	>>> line.set_color('r')
 	'''
-	ax     = _gca(ax)
-	x      = _getQ(None, spm.Q)
-	keys   = kwdargs.keys()
-	if 'color' not in keys:
-		kwdargs.update( dict(color='k') )
-	if ('lw' not in keys) or ('linewidth' not in keys):
-		kwdargs.update( dict(lw=2) )
+	plotter = SPMPlotter(spm, ax=ax)
+	plotter.plot(**kwdargs)
 	if plot_ylabel:
-		ax.set_ylabel('SPM{%s}'%_stat2str(spm.STAT), size=16)
-	h      = ax.plot(x, spm.z, **kwdargs)[0]
+		plotter.plot_ylabel()
+	if autoset_xlim:
+		plotter._set_xlim()
 	if autoset_ylim:
-		_set_ylim(ax)
-	return h
+		plotter._set_ylim()
+	
 
 
 
@@ -345,30 +244,16 @@ def plot_spm_design(spm, ax=None, factor_labels=None, fontsize=10):
 	
 	None
 	'''
-	def scaleColumns(X):
-		mn,mx     = np.min(X,axis=0) , np.max(X,axis=0)
-		Xs        = (X-mn)/(mx-mn+eps)
-		Xs[np.isnan(Xs)] = 1   #if the whole column is a constant
-		return Xs
-	ax            = _gca(ax)
-	X             = spm.X
-	vmin,vmax     = None, None
-	if np.all(X==1):
-		vmin,vmax = 0, 1
-	ax.imshow(scaleColumns(X), cmap=colormaps.gray, interpolation='nearest', vmin=vmin, vmax=vmax)
-	if factor_labels != None:
-		gs        = X.shape
-		tx        = [ax.text(i, -0.05*gs[0], label)   for i,label in enumerate(factor_labels)]
-		pyplot.setp(tx, ha='center', va='bottom', color='k', fontsize=fontsize)
-	ax.axis('normal')
-	ax.axis('off')
+	plotter = SPMPlotter(spm, ax=ax)
+	plotter.plot_design(factor_labels, fontsize)
 
 
 
 
 
 
-def plot_spmi(spmi, ax=None, color='k', facecolor='0.8', plot_thresh=True, plot_ylabel=True, thresh_color='k', autoset_ylim=True, label=None):
+
+def plot_spmi(spmi, ax=None, color='k', facecolor='0.8', lw=2, plot_thresh=True, plot_ylabel=True, thresh_color='k', autoset_xlim=True, autoset_ylim=True, label=None):
 	'''
 	Plot an **spm1d** SPM inference object as a line.
 	
@@ -392,14 +277,14 @@ def plot_spmi(spmi, ax=None, color='k', facecolor='0.8', plot_thresh=True, plot_
 	>>> ti    = t.inference(0.05)
 	>>> ti.plot()   # equivalent to "spm1d.plot.plot_spmi(ti)"
 	'''
-	ax     = _gca(ax)
-	x      = _getQ(None, spmi.Q)
-	plot_filled(spmi.z, ax, spmi.zstar, color=color, plot_thresh=plot_thresh, facecolor=facecolor, two_tailed=spmi.two_tailed, thresh_color=thresh_color, autoset_ylim=False, label=label)
-	ax.hlines(0, x.min(), x.max(), color='k', lw=1, linestyle=':')
+	plotter = SPMiPlotter(spmi, ax=ax)
+	plotter.plot(color=color, lw=lw, facecolor=facecolor, label=label, thresh_color=thresh_color)
 	if plot_ylabel:
-		ax.set_ylabel('SPM{%s}'%_stat2str(spmi.STAT), size=16)
+		plotter.plot_ylabel()
+	if autoset_xlim:
+		plotter._set_xlim()
 	if autoset_ylim:
-		_set_ylim(ax)
+		plotter._set_ylim()
 
 
 
@@ -430,23 +315,12 @@ def plot_spmi_p_values(spmi, ax=None, size=8, offsets=None, offset_all_clusters=
 	>>> ti.plot_p_values(offsets=myoffsets) #equivalent to: "spm1d.plot.plot_p_values(ti, offsets=myoffsets)"
 	
 	'''
-	ax         = _gca(ax)
-	n          = len(spmi.p)
-	if offsets is None:
-		if offset_all_clusters is None:
-			offsets = [(0,0)]*n
-		else:
-			offsets = [offset_all_clusters]*n
-	if len(offsets) < n:
-		print('WARNING:  there are fewer offsets than clusters.  To set offsets for all clusters use the offset_all_clusters keyword.')
-	for cluster,offset in zip(spmi.clusters, offsets):
-		x,y    = cluster.xy
-		x     += offset[0]
-		y     += offset[1]
-		s      = p2string(cluster.P)
-		ax.text(x, y, s, size=size, ha='center', va='center', bbox=dict(facecolor='w', alpha=0.3))
+	plotter = SPMiPlotter(spmi, ax=ax)
+	h       = plotter.plot_p_values(size, offsets, offset_all_clusters)
 	if autoset_ylim:
-		_set_ylim(ax)
+		plotter._set_ylim(ax)
+	return h
+
 
 
 
@@ -476,23 +350,9 @@ def plot_spmi_threshold_label(spmi, ax=None, lower=False, pos=None, autoset_ylim
 	>>> ti    = t.inference(0.05)
 	>>> ti.plot_threshold_label(pos=(50,3.0))   # equivalent to "spm1d.plot.plot_spmi_threshold_label(ti, pos=(50,3.0))"
 	'''
-	q         = _getQ(None, spmi.Q)
-	ax        = _gca(ax)
-	if pos==None:
-		x0,x1 = q.min(), q.max()
-		y0,y1 = ax.get_ylim()
-		x     = x0 + 0.4*(x1-x0)
-		if lower and spmi.two_tailed:
-			y     = -spmi.zstar + 0.005*(y1-y0)
-		else:
-			y     = spmi.zstar + 0.005*(y1-y0)
-	else:
-		x,y   = pos
-	if 'color' not in kwdargs.keys():
-		kwdargs.update( dict(color='r') )
-	s         = r'$\alpha$=%.2f:  $%s^*$=%.3f' %(spmi.alpha, _stat2str(spmi.STAT), spmi.zstar)
-	h         = ax.text(x, y, s, **kwdargs)
+	plotter = SPMiPlotter(spmi, ax=ax)
+	h       = plotter.plot_threshold_label(lower=False, pos=None, **kwdargs)
 	if autoset_ylim:
-		_set_ylim(ax)
+		plotter._set_ylim(ax)
 	return h
 

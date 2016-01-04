@@ -18,8 +18,9 @@ SPMs.
 	* scipy.io.savemat
 '''
 
-# Copyright (C) 2014  Todd Pataky
-# io.py version: 0.2 (2014/05/01)
+# Copyright (C) 2016  Todd Pataky
+# io.py version: 0.3.2 (2016/01/03)
+
 
 
 import numpy as np

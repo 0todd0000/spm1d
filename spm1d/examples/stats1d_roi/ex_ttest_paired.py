@@ -1,4 +1,5 @@
 
+import numpy as np
 from matplotlib import pyplot
 import spm1d
 
@@ -9,11 +10,17 @@ dataset      = spm1d.data.uv1d.t2.PlantarArchAngle()
 YA,YB        = dataset.get_data()  #normal and fast walking
 
 
+#(0a) Create region of interest(ROI):
+roi        = np.array([False]*YA.shape[1])
+roi[0:10]  = True
+
+
+
 
 #(1) Conduct t test:
 alpha      = 0.05
-t          = spm1d.stats.ttest_paired(YA, YB)
-ti         = t.inference(alpha, two_tailed=True, interp=True)
+t          = spm1d.stats.ttest_paired(YA, YB, roi=roi)
+ti         = t.inference(alpha, two_tailed=False, interp=True)
 
 
 
@@ -24,6 +31,7 @@ pyplot.figure( figsize=(8, 3.5) )
 ax     = pyplot.axes( (0.1, 0.15, 0.35, 0.8) )
 spm1d.plot.plot_mean_sd(YA)
 spm1d.plot.plot_mean_sd(YB, linecolor='r', facecolor='r')
+spm1d.plot.plot_roi(roi, facecolor='b', alpha=0.3)
 ax.axhline(y=0, color='k', linestyle=':')
 ax.set_xlabel('Time (%)')
 ax.set_ylabel('Plantar arch angle  (deg)')

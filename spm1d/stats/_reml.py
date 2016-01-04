@@ -16,8 +16,9 @@ Specific version details:
     authors: John Ashburner & Karl Friston
 '''
 
-# Copyright (C) 2014  Todd Pataky
-# _reml.py version: 0.2.0001 (2014/05/25)
+# Copyright (C) 2016  Todd Pataky
+# _reml.py version: 0.3.2 (2016/01/03)
+
 
 
 import itertools

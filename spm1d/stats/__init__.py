@@ -18,6 +18,10 @@ Specifically:
 
 '''
 
+# Copyright (C) 2016  Todd Pataky
+# __init__.py version: 0.3.2 (2016/01/03)
+
+
 import _spm
 
 from t import ttest, ttest_paired, ttest2, regress, glm

@@ -1,3 +1,10 @@
+'''
+High-level ANOVA user interface.
+'''
+
+# Copyright (C) 2016  Todd Pataky
+# ui.py version: 0.3.2 (2016/01/03)
+
 
 import warnings
 import numpy as np
@@ -29,13 +36,15 @@ def aov(model, contrasts, f_terms):
 		if model.dim == 0:
 			F.append( _spm.SPM0D_F(f, (df0,df1), (ss0,ss1), (ms0,ms1), model.eij, model.QT) )
 		else:
-			F.append( _spm.SPM_F(f, (df0,df1), model.fwhm, model.resels, model.X, model._beta, model.eij, model.QT) )
+			if model.roi is not None:
+				f   = np.ma.masked_array(f, np.logical_not(model.roi))
+			F.append( _spm.SPM_F(f, (df0,df1), model.fwhm, model.resels, model.X, model._beta, model.eij, model.QT, roi=model.roi) )
 	return F
 
 
 ### ONE-WAY DESIGNS ##############
 
-def anova1(Y, A=None, equal_var=False):
+def anova1(Y, A=None, equal_var=False, roi=None):
 	'''
 	One-way ANOVA.
 	
@@ -66,7 +75,7 @@ def anova1(Y, A=None, equal_var=False):
 	else:
 		_datachecks.check('anova1', Y, A)
 	design  = designs.ANOVA1(A)
-	model   = models.LinearModel(Y, design.X)
+	model   = models.LinearModel(Y, design.X, roi=roi)
 	model.fit()
 	F       = aov(model, design.contrasts, design.f_terms)[0]
 	if not equal_var:
@@ -78,7 +87,7 @@ def anova1(Y, A=None, equal_var=False):
 
 
 
-def anova1rm(Y, A, SUBJ, equal_var=True):
+def anova1rm(Y, A, SUBJ, equal_var=True, roi=None):
 	'''
 	One-way repeated-measures ANOVA.
 	
@@ -104,7 +113,7 @@ def anova1rm(Y, A, SUBJ, equal_var=True):
 	if not equal_var:
 		raise( NotImplementedError( 'Non-sphericity corrections are not yet implemented. Set "equal_var" to "True" to force an assumption of equal variance.' ) )
 	design  = designs.ANOVA1rm(A, SUBJ)
-	model   = models.LinearModel(Y, design.X)
+	model   = models.LinearModel(Y, design.X, roi=roi)
 	if (model.dim == 1) and ( design.check_for_single_responses() ):
 		model.fit( approx_residuals=design.contrasts.C[:3] )
 	else:
@@ -120,7 +129,7 @@ def anova1rm(Y, A, SUBJ, equal_var=True):
 ### TWO-WAY DESIGNS ##############
 
 
-def anova2(Y, A, B, equal_var=True):
+def anova2(Y, A, B, equal_var=True, roi=None):
 	'''
 	Two-way ANOVA.
 	
@@ -139,7 +148,7 @@ def anova2(Y, A, B, equal_var=True):
 	if not equal_var:
 		raise( NotImplementedError( 'Non-sphericity corrections are not yet implemented. Set "equal_var" to "True" to force an assumption of equal variance.' ) )
 	design  = designs.ANOVA2(A, B)
-	model   = models.LinearModel(Y, design.X)
+	model   = models.LinearModel(Y, design.X, roi=roi)
 	model.fit()
 	F       = aov(model, design.contrasts, design.f_terms)
 	# if not equal_var:
@@ -152,7 +161,7 @@ def anova2(Y, A, B, equal_var=True):
 	return F
 
 
-def anova2nested(Y, A, B, equal_var=True):
+def anova2nested(Y, A, B, equal_var=True, roi=None):
 	'''
 	Two-way nested ANOVA.
 	
@@ -173,14 +182,14 @@ def anova2nested(Y, A, B, equal_var=True):
 	if equal_var is not True:
 		raise( NotImplementedError('Non-sphericity correction not implemented. To continue you must assume equal variance and set "equal_var=True".') )
 	design  = designs.ANOVA2nested(A, B)
-	model   = models.LinearModel(Y, design.X)
+	model   = models.LinearModel(Y, design.X, roi=roi)
 	model.fit()
 	F       = aov(model, design.contrasts, design.f_terms)
 	return F
 
 
 
-def anova2rm(Y, A, B, SUBJ, equal_var=True):
+def anova2rm(Y, A, B, SUBJ, equal_var=True, roi=None):
 	'''
 	Two-way repeated-measures ANOVA.
 	
@@ -203,7 +212,7 @@ def anova2rm(Y, A, B, SUBJ, equal_var=True):
 	if equal_var is not True:
 		raise( NotImplementedError('Non-sphericity correction not implemented. To continue you must assume equal variance and set "equal_var=True".') )
 	design  = designs.ANOVA2rm(A, B, SUBJ)
-	model   = models.LinearModel(Y, design.X)
+	model   = models.LinearModel(Y, design.X, roi=roi)
 	if (model.dim == 1) and ( design.check_for_single_responses() ):
 		model.fit( approx_residuals=design.contrasts.C[:5] )
 	else:
@@ -219,7 +228,7 @@ def anova2rm(Y, A, B, SUBJ, equal_var=True):
 	return F
 
 
-def anova2onerm(Y, A, B, SUBJ, equal_var=True):
+def anova2onerm(Y, A, B, SUBJ, equal_var=True, roi=None):
 	'''
 	Two-way ANOVA with repeated-measures on one factor.
 	
@@ -242,7 +251,7 @@ def anova2onerm(Y, A, B, SUBJ, equal_var=True):
 	if equal_var is not True:
 		raise( NotImplementedError('Non-sphericity correction not implemented. To continue you must assume equal variance and set "equal_var=True".') )
 	design  = designs.ANOVA2onerm(A, B, SUBJ)
-	model   = models.LinearModel(Y, design.X)
+	model   = models.LinearModel(Y, design.X, roi=roi)
 	if (model.dim == 1) and ( design.check_for_single_responses() ):
 		model.fit( approx_residuals=design.contrasts.C[:5] )
 	else:
@@ -256,7 +265,7 @@ def anova2onerm(Y, A, B, SUBJ, equal_var=True):
 ### THREE-WAY DESIGNS ##############
 
 
-def anova3(Y, A, B, C, equal_var=True):
+def anova3(Y, A, B, C, equal_var=True, roi=None):
 	'''
 	Three-way ANOVA.
 	
@@ -280,7 +289,7 @@ def anova3(Y, A, B, C, equal_var=True):
 	if equal_var is not True:
 		raise( NotImplementedError('Non-sphericity correction not implemented. To continue you must assume equal variance and set "equal_var=True".') )
 	design  = designs.ANOVA3(A, B, C)
-	model   = models.LinearModel(Y, design.X)
+	model   = models.LinearModel(Y, design.X, roi=roi)
 	model.fit()
 	F       = aov(model, design.contrasts, design.f_terms)
 	return F
@@ -293,7 +302,7 @@ def anova3(Y, A, B, C, equal_var=True):
 	# 		ff.df = u,u2
 	# return f
 
-def anova3nested(Y, A, B, C, equal_var=True):
+def anova3nested(Y, A, B, C, equal_var=True, roi=None):
 	'''
 	Three-way fully nested ANOVA.
 	
@@ -316,13 +325,13 @@ def anova3nested(Y, A, B, C, equal_var=True):
 	if equal_var is not True:
 		raise( NotImplementedError('Non-sphericity correction not implemented. To continue you must assume equal variance and set "equal_var=True".') )
 	design  = designs.ANOVA3nested(A, B, C)
-	model   = models.LinearModel(Y, design.X)
+	model   = models.LinearModel(Y, design.X, roi=roi)
 	model.fit()
 	F       = aov(model, design.contrasts, design.f_terms)
 	return F
 
 
-def anova3rm(Y, A, B, C, SUBJ, equal_var=True):
+def anova3rm(Y, A, B, C, SUBJ, equal_var=True, roi=None):
 	'''
 	Three-way ANOVA (repeated measures on all factors).
 	
@@ -346,7 +355,7 @@ def anova3rm(Y, A, B, C, SUBJ, equal_var=True):
 	if equal_var is not True:
 		raise( NotImplementedError('Non-sphericity correction not implemented. To continue you must assume equal variance and set "equal_var=True".') )
 	design  = designs.ANOVA3rm(A, B, C, SUBJ)
-	model   = models.LinearModel(Y, design.X)
+	model   = models.LinearModel(Y, design.X, roi=roi)
 	if (model.dim == 1) and ( design.check_for_single_responses() ):
 		model.fit( approx_residuals=design.contrasts.C[:8] )
 	else:
@@ -356,7 +365,7 @@ def anova3rm(Y, A, B, C, SUBJ, equal_var=True):
 	
 
 
-def anova3onerm(Y, A, B, C, SUBJ, equal_var=True):
+def anova3onerm(Y, A, B, C, SUBJ, equal_var=True, roi=None):
 	'''
 	Three-way ANOVA with repeated-measures on one factor.
 	
@@ -384,7 +393,7 @@ def anova3onerm(Y, A, B, C, SUBJ, equal_var=True):
 	if equal_var is not True:
 		raise( NotImplementedError('Non-sphericity correction not implemented. To continue you must assume equal variance and set "equal_var=True".') )
 	design  = designs.ANOVA3onerm(A, B, C, SUBJ)
-	model   = models.LinearModel(Y, design.X)
+	model   = models.LinearModel(Y, design.X, roi=roi)
 	if (model.dim == 1) and ( design.check_for_single_responses() ):
 		model.fit( approx_residuals=design.contrasts.C[:8] )
 	else:
@@ -394,7 +403,7 @@ def anova3onerm(Y, A, B, C, SUBJ, equal_var=True):
 
 
 
-def anova3tworm(Y, A, B, C, SUBJ, equal_var=True):
+def anova3tworm(Y, A, B, C, SUBJ, equal_var=True, roi=None):
 	'''
 	Three-way ANOVA with repeated-measures on two factors.
 	
@@ -422,7 +431,7 @@ def anova3tworm(Y, A, B, C, SUBJ, equal_var=True):
 	if equal_var is not True:
 		raise( NotImplementedError('Non-sphericity correction not implemented. To continue you must assume equal variance and set "equal_var=True".') )
 	design  = designs.ANOVA3tworm(A, B, C, SUBJ)
-	model   = models.LinearModel(Y, design.X)
+	model   = models.LinearModel(Y, design.X, roi=roi)
 	if (model.dim == 1) and ( design.check_for_single_responses() ):
 		model.fit( approx_residuals=design.contrasts.C[:8] )
 	else:

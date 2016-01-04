@@ -5,8 +5,9 @@ Data checking tools.
 are not meant to be accessed directly by the user.)
 '''
 
-# Copyright (C) 2014  Todd Pataky
-# _datachecks.py version: 0.2.0004 (2014/06/11)
+# Copyright (C) 2016  Todd Pataky
+# t.py version: 0.3.2 (2016/01/03)
+
 
 import warnings
 import numpy as np

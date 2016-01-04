@@ -26,7 +26,7 @@ def _T2_twosample_singlenode(yA, yB):  #at a single node:
 
 
 
-def hotellings(Y, mu=None):
+def hotellings(Y, mu=None, roi=None):
 	'''
 	One-sample Hotelling's T2 test.
 	
@@ -52,16 +52,17 @@ def hotellings(Y, mu=None):
 			Y         = Y - mu
 		nResponses,nNodes,nVectDim  = Y.shape
 		T2            = np.array([_T2_onesample_singlenode(Y[:,i,:])   for i in range(nNodes)])
+		T2            = T2 if roi is None else np.ma.masked_array(T2, np.logical_not(roi))
 		R             = _mvbase._get_residuals_onesample(Y)
 		W             = _mvbase._fwhm(R)
-		rCounts       = _mvbase._resel_counts(R, W)
+		rCounts       = _mvbase._resel_counts(R, W, roi=roi)
 		m,p           = float(nResponses)-1, float(nVectDim)
 		v1,v2         = p, m
-		return _spm.SPM_T2(T2, (v1, v2), W, rCounts, None, None, R)
+		return _spm.SPM_T2(T2, (v1, v2), W, rCounts, None, None, R, roi=roi)
 	
 
 
-def hotellings_paired(YA, YB):
+def hotellings_paired(YA, YB, roi=None):
 	'''
 	Paired Hotelling's T2 test.
 	
@@ -77,11 +78,11 @@ def hotellings_paired(YA, YB):
 		- A paired Hotelling's test on (YA,YB) is equivalent to a one-sample Hotelling's test on (YB-YA)
 	'''
 	
-	return hotellings( YB - YA )
+	return hotellings( YB - YA, roi=roi )
 
 
 
-def hotellings2(YA, YB, equal_var=True):
+def hotellings2(YA, YB, equal_var=True, roi=None):
 	'''
 	Two-sample Hotelling's T2 test.
 	
@@ -109,11 +110,12 @@ def hotellings2(YA, YB, equal_var=True):
 		JA,QA,IA      = YA.shape
 		JB,QB,IB      = YB.shape
 		T2            = np.array([_T2_twosample_singlenode(YA[:,i,:], YB[:,i,:])   for i in range(QA)])
+		T2            = T2 if roi is None else np.ma.masked_array(T2, np.logical_not(roi))
 		R             = _mvbase._get_residuals_twosample(YA, YB)
 		W             = _mvbase._fwhm(R)
-		rCounts       = _mvbase._resel_counts(R, W)
+		rCounts       = _mvbase._resel_counts(R, W, roi=roi)
 		# v1,v2         = float(IA), float(JA+JB-IA-1)  ###incorrect;  these are F df, not T2 df
 		v1,v2         = float(IA), float(JA+JB-2)
-		return _spm.SPM_T2(np.array(T2), (v1, v2), W, rCounts, None, None, R)
+		return _spm.SPM_T2(T2, (v1, v2), W, rCounts, None, None, R, roi=roi)
 
 

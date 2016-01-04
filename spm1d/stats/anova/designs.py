@@ -1,4 +1,12 @@
 
+'''
+High-level ANOVA designs.
+'''
+
+# Copyright (C) 2016  Todd Pataky
+# designs.py version: 0.3.2 (2016/01/03)
+
+
 import warnings
 import numpy as np
 from matplotlib import pyplot
@@ -165,7 +173,6 @@ class ANOVA1rm(_Design):
 				warnings.warn('\nWARNING:  Only one observation per subject found.  Residuals and inference will be approximate. To avoid approximate residuals: (a) Add multiple observations per subject and per condition, and (b) ensure that all subjects and conditions have the same number of observations.\n', UserWarning, stacklevel=2)
 				continue
 		return only_single
-
 
 
 

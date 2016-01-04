@@ -9,10 +9,11 @@ This module contains class definitions for raw SPMs (raw test statistic continua
 and inference SPMs (thresholded test statistic).
 '''
 
-# Copyright (C) 2014  Todd Pataky
-# Version: 0.3.1.6 (2015/12/30)
+# Copyright (C) 2016  Todd Pataky
+# _spm.py version: 0.3.2 (2016/01/03)
 
 
+from math import floor,ceil
 import numpy as np
 from scipy import ndimage,optimize,stats
 from .. plot import plot_spm, plot_spm_design
@@ -60,25 +61,102 @@ eps    = np.finfo(float).eps   #smallest float, used to avoid divide-by-zero err
 (0)  CLUSTER CLASS DEFINITION
 #################
 '''
+
 class Cluster(object):
-	def __init__(self, m, mr, h, xy, p):
-		self.extent  = m       #cluster size (absolute)
-		self.extentR = mr      #cluster size (resels)
-		self.h       = h       #cluster height (minimum above threshold)
-		self.xy      = tuple(xy)      #cluster centroid
-		self.P       = p       #probability value (based on h and extentR)
+	def __init__(self, x, z, u, interp=True):
+		self._X        = x
+		self._Z        = z
+		self._u        = u
+		self._other    = None       #wrapped cluster
+		self._interp   = interp
+		self.P         = None       #probability value (based on h and extentR)
+		self.csign     = int(np.sign(u))
+		self.endpoints = None
+		self.extent    = None       #cluster size (absolute)
+		self.extentR   = None      #cluster size (resels)
+		self.h         = None       #cluster height (minimum above threshold)
+		self.iswrapped = False
+		self.xy        = None      #cluster centroid
+		self._assemble()
+		
 	def __repr__(self):
-		s        = ''
-		s       += 'Cluster at location: (%.3f, %.3f)\n' %self.xy
-		s       += '   extent          :  %d\n' %self.extent
-		s       += '   extent (resels) :  %.5f\n' %self.extentR
-		s       += '   height (min)    :  %.5f\n' %self.h
-		if self.P==None:
-			s   += '   P               :  None\n\n'
+		s            = ''
+		if self.iswrapped:
+			s       += 'Cluster at location: (%.3f, %.3f)\n' %self.xy[0]
 		else:
-			s   += '   P               :  %.5f\n\n' %self.P
+			s       += 'Cluster at location: (%.3f, %.3f)\n' %self.xy
+		s           += '   iswrapped       :  %s\n' %self.iswrapped
+		if self._interp:
+			if self.iswrapped:
+				(x0,x1),(x2,x3) = self.endpoints[0], self.endpoints[1]
+				s   += '   endpoints       :  [(%.3f, %.3f), (%.3f, %.3f)]\n' %(x0,x1,x2,x3)
+			else:
+				s   += '   endpoints       :  (%.3f, %.3f)\n' %self.endpoints
+			s       += '   extent          :  %.3f\n' %self.extent
+				
+		else:
+			if self.iswrapped:
+				(x0,x1),(x2,x3) = self.endpoints[0], self.endpoints[1]
+				s   += '   endpoints       :  [(%d, %d), (%d, %d)]\n' %(x0,x1,x2,x3)
+			else:
+				s   += '   endpoints       :  (%d, %d)\n' %self.endpoints
+			s       += '   extent          :  %d\n' %self.extent
+		if self.extentR is None:
+			s       += '   extent (resels) :  None\n'
+		else:
+			s       += '   extent (resels) :  %.5f\n' %self.extentR
+		s           += '   height (min)    :  %.5f\n' %self.h
+		if self.P is None:
+			s       += '   P               :  None\n\n'
+		else:
+			s       += '   P               :  %.5f\n\n' %self.P
 		return s
 
+	def _assemble(self):
+		x0,x1               = self._X[0], self._X[-1]
+		z                   = self._Z
+		if not self._interp:
+			x0,x1           = int(ceil(x0)), int(floor(x1))
+			z               = z[1:-1]
+		self.endpoints      = x0, x1
+		self.extent         = x1 - x0
+		if self.extent==0:  #to reproduce results from previous versions, minimum extent must be one (when not interpolated)
+			self.extent     = 1
+		self.h              = (self.csign*z).min()
+		x,z                 = self._X, self._Z
+		self.xy             = (x*z).sum() / z.sum(),  z.mean()
+
+	def get_patch_vertices(self):
+		x,z,u   = self._X.tolist(), self._Z.tolist(), self._u
+		if z[0]!=u:
+			x  = [x[0]] + x
+			z  = [u] + z
+		if z[-1]!=u:
+			x += [x[-1]]
+			z += [u]
+		return x,z
+
+	def inference(self, STAT, df, fwhm, resels, two_tailed, withBonf, nNodes):
+		self.extentR        = float(self.extent) / fwhm
+		k,u                 = self.extentR, self.h
+		if STAT == 'T':
+			p = rft1d.t.p_cluster_resels(k, u, df[1], resels, withBonf=withBonf, nNodes=nNodes)
+			p = min(1, 2*p) if two_tailed else p
+		elif STAT == 'F':
+			p = rft1d.f.p_cluster_resels(k, u, df, resels, withBonf=withBonf, nNodes=nNodes)
+		elif STAT == 'T2':
+			p = rft1d.T2.p_cluster_resels(k, u, df, resels, withBonf=withBonf, nNodes=nNodes)
+		elif STAT == 'X2':
+			p = rft1d.chi2.p_cluster_resels(k, u, df[1], resels, withBonf=withBonf, nNodes=nNodes)
+		self.P    = p
+		
+	def merge(self, other):
+		self.iswrapped  = True
+		self.extent     = self.extent + other.extent
+		self.endpoints  = [other.endpoints, self.endpoints]
+		self.h          = min(self.h, other.h)
+		self.xy         = [other.xy, self.xy]
+		self._other     = other
 
 
 
@@ -220,7 +298,7 @@ class SPM0Di_X2(_SPM0Dinference):
 
 class _SPM(object):
 	'''Parent class for all SPM.'''
-	def __init__(self, STAT, z, df, fwhm, resels, X, beta, residuals):
+	def __init__(self, STAT, z, df, fwhm, resels, X, beta, residuals, roi=None):
 		z[np.isnan(z)]      = 0
 		self.STAT           = STAT             #test statistic ("T" or "F")
 		self.Q              = z.size           #number of nodes (field size = Q-1)
@@ -231,6 +309,7 @@ class _SPM(object):
 		self.df             = df               #degrees of freedom
 		self.fwhm           = fwhm             #smoothness
 		self.resels         = resels           #resel counts
+		self.roi            = roi              #region of interest
 
 
 	def __repr__(self):
@@ -244,45 +323,128 @@ class _SPM(object):
 		s       += '   SPM.fwhm   :  %.5f\n' %self.fwhm
 		s       += '   SPM.resels :  (%d, %.5f)\n\n\n' %tuple(self.resels)
 		return s
+		
 
-
-	def inference(self, alpha=0.05, cluster_size=0, two_tailed=False, interp=True, circular=False, withBonf=True):
-		a         = 0.5*alpha if two_tailed else alpha
+	def _build_spmi(self, alpha, zstar, clusters, p_set, two_tailed):
+		p_clusters  = [c.P for c in clusters]
 		if self.STAT == 'T':
-			zstar = rft1d.t.isf(a, self.df[1], self.Q, self.fwhm, withBonf=withBonf)
+			spmi    = SPMi_T(self, alpha,  zstar, clusters, p_set, p_clusters, two_tailed)
 		elif self.STAT == 'F':
-			zstar = rft1d.f.isf(a, self.df, self.Q, self.fwhm, withBonf=withBonf)
+			spmi    = SPMi_F(self, alpha,  zstar, clusters, p_set, p_clusters, two_tailed)
 		elif self.STAT == 'T2':
-			zstar = rft1d.T2.isf(a, self.df, self.Q, self.fwhm, withBonf=withBonf)
+			spmi    = SPMi_T2(self, alpha, zstar, clusters, p_set, p_clusters, two_tailed)
 		elif self.STAT == 'X2':
-			zstar = rft1d.chi2.isf(a, self.df[1], self.Q, self.fwhm, withBonf=withBonf)
-		### compute suprathreshold cluster characteristics:
-		ccalc     = rft1d.geom.ClusterMetricCalculatorInitialized(self.z, zstar, interp=interp, wrap=circular)
-		extents,minima,centroids,L = ccalc.get_all()
-		signs     = [1]*ccalc.n
-		### compute negative cluster characteristics:
-		if two_tailed:
-			ccalc      = rft1d.geom.ClusterMetricCalculatorInitialized(-self.z, zstar, interp=interp, wrap=circular)
-			if ccalc.n > 0:
-				extents1,minima1,centroids1,L1 = ccalc.get_all()
-				extents   += extents1
-				minima    += (-1*np.array(minima1)).tolist()
-				centroids += (np.array(centroids1)*[1,-1]).tolist()
-				L         += L1
-				signs     += [-1]*ccalc.n
-		### set-level inference:
-		nUpcrossings  = len(extents)
+			spmi    = SPMi_X2(self, alpha, zstar, clusters, p_set, p_clusters, two_tailed)
+		return spmi
+		
+	def _cluster_geom(self, u, interp, circular, csign=+1):
+		Q,Z      = self.Q, self.z
+		X        = np.arange(Q)
+		if np.ma.is_masked(Z):
+			i    = Z.mask
+			Z    = np.array(Z)
+			B    = (csign*Z) >= u
+			B[i] = False
+			Z[i] = np.nan
+		else:
+			B    = (csign*Z) >= u
+		Z        = csign*Z
+		L,n      = rft1d.geom.bwlabel(B)
+		clusters = []
+		for i in range(n):
+			b    = L==(i+1)
+			x,z  = X[b].tolist(), Z[b].tolist()
+			# interpolate to threshold u using similar triangles method
+			# (interpolate for plotting whether or not "interp" is true)
+			if (x[0]>0) and not np.isnan( Z[x[0]-1] ):  #first cluster point not continuum edge && previous point not outside ROI
+				z0,z1  = Z[x[0]-1], Z[x[0]]
+				dx     = (z1-u) / (z1-z0)
+				x      = [x[0]-dx] + x
+				z      = [u] +z
+			if (x[-1]<Q-1) and not np.isnan( Z[x[-1]+1] ):  #last cluster point not continuum edge && next point not outside ROI
+				z0,z1  = Z[x[-1]], Z[x[-1]+1]
+				dx     = (z0-u) / (z0-z1)
+				x     += [x[-1]+dx]
+				z     += [u]
+			# create cluster:
+			x,z  = np.array(x), csign*np.array(z)
+			clusters.append(  Cluster(x, z, csign*u, interp) )
+		#merge clusters if necessary (circular fields only)
+		if circular:
+			xy         = np.array([c.endpoints  for c in clusters])
+			i0,i1      = xy[:,0]==0, xy[:,1]==Q-1
+			ind0,ind1  = np.argwhere(i0), np.argwhere(i1)
+			if (len(ind0)>0) and (len(ind1)>0):
+				ind0,ind1 = ind0[0][0], ind1[0][0]
+				if (ind0!=ind1) and (clusters[ind0].csign == clusters[ind1].csign):
+					clusters[ind0].merge( clusters[ind1] )
+					clusters.pop( ind1 )
+		return clusters
+	
+	def _cluster_inference(self, clusters, two_tailed, withBonf):
+		for cluster in clusters:
+			cluster.inference(self.STAT, self.df, self.fwhm, self.resels, two_tailed, withBonf, self.Q)
+		return clusters
+
+	def _get_clusters(self, zstar, check_neg, interp, circular):
+		clusters      = self._cluster_geom(zstar, interp, circular, csign=+1)
+		if check_neg:
+			clustersn = self._cluster_geom(zstar, interp, circular, csign=-1)
+			clusters += clustersn
+		return clusters
+
+	def _isf(self, a, withBonf):   #Inverse survival function (random field theory)
+		if self.STAT == 'T':
+			zstar = rft1d.t.isf_resels(a, self.df[1], self.resels, withBonf=withBonf, nNodes=self.Q)
+		elif self.STAT == 'F':
+			zstar = rft1d.f.isf_resels(a, self.df, self.resels, withBonf=withBonf, nNodes=self.Q)
+		elif self.STAT == 'T2':
+			zstar = rft1d.T2.isf_resels(a, self.df, self.resels, withBonf=withBonf, nNodes=self.Q)
+		elif self.STAT == 'X2':
+			zstar = rft1d.chi2.isf_resels(a, self.df[1], self.resels, withBonf=withBonf, nNodes=self.Q)
+		return zstar
+
+	def _setlevel_inference(self, zstar, clusters, two_tailed, withBonf):
+		nUpcrossings  = len(clusters)
 		p_set         = 1.0
 		if nUpcrossings>0:
-			minextent     = min(extents)/self.fwhm
+			extents       = [c.extentR for c in clusters]
+			minextent     = min(extents)
 			if self.STAT == 'T':
+<<<<<<< HEAD
+				p_set = rft1d.t.p_set_resels(nUpcrossings, minextent, zstar, self.df[1], self.resels, withBonf=withBonf, nNodes=self.Q)
+				p_set = min(1, 2*p_set) if two_tailed else p_set
+=======
 				p_set = rft1d.t.p_set(nUpcrossings, minextent, zstar, self.df[1], self.Q, self.fwhm, withBonf=withBonf)
 				p_set = 2*p_set if two_tailed else p_set
+>>>>>>> master
 			elif self.STAT == 'F':
-				p_set = rft1d.f.p_set(nUpcrossings, minextent, zstar, self.df, self.Q, self.fwhm, withBonf=withBonf)
+				p_set = rft1d.f.p_set_resels(nUpcrossings, minextent, zstar, self.df, self.resels, withBonf=withBonf, nNodes=self.Q)
 			elif self.STAT == 'T2':
-				p_set = rft1d.T2.p_set(nUpcrossings, minextent, zstar, self.df, self.Q, self.fwhm, withBonf=withBonf)
+				p_set = rft1d.T2.p_set_resels(nUpcrossings, minextent, zstar, self.df, self.resels, withBonf=withBonf, nNodes=self.Q)
 			elif self.STAT == 'X2':
+<<<<<<< HEAD
+				p_set = rft1d.chi2.p_set_resels(nUpcrossings, minextent, zstar, self.df[1], self.resels, withBonf=withBonf, nNodes=self.Q)
+		return p_set
+	
+	def inference(self, alpha=0.05, cluster_size=0, two_tailed=False, interp=True, circular=False, withBonf=True):
+		check_neg  = two_tailed
+		### check ROI and "two_tailed" compatability:
+		if self.roi is not None:
+			if self.roi.dtype != bool:
+				if two_tailed:
+					raise( ValueError('If the ROI contains directional predictions two_tailed must be FALSE.') )
+				else:
+					check_neg  = np.any( self.roi == -1 )
+		### conduct inference:
+		a          = 0.5*alpha if two_tailed else alpha  #adjusted alpha (if two-tailed)
+		zstar      = self._isf(a, withBonf)  #critical threshold (RFT inverse survival function)
+		clusters   = self._get_clusters(zstar, check_neg, interp, circular)  #assemble all suprathreshold clusters
+		clusters   = self._cluster_inference(clusters, two_tailed, withBonf)  #conduct cluster-level inference
+		p_set      = self._setlevel_inference(zstar, clusters, two_tailed, withBonf)  #conduct set-level inference
+		spmi       = self._build_spmi(alpha, zstar, clusters, p_set, two_tailed)    #assemble SPMi object
+		return spmi
+=======
 				p_set = rft1d.chi2.p_set(nUpcrossings, minextent, zstar, self.df[1], self.Q, self.fwhm, withBonf=withBonf)
 		### cluster-level inference:
 		clusters  = []
@@ -311,6 +473,7 @@ class _SPM(object):
 			return SPMi_T2(self, alpha, zstar, nClusters, clusters, L, p_set, p, two_tailed)
 		elif self.STAT == 'X2':
 			return SPMi_X2(self, alpha, zstar, nClusters, clusters, L, p_set, p, two_tailed)
+>>>>>>> master
 	
 	def plot(self, **kwdargs):
 		return plot_spm(self, **kwdargs)
@@ -357,8 +520,8 @@ class SPM_F(_SPM):
 	
 	:Methods:
 	'''
-	def __init__(self, z, df, fwhm, resels, X, beta, residuals, X0=None):
-		_SPM.__init__(self, 'F', z, df, fwhm, resels, X, beta, residuals)
+	def __init__(self, z, df, fwhm, resels, X, beta, residuals, X0=None, roi=None):
+		_SPM.__init__(self, 'F', z, df, fwhm, resels, X, beta, residuals, roi=roi)
 		self.X0 = X0
 		
 	def inference(self, alpha=0.05, cluster_size=0, interp=True, circular=False):
@@ -405,8 +568,8 @@ class SPM_T(_SPM):
 	
 	:Methods:
 	'''
-	def __init__(self, z, df, fwhm, resels, X, beta, residuals):
-		_SPM.__init__(self, 'T', z, df, fwhm, resels, X, beta, residuals)
+	def __init__(self, z, df, fwhm, resels, X, beta, residuals, roi=None):
+		_SPM.__init__(self, 'T', z, df, fwhm, resels, X, beta, residuals, roi=roi)
 		
 	def inference(self, alpha=0.05, cluster_size=0, two_tailed=True, interp=True, circular=False):
 		'''
@@ -430,25 +593,13 @@ class SPM_T(_SPM):
 
 
 class SPM_T2(_SPM):
-	def __init__(self, z, df, fwhm, resels, X, beta, residuals):
-		super(SPM_T2, self).__init__('T2', z, df, fwhm, resels, X, beta, residuals)
-		
-	
-	# def __repr__(self):
-	# 	stat     = 'T2'
-	# 	s        = ''
-	# 	s       += 'SPM{%s}\n' %stat
-	# 	s       += '   SPM.z      :  (1x%d) test stat field\n' %self.Q
-	# 	s       += '   SPM.df     :  %s\n' %dflist2str(self.df)
-	# 	s       += '   SPM.fwhm   :  %.5f\n' %self.fwhm
-	# 	s       += '   SPM.resels :  (%d, %.5f)\n' %tuple(self.resels)
-	# 	return s
-	
+	def __init__(self, z, df, fwhm, resels, X, beta, residuals, roi=None):
+		super(SPM_T2, self).__init__('T2', z, df, fwhm, resels, X, beta, residuals, roi=roi)
 
 
 class SPM_X2(_SPM):
-	def __init__(self, z, df, fwhm, resels, X, beta, residuals):
-		super(SPM_X2, self).__init__('X2', z, df, fwhm, resels, X, beta, residuals)
+	def __init__(self, z, df, fwhm, resels, X, beta, residuals, roi=None):
+		super(SPM_X2, self).__init__('X2', z, df, fwhm, resels, X, beta, residuals, roi=roi)
 
 
 
@@ -466,17 +617,16 @@ class SPM_X2(_SPM):
 
 class _SPMinference(_SPM):
 	'''Parent class for SPM inference objects.'''
-	def __init__(self, spm, alpha, zstar, nClusters, clusters, L, p_set, p, two_tailed=False):
-		_SPM.__init__(self, spm.STAT, spm.z, spm.df, spm.fwhm, spm.resels, spm.X, spm.beta, spm.residuals)
-		self.alpha       = alpha       #Type I error rate
-		self.zstar       = zstar       #critical threshold
-		self.h0reject    = nClusters > 0
-		self.nClusters   = nClusters   #number of supra-threshold clusters
-		self.clusters    = clusters    #supra-threshold cluster information
-		self.L           = L           #cluster labels
-		self.p_set       = p_set       #set-level p value
-		self.p           = p           #P values for each cluster
-		self.two_tailed  = two_tailed  #two-tailed test boolean
+	def __init__(self, spm, alpha, zstar, clusters, p_set, p, two_tailed=False):
+		_SPM.__init__(self, spm.STAT, spm.z, spm.df, spm.fwhm, spm.resels, spm.X, spm.beta, spm.residuals, roi=spm.roi)
+		self.alpha       = alpha               #Type I error rate
+		self.zstar       = zstar               #critical threshold
+		self.clusters    = clusters            #supra-threshold cluster information
+		self.nClusters   = len(clusters)       #number of supra-threshold clusters
+		self.h0reject    = self.nClusters > 0  #null hypothesis rejection decision
+		self.p_set       = p_set               #set-level p value
+		self.p           = p                   #cluster-level p values
+		self.two_tailed  = two_tailed          #two-tailed test boolean
 
 	def __repr__(self):
 		s        = ''
