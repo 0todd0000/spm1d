@@ -370,7 +370,7 @@ class _SPM(object):
 			x,z  = np.array(x), csign*np.array(z)
 			clusters.append(  Cluster(x, z, csign*u, interp) )
 		#merge clusters if necessary (circular fields only)
-		if circular:
+		if circular and (clusters!=[]):
 			xy         = np.array([c.endpoints  for c in clusters])
 			i0,i1      = xy[:,0]==0, xy[:,1]==Q-1
 			ind0,ind1  = np.argwhere(i0), np.argwhere(i1)

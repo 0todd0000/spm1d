@@ -212,7 +212,7 @@ class SPMiPlotter(SPMPlotter):
 			print('WARNING:  there are fewer offsets than clusters.  To set offsets for all clusters use the offset_all_clusters keyword.')
 		h          = []
 		for cluster,offset in zip(self.spm.clusters, offsets):
-			x,y    = cluster.xy
+			x,y    = cluster.xy[0] if cluster.iswrapped else cluster.xy
 			x     += offset[0]
 			y     += offset[1]
 			s      = p2string(cluster.P)
