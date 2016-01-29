@@ -10,7 +10,7 @@ and inference SPMs (thresholded test statistic).
 '''
 
 # Copyright (C) 2016  Todd Pataky
-# _spm.py version: 0.3.2 (2016/01/03)
+# _spm.py version: 0.3.2 (2016/01/29)
 
 
 from math import floor,ceil
@@ -391,6 +391,10 @@ class _SPM(object):
 		if check_neg:
 			clustersn = self._cluster_geom(zstar, interp, circular, csign=-1)
 			clusters += clustersn
+			### reorder clusters left-to-right:
+			x         = [c.xy[0]  for c in clusters]
+			ind       = np.argsort(x)
+			clusters  = np.array(clusters)[ind].tolist()
 		return clusters
 
 	def _isf(self, a, withBonf):   #Inverse survival function (random field theory)
