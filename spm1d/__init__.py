@@ -12,16 +12,16 @@ Academic Press, 2006
 [2] Wellcome Trust Centre for Neuroimaging SPM homepage:
 www.fil.ion.ucl.ac.uk/spm/
 
-[3] Pataky TC (2010). Generalized n-dimensional field analysis using
-statistical parametric mapping. Journal of Biomechanics.
+[3] Pataky TC (2016). RFT1D: Smooth one-dimensional random field upcrossing
+probabilities in Python, Journal of Statistical Software, in press.
 
 
 Copyright (C) 2016  Todd Pataky
-Version: 0.3.2.3 (2016/01/29)
+Version: 0.3.2.4 (2016/05/02)
 '''
 
 
-__version__ = '0.3.2.3 (2016/01/29)'
+__version__ = '0.3.2.4 (2016/05/02)'
 
 
 __all__ = ['io', 'plot', 'stats', 'util']
