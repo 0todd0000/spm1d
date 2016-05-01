@@ -7,7 +7,20 @@ Downloads
 
 .. cssclass:: table-striped
 
-Source code and datasets can be downloaded from **spm1d**'s `Python <http://0todd0000.github.io/spm1d/>`_ or `MATLAB <http://0todd0000.github.io/spm1dmatlab/>`_ GitHub sites.
+`Python source code <https://github.com/0todd0000/spm1d/archive/master.zip>`_
+
+`MATLAB source code <https://github.com/0todd0000/spm1dmatlab/archive/master.zip>`_
+
+
+------------------------
+
+**Source code repositories at GitHub**
+
+`Python repository <https://github.com/0todd0000/spm1d/>`_ 
+
+`MATLAB repository <https://github.com/0todd0000/spm1dmatlab>`_
+
+
 
 
 
@@ -88,7 +101,7 @@ License information
 License agreement for spm1d
 ----------------------------
 
-Copyright (C) 2015  Todd Pataky
+Copyright (C) 2016  Todd Pataky
 
 This program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
 

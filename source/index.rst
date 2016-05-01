@@ -15,8 +15,23 @@ It uses `Random Field Theory <http://www.spm1d.org/rft1d>`_ to make statistical 
 
 **Download**
 
+`Python source code <https://github.com/0todd0000/spm1d/archive/master.zip>`_
 
-Source code and datasets can be downloaded from the **spm1d** `Python <http://0todd0000.github.io/spm1d/>`_ or `MATLAB <http://0todd0000.github.io/spm1dmatlab/>`_ GitHub sites.
+`MATLAB source code <https://github.com/0todd0000/spm1dmatlab/archive/master.zip>`_
+
+
+------------------------
+
+**Source code repositories at GitHub**
+
+`Python repository <https://github.com/0todd0000/spm1d/>`_ 
+
+`MATLAB repository <https://github.com/0todd0000/spm1dmatlab>`_
+
+
+
+
+
 
 
 ------------------------
