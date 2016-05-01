@@ -1,0 +1,298 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>API &mdash; rft1d 0.1.1 documentation</title>
+  
+
+  
+  
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/theme.css" type="text/css" />
+  
+    <link rel="top" title="rft1d 0.1.1 documentation" href="index.html"/>
+        <link rel="next" title="rft1d.data" href="API/data.html"/>
+        <link rel="prev" title="Scripts (overview)" href="Examples/List.html"/> 
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div>
+		<!-- <a href="index.html"><img src="_static/rft1d.png" alt="rft1d.png"</a> -->
+		<!-- <img src="_static/rft1d.png" alt="rft1d.png"</img> -->
+		<img src="_static/rft1d.png" alt="rft1d.png"</img>
+      </div>
+
+
+      <div class="wy-side-nav-search">
+        <!-- <a href="index.html" class="fa fa-home"> rft1d</a> -->
+		<div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        <a href="index.html" class="fa fa-home"> rft1d</a>
+		<!-- <img src="./rft1d.png" alt="rft1d.png"> -->
+		
+        
+            <ul>
+<li class="toctree-l1"><a class="reference internal" href="Download.html">Download</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Download.html#automated-installation">Automated installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Download.html#source-code-download">Source code download</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Download.html#release-notes">Release Notes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Download.html#license-information">License information</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Download.html#license-agreement-for-rft1d">License agreement for rft1d</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Theory.html">RFT Overview</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Theory.html#gaussian-random-fields">Gaussian random fields</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Theory.html#expected-field-maximum">Expected field maximum</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Theory.html#upcrossings">Upcrossings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Theory.html#expected-upcrossing-geometry">Expected upcrossing geometry</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Examples.html">Examples</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Examples/Basic.html">Basic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Examples/BrokenFields.html">Broken fields</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Examples/Validation.html">Validation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Examples/Application.html">Application</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Examples/Paper.html">Results from the paper</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Examples/List.html">Scripts (overview)</a></li>
+</ul>
+</li>
+</ul>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="">API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="API/data.html">rft1d.data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="API/distributions.html">rft1d.distributions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="API/geom.html">rft1d.geom</a></li>
+<li class="toctree-l2"><a class="reference internal" href="API/prob.html">rft1d.prob</a></li>
+<li class="toctree-l2"><a class="reference internal" href="API/random.html">rft1d.random</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="References.html">References</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="References.html#on-the-web">On the web</a></li>
+<li class="toctree-l2"><a class="reference internal" href="References.html#software">Software</a></li>
+<li class="toctree-l2"><a class="reference internal" href="References.html#literature">Literature</a></li>
+</ul>
+</li>
+</ul>
+
+        
+		
+      </div>
+	  
+	  
+      <!-- <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        <a href="index.html" class="fa fa-home"> rft1d</a>
+      </div> -->
+	  
+      <!-- <div class="wy-side-nav-search">
+        <a href="index.html" class="fa fa-home"> rft1d</a>
+		<div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+      </div> -->
+	  
+	  
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="index.html">rft1d</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="index.html">Docs</a> &raquo;</li>
+      
+    <li>API</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          <!-- <a href="_sources/API.txt" rel="nofollow"> View page source</a> -->
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            
+  <div class="section" id="api">
+<span id="label-api"></span><h1>API<a class="headerlink" href="#api" title="Permalink to this headline">¶</a></h1>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="API/data.html">rft1d.data</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="API/data.html#weather">Weather</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="API/distributions.html">rft1d.distributions</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="API/distributions.html#gaussian-rft1d-norm">Gaussian (<strong>rft1d.norm</strong>)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="API/distributions.html#student-s-t-rft1d-t">Student&#8217;s t (<strong>rft1d.t</strong>)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="API/distributions.html#chi-squared-rft1d-chi2">Chi-squared (<strong>rft1d.chi2</strong>)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="API/distributions.html#fisher-snedecor-f-rft1d-f">Fisher-Snedecor F (<strong>rft1d.f</strong>)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="API/distributions.html#hotelling-s-t2-rft1d-t2">Hotelling&#8217;s T2 (<strong>rft1d.T2</strong>)</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="API/geom.html">rft1d.geom</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="API/geom.html#basic-geometry-functions">Basic geometry functions:</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="API/geom.html#bwlabel">bwlabel</a></li>
+<li class="toctree-l3"><a class="reference internal" href="API/geom.html#estimate-fwhm">estimate_fwhm</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="API/geom.html#field-geometry-resel-counts">Field geometry (resel counts)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="API/geom.html#resel-counts">resel_counts</a></li>
+<li class="toctree-l3"><a class="reference internal" href="API/geom.html#resel-conversion-functions">resel conversion functions</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="API/geom.html#upcrossing-metric-calculations">Upcrossing metric calculations</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="API/geom.html#rft1d-geom-clustermetriccalculator">rft1d.geom.ClusterMetricCalculator</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="API/prob.html">rft1d.prob</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="API/prob.html#core-rft-computations">Core RFT computations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="API/prob.html#high-level-interface-to-rft-computations">High-level interface to RFT computations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="API/prob.html#bonferroni-correction">Bonferroni correction</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="API/random.html">rft1d.random</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="API/random.html#randn1d">randn1d</a></li>
+<li class="toctree-l2"><a class="reference internal" href="API/random.html#multirandn1d">multirandn1d</a></li>
+<li class="toctree-l2"><a class="reference internal" href="API/random.html#generator1d">Generator1D</a></li>
+<li class="toctree-l2"><a class="reference internal" href="API/random.html#generatormulti1d">GeneratorMulti1D</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="API/data.html" class="btn btn-neutral float-right" title="rft1d.data">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="Examples/List.html" class="btn btn-neutral" title="Scripts (overview)"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2015, Todd Pataky.
+    </p>
+  </div>
+
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+  
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'0.1.1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>
+
+

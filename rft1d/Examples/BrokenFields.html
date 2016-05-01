@@ -1,0 +1,297 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Broken fields &mdash; rft1d 0.1.1 documentation</title>
+  
+
+  
+  
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/theme.css" type="text/css" />
+  
+    <link rel="top" title="rft1d 0.1.1 documentation" href="../index.html"/>
+        <link rel="up" title="Examples" href="../Examples.html"/>
+        <link rel="next" title="Validation" href="Validation.html"/>
+        <link rel="prev" title="Basic" href="Basic.html"/> 
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div>
+		<!-- <a href="../index.html"><img src="_static/rft1d.png" alt="rft1d.png"</a> -->
+		<!-- <img src="_static/rft1d.png" alt="rft1d.png"</img> -->
+		<img src="../_static/rft1d.png" alt="rft1d.png"</img>
+      </div>
+
+
+      <div class="wy-side-nav-search">
+        <!-- <a href="../index.html" class="fa fa-home"> rft1d</a> -->
+		<div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        <a href="../index.html" class="fa fa-home"> rft1d</a>
+		<!-- <img src="./rft1d.png" alt="rft1d.png"> -->
+		
+        
+            <ul>
+<li class="toctree-l1"><a class="reference internal" href="../Download.html">Download</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Download.html#automated-installation">Automated installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Download.html#source-code-download">Source code download</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Download.html#release-notes">Release Notes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Download.html#license-information">License information</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Download.html#license-agreement-for-spm1d">License agreement for spm1d</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../Theory.html">RFT Overview</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Theory.html#gaussian-random-fields">Gaussian random fields</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Theory.html#expected-field-maximum">Expected field maximum</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Theory.html#upcrossings">Upcrossings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Theory.html#expected-upcrossing-geometry">Expected upcrossing geometry</a></li>
+</ul>
+</li>
+</ul>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../Examples.html">Examples</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="Basic.html">Basic</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="">Broken fields</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Validation.html">Validation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Application.html">Application</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Paper.html">Results from the paper</a></li>
+<li class="toctree-l2"><a class="reference internal" href="List.html">Scripts (overview)</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../API.html">API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../API/data.html">rft1d.data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../API/distributions.html">rft1d.distributions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../API/geom.html">rft1d.geom</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../API/prob.html">rft1d.prob</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../API/random.html">rft1d.random</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../References.html">References</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../References.html#on-the-web">On the web</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../References.html#software">Software</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../References.html#literature">Literature</a></li>
+</ul>
+</li>
+</ul>
+
+        
+		
+      </div>
+	  
+	  
+      <!-- <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        <a href="../index.html" class="fa fa-home"> rft1d</a>
+      </div> -->
+	  
+      <!-- <div class="wy-side-nav-search">
+        <a href="../index.html" class="fa fa-home"> rft1d</a>
+		<div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+      </div> -->
+	  
+	  
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../index.html">rft1d</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="../Examples.html">Examples</a> &raquo;</li>
+      
+    <li>Broken fields</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          <!-- <a href="../_sources/Examples/BrokenFields.txt" rel="nofollow"> View page source</a> -->
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            
+  <div class="section" id="broken-fields">
+<h1>Broken fields<a class="headerlink" href="#broken-fields" title="Permalink to this headline">¶</a></h1>
+<p>&#8220;Broken&#8221; fields are piecewise continuous over some domain.
+RFT accurately predicts upcrossing behavior for broken
+fields via the topological features of the broken domain.</p>
+<div class="section" id="broken-field-generation">
+<h2>Broken field generation<a class="headerlink" href="#broken-field-generation" title="Permalink to this headline">¶</a></h2>
+<p>First specify field parameters:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">rft1d</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">nResponses</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">nNodes</span>     <span class="o">=</span> <span class="mi">101</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">FWHM</span>       <span class="o">=</span> <span class="mf">20.0</span>
+</pre></div>
+</div>
+<p>Then create a boolean mask:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">nodes</span>        <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="bp">True</span><span class="p">]</span><span class="o">*</span><span class="n">nNodes</span><span class="p">)</span> <span class="c">#nothing masked out</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">nodes</span><span class="p">[</span><span class="mi">20</span><span class="p">:</span><span class="mi">30</span><span class="p">]</span> <span class="o">=</span> <span class="bp">False</span>  <span class="c">#this region will be masked out</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">nodes</span><span class="p">[</span><span class="mi">60</span><span class="p">:</span><span class="mi">80</span><span class="p">]</span> <span class="o">=</span> <span class="bp">False</span>  <span class="c">#this region will be masked out</span>
+</pre></div>
+</div>
+<p>Last, submit the mask to <strong>rft1d.randn1d</strong> to generate broken Gaussian fields:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">y</span> <span class="o">=</span> <span class="n">rft1d</span><span class="o">.</span><span class="n">randn1d</span><span class="p">(</span><span class="n">nResponses</span><span class="p">,</span> <span class="n">nodes</span><span class="p">,</span> <span class="n">FWHM</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Plot:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pyplot</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">y</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>(<a class="reference external" href="../Examples/BrokenFields-1.py">Source code</a>, <a class="reference external" href="../Examples/BrokenFields-1.png">png</a>, <a class="reference external" href="../Examples/BrokenFields-1.hires.png">hires.png</a>, <a class="reference external" href="../Examples/BrokenFields-1.pdf">pdf</a>)</p>
+<div class="figure">
+<img alt="../_images/BrokenFields-1.png" src="../_images/BrokenFields-1.png" />
+</div>
+</div>
+<div class="section" id="validations-for-broken-fields">
+<h2>Validations for broken fields<a class="headerlink" href="#validations-for-broken-fields" title="Permalink to this headline">¶</a></h2>
+<p>Broken field validations can be conducted by submitting a binary mask
+which describes the broken domain to relevant <strong>rft1d</strong> functions and classes.
+The validations in the figure below using the following mask:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="bp">True</span><span class="p">]</span><span class="o">*</span><span class="n">nNodes</span><span class="p">)</span> <span class="c">#nothing masked out</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">b</span><span class="p">[</span><span class="mi">20</span><span class="p">:</span><span class="mi">45</span><span class="p">]</span> <span class="o">=</span> <span class="bp">False</span>  <span class="c">#this region is masked out</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">b</span><span class="p">[</span><span class="mi">60</span><span class="p">:</span><span class="mi">80</span><span class="p">]</span> <span class="o">=</span> <span class="bp">False</span>  <span class="c">#this region is masked out</span>
+</pre></div>
+</div>
+<p>And then submitting it to the <strong>rft1d</strong> Gaussian survival function:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">heights</span>     <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">2.0</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">21</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sf_expected</span> <span class="o">=</span> <span class="n">rft1d</span><span class="o">.</span><span class="n">norm</span><span class="o">.</span><span class="n">sf</span><span class="p">(</span><span class="n">heights</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">FWHM</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Click on &#8220;source code&#8221; for the full script.</p>
+<p>(<a class="reference external" href="../pyplots/fig_val_broken.py">Source code</a>, <a class="reference external" href="../pyplots/fig_val_broken.png">png</a>, <a class="reference external" href="../pyplots/fig_val_broken.hires.png">hires.png</a>, <a class="reference external" href="../pyplots/fig_val_broken.pdf">pdf</a>)</p>
+<div class="figure">
+<img alt="../_images/fig_val_broken.png" src="../_images/fig_val_broken.png" />
+</div>
+</div>
+</div>
+
+
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="Validation.html" class="btn btn-neutral float-right" title="Validation">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="Basic.html" class="btn btn-neutral" title="Basic"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2015, Todd Pataky.
+    </p>
+  </div>
+
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+  
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'0.1.1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>
+
+

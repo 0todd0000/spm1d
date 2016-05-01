@@ -1,0 +1,275 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Results from the paper &mdash; rft1d 0.1.1 documentation</title>
+  
+
+  
+  
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/theme.css" type="text/css" />
+  
+    <link rel="top" title="rft1d 0.1.1 documentation" href="../index.html"/>
+        <link rel="up" title="Examples" href="../Examples.html"/>
+        <link rel="next" title="Scripts (overview)" href="List.html"/>
+        <link rel="prev" title="Application" href="Application.html"/> 
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div>
+		<!-- <a href="../index.html"><img src="_static/rft1d.png" alt="rft1d.png"</a> -->
+		<!-- <img src="_static/rft1d.png" alt="rft1d.png"</img> -->
+		<img src="../_static/rft1d.png" alt="rft1d.png"</img>
+      </div>
+
+
+      <div class="wy-side-nav-search">
+        <!-- <a href="../index.html" class="fa fa-home"> rft1d</a> -->
+		<div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        <a href="../index.html" class="fa fa-home"> rft1d</a>
+		<!-- <img src="./rft1d.png" alt="rft1d.png"> -->
+		
+        
+            <ul>
+<li class="toctree-l1"><a class="reference internal" href="../Download.html">Download</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Download.html#automated-installation">Automated installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Download.html#source-code-download">Source code download</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Download.html#release-notes">Release Notes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Download.html#license-information">License information</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Download.html#license-agreement-for-spm1d">License agreement for spm1d</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../Theory.html">RFT Overview</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Theory.html#gaussian-random-fields">Gaussian random fields</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Theory.html#expected-field-maximum">Expected field maximum</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Theory.html#upcrossings">Upcrossings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Theory.html#expected-upcrossing-geometry">Expected upcrossing geometry</a></li>
+</ul>
+</li>
+</ul>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../Examples.html">Examples</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="Basic.html">Basic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="BrokenFields.html">Broken fields</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Validation.html">Validation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Application.html">Application</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="">Results from the paper</a></li>
+<li class="toctree-l2"><a class="reference internal" href="List.html">Scripts (overview)</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../API.html">API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../API/data.html">rft1d.data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../API/distributions.html">rft1d.distributions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../API/geom.html">rft1d.geom</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../API/prob.html">rft1d.prob</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../API/random.html">rft1d.random</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../References.html">References</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../References.html#on-the-web">On the web</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../References.html#software">Software</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../References.html#literature">Literature</a></li>
+</ul>
+</li>
+</ul>
+
+        
+		
+      </div>
+	  
+	  
+      <!-- <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        <a href="../index.html" class="fa fa-home"> rft1d</a>
+      </div> -->
+	  
+      <!-- <div class="wy-side-nav-search">
+        <a href="../index.html" class="fa fa-home"> rft1d</a>
+		<div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+      </div> -->
+	  
+	  
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../index.html">rft1d</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="../Examples.html">Examples</a> &raquo;</li>
+      
+    <li>Results from the paper</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          <!-- <a href="../_sources/Examples/Paper.txt" rel="nofollow"> View page source</a> -->
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            
+  <div class="section" id="results-from-the-paper">
+<span id="label-paper"></span><h1>Results from the paper<a class="headerlink" href="#results-from-the-paper" title="Permalink to this headline">¶</a></h1>
+<p>These scripts are located in <strong>./rft1d/examples/paper</strong> and reproduce the figures from:</p>
+<blockquote>
+<div>Pataky TC (2015) RFT1D: Smooth One-Dimensional Random Field Upcrossing Probabilities in Python. <strong>Journal of Statistical Software</strong> (accepted for publication 18 April 2015).</div></blockquote>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The dataset associated with Figures 13, 15, 16 and 17 is available in <a class="reference internal" href="../API/data.html#label-api-data"><span>rft1d.data.weather</span></a></p>
+</div>
+<p>Script list:</p>
+<blockquote>
+<div><ul class="simple">
+<li><span class="red">all_results.py</span> &#8212; Single script which replicates all paper results.</li>
+</ul>
+<ol class="arabic simple">
+<li><span class="red">fig01_fields.py</span> &#8212; 1D Gaussian fields</li>
+<li><span class="red">fig02_EC_HC.py</span> &#8212; Description of the Euler and Hadwiger characteristics</li>
+<li><span class="red">fig03_EC.py</span> &#8212; Euler characteristic validation</li>
+<li><span class="red">fig04_fields1d_broken.py</span> &#8212; pieceswise continuous 1D Gaussian fields</li>
+<li><span class="red">fig05_EC_broken.py</span> &#8212; topological validation for broken fields</li>
+<li><span class="red">fig06_sf.py</span> &#8212; survival function for 1D Gaussian fields</li>
+<li><span class="red">fig07_bonf_sf.py</span> &#8212; RFT vs. Bonferroni survival functions for rough fields</li>
+<li><span class="red">fig08_bonf_isf.py</span> &#8212; RFT and Bonferroni inverse survival functions crossing points</li>
+<li><span class="red">fig09_val_maxima.py</span> &#8212; validation for 1D Gaussian field maxima</li>
+<li><span class="red">fig10_upcrossing.py</span> &#8212; anatomy of field upcrossings</li>
+<li><span class="red">fig11_val_cluster.py</span> &#8212; validation for 1D Gaussian cluster-level inference</li>
+<li><span class="red">fig12_val_set.py</span> &#8212; validation for 1D Gaussian set-level inference</li>
+<li><span class="red">fig13_weather_0_data.py</span> &#8212; dataset overview</li>
+<li><span class="red">fig14_fwhm_estimation.py</span> &#8212; validation of field smoothness estimation</li>
+<li><span class="red">fig15_weather_1_rft.py</span> &#8212; parametric inference using RFT</li>
+<li><span class="red">fig16_weather_2_wrapped.py</span> &#8212; parametric inference, assuming a circular field</li>
+<li><span class="red">fig17_weather_3_nonparam.py</span> &#8212; nonparametric inference using an RFT-like procedure</li>
+</ol>
+</div></blockquote>
+</div>
+
+
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="List.html" class="btn btn-neutral float-right" title="Scripts (overview)">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="Application.html" class="btn btn-neutral" title="Application"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2015, Todd Pataky.
+    </p>
+  </div>
+
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+  
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'0.1.1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>
+
+

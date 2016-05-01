@@ -1,0 +1,324 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Test statistic field maxima &mdash; rft1d 0.1.1 documentation</title>
+  
+
+  
+  
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  
+
+  
+  
+    <link rel="stylesheet" href="../../_static/theme.css" type="text/css" />
+  
+    <link rel="top" title="rft1d 0.1.1 documentation" href="../../index.html"/>
+        <link rel="up" title="Validation" href="../Validation.html"/>
+        <link rel="next" title="Conjugation analysis" href="Conjugation.html"/>
+        <link rel="prev" title="Cluster-level inference (Gaussian)" href="ClusterLevel.html"/> 
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div>
+		<!-- <a href="../../index.html"><img src="_static/rft1d.png" alt="rft1d.png"</a> -->
+		<!-- <img src="_static/rft1d.png" alt="rft1d.png"</img> -->
+		<img src="../../_static/rft1d.png" alt="rft1d.png"</img>
+      </div>
+
+
+      <div class="wy-side-nav-search">
+        <!-- <a href="../../index.html" class="fa fa-home"> rft1d</a> -->
+		<div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        <a href="../../index.html" class="fa fa-home"> rft1d</a>
+		<!-- <img src="./rft1d.png" alt="rft1d.png"> -->
+		
+        
+            <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Download.html">Download</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../Download.html#automated-installation">Automated installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Download.html#source-code-download">Source code download</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Download.html#release-notes">Release Notes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Download.html#license-information">License information</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Download.html#license-agreement-for-spm1d">License agreement for spm1d</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../Theory.html">RFT Overview</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../Theory.html#gaussian-random-fields">Gaussian random fields</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Theory.html#expected-field-maximum">Expected field maximum</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Theory.html#upcrossings">Upcrossings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Theory.html#expected-upcrossing-geometry">Expected upcrossing geometry</a></li>
+</ul>
+</li>
+</ul>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../../Examples.html">Examples</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../Basic.html">Basic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../BrokenFields.html">Broken fields</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../Validation.html">Validation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Application.html">Application</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Paper.html">Results from the paper</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../List.html">Scripts (overview)</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../API.html">API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../API/data.html">rft1d.data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../API/distributions.html">rft1d.distributions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../API/geom.html">rft1d.geom</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../API/prob.html">rft1d.prob</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../API/random.html">rft1d.random</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../References.html">References</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../References.html#on-the-web">On the web</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../References.html#software">Software</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../References.html#literature">Literature</a></li>
+</ul>
+</li>
+</ul>
+
+        
+		
+      </div>
+	  
+	  
+      <!-- <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        <a href="../../index.html" class="fa fa-home"> rft1d</a>
+      </div> -->
+	  
+      <!-- <div class="wy-side-nav-search">
+        <a href="../../index.html" class="fa fa-home"> rft1d</a>
+		<div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+      </div> -->
+	  
+	  
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../index.html">rft1d</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="../../Examples.html">Examples</a> &raquo;</li>
+      
+          <li><a href="../Validation.html">Validation</a> &raquo;</li>
+      
+    <li>Test statistic field maxima</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          <!-- <a href="../../_sources/Examples/Validation/TestStatistic.txt" rel="nofollow"> View page source</a> -->
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            
+  <div class="section" id="test-statistic-field-maxima">
+<h1>Test statistic field maxima<a class="headerlink" href="#test-statistic-field-maxima" title="Permalink to this headline">¶</a></h1>
+<p>The basic procedure for RFT validations is outlined in
+<a class="reference internal" href="../Basic.html#label-examples-validatingrftexpectations"><span>Examples/Basic/Validating</span></a>.
+This section presents code details for validating the probability with which
+test statistic field maxima survive particular thresholds.</p>
+<blockquote>
+<div>See <strong>./rft1d/examples/val_max_1_onesample_t_1d.py</strong> and other &#8220;val_max*.py&#8221; scripts</div></blockquote>
+<p>Validations for test statistic set-level and cluster-level inference are
+available in scripts titled <strong>./rft1d/examples/val_upx*.py</strong></p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">To see details of test statistic computation click on the &#8220;Source code&#8221; links above each figure.</p>
+</div>
+<div class="section" id="univariate">
+<h2>Univariate<a class="headerlink" href="#univariate" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="one-sample">
+<h3>One-sample<a class="headerlink" href="#one-sample" title="Permalink to this headline">¶</a></h3>
+<p>(<a class="reference external" href="../../pyplots/val_max_1_onesample_t_1d.py">Source code</a>, <a class="reference external" href="../../pyplots/val_max_1_onesample_t_1d.png">png</a>, <a class="reference external" href="../../pyplots/val_max_1_onesample_t_1d.hires.png">hires.png</a>, <a class="reference external" href="../../pyplots/val_max_1_onesample_t_1d.pdf">pdf</a>)</p>
+<div class="figure">
+<img alt="../../_images/val_max_1_onesample_t_1d.png" src="../../_images/val_max_1_onesample_t_1d.png" />
+</div>
+</div>
+<div class="section" id="two-sample">
+<h3>Two-sample<a class="headerlink" href="#two-sample" title="Permalink to this headline">¶</a></h3>
+<p>(<a class="reference external" href="../../pyplots/val_max_2_twosample_t_1d.py">Source code</a>, <a class="reference external" href="../../pyplots/val_max_2_twosample_t_1d.png">png</a>, <a class="reference external" href="../../pyplots/val_max_2_twosample_t_1d.hires.png">hires.png</a>, <a class="reference external" href="../../pyplots/val_max_2_twosample_t_1d.pdf">pdf</a>)</p>
+<div class="figure">
+<img alt="../../_images/val_max_2_twosample_t_1d.png" src="../../_images/val_max_2_twosample_t_1d.png" />
+</div>
+</div>
+<div class="section" id="regression">
+<h3>Regression<a class="headerlink" href="#regression" title="Permalink to this headline">¶</a></h3>
+<p>(<a class="reference external" href="../../pyplots/val_max_3_regress_1d.py">Source code</a>, <a class="reference external" href="../../pyplots/val_max_3_regress_1d.png">png</a>, <a class="reference external" href="../../pyplots/val_max_3_regress_1d.hires.png">hires.png</a>, <a class="reference external" href="../../pyplots/val_max_3_regress_1d.pdf">pdf</a>)</p>
+<div class="figure">
+<img alt="../../_images/val_max_3_regress_1d.png" src="../../_images/val_max_3_regress_1d.png" />
+</div>
+</div>
+<div class="section" id="one-way-anova">
+<h3>One-way ANOVA<a class="headerlink" href="#one-way-anova" title="Permalink to this headline">¶</a></h3>
+<p>(<a class="reference external" href="../../pyplots/val_max_4_anova1_1d.py">Source code</a>, <a class="reference external" href="../../pyplots/val_max_4_anova1_1d.png">png</a>, <a class="reference external" href="../../pyplots/val_max_4_anova1_1d.hires.png">hires.png</a>, <a class="reference external" href="../../pyplots/val_max_4_anova1_1d.pdf">pdf</a>)</p>
+<div class="figure">
+<img alt="../../_images/val_max_4_anova1_1d.png" src="../../_images/val_max_4_anova1_1d.png" />
+</div>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="multivariate">
+<h2>Multivariate<a class="headerlink" href="#multivariate" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id1">
+<h3>One-sample<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<p>(<a class="reference external" href="../../pyplots/val_max_5_onesample_T2_1d.py">Source code</a>, <a class="reference external" href="../../pyplots/val_max_5_onesample_T2_1d.png">png</a>, <a class="reference external" href="../../pyplots/val_max_5_onesample_T2_1d.hires.png">hires.png</a>, <a class="reference external" href="../../pyplots/val_max_5_onesample_T2_1d.pdf">pdf</a>)</p>
+<div class="figure">
+<img alt="../../_images/val_max_5_onesample_T2_1d.png" src="../../_images/val_max_5_onesample_T2_1d.png" />
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Increasing the number of iterations will cause the results to converge to RFT expectations.</p>
+</div>
+</div>
+<div class="section" id="id2">
+<h3>Two-sample<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<p>(<a class="reference external" href="../../pyplots/val_max_6_twosample_T2_1d.py">Source code</a>, <a class="reference external" href="../../pyplots/val_max_6_twosample_T2_1d.png">png</a>, <a class="reference external" href="../../pyplots/val_max_6_twosample_T2_1d.hires.png">hires.png</a>, <a class="reference external" href="../../pyplots/val_max_6_twosample_T2_1d.pdf">pdf</a>)</p>
+<div class="figure">
+<img alt="../../_images/val_max_6_twosample_T2_1d.png" src="../../_images/val_max_6_twosample_T2_1d.png" />
+</div>
+</div>
+<div class="section" id="canonical-correlation-analysis">
+<h3>Canonical correlation analysis<a class="headerlink" href="#canonical-correlation-analysis" title="Permalink to this headline">¶</a></h3>
+<p>(<a class="reference external" href="../../pyplots/val_max_7_cca_1d.py">Source code</a>, <a class="reference external" href="../../pyplots/val_max_7_cca_1d.png">png</a>, <a class="reference external" href="../../pyplots/val_max_7_cca_1d.hires.png">hires.png</a>, <a class="reference external" href="../../pyplots/val_max_7_cca_1d.pdf">pdf</a>)</p>
+<div class="figure">
+<img alt="../../_images/val_max_7_cca_1d.png" src="../../_images/val_max_7_cca_1d.png" />
+</div>
+</div>
+<div class="section" id="manova">
+<h3>MANOVA<a class="headerlink" href="#manova" title="Permalink to this headline">¶</a></h3>
+<p>(<a class="reference external" href="../../pyplots/val_max_8_manova1_1d.py">Source code</a>, <a class="reference external" href="../../pyplots/val_max_8_manova1_1d.png">png</a>, <a class="reference external" href="../../pyplots/val_max_8_manova1_1d.hires.png">hires.png</a>, <a class="reference external" href="../../pyplots/val_max_8_manova1_1d.pdf">pdf</a>)</p>
+<div class="figure">
+<img alt="../../_images/val_max_8_manova1_1d.png" src="../../_images/val_max_8_manova1_1d.png" />
+</div>
+</div>
+</div>
+</div>
+
+
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="Conjugation.html" class="btn btn-neutral float-right" title="Conjugation analysis">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="ClusterLevel.html" class="btn btn-neutral" title="Cluster-level inference (Gaussian)"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2015, Todd Pataky.
+    </p>
+  </div>
+
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+  
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'0.1.1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>
+
+

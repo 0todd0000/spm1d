@@ -1,0 +1,86 @@
+
+Download
+============================================
+
+.. warning:: Please read :ref:`the license below <label-License>` before downloading any materials.
+
+
+Automated installation
+----------------------------
+
+.. note:: Automated installation assumes that Python is already installed and that the
+	`setuptools <https://pypi.python.org/pypi/setuptools>`_ and `pip <https://pypi.python.org/pypi/pip/>`_ are packages also also installed. To check whether you have these packages enter ``import setuptools`` and ``import pip`` into a Python script or interactive session; if no errors are generated you should be fine.
+
+
+The easiest way to download and install **rft1d** is using one of the following commands::
+
+	easy_install rft1d
+
+or::
+
+	pip install rft1d
+
+
+These commands will find the **rft1d** source code at the
+`Python Package Index <https://pypi.python.org/pypi/rft1d/>`_ ,
+then download it and install it to your default Python ``site-packages`` directory.
+If you are not sure how to find your ``site-packages`` directory,
+`check out this discussion at stackoverflow.com <http://stackoverflow.com/questions/122327/how-do-i-find-the-location-of-my-python-site-packages-directory/>`_ .
+To uninstall **rft1d** simply delete the **rft1d** folders from your ``site-packages`` directory.
+
+
+
+
+
+
+Source code download
+----------------------------
+
+`Current master source code <https://github.com/0todd0000/rft1d/archive/master.zip>`_  (will be downloaded from github.com)
+
+`Full source code repository at github.com <https://github.com/0todd0000/rft1d/>`_
+
+`All source code versions at pypi.python.org <https://pypi.python.org/pypi/rft1d/>`_
+
+
+
+
+
+
+------------------------
+
+Release Notes
+----------------------------
+
+:Version: |version|  (2015.04.26)
+
+Initial version following acceptance at the **Journal of Statistical Software**.
+
+
+
+
+
+.. _label-License:
+
+------------------------
+
+License information
+----------------------------
+
+**rft1d** is free but copyright software, distributed under the terms of the GNU General Public License as published by the Free Software Foundation (version 3). Further details on "copyleft" can be found at http://www.gnu.org/copyleft/. In particular, **rft1d** is supplied as is. No formal support or maintenance is provided or implied.
+
+------------------------
+
+License agreement for rft1d
+----------------------------
+
+Copyright (C) 2015  Todd Pataky
+
+This program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
+
+This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+
+
