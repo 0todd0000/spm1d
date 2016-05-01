@@ -1,0 +1,434 @@
+
+
+
+<!DOCTYPE html>
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>spm1d.util &mdash; spm1d 0.3 documentation</title>
+    
+    <link rel="stylesheet" href="../../_static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/bootstrap-3.3.4/css/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/bootstrap-3.3.4/css/bootstrap-theme.min.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/bootstrap-sphinx.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '0.3',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../_static/js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="../../_static/js/jquery-fix.js"></script>
+    <script type="text/javascript" src="../../_static/bootstrap-3.3.4/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../../_static/bootstrap-sphinx.js"></script>
+    <link rel="top" title="spm1d 0.3 documentation" href="../../index.html" />
+    <link rel="up" title="API" href="API.html" />
+    <link rel="next" title="Documentation (Matlab)" href="../../DocumentationMatlab.html" />
+    <link rel="prev" title="spm1d.stats" href="stats.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+  </head>
+  <body role="document">
+
+<div style="background-color: white; text-align: left; padding: 10px 10px 15px 15px">
+<a href="../../index.html"><img src="../../logo.png" border="0" alt="spm1d"/></a>
+</div>
+
+
+
+  <div id="navbar" class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="../../index.html">
+              </a>
+        <span class="navbar-text navbar-version pull-left"><b>0.3</b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            
+                <li><a href="../../index.html">Home</a></li>
+                <li><a href="../../Downloads.html">Downloads</a></li>
+                <li><a href="../../Documentation.html">Documentation</a></li>
+                <li><a href="../../References.html">References</a></li>
+                <li><a href="../../Workshops.html">Workshops</a></li>
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="../../index.html">Site <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul>
+<li class="toctree-l1"><a class="reference internal" href="../../NewFeatures.html">New Features (version 0.3.2)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../NewFeatures.html#new-features-version-0-3-1">New Features (version 0.3.1)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../NewFeatures.html#new-features-version-0-3">New Features (version 0.3)</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Downloads.html">Downloads</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../../Documentation.html">Documentation (Python)</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../DocumentationMatlab.html">Documentation (Matlab)</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../References.html">References</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Workshops.html">Workshops</a></li>
+</ul>
+</ul>
+</li>
+              
+                <li class="dropdown">
+  <a role="button"
+     id="dLabelLocalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="#">Page <b class="caret"></b></a>
+  <ul class="dropdown-menu localtoc"
+      role="menu"
+      aria-labelledby="dLabelLocalToc"><ul>
+<li><a class="reference internal" href="#">spm1d.util</a><ul>
+<li><a class="reference internal" href="#get-dataset">get_dataset</a></li>
+<li><a class="reference internal" href="#interp">interp</a></li>
+<li><a class="reference internal" href="#p-corrected-bonf">p_corrected_bonf</a></li>
+<li><a class="reference internal" href="#p-critical-bonf">p_critical_bonf</a></li>
+<li><a class="reference internal" href="#smooth">smooth</a></li>
+</ul>
+</li>
+</ul>
+</ul>
+</li>
+              
+            
+            
+            
+            
+            
+              <li class="hidden-sm">
+<div id="sourcelink">
+  <a href="../../_sources/doc/API/util.txt"
+     rel="nofollow">Source</a>
+</div></li>
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="../../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper"><ul>
+<li><a class="reference internal" href="#">spm1d.util</a><ul>
+<li><a class="reference internal" href="#get-dataset">get_dataset</a></li>
+<li><a class="reference internal" href="#interp">interp</a></li>
+<li><a class="reference internal" href="#p-corrected-bonf">p_corrected_bonf</a></li>
+<li><a class="reference internal" href="#p-critical-bonf">p_critical_bonf</a></li>
+<li><a class="reference internal" href="#smooth">smooth</a></li>
+</ul>
+</li>
+</ul>
+
+  <li>
+    <a href="stats.html" title="Previous Chapter: spm1d.stats"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; spm1d.stats</span>
+    </a>
+  </li>
+  <li>
+    <a href="../../DocumentationMatlab.html" title="Next Chapter: Documentation (Matlab)"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">Documentation... &raquo;</span>
+    </a>
+  </li>
+<form action="../../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+        </div>
+      </div>
+    <div class="col-md-12 content">
+      
+  <div class="section" id="module-spm1d.util">
+<span id="spm1d-util"></span><span id="label-api-util"></span><h1>spm1d.util<a class="headerlink" href="#module-spm1d.util" title="Permalink to this headline">¶</a></h1>
+<p>Utility module</p>
+<p>This module contains a variety of convenience functions, including:</p>
+<ul class="simple">
+<li>get_dataset</li>
+<li>interp</li>
+<li>p_corrected_bonf</li>
+<li>p_critical_bonf</li>
+<li>smooth</li>
+</ul>
+<hr class="docutils" />
+<div class="section" id="get-dataset">
+<h2>get_dataset<a class="headerlink" href="#get-dataset" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="spm1d.util.get_dataset">
+<code class="descclassname">spm1d.util.</code><code class="descname">get_dataset</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/spm1d/util.html#get_dataset"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#spm1d.util.get_dataset" title="Permalink to this definition">¶</a></dt>
+<dd><div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p>Deprecated</p>
+<p class="last"><strong>get_dataset</strong> is deprecated and will be removed from future versions of <strong>spm1d</strong>.  Please access datasets using the &#8220;spm1d.data&#8221; interface.</p>
+</div>
+</dd></dl>
+
+</div>
+<hr class="docutils" />
+<div class="section" id="interp">
+<h2>interp<a class="headerlink" href="#interp" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="spm1d.util.interp">
+<code class="descclassname">spm1d.util.</code><code class="descname">interp</code><span class="sig-paren">(</span><em>y</em>, <em>Q=101</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/spm1d/util.html#interp"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#spm1d.util.interp" title="Permalink to this definition">¶</a></dt>
+<dd><p>Simple linear interpolation to <em>n</em> values.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"></td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li><em>y</em> &#8212; a 1D array or list of J separate 1D arrays</li>
+<li><em>Q</em> &#8212; number of nodes in the interpolated continuum</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"></td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Q-component 1D array or a (J x Q) array</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Example:</th><td class="field-body"></td>
+</tr>
+</tbody>
+</table>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">y0</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">51</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">y1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">87</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">y2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">68</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">Y</span>  <span class="o">=</span> <span class="p">[</span><span class="n">y0</span><span class="p">,</span> <span class="n">y1</span><span class="p">,</span> <span class="n">y2</span><span class="p">]</span>
+</pre></div>
+</div>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">Y</span>  <span class="o">=</span> <span class="n">spm1d</span><span class="o">.</span><span class="n">util</span><span class="o">.</span><span class="n">interp</span><span class="p">(</span><span class="n">Y</span><span class="p">,</span> <span class="n">Q</span><span class="o">=</span><span class="mi">101</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+<hr class="docutils" />
+<div class="section" id="p-corrected-bonf">
+<h2>p_corrected_bonf<a class="headerlink" href="#p-corrected-bonf" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="spm1d.util.p_corrected_bonf">
+<code class="descclassname">spm1d.util.</code><code class="descname">p_corrected_bonf</code><span class="sig-paren">(</span><em>p</em>, <em>n</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/spm1d/util.html#p_corrected_bonf"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#spm1d.util.p_corrected_bonf" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bonferroni-corrected <em>p</em> value.</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">This correction assumes independence amongst multiple tests.</p>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"></td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li><em>p</em> &#8212; probability value computed from one of multiple tests</li>
+<li><em>n</em> &#8212; number of tests</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"></td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Bonferroni-corrected <em>p</em> value.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Example:</th><td class="field-body"></td>
+</tr>
+</tbody>
+</table>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">p</span> <span class="o">=</span> <span class="n">spm1d</span><span class="o">.</span><span class="n">util</span><span class="o">.</span><span class="n">p_corrected_bonf</span><span class="p">(</span><span class="mf">0.03</span><span class="p">,</span> <span class="mi">8</span><span class="p">)</span>    <span class="c1"># yields p = 0.216</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+<hr class="docutils" />
+<div class="section" id="p-critical-bonf">
+<h2>p_critical_bonf<a class="headerlink" href="#p-critical-bonf" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="spm1d.util.p_critical_bonf">
+<code class="descclassname">spm1d.util.</code><code class="descname">p_critical_bonf</code><span class="sig-paren">(</span><em>alpha</em>, <em>n</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/spm1d/util.html#p_critical_bonf"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#spm1d.util.p_critical_bonf" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bonferroni-corrected critical Type I error rate.</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">This crticial threshold assumes independence amongst multiple tests.</p>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"></td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li><em>alpha</em> &#8212; original Type I error rate (usually 0.05)</li>
+<li><em>n</em> &#8212; number of tests</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"></td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Bonferroni-corrected critical <em>p</em> value; retains <em>alpha</em> across all tests.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Example:</th><td class="field-body"></td>
+</tr>
+</tbody>
+</table>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">p</span> <span class="o">=</span> <span class="n">spm1d</span><span class="o">.</span><span class="n">util</span><span class="o">.</span><span class="n">p_critical_bonf</span><span class="p">(</span><span class="mf">0.05</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>    <span class="c1"># yields p = 0.00256</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+<hr class="docutils" />
+<div class="section" id="smooth">
+<h2>smooth<a class="headerlink" href="#smooth" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="spm1d.util.smooth">
+<code class="descclassname">spm1d.util.</code><code class="descname">smooth</code><span class="sig-paren">(</span><em>Y</em>, <em>fwhm=5.0</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/spm1d/util.html#smooth"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#spm1d.util.smooth" title="Permalink to this definition">¶</a></dt>
+<dd><p>Smooth a set of 1D continua.
+This method uses <strong>scipy.ndimage.filters.gaussian_filter1d</strong> but uses the <em>fwhm</em>
+instead of the standard deviation.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"></td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li><em>Y</em> &#8212; a (J x Q) numpy array</li>
+<li><em>fwhm</em> &#8212;  Full-width at half-maximum of a Gaussian kernel used for smoothing.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"></td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>(J x Q) numpy array</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Example:</th><td class="field-body"></td>
+</tr>
+</tbody>
+</table>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">Y0</span>  <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">101</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">Y</span>   <span class="o">=</span> <span class="n">spm1d</span><span class="o">.</span><span class="n">util</span><span class="o">.</span><span class="n">smooth</span><span class="p">(</span><span class="n">Y0</span><span class="p">,</span> <span class="n">fwhm</span><span class="o">=</span><span class="mf">10.0</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">A Gaussian kernel&#8217;s <em>fwhm</em> is related to its standard deviation (<em>sd</em>) as follows:</p>
+</div>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">fwhm</span> <span class="o">=</span> <span class="n">sd</span> <span class="o">*</span> <span class="n">sqrt</span><span class="p">(</span><span class="mi">8</span><span class="o">*</span><span class="n">log</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+</div>
+
+
+    </div>
+    
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+    </p>
+    <p>
+        &copy; Copyright 2016, Todd Pataky.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.5.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

@@ -1,0 +1,571 @@
+
+
+
+<!DOCTYPE html>
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>spm1d.plot &mdash; spm1d 0.3 documentation</title>
+    
+    <link rel="stylesheet" href="../../_static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/bootstrap-3.3.4/css/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/bootstrap-3.3.4/css/bootstrap-theme.min.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/bootstrap-sphinx.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '0.3',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../_static/js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="../../_static/js/jquery-fix.js"></script>
+    <script type="text/javascript" src="../../_static/bootstrap-3.3.4/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../../_static/bootstrap-sphinx.js"></script>
+    <link rel="top" title="spm1d 0.3 documentation" href="../../index.html" />
+    <link rel="up" title="API" href="API.html" />
+    <link rel="next" title="spm1d.stats" href="stats.html" />
+    <link rel="prev" title="spm1d.io" href="io.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+  </head>
+  <body role="document">
+
+<div style="background-color: white; text-align: left; padding: 10px 10px 15px 15px">
+<a href="../../index.html"><img src="../../logo.png" border="0" alt="spm1d"/></a>
+</div>
+
+
+
+  <div id="navbar" class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="../../index.html">
+              </a>
+        <span class="navbar-text navbar-version pull-left"><b>0.3</b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            
+                <li><a href="../../index.html">Home</a></li>
+                <li><a href="../../Downloads.html">Downloads</a></li>
+                <li><a href="../../Documentation.html">Documentation</a></li>
+                <li><a href="../../References.html">References</a></li>
+                <li><a href="../../Workshops.html">Workshops</a></li>
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="../../index.html">Site <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul>
+<li class="toctree-l1"><a class="reference internal" href="../../NewFeatures.html">New Features (version 0.3.2)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../NewFeatures.html#new-features-version-0-3-1">New Features (version 0.3.1)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../NewFeatures.html#new-features-version-0-3">New Features (version 0.3)</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Downloads.html">Downloads</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../../Documentation.html">Documentation (Python)</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../DocumentationMatlab.html">Documentation (Matlab)</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../References.html">References</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Workshops.html">Workshops</a></li>
+</ul>
+</ul>
+</li>
+              
+                <li class="dropdown">
+  <a role="button"
+     id="dLabelLocalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="#">Page <b class="caret"></b></a>
+  <ul class="dropdown-menu localtoc"
+      role="menu"
+      aria-labelledby="dLabelLocalToc"><ul>
+<li><a class="reference internal" href="#">spm1d.plot</a><ul>
+<li><a class="reference internal" href="#plot-errorcloud">plot_errorcloud</a></li>
+<li><a class="reference internal" href="#plot-mean-sd">plot_mean_sd</a></li>
+<li><a class="reference internal" href="#plot-spm">plot_spm</a></li>
+<li><a class="reference internal" href="#plot-spmi">plot_spmi</a></li>
+<li><a class="reference internal" href="#plot-spmi-p-values">plot_spmi_p_values</a></li>
+<li><a class="reference internal" href="#plot-spmi-threshold-label">plot_spmi_threshold_label</a></li>
+</ul>
+</li>
+</ul>
+</ul>
+</li>
+              
+            
+            
+            
+            
+            
+              <li class="hidden-sm">
+<div id="sourcelink">
+  <a href="../../_sources/doc/API/plot.txt"
+     rel="nofollow">Source</a>
+</div></li>
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="../../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper"><ul>
+<li><a class="reference internal" href="#">spm1d.plot</a><ul>
+<li><a class="reference internal" href="#plot-errorcloud">plot_errorcloud</a></li>
+<li><a class="reference internal" href="#plot-mean-sd">plot_mean_sd</a></li>
+<li><a class="reference internal" href="#plot-spm">plot_spm</a></li>
+<li><a class="reference internal" href="#plot-spmi">plot_spmi</a></li>
+<li><a class="reference internal" href="#plot-spmi-p-values">plot_spmi_p_values</a></li>
+<li><a class="reference internal" href="#plot-spmi-threshold-label">plot_spmi_threshold_label</a></li>
+</ul>
+</li>
+</ul>
+
+  <li>
+    <a href="io.html" title="Previous Chapter: spm1d.io"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; spm1d.io</span>
+    </a>
+  </li>
+  <li>
+    <a href="stats.html" title="Next Chapter: spm1d.stats"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">spm1d.stats &raquo;</span>
+    </a>
+  </li>
+<form action="../../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+        </div>
+      </div>
+    <div class="col-md-12 content">
+      
+  <div class="section" id="module-spm1d.plot">
+<span id="spm1d-plot"></span><span id="label-api-plot"></span><h1>spm1d.plot<a class="headerlink" href="#module-spm1d.plot" title="Permalink to this headline">¶</a></h1>
+<p>This module contains a variety of plotting functions.</p>
+<p>The following functions may be accessed as methods of <strong>spm1d</strong> SPM objects:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="32%" />
+<col width="27%" />
+<col width="40%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">spm1d.plot</th>
+<th class="head">SPM instance method</th>
+<th class="head">SPM inference instance method</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>plot_spm</td>
+<td>plot</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>plot_spm_design</td>
+<td>plot_design</td>
+<td>plot_design</td>
+</tr>
+<tr class="row-even"><td>plot_spmi</td>
+<td>&nbsp;</td>
+<td>plot</td>
+</tr>
+<tr class="row-odd"><td>plot_spmi_p_values</td>
+<td>&nbsp;</td>
+<td>plot_p_values</td>
+</tr>
+<tr class="row-even"><td>plot_spmi_threshold_label</td>
+<td>&nbsp;</td>
+<td>plot_threshold_label</td>
+</tr>
+</tbody>
+</table>
+<p>All other plotting functions can only be accessed via <strong>spm1d.plot</strong>.
+These include:</p>
+<ul class="simple">
+<li>plot_cloud</li>
+<li>plot_errorcloud</li>
+<li>plot_mean_sd</li>
+</ul>
+<hr class="docutils" />
+<div class="section" id="plot-errorcloud">
+<h2>plot_errorcloud<a class="headerlink" href="#plot-errorcloud" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="spm1d.plot.plot_errorcloud">
+<code class="descclassname">spm1d.plot.</code><code class="descname">plot_errorcloud</code><span class="sig-paren">(</span><em>datum</em>, <em>sd</em>, <em>ax=None</em>, <em>x=None</em>, <em>facecolor='0.8'</em>, <em>edgecolor='0.8'</em>, <em>alpha=0.5</em>, <em>autoset_ylim=True</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/spm1d/plot.html#plot_errorcloud"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#spm1d.plot.plot_errorcloud" title="Permalink to this definition">¶</a></dt>
+<dd><p>Plot an arbitrary error cloud surrounding a datum continuum.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"></td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li><em>datum</em> &#8212; a 1D list or numpy array</li>
+<li><em>sd</em> &#8212; a 1D list or numpy array</li>
+<li><em>ax</em> &#8212; optional matplotlib.axes object</li>
+<li><em>x</em> &#8212; optional vector of x positions  [default: np.arange(datum.size)]</li>
+<li><em>facecolor</em> &#8212; optional face color (for the SD cloud)</li>
+<li><em>edgecolor</em> &#8212; optional edge color (for the SD cloud)</li>
+<li><em>alpha</em> &#8212; optional face alpha value (for the SD cloud)</li>
+<li><em>autoset_ylim</em> &#8212; if True (default), will set the y axis limits so that all text, line and patch objects are visible inside the axes</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"></td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>a <strong>matplotlib.collections.PatchCollection</strong> object</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Example:</th><td class="field-body"></td>
+</tr>
+</tbody>
+</table>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span>
+</pre></div>
+</div>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span>     <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">b</span>     <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">spm1d</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">plot_errorcloud</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pyplot</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">50</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+<hr class="docutils" />
+<div class="section" id="plot-mean-sd">
+<h2>plot_mean_sd<a class="headerlink" href="#plot-mean-sd" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="spm1d.plot.plot_mean_sd">
+<code class="descclassname">spm1d.plot.</code><code class="descname">plot_mean_sd</code><span class="sig-paren">(</span><em>Y</em>, <em>ax=None</em>, <em>x=None</em>, <em>lw=3</em>, <em>linecolor='k'</em>, <em>linestyle='-'</em>, <em>facecolor='0.8'</em>, <em>edgecolor='0.8'</em>, <em>alpha=0.5</em>, <em>label=None</em>, <em>autoset_ylim=True</em>, <em>roi=None</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/spm1d/plot.html#plot_mean_sd"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#spm1d.plot.plot_mean_sd" title="Permalink to this definition">¶</a></dt>
+<dd><p>Plot mean continuum with standard deviation cloud.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"></td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li><em>Y</em> &#8212; a (J x Q) numpy array</li>
+<li><em>ax</em> &#8212; optional matplotlib.axes object  [default: matplotlib.pyplot.gca()]</li>
+<li><em>x</em> &#8212; optional vector of x positions  [default: np.arange(Y.shape[1])]</li>
+<li><em>lw</em> &#8212; optional integer specify line width</li>
+<li><em>linecolor</em> &#8212; optional line color specifier (for the mean continuum)</li>
+<li><em>linestyle</em> &#8212; optional line style specifier (for the mean continuum)</li>
+<li><em>facecolor</em> &#8212; optional face color (for the SD cloud)</li>
+<li><em>edgecolor</em> &#8212; optional edge color (for the SD cloud)</li>
+<li><em>alpha</em> &#8212; optional face alpha value (for the SD cloud)</li>
+<li><em>label</em> &#8212; optional string to label the mean continuum (for use with matplotlib.pyplot.legend())</li>
+<li><em>autoset_ylim</em> &#8212; if True (default), will set the y axis limits so that all text, line and patch objects are visible inside the axes</li>
+<li><em>roi</em> &#8212; optional region-of-interest vector (either boolean OR vector of (-1, 0, +1))</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"></td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li><em>None</em></li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Example:</th><td class="field-body"></td>
+</tr>
+</tbody>
+</table>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">Y</span>  <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">101</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">spm1d</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">plot_mean_sd</span><span class="p">(</span><span class="n">Y</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+<hr class="docutils" />
+<div class="section" id="plot-spm">
+<h2>plot_spm<a class="headerlink" href="#plot-spm" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="spm1d.plot.plot_spm">
+<code class="descclassname">spm1d.plot.</code><code class="descname">plot_spm</code><span class="sig-paren">(</span><em>spm</em>, <em>ax=None</em>, <em>plot_ylabel=True</em>, <em>autoset_xlim=True</em>, <em>autoset_ylim=True</em>, <em>**kwdargs</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/spm1d/plot.html#plot_spm"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#spm1d.plot.plot_spm" title="Permalink to this definition">¶</a></dt>
+<dd><p>Plot an <strong>spm1d</strong> SPM object as a line.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"></td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li><em>spm</em> &#8212; an <strong>spm1d</strong> SPM object (not needed if using the SPM.plot method)</li>
+<li><em>ax</em> &#8212; optional matplotlib.axes object  [default: matplotlib.pyplot.gca()]</li>
+<li><em>plot_ylabel</em> &#8212; if <em>True</em>, then an &#8220;SPM{t}&#8221; or &#8220;SPM{F}&#8221; label will automatically be added to the y axis</li>
+<li><em>autoset_ylim</em> &#8212; if True (default), will set the y axis limits so that all text, line and patch objects are visible inside the axes</li>
+<li><em>kwdards</em> &#8212; any keyword argument accepted by <strong>matplotlib.pyplot.plot</strong></li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"></td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li><em>h</em> &#8212; a <strong>matplotlib.lines.Line2D</strong> object</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Example:</th><td class="field-body"></td>
+</tr>
+</tbody>
+</table>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">t</span>     <span class="o">=</span> <span class="n">spm1d</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">ttest</span><span class="p">(</span><span class="n">Y</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">line</span>  <span class="o">=</span> <span class="n">t</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>   <span class="c1"># equivalent to &quot;line = spm1d.plot.plot_spm(t)&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">line</span><span class="o">.</span><span class="n">set_color</span><span class="p">(</span><span class="s1">&#39;r&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+<hr class="docutils" />
+<div class="section" id="plot-spmi">
+<h2>plot_spmi<a class="headerlink" href="#plot-spmi" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="spm1d.plot.plot_spmi">
+<code class="descclassname">spm1d.plot.</code><code class="descname">plot_spmi</code><span class="sig-paren">(</span><em>spmi</em>, <em>ax=None</em>, <em>color='k'</em>, <em>facecolor='0.8'</em>, <em>lw=2</em>, <em>plot_thresh=True</em>, <em>plot_ylabel=True</em>, <em>thresh_color='k'</em>, <em>autoset_xlim=True</em>, <em>autoset_ylim=True</em>, <em>label=None</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/spm1d/plot.html#plot_spmi"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#spm1d.plot.plot_spmi" title="Permalink to this definition">¶</a></dt>
+<dd><p>Plot an <strong>spm1d</strong> SPM inference object as a line.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"></td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li><em>spmi</em> &#8212; an <strong>spm1d</strong> SPM object</li>
+<li><em>ax</em> &#8212; optional matplotlib.axes object  [default: matplotlib.pyplot.gca()]</li>
+<li><em>color</em> &#8212; optional line color specifier (for the raw SPM)</li>
+<li><em>facecolor</em> &#8212; optional face color (for suprathreshold clusters)</li>
+<li><em>plot_thresh</em> &#8212; if <em>True</em>, one or two horizontal threshold lines will be plotted (for one- or two-tailed inference)</li>
+<li><em>plot_ylabel</em> &#8212; if <em>True</em>, an &#8220;SPM{t}&#8221; or &#8220;SPM{F}&#8221; label will automatically be added to the y axis</li>
+<li><em>autoset_ylim</em> &#8212; if True (default), will set the y axis limits so that all text, line and patch objects are visible inside the axes</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"></td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li><em>None</em></li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Example:</th><td class="field-body"></td>
+</tr>
+</tbody>
+</table>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">t</span>     <span class="o">=</span> <span class="n">spm1d</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">ttest</span><span class="p">(</span><span class="n">Y</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ti</span>    <span class="o">=</span> <span class="n">t</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="mf">0.05</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ti</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>   <span class="c1"># equivalent to &quot;spm1d.plot.plot_spmi(ti)&quot;</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+<hr class="docutils" />
+<div class="section" id="plot-spmi-p-values">
+<h2>plot_spmi_p_values<a class="headerlink" href="#plot-spmi-p-values" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="spm1d.plot.plot_spmi_p_values">
+<code class="descclassname">spm1d.plot.</code><code class="descname">plot_spmi_p_values</code><span class="sig-paren">(</span><em>spmi</em>, <em>ax=None</em>, <em>size=8</em>, <em>offsets=None</em>, <em>offset_all_clusters=None</em>, <em>autoset_ylim=True</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/spm1d/plot.html#plot_spmi_p_values"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#spm1d.plot.plot_spmi_p_values" title="Permalink to this definition">¶</a></dt>
+<dd><p>Plot an <strong>spm1d</strong> SPM inference object&#8217;s p values as text (if they exist).</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"></td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li><em>spmi</em> &#8212; an <strong>spm1d</strong> SPM inference object</li>
+<li><em>ax</em> &#8212; optional matplotlib.axes object  [default: matplotlib.pyplot.gca()]</li>
+<li><em>size</em> &#8212; optional integer specifying font size</li>
+<li><em>offsets</em> &#8212; optional list of 2-tuples specifying (x,y) offsets with respect to cluster centroids</li>
+<li><em>offset_all_clusters</em> &#8212; optional 2-tuple specifying the (x,y) offset for all clusters, with respect to cluster centroids</li>
+<li><em>autoset_ylim</em> &#8212; if True (default), will set the y axis limits so that all text, line and patch objects are visible inside the axes</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"></td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li><em>None</em></li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Example:</th><td class="field-body"></td>
+</tr>
+</tbody>
+</table>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">t</span>   <span class="o">=</span> <span class="n">spm1d</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">ttest</span><span class="p">(</span><span class="n">Y</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ti</span>  <span class="o">=</span> <span class="n">t</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="mf">0.05</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ti</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">myoffsets</span> <span class="o">=</span> <span class="p">[(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mf">0.2</span><span class="p">),</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mf">0.1</span><span class="p">)]</span>  <span class="c1"># if there are three clusters, there must be three 2-tuple offsets</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ti</span><span class="o">.</span><span class="n">plot_p_values</span><span class="p">(</span><span class="n">offsets</span><span class="o">=</span><span class="n">myoffsets</span><span class="p">)</span> <span class="c1">#equivalent to: &quot;spm1d.plot.plot_p_values(ti, offsets=myoffsets)&quot;</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+<hr class="docutils" />
+<div class="section" id="plot-spmi-threshold-label">
+<h2>plot_spmi_threshold_label<a class="headerlink" href="#plot-spmi-threshold-label" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="spm1d.plot.plot_spmi_threshold_label">
+<code class="descclassname">spm1d.plot.</code><code class="descname">plot_spmi_threshold_label</code><span class="sig-paren">(</span><em>spmi</em>, <em>ax=None</em>, <em>lower=False</em>, <em>pos=None</em>, <em>autoset_ylim=True</em>, <em>**kwdargs</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/spm1d/plot.html#plot_spmi_threshold_label"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#spm1d.plot.plot_spmi_threshold_label" title="Permalink to this definition">¶</a></dt>
+<dd><p>Plot an <strong>spm1d</strong> SPM inference object as a line.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"></td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li><em>spmi</em> &#8212; an <strong>spm1d</strong> SPM inference object</li>
+<li><em>ax</em> &#8212; optional matplotlib.axes object  [default: matplotlib.pyplot.gca()]</li>
+<li><em>lower</em> &#8212; if True, will plot the label on the lower threshold (if two-tailed inference has been conducted)</li>
+<li><em>pos</em> &#8212; optional 2-tuple specifying text object location; setting &#8220;pos&#8221; over-rides &#8220;lower&#8221;</li>
+<li><em>autoset_ylim</em> &#8212; if True (default), will set the y axis limits so that all text, line and patch objects are visible inside the axes</li>
+<li><em>kwdards</em> &#8212; any keyword argument accepted by <strong>matplotlib.pyplot.text</strong></li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"></td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>a <strong>matplotlib.text.Text</strong> object</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Example:</th><td class="field-body"></td>
+</tr>
+</tbody>
+</table>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">t</span>     <span class="o">=</span> <span class="n">spm1d</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">ttest</span><span class="p">(</span><span class="n">Y</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ti</span>    <span class="o">=</span> <span class="n">t</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="mf">0.05</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ti</span><span class="o">.</span><span class="n">plot_threshold_label</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="p">(</span><span class="mi">50</span><span class="p">,</span><span class="mf">3.0</span><span class="p">))</span>   <span class="c1"># equivalent to &quot;spm1d.plot.plot_spmi_threshold_label(ti, pos=(50,3.0))&quot;</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+</div>
+
+
+    </div>
+    
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+    </p>
+    <p>
+        &copy; Copyright 2016, Todd Pataky.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.5.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

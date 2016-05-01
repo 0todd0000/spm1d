@@ -39,6 +39,32 @@ Contents
 	NewFeatures.rst
 
 
+.. toctree::
+	:maxdepth: 2
+
+	Downloads.rst
 
 
+.. toctree::
+	:maxdepth: 2
+
+	Documentation.rst
+
+
+.. toctree::
+	:maxdepth: 2
+
+	DocumentationMatlab.rst
+
+
+.. toctree::
+	:maxdepth: 3
+
+	References.rst
+
+
+.. toctree::
+	:maxdepth: 2
+
+	Workshops.rst
 

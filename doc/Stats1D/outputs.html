@@ -1,0 +1,354 @@
+
+
+
+<!DOCTYPE html>
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Test outputs &mdash; spm1d 0.3 documentation</title>
+    
+    <link rel="stylesheet" href="../../_static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/bootstrap-3.3.4/css/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/bootstrap-3.3.4/css/bootstrap-theme.min.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/bootstrap-sphinx.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '0.3',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../_static/js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="../../_static/js/jquery-fix.js"></script>
+    <script type="text/javascript" src="../../_static/bootstrap-3.3.4/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../../_static/bootstrap-sphinx.js"></script>
+    <link rel="top" title="spm1d 0.3 documentation" href="../../index.html" />
+    <link rel="up" title="Documentation (Python)" href="../../Documentation.html" />
+    <link rel="next" title="ANOVA post hoc analysis" href="../PostHoc/anova.html" />
+    <link rel="prev" title="Multivariate tests" href="multivariate.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+  </head>
+  <body role="document">
+
+<div style="background-color: white; text-align: left; padding: 10px 10px 15px 15px">
+<a href="../../index.html"><img src="../../logo.png" border="0" alt="spm1d"/></a>
+</div>
+
+
+
+  <div id="navbar" class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="../../index.html">
+              </a>
+        <span class="navbar-text navbar-version pull-left"><b>0.3</b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            
+                <li><a href="../../index.html">Home</a></li>
+                <li><a href="../../Downloads.html">Downloads</a></li>
+                <li><a href="../../Documentation.html">Documentation</a></li>
+                <li><a href="../../References.html">References</a></li>
+                <li><a href="../../Workshops.html">Workshops</a></li>
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="../../index.html">Site <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul>
+<li class="toctree-l1"><a class="reference internal" href="../../NewFeatures.html">New Features (version 0.3.2)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../NewFeatures.html#new-features-version-0-3-1">New Features (version 0.3.1)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../NewFeatures.html#new-features-version-0-3">New Features (version 0.3)</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Downloads.html">Downloads</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../../Documentation.html">Documentation (Python)</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../DocumentationMatlab.html">Documentation (Matlab)</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../References.html">References</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Workshops.html">Workshops</a></li>
+</ul>
+</ul>
+</li>
+              
+                <li class="dropdown">
+  <a role="button"
+     id="dLabelLocalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="#">Page <b class="caret"></b></a>
+  <ul class="dropdown-menu localtoc"
+      role="menu"
+      aria-labelledby="dLabelLocalToc"><ul>
+<li><a class="reference internal" href="#">Test outputs</a><ul>
+<li><a class="reference internal" href="#raw-spms">Raw SPMs</a></li>
+<li><a class="reference internal" href="#inference-spms">Inference SPMs</a></li>
+<li><a class="reference internal" href="#suprathreshold-clusters">Suprathreshold clusters</a></li>
+</ul>
+</li>
+</ul>
+</ul>
+</li>
+              
+            
+            
+            
+            
+            
+              <li class="hidden-sm">
+<div id="sourcelink">
+  <a href="../../_sources/doc/Stats1D/outputs.txt"
+     rel="nofollow">Source</a>
+</div></li>
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="../../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper"><ul>
+<li><a class="reference internal" href="#">Test outputs</a><ul>
+<li><a class="reference internal" href="#raw-spms">Raw SPMs</a></li>
+<li><a class="reference internal" href="#inference-spms">Inference SPMs</a></li>
+<li><a class="reference internal" href="#suprathreshold-clusters">Suprathreshold clusters</a></li>
+</ul>
+</li>
+</ul>
+
+  <li>
+    <a href="multivariate.html" title="Previous Chapter: Multivariate tests"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; Multivariate ...</span>
+    </a>
+  </li>
+  <li>
+    <a href="../PostHoc/anova.html" title="Next Chapter: ANOVA post hoc analysis"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">ANOVA post ho... &raquo;</span>
+    </a>
+  </li>
+<form action="../../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+        </div>
+      </div>
+    <div class="col-md-12 content">
+      
+  <div class="section" id="test-outputs">
+<span id="label-examples-statsoutputs"></span><h1>Test outputs<a class="headerlink" href="#test-outputs" title="Permalink to this headline">¶</a></h1>
+<p>Outputs from statistical tests conducted in <strong>spm1d</strong> contain details which may be accessed in two ways:</p>
+<ul class="simple">
+<li>Interactively using the <strong>print</strong> command</li>
+<li>Programmatically using SPM object attributes</li>
+</ul>
+<p>As examples let us revisit the <a class="reference internal" href="onetwosample.html#label-stats-one-sample-t-test"><span>one-sample t test</span></a>.</p>
+<p>(<a class="reference external" href="../../pyplots/stats1d/ex_ttest.py">Source code</a>, <a class="reference external" href="../../pyplots/stats1d/ex_ttest.png">png</a>, <a class="reference external" href="../../pyplots/stats1d/ex_ttest.hires.png">hires.png</a>, <a class="reference external" href="../../pyplots/stats1d/ex_ttest.pdf">pdf</a>)</p>
+<div class="figure">
+<img alt="../../_images/ex_ttest.png" src="../../_images/ex_ttest.png" />
+</div>
+<div class="section" id="raw-spms">
+<h2>Raw SPMs<a class="headerlink" href="#raw-spms" title="Permalink to this headline">¶</a></h2>
+<p>The single output of all statistical tests in <strong>spm1d.stats</strong> is a test statistic continuum (or SPM) object, which can be explored interactively using the <em>print</em> command:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">t</span>  <span class="o">=</span> <span class="n">spm1d</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">ttest</span><span class="p">(</span><span class="n">Y</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">t</span>
+</pre></div>
+</div>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">SPM</span><span class="p">{</span><span class="n">t</span><span class="p">}</span>
+   <span class="n">SPM</span><span class="o">.</span><span class="n">z</span>      <span class="p">:</span>  <span class="p">(</span><span class="mi">1</span><span class="n">x100</span><span class="p">)</span> <span class="n">test</span> <span class="n">stat</span> <span class="n">field</span>
+   <span class="n">SPM</span><span class="o">.</span><span class="n">df</span>     <span class="p">:</span>  <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">9</span><span class="p">)</span>
+   <span class="n">SPM</span><span class="o">.</span><span class="n">fwhm</span>   <span class="p">:</span>  <span class="mf">11.21919</span>
+   <span class="n">SPM</span><span class="o">.</span><span class="n">resels</span> <span class="p">:</span>  <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mf">8.82417</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">If you are in an interactive Python session, simply typing &#8220;t&#8221; and then ENTER should produce the same output.</p>
+</div>
+<p>The attributes of the SPM object include:</p>
+<ul>
+<li><p class="first"><strong>SPM{t}</strong> &#8212; a label indicating that this variable is a statistical parametric map, and that the test statistic is the <em>t</em> statistic. If we had conducted ANOVA, for example, then the variable would be labeled as &#8220;SPM{F}&#8221;.</p>
+</li>
+<li><p class="first"><strong>SPM.z</strong> &#8212; the 1D test statistic continuum (or &#8220;test statistic field&#8221; or &#8220;test statistic trajectory&#8221;)</p>
+</li>
+<li><p class="first"><strong>SPM.df</strong> &#8212; degrees of freedom</p>
+</li>
+<li><p class="first"><strong>SPM.fwhm</strong> &#8212; the estimated full-width at half-maximum (FWHM) of a 1D Gaussian kernel which, when convolved with (random) 1D Gaussian continua, would yield the same smoothness as the observed residuals. The &#8220;residuals&#8221; are 1D continua embodying the variable that is not accounted for by the experimental design. In a one sample t test, for example, the residual for the <em>j</em> -th continuum is simply the difference between that continuum and the mean continuum:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span> <span class="n">j</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="gp">&gt;&gt;&gt; </span> <span class="n">residual_j</span> <span class="o">=</span> <span class="n">Y</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">-</span> <span class="n">Y</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first"><strong>SPM.resels</strong> &#8212; the resolution element counts, where &#8220;resolution element&#8221; refers to the geometric properties of the continuum. The first resel count is the Euler characteristic (<em>EC</em>), where <em>EC</em> is equal to one plus the number of &#8220;holes&#8221; in the continuum. The second resel count is (<em>Q</em> - <em>EC</em>) / FWHM, where <em>Q</em> is the number of continuum nodes. Thus the first resel count represents the number of separate &#8220;sections&#8221; in the continuum, and the second resel count represents the total number of independent &#8220;processes&#8221; in the continuum.</p>
+</li>
+</ul>
+<p>Each <strong>SPM{t}</strong> attribute can also be accessed programmatically, like this:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">t</span><span class="o">.</span><span class="n">fwhm</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">x</span>
+</pre></div>
+</div>
+<div class="highlight-python"><div class="highlight"><pre><span class="mf">11.219185575045229</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="inference-spms">
+<span id="label-spmobject-details"></span><h2>Inference SPMs<a class="headerlink" href="#inference-spms" title="Permalink to this headline">¶</a></h2>
+<p>The output of the <strong>inference</strong> method is an inference continuum (or inference SPM) object:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">t</span>  <span class="o">=</span> <span class="n">spm1d</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">ttest</span><span class="p">(</span><span class="n">Y</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ti</span> <span class="o">=</span> <span class="n">t</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.05</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">ti</span>
+</pre></div>
+</div>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">SPM</span><span class="p">{</span><span class="n">t</span><span class="p">}</span>
+   <span class="n">SPM</span><span class="o">.</span><span class="n">z</span>        <span class="p">:</span>  <span class="p">(</span><span class="mi">1</span><span class="n">x100</span><span class="p">)</span> <span class="n">test</span> <span class="n">stat</span> <span class="n">field</span>
+   <span class="n">SPM</span><span class="o">.</span><span class="n">df</span>       <span class="p">:</span>  <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">9</span><span class="p">)</span>
+   <span class="n">SPM</span><span class="o">.</span><span class="n">fwhm</span>     <span class="p">:</span>  <span class="mf">11.21919</span>
+   <span class="n">SPM</span><span class="o">.</span><span class="n">resels</span>   <span class="p">:</span>  <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mf">8.82417</span><span class="p">)</span>
+
+<span class="n">Inference</span><span class="p">:</span>
+   <span class="n">SPM</span><span class="o">.</span><span class="n">alpha</span>    <span class="p">:</span>  <span class="mf">0.050</span>
+   <span class="n">SPM</span><span class="o">.</span><span class="n">zstar</span>    <span class="p">:</span>  <span class="mf">3.82411</span>
+   <span class="n">SPM</span><span class="o">.</span><span class="n">h0reject</span> <span class="p">:</span>  <span class="bp">True</span>
+   <span class="n">SPM</span><span class="o">.</span><span class="n">p</span>        <span class="p">:</span>  <span class="p">(</span><span class="mf">0.031</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The first four attributes are the same as in the raw SPM above. The final four attributes are introduced at the statistical inference stage.</p>
+<ul class="simple">
+<li><strong>SPM.alpha</strong> &#8212; the user-specified Type I error rate (default: 0.05)</li>
+<li><strong>SPM.zstar</strong> &#8212; the critical Random Field Theory threshold</li>
+<li><strong>h0reject</strong> &#8212; the null hypothesis rejection decision (i.e. does the test statistic continuum exceed zstar?)</li>
+<li><strong>SPM.p</strong> &#8212; a list of probability values, one for each threshold-surviving cluster. By definition each cluster&#8217;s probability value is equal to or less than <em>alpha</em>.</li>
+</ul>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">In this example the <em>p</em> value is 0.031. This could be interpreted as follows: &#8220;the probability that smooth random 1D continua would produce a suprathreshold cluster as broad or broader than the observed cluster is 0.031&#8221;.</p>
+</div>
+<div class="admonition danger">
+<p class="first admonition-title">Danger</p>
+<p>Do not misinterpret probability values as descriptors of experimental data.</p>
+<p class="last">They instead describe the random behavior of smooth Gaussian 1D continua.</p>
+</div>
+<p>Cluster-specific probability values depend on five parameters:</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li>Type of test statistic</li>
+<li>Sample size (i.e. degrees of freedom)</li>
+<li>Resel counts (i.e. continuum size relative to its smoothness)</li>
+<li>The cluster&#8217;s minimum suprathreshold height</li>
+<li>The cluster&#8217;s breadth relative to the continuum size.</li>
+</ol>
+</div></blockquote>
+</div>
+<div class="section" id="suprathreshold-clusters">
+<h2>Suprathreshold clusters<a class="headerlink" href="#suprathreshold-clusters" title="Permalink to this headline">¶</a></h2>
+<p>All inference SPM objects have an attribute called &#8220;clusters&#8221; which contains a list of <strong>cluster</strong> objects.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">t</span>  <span class="o">=</span> <span class="n">spm1d</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">ttest</span><span class="p">(</span><span class="n">Y</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ti</span> <span class="o">=</span> <span class="n">t</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.05</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">ti</span><span class="o">.</span><span class="n">clusters</span>
+</pre></div>
+</div>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">[</span><span class="n">Cluster</span> <span class="n">at</span> <span class="n">location</span><span class="p">:</span> <span class="p">(</span><span class="mf">17.000</span><span class="p">,</span> <span class="mf">3.870</span><span class="p">)</span>
+   <span class="n">extent</span>          <span class="p">:</span>  <span class="mi">3</span>
+   <span class="n">extent</span> <span class="p">(</span><span class="n">resels</span><span class="p">)</span> <span class="p">:</span>  <span class="mf">0.26740</span>
+   <span class="n">height</span> <span class="p">(</span><span class="nb">min</span><span class="p">)</span>    <span class="p">:</span>  <span class="mf">3.86630</span>
+   <span class="n">P</span>               <span class="p">:</span>  <span class="mf">0.03102</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">If multiple clusters exist, they will be listed in the following order: (1) upper threshold left-to-right, (2) lower threshold left-to-right.</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">If the test fails to reach the critical threshold, <strong>clusters</strong> will be an empty list: &#8220;[ ]&#8221;.</p>
+</div>
+<p>You can access specific clusters using list indexing:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">cluster0</span> <span class="o">=</span> <span class="n">ti</span><span class="o">.</span><span class="n">clusters</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">cluster0</span>
+</pre></div>
+</div>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">Cluster</span> <span class="n">at</span> <span class="n">location</span><span class="p">:</span> <span class="p">(</span><span class="mf">17.000</span><span class="p">,</span> <span class="mf">3.870</span><span class="p">)</span>
+   <span class="n">extent</span>          <span class="p">:</span>  <span class="mi">3</span>
+   <span class="n">extent</span> <span class="p">(</span><span class="n">resels</span><span class="p">)</span> <span class="p">:</span>  <span class="mf">0.26740</span>
+   <span class="n">height</span> <span class="p">(</span><span class="nb">min</span><span class="p">)</span>    <span class="p">:</span>  <span class="mf">3.86630</span>
+   <span class="n">P</span>               <span class="p">:</span>  <span class="mf">0.03102</span>
+</pre></div>
+</div>
+<p>Cluster attributes include:</p>
+<ul class="simple">
+<li><strong>cluster.xy</strong> &#8212; the cluster centroid coordinates. Here the centroid is located at (17.000, 3.870).</li>
+<li><strong>cluster.extent</strong> &#8212; the number of continuum nodes in this cluster which exceed the threshold.</li>
+<li><strong>cluster.extentR</strong> &#8212; the same as <strong>cluster.extent</strong>, but expressed in resel units.</li>
+<li><strong>cluster.h</strong> &#8212; the minimum height of all cluster nodes.</li>
+<li><strong>cluster.P</strong> &#8212; the probability that smooth, random 1D continua would produce a suprathreshold cluster with the observed breadth</li>
+</ul>
+</div>
+</div>
+
+
+    </div>
+    
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+    </p>
+    <p>
+        &copy; Copyright 2016, Todd Pataky.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.5.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

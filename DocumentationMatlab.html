@@ -1,0 +1,242 @@
+
+
+
+<!DOCTYPE html>
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Documentation (Matlab) &mdash; spm1d 0.3 documentation</title>
+    
+    <link rel="stylesheet" href="_static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/bootstrap-3.3.4/css/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="_static/bootstrap-3.3.4/css/bootstrap-theme.min.css" type="text/css" />
+    <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0.3',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="_static/js/jquery-fix.js"></script>
+    <script type="text/javascript" src="_static/bootstrap-3.3.4/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
+    <link rel="top" title="spm1d 0.3 documentation" href="index.html" />
+    <link rel="next" title="References" href="References.html" />
+    <link rel="prev" title="spm1d.util" href="doc/API/util.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+  </head>
+  <body role="document">
+
+<div style="background-color: white; text-align: left; padding: 10px 10px 15px 15px">
+<a href="index.html"><img src="logo.png" border="0" alt="spm1d"/></a>
+</div>
+
+
+
+  <div id="navbar" class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="index.html">
+              </a>
+        <span class="navbar-text navbar-version pull-left"><b>0.3</b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            
+                <li><a href="index.html">Home</a></li>
+                <li><a href="Downloads.html">Downloads</a></li>
+                <li><a href="Documentation.html">Documentation</a></li>
+                <li><a href="References.html">References</a></li>
+                <li><a href="Workshops.html">Workshops</a></li>
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="index.html">Site <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul>
+<li class="toctree-l1"><a class="reference internal" href="NewFeatures.html">New Features (version 0.3.2)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="NewFeatures.html#new-features-version-0-3-1">New Features (version 0.3.1)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="NewFeatures.html#new-features-version-0-3">New Features (version 0.3)</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Downloads.html">Downloads</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Documentation.html">Documentation (Python)</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="">Documentation (Matlab)</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="References.html">References</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Workshops.html">Workshops</a></li>
+</ul>
+</ul>
+</li>
+              
+                <li class="dropdown">
+  <a role="button"
+     id="dLabelLocalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="#">Page <b class="caret"></b></a>
+  <ul class="dropdown-menu localtoc"
+      role="menu"
+      aria-labelledby="dLabelLocalToc"><ul>
+<li><a class="reference internal" href="#">Documentation (Matlab)</a><ul>
+<li><a class="reference internal" href="#examples">Examples</a></li>
+<li><a class="reference internal" href="#support">Support</a></li>
+</ul>
+</li>
+</ul>
+</ul>
+</li>
+              
+            
+            
+            
+            
+            
+              <li class="hidden-sm">
+<div id="sourcelink">
+  <a href="_sources/DocumentationMatlab.txt"
+     rel="nofollow">Source</a>
+</div></li>
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper"><ul>
+<li><a class="reference internal" href="#">Documentation (Matlab)</a><ul>
+<li><a class="reference internal" href="#examples">Examples</a></li>
+<li><a class="reference internal" href="#support">Support</a></li>
+</ul>
+</li>
+</ul>
+
+  <li>
+    <a href="doc/API/util.html" title="Previous Chapter: spm1d.util"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; spm1d.util</span>
+    </a>
+  </li>
+  <li>
+    <a href="References.html" title="Next Chapter: References"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">References &raquo;</span>
+    </a>
+  </li>
+<form action="search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+        </div>
+      </div>
+    <div class="col-md-12 content">
+      
+  <div class="section" id="documentation-matlab">
+<span id="label-documentationmatlab"></span><h1>Documentation (Matlab)<a class="headerlink" href="#documentation-matlab" title="Permalink to this headline">¶</a></h1>
+<div class="admonition danger">
+<p class="first admonition-title">Danger</p>
+<p>Unbalanced two- and three-way repeated-measures ANOVA results have not been verified.</p>
+<p>Example: more subjects in Group 1 than in Group 2.</p>
+<p class="last">Please interpret results for these designs with caution, and recognize that they might not be valid.</p>
+</div>
+<p><a class="reference internal" href="install/InstallationMatlab.html#label-installationmatlab"><span>Installing for MATLAB</span></a></p>
+<p><a class="reference internal" href="Documentation.html#label-documentation"><span>Link to Python documentation</span></a></p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p>There are a few key differences between the MATLAB and Python versions of <strong>spm1d</strong>.</p>
+<p>The main version of <strong>spm1d</strong> is the Python version.  The MATLAB version incorporates much but not all of the functionaly of the Python version.</p>
+<p>There will be discrepancies between the Python and MATLAB versions for two main reasons:</p>
+<ol class="arabic simple">
+<li>The MATLAB version of <strong>spm1d</strong> does not yet employ non-sphericity corrections, which are employed by default in the Python version.</li>
+<li>The MATLAB version of <strong>spm1d</strong> does not interpolate supra-threshold clusters, thereby generating somewhat inaccurate measurements of cluster size.</li>
+</ol>
+<p>Practically the differences are likely to be small, but users should be aware that non-sphericity corrections, by definition, drive the critical threshold higher.</p>
+<p><strong>MATLAB results which just reach the critical threshold must therefore be interpreted with caution</strong>.</p>
+<p class="last">The second issue will result in slightly underestimated cluster-level p values.</p>
+</div>
+<div class="section" id="examples">
+<h2>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h2>
+<p>Inside the <strong>./spm1d/examples</strong> folder you will find Matlab scripts which implement a variety of statistical tests.</p>
+<p>These examples correspond to the Python scripts of the same name, which are described in: <a class="reference internal" href="Documentation.html#label-documentation"><span>the main documentation</span></a>.</p>
+<p>Statistical theory underlying the examples is documented here: <a class="reference internal" href="Documentation.html#label-theory"><span>Theory</span></a></p>
+</div>
+<div class="section" id="support">
+<h2>Support<a class="headerlink" href="#support" title="Permalink to this headline">¶</a></h2>
+<p>We do not provide detailed documentation for the MATLAB version of <strong>spm1d</strong>.</p>
+<p>If you require support consider the following options:</p>
+<ol class="arabic simple">
+<li>Running the example scripts in <cite>+spm1d/examples</cite>.</li>
+<li>Checking the <a class="reference internal" href="Documentation.html#label-documentation"><span>Python documentation</span></a> (the syntax is nearly identical).</li>
+<li>Submitting a support request to <strong>spm1d</strong>&#8216;s <a class="reference external" href="http://0todd0000.github.io/spm1dmatlab">MATLAB github site</a>.</li>
+<li>Contacting us to request an <a class="reference internal" href="Workshops.html#label-workshops"><span>educational workshop</span></a>.</li>
+</ol>
+</div>
+</div>
+
+
+    </div>
+    
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+    </p>
+    <p>
+        &copy; Copyright 2016, Todd Pataky.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.5.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

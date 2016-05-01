@@ -40,14 +40,279 @@ This update contains major edits to the ANOVA code.
 
 
 
+New Features (version 0.3)
+=====================================
+
+The main new features in **spm1d** version 0.3 are:
+
+* :ref:`M-way repeated measures ANOVA <label-FeatureMwayANOVA>`
+* :ref:`Multivariate analysis <label-FeatureMVanalysis>`
+* :ref:`0D analysis <label-Feature0Danalysis>`
+* :ref:`MATLAB syntax == Python syntax <label-FeatureMATLABsyntax>`
+* :ref:`Datasets: 0D & 1D, univariate and multivariate <label-FeatureDatasets>`
+* :ref:`Improved inference using rft1d <label-FeatureInference>`
+* :ref:`Installation and updating <label-FeatureInstallation>`
+
+
+.. _label-FeatureMwayANOVA:
+
+M-way repeated measures ANOVA
+________________________________
+
+**spm1d** now supports a variety of M-way repeated measures and nested ANOVA designs:
+
+
+
+* One-way
+	* spm1d.stats.\ **anova1**  ---  one-way ANOVA
+	* spm1d.stats.\ **anova1rm** ---  one-way repeated-measures ANOVA
+* Two-way
+	* spm1d.stats.\ **anova2**   ---  two-way ANOVA
+	* spm1d.stats.\ **anova2nested**   ---  two-way nested ANOVA
+	* spm1d.stats.\ **anova2rm**   ---  two-way repeated-measures ANOVA
+	* spm1d.stats.\ **anova2onerm**   ---  two-way ANOVA with repeated measures on one factor
+* Three-way
+	* spm1d.stats.\ **anova3**   ---  three-way ANOVA
+	* spm1d.stats.\ **anova3nested**   ---  three-way fully nested ANOVA
+	* spm1d.stats.\ **anova3onerm**   ---  three-way ANOVA with repeated measures on one factor
+	* spm1d.stats.\ **anova3tworm**   ---  three-way ANOVA with repeated measures on two factors
+
+
+.. warning:: Currently **unsupported** ANOVA functionality includes:
+
+	* Non-sphericity corrections for two- and three-way repeated-measures designs
+	* Unbalanced designs for M > 1
+	* Missing data
+	* Mixed (fixed and random factor) designs.  Mixed effects analysis should be implemented using the hierarchical procedure :ref:`described here <label-Examples-StatsAdvanced>`
+	* Abitrary designs (Latin Square, partially nested, etc.)
+
+
+.. _label-FeatureMVanalysis:
+
+Multivariate analysis
+________________________________
+
+**spm1d** now supports basic analyses of multivariate 1D continua:
+
+* spm1d.stats.\ **hotellings** --- one-sample Hotelling's T\ :sup:`2` test
+* spm1d.stats.\ **hotellings_paired** --- paired Hotelling's T\ :sup:`2` test
+* spm1d.stats.\ **hotellings2** --- two-sample Hotelling's T\ :sup:`2` test
+* spm1d.stats.\ **cca** --- canonical correlation analysis (univariate 0D independent variable and multivariate 1D dependent variable)
+* spm1d.stats.\ **manova1** --- one-way multivariate analysis of variance.
+
+.. warning:: Non-sphericity corrections are not yet implemented for relevant multivariate procedures including:
+
+	 * Hotelling's two-sample T\ :sup:`2`
+	 * MANOVA
+
+
+.. _label-Feature0Danalysis:
+
+0D analysis
+________________________________
+
+All **spm1d.stats** functions now support both 0D and 1D data data analysis.
+
+Example (0D):
+
+>>> yA = [1, 2, 2, 1, 3]
+>>> yB = [1, 2, 2, 1, 3]
+>>> t = spm1d.stats.ttest2(yA, yB)
+>>> ti = t.inference(0.05)
+>>> print ti  #display inference results
+
+Example (1D):
+
+>>> yA = np.random.randn(5,101)
+>>> yB = np.random.randn(5,101)
+>>> t = spm1d.stats.ttest2(yA, yB)
+>>> ti = t.inference(0.05)
+>>> ti.plot()  #plot inference results
+
+Find more details in the example scripts in **./spm1d/examples/stats0d/**
+
+The scripts compare **spm1d** results to third-party results (from SAS, SPSS, Excel, R, etc.) for a variety of datasets available on the web.
+
+
+
+
+
+
+
+
+
+.. _label-FeatureMATLABsyntax:
+
+MATLAB syntax == Python syntax
+________________________________
+
+**spm1d**'s MATLAB and Python syntaxes are now nearly identical.
+
+Example two-sample t test (Python):
+
+>>> yA = np.random.randn(8,101)
+>>> yB = np.random.randn(8,101)
+>>> t  = spm1d.stats.ttest2(yA, yB)
+>>> ti = t.inference(0.05)
+
+Example two-sample t test (MATLAB):
+
+>>> yA = randn(8,101);
+>>> yB = randn(8,101);
+>>> t  = spm1d.stats.ttest2(yA, yB);
+>>> ti = t.inference(0.05);
+
+:ref:`Click here for MATLAB documentation <label-DocumentationMatlab>`
+
+
+
+.. _label-FeatureDatasets:
+
+Datasets
+________________________________
+
+A variety of 0D and 1D datasets are now available:
+
+* spm1d.data.\ **uv0d** --- univariate 0D datasets
+* spm1d.data.\ **uv1d** --- univariate 1D datasets
+* spm1d.data.\ **mv0d** --- multivariate 0D datasets
+* spm1d.data.\ **mv1d** --- multivariate 1D datasets
+
+
+
+.. _label-FeatureInference:
+
+Inference
+________________________________
+
+**spm1d** now uses the `rft1d <http://www.spm1d.org/rft1d>`_ package for conducting statistical inference.
+
+The following features are supported:
+
+* **Set-level inference**  (previously only cluster-level inference was available)
+* **Circular fields**  (i.e. 0% and 100% are homologous, like the calendar year or the gait stride cycle)
+* **Cluster interpolation**  (to the critical threshold for more accurate p values)
+
+.. warning:: Other **rft1d** procedures like broken-field analysis and element- vs. node-based inferences will be integrated in future versions of **spm1d**.
+
+Set-level inference
+-----------------------------
+
+Consider the following example:
+
 .. plot::
 	:include-source:
 	
-	import numpy as np
-	from matplotlib import pyplot
+	import spm1d
+	YA,YB = spm1d.data.uv1d.t2.SimulatedTwoLocalMax().get_data()
+	t = spm1d.stats.ttest2(YB, YA)
+	ti = t.inference(0.05)
+	ti.plot()
+	ti.plot_p_values()
 
-	x = np.random.randn(10)
-	pyplot.plot(x)
+This yields the following results:
+
+.. code::
+
+	SPM{T} inference field
+		SPM.z         :  (1x101) raw test stat field
+		SPM.df        :  (1, 9.894)
+		SPM.fwhm      :  13.63026
+		SPM.resels    :  (1, 7.33662)
+	Inference:
+		SPM.alpha     :  0.050
+		SPM.zstar     :  4.07916
+		SPM.h0reject  :  True
+		SPM.p_set     :  <0.001
+		SPM.p_cluster :  (0.015, 0.023)
+
+The cluster-level p values are 0.015 and 0.023, but the set-level p value (<0.001) is much lower.
+
+.. note:: Interpreting probabilities
+
+	**Cluster-level p value** : the probability that 1D Gaussian random fields with the observed smoothness would produce a suprathreshold cluster with an extent as large as the observed cluster's extent.
+
+	**Set-level p value** : the probability that 1D Gaussian random fields with the observed smoothness would produce C suprathreshold clusters, all with extents larger than the minimum observed extent.
+
+Set- and cluster-level probabilities are identical when there is just one suprathreshold cluster.
+
+
+
+Circular fields
+-----------------------------
+
+If the first point in the 1D field is homologous with the last point, like in calendar years or gait strides, then the field is 'circular'.
+
+Consider the following example from Ramsay JO, Silverman BW (2005). Functional Data Analysis (Second Edition), Springer, New York.
+
+`Click here for a description of this dataset <http://www.psych.mcgill.ca/misc/fda/ex-weather-a1.html>`_
+
+.. plot::
+	:include-source:
+	
+	import spm1d
+	dataset  = spm1d.data.uv1d.anova1.Weather()
+	Y,A      = dataset.get_data()
+	Y0,Y1    = Y[A==0], Y[A==2]  #Atlantic and Contintental regions
+	t        = spm1d.stats.ttest2(Y0, Y1)
+	ti       = t.inference(0.05, circular=True)
+	ti.plot()
+
+There appear to be two suprathreshold clusters, but Day 0 is homologous with Day 365, so in fact there is just one suprathreshold cluster.
+
+If the example above is regarded as circular, we get a single cluster-level p value of approximately 0.000003.
+
+If instead it is regarded as non-circular, we get two cluster-level p values of approximately 0.006 and 0.001.
+
+.. note::
+
+	Use the keyword **circular** when conducting inference to specify whether or not the field is circular.
+
+	>>> ti = t.inference(0.05, circular=True)
+
+	By default **circular** is False.
+
+
+
+
+
+
+Cluster interpolation
+-----------------------------
+
+**spm1d** now interpolates to the critical threshold u as depicted in panel (b) of the figure below.
+
+Interpolation is conducted by deault, but can be toggled using the **interp** keyword for inference:
+
+	>>>  t = spm1d.stats.ttest(YA, YB)
+	>>>  ti = t.inference(0.05, interp=True)
+	>>>  ti = t.inference(0.05, interp=False)
+
+
+.. plot:: pyplots/fig_upcrossing.py
+
+
+
+
+
+.. _label-FeatureInstallation:
+
+Installation & Updating
+________________________________
+
+The Python version of **spm1d** can be now installed and updated from the command line:
+
+.. code::
+
+	easy_install spm1d
+
+Source code for both Python and MATLAB can be cloned and updated from `github.com <https://github.com/0todd0000/spm1d/>`_.
+
+* :ref:`Detailed Python installation instructions <label-InstallationPython>`
+* :ref:`Detailed MATLAB installation instructions <label-InstallationMatlab>`
+
+
+
 
 
 

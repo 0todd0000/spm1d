@@ -1,3 +1,6 @@
+
+
+
 <!DOCTYPE html>
 
 
@@ -30,6 +33,7 @@
     <script type="text/javascript" src="_static/bootstrap-3.3.4/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
     <link rel="top" title="spm1d 0.3 documentation" href="index.html" />
+    <link rel="next" title="Downloads" href="Downloads.html" />
     <link rel="prev" title="Introduction" href="index.html" />
 <meta charset='utf-8'>
 <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
@@ -38,6 +42,12 @@
 
   </head>
   <body role="document">
+
+<div style="background-color: white; text-align: left; padding: 10px 10px 15px 15px">
+<a href="index.html"><img src="logo.png" border="0" alt="spm1d"/></a>
+</div>
+
+
 
   <div id="navbar" class="navbar navbar-default navbar-fixed-top">
     <div class="container">
@@ -56,6 +66,12 @@
         <div class="collapse navbar-collapse nav-collapse">
           <ul class="nav navbar-nav">
             
+                <li><a href="index.html">Home</a></li>
+                <li><a href="Downloads.html">Downloads</a></li>
+                <li><a href="Documentation.html">Documentation</a></li>
+                <li><a href="References.html">References</a></li>
+                <li><a href="Workshops.html">Workshops</a></li>
+            
             
               <li class="dropdown globaltoc-container">
   <a role="button"
@@ -68,6 +84,22 @@
       aria-labelledby="dLabelGlobalToc"><ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="">New Features (version 0.3.2)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="#new-features-version-0-3-1">New Features (version 0.3.1)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#new-features-version-0-3">New Features (version 0.3)</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Downloads.html">Downloads</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Documentation.html">Documentation (Python)</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="DocumentationMatlab.html">Documentation (Matlab)</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="References.html">References</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Workshops.html">Workshops</a></li>
 </ul>
 </ul>
 </li>
@@ -83,6 +115,21 @@
       aria-labelledby="dLabelLocalToc"><ul>
 <li><a class="reference internal" href="#">New Features (version 0.3.2)</a></li>
 <li><a class="reference internal" href="#new-features-version-0-3-1">New Features (version 0.3.1)</a></li>
+<li><a class="reference internal" href="#new-features-version-0-3">New Features (version 0.3)</a><ul>
+<li><a class="reference internal" href="#m-way-repeated-measures-anova">M-way repeated measures ANOVA</a></li>
+<li><a class="reference internal" href="#multivariate-analysis">Multivariate analysis</a></li>
+<li><a class="reference internal" href="#d-analysis">0D analysis</a></li>
+<li><a class="reference internal" href="#matlab-syntax-python-syntax">MATLAB syntax == Python syntax</a></li>
+<li><a class="reference internal" href="#datasets">Datasets</a></li>
+<li><a class="reference internal" href="#inference">Inference</a><ul>
+<li><a class="reference internal" href="#set-level-inference">Set-level inference</a></li>
+<li><a class="reference internal" href="#circular-fields">Circular fields</a></li>
+<li><a class="reference internal" href="#cluster-interpolation">Cluster interpolation</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#installation-updating">Installation &amp; Updating</a></li>
+</ul>
+</li>
 </ul>
 </ul>
 </li>
@@ -116,6 +163,44 @@
 
 <div class="container">
   <div class="row">
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper"><ul>
+<li><a class="reference internal" href="#">New Features (version 0.3.2)</a></li>
+<li><a class="reference internal" href="#new-features-version-0-3-1">New Features (version 0.3.1)</a></li>
+<li><a class="reference internal" href="#new-features-version-0-3">New Features (version 0.3)</a><ul>
+<li><a class="reference internal" href="#m-way-repeated-measures-anova">M-way repeated measures ANOVA</a></li>
+<li><a class="reference internal" href="#multivariate-analysis">Multivariate analysis</a></li>
+<li><a class="reference internal" href="#d-analysis">0D analysis</a></li>
+<li><a class="reference internal" href="#matlab-syntax-python-syntax">MATLAB syntax == Python syntax</a></li>
+<li><a class="reference internal" href="#datasets">Datasets</a></li>
+<li><a class="reference internal" href="#inference">Inference</a><ul>
+<li><a class="reference internal" href="#set-level-inference">Set-level inference</a></li>
+<li><a class="reference internal" href="#circular-fields">Circular fields</a></li>
+<li><a class="reference internal" href="#cluster-interpolation">Cluster interpolation</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#installation-updating">Installation &amp; Updating</a></li>
+</ul>
+</li>
+</ul>
+
+  <li>
+    <a href="index.html" title="Previous Chapter: Introduction"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; Introduction</span>
+    </a>
+  </li>
+  <li>
+    <a href="Downloads.html" title="Next Chapter: Downloads"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">Downloads &raquo;</span>
+    </a>
+  </li>
+<form action="search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+        </div>
+      </div>
     <div class="col-md-12 content">
       
   <div class="section" id="new-features-version-0-3-2">
@@ -150,22 +235,247 @@
 <li>The correction for one-way ANOVA is approximate and has not been validated.</li>
 <li>Non-sphericity corrections for other designs are currently being checked.</li>
 </ul>
-<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
-<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span>
-
-<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
-<span class="n">pyplot</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</div>
+<div class="section" id="new-features-version-0-3">
+<h1>New Features (version 0.3)<a class="headerlink" href="#new-features-version-0-3" title="Permalink to this headline">¶</a></h1>
+<p>The main new features in <strong>spm1d</strong> version 0.3 are:</p>
+<ul class="simple">
+<li><a class="reference internal" href="#label-featuremwayanova"><span>M-way repeated measures ANOVA</span></a></li>
+<li><a class="reference internal" href="#label-featuremvanalysis"><span>Multivariate analysis</span></a></li>
+<li><a class="reference internal" href="#label-feature0danalysis"><span>0D analysis</span></a></li>
+<li><a class="reference internal" href="#label-featurematlabsyntax"><span>MATLAB syntax == Python syntax</span></a></li>
+<li><a class="reference internal" href="#label-featuredatasets"><span>Datasets: 0D &amp; 1D, univariate and multivariate</span></a></li>
+<li><a class="reference internal" href="#label-featureinference"><span>Improved inference using rft1d</span></a></li>
+<li><a class="reference internal" href="#label-featureinstallation"><span>Installation and updating</span></a></li>
+</ul>
+<div class="section" id="m-way-repeated-measures-anova">
+<span id="label-featuremwayanova"></span><h2>M-way repeated measures ANOVA<a class="headerlink" href="#m-way-repeated-measures-anova" title="Permalink to this headline">¶</a></h2>
+<p><strong>spm1d</strong> now supports a variety of M-way repeated measures and nested ANOVA designs:</p>
+<ul>
+<li><dl class="first docutils">
+<dt>One-way</dt>
+<dd><ul class="first last simple">
+<li>spm1d.stats.<strong>anova1</strong>  &#8212;  one-way ANOVA</li>
+<li>spm1d.stats.<strong>anova1rm</strong> &#8212;  one-way repeated-measures ANOVA</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Two-way</dt>
+<dd><ul class="first last simple">
+<li>spm1d.stats.<strong>anova2</strong>   &#8212;  two-way ANOVA</li>
+<li>spm1d.stats.<strong>anova2nested</strong>   &#8212;  two-way nested ANOVA</li>
+<li>spm1d.stats.<strong>anova2rm</strong>   &#8212;  two-way repeated-measures ANOVA</li>
+<li>spm1d.stats.<strong>anova2onerm</strong>   &#8212;  two-way ANOVA with repeated measures on one factor</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Three-way</dt>
+<dd><ul class="first last simple">
+<li>spm1d.stats.<strong>anova3</strong>   &#8212;  three-way ANOVA</li>
+<li>spm1d.stats.<strong>anova3nested</strong>   &#8212;  three-way fully nested ANOVA</li>
+<li>spm1d.stats.<strong>anova3onerm</strong>   &#8212;  three-way ANOVA with repeated measures on one factor</li>
+<li>spm1d.stats.<strong>anova3tworm</strong>   &#8212;  three-way ANOVA with repeated measures on two factors</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p>Currently <strong>unsupported</strong> ANOVA functionality includes:</p>
+<ul class="last simple">
+<li>Non-sphericity corrections for two- and three-way repeated-measures designs</li>
+<li>Unbalanced designs for M &gt; 1</li>
+<li>Missing data</li>
+<li>Mixed (fixed and random factor) designs.  Mixed effects analysis should be implemented using the hierarchical procedure <a class="reference internal" href="doc/RandomEffects.html#label-examples-statsadvanced"><span>described here</span></a></li>
+<li>Abitrary designs (Latin Square, partially nested, etc.)</li>
+</ul>
+</div>
+</div>
+<div class="section" id="multivariate-analysis">
+<span id="label-featuremvanalysis"></span><h2>Multivariate analysis<a class="headerlink" href="#multivariate-analysis" title="Permalink to this headline">¶</a></h2>
+<p><strong>spm1d</strong> now supports basic analyses of multivariate 1D continua:</p>
+<ul class="simple">
+<li>spm1d.stats.<strong>hotellings</strong> &#8212; one-sample Hotelling&#8217;s T<sup>2</sup> test</li>
+<li>spm1d.stats.<strong>hotellings_paired</strong> &#8212; paired Hotelling&#8217;s T<sup>2</sup> test</li>
+<li>spm1d.stats.<strong>hotellings2</strong> &#8212; two-sample Hotelling&#8217;s T<sup>2</sup> test</li>
+<li>spm1d.stats.<strong>cca</strong> &#8212; canonical correlation analysis (univariate 0D independent variable and multivariate 1D dependent variable)</li>
+<li>spm1d.stats.<strong>manova1</strong> &#8212; one-way multivariate analysis of variance.</li>
+</ul>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p>Non-sphericity corrections are not yet implemented for relevant multivariate procedures including:</p>
+<ul class="last simple">
+<li>Hotelling&#8217;s two-sample T<sup>2</sup></li>
+<li>MANOVA</li>
+</ul>
+</div>
+</div>
+<div class="section" id="d-analysis">
+<span id="label-feature0danalysis"></span><h2>0D analysis<a class="headerlink" href="#d-analysis" title="Permalink to this headline">¶</a></h2>
+<p>All <strong>spm1d.stats</strong> functions now support both 0D and 1D data data analysis.</p>
+<p>Example (0D):</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">yA</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">yB</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">t</span> <span class="o">=</span> <span class="n">spm1d</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">ttest2</span><span class="p">(</span><span class="n">yA</span><span class="p">,</span> <span class="n">yB</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ti</span> <span class="o">=</span> <span class="n">t</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="mf">0.05</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">ti</span>  <span class="c1">#display inference results</span>
+</pre></div>
+</div>
+<p>Example (1D):</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">yA</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">101</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">yB</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">101</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">t</span> <span class="o">=</span> <span class="n">spm1d</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">ttest2</span><span class="p">(</span><span class="n">yA</span><span class="p">,</span> <span class="n">yB</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ti</span> <span class="o">=</span> <span class="n">t</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="mf">0.05</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ti</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>  <span class="c1">#plot inference results</span>
+</pre></div>
+</div>
+<p>Find more details in the example scripts in <strong>./spm1d/examples/stats0d/</strong></p>
+<p>The scripts compare <strong>spm1d</strong> results to third-party results (from SAS, SPSS, Excel, R, etc.) for a variety of datasets available on the web.</p>
+</div>
+<div class="section" id="matlab-syntax-python-syntax">
+<span id="label-featurematlabsyntax"></span><h2>MATLAB syntax == Python syntax<a class="headerlink" href="#matlab-syntax-python-syntax" title="Permalink to this headline">¶</a></h2>
+<p><strong>spm1d</strong>&#8216;s MATLAB and Python syntaxes are now nearly identical.</p>
+<p>Example two-sample t test (Python):</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">yA</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">101</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">yB</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">101</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">t</span>  <span class="o">=</span> <span class="n">spm1d</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">ttest2</span><span class="p">(</span><span class="n">yA</span><span class="p">,</span> <span class="n">yB</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ti</span> <span class="o">=</span> <span class="n">t</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="mf">0.05</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Example two-sample t test (MATLAB):</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">yA</span> <span class="o">=</span> <span class="n">randn</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">101</span><span class="p">);</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">yB</span> <span class="o">=</span> <span class="n">randn</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">101</span><span class="p">);</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">t</span>  <span class="o">=</span> <span class="n">spm1d</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">ttest2</span><span class="p">(</span><span class="n">yA</span><span class="p">,</span> <span class="n">yB</span><span class="p">);</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ti</span> <span class="o">=</span> <span class="n">t</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="mf">0.05</span><span class="p">);</span>
+</pre></div>
+</div>
+<p><a class="reference internal" href="DocumentationMatlab.html#label-documentationmatlab"><span>Click here for MATLAB documentation</span></a></p>
+</div>
+<div class="section" id="datasets">
+<span id="label-featuredatasets"></span><h2>Datasets<a class="headerlink" href="#datasets" title="Permalink to this headline">¶</a></h2>
+<p>A variety of 0D and 1D datasets are now available:</p>
+<ul class="simple">
+<li>spm1d.data.<strong>uv0d</strong> &#8212; univariate 0D datasets</li>
+<li>spm1d.data.<strong>uv1d</strong> &#8212; univariate 1D datasets</li>
+<li>spm1d.data.<strong>mv0d</strong> &#8212; multivariate 0D datasets</li>
+<li>spm1d.data.<strong>mv1d</strong> &#8212; multivariate 1D datasets</li>
+</ul>
+</div>
+<div class="section" id="inference">
+<span id="label-featureinference"></span><h2>Inference<a class="headerlink" href="#inference" title="Permalink to this headline">¶</a></h2>
+<p><strong>spm1d</strong> now uses the <a class="reference external" href="http://www.spm1d.org/rft1d">rft1d</a> package for conducting statistical inference.</p>
+<p>The following features are supported:</p>
+<ul class="simple">
+<li><strong>Set-level inference</strong>  (previously only cluster-level inference was available)</li>
+<li><strong>Circular fields</strong>  (i.e. 0% and 100% are homologous, like the calendar year or the gait stride cycle)</li>
+<li><strong>Cluster interpolation</strong>  (to the critical threshold for more accurate p values)</li>
+</ul>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">Other <strong>rft1d</strong> procedures like broken-field analysis and element- vs. node-based inferences will be integrated in future versions of <strong>spm1d</strong>.</p>
+</div>
+<div class="section" id="set-level-inference">
+<h3>Set-level inference<a class="headerlink" href="#set-level-inference" title="Permalink to this headline">¶</a></h3>
+<p>Consider the following example:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">spm1d</span>
+<span class="n">YA</span><span class="p">,</span><span class="n">YB</span> <span class="o">=</span> <span class="n">spm1d</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">uv1d</span><span class="o">.</span><span class="n">t2</span><span class="o">.</span><span class="n">SimulatedTwoLocalMax</span><span class="p">()</span><span class="o">.</span><span class="n">get_data</span><span class="p">()</span>
+<span class="n">t</span> <span class="o">=</span> <span class="n">spm1d</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">ttest2</span><span class="p">(</span><span class="n">YB</span><span class="p">,</span> <span class="n">YA</span><span class="p">)</span>
+<span class="n">ti</span> <span class="o">=</span> <span class="n">t</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="mf">0.05</span><span class="p">)</span>
+<span class="n">ti</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+<span class="n">ti</span><span class="o">.</span><span class="n">plot_p_values</span><span class="p">()</span>
 </pre></div>
 </div>
 <p>(<a class="reference external" href=".//NewFeatures-1.py">Source code</a>, <a class="reference external" href=".//NewFeatures-1.png">png</a>, <a class="reference external" href=".//NewFeatures-1.hires.png">hires.png</a>, <a class="reference external" href=".//NewFeatures-1.pdf">pdf</a>)</p>
 <div class="figure">
 <img alt="_images/NewFeatures-1.png" src="_images/NewFeatures-1.png" />
 </div>
+<p>This yields the following results:</p>
+<div class="code highlight-python"><div class="highlight"><pre>SPM{T} inference field
+        SPM.z         :  (1x101) raw test stat field
+        SPM.df        :  (1, 9.894)
+        SPM.fwhm      :  13.63026
+        SPM.resels    :  (1, 7.33662)
+Inference:
+        SPM.alpha     :  0.050
+        SPM.zstar     :  4.07916
+        SPM.h0reject  :  True
+        SPM.p_set     :  &lt;0.001
+        SPM.p_cluster :  (0.015, 0.023)
+</pre></div>
+</div>
+<p>The cluster-level p values are 0.015 and 0.023, but the set-level p value (&lt;0.001) is much lower.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>Interpreting probabilities</p>
+<p><strong>Cluster-level p value</strong> : the probability that 1D Gaussian random fields with the observed smoothness would produce a suprathreshold cluster with an extent as large as the observed cluster&#8217;s extent.</p>
+<p class="last"><strong>Set-level p value</strong> : the probability that 1D Gaussian random fields with the observed smoothness would produce C suprathreshold clusters, all with extents larger than the minimum observed extent.</p>
+</div>
+<p>Set- and cluster-level probabilities are identical when there is just one suprathreshold cluster.</p>
+</div>
+<div class="section" id="circular-fields">
+<h3>Circular fields<a class="headerlink" href="#circular-fields" title="Permalink to this headline">¶</a></h3>
+<p>If the first point in the 1D field is homologous with the last point, like in calendar years or gait strides, then the field is &#8216;circular&#8217;.</p>
+<p>Consider the following example from Ramsay JO, Silverman BW (2005). Functional Data Analysis (Second Edition), Springer, New York.</p>
+<p><a class="reference external" href="http://www.psych.mcgill.ca/misc/fda/ex-weather-a1.html">Click here for a description of this dataset</a></p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">spm1d</span>
+<span class="n">dataset</span>  <span class="o">=</span> <span class="n">spm1d</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">uv1d</span><span class="o">.</span><span class="n">anova1</span><span class="o">.</span><span class="n">Weather</span><span class="p">()</span>
+<span class="n">Y</span><span class="p">,</span><span class="n">A</span>      <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">get_data</span><span class="p">()</span>
+<span class="n">Y0</span><span class="p">,</span><span class="n">Y1</span>    <span class="o">=</span> <span class="n">Y</span><span class="p">[</span><span class="n">A</span><span class="o">==</span><span class="mi">0</span><span class="p">],</span> <span class="n">Y</span><span class="p">[</span><span class="n">A</span><span class="o">==</span><span class="mi">2</span><span class="p">]</span>  <span class="c1">#Atlantic and Contintental regions</span>
+<span class="n">t</span>        <span class="o">=</span> <span class="n">spm1d</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">ttest2</span><span class="p">(</span><span class="n">Y0</span><span class="p">,</span> <span class="n">Y1</span><span class="p">)</span>
+<span class="n">ti</span>       <span class="o">=</span> <span class="n">t</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="mf">0.05</span><span class="p">,</span> <span class="n">circular</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<span class="n">ti</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>(<a class="reference external" href=".//NewFeatures-2.py">Source code</a>)</p>
+<p>There appear to be two suprathreshold clusters, but Day 0 is homologous with Day 365, so in fact there is just one suprathreshold cluster.</p>
+<p>If the example above is regarded as circular, we get a single cluster-level p value of approximately 0.000003.</p>
+<p>If instead it is regarded as non-circular, we get two cluster-level p values of approximately 0.006 and 0.001.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>Use the keyword <strong>circular</strong> when conducting inference to specify whether or not the field is circular.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">ti</span> <span class="o">=</span> <span class="n">t</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="mf">0.05</span><span class="p">,</span> <span class="n">circular</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+</pre></div>
+</div>
+<p class="last">By default <strong>circular</strong> is False.</p>
+</div>
+</div>
+<div class="section" id="cluster-interpolation">
+<h3>Cluster interpolation<a class="headerlink" href="#cluster-interpolation" title="Permalink to this headline">¶</a></h3>
+<p><strong>spm1d</strong> now interpolates to the critical threshold u as depicted in panel (b) of the figure below.</p>
+<p>Interpolation is conducted by deault, but can be toggled using the <strong>interp</strong> keyword for inference:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span> <span class="n">t</span> <span class="o">=</span> <span class="n">spm1d</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">ttest</span><span class="p">(</span><span class="n">YA</span><span class="p">,</span> <span class="n">YB</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span> <span class="n">ti</span> <span class="o">=</span> <span class="n">t</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="mf">0.05</span><span class="p">,</span> <span class="n">interp</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span> <span class="n">ti</span> <span class="o">=</span> <span class="n">t</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="mf">0.05</span><span class="p">,</span> <span class="n">interp</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>(<a class="reference external" href="./pyplots/fig_upcrossing.py">Source code</a>, <a class="reference external" href="./pyplots/fig_upcrossing.png">png</a>, <a class="reference external" href="./pyplots/fig_upcrossing.hires.png">hires.png</a>, <a class="reference external" href="./pyplots/fig_upcrossing.pdf">pdf</a>)</p>
+<div class="figure">
+<img alt="_images/fig_upcrossing.png" src="_images/fig_upcrossing.png" />
+</div>
+</div>
+</div>
+<div class="section" id="installation-updating">
+<span id="label-featureinstallation"></span><h2>Installation &amp; Updating<a class="headerlink" href="#installation-updating" title="Permalink to this headline">¶</a></h2>
+<p>The Python version of <strong>spm1d</strong> can be now installed and updated from the command line:</p>
+<div class="code highlight-python"><div class="highlight"><pre>easy_install spm1d
+</pre></div>
+</div>
+<p>Source code for both Python and MATLAB can be cloned and updated from <a class="reference external" href="https://github.com/0todd0000/spm1d/">github.com</a>.</p>
+<ul class="simple">
+<li><a class="reference internal" href="install/InstallationPython.html#label-installationpython"><span>Detailed Python installation instructions</span></a></li>
+<li><a class="reference internal" href="install/InstallationMatlab.html#label-installationmatlab"><span>Detailed MATLAB installation instructions</span></a></li>
+</ul>
+</div>
 </div>
 
 
     </div>
-      
+    
   </div>
 </div>
 <footer class="footer">

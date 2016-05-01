@@ -19,6 +19,12 @@ import sphinx_bootstrap_theme
 # add these directories to sys.path here. If the directory is relative to the
 # documentation root, use os.path.abspath to make it absolute, like shown here.
 #sys.path.insert(0, os.path.abspath('.'))
+sys.path.append('/Users/todd/WorkingCopies/spm1d(github)/trunk/')
+sys.path.append('/Users/todd/WorkingCopies/rft1d(github)/trunk/')
+import spm1d
+import rft1d
+
+
 
 # -- General configuration ------------------------------------------------
 
@@ -128,7 +134,9 @@ html_theme_options = {'navbar_title': "    ",
                       'navbar_pagenav': True,
                       'navbar_fixed_top': "true",
                       'bootswatch_theme': "",
-                      'navbar_sidebarrel': False}
+                      'navbar_sidebarrel': False,
+                      'navbar_links': [("Home", "index"), ("Downloads", "Downloads"), ("Documentation", "Documentation"), ("References", "References"), ("Workshops", "Workshops")]
+}
 
 
 # Add any paths that contain custom themes here, relative to this directory.

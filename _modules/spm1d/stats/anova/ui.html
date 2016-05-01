@@ -1,0 +1,617 @@
+
+
+
+<!DOCTYPE html>
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>spm1d.stats.anova.ui &mdash; spm1d 0.3 documentation</title>
+    
+    <link rel="stylesheet" href="../../../../_static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../_static/bootstrap-3.3.4/css/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../_static/bootstrap-3.3.4/css/bootstrap-theme.min.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../_static/bootstrap-sphinx.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../../',
+        VERSION:     '0.3',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../../_static/js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="../../../../_static/js/jquery-fix.js"></script>
+    <script type="text/javascript" src="../../../../_static/bootstrap-3.3.4/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../../../../_static/bootstrap-sphinx.js"></script>
+    <link rel="top" title="spm1d 0.3 documentation" href="../../../../index.html" />
+    <link rel="up" title="Module code" href="../../../index.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+  </head>
+  <body role="document">
+
+<div style="background-color: white; text-align: left; padding: 10px 10px 15px 15px">
+<a href="../../../../index.html"><img src="../../../../logo.png" border="0" alt="spm1d"/></a>
+</div>
+
+
+
+  <div id="navbar" class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="../../../../index.html">
+              </a>
+        <span class="navbar-text navbar-version pull-left"><b>0.3</b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            
+                <li><a href="../../../../index.html">Home</a></li>
+                <li><a href="../../../../Downloads.html">Downloads</a></li>
+                <li><a href="../../../../Documentation.html">Documentation</a></li>
+                <li><a href="../../../../References.html">References</a></li>
+                <li><a href="../../../../Workshops.html">Workshops</a></li>
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="../../../../index.html">Site <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../NewFeatures.html">New Features (version 0.3.2)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../NewFeatures.html#new-features-version-0-3-1">New Features (version 0.3.1)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../NewFeatures.html#new-features-version-0-3">New Features (version 0.3)</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../Downloads.html">Downloads</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../Documentation.html">Documentation (Python)</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../DocumentationMatlab.html">Documentation (Matlab)</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../References.html">References</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../Workshops.html">Workshops</a></li>
+</ul>
+</ul>
+</li>
+              
+                <li class="dropdown">
+  <a role="button"
+     id="dLabelLocalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="#">Page <b class="caret"></b></a>
+  <ul class="dropdown-menu localtoc"
+      role="menu"
+      aria-labelledby="dLabelLocalToc"></ul>
+</li>
+              
+            
+            
+            
+            
+            
+              <li class="hidden-sm"></li>
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="../../../../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<form action="../../../../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+        </div>
+      </div>
+    <div class="col-md-12 content">
+      
+  <h1>Source code for spm1d.stats.anova.ui</h1><div class="highlight"><pre>
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">High-level ANOVA user interface.</span>
+<span class="sd">&#39;&#39;&#39;</span>
+
+<span class="c1"># Copyright (C) 2016  Todd Pataky</span>
+<span class="c1"># ui.py version: 0.3.2 (2016/01/03)</span>
+
+
+<span class="kn">import</span> <span class="nn">warnings</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">designs</span><span class="o">,</span><span class="nn">models</span>
+<span class="kn">from</span> <span class="nn">..</span> <span class="kn">import</span> <span class="n">_datachecks</span><span class="p">,</span> <span class="n">_reml</span><span class="p">,</span> <span class="n">_spm</span>
+
+
+<span class="k">def</span> <span class="nf">aov</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">contrasts</span><span class="p">,</span> <span class="n">f_terms</span><span class="p">):</span>
+	<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">	This code is borrowed and modified from statsmodels.stats.anova_lm</span>
+<span class="sd">	&#39;&#39;&#39;</span>
+	<span class="n">effects</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">QT</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">Y</span><span class="p">)</span> <span class="p">)</span>
+	<span class="k">if</span> <span class="n">model</span><span class="o">.</span><span class="n">dim</span><span class="o">==</span><span class="mi">0</span><span class="p">:</span>
+		<span class="n">effects</span> <span class="o">=</span> <span class="n">effects</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span>
+	<span class="n">SS</span>      <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">contrasts</span><span class="o">.</span><span class="n">C</span><span class="p">,</span> <span class="n">effects</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+	<span class="n">DF</span>      <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">contrasts</span><span class="o">.</span><span class="n">C</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">int</span><span class="p">)</span>
+	<span class="n">F</span>       <span class="o">=</span> <span class="p">[]</span>
+	<span class="k">for</span> <span class="n">term0</span><span class="p">,</span><span class="n">term1</span> <span class="ow">in</span> <span class="n">f_terms</span><span class="p">:</span>
+		<span class="n">i</span>       <span class="o">=</span> <span class="n">contrasts</span><span class="o">.</span><span class="n">term_labels</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">term0</span><span class="p">)</span>
+		<span class="n">ss0</span><span class="p">,</span><span class="n">df0</span> <span class="o">=</span> <span class="n">SS</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">DF</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+		<span class="n">ms0</span>     <span class="o">=</span> <span class="n">ss0</span> <span class="o">/</span> <span class="n">df0</span>
+		<span class="k">if</span> <span class="n">term1</span> <span class="o">==</span> <span class="s1">&#39;Error&#39;</span><span class="p">:</span>
+			<span class="n">ss1</span><span class="p">,</span><span class="n">df1</span><span class="p">,</span><span class="n">ms1</span>  <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">_SSE</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">_dfE</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">_MSE</span>
+		<span class="k">else</span><span class="p">:</span>
+			<span class="n">i</span>       <span class="o">=</span> <span class="n">contrasts</span><span class="o">.</span><span class="n">term_labels</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">term1</span><span class="p">)</span>
+			<span class="n">ss1</span><span class="p">,</span><span class="n">df1</span> <span class="o">=</span> <span class="n">SS</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">DF</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+			<span class="n">ms1</span>     <span class="o">=</span> <span class="n">ss1</span> <span class="o">/</span> <span class="n">df1</span>
+		<span class="n">f</span>           <span class="o">=</span> <span class="n">ms0</span> <span class="o">/</span> <span class="n">ms1</span>
+		<span class="k">if</span> <span class="n">model</span><span class="o">.</span><span class="n">dim</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+			<span class="n">F</span><span class="o">.</span><span class="n">append</span><span class="p">(</span> <span class="n">_spm</span><span class="o">.</span><span class="n">SPM0D_F</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="p">(</span><span class="n">df0</span><span class="p">,</span><span class="n">df1</span><span class="p">),</span> <span class="p">(</span><span class="n">ss0</span><span class="p">,</span><span class="n">ss1</span><span class="p">),</span> <span class="p">(</span><span class="n">ms0</span><span class="p">,</span><span class="n">ms1</span><span class="p">),</span> <span class="n">model</span><span class="o">.</span><span class="n">eij</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">QT</span><span class="p">)</span> <span class="p">)</span>
+		<span class="k">else</span><span class="p">:</span>
+			<span class="k">if</span> <span class="n">model</span><span class="o">.</span><span class="n">roi</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+				<span class="n">f</span>   <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ma</span><span class="o">.</span><span class="n">masked_array</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">logical_not</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">roi</span><span class="p">))</span>
+			<span class="n">F</span><span class="o">.</span><span class="n">append</span><span class="p">(</span> <span class="n">_spm</span><span class="o">.</span><span class="n">SPM_F</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="p">(</span><span class="n">df0</span><span class="p">,</span><span class="n">df1</span><span class="p">),</span> <span class="n">model</span><span class="o">.</span><span class="n">fwhm</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">resels</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">X</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">_beta</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">eij</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">QT</span><span class="p">,</span> <span class="n">roi</span><span class="o">=</span><span class="n">model</span><span class="o">.</span><span class="n">roi</span><span class="p">)</span> <span class="p">)</span>
+	<span class="k">return</span> <span class="n">F</span>
+
+
+<span class="c1">### ONE-WAY DESIGNS ##############</span>
+
+<div class="viewcode-block" id="anova1"><a class="viewcode-back" href="../../../../doc/API/stats.html#spm1d.stats.anova1">[docs]</a><span class="k">def</span> <span class="nf">anova1</span><span class="p">(</span><span class="n">Y</span><span class="p">,</span> <span class="n">A</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">equal_var</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">roi</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+	<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">	One-way ANOVA.</span>
+<span class="sd">	</span>
+<span class="sd">	:Parameters (Option 1):</span>
+<span class="sd">		- *Y* --- A list or tuple of (J x Q) numpy arrays</span>
+<span class="sd">		- *equal_var* --- If *True*, equal group variance will be assumed</span>
+
+
+<span class="sd">	:Parameters (Option 2):</span>
+<span class="sd">		- *Y* --- (J x Q) numpy array</span>
+<span class="sd">		- *A* --- (J x 1) vector of integer group labels</span>
+<span class="sd">		- *equal_var* --- If *True*, equal group variance will be assumed</span>
+
+<span class="sd">	</span>
+<span class="sd">	:Returns:</span>
+<span class="sd">		- F : An **spm1d._spm.SPM_F** instance</span>
+<span class="sd">	</span>
+<span class="sd">	:Example:</span>
+<span class="sd">	</span>
+<span class="sd">	&gt;&gt;&gt; F = spm1d.stats.anova1((Y0,Y1,Y2))</span>
+<span class="sd">	&gt;&gt;&gt; Fi = F.inference(alpha=0.05)</span>
+<span class="sd">	&gt;&gt;&gt; Fi.plot()</span>
+<span class="sd">	&#39;&#39;&#39;</span>
+	<span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">Y</span><span class="p">,</span> <span class="p">(</span><span class="nb">list</span><span class="p">,</span><span class="nb">tuple</span><span class="p">)):</span>
+		<span class="n">_datachecks</span><span class="o">.</span><span class="n">check</span><span class="p">(</span><span class="s1">&#39;anova1list&#39;</span><span class="p">,</span> <span class="n">Y</span><span class="p">)</span>
+		<span class="n">A</span>   <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">hstack</span><span class="p">([[</span><span class="n">i</span><span class="p">]</span><span class="o">*</span><span class="n">y</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span><span class="n">y</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">Y</span><span class="p">)])</span>
+		<span class="n">Y</span>   <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">hstack</span><span class="p">(</span><span class="n">Y</span><span class="p">)</span> <span class="k">if</span> <span class="n">Y</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">ndim</span><span class="o">==</span><span class="mi">1</span> <span class="k">else</span> <span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">(</span><span class="n">Y</span><span class="p">)</span>
+	<span class="k">else</span><span class="p">:</span>
+		<span class="n">_datachecks</span><span class="o">.</span><span class="n">check</span><span class="p">(</span><span class="s1">&#39;anova1&#39;</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">A</span><span class="p">)</span>
+	<span class="n">design</span>  <span class="o">=</span> <span class="n">designs</span><span class="o">.</span><span class="n">ANOVA1</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+	<span class="n">model</span>   <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">LinearModel</span><span class="p">(</span><span class="n">Y</span><span class="p">,</span> <span class="n">design</span><span class="o">.</span><span class="n">X</span><span class="p">,</span> <span class="n">roi</span><span class="o">=</span><span class="n">roi</span><span class="p">)</span>
+	<span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
+	<span class="n">F</span>       <span class="o">=</span> <span class="n">aov</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">design</span><span class="o">.</span><span class="n">contrasts</span><span class="p">,</span> <span class="n">design</span><span class="o">.</span><span class="n">f_terms</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+	<span class="k">if</span> <span class="ow">not</span> <span class="n">equal_var</span><span class="p">:</span>
+		<span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">WARNING:  Non-sphericity corrections for one-way ANOVA are currently approximate and have not been verified.</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span> <span class="ne">UserWarning</span><span class="p">,</span> <span class="n">stacklevel</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+		<span class="n">Y</span><span class="p">,</span><span class="n">X</span><span class="p">,</span><span class="n">r</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">Y</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">X</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">eij</span>
+		<span class="n">Q</span><span class="p">,</span><span class="n">C</span>   <span class="o">=</span> <span class="n">design</span><span class="o">.</span><span class="n">A</span><span class="o">.</span><span class="n">get_Q</span><span class="p">(),</span> <span class="n">design</span><span class="o">.</span><span class="n">contrasts</span><span class="o">.</span><span class="n">C</span><span class="o">.</span><span class="n">T</span>
+		<span class="n">F</span><span class="o">.</span><span class="n">df</span>  <span class="o">=</span> <span class="n">_reml</span><span class="o">.</span><span class="n">estimate_df_anova1</span><span class="p">(</span><span class="n">Y</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="n">Q</span><span class="p">,</span> <span class="n">C</span><span class="p">)</span>
+	<span class="k">return</span> <span class="n">F</span></div>
+
+
+
+<div class="viewcode-block" id="anova1rm"><a class="viewcode-back" href="../../../../doc/API/stats.html#spm1d.stats.anova1rm">[docs]</a><span class="k">def</span> <span class="nf">anova1rm</span><span class="p">(</span><span class="n">Y</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="n">SUBJ</span><span class="p">,</span> <span class="n">equal_var</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">roi</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+	<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">	One-way repeated-measures ANOVA.</span>
+<span class="sd">	</span>
+<span class="sd">	:Parameters:</span>
+<span class="sd">		- *Y* --- (J x Q) numpy array</span>
+<span class="sd">		- *A* --- (J x 1) vector of integer group labels</span>
+<span class="sd">		- *SUBJ* --- (J x 1) vector of subject labels</span>
+<span class="sd">		- *equal_var* --- If *True*, equal group variance will be assumed</span>
+
+<span class="sd">	</span>
+<span class="sd">	:Returns:</span>
+<span class="sd">		- F : An **spm1d._spm.SPM_F** instance</span>
+<span class="sd">	</span>
+<span class="sd">	:Example:</span>
+<span class="sd">	</span>
+<span class="sd">	&gt;&gt;&gt; Y = np.random.randn(9, 101)</span>
+<span class="sd">	&gt;&gt;&gt; A = np.array([1,1,1, 2,2,2, 3,3,3])</span>
+<span class="sd">	&gt;&gt;&gt; SUBJ = np.array([1,2,3, 1,2,3, 1,2,3])</span>
+<span class="sd">	&gt;&gt;&gt; F = spm1d.stats.anova1(Y, A, SUBJ)</span>
+<span class="sd">	&gt;&gt;&gt; Fi = F.inference(alpha=0.05)</span>
+<span class="sd">	&gt;&gt;&gt; Fi.plot()</span>
+<span class="sd">	&#39;&#39;&#39;</span>
+	<span class="k">if</span> <span class="ow">not</span> <span class="n">equal_var</span><span class="p">:</span>
+		<span class="k">raise</span><span class="p">(</span> <span class="ne">NotImplementedError</span><span class="p">(</span> <span class="s1">&#39;Non-sphericity corrections are not yet implemented. Set &quot;equal_var&quot; to &quot;True&quot; to force an assumption of equal variance.&#39;</span> <span class="p">)</span> <span class="p">)</span>
+	<span class="n">design</span>  <span class="o">=</span> <span class="n">designs</span><span class="o">.</span><span class="n">ANOVA1rm</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">SUBJ</span><span class="p">)</span>
+	<span class="n">model</span>   <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">LinearModel</span><span class="p">(</span><span class="n">Y</span><span class="p">,</span> <span class="n">design</span><span class="o">.</span><span class="n">X</span><span class="p">,</span> <span class="n">roi</span><span class="o">=</span><span class="n">roi</span><span class="p">)</span>
+	<span class="k">if</span> <span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">dim</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span> <span class="n">design</span><span class="o">.</span><span class="n">check_for_single_responses</span><span class="p">()</span> <span class="p">):</span>
+		<span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span> <span class="n">approx_residuals</span><span class="o">=</span><span class="n">design</span><span class="o">.</span><span class="n">contrasts</span><span class="o">.</span><span class="n">C</span><span class="p">[:</span><span class="mi">3</span><span class="p">]</span> <span class="p">)</span>
+	<span class="k">else</span><span class="p">:</span>
+		<span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span> <span class="p">)</span>
+	<span class="n">F</span>       <span class="o">=</span> <span class="n">aov</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">design</span><span class="o">.</span><span class="n">contrasts</span><span class="p">,</span> <span class="n">design</span><span class="o">.</span><span class="n">f_terms</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+	<span class="k">return</span> <span class="n">F</span></div>
+
+
+
+
+
+
+<span class="c1">### TWO-WAY DESIGNS ##############</span>
+
+
+<div class="viewcode-block" id="anova2"><a class="viewcode-back" href="../../../../doc/API/stats.html#spm1d.stats.anova2">[docs]</a><span class="k">def</span> <span class="nf">anova2</span><span class="p">(</span><span class="n">Y</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">,</span> <span class="n">equal_var</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">roi</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+	<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">	Two-way ANOVA.</span>
+<span class="sd">	</span>
+<span class="sd">	:Parameters:</span>
+<span class="sd">		- *Y* --- (J x Q) numpy array</span>
+<span class="sd">		- *A* --- (J x 1) vector of integer labels for Factor A</span>
+<span class="sd">		- *B* --- (J x 1) vector of integer labels for Factor B</span>
+<span class="sd">		- *equal_var* --- If *True*, equal group variance will be assumed</span>
+
+<span class="sd">	:Returns:</span>
+<span class="sd">		- List of three **spm1d._spm.SPM_F** instances in the following order:</span>
+<span class="sd">			1. Main effect A</span>
+<span class="sd">			2. Main effect B</span>
+<span class="sd">			3. Interaction AB</span>
+<span class="sd">	&#39;&#39;&#39;</span>
+	<span class="k">if</span> <span class="ow">not</span> <span class="n">equal_var</span><span class="p">:</span>
+		<span class="k">raise</span><span class="p">(</span> <span class="ne">NotImplementedError</span><span class="p">(</span> <span class="s1">&#39;Non-sphericity corrections are not yet implemented. Set &quot;equal_var&quot; to &quot;True&quot; to force an assumption of equal variance.&#39;</span> <span class="p">)</span> <span class="p">)</span>
+	<span class="n">design</span>  <span class="o">=</span> <span class="n">designs</span><span class="o">.</span><span class="n">ANOVA2</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">)</span>
+	<span class="n">model</span>   <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">LinearModel</span><span class="p">(</span><span class="n">Y</span><span class="p">,</span> <span class="n">design</span><span class="o">.</span><span class="n">X</span><span class="p">,</span> <span class="n">roi</span><span class="o">=</span><span class="n">roi</span><span class="p">)</span>
+	<span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
+	<span class="n">F</span>       <span class="o">=</span> <span class="n">aov</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">design</span><span class="o">.</span><span class="n">contrasts</span><span class="p">,</span> <span class="n">design</span><span class="o">.</span><span class="n">f_terms</span><span class="p">)</span>
+	<span class="c1"># if not equal_var:</span>
+		<span class="c1"># Y,X,r   = model.Y, model.X, model.eij</span>
+		<span class="c1"># QA,QB,C = design.A.get_Q(), design.B.get_Q(), design.contrasts.C.T</span>
+		<span class="c1"># Q       = QA + QB</span>
+		<span class="c1"># u1,u2   = _reml.estimate_df_anova2(Y, X, r, Q, C)</span>
+		<span class="c1"># for ff,u in zip(f,u1):</span>
+		<span class="c1"># 	ff.df = u,u2</span>
+	<span class="k">return</span> <span class="n">F</span></div>
+
+
+<div class="viewcode-block" id="anova2nested"><a class="viewcode-back" href="../../../../doc/API/stats.html#spm1d.stats.anova2nested">[docs]</a><span class="k">def</span> <span class="nf">anova2nested</span><span class="p">(</span><span class="n">Y</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">,</span> <span class="n">equal_var</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">roi</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+	<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">	Two-way nested ANOVA.</span>
+<span class="sd">	</span>
+<span class="sd">	:Parameters:</span>
+<span class="sd">		- *Y* --- (J x Q) numpy array</span>
+<span class="sd">		- *A* --- (J x 1) vector of integer labels for Factor A</span>
+<span class="sd">		- *B* --- (J x 1) vector of integer labels for Factor B (nested in A)</span>
+<span class="sd">		- *equal_var* --- If *True*, equal group variance will be assumed</span>
+
+<span class="sd">	:Returns:</span>
+<span class="sd">		- List of two **spm1d._spm.SPM_F** instances in the following order:</span>
+<span class="sd">			1. Main effect A</span>
+<span class="sd">			2. Main effect B</span>
+
+<span class="sd">	:Note:</span>
+<span class="sd">		- there is no interaction term in nested designs.</span>
+<span class="sd">	&#39;&#39;&#39;</span>
+	<span class="k">if</span> <span class="n">equal_var</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">True</span><span class="p">:</span>
+		<span class="k">raise</span><span class="p">(</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s1">&#39;Non-sphericity correction not implemented. To continue you must assume equal variance and set &quot;equal_var=True&quot;.&#39;</span><span class="p">)</span> <span class="p">)</span>
+	<span class="n">design</span>  <span class="o">=</span> <span class="n">designs</span><span class="o">.</span><span class="n">ANOVA2nested</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">)</span>
+	<span class="n">model</span>   <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">LinearModel</span><span class="p">(</span><span class="n">Y</span><span class="p">,</span> <span class="n">design</span><span class="o">.</span><span class="n">X</span><span class="p">,</span> <span class="n">roi</span><span class="o">=</span><span class="n">roi</span><span class="p">)</span>
+	<span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
+	<span class="n">F</span>       <span class="o">=</span> <span class="n">aov</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">design</span><span class="o">.</span><span class="n">contrasts</span><span class="p">,</span> <span class="n">design</span><span class="o">.</span><span class="n">f_terms</span><span class="p">)</span>
+	<span class="k">return</span> <span class="n">F</span></div>
+
+
+
+<div class="viewcode-block" id="anova2rm"><a class="viewcode-back" href="../../../../doc/API/stats.html#spm1d.stats.anova2rm">[docs]</a><span class="k">def</span> <span class="nf">anova2rm</span><span class="p">(</span><span class="n">Y</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">,</span> <span class="n">SUBJ</span><span class="p">,</span> <span class="n">equal_var</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">roi</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+	<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">	Two-way repeated-measures ANOVA.</span>
+<span class="sd">	</span>
+<span class="sd">	:Parameters:</span>
+<span class="sd">		- *Y* --- (J x Q) numpy array</span>
+<span class="sd">		- *A* --- (J x 1) vector of integer labels for Factor A</span>
+<span class="sd">		- *B* --- (J x 1) vector of integer labels for Factor B</span>
+<span class="sd">		- *SUBJ* --- (J x 1) vector of integer subject labels</span>
+<span class="sd">		- *equal_var* --- If *True*, equal group variance will be assumed</span>
+
+<span class="sd">	:Returns:</span>
+<span class="sd">		- List of three **spm1d._spm.SPM_F** instances in the following order:</span>
+<span class="sd">			1. Main effect A</span>
+<span class="sd">			2. Main effect B</span>
+<span class="sd">			3. Interaction AB</span>
+<span class="sd">			</span>
+<span class="sd">	:Note:</span>
+<span class="sd">		- Non-sphericity correction not implemented. Equal variance must be assumed by setting &quot;equal_var=True&quot;.</span>
+<span class="sd">	&#39;&#39;&#39;</span>
+	<span class="k">if</span> <span class="n">equal_var</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">True</span><span class="p">:</span>
+		<span class="k">raise</span><span class="p">(</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s1">&#39;Non-sphericity correction not implemented. To continue you must assume equal variance and set &quot;equal_var=True&quot;.&#39;</span><span class="p">)</span> <span class="p">)</span>
+	<span class="n">design</span>  <span class="o">=</span> <span class="n">designs</span><span class="o">.</span><span class="n">ANOVA2rm</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">,</span> <span class="n">SUBJ</span><span class="p">)</span>
+	<span class="n">model</span>   <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">LinearModel</span><span class="p">(</span><span class="n">Y</span><span class="p">,</span> <span class="n">design</span><span class="o">.</span><span class="n">X</span><span class="p">,</span> <span class="n">roi</span><span class="o">=</span><span class="n">roi</span><span class="p">)</span>
+	<span class="k">if</span> <span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">dim</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span> <span class="n">design</span><span class="o">.</span><span class="n">check_for_single_responses</span><span class="p">()</span> <span class="p">):</span>
+		<span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span> <span class="n">approx_residuals</span><span class="o">=</span><span class="n">design</span><span class="o">.</span><span class="n">contrasts</span><span class="o">.</span><span class="n">C</span><span class="p">[:</span><span class="mi">5</span><span class="p">]</span> <span class="p">)</span>
+	<span class="k">else</span><span class="p">:</span>
+		<span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span> <span class="p">)</span>
+	<span class="n">F</span>       <span class="o">=</span> <span class="n">aov</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">design</span><span class="o">.</span><span class="n">contrasts</span><span class="p">,</span> <span class="n">design</span><span class="o">.</span><span class="n">f_terms</span><span class="p">)</span>
+	<span class="c1"># if not equal_var:</span>
+	<span class="c1"># 	Y,X,r   = solver.Y, solver.X, solver.eij</span>
+	<span class="c1"># 	QA,QB,C = design.A.get_Q(), design.B.get_Q(), [c.C.T for c in design.contrasts]</span>
+	<span class="c1"># 	Q       = QA + QB</span>
+	<span class="c1"># 	u1,u2   = _reml.estimate_df_anova2(Y, X, r, Q, C)</span>
+	<span class="c1"># 	for ff,u in zip(f,u1):</span>
+	<span class="c1"># 		ff.df = u,u2</span>
+	<span class="k">return</span> <span class="n">F</span></div>
+
+
+<div class="viewcode-block" id="anova2onerm"><a class="viewcode-back" href="../../../../doc/API/stats.html#spm1d.stats.anova2onerm">[docs]</a><span class="k">def</span> <span class="nf">anova2onerm</span><span class="p">(</span><span class="n">Y</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">,</span> <span class="n">SUBJ</span><span class="p">,</span> <span class="n">equal_var</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">roi</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+	<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">	Two-way ANOVA with repeated-measures on one factor.</span>
+<span class="sd">	</span>
+<span class="sd">	:Parameters:</span>
+<span class="sd">		- *Y* --- (J x Q) numpy array</span>
+<span class="sd">		- *A* --- (J x 1) vector of integer labels for Factor A</span>
+<span class="sd">		- *B* --- (J x 1) vector of integer labels for Factor B (the repeated-measures factor)</span>
+<span class="sd">		- *SUBJ* --- (J x 1) vector of integer subject labels</span>
+<span class="sd">		- *equal_var* --- If *True*, equal group variance will be assumed</span>
+
+<span class="sd">	:Returns:</span>
+<span class="sd">		- List of three **spm1d._spm.SPM_F** instances in the following order:</span>
+<span class="sd">			1. Main effect A</span>
+<span class="sd">			2. Main effect B</span>
+<span class="sd">			3. Interaction AB</span>
+<span class="sd">			</span>
+<span class="sd">	:Note:</span>
+<span class="sd">		- Non-sphericity correction not implemented. Equal variance must be assumed by setting &quot;equal_var=True&quot;.</span>
+<span class="sd">	&#39;&#39;&#39;</span>
+	<span class="k">if</span> <span class="n">equal_var</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">True</span><span class="p">:</span>
+		<span class="k">raise</span><span class="p">(</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s1">&#39;Non-sphericity correction not implemented. To continue you must assume equal variance and set &quot;equal_var=True&quot;.&#39;</span><span class="p">)</span> <span class="p">)</span>
+	<span class="n">design</span>  <span class="o">=</span> <span class="n">designs</span><span class="o">.</span><span class="n">ANOVA2onerm</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">,</span> <span class="n">SUBJ</span><span class="p">)</span>
+	<span class="n">model</span>   <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">LinearModel</span><span class="p">(</span><span class="n">Y</span><span class="p">,</span> <span class="n">design</span><span class="o">.</span><span class="n">X</span><span class="p">,</span> <span class="n">roi</span><span class="o">=</span><span class="n">roi</span><span class="p">)</span>
+	<span class="k">if</span> <span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">dim</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span> <span class="n">design</span><span class="o">.</span><span class="n">check_for_single_responses</span><span class="p">()</span> <span class="p">):</span>
+		<span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span> <span class="n">approx_residuals</span><span class="o">=</span><span class="n">design</span><span class="o">.</span><span class="n">contrasts</span><span class="o">.</span><span class="n">C</span><span class="p">[:</span><span class="mi">5</span><span class="p">]</span> <span class="p">)</span>
+	<span class="k">else</span><span class="p">:</span>
+		<span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span> <span class="p">)</span>
+	<span class="n">F</span>       <span class="o">=</span> <span class="n">aov</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">design</span><span class="o">.</span><span class="n">contrasts</span><span class="p">,</span> <span class="n">design</span><span class="o">.</span><span class="n">f_terms</span><span class="p">)</span>
+	<span class="k">return</span> <span class="n">F</span></div>
+
+
+
+
+<span class="c1">### THREE-WAY DESIGNS ##############</span>
+
+
+<div class="viewcode-block" id="anova3"><a class="viewcode-back" href="../../../../doc/API/stats.html#spm1d.stats.anova3">[docs]</a><span class="k">def</span> <span class="nf">anova3</span><span class="p">(</span><span class="n">Y</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">,</span> <span class="n">C</span><span class="p">,</span> <span class="n">equal_var</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">roi</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+	<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">	Three-way ANOVA.</span>
+<span class="sd">	</span>
+<span class="sd">	:Parameters:</span>
+<span class="sd">		- *Y* --- (J x Q) numpy array</span>
+<span class="sd">		- *A* --- (J x 1) vector of integer labels for Factor A</span>
+<span class="sd">		- *B* --- (J x 1) vector of integer labels for Factor B</span>
+<span class="sd">		- *C* --- (J x 1) vector of integer labels for Factor C</span>
+<span class="sd">		- *equal_var* --- If *True*, equal group variance will be assumed</span>
+
+<span class="sd">	:Returns:</span>
+<span class="sd">		- List of seven **spm1d._spm.SPM_F** instances in the following order:</span>
+<span class="sd">			1. Main effect A</span>
+<span class="sd">			2. Main effect B</span>
+<span class="sd">			3. Main effect C</span>
+<span class="sd">			4. Interaction AB</span>
+<span class="sd">			5. Interaction AC</span>
+<span class="sd">			6. Interaction BC</span>
+<span class="sd">			7. Interaction ABC</span>
+<span class="sd">	&#39;&#39;&#39;</span>
+	<span class="k">if</span> <span class="n">equal_var</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">True</span><span class="p">:</span>
+		<span class="k">raise</span><span class="p">(</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s1">&#39;Non-sphericity correction not implemented. To continue you must assume equal variance and set &quot;equal_var=True&quot;.&#39;</span><span class="p">)</span> <span class="p">)</span>
+	<span class="n">design</span>  <span class="o">=</span> <span class="n">designs</span><span class="o">.</span><span class="n">ANOVA3</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">,</span> <span class="n">C</span><span class="p">)</span>
+	<span class="n">model</span>   <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">LinearModel</span><span class="p">(</span><span class="n">Y</span><span class="p">,</span> <span class="n">design</span><span class="o">.</span><span class="n">X</span><span class="p">,</span> <span class="n">roi</span><span class="o">=</span><span class="n">roi</span><span class="p">)</span>
+	<span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
+	<span class="n">F</span>       <span class="o">=</span> <span class="n">aov</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">design</span><span class="o">.</span><span class="n">contrasts</span><span class="p">,</span> <span class="n">design</span><span class="o">.</span><span class="n">f_terms</span><span class="p">)</span>
+	<span class="k">return</span> <span class="n">F</span></div>
+	<span class="c1"># if not equal_var:</span>
+	<span class="c1"># 	Y,X,r   = solver.Y, solver.X, solver.eij</span>
+	<span class="c1"># 	QA,QB,QC,C = design.A.get_Q(), design.B.get_Q(), design.C.get_Q(), [c.C.T for c in design.contrasts]</span>
+	<span class="c1"># 	Q       = QA + QB + QC</span>
+	<span class="c1"># 	u1,u2   = _reml.estimate_df_anova2(Y, X, r, Q, C)</span>
+	<span class="c1"># 	for ff,u in zip(f,u1):</span>
+	<span class="c1"># 		ff.df = u,u2</span>
+	<span class="c1"># return f</span>
+
+<div class="viewcode-block" id="anova3nested"><a class="viewcode-back" href="../../../../doc/API/stats.html#spm1d.stats.anova3nested">[docs]</a><span class="k">def</span> <span class="nf">anova3nested</span><span class="p">(</span><span class="n">Y</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">,</span> <span class="n">C</span><span class="p">,</span> <span class="n">equal_var</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">roi</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+	<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">	Three-way fully nested ANOVA.</span>
+<span class="sd">	</span>
+<span class="sd">	:Parameters:</span>
+<span class="sd">		- *Y* --- (J x Q) numpy array</span>
+<span class="sd">		- *A* --- (J x 1) vector of integer labels for Factor A</span>
+<span class="sd">		- *B* --- (J x 1) vector of integer labels for Factor B (nested in A)</span>
+<span class="sd">		- *C* --- (J x 1) vector of integer labels for Factor C (nested in B)</span>
+<span class="sd">		- *equal_var* --- If *True*, equal group variance will be assumed</span>
+
+<span class="sd">	:Returns:</span>
+<span class="sd">		- List of three **spm1d._spm.SPM_F** instances in the following order:</span>
+<span class="sd">			1. Main effect A</span>
+<span class="sd">			2. Main effect B</span>
+<span class="sd">			3. Main effect C</span>
+
+<span class="sd">	:Note:</span>
+<span class="sd">		- there are no interaction terms in fully-nested designs.</span>
+<span class="sd">	&#39;&#39;&#39;</span>
+	<span class="k">if</span> <span class="n">equal_var</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">True</span><span class="p">:</span>
+		<span class="k">raise</span><span class="p">(</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s1">&#39;Non-sphericity correction not implemented. To continue you must assume equal variance and set &quot;equal_var=True&quot;.&#39;</span><span class="p">)</span> <span class="p">)</span>
+	<span class="n">design</span>  <span class="o">=</span> <span class="n">designs</span><span class="o">.</span><span class="n">ANOVA3nested</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">,</span> <span class="n">C</span><span class="p">)</span>
+	<span class="n">model</span>   <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">LinearModel</span><span class="p">(</span><span class="n">Y</span><span class="p">,</span> <span class="n">design</span><span class="o">.</span><span class="n">X</span><span class="p">,</span> <span class="n">roi</span><span class="o">=</span><span class="n">roi</span><span class="p">)</span>
+	<span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
+	<span class="n">F</span>       <span class="o">=</span> <span class="n">aov</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">design</span><span class="o">.</span><span class="n">contrasts</span><span class="p">,</span> <span class="n">design</span><span class="o">.</span><span class="n">f_terms</span><span class="p">)</span>
+	<span class="k">return</span> <span class="n">F</span></div>
+
+
+<span class="k">def</span> <span class="nf">anova3rm</span><span class="p">(</span><span class="n">Y</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">,</span> <span class="n">C</span><span class="p">,</span> <span class="n">SUBJ</span><span class="p">,</span> <span class="n">equal_var</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">roi</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+	<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">	Three-way ANOVA (repeated measures on all factors).</span>
+<span class="sd">	</span>
+<span class="sd">	:Parameters:</span>
+<span class="sd">		- *Y* --- (J x Q) numpy array</span>
+<span class="sd">		- *A* --- (J x 1) vector of integer labels for Factor A</span>
+<span class="sd">		- *B* --- (J x 1) vector of integer labels for Factor B</span>
+<span class="sd">		- *C* --- (J x 1) vector of integer labels for Factor C</span>
+<span class="sd">		- *equal_var* --- If *True*, equal group variance will be assumed</span>
+
+<span class="sd">	:Returns:</span>
+<span class="sd">		- List of seven **spm1d._spm.SPM_F** instances in the following order:</span>
+<span class="sd">			1. Main effect A</span>
+<span class="sd">			2. Main effect B</span>
+<span class="sd">			3. Main effect C</span>
+<span class="sd">			4. Interaction AB</span>
+<span class="sd">			5. Interaction AC</span>
+<span class="sd">			6. Interaction BC</span>
+<span class="sd">			7. Interaction ABC</span>
+<span class="sd">	&#39;&#39;&#39;</span>
+	<span class="k">if</span> <span class="n">equal_var</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">True</span><span class="p">:</span>
+		<span class="k">raise</span><span class="p">(</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s1">&#39;Non-sphericity correction not implemented. To continue you must assume equal variance and set &quot;equal_var=True&quot;.&#39;</span><span class="p">)</span> <span class="p">)</span>
+	<span class="n">design</span>  <span class="o">=</span> <span class="n">designs</span><span class="o">.</span><span class="n">ANOVA3rm</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">,</span> <span class="n">C</span><span class="p">,</span> <span class="n">SUBJ</span><span class="p">)</span>
+	<span class="n">model</span>   <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">LinearModel</span><span class="p">(</span><span class="n">Y</span><span class="p">,</span> <span class="n">design</span><span class="o">.</span><span class="n">X</span><span class="p">,</span> <span class="n">roi</span><span class="o">=</span><span class="n">roi</span><span class="p">)</span>
+	<span class="k">if</span> <span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">dim</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span> <span class="n">design</span><span class="o">.</span><span class="n">check_for_single_responses</span><span class="p">()</span> <span class="p">):</span>
+		<span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span> <span class="n">approx_residuals</span><span class="o">=</span><span class="n">design</span><span class="o">.</span><span class="n">contrasts</span><span class="o">.</span><span class="n">C</span><span class="p">[:</span><span class="mi">8</span><span class="p">]</span> <span class="p">)</span>
+	<span class="k">else</span><span class="p">:</span>
+		<span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span> <span class="p">)</span>
+	<span class="n">F</span>       <span class="o">=</span> <span class="n">aov</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">design</span><span class="o">.</span><span class="n">contrasts</span><span class="p">,</span> <span class="n">design</span><span class="o">.</span><span class="n">f_terms</span><span class="p">)</span>
+	<span class="k">return</span> <span class="n">F</span>
+	
+
+
+<div class="viewcode-block" id="anova3onerm"><a class="viewcode-back" href="../../../../doc/API/stats.html#spm1d.stats.anova3onerm">[docs]</a><span class="k">def</span> <span class="nf">anova3onerm</span><span class="p">(</span><span class="n">Y</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">,</span> <span class="n">C</span><span class="p">,</span> <span class="n">SUBJ</span><span class="p">,</span> <span class="n">equal_var</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">roi</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+	<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">	Three-way ANOVA with repeated-measures on one factor.</span>
+<span class="sd">	</span>
+<span class="sd">	:Parameters:</span>
+<span class="sd">		- *Y* --- (J x Q) numpy array</span>
+<span class="sd">		- *A* --- (J x 1) vector of integer labels for Factor A</span>
+<span class="sd">		- *B* --- (J x 1) vector of integer labels for Factor B</span>
+<span class="sd">		- *C* --- (J x 1) vector of integer labels for Factor C (the repeated-measures factor)</span>
+<span class="sd">		- *SUBJ* --- (J x 1) vector of integer subject labels</span>
+<span class="sd">		- *equal_var* --- If *True*, equal group variance will be assumed</span>
+
+<span class="sd">	:Returns:</span>
+<span class="sd">		- List of seven **spm1d._spm.SPM_F** instances in the following order:</span>
+<span class="sd">			1. Main effect A</span>
+<span class="sd">			2. Main effect B</span>
+<span class="sd">			3. Main effect C</span>
+<span class="sd">			4. Interaction AB</span>
+<span class="sd">			5. Interaction AC</span>
+<span class="sd">			6. Interaction BC</span>
+<span class="sd">			7. Interaction ABC</span>
+<span class="sd">			</span>
+<span class="sd">	:Note:</span>
+<span class="sd">		- Non-sphericity correction not implemented. Equal variance must be assumed by setting &quot;equal_var=True&quot;.</span>
+<span class="sd">	&#39;&#39;&#39;</span>
+	<span class="k">if</span> <span class="n">equal_var</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">True</span><span class="p">:</span>
+		<span class="k">raise</span><span class="p">(</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s1">&#39;Non-sphericity correction not implemented. To continue you must assume equal variance and set &quot;equal_var=True&quot;.&#39;</span><span class="p">)</span> <span class="p">)</span>
+	<span class="n">design</span>  <span class="o">=</span> <span class="n">designs</span><span class="o">.</span><span class="n">ANOVA3onerm</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">,</span> <span class="n">C</span><span class="p">,</span> <span class="n">SUBJ</span><span class="p">)</span>
+	<span class="n">model</span>   <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">LinearModel</span><span class="p">(</span><span class="n">Y</span><span class="p">,</span> <span class="n">design</span><span class="o">.</span><span class="n">X</span><span class="p">,</span> <span class="n">roi</span><span class="o">=</span><span class="n">roi</span><span class="p">)</span>
+	<span class="k">if</span> <span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">dim</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span> <span class="n">design</span><span class="o">.</span><span class="n">check_for_single_responses</span><span class="p">()</span> <span class="p">):</span>
+		<span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span> <span class="n">approx_residuals</span><span class="o">=</span><span class="n">design</span><span class="o">.</span><span class="n">contrasts</span><span class="o">.</span><span class="n">C</span><span class="p">[:</span><span class="mi">8</span><span class="p">]</span> <span class="p">)</span>
+	<span class="k">else</span><span class="p">:</span>
+		<span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span> <span class="p">)</span>
+	<span class="n">F</span>       <span class="o">=</span> <span class="n">aov</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">design</span><span class="o">.</span><span class="n">contrasts</span><span class="p">,</span> <span class="n">design</span><span class="o">.</span><span class="n">f_terms</span><span class="p">)</span>
+	<span class="k">return</span> <span class="n">F</span></div>
+
+
+
+<div class="viewcode-block" id="anova3tworm"><a class="viewcode-back" href="../../../../doc/API/stats.html#spm1d.stats.anova3tworm">[docs]</a><span class="k">def</span> <span class="nf">anova3tworm</span><span class="p">(</span><span class="n">Y</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">,</span> <span class="n">C</span><span class="p">,</span> <span class="n">SUBJ</span><span class="p">,</span> <span class="n">equal_var</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">roi</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+	<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">	Three-way ANOVA with repeated-measures on two factors.</span>
+<span class="sd">	</span>
+<span class="sd">	:Parameters:</span>
+<span class="sd">		- *Y* --- (J x Q) numpy array</span>
+<span class="sd">		- *A* --- (J x 1) vector of integer labels for Factor A</span>
+<span class="sd">		- *B* --- (J x 1) vector of integer labels for Factor B (a repeated-measures factor)</span>
+<span class="sd">		- *C* --- (J x 1) vector of integer labels for Factor C (a repeated-measures factor)</span>
+<span class="sd">		- *SUBJ* --- (J x 1) vector of integer subject labels</span>
+<span class="sd">		- *equal_var* --- If *True*, equal group variance will be assumed</span>
+
+<span class="sd">	:Returns:</span>
+<span class="sd">		- List of seven **spm1d._spm.SPM_F** instances in the following order:</span>
+<span class="sd">			1. Main effect A</span>
+<span class="sd">			2. Main effect B</span>
+<span class="sd">			3. Main effect C</span>
+<span class="sd">			4. Interaction AB</span>
+<span class="sd">			5. Interaction AC</span>
+<span class="sd">			6. Interaction BC</span>
+<span class="sd">			7. Interaction ABC</span>
+<span class="sd">			</span>
+<span class="sd">	:Note:</span>
+<span class="sd">		- Non-sphericity correction not implemented. Equal variance must be assumed by setting &quot;equal_var=True&quot;.</span>
+<span class="sd">	&#39;&#39;&#39;</span>
+	<span class="k">if</span> <span class="n">equal_var</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">True</span><span class="p">:</span>
+		<span class="k">raise</span><span class="p">(</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s1">&#39;Non-sphericity correction not implemented. To continue you must assume equal variance and set &quot;equal_var=True&quot;.&#39;</span><span class="p">)</span> <span class="p">)</span>
+	<span class="n">design</span>  <span class="o">=</span> <span class="n">designs</span><span class="o">.</span><span class="n">ANOVA3tworm</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">,</span> <span class="n">C</span><span class="p">,</span> <span class="n">SUBJ</span><span class="p">)</span>
+	<span class="n">model</span>   <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">LinearModel</span><span class="p">(</span><span class="n">Y</span><span class="p">,</span> <span class="n">design</span><span class="o">.</span><span class="n">X</span><span class="p">,</span> <span class="n">roi</span><span class="o">=</span><span class="n">roi</span><span class="p">)</span>
+	<span class="k">if</span> <span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">dim</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span> <span class="n">design</span><span class="o">.</span><span class="n">check_for_single_responses</span><span class="p">()</span> <span class="p">):</span>
+		<span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span> <span class="n">approx_residuals</span><span class="o">=</span><span class="n">design</span><span class="o">.</span><span class="n">contrasts</span><span class="o">.</span><span class="n">C</span><span class="p">[:</span><span class="mi">8</span><span class="p">]</span> <span class="p">)</span>
+	<span class="k">else</span><span class="p">:</span>
+		<span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span> <span class="p">)</span>
+	<span class="n">F</span>       <span class="o">=</span> <span class="n">aov</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">design</span><span class="o">.</span><span class="n">contrasts</span><span class="p">,</span> <span class="n">design</span><span class="o">.</span><span class="n">f_terms</span><span class="p">)</span>
+	<span class="k">return</span> <span class="n">F</span></div>
+
+
+</pre></div>
+
+    </div>
+    
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+    </p>
+    <p>
+        &copy; Copyright 2016, Todd Pataky.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.5.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

@@ -1,0 +1,341 @@
+
+
+
+<!DOCTYPE html>
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>spm1d.io &mdash; spm1d 0.3 documentation</title>
+    
+    <link rel="stylesheet" href="../../_static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/bootstrap-3.3.4/css/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/bootstrap-3.3.4/css/bootstrap-theme.min.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/bootstrap-sphinx.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '0.3',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../_static/js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="../../_static/js/jquery-fix.js"></script>
+    <script type="text/javascript" src="../../_static/bootstrap-3.3.4/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../../_static/bootstrap-sphinx.js"></script>
+    <link rel="top" title="spm1d 0.3 documentation" href="../../index.html" />
+    <link rel="up" title="Module code" href="../index.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+  </head>
+  <body role="document">
+
+<div style="background-color: white; text-align: left; padding: 10px 10px 15px 15px">
+<a href="../../index.html"><img src="../../logo.png" border="0" alt="spm1d"/></a>
+</div>
+
+
+
+  <div id="navbar" class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="../../index.html">
+              </a>
+        <span class="navbar-text navbar-version pull-left"><b>0.3</b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            
+                <li><a href="../../index.html">Home</a></li>
+                <li><a href="../../Downloads.html">Downloads</a></li>
+                <li><a href="../../Documentation.html">Documentation</a></li>
+                <li><a href="../../References.html">References</a></li>
+                <li><a href="../../Workshops.html">Workshops</a></li>
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="../../index.html">Site <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul>
+<li class="toctree-l1"><a class="reference internal" href="../../NewFeatures.html">New Features (version 0.3.2)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../NewFeatures.html#new-features-version-0-3-1">New Features (version 0.3.1)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../NewFeatures.html#new-features-version-0-3">New Features (version 0.3)</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Downloads.html">Downloads</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Documentation.html">Documentation (Python)</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../DocumentationMatlab.html">Documentation (Matlab)</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../References.html">References</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Workshops.html">Workshops</a></li>
+</ul>
+</ul>
+</li>
+              
+                <li class="dropdown">
+  <a role="button"
+     id="dLabelLocalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="#">Page <b class="caret"></b></a>
+  <ul class="dropdown-menu localtoc"
+      role="menu"
+      aria-labelledby="dLabelLocalToc"></ul>
+</li>
+              
+            
+            
+            
+            
+            
+              <li class="hidden-sm"></li>
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="../../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<form action="../../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+        </div>
+      </div>
+    <div class="col-md-12 content">
+      
+  <h1>Source code for spm1d.io</h1><div class="highlight"><pre>
+
+
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">Input/Output module</span>
+
+<span class="sd">This module contains functions for loading and saving data, including</span>
+<span class="sd">SPMs.</span>
+
+<span class="sd">.. warning:: most functions in **spm1d.io** are deprecated.</span>
+
+<span class="sd">	Please use the following well-supported functions:</span>
+<span class="sd">	</span>
+<span class="sd">	* numpy.loadtxt</span>
+<span class="sd">	* numpy.savetxt</span>
+<span class="sd">	* numpy.load</span>
+<span class="sd">	* numpy.save</span>
+<span class="sd">	* scipy.io.loadmat</span>
+<span class="sd">	* scipy.io.savemat</span>
+<span class="sd">&#39;&#39;&#39;</span>
+
+<span class="c1"># Copyright (C) 2016  Todd Pataky</span>
+<span class="c1"># io.py version: 0.3.2 (2016/01/03)</span>
+
+
+
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">scipy.io</span> <span class="kn">import</span> <span class="n">loadmat</span> <span class="k">as</span> <span class="n">scipy_loadmat</span>
+<span class="kn">from</span> <span class="nn">scipy.io</span> <span class="kn">import</span> <span class="n">savemat</span> <span class="k">as</span> <span class="n">scipy_savemat</span>
+<span class="kn">from</span> <span class="nn">stats</span> <span class="kn">import</span> <span class="n">_spm</span>
+
+
+
+<span class="k">def</span> <span class="nf">_check4pytables</span><span class="p">():</span>
+	<span class="k">try</span><span class="p">:</span>
+		<span class="kn">import</span> <span class="nn">tables</span>
+	<span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
+		<span class="k">raise</span><span class="p">(</span><span class="ne">ImportError</span><span class="p">(</span><span class="s1">&#39;You must install pytables to use spm1d.io.load&#39;</span><span class="p">))</span>
+	
+
+
+
+<div class="viewcode-block" id="load"><a class="viewcode-back" href="../../doc/API/io.html#spm1d.io.load">[docs]</a><span class="k">def</span> <span class="nf">load</span><span class="p">(</span><span class="n">fname</span><span class="p">):</span>
+	<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">	WARNING:  &quot;spm1d.io.load&quot; is deprecated and will be removed from future versions of spm1d. </span>
+<span class="sd">	&#39;&#39;&#39;</span>
+	<span class="n">_check4pytables</span><span class="p">()</span>
+	<span class="kn">import</span> <span class="nn">tables</span>
+	<span class="n">fid</span>  <span class="o">=</span> <span class="n">tables</span><span class="o">.</span><span class="n">openFile</span><span class="p">(</span><span class="n">fname</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">)</span>
+	<span class="n">Y</span>    <span class="o">=</span> <span class="n">fid</span><span class="o">.</span><span class="n">getNode</span><span class="p">(</span><span class="s1">&#39;/Y&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+	<span class="n">fid</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+	<span class="k">return</span> <span class="n">Y</span></div>
+
+
+<div class="viewcode-block" id="loadmat"><a class="viewcode-back" href="../../doc/API/io.html#spm1d.io.loadmat">[docs]</a><span class="k">def</span> <span class="nf">loadmat</span><span class="p">(</span><span class="n">fname</span><span class="p">):</span>
+	<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">	WARNING:  &quot;spm1d.io.loadmat&quot; is deprecated.  Use &quot;scipy.io.loadmat&quot; instead. </span>
+<span class="sd">	&#39;&#39;&#39;</span>
+	<span class="k">raise</span> <span class="ne">DeprecationWarning</span><span class="p">(</span><span class="s1">&#39;&quot;spm1d.io.loadmat&quot; is deprecated.  Use &quot;scipy.io.loadmat&quot; instead&#39;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="loadspm"><a class="viewcode-back" href="../../doc/API/io.html#spm1d.io.loadspm">[docs]</a><span class="k">def</span> <span class="nf">loadspm</span><span class="p">(</span><span class="n">fname</span><span class="p">):</span>
+	<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">	Load an SPM object from disk.</span>
+<span class="sd">	The SPM file should have been saved in zipped NumPy (NPZ) format using **spm1d.io.savespm**.</span>
+<span class="sd">	</span>
+<span class="sd">	:Parameters:</span>
+<span class="sd">	</span>
+<span class="sd">	fname : a string specifying the file name</span>
+<span class="sd">	</span>
+<span class="sd">	:Returns:</span>
+<span class="sd">	</span>
+<span class="sd">	An **spm1d** SPM object.</span>
+<span class="sd">	&#39;&#39;&#39;</span>
+	<span class="n">Z</span>           <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">fname</span><span class="p">)</span>
+	<span class="n">keys</span>        <span class="o">=</span> <span class="n">Z</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
+	<span class="n">STAT</span>        <span class="o">=</span> <span class="nb">str</span><span class="p">(</span> <span class="n">Z</span><span class="p">[</span><span class="s1">&#39;STAT&#39;</span><span class="p">]</span> <span class="p">)</span>
+	<span class="n">X</span>           <span class="o">=</span> <span class="n">Z</span><span class="p">[</span><span class="s1">&#39;X&#39;</span><span class="p">]</span>
+	<span class="n">beta</span>        <span class="o">=</span> <span class="n">Z</span><span class="p">[</span><span class="s1">&#39;beta&#39;</span><span class="p">]</span>
+	<span class="n">residuals</span>   <span class="o">=</span> <span class="n">Z</span><span class="p">[</span><span class="s1">&#39;residuals&#39;</span><span class="p">]</span>
+	<span class="n">z</span>           <span class="o">=</span> <span class="n">Z</span><span class="p">[</span><span class="s1">&#39;z&#39;</span><span class="p">]</span>
+	<span class="n">df</span>          <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span> <span class="n">Z</span><span class="p">[</span><span class="s1">&#39;df&#39;</span><span class="p">]</span> <span class="p">)</span>
+	<span class="n">fwhm</span>        <span class="o">=</span> <span class="nb">float</span><span class="p">(</span> <span class="n">Z</span><span class="p">[</span><span class="s1">&#39;fwhm&#39;</span><span class="p">]</span> <span class="p">)</span>
+	<span class="n">resels</span>      <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span> <span class="n">Z</span><span class="p">[</span><span class="s1">&#39;resels&#39;</span><span class="p">]</span> <span class="p">)</span>
+	<span class="k">if</span> <span class="s1">&#39;alpha&#39;</span> <span class="ow">in</span> <span class="n">keys</span><span class="p">:</span>
+		<span class="n">alpha</span>   <span class="o">=</span> <span class="nb">float</span><span class="p">(</span> <span class="n">Z</span><span class="p">[</span><span class="s1">&#39;alpha&#39;</span><span class="p">]</span> <span class="p">)</span>
+		<span class="n">zstar</span>   <span class="o">=</span> <span class="nb">float</span><span class="p">(</span> <span class="n">Z</span><span class="p">[</span><span class="s1">&#39;zstar&#39;</span><span class="p">]</span> <span class="p">)</span>
+		<span class="n">p</span>       <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span> <span class="n">Z</span><span class="p">[</span><span class="s1">&#39;p&#39;</span><span class="p">]</span> <span class="p">)</span>
+		<span class="n">nClusters</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span> <span class="n">Z</span><span class="p">[</span><span class="s1">&#39;nClusters&#39;</span><span class="p">]</span> <span class="p">)</span>
+		<span class="n">L</span>       <span class="o">=</span> <span class="n">Z</span><span class="p">[</span><span class="s1">&#39;L&#39;</span><span class="p">]</span>
+		<span class="n">two_tailed</span> <span class="o">=</span> <span class="nb">bool</span><span class="p">(</span> <span class="n">Z</span><span class="p">[</span><span class="s1">&#39;two_tailed&#39;</span><span class="p">]</span> <span class="p">)</span>
+	<span class="k">if</span> <span class="p">(</span><span class="n">STAT</span><span class="o">==</span><span class="s1">&#39;F&#39;</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="s1">&#39;alpha&#39;</span> <span class="ow">in</span> <span class="n">keys</span><span class="p">):</span>
+		<span class="k">pass</span>
+	<span class="k">elif</span> <span class="n">STAT</span><span class="o">==</span><span class="s1">&#39;F&#39;</span><span class="p">:</span>
+		<span class="n">spm</span>     <span class="o">=</span> <span class="n">_spm</span><span class="o">.</span><span class="n">SPM_F</span><span class="p">(</span><span class="n">z</span><span class="p">,</span> <span class="n">df</span><span class="p">,</span> <span class="n">fwhm</span><span class="p">,</span> <span class="n">resels</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">beta</span><span class="p">,</span> <span class="n">residuals</span><span class="p">)</span>
+		<span class="k">if</span> <span class="s1">&#39;alpha&#39;</span> <span class="ow">in</span> <span class="n">keys</span><span class="p">:</span>
+			<span class="n">spm</span> <span class="o">=</span> <span class="n">_spm</span><span class="o">.</span><span class="n">SPMi_F</span><span class="p">(</span><span class="n">spm</span><span class="p">,</span> <span class="n">alpha</span><span class="p">,</span> <span class="n">zstar</span><span class="p">,</span> <span class="n">nClusters</span><span class="p">,</span> <span class="n">L</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="n">two_tailed</span><span class="p">)</span>
+	<span class="k">elif</span> <span class="n">STAT</span><span class="o">==</span><span class="s1">&#39;T&#39;</span><span class="p">:</span>
+		<span class="n">spm</span>     <span class="o">=</span> <span class="n">_spm</span><span class="o">.</span><span class="n">SPM_T</span><span class="p">(</span><span class="n">z</span><span class="p">,</span> <span class="n">df</span><span class="p">,</span> <span class="n">fwhm</span><span class="p">,</span> <span class="n">resels</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">beta</span><span class="p">,</span> <span class="n">residuals</span><span class="p">)</span>
+		<span class="k">if</span> <span class="s1">&#39;alpha&#39;</span> <span class="ow">in</span> <span class="n">keys</span><span class="p">:</span>
+			<span class="n">spm</span> <span class="o">=</span> <span class="n">_spm</span><span class="o">.</span><span class="n">SPMi_T</span><span class="p">(</span><span class="n">spm</span><span class="p">,</span> <span class="n">alpha</span><span class="p">,</span> <span class="n">zstar</span><span class="p">,</span> <span class="n">nClusters</span><span class="p">,</span> <span class="n">L</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="n">two_tailed</span><span class="p">)</span>
+	<span class="k">return</span> <span class="n">spm</span></div>
+
+
+<div class="viewcode-block" id="loadtxt"><a class="viewcode-back" href="../../doc/API/io.html#spm1d.io.loadtxt">[docs]</a><span class="k">def</span> <span class="nf">loadtxt</span><span class="p">(</span><span class="n">fname</span><span class="p">):</span>
+	<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">	WARNING:  &quot;spm1d.io.loadtxt&quot; is deprecated.  Use &quot;numpy.loadtxt&quot; instead. </span>
+<span class="sd">	&#39;&#39;&#39;</span>
+	<span class="k">raise</span> <span class="ne">DeprecationWarning</span><span class="p">(</span><span class="s1">&#39;&quot;spm1d.io.loadtxt&quot; is deprecated.  Use &quot;numpy.loadtxt&quot; instead.&#39;</span><span class="p">)</span>
+	<span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="n">fname</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="s1">&#39;</span><span class="se">\t</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="save"><a class="viewcode-back" href="../../doc/API/io.html#spm1d.io.save">[docs]</a><span class="k">def</span> <span class="nf">save</span><span class="p">(</span><span class="n">fname</span><span class="p">,</span> <span class="n">Y</span><span class="p">):</span>
+	<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">	WARNING:  &quot;spm1d.io.save&quot; is deprecated and will be removed from future versions of spm1d.</span>
+<span class="sd">	&#39;&#39;&#39;</span>
+	<span class="n">_check4pytables</span><span class="p">()</span>
+	<span class="kn">import</span> <span class="nn">tables</span>
+	<span class="c1">### create file (existing file will be overwritten)</span>
+	<span class="n">fid</span>          <span class="o">=</span> <span class="n">tables</span><span class="o">.</span><span class="n">openFile</span><span class="p">(</span><span class="n">fname</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;w&#39;</span><span class="p">)</span>
+	<span class="k">try</span><span class="p">:</span>
+		<span class="c1">### write data:</span>
+		<span class="n">atom</span>     <span class="o">=</span> <span class="n">tables</span><span class="o">.</span><span class="n">FloatAtom</span><span class="p">()</span>
+		<span class="n">filter0</span>  <span class="o">=</span> <span class="n">tables</span><span class="o">.</span><span class="n">Filters</span><span class="p">(</span><span class="n">complevel</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span><span class="n">complib</span><span class="o">=</span><span class="s1">&#39;zlib&#39;</span><span class="p">)</span>
+		<span class="n">CA</span>       <span class="o">=</span> <span class="n">fid</span><span class="o">.</span><span class="n">createCArray</span><span class="p">(</span><span class="n">fid</span><span class="o">.</span><span class="n">root</span><span class="p">,</span> <span class="s1">&#39;Y&#39;</span><span class="p">,</span> <span class="n">atom</span><span class="p">,</span> <span class="n">Y</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">filters</span><span class="o">=</span><span class="n">filter0</span><span class="p">)</span>
+		<span class="n">CA</span><span class="p">[:]</span>    <span class="o">=</span> <span class="n">Y</span>
+		<span class="n">fid</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+	<span class="k">except</span> <span class="ne">IOError</span><span class="p">:</span>
+		<span class="n">fid</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+		<span class="k">raise</span> <span class="ne">IOError</span><span class="p">(</span><span class="s1">&#39;Error saving file.&#39;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="savemat"><a class="viewcode-back" href="../../doc/API/io.html#spm1d.io.savemat">[docs]</a><span class="k">def</span> <span class="nf">savemat</span><span class="p">(</span><span class="n">fname</span><span class="p">,</span> <span class="n">Y</span><span class="p">):</span>
+	<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">	WARNING:  &quot;spm1d.io.savemat&quot; is deprecated.  Use &quot;scipy.io.savemat&quot; instead. </span>
+<span class="sd">	&#39;&#39;&#39;</span>
+	<span class="k">raise</span> <span class="ne">DeprecationWarning</span><span class="p">(</span><span class="s1">&#39;&quot;spm1d.io.savemat&quot; is deprecated.  Use &quot;scipy.io.savemat&quot; instead.&#39;</span><span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="savespm"><a class="viewcode-back" href="../../doc/API/io.html#spm1d.io.savespm">[docs]</a><span class="k">def</span> <span class="nf">savespm</span><span class="p">(</span><span class="n">fname</span><span class="p">,</span> <span class="n">spm</span><span class="p">):</span>
+	<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">	Save an SPM object in zipped NumPy (NPZ) format. Once saved an SPM can be re-loaded using **spm1d.io.loadspm**</span>
+<span class="sd">	</span>
+<span class="sd">	:Parameters:</span>
+<span class="sd">	</span>
+<span class="sd">	fname : a string specifying the file name (with extension .npz)</span>
+<span class="sd">	</span>
+<span class="sd">	spm   : an SPM object, as returned from a statistical test in **spm1d.stats**</span>
+<span class="sd">	&#39;&#39;&#39;</span>
+	<span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">spm</span><span class="p">,</span> <span class="p">(</span><span class="n">_spm</span><span class="o">.</span><span class="n">_SPM</span><span class="p">,</span> <span class="n">_spm</span><span class="o">.</span><span class="n">_SPMinference</span><span class="p">)):</span>
+		<span class="k">raise</span> <span class="ne">IOError</span><span class="p">(</span><span class="s1">&#39;Must submit an SPM or SPMi object to spm1d.io.save_spm&#39;</span><span class="p">)</span>
+	<span class="n">fields</span>      <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;STAT&#39;</span><span class="p">,</span> <span class="s1">&#39;Q&#39;</span><span class="p">,</span> <span class="s1">&#39;X&#39;</span><span class="p">,</span> <span class="s1">&#39;z&#39;</span><span class="p">,</span> <span class="s1">&#39;df&#39;</span><span class="p">,</span> <span class="s1">&#39;fwhm&#39;</span><span class="p">,</span> <span class="s1">&#39;resels&#39;</span><span class="p">,</span> <span class="s1">&#39;beta&#39;</span><span class="p">,</span> <span class="s1">&#39;residuals&#39;</span><span class="p">]</span>
+	<span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">spm</span><span class="p">,</span> <span class="n">_spm</span><span class="o">.</span><span class="n">_SPMinference</span><span class="p">):</span>
+		<span class="n">fields</span> <span class="o">+=</span> <span class="p">[</span><span class="s1">&#39;alpha&#39;</span><span class="p">,</span> <span class="s1">&#39;zstar&#39;</span><span class="p">,</span> <span class="s1">&#39;p&#39;</span><span class="p">,</span> <span class="s1">&#39;nClusters&#39;</span><span class="p">,</span> <span class="s1">&#39;L&#39;</span><span class="p">,</span> <span class="s1">&#39;two_tailed&#39;</span><span class="p">]</span>
+	<span class="n">values</span>      <span class="o">=</span> <span class="p">[</span><span class="nb">eval</span><span class="p">(</span><span class="s1">&#39;spm.</span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span><span class="n">field</span><span class="p">)</span>  <span class="k">for</span> <span class="n">field</span> <span class="ow">in</span> <span class="n">fields</span><span class="p">]</span>
+	<span class="n">np</span><span class="o">.</span><span class="n">savez</span><span class="p">(</span><span class="n">fname</span><span class="p">,</span> <span class="o">**</span><span class="nb">dict</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">fields</span><span class="p">,</span><span class="n">values</span><span class="p">))</span> <span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="savetxt"><a class="viewcode-back" href="../../doc/API/io.html#spm1d.io.savetxt">[docs]</a><span class="k">def</span> <span class="nf">savetxt</span><span class="p">(</span><span class="n">fname</span><span class="p">,</span> <span class="n">Y</span><span class="p">):</span>
+	<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">	WARNING:  &quot;spm1d.io.savetxt&quot; is deprecated.  Use &quot;numpy.savetxt&quot; instead. </span>
+<span class="sd">	&#39;&#39;&#39;</span>
+	<span class="k">raise</span> <span class="ne">DeprecationWarning</span><span class="p">(</span><span class="s1">&#39;&quot;spm1d.io.savetxt&quot; is deprecated.  Use &quot;numpy.savetxt&quot; instead.&#39;</span><span class="p">)</span></div>
+
+
+
+</pre></div>
+
+    </div>
+    
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+    </p>
+    <p>
+        &copy; Copyright 2016, Todd Pataky.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.5.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

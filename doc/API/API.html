@@ -1,0 +1,252 @@
+
+
+
+<!DOCTYPE html>
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>API &mdash; spm1d 0.3 documentation</title>
+    
+    <link rel="stylesheet" href="../../_static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/bootstrap-3.3.4/css/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/bootstrap-3.3.4/css/bootstrap-theme.min.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/bootstrap-sphinx.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '0.3',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../_static/js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="../../_static/js/jquery-fix.js"></script>
+    <script type="text/javascript" src="../../_static/bootstrap-3.3.4/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../../_static/bootstrap-sphinx.js"></script>
+    <link rel="top" title="spm1d 0.3 documentation" href="../../index.html" />
+    <link rel="up" title="Documentation (Python)" href="../../Documentation.html" />
+    <link rel="next" title="spm1d.io" href="io.html" />
+    <link rel="prev" title="One- vs. two-tailed inference" href="../Theory/twotailed.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+  </head>
+  <body role="document">
+
+<div style="background-color: white; text-align: left; padding: 10px 10px 15px 15px">
+<a href="../../index.html"><img src="../../logo.png" border="0" alt="spm1d"/></a>
+</div>
+
+
+
+  <div id="navbar" class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="../../index.html">
+              </a>
+        <span class="navbar-text navbar-version pull-left"><b>0.3</b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            
+                <li><a href="../../index.html">Home</a></li>
+                <li><a href="../../Downloads.html">Downloads</a></li>
+                <li><a href="../../Documentation.html">Documentation</a></li>
+                <li><a href="../../References.html">References</a></li>
+                <li><a href="../../Workshops.html">Workshops</a></li>
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="../../index.html">Site <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul>
+<li class="toctree-l1"><a class="reference internal" href="../../NewFeatures.html">New Features (version 0.3.2)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../NewFeatures.html#new-features-version-0-3-1">New Features (version 0.3.1)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../NewFeatures.html#new-features-version-0-3">New Features (version 0.3)</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Downloads.html">Downloads</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../../Documentation.html">Documentation (Python)</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../DocumentationMatlab.html">Documentation (Matlab)</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../References.html">References</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Workshops.html">Workshops</a></li>
+</ul>
+</ul>
+</li>
+              
+                <li class="dropdown">
+  <a role="button"
+     id="dLabelLocalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="#">Page <b class="caret"></b></a>
+  <ul class="dropdown-menu localtoc"
+      role="menu"
+      aria-labelledby="dLabelLocalToc"><ul>
+<li><a class="reference internal" href="#">API</a></li>
+</ul>
+</ul>
+</li>
+              
+            
+            
+            
+            
+            
+              <li class="hidden-sm">
+<div id="sourcelink">
+  <a href="../../_sources/doc/API/API.txt"
+     rel="nofollow">Source</a>
+</div></li>
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="../../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper"><ul>
+<li><a class="reference internal" href="#">API</a></li>
+</ul>
+
+  <li>
+    <a href="../Theory/twotailed.html" title="Previous Chapter: One- vs. two-tailed inference"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; One- vs. two-...</span>
+    </a>
+  </li>
+  <li>
+    <a href="io.html" title="Next Chapter: spm1d.io"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">spm1d.io &raquo;</span>
+    </a>
+  </li>
+<form action="../../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+        </div>
+      </div>
+    <div class="col-md-12 content">
+      
+  <div class="section" id="api">
+<span id="label-api"></span><h1>API<a class="headerlink" href="#api" title="Permalink to this headline">¶</a></h1>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="io.html">spm1d.io</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="io.html#load">load</a></li>
+<li class="toctree-l2"><a class="reference internal" href="io.html#loadmat">loadmat</a></li>
+<li class="toctree-l2"><a class="reference internal" href="io.html#loadtxt">loadtxt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="io.html#loadspm">loadspm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="io.html#save">save</a></li>
+<li class="toctree-l2"><a class="reference internal" href="io.html#savemat">savemat</a></li>
+<li class="toctree-l2"><a class="reference internal" href="io.html#savetxt">savetxt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="io.html#savespm">savespm</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="plot.html">spm1d.plot</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="plot.html#plot-errorcloud">plot_errorcloud</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plot.html#plot-mean-sd">plot_mean_sd</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plot.html#plot-spm">plot_spm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plot.html#plot-spmi">plot_spmi</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plot.html#plot-spmi-p-values">plot_spmi_p_values</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plot.html#plot-spmi-threshold-label">plot_spmi_threshold_label</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="stats.html">spm1d.stats</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="stats.html#anova1">anova1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stats.html#anova1rm">anova1rm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stats.html#anova2">anova2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stats.html#anova2nested">anova2nested</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stats.html#anova2rm">anova2rm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stats.html#anova2onerm">anova2onerm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stats.html#anova3">anova3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stats.html#anova3nested">anova3nested</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stats.html#anova3tworm">anova3tworm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stats.html#anova3onerm">anova3onerm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stats.html#cca">cca</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stats.html#hotellings">hotellings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stats.html#hotellings-paired">hotellings_paired</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stats.html#hotellings2">hotellings2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stats.html#glm">glm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stats.html#manova1">manova1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stats.html#regress">regress</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stats.html#ttest">ttest</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stats.html#ttest-paired">ttest_paired</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stats.html#ttest2">ttest2</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="util.html">spm1d.util</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="util.html#get-dataset">get_dataset</a></li>
+<li class="toctree-l2"><a class="reference internal" href="util.html#interp">interp</a></li>
+<li class="toctree-l2"><a class="reference internal" href="util.html#p-corrected-bonf">p_corrected_bonf</a></li>
+<li class="toctree-l2"><a class="reference internal" href="util.html#p-critical-bonf">p_critical_bonf</a></li>
+<li class="toctree-l2"><a class="reference internal" href="util.html#smooth">smooth</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+
+    </div>
+    
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+    </p>
+    <p>
+        &copy; Copyright 2016, Todd Pataky.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.5.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

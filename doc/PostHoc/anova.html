@@ -1,0 +1,286 @@
+
+
+
+<!DOCTYPE html>
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>ANOVA post hoc analysis &mdash; spm1d 0.3 documentation</title>
+    
+    <link rel="stylesheet" href="../../_static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/bootstrap-3.3.4/css/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/bootstrap-3.3.4/css/bootstrap-theme.min.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/bootstrap-sphinx.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '0.3',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../_static/js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="../../_static/js/jquery-fix.js"></script>
+    <script type="text/javascript" src="../../_static/bootstrap-3.3.4/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../../_static/bootstrap-sphinx.js"></script>
+    <link rel="top" title="spm1d 0.3 documentation" href="../../index.html" />
+    <link rel="up" title="Documentation (Python)" href="../../Documentation.html" />
+    <link rel="next" title="Multivariate post hoc analysis" href="multivariate.html" />
+    <link rel="prev" title="Test outputs" href="../Stats1D/outputs.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+  </head>
+  <body role="document">
+
+<div style="background-color: white; text-align: left; padding: 10px 10px 15px 15px">
+<a href="../../index.html"><img src="../../logo.png" border="0" alt="spm1d"/></a>
+</div>
+
+
+
+  <div id="navbar" class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="../../index.html">
+              </a>
+        <span class="navbar-text navbar-version pull-left"><b>0.3</b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            
+                <li><a href="../../index.html">Home</a></li>
+                <li><a href="../../Downloads.html">Downloads</a></li>
+                <li><a href="../../Documentation.html">Documentation</a></li>
+                <li><a href="../../References.html">References</a></li>
+                <li><a href="../../Workshops.html">Workshops</a></li>
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="../../index.html">Site <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul>
+<li class="toctree-l1"><a class="reference internal" href="../../NewFeatures.html">New Features (version 0.3.2)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../NewFeatures.html#new-features-version-0-3-1">New Features (version 0.3.1)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../NewFeatures.html#new-features-version-0-3">New Features (version 0.3)</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Downloads.html">Downloads</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../../Documentation.html">Documentation (Python)</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../DocumentationMatlab.html">Documentation (Matlab)</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../References.html">References</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Workshops.html">Workshops</a></li>
+</ul>
+</ul>
+</li>
+              
+                <li class="dropdown">
+  <a role="button"
+     id="dLabelLocalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="#">Page <b class="caret"></b></a>
+  <ul class="dropdown-menu localtoc"
+      role="menu"
+      aria-labelledby="dLabelLocalToc"><ul>
+<li><a class="reference internal" href="#">ANOVA <em>post hoc</em> analysis</a><ul>
+<li><a class="reference internal" href="#one-way-anova">One-way ANOVA</a></li>
+</ul>
+</li>
+</ul>
+</ul>
+</li>
+              
+            
+            
+            
+            
+            
+              <li class="hidden-sm">
+<div id="sourcelink">
+  <a href="../../_sources/doc/PostHoc/anova.txt"
+     rel="nofollow">Source</a>
+</div></li>
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="../../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper"><ul>
+<li><a class="reference internal" href="#">ANOVA <em>post hoc</em> analysis</a><ul>
+<li><a class="reference internal" href="#one-way-anova">One-way ANOVA</a></li>
+</ul>
+</li>
+</ul>
+
+  <li>
+    <a href="../Stats1D/outputs.html" title="Previous Chapter: Test outputs"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; Test outputs</span>
+    </a>
+  </li>
+  <li>
+    <a href="multivariate.html" title="Next Chapter: Multivariate post hoc analysis"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">Multivariate ... &raquo;</span>
+    </a>
+  </li>
+<form action="../../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+        </div>
+      </div>
+    <div class="col-md-12 content">
+      
+  <div class="section" id="anova-post-hoc-analysis">
+<span id="label-examples-statsposthoc"></span><h1>ANOVA <em>post hoc</em> analysis<a class="headerlink" href="#anova-post-hoc-analysis" title="Permalink to this headline">¶</a></h1>
+<p><em>Post hoc</em> analyses are currently in development.</p>
+<p>The simple approaches described below will approximate appropriate <em>post hoc</em> results.</p>
+<p>As a rule-of-thumb, <strong>NEVER</strong> report <em>post hoc</em> results which disagree with the main test results.  If the results disagree, the <em>post hoc</em> procedures are too simple.</p>
+<p>If you report <em>post hoc</em> results for <strong>spm1d</strong> analyses please explicitly highlight the limitations described in this document.</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p>Current <em>post hoc</em> procedures in <strong>spm1d</strong> are likely too simple.</p>
+<p class="last">The example belowe uses a simple Bonferroni correction, but this assumes that the <em>post hoc</em> tests are independent, which is usually not the case.</p>
+</div>
+<div class="admonition danger">
+<p class="first admonition-title">Danger</p>
+<p>Current <em>post hoc</em> procedures in <strong>spm1d</strong> are generally not valid.</p>
+<p>They are not valid because they involve separate smoothness assessments for each <em>post hoc</em> test.</p>
+<p>Although the resulting errors are expected to be small, we cannot guarantee validity.</p>
+<p class="last">Users are encouraged to explore other <em>post hoc</em> correction methods.</p>
+</div>
+<div class="section" id="one-way-anova">
+<span id="label-stats-anova-post-hoc"></span><h2>One-way ANOVA<a class="headerlink" href="#one-way-anova" title="Permalink to this headline">¶</a></h2>
+<p>This examples revisits the <a class="reference internal" href="../Stats1D/anova.html#label-stats-anova"><span>one-way</span></a> example.</p>
+<p>Since the <a class="reference internal" href="../Stats1D/anova.html#label-stats-anova"><span>one-way ANOVA results</span></a> reached significance, we may justifiably conduct <em>post hoc</em> analyses.</p>
+<p>For one-way ANOVA, <em>post hoc</em> analyses consist of two-sample t tests conducted on all group pairs.</p>
+<p>Since there are three groups in our one-way ANOVA example, there are three pairs to test (1v2, 1v3, and 2v3).</p>
+<p>A simple way to correct for multiple tests across these three group pairs is to use the Bonferroni correction:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.05</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">nTests</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">p_critical</span> <span class="o">=</span> <span class="n">spm1d</span><span class="o">.</span><span class="n">util</span><span class="o">.</span><span class="n">p_critical_bonf</span><span class="p">(</span><span class="n">alpha</span><span class="p">,</span> <span class="n">nTests</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The resulting critical <em>p</em> value is <strong>0.016952</strong>.</p>
+<p><em>Post hoc</em> tests will be deemed significant if they reach the critical <em>t</em> value implied by the p = 0.016952.</p>
+<p>Test statistics may be computed for the three group pairs as follows:</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>The <em>equal_var</em> option should be the same as was selected for ANOVA.</p>
+<div class="last highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">t12</span>   <span class="o">=</span> <span class="n">spm1d</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">ttest2</span><span class="p">(</span><span class="n">Y1</span><span class="p">,</span> <span class="n">Y2</span><span class="p">,</span> <span class="n">equal_var</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">t13</span>   <span class="o">=</span> <span class="n">spm1d</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">ttest2</span><span class="p">(</span><span class="n">Y1</span><span class="p">,</span> <span class="n">Y3</span><span class="p">,</span> <span class="n">equal_var</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">t23</span>   <span class="o">=</span> <span class="n">spm1d</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">ttest2</span><span class="p">(</span><span class="n">Y2</span><span class="p">,</span> <span class="n">Y3</span><span class="p">,</span> <span class="n">equal_var</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>After computing the test statistics we can conduct inference using the corrected critical <em>p</em> value:</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p>The <em>two_tailed</em> option must always be <em>True</em> in <em>post hoc</em> analyses; one-tailed inference is inconsistent with the null-hypothesis implied by ANOVA.</p>
+<div class="last highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">t12i</span>  <span class="o">=</span> <span class="n">t12</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="n">p_critical</span><span class="p">,</span> <span class="n">two_tailed</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">t13i</span>  <span class="o">=</span> <span class="n">t13</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="n">p_critical</span><span class="p">,</span> <span class="n">two_tailed</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">t23i</span>  <span class="o">=</span> <span class="n">t23</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="n">p_critical</span><span class="p">,</span> <span class="n">two_tailed</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>In this case all tests reach significance.</p>
+<p>These results may be interpreted exactly as in the case of a single t test: if there were truly no group differences, then smooth, random 1D continua would produce SPM{t}s that reaches the critical <em>t</em> threshold in fewer than <em>alpha</em> = 5% of many repeated experiments.</p>
+<div class="admonition warning" id="label-stats-multipletests-pvalues">
+<p class="first admonition-title">Warning</p>
+<p>p values for <em>post hoc</em> tests.</p>
+<p>If desired, you may report exact <em>p</em> values for each suprathreshold cluster, but in this case the p values must be adjusted for multiple comparisons.</p>
+<p class="last">To compute appropriate <em>p</em> values, use the inverse to the Bonferroni correction through <strong>spm1d.util.p_corrected_bonf</strong>, as described below.</p>
+</div>
+<p>Let&#8217;s consider the following result from one of the <em>post hoc</em> tests conducted above:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">SPM</span><span class="p">{</span><span class="n">T</span><span class="p">}</span> <span class="n">inference</span> <span class="n">field</span>
+   <span class="n">SPM</span><span class="o">.</span><span class="n">z</span>      <span class="p">:</span>  <span class="p">(</span><span class="mi">1</span><span class="n">x101</span><span class="p">)</span> <span class="n">raw</span> <span class="n">test</span> <span class="n">stat</span> <span class="n">field</span>
+   <span class="n">SPM</span><span class="o">.</span><span class="n">df</span>     <span class="p">:</span>  <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mf">33.641</span><span class="p">)</span>
+   <span class="n">SPM</span><span class="o">.</span><span class="n">fwhm</span>   <span class="p">:</span>  <span class="mf">4.82031</span>
+   <span class="n">SPM</span><span class="o">.</span><span class="n">resels</span> <span class="p">:</span>  <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mf">20.74555</span><span class="p">)</span>
+<span class="n">Inference</span><span class="p">:</span>
+   <span class="n">SPM</span><span class="o">.</span><span class="n">alpha</span>  <span class="p">:</span>  <span class="mf">0.017</span>
+   <span class="n">SPM</span><span class="o">.</span><span class="n">zstar</span>  <span class="p">:</span>  <span class="mf">4.05216</span>
+   <span class="n">SPM</span><span class="o">.</span><span class="n">p</span>      <span class="p">:</span>  <span class="p">(</span><span class="o">&lt;</span><span class="mf">0.001</span><span class="p">,</span> <span class="o">&lt;</span><span class="mf">0.001</span><span class="p">,</span> <span class="o">&lt;</span><span class="mf">0.001</span><span class="p">,</span> <span class="mf">0.008</span><span class="p">,</span> <span class="o">&lt;</span><span class="mf">0.001</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">When multiple <em>p</em> values exist, they are listed in the following order: (1) upper threshold left-to-right, (2) lower threshold left-to-right. In the &#8220;t23i&#8221; case above (rightmost panel of the figure) there are five <em>p</em> values. The first corresponds to the single upper-threshold cluster. The next four correspond to the four lower-threshold clusters.</p>
+</div>
+<p>The five <em>p</em> values listed in the results above correspond to this test&#8217;s five supra-threshold clusters.</p>
+<p>Corrected <em>p</em> values may be computed as follows:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">p_value</span> <span class="o">=</span> <span class="mf">0.008</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">nTests</span>  <span class="o">=</span> <span class="mi">3</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">p_value_corrected</span> <span class="o">=</span> <span class="n">spm1d</span><span class="o">.</span><span class="n">util</span><span class="o">.</span><span class="n">p_corrected_bonf</span><span class="p">(</span><span class="n">p_value</span><span class="p">,</span> <span class="n">nTests</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>The corrected p value is 0.028</strong>.  If this cluster had precisely touched the threshold, its <em>p</em> value would have been <em>alpha</em>.</p>
+</div>
+</div>
+
+
+    </div>
+    
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+    </p>
+    <p>
+        &copy; Copyright 2016, Todd Pataky.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.5.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

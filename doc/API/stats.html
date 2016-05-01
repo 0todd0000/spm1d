@@ -1,0 +1,1109 @@
+
+
+
+<!DOCTYPE html>
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>spm1d.stats &mdash; spm1d 0.3 documentation</title>
+    
+    <link rel="stylesheet" href="../../_static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/bootstrap-3.3.4/css/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/bootstrap-3.3.4/css/bootstrap-theme.min.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/bootstrap-sphinx.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '0.3',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../_static/js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="../../_static/js/jquery-fix.js"></script>
+    <script type="text/javascript" src="../../_static/bootstrap-3.3.4/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../../_static/bootstrap-sphinx.js"></script>
+    <link rel="top" title="spm1d 0.3 documentation" href="../../index.html" />
+    <link rel="up" title="API" href="API.html" />
+    <link rel="next" title="spm1d.util" href="util.html" />
+    <link rel="prev" title="spm1d.plot" href="plot.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+  </head>
+  <body role="document">
+
+<div style="background-color: white; text-align: left; padding: 10px 10px 15px 15px">
+<a href="../../index.html"><img src="../../logo.png" border="0" alt="spm1d"/></a>
+</div>
+
+
+
+  <div id="navbar" class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="../../index.html">
+              </a>
+        <span class="navbar-text navbar-version pull-left"><b>0.3</b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            
+                <li><a href="../../index.html">Home</a></li>
+                <li><a href="../../Downloads.html">Downloads</a></li>
+                <li><a href="../../Documentation.html">Documentation</a></li>
+                <li><a href="../../References.html">References</a></li>
+                <li><a href="../../Workshops.html">Workshops</a></li>
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="../../index.html">Site <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul>
+<li class="toctree-l1"><a class="reference internal" href="../../NewFeatures.html">New Features (version 0.3.2)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../NewFeatures.html#new-features-version-0-3-1">New Features (version 0.3.1)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../NewFeatures.html#new-features-version-0-3">New Features (version 0.3)</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Downloads.html">Downloads</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../../Documentation.html">Documentation (Python)</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../DocumentationMatlab.html">Documentation (Matlab)</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../References.html">References</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Workshops.html">Workshops</a></li>
+</ul>
+</ul>
+</li>
+              
+                <li class="dropdown">
+  <a role="button"
+     id="dLabelLocalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="#">Page <b class="caret"></b></a>
+  <ul class="dropdown-menu localtoc"
+      role="menu"
+      aria-labelledby="dLabelLocalToc"><ul>
+<li><a class="reference internal" href="#">spm1d.stats</a><ul>
+<li><a class="reference internal" href="#anova1">anova1</a></li>
+<li><a class="reference internal" href="#anova1rm">anova1rm</a></li>
+<li><a class="reference internal" href="#anova2">anova2</a></li>
+<li><a class="reference internal" href="#anova2nested">anova2nested</a></li>
+<li><a class="reference internal" href="#anova2rm">anova2rm</a></li>
+<li><a class="reference internal" href="#anova2onerm">anova2onerm</a></li>
+<li><a class="reference internal" href="#anova3">anova3</a></li>
+<li><a class="reference internal" href="#anova3nested">anova3nested</a></li>
+<li><a class="reference internal" href="#anova3tworm">anova3tworm</a></li>
+<li><a class="reference internal" href="#anova3onerm">anova3onerm</a></li>
+<li><a class="reference internal" href="#cca">cca</a></li>
+<li><a class="reference internal" href="#hotellings">hotellings</a></li>
+<li><a class="reference internal" href="#hotellings-paired">hotellings_paired</a></li>
+<li><a class="reference internal" href="#hotellings2">hotellings2</a></li>
+<li><a class="reference internal" href="#glm">glm</a></li>
+<li><a class="reference internal" href="#manova1">manova1</a></li>
+<li><a class="reference internal" href="#regress">regress</a></li>
+<li><a class="reference internal" href="#ttest">ttest</a></li>
+<li><a class="reference internal" href="#ttest-paired">ttest_paired</a></li>
+<li><a class="reference internal" href="#ttest2">ttest2</a></li>
+</ul>
+</li>
+</ul>
+</ul>
+</li>
+              
+            
+            
+            
+            
+            
+              <li class="hidden-sm">
+<div id="sourcelink">
+  <a href="../../_sources/doc/API/stats.txt"
+     rel="nofollow">Source</a>
+</div></li>
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="../../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper"><ul>
+<li><a class="reference internal" href="#">spm1d.stats</a><ul>
+<li><a class="reference internal" href="#anova1">anova1</a></li>
+<li><a class="reference internal" href="#anova1rm">anova1rm</a></li>
+<li><a class="reference internal" href="#anova2">anova2</a></li>
+<li><a class="reference internal" href="#anova2nested">anova2nested</a></li>
+<li><a class="reference internal" href="#anova2rm">anova2rm</a></li>
+<li><a class="reference internal" href="#anova2onerm">anova2onerm</a></li>
+<li><a class="reference internal" href="#anova3">anova3</a></li>
+<li><a class="reference internal" href="#anova3nested">anova3nested</a></li>
+<li><a class="reference internal" href="#anova3tworm">anova3tworm</a></li>
+<li><a class="reference internal" href="#anova3onerm">anova3onerm</a></li>
+<li><a class="reference internal" href="#cca">cca</a></li>
+<li><a class="reference internal" href="#hotellings">hotellings</a></li>
+<li><a class="reference internal" href="#hotellings-paired">hotellings_paired</a></li>
+<li><a class="reference internal" href="#hotellings2">hotellings2</a></li>
+<li><a class="reference internal" href="#glm">glm</a></li>
+<li><a class="reference internal" href="#manova1">manova1</a></li>
+<li><a class="reference internal" href="#regress">regress</a></li>
+<li><a class="reference internal" href="#ttest">ttest</a></li>
+<li><a class="reference internal" href="#ttest-paired">ttest_paired</a></li>
+<li><a class="reference internal" href="#ttest2">ttest2</a></li>
+</ul>
+</li>
+</ul>
+
+  <li>
+    <a href="plot.html" title="Previous Chapter: spm1d.plot"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; spm1d.plot</span>
+    </a>
+  </li>
+  <li>
+    <a href="util.html" title="Next Chapter: spm1d.util"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">spm1d.util &raquo;</span>
+    </a>
+  </li>
+<form action="../../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+        </div>
+      </div>
+    <div class="col-md-12 content">
+      
+  <div class="section" id="module-spm1d.stats">
+<span id="spm1d-stats"></span><span id="label-api-stats"></span><h1>spm1d.stats<a class="headerlink" href="#module-spm1d.stats" title="Permalink to this headline">¶</a></h1>
+<p>Statistics module.</p>
+<p>This module contains functions for conducting classical hypothesis testing on a set of 1D continua.</p>
+<p>For all tests the dependent variable <strong>Y</strong> must be a NumPy array, with dimensions:</p>
+<div class="highlight-python"><div class="highlight"><pre>* J :  number of observations
+* Q :  number of field nodes
+* I :  number of vector components
+</pre></div>
+</div>
+<p>Specifically:</p>
+<ul class="simple">
+<li>Univariate 0D tests:  <strong>Y</strong> should be ( J x 1 )</li>
+<li>Multivariate 0D tests:  <strong>Y</strong> should be ( J x I )</li>
+<li>Univariate 1D tests:  <strong>Y</strong> should be ( J x Q )</li>
+<li>Multivariate 1D tests:  <strong>Y</strong> should be ( J x Q x I )</li>
+</ul>
+<hr class="docutils" />
+<div class="section" id="anova1">
+<h2>anova1<a class="headerlink" href="#anova1" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="spm1d.stats.anova1">
+<code class="descclassname">spm1d.stats.</code><code class="descname">anova1</code><span class="sig-paren">(</span><em>Y</em>, <em>A=None</em>, <em>equal_var=False</em>, <em>roi=None</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/spm1d/stats/anova/ui.html#anova1"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#spm1d.stats.anova1" title="Permalink to this definition">¶</a></dt>
+<dd><p>One-way ANOVA.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name" colspan="2">Parameters (Option 1):</th></tr>
+<tr class="field-odd field"><td>&nbsp;</td><td class="field-body"><ul class="first simple">
+<li><em>Y</em> &#8212; A list or tuple of (J x Q) numpy arrays</li>
+<li><em>equal_var</em> &#8212; If <em>True</em>, equal group variance will be assumed</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name" colspan="2">Parameters (Option 2):</th></tr>
+<tr class="field-even field"><td>&nbsp;</td><td class="field-body"><ul class="first simple">
+<li><em>Y</em> &#8212; (J x Q) numpy array</li>
+<li><em>A</em> &#8212; (J x 1) vector of integer group labels</li>
+<li><em>equal_var</em> &#8212; If <em>True</em>, equal group variance will be assumed</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><ul class="first simple">
+<li>F : An <strong>spm1d._spm.SPM_F</strong> instance</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Example:</th><td class="field-body"></td>
+</tr>
+</tbody>
+</table>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">F</span> <span class="o">=</span> <span class="n">spm1d</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">anova1</span><span class="p">((</span><span class="n">Y0</span><span class="p">,</span><span class="n">Y1</span><span class="p">,</span><span class="n">Y2</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">Fi</span> <span class="o">=</span> <span class="n">F</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.05</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">Fi</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+<hr class="docutils" />
+<div class="section" id="anova1rm">
+<h2>anova1rm<a class="headerlink" href="#anova1rm" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="spm1d.stats.anova1rm">
+<code class="descclassname">spm1d.stats.</code><code class="descname">anova1rm</code><span class="sig-paren">(</span><em>Y</em>, <em>A</em>, <em>SUBJ</em>, <em>equal_var=True</em>, <em>roi=None</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/spm1d/stats/anova/ui.html#anova1rm"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#spm1d.stats.anova1rm" title="Permalink to this definition">¶</a></dt>
+<dd><p>One-way repeated-measures ANOVA.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><em>Y</em> &#8212; (J x Q) numpy array</li>
+<li><em>A</em> &#8212; (J x 1) vector of integer group labels</li>
+<li><em>SUBJ</em> &#8212; (J x 1) vector of subject labels</li>
+<li><em>equal_var</em> &#8212; If <em>True</em>, equal group variance will be assumed</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><ul class="first simple">
+<li>F : An <strong>spm1d._spm.SPM_F</strong> instance</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Example:</th><td class="field-body"></td>
+</tr>
+</tbody>
+</table>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">Y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="mi">101</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">SUBJ</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">F</span> <span class="o">=</span> <span class="n">spm1d</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">anova1</span><span class="p">(</span><span class="n">Y</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="n">SUBJ</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">Fi</span> <span class="o">=</span> <span class="n">F</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.05</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">Fi</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+<hr class="docutils" />
+<div class="section" id="anova2">
+<h2>anova2<a class="headerlink" href="#anova2" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="spm1d.stats.anova2">
+<code class="descclassname">spm1d.stats.</code><code class="descname">anova2</code><span class="sig-paren">(</span><em>Y</em>, <em>A</em>, <em>B</em>, <em>equal_var=True</em>, <em>roi=None</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/spm1d/stats/anova/ui.html#anova2"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#spm1d.stats.anova2" title="Permalink to this definition">¶</a></dt>
+<dd><p>Two-way ANOVA.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><em>Y</em> &#8212; (J x Q) numpy array</li>
+<li><em>A</em> &#8212; (J x 1) vector of integer labels for Factor A</li>
+<li><em>B</em> &#8212; (J x 1) vector of integer labels for Factor B</li>
+<li><em>equal_var</em> &#8212; If <em>True</em>, equal group variance will be assumed</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><ul class="first last">
+<li><dl class="first docutils">
+<dt>List of three <strong>spm1d._spm.SPM_F</strong> instances in the following order:</dt>
+<dd><ol class="first last arabic simple">
+<li>Main effect A</li>
+<li>Main effect B</li>
+<li>Interaction AB</li>
+</ol>
+</dd>
+</dl>
+</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<hr class="docutils" />
+<div class="section" id="anova2nested">
+<h2>anova2nested<a class="headerlink" href="#anova2nested" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="spm1d.stats.anova2nested">
+<code class="descclassname">spm1d.stats.</code><code class="descname">anova2nested</code><span class="sig-paren">(</span><em>Y</em>, <em>A</em>, <em>B</em>, <em>equal_var=True</em>, <em>roi=None</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/spm1d/stats/anova/ui.html#anova2nested"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#spm1d.stats.anova2nested" title="Permalink to this definition">¶</a></dt>
+<dd><p>Two-way nested ANOVA.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><em>Y</em> &#8212; (J x Q) numpy array</li>
+<li><em>A</em> &#8212; (J x 1) vector of integer labels for Factor A</li>
+<li><em>B</em> &#8212; (J x 1) vector of integer labels for Factor B (nested in A)</li>
+<li><em>equal_var</em> &#8212; If <em>True</em>, equal group variance will be assumed</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><ul class="first">
+<li><dl class="first docutils">
+<dt>List of two <strong>spm1d._spm.SPM_F</strong> instances in the following order:</dt>
+<dd><ol class="first last arabic simple">
+<li>Main effect A</li>
+<li>Main effect B</li>
+</ol>
+</dd>
+</dl>
+</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Note:</th><td class="field-body"><ul class="first last simple">
+<li>there is no interaction term in nested designs.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<hr class="docutils" />
+<div class="section" id="anova2rm">
+<h2>anova2rm<a class="headerlink" href="#anova2rm" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="spm1d.stats.anova2rm">
+<code class="descclassname">spm1d.stats.</code><code class="descname">anova2rm</code><span class="sig-paren">(</span><em>Y</em>, <em>A</em>, <em>B</em>, <em>SUBJ</em>, <em>equal_var=True</em>, <em>roi=None</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/spm1d/stats/anova/ui.html#anova2rm"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#spm1d.stats.anova2rm" title="Permalink to this definition">¶</a></dt>
+<dd><p>Two-way repeated-measures ANOVA.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><em>Y</em> &#8212; (J x Q) numpy array</li>
+<li><em>A</em> &#8212; (J x 1) vector of integer labels for Factor A</li>
+<li><em>B</em> &#8212; (J x 1) vector of integer labels for Factor B</li>
+<li><em>SUBJ</em> &#8212; (J x 1) vector of integer subject labels</li>
+<li><em>equal_var</em> &#8212; If <em>True</em>, equal group variance will be assumed</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><ul class="first">
+<li><dl class="first docutils">
+<dt>List of three <strong>spm1d._spm.SPM_F</strong> instances in the following order:</dt>
+<dd><ol class="first last arabic simple">
+<li>Main effect A</li>
+<li>Main effect B</li>
+<li>Interaction AB</li>
+</ol>
+</dd>
+</dl>
+</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Note:</th><td class="field-body"><ul class="first last simple">
+<li>Non-sphericity correction not implemented. Equal variance must be assumed by setting &#8220;equal_var=True&#8221;.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<hr class="docutils" />
+<div class="section" id="anova2onerm">
+<h2>anova2onerm<a class="headerlink" href="#anova2onerm" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="spm1d.stats.anova2onerm">
+<code class="descclassname">spm1d.stats.</code><code class="descname">anova2onerm</code><span class="sig-paren">(</span><em>Y</em>, <em>A</em>, <em>B</em>, <em>SUBJ</em>, <em>equal_var=True</em>, <em>roi=None</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/spm1d/stats/anova/ui.html#anova2onerm"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#spm1d.stats.anova2onerm" title="Permalink to this definition">¶</a></dt>
+<dd><p>Two-way ANOVA with repeated-measures on one factor.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><em>Y</em> &#8212; (J x Q) numpy array</li>
+<li><em>A</em> &#8212; (J x 1) vector of integer labels for Factor A</li>
+<li><em>B</em> &#8212; (J x 1) vector of integer labels for Factor B (the repeated-measures factor)</li>
+<li><em>SUBJ</em> &#8212; (J x 1) vector of integer subject labels</li>
+<li><em>equal_var</em> &#8212; If <em>True</em>, equal group variance will be assumed</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><ul class="first">
+<li><dl class="first docutils">
+<dt>List of three <strong>spm1d._spm.SPM_F</strong> instances in the following order:</dt>
+<dd><ol class="first last arabic simple">
+<li>Main effect A</li>
+<li>Main effect B</li>
+<li>Interaction AB</li>
+</ol>
+</dd>
+</dl>
+</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Note:</th><td class="field-body"><ul class="first last simple">
+<li>Non-sphericity correction not implemented. Equal variance must be assumed by setting &#8220;equal_var=True&#8221;.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<hr class="docutils" />
+<div class="section" id="anova3">
+<h2>anova3<a class="headerlink" href="#anova3" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="spm1d.stats.anova3">
+<code class="descclassname">spm1d.stats.</code><code class="descname">anova3</code><span class="sig-paren">(</span><em>Y</em>, <em>A</em>, <em>B</em>, <em>C</em>, <em>equal_var=True</em>, <em>roi=None</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/spm1d/stats/anova/ui.html#anova3"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#spm1d.stats.anova3" title="Permalink to this definition">¶</a></dt>
+<dd><p>Three-way ANOVA.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><em>Y</em> &#8212; (J x Q) numpy array</li>
+<li><em>A</em> &#8212; (J x 1) vector of integer labels for Factor A</li>
+<li><em>B</em> &#8212; (J x 1) vector of integer labels for Factor B</li>
+<li><em>C</em> &#8212; (J x 1) vector of integer labels for Factor C</li>
+<li><em>equal_var</em> &#8212; If <em>True</em>, equal group variance will be assumed</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><ul class="first last">
+<li><dl class="first docutils">
+<dt>List of seven <strong>spm1d._spm.SPM_F</strong> instances in the following order:</dt>
+<dd><ol class="first last arabic simple">
+<li>Main effect A</li>
+<li>Main effect B</li>
+<li>Main effect C</li>
+<li>Interaction AB</li>
+<li>Interaction AC</li>
+<li>Interaction BC</li>
+<li>Interaction ABC</li>
+</ol>
+</dd>
+</dl>
+</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<hr class="docutils" />
+<div class="section" id="anova3nested">
+<h2>anova3nested<a class="headerlink" href="#anova3nested" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="spm1d.stats.anova3nested">
+<code class="descclassname">spm1d.stats.</code><code class="descname">anova3nested</code><span class="sig-paren">(</span><em>Y</em>, <em>A</em>, <em>B</em>, <em>C</em>, <em>equal_var=True</em>, <em>roi=None</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/spm1d/stats/anova/ui.html#anova3nested"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#spm1d.stats.anova3nested" title="Permalink to this definition">¶</a></dt>
+<dd><p>Three-way fully nested ANOVA.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><em>Y</em> &#8212; (J x Q) numpy array</li>
+<li><em>A</em> &#8212; (J x 1) vector of integer labels for Factor A</li>
+<li><em>B</em> &#8212; (J x 1) vector of integer labels for Factor B (nested in A)</li>
+<li><em>C</em> &#8212; (J x 1) vector of integer labels for Factor C (nested in B)</li>
+<li><em>equal_var</em> &#8212; If <em>True</em>, equal group variance will be assumed</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><ul class="first">
+<li><dl class="first docutils">
+<dt>List of three <strong>spm1d._spm.SPM_F</strong> instances in the following order:</dt>
+<dd><ol class="first last arabic simple">
+<li>Main effect A</li>
+<li>Main effect B</li>
+<li>Main effect C</li>
+</ol>
+</dd>
+</dl>
+</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Note:</th><td class="field-body"><ul class="first last simple">
+<li>there are no interaction terms in fully-nested designs.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<hr class="docutils" />
+<div class="section" id="anova3tworm">
+<h2>anova3tworm<a class="headerlink" href="#anova3tworm" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="spm1d.stats.anova3tworm">
+<code class="descclassname">spm1d.stats.</code><code class="descname">anova3tworm</code><span class="sig-paren">(</span><em>Y</em>, <em>A</em>, <em>B</em>, <em>C</em>, <em>SUBJ</em>, <em>equal_var=True</em>, <em>roi=None</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/spm1d/stats/anova/ui.html#anova3tworm"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#spm1d.stats.anova3tworm" title="Permalink to this definition">¶</a></dt>
+<dd><p>Three-way ANOVA with repeated-measures on two factors.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><em>Y</em> &#8212; (J x Q) numpy array</li>
+<li><em>A</em> &#8212; (J x 1) vector of integer labels for Factor A</li>
+<li><em>B</em> &#8212; (J x 1) vector of integer labels for Factor B (a repeated-measures factor)</li>
+<li><em>C</em> &#8212; (J x 1) vector of integer labels for Factor C (a repeated-measures factor)</li>
+<li><em>SUBJ</em> &#8212; (J x 1) vector of integer subject labels</li>
+<li><em>equal_var</em> &#8212; If <em>True</em>, equal group variance will be assumed</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><ul class="first">
+<li><dl class="first docutils">
+<dt>List of seven <strong>spm1d._spm.SPM_F</strong> instances in the following order:</dt>
+<dd><ol class="first last arabic simple">
+<li>Main effect A</li>
+<li>Main effect B</li>
+<li>Main effect C</li>
+<li>Interaction AB</li>
+<li>Interaction AC</li>
+<li>Interaction BC</li>
+<li>Interaction ABC</li>
+</ol>
+</dd>
+</dl>
+</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Note:</th><td class="field-body"><ul class="first last simple">
+<li>Non-sphericity correction not implemented. Equal variance must be assumed by setting &#8220;equal_var=True&#8221;.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<hr class="docutils" />
+<div class="section" id="anova3onerm">
+<h2>anova3onerm<a class="headerlink" href="#anova3onerm" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="spm1d.stats.anova3onerm">
+<code class="descclassname">spm1d.stats.</code><code class="descname">anova3onerm</code><span class="sig-paren">(</span><em>Y</em>, <em>A</em>, <em>B</em>, <em>C</em>, <em>SUBJ</em>, <em>equal_var=True</em>, <em>roi=None</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/spm1d/stats/anova/ui.html#anova3onerm"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#spm1d.stats.anova3onerm" title="Permalink to this definition">¶</a></dt>
+<dd><p>Three-way ANOVA with repeated-measures on one factor.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><em>Y</em> &#8212; (J x Q) numpy array</li>
+<li><em>A</em> &#8212; (J x 1) vector of integer labels for Factor A</li>
+<li><em>B</em> &#8212; (J x 1) vector of integer labels for Factor B</li>
+<li><em>C</em> &#8212; (J x 1) vector of integer labels for Factor C (the repeated-measures factor)</li>
+<li><em>SUBJ</em> &#8212; (J x 1) vector of integer subject labels</li>
+<li><em>equal_var</em> &#8212; If <em>True</em>, equal group variance will be assumed</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><ul class="first">
+<li><dl class="first docutils">
+<dt>List of seven <strong>spm1d._spm.SPM_F</strong> instances in the following order:</dt>
+<dd><ol class="first last arabic simple">
+<li>Main effect A</li>
+<li>Main effect B</li>
+<li>Main effect C</li>
+<li>Interaction AB</li>
+<li>Interaction AC</li>
+<li>Interaction BC</li>
+<li>Interaction ABC</li>
+</ol>
+</dd>
+</dl>
+</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Note:</th><td class="field-body"><ul class="first last simple">
+<li>Non-sphericity correction not implemented. Equal variance must be assumed by setting &#8220;equal_var=True&#8221;.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<hr class="docutils" />
+<div class="section" id="cca">
+<h2>cca<a class="headerlink" href="#cca" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="spm1d.stats.cca">
+<code class="descclassname">spm1d.stats.</code><code class="descname">cca</code><span class="sig-paren">(</span><em>Y</em>, <em>x</em>, <em>roi=None</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/spm1d/stats/cca.html#cca"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#spm1d.stats.cca" title="Permalink to this definition">¶</a></dt>
+<dd><p>Canonical correlation analysis (CCA).</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><em>Y</em> &#8212; A list or tuple of (J x Q) numpy arrays</li>
+<li><em>x</em> &#8212; (J x 1) list or array (independent variable)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><ul class="first simple">
+<li>X2 : An <strong>spm1d._spm.SPM_X2</strong> instance</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Note:</th><td class="field-body"><ul class="first last simple">
+<li>Currently only a univariate 0D independent variable (x) is supported.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<hr class="docutils" />
+<div class="section" id="hotellings">
+<h2>hotellings<a class="headerlink" href="#hotellings" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="spm1d.stats.hotellings">
+<code class="descclassname">spm1d.stats.</code><code class="descname">hotellings</code><span class="sig-paren">(</span><em>Y</em>, <em>mu=None</em>, <em>roi=None</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/spm1d/stats/hotellings.html#hotellings"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#spm1d.stats.hotellings" title="Permalink to this definition">¶</a></dt>
+<dd><p>One-sample Hotelling&#8217;s T2 test.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><em>Y</em> &#8212; (J x Q x I) numpy array</li>
+<li><em>mu</em> &#8212; scalar or (Q x I) array (datum)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><ul class="first last simple">
+<li>T2 : An <strong>spm1d._spm.SPM_T2</strong> instance</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<hr class="docutils" />
+<div class="section" id="hotellings-paired">
+<h2>hotellings_paired<a class="headerlink" href="#hotellings-paired" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="spm1d.stats.hotellings_paired">
+<code class="descclassname">spm1d.stats.</code><code class="descname">hotellings_paired</code><span class="sig-paren">(</span><em>YA</em>, <em>YB</em>, <em>roi=None</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/spm1d/stats/hotellings.html#hotellings_paired"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#spm1d.stats.hotellings_paired" title="Permalink to this definition">¶</a></dt>
+<dd><p>Paired Hotelling&#8217;s T2 test.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><em>YA</em> &#8212; (J x Q x I) numpy array</li>
+<li><em>YB</em> &#8212; (J x Q x I) numpy array</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><ul class="first simple">
+<li>T2 : An <strong>spm1d._spm.SPM_T2</strong> instance</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Note:</th><td class="field-body"><ul class="first last simple">
+<li>A paired Hotelling&#8217;s test on (YA,YB) is equivalent to a one-sample Hotelling&#8217;s test on (YB-YA)</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<hr class="docutils" />
+<div class="section" id="hotellings2">
+<h2>hotellings2<a class="headerlink" href="#hotellings2" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="spm1d.stats.hotellings2">
+<code class="descclassname">spm1d.stats.</code><code class="descname">hotellings2</code><span class="sig-paren">(</span><em>YA</em>, <em>YB</em>, <em>equal_var=True</em>, <em>roi=None</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/spm1d/stats/hotellings.html#hotellings2"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#spm1d.stats.hotellings2" title="Permalink to this definition">¶</a></dt>
+<dd><p>Two-sample Hotelling&#8217;s T2 test.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><em>YA</em> &#8212; (J x Q x I) numpy array</li>
+<li><em>YB</em> &#8212; (J x Q x I) numpy array</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><ul class="first simple">
+<li>T2 : An <strong>spm1d._spm.SPM_T2</strong> instance</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Note:</th><td class="field-body"><ul class="first last simple">
+<li>Non-sphericity correction not implemented. Equal variance must be assumed by setting &#8220;equal_var=True&#8221;.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<hr class="docutils" />
+<div class="section" id="glm">
+<h2>glm<a class="headerlink" href="#glm" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="spm1d.stats.glm">
+<code class="descclassname">spm1d.stats.</code><code class="descname">glm</code><span class="sig-paren">(</span><em>Y</em>, <em>X</em>, <em>c</em>, <em>Q=None</em>, <em>roi=None</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/spm1d/stats/t.html#glm"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#spm1d.stats.glm" title="Permalink to this definition">¶</a></dt>
+<dd><p>General linear model (for t contrasts).</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"></td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li><em>Y</em> &#8212; (J x Q) numpy array (dependent variable)</li>
+<li><em>X</em> &#8212; (J x B) design matrix  (J responses, B parameters)</li>
+<li><em>c</em> &#8212; B-component contrast vector (list or array)</li>
+<li><em>Q</em> &#8212; non-sphericity specifiers (not currently supported for <strong>glm</strong>)</li>
+</ul>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Non-sphericity estimates are not supported for <strong>spm1d.stats.glm</strong></p>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"></td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>An <strong>spm1d._spm.SPM_T</strong> object.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Example:</th><td class="field-body"></td>
+</tr>
+</tbody>
+</table>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">t</span>  <span class="o">=</span> <span class="n">spm1d</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">glm</span><span class="p">(</span><span class="n">Y</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ti</span> <span class="o">=</span> <span class="n">t</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.05</span><span class="p">,</span> <span class="n">two_tailed</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ti</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+<hr class="docutils" />
+<div class="section" id="manova1">
+<h2>manova1<a class="headerlink" href="#manova1" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="spm1d.stats.manova1">
+<code class="descclassname">spm1d.stats.</code><code class="descname">manova1</code><span class="sig-paren">(</span><em>Y</em>, <em>A</em>, <em>equal_var=True</em>, <em>roi=None</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/spm1d/stats/manova.html#manova1"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#spm1d.stats.manova1" title="Permalink to this definition">¶</a></dt>
+<dd><p>Two-way repeated-measures ANOVA.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><em>Y</em> &#8212; (J x Q x I) numpy array</li>
+<li><em>A</em> &#8212; (J x 1) vector of integer labels for Factor A</li>
+<li><em>equal_var</em> &#8212; If <em>True</em>, equal group variance will be assumed</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><ul class="first simple">
+<li>X2 : An <strong>spm1d._spm.SPM_X2</strong> instance</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Note:</th><td class="field-body"><ul class="first last simple">
+<li>Non-sphericity correction not implemented. Equal variance must be assumed by setting &#8220;equal_var=True&#8221;.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<hr class="docutils" />
+<div class="section" id="regress">
+<h2>regress<a class="headerlink" href="#regress" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="spm1d.stats.regress">
+<code class="descclassname">spm1d.stats.</code><code class="descname">regress</code><span class="sig-paren">(</span><em>Y</em>, <em>x</em>, <em>roi=None</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/spm1d/stats/t.html#regress"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#spm1d.stats.regress" title="Permalink to this definition">¶</a></dt>
+<dd><p>Simple linear regression.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"></td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li><em>Y</em> &#8212; (J x Q) numpy array (dependent variable)</li>
+<li><em>x</em> &#8212; J-component list or array (independent variable)</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"></td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>An <strong>spm1d._spm.SPM_T</strong> object.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Example:</th><td class="field-body"></td>
+</tr>
+</tbody>
+</table>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">Y</span>  <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">101</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">Y</span>  <span class="o">=</span> <span class="n">spm1d</span><span class="o">.</span><span class="n">util</span><span class="o">.</span><span class="n">smooth</span><span class="p">(</span><span class="n">Y</span><span class="p">,</span> <span class="n">fwhm</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span>  <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">t</span>  <span class="o">=</span> <span class="n">spm1d</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">regress</span><span class="p">(</span><span class="n">Y</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ti</span> <span class="o">=</span> <span class="n">t</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.05</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ti</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Notes:</th><td class="field-body"><ul class="first last simple">
+<li>the correlation coefficient is retrievable as &#8220;t.r&#8221; where &#8220;t&#8221; is the output from <strong>spm1d.stats.regress</strong></li>
+<li>statistical inferences are based on <em>t</em>, not on <em>r</em></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<hr class="docutils" />
+<div class="section" id="ttest">
+<h2>ttest<a class="headerlink" href="#ttest" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="spm1d.stats.ttest">
+<code class="descclassname">spm1d.stats.</code><code class="descname">ttest</code><span class="sig-paren">(</span><em>Y</em>, <em>y0=None</em>, <em>roi=None</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/spm1d/stats/t.html#ttest"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#spm1d.stats.ttest" title="Permalink to this definition">¶</a></dt>
+<dd><p>One-sample t test.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"></td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li><em>Y</em> &#8212; (J x Q) data array  (J responses, Q nodes)</li>
+<li><em>y0</em> &#8212; optional Q-component datum array (default is the null continuum)</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"></td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>An <strong>spm1d._spm.SPM_T</strong> object.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Example:</th><td class="field-body"></td>
+</tr>
+</tbody>
+</table>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">Y</span>  <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">101</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">Y</span>  <span class="o">=</span> <span class="n">spm1d</span><span class="o">.</span><span class="n">util</span><span class="o">.</span><span class="n">smooth</span><span class="p">(</span><span class="n">Y</span><span class="p">,</span> <span class="n">fwhm</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">t</span>  <span class="o">=</span> <span class="n">spm1d</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">ttest</span><span class="p">(</span><span class="n">Y</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ti</span> <span class="o">=</span> <span class="n">t</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.05</span><span class="p">,</span> <span class="n">two_tailed</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ti</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+<hr class="docutils" />
+<div class="section" id="ttest-paired">
+<h2>ttest_paired<a class="headerlink" href="#ttest-paired" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="spm1d.stats.ttest_paired">
+<code class="descclassname">spm1d.stats.</code><code class="descname">ttest_paired</code><span class="sig-paren">(</span><em>YA</em>, <em>YB</em>, <em>roi=None</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/spm1d/stats/t.html#ttest_paired"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#spm1d.stats.ttest_paired" title="Permalink to this definition">¶</a></dt>
+<dd><p>Paired t test.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"></td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li><em>YA</em> &#8212; (J x Q) data array  (J responses, Q nodes)</li>
+<li><em>YB</em> &#8212; (J x Q) data array  (J responses, Q nodes)</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"></td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>An <strong>spm1d._spm.SPM_T</strong> object.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Example:</th><td class="field-body"></td>
+</tr>
+</tbody>
+</table>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">YA</span><span class="p">,</span><span class="n">YB</span>  <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">101</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">101</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">YA</span><span class="p">,</span><span class="n">YB</span>  <span class="o">=</span> <span class="n">spm1d</span><span class="o">.</span><span class="n">util</span><span class="o">.</span><span class="n">smooth</span><span class="p">(</span><span class="n">Y</span><span class="p">,</span> <span class="n">fwhm</span><span class="o">=</span><span class="mi">10</span><span class="p">),</span> <span class="n">spm1d</span><span class="o">.</span><span class="n">util</span><span class="o">.</span><span class="n">smooth</span><span class="p">(</span><span class="n">Y</span><span class="p">,</span> <span class="n">fwhm</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">t</span>      <span class="o">=</span> <span class="n">spm1d</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">ttest_paired</span><span class="p">(</span><span class="n">YA</span><span class="p">,</span> <span class="n">YB</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ti</span> <span class="o">=</span> <span class="n">t</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.05</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ti</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+<hr class="docutils" />
+<div class="section" id="ttest2">
+<h2>ttest2<a class="headerlink" href="#ttest2" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="spm1d.stats.ttest2">
+<code class="descclassname">spm1d.stats.</code><code class="descname">ttest2</code><span class="sig-paren">(</span><em>YA</em>, <em>YB</em>, <em>equal_var=False</em>, <em>roi=None</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/spm1d/stats/t.html#ttest2"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#spm1d.stats.ttest2" title="Permalink to this definition">¶</a></dt>
+<dd><p>Two-sample t test.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"></td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li><em>YA</em> &#8212; (J x Q) data array  (J responses, Q nodes)</li>
+<li><em>YB</em> &#8212; (J x Q) data array  (J responses, Q nodes)</li>
+<li><em>equal_var</em> &#8212; If <em>True</em>, equal group variance will be assumed</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"></td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>An <strong>spm1d._spm.SPM_T</strong> object.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Example:</th><td class="field-body"></td>
+</tr>
+</tbody>
+</table>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">YA</span><span class="p">,</span><span class="n">YB</span>  <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">101</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">101</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">YA</span><span class="p">,</span><span class="n">YB</span>  <span class="o">=</span> <span class="n">spm1d</span><span class="o">.</span><span class="n">util</span><span class="o">.</span><span class="n">smooth</span><span class="p">(</span><span class="n">Y</span><span class="p">,</span> <span class="n">fwhm</span><span class="o">=</span><span class="mi">10</span><span class="p">),</span> <span class="n">spm1d</span><span class="o">.</span><span class="n">util</span><span class="o">.</span><span class="n">smooth</span><span class="p">(</span><span class="n">Y</span><span class="p">,</span> <span class="n">fwhm</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">t</span>  <span class="o">=</span> <span class="n">spm1d</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">ttest2</span><span class="p">(</span><span class="n">YA</span><span class="p">,</span> <span class="n">YB</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ti</span> <span class="o">=</span> <span class="n">t</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.05</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ti</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+</div>
+
+
+    </div>
+    
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+    </p>
+    <p>
+        &copy; Copyright 2016, Todd Pataky.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.5.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

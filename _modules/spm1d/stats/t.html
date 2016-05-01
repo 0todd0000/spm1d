@@ -1,0 +1,411 @@
+
+
+
+<!DOCTYPE html>
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>spm1d.stats.t &mdash; spm1d 0.3 documentation</title>
+    
+    <link rel="stylesheet" href="../../../_static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/bootstrap-3.3.4/css/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/bootstrap-3.3.4/css/bootstrap-theme.min.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/bootstrap-sphinx.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../',
+        VERSION:     '0.3',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../_static/js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="../../../_static/js/jquery-fix.js"></script>
+    <script type="text/javascript" src="../../../_static/bootstrap-3.3.4/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../../../_static/bootstrap-sphinx.js"></script>
+    <link rel="top" title="spm1d 0.3 documentation" href="../../../index.html" />
+    <link rel="up" title="Module code" href="../../index.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+  </head>
+  <body role="document">
+
+<div style="background-color: white; text-align: left; padding: 10px 10px 15px 15px">
+<a href="../../../index.html"><img src="../../../logo.png" border="0" alt="spm1d"/></a>
+</div>
+
+
+
+  <div id="navbar" class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="../../../index.html">
+              </a>
+        <span class="navbar-text navbar-version pull-left"><b>0.3</b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            
+                <li><a href="../../../index.html">Home</a></li>
+                <li><a href="../../../Downloads.html">Downloads</a></li>
+                <li><a href="../../../Documentation.html">Documentation</a></li>
+                <li><a href="../../../References.html">References</a></li>
+                <li><a href="../../../Workshops.html">Workshops</a></li>
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="../../../index.html">Site <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../NewFeatures.html">New Features (version 0.3.2)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../NewFeatures.html#new-features-version-0-3-1">New Features (version 0.3.1)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../NewFeatures.html#new-features-version-0-3">New Features (version 0.3)</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../Downloads.html">Downloads</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../Documentation.html">Documentation (Python)</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../DocumentationMatlab.html">Documentation (Matlab)</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../References.html">References</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../Workshops.html">Workshops</a></li>
+</ul>
+</ul>
+</li>
+              
+                <li class="dropdown">
+  <a role="button"
+     id="dLabelLocalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="#">Page <b class="caret"></b></a>
+  <ul class="dropdown-menu localtoc"
+      role="menu"
+      aria-labelledby="dLabelLocalToc"></ul>
+</li>
+              
+            
+            
+            
+            
+            
+              <li class="hidden-sm"></li>
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="../../../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<form action="../../../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+        </div>
+      </div>
+    <div class="col-md-12 content">
+      
+  <h1>Source code for spm1d.stats.t</h1><div class="highlight"><pre>
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">One-sample statistical tests.</span>
+<span class="sd">&#39;&#39;&#39;</span>
+
+<span class="c1"># Copyright (C) 2016  Todd Pataky</span>
+<span class="c1"># t.py version: 0.3.2 (2016/01/03)</span>
+
+
+
+
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span><span class="p">,</span> <span class="n">cm</span> <span class="k">as</span> <span class="n">colormaps</span>
+<span class="kn">import</span> <span class="nn">_datachecks</span><span class="o">,</span> <span class="nn">_reml</span><span class="o">,</span> <span class="nn">_spm</span>
+<span class="kn">import</span> <span class="nn">rft1d</span>
+
+
+<span class="n">rank</span>   <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">matrix_rank</span>
+<span class="n">eps</span>    <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">finfo</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span><span class="o">.</span><span class="n">eps</span>   <span class="c1">#smallest float, used to avoid divide-by-zero errors</span>
+
+
+
+
+<div class="viewcode-block" id="glm"><a class="viewcode-back" href="../../../doc/API/stats.html#spm1d.stats.glm">[docs]</a><span class="k">def</span> <span class="nf">glm</span><span class="p">(</span><span class="n">Y</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">Q</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">roi</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+	<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">	General linear model (for t contrasts).</span>
+<span class="sd">	</span>
+<span class="sd">	:Parameters:</span>
+<span class="sd">	</span>
+<span class="sd">	- *Y* --- (J x Q) numpy array (dependent variable)</span>
+<span class="sd">	- *X* --- (J x B) design matrix  (J responses, B parameters)</span>
+<span class="sd">	- *c* --- B-component contrast vector (list or array)</span>
+<span class="sd">	- *Q* --- non-sphericity specifiers (not currently supported for **glm**)</span>
+<span class="sd">	</span>
+<span class="sd">	.. note:: Non-sphericity estimates are not supported for **spm1d.stats.glm**</span>
+<span class="sd">	</span>
+<span class="sd">	:Returns:</span>
+<span class="sd">	</span>
+<span class="sd">	- An **spm1d._spm.SPM_T** object.</span>
+<span class="sd">	</span>
+<span class="sd">	:Example:</span>
+<span class="sd">	</span>
+<span class="sd">	&gt;&gt;&gt; t  = spm1d.stats.glm(Y, X, (-1,1))</span>
+<span class="sd">	&gt;&gt;&gt; ti = t.inference(alpha=0.05, two_tailed=True)</span>
+<span class="sd">	&gt;&gt;&gt; ti.plot()</span>
+<span class="sd">	&#39;&#39;&#39;</span>
+	<span class="c1">### assemble data:</span>
+	<span class="n">Y</span>      <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">matrix</span><span class="p">(</span><span class="n">Y</span><span class="p">)</span>
+	<span class="n">X</span>      <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">matrix</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+	<span class="n">c</span>      <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">matrix</span><span class="p">(</span><span class="n">c</span><span class="p">)</span><span class="o">.</span><span class="n">T</span>
+	<span class="c1">### solve the GLM:</span>
+	<span class="n">b</span>      <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">pinv</span><span class="p">(</span><span class="n">X</span><span class="p">)</span><span class="o">*</span><span class="n">Y</span>    <span class="c1">#parameters</span>
+	<span class="n">eij</span>    <span class="o">=</span> <span class="n">Y</span> <span class="o">-</span> <span class="n">X</span><span class="o">*</span><span class="n">b</span>                <span class="c1">#residuals</span>
+	<span class="n">R</span>      <span class="o">=</span> <span class="n">eij</span><span class="o">.</span><span class="n">T</span><span class="o">*</span><span class="n">eij</span>              <span class="c1">#residuals: sum of squares</span>
+	<span class="n">df</span>     <span class="o">=</span> <span class="n">Y</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="n">rank</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>   <span class="c1">#degrees of freedom</span>
+	<span class="n">sigma2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">diag</span><span class="p">(</span><span class="n">R</span><span class="p">)</span><span class="o">/</span><span class="n">df</span>          <span class="c1">#variance</span>
+	<span class="c1">### compute t statistic</span>
+	<span class="n">t</span>      <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">c</span><span class="o">.</span><span class="n">T</span><span class="o">*</span><span class="n">b</span><span class="p">)</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span>  <span class="o">/</span>   <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">sigma2</span><span class="o">*</span><span class="nb">float</span><span class="p">(</span><span class="n">c</span><span class="o">.</span><span class="n">T</span><span class="o">*</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">inv</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">T</span><span class="o">*</span><span class="n">X</span><span class="p">))</span><span class="o">*</span><span class="n">c</span><span class="p">))</span> <span class="o">+</span> <span class="n">eps</span><span class="p">)</span>
+	<span class="c1">### estimate df due to non-sphericity:</span>
+	<span class="k">if</span> <span class="n">Q</span><span class="o">!=</span><span class="bp">None</span><span class="p">:</span>
+		<span class="n">df</span> <span class="o">=</span> <span class="n">_reml</span><span class="o">.</span><span class="n">estimate_df_T</span><span class="p">(</span><span class="n">Y</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">eij</span><span class="p">,</span> <span class="n">Q</span><span class="p">)</span>
+	<span class="n">eij</span>    <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">eij</span><span class="p">)</span>
+	<span class="k">if</span> <span class="n">Y</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+		<span class="c1">### estimate field smoothness:</span>
+		<span class="n">fwhm</span>   <span class="o">=</span> <span class="n">rft1d</span><span class="o">.</span><span class="n">geom</span><span class="o">.</span><span class="n">estimate_fwhm</span><span class="p">(</span><span class="n">eij</span><span class="p">)</span>
+		<span class="c1">### compute resel counts:</span>
+		<span class="k">if</span> <span class="n">roi</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+			<span class="n">resels</span> <span class="o">=</span> <span class="n">rft1d</span><span class="o">.</span><span class="n">geom</span><span class="o">.</span><span class="n">resel_counts</span><span class="p">(</span><span class="n">eij</span><span class="p">,</span> <span class="n">fwhm</span><span class="p">,</span> <span class="n">element_based</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+		<span class="k">else</span><span class="p">:</span>
+			<span class="n">B</span>      <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">any</span><span class="p">(</span> <span class="n">np</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">eij</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>  <span class="c1">#node is true if NaN</span>
+			<span class="n">B</span>      <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">logical_and</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">logical_not</span><span class="p">(</span><span class="n">B</span><span class="p">),</span> <span class="n">roi</span><span class="p">)</span>  <span class="c1">#node is true if in ROI and also not NaN</span>
+			<span class="n">mask</span>   <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">logical_not</span><span class="p">(</span><span class="n">B</span><span class="p">)</span>  <span class="c1">#true for masked-out regions</span>
+			<span class="n">resels</span> <span class="o">=</span> <span class="n">rft1d</span><span class="o">.</span><span class="n">geom</span><span class="o">.</span><span class="n">resel_counts</span><span class="p">(</span><span class="n">mask</span><span class="p">,</span> <span class="n">fwhm</span><span class="p">,</span> <span class="n">element_based</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+			<span class="n">t</span>      <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ma</span><span class="o">.</span><span class="n">masked_array</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">logical_not</span><span class="p">(</span><span class="n">roi</span><span class="p">))</span>
+		<span class="c1">### assemble SPM{t} object</span>
+		<span class="n">t</span>      <span class="o">=</span> <span class="n">_spm</span><span class="o">.</span><span class="n">SPM_T</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">df</span><span class="p">),</span> <span class="n">fwhm</span><span class="p">,</span> <span class="n">resels</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">X</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">b</span><span class="p">),</span> <span class="n">eij</span><span class="p">,</span> <span class="n">roi</span><span class="o">=</span><span class="n">roi</span><span class="p">)</span>
+	<span class="k">else</span><span class="p">:</span>
+		<span class="n">t</span>      <span class="o">=</span> <span class="n">_spm</span><span class="o">.</span><span class="n">SPM0D_T</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">df</span><span class="p">))</span>
+	<span class="k">return</span> <span class="n">t</span></div>
+
+
+
+
+
+<div class="viewcode-block" id="regress"><a class="viewcode-back" href="../../../doc/API/stats.html#spm1d.stats.regress">[docs]</a><span class="k">def</span> <span class="nf">regress</span><span class="p">(</span><span class="n">Y</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">roi</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+	<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">	Simple linear regression.</span>
+<span class="sd">	</span>
+<span class="sd">	:Parameters:</span>
+<span class="sd">	</span>
+<span class="sd">	- *Y* --- (J x Q) numpy array (dependent variable)</span>
+<span class="sd">	- *x* --- J-component list or array (independent variable)</span>
+<span class="sd">	</span>
+<span class="sd">	:Returns:</span>
+<span class="sd">	</span>
+<span class="sd">	- An **spm1d._spm.SPM_T** object.</span>
+<span class="sd">	</span>
+<span class="sd">	:Example:</span>
+<span class="sd">	</span>
+<span class="sd">	&gt;&gt;&gt; Y  = np.random.rand(10, 101)</span>
+<span class="sd">	&gt;&gt;&gt; Y  = spm1d.util.smooth(Y, fwhm=10)</span>
+<span class="sd">	&gt;&gt;&gt; x  = np.random.rand(10)</span>
+<span class="sd">	&gt;&gt;&gt; t  = spm1d.stats.regress(Y, x)</span>
+<span class="sd">	&gt;&gt;&gt; ti = t.inference(alpha=0.05)</span>
+<span class="sd">	&gt;&gt;&gt; ti.plot()</span>
+<span class="sd">	</span>
+<span class="sd">	:Notes:</span>
+<span class="sd">		- the correlation coefficient is retrievable as &quot;t.r&quot; where &quot;t&quot; is the output from **spm1d.stats.regress**</span>
+<span class="sd">		- statistical inferences are based on *t*, not on *r*</span>
+<span class="sd">	&#39;&#39;&#39;</span>
+	<span class="n">Y</span>              <span class="o">=</span> <span class="n">_datachecks</span><span class="o">.</span><span class="n">asmatrix</span><span class="p">(</span><span class="n">Y</span><span class="p">)</span>
+	<span class="n">_datachecks</span><span class="o">.</span><span class="n">check</span><span class="p">(</span><span class="s1">&#39;regress&#39;</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+	<span class="n">J</span>              <span class="o">=</span> <span class="n">Y</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+	<span class="n">X</span>              <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="n">J</span><span class="p">,</span><span class="mi">2</span><span class="p">))</span>
+	<span class="n">X</span><span class="p">[:,</span><span class="mi">0</span><span class="p">]</span>         <span class="o">=</span> <span class="n">x</span>
+	<span class="n">c</span>              <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span>
+	<span class="n">spmt</span>           <span class="o">=</span> <span class="n">glm</span><span class="p">(</span><span class="n">Y</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">roi</span><span class="o">=</span><span class="n">roi</span><span class="p">)</span>
+	<span class="n">spmt</span><span class="o">.</span><span class="n">r</span>         <span class="o">=</span> <span class="n">spmt</span><span class="o">.</span><span class="n">z</span> <span class="o">/</span> <span class="p">(</span>  <span class="p">(</span><span class="n">J</span> <span class="o">-</span> <span class="mi">2</span> <span class="o">+</span> <span class="n">spmt</span><span class="o">.</span><span class="n">z</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">**</span><span class="mf">0.5</span><span class="p">)</span>  <span class="c1">#t = r * ((J-2)/(1-r*r) )**0.5</span>
+	<span class="n">spmt</span><span class="o">.</span><span class="n">isregress</span> <span class="o">=</span> <span class="bp">True</span>
+	<span class="k">return</span> <span class="n">spmt</span></div>
+
+
+
+
+
+
+<div class="viewcode-block" id="ttest"><a class="viewcode-back" href="../../../doc/API/stats.html#spm1d.stats.ttest">[docs]</a><span class="k">def</span> <span class="nf">ttest</span><span class="p">(</span><span class="n">Y</span><span class="p">,</span> <span class="n">y0</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">roi</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+	<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">	One-sample t test.</span>
+<span class="sd">	</span>
+<span class="sd">	:Parameters:</span>
+<span class="sd">	</span>
+<span class="sd">	- *Y* --- (J x Q) data array  (J responses, Q nodes)</span>
+<span class="sd">	- *y0* --- optional Q-component datum array (default is the null continuum)</span>
+<span class="sd">	</span>
+<span class="sd">	:Returns:</span>
+<span class="sd">	</span>
+<span class="sd">	- An **spm1d._spm.SPM_T** object.</span>
+<span class="sd">	</span>
+<span class="sd">	:Example:</span>
+<span class="sd">	</span>
+<span class="sd">	&gt;&gt;&gt; Y  = np.random.randn(8, 101)</span>
+<span class="sd">	&gt;&gt;&gt; Y  = spm1d.util.smooth(Y, fwhm=15)</span>
+<span class="sd">	&gt;&gt;&gt; t  = spm1d.stats.ttest(Y)</span>
+<span class="sd">	&gt;&gt;&gt; ti = t.inference(alpha=0.05, two_tailed=True)</span>
+<span class="sd">	&gt;&gt;&gt; ti.plot()</span>
+<span class="sd">	&#39;&#39;&#39;</span>
+	<span class="n">Y</span>       <span class="o">=</span> <span class="n">_datachecks</span><span class="o">.</span><span class="n">asmatrix</span><span class="p">(</span><span class="n">Y</span><span class="p">)</span>
+	<span class="n">_datachecks</span><span class="o">.</span><span class="n">check</span><span class="p">(</span><span class="s1">&#39;ttest&#39;</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">y0</span><span class="p">)</span>
+	<span class="n">J</span>       <span class="o">=</span> <span class="n">Y</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+	<span class="n">Ytemp</span>   <span class="o">=</span> <span class="n">Y</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+	<span class="k">if</span> <span class="n">y0</span><span class="o">!=</span><span class="bp">None</span><span class="p">:</span>
+		<span class="n">Ytemp</span> <span class="o">-=</span> <span class="n">y0</span>
+	<span class="n">X</span>       <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="n">J</span><span class="p">,</span><span class="mi">1</span><span class="p">))</span>
+	<span class="n">c</span>       <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+	<span class="c1">### compute SPM{t}:</span>
+	<span class="k">return</span> <span class="n">glm</span><span class="p">(</span><span class="n">Ytemp</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">roi</span><span class="o">=</span><span class="n">roi</span><span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="ttest_paired"><a class="viewcode-back" href="../../../doc/API/stats.html#spm1d.stats.ttest_paired">[docs]</a><span class="k">def</span> <span class="nf">ttest_paired</span><span class="p">(</span><span class="n">YA</span><span class="p">,</span> <span class="n">YB</span><span class="p">,</span> <span class="n">roi</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+	<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">	Paired t test.</span>
+<span class="sd">	</span>
+<span class="sd">	:Parameters:</span>
+<span class="sd">	</span>
+<span class="sd">	- *YA* --- (J x Q) data array  (J responses, Q nodes)</span>
+<span class="sd">	- *YB* --- (J x Q) data array  (J responses, Q nodes)</span>
+
+<span class="sd">	:Returns:</span>
+<span class="sd">	</span>
+<span class="sd">	- An **spm1d._spm.SPM_T** object.</span>
+<span class="sd">	</span>
+<span class="sd">	:Example:</span>
+<span class="sd">	</span>
+<span class="sd">	&gt;&gt;&gt; YA,YB  = np.random.randn(8, 101), np.random.randn(8, 101)</span>
+<span class="sd">	&gt;&gt;&gt; YA,YB  = spm1d.util.smooth(Y, fwhm=10), spm1d.util.smooth(Y, fwhm=10)</span>
+<span class="sd">	</span>
+<span class="sd">	&gt;&gt;&gt; t      = spm1d.stats.ttest_paired(YA, YB)</span>
+<span class="sd">	&gt;&gt;&gt; ti = t.inference(alpha=0.05)</span>
+<span class="sd">	&gt;&gt;&gt; ti.plot()</span>
+<span class="sd">	&#39;&#39;&#39;</span>
+	<span class="n">YA</span><span class="p">,</span><span class="n">YB</span>    <span class="o">=</span> <span class="n">_datachecks</span><span class="o">.</span><span class="n">asmatrix</span><span class="p">(</span><span class="n">YA</span><span class="p">),</span> <span class="n">_datachecks</span><span class="o">.</span><span class="n">asmatrix</span><span class="p">(</span><span class="n">YB</span><span class="p">)</span>
+	<span class="n">_datachecks</span><span class="o">.</span><span class="n">check</span><span class="p">(</span><span class="s1">&#39;ttest_paired&#39;</span><span class="p">,</span> <span class="n">YA</span><span class="p">,</span> <span class="n">YB</span><span class="p">)</span>
+	<span class="k">return</span> <span class="n">ttest</span><span class="p">(</span><span class="n">YA</span><span class="o">-</span><span class="n">YB</span><span class="p">,</span> <span class="n">roi</span><span class="o">=</span><span class="n">roi</span><span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="ttest2"><a class="viewcode-back" href="../../../doc/API/stats.html#spm1d.stats.ttest2">[docs]</a><span class="k">def</span> <span class="nf">ttest2</span><span class="p">(</span><span class="n">YA</span><span class="p">,</span> <span class="n">YB</span><span class="p">,</span> <span class="n">equal_var</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">roi</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+	<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">	Two-sample t test.</span>
+<span class="sd">	</span>
+<span class="sd">	:Parameters:</span>
+<span class="sd">	</span>
+<span class="sd">	- *YA* --- (J x Q) data array  (J responses, Q nodes)</span>
+<span class="sd">	- *YB* --- (J x Q) data array  (J responses, Q nodes)</span>
+<span class="sd">	- *equal_var* --- If *True*, equal group variance will be assumed</span>
+<span class="sd">	</span>
+<span class="sd">	:Returns:</span>
+<span class="sd">	</span>
+<span class="sd">	- An **spm1d._spm.SPM_T** object.</span>
+<span class="sd">	</span>
+<span class="sd">	:Example:</span>
+<span class="sd">	</span>
+<span class="sd">	&gt;&gt;&gt; YA,YB  = np.random.randn(8, 101), np.random.randn(8, 101)</span>
+<span class="sd">	&gt;&gt;&gt; YA,YB  = spm1d.util.smooth(Y, fwhm=10), spm1d.util.smooth(Y, fwhm=10)</span>
+<span class="sd">	</span>
+<span class="sd">	&gt;&gt;&gt; t  = spm1d.stats.ttest2(YA, YB)</span>
+<span class="sd">	&gt;&gt;&gt; ti = t.inference(alpha=0.05)</span>
+<span class="sd">	&gt;&gt;&gt; ti.plot()</span>
+<span class="sd">	&#39;&#39;&#39;</span>
+	<span class="c1">### check data:</span>
+	<span class="n">YA</span><span class="p">,</span><span class="n">YB</span>    <span class="o">=</span> <span class="n">_datachecks</span><span class="o">.</span><span class="n">asmatrix</span><span class="p">(</span><span class="n">YA</span><span class="p">),</span> <span class="n">_datachecks</span><span class="o">.</span><span class="n">asmatrix</span><span class="p">(</span><span class="n">YB</span><span class="p">)</span>
+	<span class="n">_datachecks</span><span class="o">.</span><span class="n">check</span><span class="p">(</span><span class="s1">&#39;ttest2&#39;</span><span class="p">,</span> <span class="n">YA</span><span class="p">,</span> <span class="n">YB</span><span class="p">)</span>
+	<span class="c1">### assemble data</span>
+	<span class="n">JA</span><span class="p">,</span><span class="n">JB</span>    <span class="o">=</span> <span class="n">YA</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">YB</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+	<span class="n">Y</span>        <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">(</span>  <span class="p">(</span><span class="n">YA</span><span class="p">,</span> <span class="n">YB</span><span class="p">)</span>  <span class="p">)</span>
+	<span class="c1">### specify design and contrast:</span>
+	<span class="n">X</span>        <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span> <span class="p">(</span><span class="n">JA</span><span class="o">+</span><span class="n">JB</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="p">)</span>
+	<span class="n">X</span><span class="p">[:</span><span class="n">JA</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+	<span class="n">X</span><span class="p">[</span><span class="n">JA</span><span class="p">:,</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+	<span class="n">c</span>        <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+	<span class="c1">### non-sphericity:</span>
+	<span class="n">Q</span>        <span class="o">=</span> <span class="bp">None</span>
+	<span class="k">if</span> <span class="ow">not</span> <span class="n">equal_var</span><span class="p">:</span>
+		<span class="n">J</span>           <span class="o">=</span> <span class="n">JA</span> <span class="o">+</span> <span class="n">JB</span>
+		<span class="n">q0</span><span class="p">,</span><span class="n">q1</span>       <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="n">JA</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="n">JB</span><span class="p">)</span>
+		<span class="n">Q0</span><span class="p">,</span><span class="n">Q1</span>       <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">matrix</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">J</span><span class="p">,</span><span class="n">J</span><span class="p">))),</span> <span class="n">np</span><span class="o">.</span><span class="n">matrix</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">J</span><span class="p">,</span><span class="n">J</span><span class="p">)))</span>
+		<span class="n">Q0</span><span class="p">[:</span><span class="n">JA</span><span class="p">,:</span><span class="n">JA</span><span class="p">]</span> <span class="o">=</span> <span class="n">q0</span>
+		<span class="n">Q1</span><span class="p">[</span><span class="n">JA</span><span class="p">:,</span><span class="n">JA</span><span class="p">:]</span> <span class="o">=</span> <span class="n">q1</span>
+		<span class="n">Q</span>           <span class="o">=</span> <span class="p">[</span><span class="n">Q0</span><span class="p">,</span> <span class="n">Q1</span><span class="p">]</span>
+	<span class="c1">### compute SPM{t}:</span>
+	<span class="k">return</span> <span class="n">glm</span><span class="p">(</span><span class="n">Y</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">Q</span><span class="p">,</span> <span class="n">roi</span><span class="o">=</span><span class="n">roi</span><span class="p">)</span></div>
+
+
+
+
+</pre></div>
+
+    </div>
+    
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+    </p>
+    <p>
+        &copy; Copyright 2016, Todd Pataky.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.5.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

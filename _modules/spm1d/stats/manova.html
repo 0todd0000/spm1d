@@ -1,0 +1,317 @@
+
+
+
+<!DOCTYPE html>
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>spm1d.stats.manova &mdash; spm1d 0.3 documentation</title>
+    
+    <link rel="stylesheet" href="../../../_static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/bootstrap-3.3.4/css/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/bootstrap-3.3.4/css/bootstrap-theme.min.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/bootstrap-sphinx.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../',
+        VERSION:     '0.3',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../_static/js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="../../../_static/js/jquery-fix.js"></script>
+    <script type="text/javascript" src="../../../_static/bootstrap-3.3.4/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../../../_static/bootstrap-sphinx.js"></script>
+    <link rel="top" title="spm1d 0.3 documentation" href="../../../index.html" />
+    <link rel="up" title="Module code" href="../../index.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+  </head>
+  <body role="document">
+
+<div style="background-color: white; text-align: left; padding: 10px 10px 15px 15px">
+<a href="../../../index.html"><img src="../../../logo.png" border="0" alt="spm1d"/></a>
+</div>
+
+
+
+  <div id="navbar" class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="../../../index.html">
+              </a>
+        <span class="navbar-text navbar-version pull-left"><b>0.3</b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            
+                <li><a href="../../../index.html">Home</a></li>
+                <li><a href="../../../Downloads.html">Downloads</a></li>
+                <li><a href="../../../Documentation.html">Documentation</a></li>
+                <li><a href="../../../References.html">References</a></li>
+                <li><a href="../../../Workshops.html">Workshops</a></li>
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="../../../index.html">Site <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../NewFeatures.html">New Features (version 0.3.2)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../NewFeatures.html#new-features-version-0-3-1">New Features (version 0.3.1)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../NewFeatures.html#new-features-version-0-3">New Features (version 0.3)</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../Downloads.html">Downloads</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../Documentation.html">Documentation (Python)</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../DocumentationMatlab.html">Documentation (Matlab)</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../References.html">References</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../Workshops.html">Workshops</a></li>
+</ul>
+</ul>
+</li>
+              
+                <li class="dropdown">
+  <a role="button"
+     id="dLabelLocalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="#">Page <b class="caret"></b></a>
+  <ul class="dropdown-menu localtoc"
+      role="menu"
+      aria-labelledby="dLabelLocalToc"></ul>
+</li>
+              
+            
+            
+            
+            
+            
+              <li class="hidden-sm"></li>
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="../../../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<form action="../../../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+        </div>
+      </div>
+    <div class="col-md-12 content">
+      
+  <h1>Source code for spm1d.stats.manova</h1><div class="highlight"><pre>
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">MANOVA</span>
+<span class="sd">&#39;&#39;&#39;</span>
+
+<span class="c1"># Copyright (C) 2016  Todd Pataky</span>
+<span class="c1"># manova.py version: 0.3.2 (2016/01/03)</span>
+
+
+
+
+<span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">sqrt</span><span class="p">,</span><span class="n">log</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">_mvbase</span>
+<span class="kn">import</span> <span class="nn">_spm</span>
+
+
+<span class="n">eps</span>        <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">finfo</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span><span class="o">.</span><span class="n">eps</span>   <span class="c1">#smallest float, used to avoid divide-by-zero errors</span>
+
+
+
+<span class="k">def</span> <span class="nf">manova1_single_node</span><span class="p">(</span><span class="n">Y</span><span class="p">,</span> <span class="n">GROUP</span><span class="p">):</span>
+	<span class="c1">### assemble counts:</span>
+	<span class="n">u</span>           <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">GROUP</span><span class="p">)</span>
+	<span class="n">nGroups</span>     <span class="o">=</span> <span class="n">u</span><span class="o">.</span><span class="n">size</span>
+	<span class="n">nResponses</span>  <span class="o">=</span> <span class="n">Y</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+	<span class="n">nComponents</span> <span class="o">=</span> <span class="n">Y</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+	<span class="c1">### create design matrix:</span>
+	<span class="n">X</span>           <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">nResponses</span><span class="p">,</span> <span class="n">nGroups</span><span class="p">))</span>
+	<span class="n">ind0</span>        <span class="o">=</span> <span class="mi">0</span>
+	<span class="k">for</span> <span class="n">i</span><span class="p">,</span><span class="n">uu</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">u</span><span class="p">):</span>
+		<span class="n">n</span>       <span class="o">=</span> <span class="p">(</span><span class="n">GROUP</span><span class="o">==</span><span class="n">uu</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+		<span class="n">X</span><span class="p">[</span><span class="n">ind0</span><span class="p">:</span><span class="n">ind0</span><span class="o">+</span><span class="n">n</span><span class="p">,</span> <span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+		<span class="n">ind0</span>   <span class="o">+=</span> <span class="n">n</span>
+	<span class="c1">### SS for original design:</span>
+	<span class="n">Y</span><span class="p">,</span><span class="n">X</span>   <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">matrix</span><span class="p">(</span><span class="n">Y</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">matrix</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+	<span class="n">b</span>     <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">pinv</span><span class="p">(</span><span class="n">X</span><span class="p">)</span><span class="o">*</span><span class="n">Y</span>
+	<span class="n">R</span>     <span class="o">=</span> <span class="n">Y</span> <span class="o">-</span> <span class="n">X</span><span class="o">*</span><span class="n">b</span>
+	<span class="n">R</span>     <span class="o">=</span> <span class="n">R</span><span class="o">.</span><span class="n">T</span><span class="o">*</span><span class="n">R</span>
+	<span class="c1">### SS for reduced design:</span>
+	<span class="n">X0</span>    <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">matrix</span><span class="p">(</span>  <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">Y</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>  <span class="p">)</span><span class="o">.</span><span class="n">T</span>
+	<span class="n">b0</span>    <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">pinv</span><span class="p">(</span><span class="n">X0</span><span class="p">)</span><span class="o">*</span><span class="n">Y</span>
+	<span class="n">R0</span>    <span class="o">=</span> <span class="n">Y</span> <span class="o">-</span> <span class="n">X0</span><span class="o">*</span><span class="n">b0</span>
+	<span class="n">R0</span>    <span class="o">=</span> <span class="n">R0</span><span class="o">.</span><span class="n">T</span><span class="o">*</span><span class="n">R0</span>
+	<span class="c1">### Wilk&#39;s lambda:</span>
+	<span class="n">lam</span>   <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">det</span><span class="p">(</span><span class="n">R</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">det</span><span class="p">(</span><span class="n">R0</span><span class="p">)</span> <span class="o">+</span> <span class="n">eps</span><span class="p">)</span>
+	<span class="c1">### test statistic:</span>
+	<span class="n">N</span><span class="p">,</span><span class="n">p</span><span class="p">,</span><span class="n">k</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">nResponses</span><span class="p">),</span> <span class="nb">float</span><span class="p">(</span><span class="n">nComponents</span><span class="p">),</span> <span class="nb">float</span><span class="p">(</span><span class="n">nGroups</span><span class="p">)</span>
+	<span class="n">x2</span>    <span class="o">=</span> <span class="o">-</span><span class="p">((</span><span class="n">N</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="o">-</span> <span class="mf">0.5</span><span class="o">*</span><span class="p">(</span><span class="n">p</span><span class="o">+</span><span class="n">k</span><span class="p">))</span> <span class="o">*</span> <span class="n">log</span><span class="p">(</span><span class="n">lam</span><span class="p">)</span>
+	<span class="n">df</span>    <span class="o">=</span> <span class="n">p</span><span class="o">*</span><span class="p">(</span><span class="n">k</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+	<span class="c1"># return lam, x2, df</span>
+	<span class="k">return</span> <span class="n">x2</span>
+
+
+
+<span class="c1"># def manova1(Y, GROUP):</span>
+<span class="c1"># 	nNodes  = Y.shape[1]</span>
+<span class="c1"># 	X2      = np.array([manova1_single_node(Y[:,i,:], GROUP)  for i in range(nNodes)])</span>
+<span class="c1"># 	R       = _mvbase._get_residuals_manova1(Y, GROUP)</span>
+<span class="c1"># 	fwhm    = _mvbase._fwhm(R)</span>
+<span class="c1"># 	resels  = _mvbase._resel_counts(R, fwhm)</span>
+<span class="c1"># 	df      = Y.shape[2]*( np.unique(GROUP).size -1 )</span>
+<span class="c1"># 	return _spm.SPM_X2(X2, (1,df), fwhm, resels, None, None, R)</span>
+<span class="c1"># </span>
+
+
+
+<span class="k">def</span> <span class="nf">_manova1_single_node_efficient</span><span class="p">(</span><span class="n">Y</span><span class="p">,</span> <span class="n">GROUP</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">Xi</span><span class="p">,</span> <span class="n">X0</span><span class="p">,</span> <span class="n">X0i</span><span class="p">,</span> <span class="n">nGroups</span><span class="p">):</span>
+	<span class="c1">### SS for original design:</span>
+	<span class="n">Y</span>     <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">matrix</span><span class="p">(</span><span class="n">Y</span><span class="p">)</span>
+	<span class="n">b</span>     <span class="o">=</span> <span class="n">Xi</span><span class="o">*</span><span class="n">Y</span>
+	<span class="n">R</span>     <span class="o">=</span> <span class="n">Y</span> <span class="o">-</span> <span class="n">X</span><span class="o">*</span><span class="n">b</span>
+	<span class="n">R</span>     <span class="o">=</span> <span class="n">R</span><span class="o">.</span><span class="n">T</span><span class="o">*</span><span class="n">R</span>
+	<span class="c1">### SS for reduced design:</span>
+	<span class="n">b0</span>    <span class="o">=</span> <span class="n">X0i</span><span class="o">*</span><span class="n">Y</span>
+	<span class="n">R0</span>    <span class="o">=</span> <span class="n">Y</span> <span class="o">-</span> <span class="n">X0</span><span class="o">*</span><span class="n">b0</span>
+	<span class="n">R0</span>    <span class="o">=</span> <span class="n">R0</span><span class="o">.</span><span class="n">T</span><span class="o">*</span><span class="n">R0</span>
+	<span class="c1">### Wilk&#39;s lambda:</span>
+	<span class="n">lam</span>   <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">det</span><span class="p">(</span><span class="n">R</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">det</span><span class="p">(</span><span class="n">R0</span><span class="p">)</span> <span class="o">+</span> <span class="n">eps</span><span class="p">)</span>
+	<span class="c1"># print lam</span>
+	<span class="c1">### test statistic:</span>
+	<span class="p">(</span><span class="n">N</span><span class="p">,</span><span class="n">p</span><span class="p">),</span><span class="n">k</span> <span class="o">=</span> <span class="n">Y</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="nb">float</span><span class="p">(</span><span class="n">nGroups</span><span class="p">)</span>
+	<span class="n">x2</span>    <span class="o">=</span> <span class="o">-</span><span class="p">((</span><span class="n">N</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="o">-</span> <span class="mf">0.5</span><span class="o">*</span><span class="p">(</span><span class="n">p</span><span class="o">+</span><span class="n">k</span><span class="p">))</span> <span class="o">*</span> <span class="n">log</span><span class="p">(</span><span class="n">lam</span><span class="p">)</span>
+	<span class="c1"># df    = p*(k-1)</span>
+	<span class="c1"># return lam, x2, df</span>
+	<span class="k">return</span> <span class="n">x2</span>
+
+
+
+<div class="viewcode-block" id="manova1"><a class="viewcode-back" href="../../../doc/API/stats.html#spm1d.stats.manova1">[docs]</a><span class="k">def</span> <span class="nf">manova1</span><span class="p">(</span><span class="n">Y</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="n">equal_var</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">roi</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+	<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">	Two-way repeated-measures ANOVA.</span>
+<span class="sd">	</span>
+<span class="sd">	:Parameters:</span>
+<span class="sd">		- *Y* --- (J x Q x I) numpy array</span>
+<span class="sd">		- *A* --- (J x 1) vector of integer labels for Factor A</span>
+<span class="sd">		- *equal_var* --- If *True*, equal group variance will be assumed</span>
+
+<span class="sd">	:Returns:</span>
+<span class="sd">		- X2 : An **spm1d._spm.SPM_X2** instance</span>
+
+<span class="sd">	:Note:</span>
+<span class="sd">		- Non-sphericity correction not implemented. Equal variance must be assumed by setting &quot;equal_var=True&quot;.</span>
+<span class="sd">	&#39;&#39;&#39;</span>
+	<span class="k">if</span> <span class="n">equal_var</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">True</span><span class="p">:</span>
+		<span class="k">raise</span><span class="p">(</span> <span class="ne">UserWarning</span><span class="p">(</span><span class="s1">&#39;Non-sphericity correction not implemented. To continue you must assume equal variance and set &quot;equal_var=True&quot;.&#39;</span><span class="p">)</span> <span class="p">)</span>
+	<span class="n">u</span>           <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+	<span class="n">nGroups</span>     <span class="o">=</span> <span class="n">u</span><span class="o">.</span><span class="n">size</span>
+	<span class="n">nResponses</span>  <span class="o">=</span> <span class="n">Y</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+	<span class="c1">### create design matrix:</span>
+	<span class="n">X</span>           <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">nResponses</span><span class="p">,</span> <span class="n">nGroups</span><span class="p">))</span>
+	<span class="n">ind0</span>        <span class="o">=</span> <span class="mi">0</span>
+	<span class="k">for</span> <span class="n">i</span><span class="p">,</span><span class="n">uu</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">u</span><span class="p">):</span>
+		<span class="n">X</span><span class="p">[</span><span class="n">A</span><span class="o">==</span><span class="n">uu</span><span class="p">,</span> <span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+	<span class="n">X</span>           <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">matrix</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+	<span class="n">Xi</span>          <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">pinv</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+	<span class="c1">### reduced design:</span>
+	<span class="n">X0</span>          <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">matrix</span><span class="p">(</span>  <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">Y</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>  <span class="p">)</span><span class="o">.</span><span class="n">T</span>
+	<span class="n">X0i</span>         <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">pinv</span><span class="p">(</span><span class="n">X0</span><span class="p">)</span>
+	<span class="c1">### compute test statistic:</span>
+	<span class="k">if</span> <span class="n">Y</span><span class="o">.</span><span class="n">ndim</span><span class="o">==</span><span class="mi">2</span><span class="p">:</span>
+		<span class="n">nComponents</span> <span class="o">=</span> <span class="n">Y</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+		<span class="n">X2</span>          <span class="o">=</span> <span class="n">_manova1_single_node_efficient</span><span class="p">(</span><span class="n">Y</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">Xi</span><span class="p">,</span> <span class="n">X0</span><span class="p">,</span> <span class="n">X0i</span><span class="p">,</span> <span class="n">nGroups</span><span class="p">)</span>
+		<span class="n">df</span>          <span class="o">=</span> <span class="n">nComponents</span><span class="o">*</span><span class="p">(</span> <span class="n">nGroups</span><span class="o">-</span><span class="mi">1</span> <span class="p">)</span>
+		<span class="k">return</span> <span class="n">_spm</span><span class="o">.</span><span class="n">SPM0D_X2</span><span class="p">(</span><span class="n">X2</span><span class="p">,</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">df</span><span class="p">))</span>
+	<span class="k">else</span><span class="p">:</span>
+		<span class="n">nNodes</span>      <span class="o">=</span> <span class="n">Y</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+		<span class="n">nComponents</span> <span class="o">=</span> <span class="n">Y</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+		<span class="n">X2</span>          <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">_manova1_single_node_efficient</span><span class="p">(</span><span class="n">Y</span><span class="p">[:,</span><span class="n">i</span><span class="p">,:],</span> <span class="n">A</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">Xi</span><span class="p">,</span> <span class="n">X0</span><span class="p">,</span> <span class="n">X0i</span><span class="p">,</span> <span class="n">nGroups</span><span class="p">)</span>  <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">nNodes</span><span class="p">)])</span>
+		<span class="n">X2</span>          <span class="o">=</span> <span class="n">X2</span> <span class="k">if</span> <span class="n">roi</span> <span class="ow">is</span> <span class="bp">None</span> <span class="k">else</span> <span class="n">np</span><span class="o">.</span><span class="n">ma</span><span class="o">.</span><span class="n">masked_array</span><span class="p">(</span><span class="n">X2</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">logical_not</span><span class="p">(</span><span class="n">roi</span><span class="p">))</span>
+		<span class="n">R</span>           <span class="o">=</span> <span class="n">_mvbase</span><span class="o">.</span><span class="n">_get_residuals_manova1</span><span class="p">(</span><span class="n">Y</span><span class="p">,</span> <span class="n">A</span><span class="p">)</span>
+		<span class="n">fwhm</span>        <span class="o">=</span> <span class="n">_mvbase</span><span class="o">.</span><span class="n">_fwhm</span><span class="p">(</span><span class="n">R</span><span class="p">)</span>
+		<span class="n">resels</span>      <span class="o">=</span> <span class="n">_mvbase</span><span class="o">.</span><span class="n">_resel_counts</span><span class="p">(</span><span class="n">R</span><span class="p">,</span> <span class="n">fwhm</span><span class="p">,</span> <span class="n">roi</span><span class="o">=</span><span class="n">roi</span><span class="p">)</span>
+		<span class="n">df</span>          <span class="o">=</span> <span class="n">nComponents</span><span class="o">*</span><span class="p">(</span> <span class="n">nGroups</span><span class="o">-</span><span class="mi">1</span> <span class="p">)</span>
+		<span class="k">return</span> <span class="n">_spm</span><span class="o">.</span><span class="n">SPM_X2</span><span class="p">(</span><span class="n">X2</span><span class="p">,</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">df</span><span class="p">),</span> <span class="n">fwhm</span><span class="p">,</span> <span class="n">resels</span><span class="p">,</span> <span class="bp">None</span><span class="p">,</span> <span class="bp">None</span><span class="p">,</span> <span class="n">R</span><span class="p">,</span> <span class="n">roi</span><span class="o">=</span><span class="n">roi</span><span class="p">)</span></div>
+
+
+
+
+	
+
+
+
+</pre></div>
+
+    </div>
+    
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+    </p>
+    <p>
+        &copy; Copyright 2016, Todd Pataky.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.5.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>
