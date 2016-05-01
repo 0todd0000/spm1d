@@ -8,7 +8,7 @@ Introduction
 
 **spm1d** is a package for one-dimensional `Statistical Parametric Mapping <http://www.scholarpedia.org/article/Statistical_parametric_mapping>`_.
 
-It uses `Random Field Theory <http://www.spm1d.org/rft1d>`_ to make statistical inferences regarding registered (normalized) sets of 1D measurements.
+It uses `random field theory <http://www.spm1d.org/rft1d>`_ to make statistical inferences regarding registered (normalized) sets of 1D measurements.
 
 
 ------------------------
