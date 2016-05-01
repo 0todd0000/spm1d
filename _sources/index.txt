@@ -3,20 +3,42 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to spm1d's documentation!
-=================================
+Introduction
+=====================================
 
-Contents:
+**spm1d** is a package for one-dimensional `Statistical Parametric Mapping <http://www.scholarpedia.org/article/Statistical_parametric_mapping>`_.
+
+It uses `Random Field Theory <http://www.spm1d.org/rft1d>`_ to make statistical inferences regarding registered (normalized) sets of 1D measurements.
+
+
+------------------------
+
+**Download**
+
+
+Source code and datasets can be downloaded from the **spm1d** `Python <http://0todd0000.github.io/spm1d/>`_ or `MATLAB <http://0todd0000.github.io/spm1dmatlab/>`_ GitHub sites.
+
+
+------------------------
+
+**Support**
+
+
+Submit bug reports and questions by creating a "New Issue" at the **spm1d** `Python issues <https://github.com/0todd0000/spm1d/issues/>`_ or `MATLAB issues <https://github.com/0todd0000/spm1dmatlab/issues/>`_ GitHub sites.
+
+
+
+------------------------
+
+Contents
+=====================================
 
 .. toctree::
-   :maxdepth: 2
+	:maxdepth: 3
+
+	NewFeatures.rst
 
 
 
-Indices and tables
-==================
 
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
 

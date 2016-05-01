@@ -29,8 +29,12 @@ import os
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
 extensions = [
-    'sphinx.ext.pngmath',
-    'sphinx.ext.viewcode',
+	'sphinx.ext.autodoc',
+	'sphinx.ext.pngmath',
+	'sphinx.ext.viewcode',
+	'matplotlib.sphinxext.mathmpl',
+	'matplotlib.sphinxext.only_directives',
+	'matplotlib.sphinxext.plot_directive',
 ]
 
 # Add any paths that contain templates here, relative to this directory.
