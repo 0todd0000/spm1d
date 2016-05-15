@@ -194,12 +194,12 @@
 </div>
 <div class="section" id="one-way-anova">
 <span id="label-stats-anova-post-hoc"></span><h2>One-way ANOVA<a class="headerlink" href="#one-way-anova" title="Permalink to this headline">¶</a></h2>
-<p>This examples revisits the <a class="reference internal" href="../Stats1D/anova.html#label-stats-anova"><span>one-way</span></a> example.</p>
-<p>Since the <a class="reference internal" href="../Stats1D/anova.html#label-stats-anova"><span>one-way ANOVA results</span></a> reached significance, we may justifiably conduct <em>post hoc</em> analyses.</p>
+<p>This examples revisits the <a class="reference internal" href="../Stats1D/anova.html#label-stats-anova"><span class="std std-ref">one-way</span></a> example.</p>
+<p>Since the <a class="reference internal" href="../Stats1D/anova.html#label-stats-anova"><span class="std std-ref">one-way ANOVA results</span></a> reached significance, we may justifiably conduct <em>post hoc</em> analyses.</p>
 <p>For one-way ANOVA, <em>post hoc</em> analyses consist of two-sample t tests conducted on all group pairs.</p>
 <p>Since there are three groups in our one-way ANOVA example, there are three pairs to test (1v2, 1v3, and 2v3).</p>
 <p>A simple way to correct for multiple tests across these three group pairs is to use the Bonferroni correction:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.05</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.05</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">nTests</span> <span class="o">=</span> <span class="mi">3</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">p_critical</span> <span class="o">=</span> <span class="n">spm1d</span><span class="o">.</span><span class="n">util</span><span class="o">.</span><span class="n">p_critical_bonf</span><span class="p">(</span><span class="n">alpha</span><span class="p">,</span> <span class="n">nTests</span><span class="p">)</span>
 </pre></div>
@@ -210,9 +210,9 @@
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p>The <em>equal_var</em> option should be the same as was selected for ANOVA.</p>
-<div class="last highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">t12</span>   <span class="o">=</span> <span class="n">spm1d</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">ttest2</span><span class="p">(</span><span class="n">Y1</span><span class="p">,</span> <span class="n">Y2</span><span class="p">,</span> <span class="n">equal_var</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">t13</span>   <span class="o">=</span> <span class="n">spm1d</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">ttest2</span><span class="p">(</span><span class="n">Y1</span><span class="p">,</span> <span class="n">Y3</span><span class="p">,</span> <span class="n">equal_var</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">t23</span>   <span class="o">=</span> <span class="n">spm1d</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">ttest2</span><span class="p">(</span><span class="n">Y2</span><span class="p">,</span> <span class="n">Y3</span><span class="p">,</span> <span class="n">equal_var</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+<div class="last highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">t12</span>   <span class="o">=</span> <span class="n">spm1d</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">ttest2</span><span class="p">(</span><span class="n">Y1</span><span class="p">,</span> <span class="n">Y2</span><span class="p">,</span> <span class="n">equal_var</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">t13</span>   <span class="o">=</span> <span class="n">spm1d</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">ttest2</span><span class="p">(</span><span class="n">Y1</span><span class="p">,</span> <span class="n">Y3</span><span class="p">,</span> <span class="n">equal_var</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">t23</span>   <span class="o">=</span> <span class="n">spm1d</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">ttest2</span><span class="p">(</span><span class="n">Y2</span><span class="p">,</span> <span class="n">Y3</span><span class="p">,</span> <span class="n">equal_var</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -220,9 +220,9 @@
 <div class="admonition warning">
 <p class="first admonition-title">Warning</p>
 <p>The <em>two_tailed</em> option must always be <em>True</em> in <em>post hoc</em> analyses; one-tailed inference is inconsistent with the null-hypothesis implied by ANOVA.</p>
-<div class="last highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">t12i</span>  <span class="o">=</span> <span class="n">t12</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="n">p_critical</span><span class="p">,</span> <span class="n">two_tailed</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">t13i</span>  <span class="o">=</span> <span class="n">t13</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="n">p_critical</span><span class="p">,</span> <span class="n">two_tailed</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">t23i</span>  <span class="o">=</span> <span class="n">t23</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="n">p_critical</span><span class="p">,</span> <span class="n">two_tailed</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<div class="last highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">t12i</span>  <span class="o">=</span> <span class="n">t12</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="n">p_critical</span><span class="p">,</span> <span class="n">two_tailed</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">t13i</span>  <span class="o">=</span> <span class="n">t13</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="n">p_critical</span><span class="p">,</span> <span class="n">two_tailed</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">t23i</span>  <span class="o">=</span> <span class="n">t23</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="n">p_critical</span><span class="p">,</span> <span class="n">two_tailed</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -235,7 +235,7 @@
 <p class="last">To compute appropriate <em>p</em> values, use the inverse to the Bonferroni correction through <strong>spm1d.util.p_corrected_bonf</strong>, as described below.</p>
 </div>
 <p>Let&#8217;s consider the following result from one of the <em>post hoc</em> tests conducted above:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">SPM</span><span class="p">{</span><span class="n">T</span><span class="p">}</span> <span class="n">inference</span> <span class="n">field</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">SPM</span><span class="p">{</span><span class="n">T</span><span class="p">}</span> <span class="n">inference</span> <span class="n">field</span>
    <span class="n">SPM</span><span class="o">.</span><span class="n">z</span>      <span class="p">:</span>  <span class="p">(</span><span class="mi">1</span><span class="n">x101</span><span class="p">)</span> <span class="n">raw</span> <span class="n">test</span> <span class="n">stat</span> <span class="n">field</span>
    <span class="n">SPM</span><span class="o">.</span><span class="n">df</span>     <span class="p">:</span>  <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mf">33.641</span><span class="p">)</span>
    <span class="n">SPM</span><span class="o">.</span><span class="n">fwhm</span>   <span class="p">:</span>  <span class="mf">4.82031</span>
@@ -252,7 +252,7 @@
 </div>
 <p>The five <em>p</em> values listed in the results above correspond to this test&#8217;s five supra-threshold clusters.</p>
 <p>Corrected <em>p</em> values may be computed as follows:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">p_value</span> <span class="o">=</span> <span class="mf">0.008</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">p_value</span> <span class="o">=</span> <span class="mf">0.008</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">nTests</span>  <span class="o">=</span> <span class="mi">3</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">p_value_corrected</span> <span class="o">=</span> <span class="n">spm1d</span><span class="o">.</span><span class="n">util</span><span class="o">.</span><span class="n">p_corrected_bonf</span><span class="p">(</span><span class="n">p_value</span><span class="p">,</span> <span class="n">nTests</span><span class="p">)</span>
 </pre></div>
@@ -274,7 +274,7 @@
     </p>
     <p>
         &copy; Copyright 2016, Todd Pataky.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.5.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.1.<br/>
     </p>
   </div>
 </footer>

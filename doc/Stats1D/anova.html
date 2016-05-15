@@ -198,22 +198,22 @@
 <p class="first admonition-title">Note</p>
 <p><strong>p-values for ANOVA</strong></p>
 <p>In previous versions of <strong>spm1d</strong> no p values were generated for ANOVA because they had not yet been validated.</p>
-<p class="last">They have now been validated <a class="reference internal" href="../../References.html#label-references"><span>(Pataky, 2015)</span></a> so now appear in results.</p>
+<p class="last">They have now been validated <a class="reference internal" href="../../References.html#label-references"><span class="std std-ref">(Pataky, 2015)</span></a> so now appear in results.</p>
 </div>
 <div class="section" id="one-way-anova">
 <span id="label-stats-anova"></span><h2>One-way ANOVA<a class="headerlink" href="#one-way-anova" title="Permalink to this headline">¶</a></h2>
 <p><code class="docutils literal"><span class="pre">./spm1d/examples/stats1d/ex_anova1.py</span></code></p>
 <p><strong>Method 1</strong> : stacked groups</p>
 <p>If data for all groups is stored in a single (<em>J</em> x <em>Q</em>) array and <em>A</em> is a (<em>J</em> x 1) vector containing integers which specify the groups to which each observation belongs, then one-way ANOVA can be conducted like this:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">F</span>  <span class="o">=</span> <span class="n">spm1d</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">anova1</span><span class="p">(</span> <span class="n">Y</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="n">equal_var</span><span class="o">=</span><span class="bp">False</span> <span class="p">)</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">F</span>  <span class="o">=</span> <span class="n">spm1d</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">anova1</span><span class="p">(</span> <span class="n">Y</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="n">equal_var</span><span class="o">=</span><span class="kc">False</span> <span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">Fi</span> <span class="o">=</span> <span class="n">F</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.05</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">Fi</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
 </pre></div>
 </div>
 <p><strong>Method 2</strong> : separated groups</p>
 <p>If there are <em>K</em> groups and data for each group are stored in separate (<em>J_k</em> x <em>Q</em>) variables, where <em>J_k</em> is the number of observations in the Kth group, then one-way ANOVA can be conducted like this:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">F</span>  <span class="o">=</span> <span class="n">spm1d</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">anova1</span><span class="p">(</span> <span class="p">(</span><span class="n">Y1</span><span class="p">,</span><span class="n">Y2</span><span class="p">,</span><span class="n">Y3</span><span class="p">),</span> <span class="n">equal_var</span><span class="o">=</span><span class="bp">False</span> <span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">Fi</span> <span class="o">=</span> <span class="n">F</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.05</span><span class="p">,</span> <span class="n">interp</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">F</span>  <span class="o">=</span> <span class="n">spm1d</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">anova1</span><span class="p">(</span> <span class="p">(</span><span class="n">Y1</span><span class="p">,</span><span class="n">Y2</span><span class="p">,</span><span class="n">Y3</span><span class="p">),</span> <span class="n">equal_var</span><span class="o">=</span><span class="kc">False</span> <span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">Fi</span> <span class="o">=</span> <span class="n">F</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.05</span><span class="p">,</span> <span class="n">interp</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">Fi</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -225,8 +225,8 @@
 <div class="section" id="one-way-repeated-measures-anova">
 <span id="label-stats-anova1rm"></span><h2>One-way repeated-measures ANOVA<a class="headerlink" href="#one-way-repeated-measures-anova" title="Permalink to this headline">¶</a></h2>
 <p><code class="docutils literal"><span class="pre">./spm1d/examples/stats1d/ex_anova1rm.py</span></code></p>
-<p>Repeated-measures ANOVA, also called &#8220;Within-subjects ANOVA&#8221;, can be conducted using <a class="reference internal" href="#label-stats-anova"><span>Method 1 above</span></a> and an additional (Jx1) vector of integers which specifies subjects.</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">F</span>  <span class="o">=</span> <span class="n">spm1d</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">anova1rm</span><span class="p">(</span> <span class="n">Y</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="n">SUBJ</span><span class="p">,</span> <span class="n">equal_var</span><span class="o">=</span><span class="bp">False</span> <span class="p">)</span>
+<p>Repeated-measures ANOVA, also called &#8220;Within-subjects ANOVA&#8221;, can be conducted using <a class="reference internal" href="#label-stats-anova"><span class="std std-ref">Method 1 above</span></a> and an additional (Jx1) vector of integers which specifies subjects.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">F</span>  <span class="o">=</span> <span class="n">spm1d</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">anova1rm</span><span class="p">(</span> <span class="n">Y</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="n">SUBJ</span><span class="p">,</span> <span class="n">equal_var</span><span class="o">=</span><span class="kc">False</span> <span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">Fi</span> <span class="o">=</span> <span class="n">F</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.05</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">Fi</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
 </pre></div>
@@ -239,7 +239,7 @@
 <div class="section" id="two-way-anova">
 <span id="label-stats-anova2"></span><h2>Two-way ANOVA<a class="headerlink" href="#two-way-anova" title="Permalink to this headline">¶</a></h2>
 <p>Example:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">FF</span>  <span class="o">=</span> <span class="n">spm1d</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">anova2</span><span class="p">(</span><span class="n">Y</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">,</span> <span class="n">equal_var</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">FF</span>  <span class="o">=</span> <span class="n">spm1d</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">anova2</span><span class="p">(</span><span class="n">Y</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">,</span> <span class="n">equal_var</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">FFi</span> <span class="o">=</span> <span class="p">[</span><span class="n">F</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.05</span><span class="p">)</span>   <span class="k">for</span> <span class="n">F</span> <span class="ow">in</span> <span class="n">FF</span><span class="p">]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">FFi</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>   <span class="c1">#Factor A main effect</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">FFi</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>   <span class="c1">#Factor B main effect</span>
@@ -255,7 +255,7 @@
 <dt>We do not yet have any real data examples to show.</dt>
 <dd>The factor B is nested inside factor A.</dd>
 </dl>
-<div class="last highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">F</span>  <span class="o">=</span> <span class="n">spm1d</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">anova2nested</span><span class="p">(</span> <span class="n">Y</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">,</span> <span class="n">equal_var</span><span class="o">=</span><span class="bp">False</span> <span class="p">)</span>
+<div class="last highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">F</span>  <span class="o">=</span> <span class="n">spm1d</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">anova2nested</span><span class="p">(</span> <span class="n">Y</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">,</span> <span class="n">equal_var</span><span class="o">=</span><span class="kc">False</span> <span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -268,7 +268,7 @@
 <dt>We do not yet have any real data examples to show.</dt>
 <dd>Implementing two-way repeated measures ANOVA requires a SUBJ vector:</dd>
 </dl>
-<div class="last highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">F</span>  <span class="o">=</span> <span class="n">spm1d</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">anova2rm</span><span class="p">(</span> <span class="n">Y</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">,</span> <span class="n">SUBJ</span> <span class="p">)</span>
+<div class="last highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">F</span>  <span class="o">=</span> <span class="n">spm1d</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">anova2rm</span><span class="p">(</span> <span class="n">Y</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">,</span> <span class="n">SUBJ</span> <span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -288,7 +288,7 @@
 <p class="last"><strong>B</strong> must be the repeated-measures factor.</p>
 </dd>
 </dl>
-<div class="last highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">F</span>  <span class="o">=</span> <span class="n">spm1d</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">anova2onerm</span><span class="p">(</span> <span class="n">Y</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">,</span> <span class="n">SUBJ</span> <span class="p">)</span>
+<div class="last highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">F</span>  <span class="o">=</span> <span class="n">spm1d</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">anova2onerm</span><span class="p">(</span> <span class="n">Y</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">,</span> <span class="n">SUBJ</span> <span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -303,7 +303,7 @@
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p>We do not yet have any real data examples to show.</p>
-<div class="last highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">F</span>  <span class="o">=</span> <span class="n">spm1d</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">anova3</span><span class="p">(</span> <span class="n">Y</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">,</span> <span class="n">C</span><span class="p">,</span> <span class="n">equal_var</span><span class="o">=</span><span class="bp">False</span> <span class="p">)</span>
+<div class="last highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">F</span>  <span class="o">=</span> <span class="n">spm1d</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">anova3</span><span class="p">(</span> <span class="n">Y</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">,</span> <span class="n">C</span><span class="p">,</span> <span class="n">equal_var</span><span class="o">=</span><span class="kc">False</span> <span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -318,7 +318,7 @@
 <p class="last"><strong>spm1d</strong> currently does not support partial nesting.</p>
 </dd>
 </dl>
-<div class="last highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">F</span>  <span class="o">=</span> <span class="n">spm1d</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">anova3nested</span><span class="p">(</span> <span class="n">Y</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">,</span> <span class="n">C</span><span class="p">,</span> <span class="n">equal_var</span><span class="o">=</span><span class="bp">False</span> <span class="p">)</span>
+<div class="last highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">F</span>  <span class="o">=</span> <span class="n">spm1d</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">anova3nested</span><span class="p">(</span> <span class="n">Y</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">,</span> <span class="n">C</span><span class="p">,</span> <span class="n">equal_var</span><span class="o">=</span><span class="kc">False</span> <span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -333,7 +333,7 @@
 <p class="last"><strong>B</strong> and <strong>C</strong> must be the repeated-measures factor.</p>
 </dd>
 </dl>
-<div class="last highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">F</span>  <span class="o">=</span> <span class="n">spm1d</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">anova3tworm</span><span class="p">(</span> <span class="n">Y</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">,</span> <span class="n">C</span><span class="p">,</span> <span class="n">SUBJ</span> <span class="p">)</span>
+<div class="last highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">F</span>  <span class="o">=</span> <span class="n">spm1d</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">anova3tworm</span><span class="p">(</span> <span class="n">Y</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">,</span> <span class="n">C</span><span class="p">,</span> <span class="n">SUBJ</span> <span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -353,7 +353,7 @@
 <p class="last"><strong>B</strong> and <strong>C</strong> must be the repeated-measures factor.</p>
 </dd>
 </dl>
-<div class="last highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">F</span>  <span class="o">=</span> <span class="n">spm1d</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">anova3onerm</span><span class="p">(</span> <span class="n">Y</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">,</span> <span class="n">C</span><span class="p">,</span> <span class="n">SUBJ</span> <span class="p">)</span>
+<div class="last highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">F</span>  <span class="o">=</span> <span class="n">spm1d</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">anova3onerm</span><span class="p">(</span> <span class="n">Y</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">,</span> <span class="n">C</span><span class="p">,</span> <span class="n">SUBJ</span> <span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -378,7 +378,7 @@
     </p>
     <p>
         &copy; Copyright 2016, Todd Pataky.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.5.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.1.<br/>
     </p>
   </div>
 </footer>

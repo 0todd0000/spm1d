@@ -185,7 +185,7 @@
 <li>Interactively using the <strong>print</strong> command</li>
 <li>Programmatically using SPM object attributes</li>
 </ul>
-<p>As examples let us revisit the <a class="reference internal" href="onetwosample.html#label-stats-one-sample-t-test"><span>one-sample t test</span></a>.</p>
+<p>As examples let us revisit the <a class="reference internal" href="onetwosample.html#label-stats-one-sample-t-test"><span class="std std-ref">one-sample t test</span></a>.</p>
 <p>(<a class="reference external" href="../../pyplots/stats1d/ex_ttest.py">Source code</a>, <a class="reference external" href="../../pyplots/stats1d/ex_ttest.png">png</a>, <a class="reference external" href="../../pyplots/stats1d/ex_ttest.hires.png">hires.png</a>, <a class="reference external" href="../../pyplots/stats1d/ex_ttest.pdf">pdf</a>)</p>
 <div class="figure">
 <img alt="../../_images/ex_ttest.png" src="../../_images/ex_ttest.png" />
@@ -193,11 +193,11 @@
 <div class="section" id="raw-spms">
 <h2>Raw SPMs<a class="headerlink" href="#raw-spms" title="Permalink to this headline">¶</a></h2>
 <p>The single output of all statistical tests in <strong>spm1d.stats</strong> is a test statistic continuum (or SPM) object, which can be explored interactively using the <em>print</em> command:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">t</span>  <span class="o">=</span> <span class="n">spm1d</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">ttest</span><span class="p">(</span><span class="n">Y</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">t</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">t</span>  <span class="o">=</span> <span class="n">spm1d</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">ttest</span><span class="p">(</span><span class="n">Y</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span> <span class="n">t</span>
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">SPM</span><span class="p">{</span><span class="n">t</span><span class="p">}</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">SPM</span><span class="p">{</span><span class="n">t</span><span class="p">}</span>
    <span class="n">SPM</span><span class="o">.</span><span class="n">z</span>      <span class="p">:</span>  <span class="p">(</span><span class="mi">1</span><span class="n">x100</span><span class="p">)</span> <span class="n">test</span> <span class="n">stat</span> <span class="n">field</span>
    <span class="n">SPM</span><span class="o">.</span><span class="n">df</span>     <span class="p">:</span>  <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">9</span><span class="p">)</span>
    <span class="n">SPM</span><span class="o">.</span><span class="n">fwhm</span>   <span class="p">:</span>  <span class="mf">11.21919</span>
@@ -217,7 +217,7 @@
 <li><p class="first"><strong>SPM.df</strong> &#8212; degrees of freedom</p>
 </li>
 <li><p class="first"><strong>SPM.fwhm</strong> &#8212; the estimated full-width at half-maximum (FWHM) of a 1D Gaussian kernel which, when convolved with (random) 1D Gaussian continua, would yield the same smoothness as the observed residuals. The &#8220;residuals&#8221; are 1D continua embodying the variable that is not accounted for by the experimental design. In a one sample t test, for example, the residual for the <em>j</em> -th continuum is simply the difference between that continuum and the mean continuum:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span> <span class="n">j</span> <span class="o">=</span> <span class="mi">0</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span> <span class="n">j</span> <span class="o">=</span> <span class="mi">0</span>
 <span class="gp">&gt;&gt;&gt; </span> <span class="n">residual_j</span> <span class="o">=</span> <span class="n">Y</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">-</span> <span class="n">Y</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -226,23 +226,23 @@
 </li>
 </ul>
 <p>Each <strong>SPM{t}</strong> attribute can also be accessed programmatically, like this:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">t</span><span class="o">.</span><span class="n">fwhm</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">x</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">t</span><span class="o">.</span><span class="n">fwhm</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span> <span class="n">x</span>
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre><span class="mf">11.219185575045229</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="mf">11.219185575045229</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="inference-spms">
 <span id="label-spmobject-details"></span><h2>Inference SPMs<a class="headerlink" href="#inference-spms" title="Permalink to this headline">¶</a></h2>
 <p>The output of the <strong>inference</strong> method is an inference continuum (or inference SPM) object:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">t</span>  <span class="o">=</span> <span class="n">spm1d</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">ttest</span><span class="p">(</span><span class="n">Y</span><span class="p">)</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">t</span>  <span class="o">=</span> <span class="n">spm1d</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">ttest</span><span class="p">(</span><span class="n">Y</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">ti</span> <span class="o">=</span> <span class="n">t</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.05</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">ti</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span> <span class="n">ti</span>
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">SPM</span><span class="p">{</span><span class="n">t</span><span class="p">}</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">SPM</span><span class="p">{</span><span class="n">t</span><span class="p">}</span>
    <span class="n">SPM</span><span class="o">.</span><span class="n">z</span>        <span class="p">:</span>  <span class="p">(</span><span class="mi">1</span><span class="n">x100</span><span class="p">)</span> <span class="n">test</span> <span class="n">stat</span> <span class="n">field</span>
    <span class="n">SPM</span><span class="o">.</span><span class="n">df</span>       <span class="p">:</span>  <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">9</span><span class="p">)</span>
    <span class="n">SPM</span><span class="o">.</span><span class="n">fwhm</span>     <span class="p">:</span>  <span class="mf">11.21919</span>
@@ -285,12 +285,12 @@
 <div class="section" id="suprathreshold-clusters">
 <h2>Suprathreshold clusters<a class="headerlink" href="#suprathreshold-clusters" title="Permalink to this headline">¶</a></h2>
 <p>All inference SPM objects have an attribute called &#8220;clusters&#8221; which contains a list of <strong>cluster</strong> objects.</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">t</span>  <span class="o">=</span> <span class="n">spm1d</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">ttest</span><span class="p">(</span><span class="n">Y</span><span class="p">)</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">t</span>  <span class="o">=</span> <span class="n">spm1d</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">ttest</span><span class="p">(</span><span class="n">Y</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">ti</span> <span class="o">=</span> <span class="n">t</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.05</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">ti</span><span class="o">.</span><span class="n">clusters</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span> <span class="n">ti</span><span class="o">.</span><span class="n">clusters</span>
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre><span class="p">[</span><span class="n">Cluster</span> <span class="n">at</span> <span class="n">location</span><span class="p">:</span> <span class="p">(</span><span class="mf">17.000</span><span class="p">,</span> <span class="mf">3.870</span><span class="p">)</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">Cluster</span> <span class="n">at</span> <span class="n">location</span><span class="p">:</span> <span class="p">(</span><span class="mf">17.000</span><span class="p">,</span> <span class="mf">3.870</span><span class="p">)</span>
    <span class="n">extent</span>          <span class="p">:</span>  <span class="mi">3</span>
    <span class="n">extent</span> <span class="p">(</span><span class="n">resels</span><span class="p">)</span> <span class="p">:</span>  <span class="mf">0.26740</span>
    <span class="n">height</span> <span class="p">(</span><span class="nb">min</span><span class="p">)</span>    <span class="p">:</span>  <span class="mf">3.86630</span>
@@ -307,11 +307,11 @@
 <p class="last">If the test fails to reach the critical threshold, <strong>clusters</strong> will be an empty list: &#8220;[ ]&#8221;.</p>
 </div>
 <p>You can access specific clusters using list indexing:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">cluster0</span> <span class="o">=</span> <span class="n">ti</span><span class="o">.</span><span class="n">clusters</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">cluster0</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">cluster0</span> <span class="o">=</span> <span class="n">ti</span><span class="o">.</span><span class="n">clusters</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span> <span class="n">cluster0</span>
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">Cluster</span> <span class="n">at</span> <span class="n">location</span><span class="p">:</span> <span class="p">(</span><span class="mf">17.000</span><span class="p">,</span> <span class="mf">3.870</span><span class="p">)</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">Cluster</span> <span class="n">at</span> <span class="n">location</span><span class="p">:</span> <span class="p">(</span><span class="mf">17.000</span><span class="p">,</span> <span class="mf">3.870</span><span class="p">)</span>
    <span class="n">extent</span>          <span class="p">:</span>  <span class="mi">3</span>
    <span class="n">extent</span> <span class="p">(</span><span class="n">resels</span><span class="p">)</span> <span class="p">:</span>  <span class="mf">0.26740</span>
    <span class="n">height</span> <span class="p">(</span><span class="nb">min</span><span class="p">)</span>    <span class="p">:</span>  <span class="mf">3.86630</span>
@@ -342,7 +342,7 @@
     </p>
     <p>
         &copy; Copyright 2016, Todd Pataky.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.5.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.1.<br/>
     </p>
   </div>
 </footer>

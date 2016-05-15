@@ -82,7 +82,7 @@
   <ul class="dropdown-menu globaltoc"
       role="menu"
       aria-labelledby="dLabelGlobalToc"><ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="">New Features (version 0.3.2)</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">New Features (version 0.3.2)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="#new-features-version-0-3-1">New Features (version 0.3.1)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="#new-features-version-0-3">New Features (version 0.3)</a></li>
 </ul>
@@ -236,13 +236,13 @@
 <h1>New Features (version 0.3)<a class="headerlink" href="#new-features-version-0-3" title="Permalink to this headline">¶</a></h1>
 <p>The main new features in <strong>spm1d</strong> version 0.3 are:</p>
 <ul class="simple">
-<li><a class="reference internal" href="#label-featuremwayanova"><span>M-way repeated measures ANOVA</span></a></li>
-<li><a class="reference internal" href="#label-featuremvanalysis"><span>Multivariate analysis</span></a></li>
-<li><a class="reference internal" href="#label-feature0danalysis"><span>0D analysis</span></a></li>
-<li><a class="reference internal" href="#label-featurematlabsyntax"><span>MATLAB syntax == Python syntax</span></a></li>
-<li><a class="reference internal" href="#label-featuredatasets"><span>Datasets: 0D &amp; 1D, univariate and multivariate</span></a></li>
-<li><a class="reference internal" href="#label-featureinference"><span>Improved inference using rft1d</span></a></li>
-<li><a class="reference internal" href="#label-featureinstallation"><span>Installation and updating</span></a></li>
+<li><a class="reference internal" href="#label-featuremwayanova"><span class="std std-ref">M-way repeated measures ANOVA</span></a></li>
+<li><a class="reference internal" href="#label-featuremvanalysis"><span class="std std-ref">Multivariate analysis</span></a></li>
+<li><a class="reference internal" href="#label-feature0danalysis"><span class="std std-ref">0D analysis</span></a></li>
+<li><a class="reference internal" href="#label-featurematlabsyntax"><span class="std std-ref">MATLAB syntax == Python syntax</span></a></li>
+<li><a class="reference internal" href="#label-featuredatasets"><span class="std std-ref">Datasets: 0D &amp; 1D, univariate and multivariate</span></a></li>
+<li><a class="reference internal" href="#label-featureinference"><span class="std std-ref">Improved inference using rft1d</span></a></li>
+<li><a class="reference internal" href="#label-featureinstallation"><span class="std std-ref">Installation and updating</span></a></li>
 </ul>
 <div class="section" id="m-way-repeated-measures-anova">
 <span id="label-featuremwayanova"></span><h2>M-way repeated measures ANOVA<a class="headerlink" href="#m-way-repeated-measures-anova" title="Permalink to this headline">¶</a></h2>
@@ -287,7 +287,7 @@
 <li>Non-sphericity corrections for two- and three-way repeated-measures designs</li>
 <li>Unbalanced designs for M &gt; 1</li>
 <li>Missing data</li>
-<li>Mixed (fixed and random factor) designs.  Mixed effects analysis should be implemented using the hierarchical procedure <a class="reference internal" href="doc/RandomEffects.html#label-examples-statsadvanced"><span>described here</span></a></li>
+<li>Mixed (fixed and random factor) designs.  Mixed effects analysis should be implemented using the hierarchical procedure <a class="reference internal" href="doc/RandomEffects.html#label-examples-statsadvanced"><span class="std std-ref">described here</span></a></li>
 <li>Abitrary designs (Latin Square, partially nested, etc.)</li>
 </ul>
 </div>
@@ -315,15 +315,15 @@
 <span id="label-feature0danalysis"></span><h2>0D analysis<a class="headerlink" href="#d-analysis" title="Permalink to this headline">¶</a></h2>
 <p>All <strong>spm1d.stats</strong> functions now support both 0D and 1D data data analysis.</p>
 <p>Example (0D):</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">yA</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">yA</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">yB</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">t</span> <span class="o">=</span> <span class="n">spm1d</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">ttest2</span><span class="p">(</span><span class="n">yA</span><span class="p">,</span> <span class="n">yB</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">ti</span> <span class="o">=</span> <span class="n">t</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="mf">0.05</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">ti</span>  <span class="c1">#display inference results</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span> <span class="n">ti</span>  <span class="c1">#display inference results</span>
 </pre></div>
 </div>
 <p>Example (1D):</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">yA</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">101</span><span class="p">)</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">yA</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">101</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">yB</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">101</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">t</span> <span class="o">=</span> <span class="n">spm1d</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">ttest2</span><span class="p">(</span><span class="n">yA</span><span class="p">,</span> <span class="n">yB</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">ti</span> <span class="o">=</span> <span class="n">t</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="mf">0.05</span><span class="p">)</span>
@@ -337,20 +337,20 @@
 <span id="label-featurematlabsyntax"></span><h2>MATLAB syntax == Python syntax<a class="headerlink" href="#matlab-syntax-python-syntax" title="Permalink to this headline">¶</a></h2>
 <p><strong>spm1d</strong>&#8216;s MATLAB and Python syntaxes are now nearly identical.</p>
 <p>Example two-sample t test (Python):</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">yA</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">101</span><span class="p">)</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">yA</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">101</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">yB</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">101</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">t</span>  <span class="o">=</span> <span class="n">spm1d</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">ttest2</span><span class="p">(</span><span class="n">yA</span><span class="p">,</span> <span class="n">yB</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">ti</span> <span class="o">=</span> <span class="n">t</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="mf">0.05</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Example two-sample t test (MATLAB):</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">yA</span> <span class="o">=</span> <span class="n">randn</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">101</span><span class="p">);</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">yA</span> <span class="o">=</span> <span class="n">randn</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">101</span><span class="p">);</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">yB</span> <span class="o">=</span> <span class="n">randn</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">101</span><span class="p">);</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">t</span>  <span class="o">=</span> <span class="n">spm1d</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">ttest2</span><span class="p">(</span><span class="n">yA</span><span class="p">,</span> <span class="n">yB</span><span class="p">);</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">ti</span> <span class="o">=</span> <span class="n">t</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="mf">0.05</span><span class="p">);</span>
 </pre></div>
 </div>
-<p><a class="reference internal" href="DocumentationMatlab.html#label-documentationmatlab"><span>Click here for MATLAB documentation</span></a></p>
+<p><a class="reference internal" href="DocumentationMatlab.html#label-documentationmatlab"><span class="std std-ref">Click here for MATLAB documentation</span></a></p>
 </div>
 <div class="section" id="datasets">
 <span id="label-featuredatasets"></span><h2>Datasets<a class="headerlink" href="#datasets" title="Permalink to this headline">¶</a></h2>
@@ -378,7 +378,7 @@
 <div class="section" id="set-level-inference">
 <h3>Set-level inference<a class="headerlink" href="#set-level-inference" title="Permalink to this headline">¶</a></h3>
 <p>Consider the following example:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">spm1d</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">spm1d</span>
 <span class="n">YA</span><span class="p">,</span><span class="n">YB</span> <span class="o">=</span> <span class="n">spm1d</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">uv1d</span><span class="o">.</span><span class="n">t2</span><span class="o">.</span><span class="n">SimulatedTwoLocalMax</span><span class="p">()</span><span class="o">.</span><span class="n">get_data</span><span class="p">()</span>
 <span class="n">t</span> <span class="o">=</span> <span class="n">spm1d</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">ttest2</span><span class="p">(</span><span class="n">YB</span><span class="p">,</span> <span class="n">YA</span><span class="p">)</span>
 <span class="n">ti</span> <span class="o">=</span> <span class="n">t</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="mf">0.05</span><span class="p">)</span>
@@ -391,17 +391,17 @@
 <img alt="_images/NewFeatures-1.png" src="_images/NewFeatures-1.png" />
 </div>
 <p>This yields the following results:</p>
-<div class="code highlight-python"><div class="highlight"><pre>SPM{T} inference field
-        SPM.z         :  (1x101) raw test stat field
-        SPM.df        :  (1, 9.894)
-        SPM.fwhm      :  13.63026
-        SPM.resels    :  (1, 7.33662)
-Inference:
-        SPM.alpha     :  0.050
-        SPM.zstar     :  4.07916
-        SPM.h0reject  :  True
-        SPM.p_set     :  &lt;0.001
-        SPM.p_cluster :  (0.015, 0.023)
+<div class="code highlight-default"><div class="highlight"><pre><span></span><span class="n">SPM</span><span class="p">{</span><span class="n">T</span><span class="p">}</span> <span class="n">inference</span> <span class="n">field</span>
+        <span class="n">SPM</span><span class="o">.</span><span class="n">z</span>         <span class="p">:</span>  <span class="p">(</span><span class="mi">1</span><span class="n">x101</span><span class="p">)</span> <span class="n">raw</span> <span class="n">test</span> <span class="n">stat</span> <span class="n">field</span>
+        <span class="n">SPM</span><span class="o">.</span><span class="n">df</span>        <span class="p">:</span>  <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mf">9.894</span><span class="p">)</span>
+        <span class="n">SPM</span><span class="o">.</span><span class="n">fwhm</span>      <span class="p">:</span>  <span class="mf">13.63026</span>
+        <span class="n">SPM</span><span class="o">.</span><span class="n">resels</span>    <span class="p">:</span>  <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mf">7.33662</span><span class="p">)</span>
+<span class="n">Inference</span><span class="p">:</span>
+        <span class="n">SPM</span><span class="o">.</span><span class="n">alpha</span>     <span class="p">:</span>  <span class="mf">0.050</span>
+        <span class="n">SPM</span><span class="o">.</span><span class="n">zstar</span>     <span class="p">:</span>  <span class="mf">4.07916</span>
+        <span class="n">SPM</span><span class="o">.</span><span class="n">h0reject</span>  <span class="p">:</span>  <span class="kc">True</span>
+        <span class="n">SPM</span><span class="o">.</span><span class="n">p_set</span>     <span class="p">:</span>  <span class="o">&lt;</span><span class="mf">0.001</span>
+        <span class="n">SPM</span><span class="o">.</span><span class="n">p_cluster</span> <span class="p">:</span>  <span class="p">(</span><span class="mf">0.015</span><span class="p">,</span> <span class="mf">0.023</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>The cluster-level p values are 0.015 and 0.023, but the set-level p value (&lt;0.001) is much lower.</p>
@@ -418,7 +418,7 @@ Inference:
 <p>If the first point in the 1D field is homologous with the last point, like in calendar years or gait strides, then the field is &#8216;circular&#8217;.</p>
 <p>Consider the following example from Ramsay JO, Silverman BW (2005). Functional Data Analysis (Second Edition), Springer, New York.</p>
 <p><a class="reference external" href="http://www.psych.mcgill.ca/misc/fda/ex-weather-a1.html">Click here for a description of this dataset</a></p>
-<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">spm1d</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">spm1d</span>
 <span class="n">dataset</span>  <span class="o">=</span> <span class="n">spm1d</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">uv1d</span><span class="o">.</span><span class="n">anova1</span><span class="o">.</span><span class="n">Weather</span><span class="p">()</span>
 <span class="n">Y</span><span class="p">,</span><span class="n">A</span>      <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">get_data</span><span class="p">()</span>
 <span class="n">Y0</span><span class="p">,</span><span class="n">Y1</span>    <span class="o">=</span> <span class="n">Y</span><span class="p">[</span><span class="n">A</span><span class="o">==</span><span class="mi">0</span><span class="p">],</span> <span class="n">Y</span><span class="p">[</span><span class="n">A</span><span class="o">==</span><span class="mi">2</span><span class="p">]</span>  <span class="c1">#Atlantic and Contintental regions</span>
@@ -437,7 +437,7 @@ Inference:
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p>Use the keyword <strong>circular</strong> when conducting inference to specify whether or not the field is circular.</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">ti</span> <span class="o">=</span> <span class="n">t</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="mf">0.05</span><span class="p">,</span> <span class="n">circular</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ti</span> <span class="o">=</span> <span class="n">t</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="mf">0.05</span><span class="p">,</span> <span class="n">circular</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
 <p class="last">By default <strong>circular</strong> is False.</p>
@@ -447,9 +447,9 @@ Inference:
 <h3>Cluster interpolation<a class="headerlink" href="#cluster-interpolation" title="Permalink to this headline">¶</a></h3>
 <p><strong>spm1d</strong> now interpolates to the critical threshold u as depicted in panel (b) of the figure below.</p>
 <p>Interpolation is conducted by deault, but can be toggled using the <strong>interp</strong> keyword for inference:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span> <span class="n">t</span> <span class="o">=</span> <span class="n">spm1d</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">ttest</span><span class="p">(</span><span class="n">YA</span><span class="p">,</span> <span class="n">YB</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span> <span class="n">ti</span> <span class="o">=</span> <span class="n">t</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="mf">0.05</span><span class="p">,</span> <span class="n">interp</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span> <span class="n">ti</span> <span class="o">=</span> <span class="n">t</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="mf">0.05</span><span class="p">,</span> <span class="n">interp</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span> <span class="n">t</span> <span class="o">=</span> <span class="n">spm1d</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">ttest</span><span class="p">(</span><span class="n">YA</span><span class="p">,</span> <span class="n">YB</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span> <span class="n">ti</span> <span class="o">=</span> <span class="n">t</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="mf">0.05</span><span class="p">,</span> <span class="n">interp</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span> <span class="n">ti</span> <span class="o">=</span> <span class="n">t</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="mf">0.05</span><span class="p">,</span> <span class="n">interp</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>(<a class="reference external" href="./pyplots/fig_upcrossing.py">Source code</a>, <a class="reference external" href="./pyplots/fig_upcrossing.png">png</a>, <a class="reference external" href="./pyplots/fig_upcrossing.hires.png">hires.png</a>, <a class="reference external" href="./pyplots/fig_upcrossing.pdf">pdf</a>)</p>
@@ -461,13 +461,13 @@ Inference:
 <div class="section" id="installation-updating">
 <span id="label-featureinstallation"></span><h2>Installation &amp; Updating<a class="headerlink" href="#installation-updating" title="Permalink to this headline">¶</a></h2>
 <p>The Python version of <strong>spm1d</strong> can be now installed and updated from the command line:</p>
-<div class="code highlight-python"><div class="highlight"><pre>easy_install spm1d
+<div class="code highlight-default"><div class="highlight"><pre><span></span><span class="n">easy_install</span> <span class="n">spm1d</span>
 </pre></div>
 </div>
 <p>Source code for both Python and MATLAB can be cloned and updated from <a class="reference external" href="https://github.com/0todd0000/spm1d/">github.com</a>.</p>
 <ul class="simple">
-<li><a class="reference internal" href="install/InstallationPython.html#label-installationpython"><span>Detailed Python installation instructions</span></a></li>
-<li><a class="reference internal" href="install/InstallationMatlab.html#label-installationmatlab"><span>Detailed MATLAB installation instructions</span></a></li>
+<li><a class="reference internal" href="install/InstallationPython.html#label-installationpython"><span class="std std-ref">Detailed Python installation instructions</span></a></li>
+<li><a class="reference internal" href="install/InstallationMatlab.html#label-installationmatlab"><span class="std std-ref">Detailed MATLAB installation instructions</span></a></li>
 </ul>
 </div>
 </div>
@@ -485,7 +485,7 @@ Inference:
     </p>
     <p>
         &copy; Copyright 2016, Todd Pataky.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.5.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.1.<br/>
     </p>
   </div>
 </footer>

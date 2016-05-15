@@ -36,12 +36,15 @@ import rft1d
 # ones.
 extensions = [
 	'sphinx.ext.autodoc',
-	'sphinx.ext.pngmath',
+	'sphinx.ext.imgmath',
 	'sphinx.ext.viewcode',
-	'matplotlib.sphinxext.mathmpl',
 	'matplotlib.sphinxext.only_directives',
 	'matplotlib.sphinxext.plot_directive',
+	'sphinxcontrib.youtube',
 ]
+
+	# 'matplotlib.sphinxext.mathmpl',
+
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']

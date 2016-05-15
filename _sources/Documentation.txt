@@ -10,6 +10,10 @@ Documentation (Python)
 :ref:`Link to MATLAB documentation <label-DocumentationMatlab>`
 
 
+`Basic SPM Principles @ YouTube  <https://www.youtube.com/watch?v=4WoDuBkUF9U&list=PLa8HCd4pvpVZtc2zPwSelRWjEjcbYZfv4&index=1>`_
+
+
+
 
 Preliminaries
 ____________________________________

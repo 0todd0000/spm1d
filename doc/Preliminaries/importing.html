@@ -195,10 +195,10 @@
 <div class="admonition warning">
 <p class="first admonition-title">Warning</p>
 <p><strong>WINDOWS USERS</strong> &#8212; File names in Python should be constructed using one of the following forms:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">fname</span> <span class="o">=</span> <span class="s1">&#39;C:</span><span class="se">\\</span><span class="s1">Temp</span><span class="se">\\</span><span class="s1">MyData</span><span class="se">\\</span><span class="s1">ex_kinematics.txt&#39;</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">fname</span> <span class="o">=</span> <span class="s1">&#39;C:</span><span class="se">\\</span><span class="s1">Temp</span><span class="se">\\</span><span class="s1">MyData</span><span class="se">\\</span><span class="s1">ex_kinematics.txt&#39;</span>
 </pre></div>
 </div>
-<div class="last highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">os</span>
+<div class="last highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">os</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">fname</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s1">&#39;C:\Temp&#39;</span><span class="p">,</span> <span class="s1">&#39;MyData&#39;</span><span class="p">,</span> <span class="s1">&#39;ex_kinematics.txt&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -207,7 +207,7 @@
 <h2>Importing ASCII data<a class="headerlink" href="#importing-ascii-data" title="Permalink to this headline">¶</a></h2>
 <p><code class="docutils literal"><span class="pre">./spm1d/examples/io/ex_import_txt.py</span></code></p>
 <p>If ASCII data are arranged in a (J x Q) tab-delimited array:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">os</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
 <span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span>
 
@@ -234,7 +234,7 @@
 <h2>Importing MATLAB data<a class="headerlink" href="#importing-matlab-data" title="Permalink to this headline">¶</a></h2>
 <p><code class="docutils literal"><span class="pre">./spm1d/examples/io/ex_import_mat.py</span></code></p>
 <p>MATLAB data files containing arbitrary variables can be imported as follows:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">scipy.io</span> <span class="kn">import</span> <span class="n">loadmat</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">scipy.io</span> <span class="k">import</span> <span class="n">loadmat</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">M</span> <span class="o">=</span> <span class="n">loadmat</span><span class="p">(</span><span class="s1">&#39;myfile.mat&#39;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">M</span><span class="p">[</span><span class="s1">&#39;VariableA&#39;</span><span class="p">]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">b</span> <span class="o">=</span> <span class="n">M</span><span class="p">[</span><span class="s1">&#39;VariableB&#39;</span><span class="p">]</span>
@@ -242,7 +242,7 @@
 </pre></div>
 </div>
 <p>Example script:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">os</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
 <span class="kn">import</span> <span class="nn">scipy.io</span>
 <span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span>
 
@@ -274,7 +274,7 @@
 <p class="first admonition-title">Warning</p>
 <p class="last">You must have <strong>PyTables</strong> installed to use <strong>spm1d.io.load</strong>.</p>
 </div>
-<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">os</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
 <span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span>
 <span class="kn">import</span> <span class="nn">spm1d</span>
@@ -312,7 +312,7 @@
     </p>
     <p>
         &copy; Copyright 2016, Todd Pataky.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.5.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.1.<br/>
     </p>
   </div>
 </footer>
