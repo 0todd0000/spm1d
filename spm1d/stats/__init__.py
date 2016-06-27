@@ -19,7 +19,7 @@ Specifically:
 '''
 
 # Copyright (C) 2016  Todd Pataky
-# __init__.py version: 0.3.2 (2016/01/03)
+# __init__.py version: 0.3.2.5 (2016/06/27)
 
 
 import _spm

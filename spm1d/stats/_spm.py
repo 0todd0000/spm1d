@@ -10,7 +10,7 @@ and inference SPMs (thresholded test statistic).
 '''
 
 # Copyright (C) 2016  Todd Pataky
-# _spm.py version: 0.3.2 (2016/01/29)
+# _spm.py version: 0.3.2.5 (2016/06/27)
 
 
 from math import floor,ceil
@@ -564,11 +564,42 @@ class SPM_T(_SPM):
 class SPM_T2(_SPM):
 	def __init__(self, z, df, fwhm, resels, X, beta, residuals, roi=None):
 		super(SPM_T2, self).__init__('T2', z, df, fwhm, resels, X, beta, residuals, roi=roi)
+		
+	def inference(self, alpha=0.05, cluster_size=0, interp=True, circular=False):
+		'''
+		Conduct statistical inference using random field theory.
+		
+		:Parameters:
+		
+		alpha        : Type I error rate (default: 0.05)
+		
+		cluster_size : Minimum cluster size of interest (default: 0), smaller clusters will be ignored
+		:Returns:
+		
+		A **spm1d._spm.SPMi_F** instance.
+		'''
+		return _SPM.inference(self, alpha, cluster_size, two_tailed=False, interp=interp, circular=circular)
+	
 
 
 class SPM_X2(_SPM):
 	def __init__(self, z, df, fwhm, resels, X, beta, residuals, roi=None):
 		super(SPM_X2, self).__init__('X2', z, df, fwhm, resels, X, beta, residuals, roi=roi)
+
+	def inference(self, alpha=0.05, cluster_size=0, interp=True, circular=False):
+		'''
+		Conduct statistical inference using random field theory.
+		
+		:Parameters:
+		
+		alpha        : Type I error rate (default: 0.05)
+		
+		cluster_size : Minimum cluster size of interest (default: 0), smaller clusters will be ignored
+		:Returns:
+		
+		A **spm1d._spm.SPMi_F** instance.
+		'''
+		return _SPM.inference(self, alpha, cluster_size, two_tailed=False, interp=interp, circular=circular)
 
 
 
