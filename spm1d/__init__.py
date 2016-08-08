@@ -21,10 +21,10 @@ Version: 0.3.2.5 (2016/06/27)
 '''
 
 
-__version__ = '0.3.2.5 (2016/06/27)'
+__version__ = '0.3.3.X (2016/XX/XX)'
 
 
-__all__ = ['io', 'plot', 'stats', 'util']
+__all__ = ['data', 'io', 'plot', 'stats', 'util']
 
 
 import data, io, plot, stats, util
