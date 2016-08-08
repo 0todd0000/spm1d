@@ -59,10 +59,10 @@ t_para_i   = t_para.inference(alpha=0.05, two_tailed=False)
 
 
 ### report results:
-print 'Non-parametric t test:'
+print 'Non-parametric test:'
 print '   p=%.5f, tCritical=%.3f' %(p,tCrit)
 print
-print 'Parametric t test:'
+print 'Parametric test:'
 print '   p=%.5f, tCritical=%.3f' %(t_para_i.p[0], t_para_i.zstar)
 print
 

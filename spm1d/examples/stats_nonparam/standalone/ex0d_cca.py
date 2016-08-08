@@ -103,10 +103,10 @@ pparam     = X2parami.p
 
 
 ### report results:
-print 'Non-parametric t test:'
+print 'Non-parametric test:'
 print '   X2=%.3f, p=%.5f' %(z0, p)
 print
-print 'Parametric t test:'
+print 'Parametric test:'
 print '   X2=%.3f, p=%.5f' %(zparam, pparam)
 print
 

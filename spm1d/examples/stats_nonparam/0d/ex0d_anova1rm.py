@@ -1,15 +1,15 @@
 
 import numpy as np
 import scipy.stats
-import spm1dNP
+import spm1d
 import spm1d
 
 
 
 #(0) Load dataset:
 dataset  = spm1d.data.uv0d.anova1rm.Abdi2010()
-# dataset  = spm1d.data.uv0d.anova1rm.Groceries()
-# dataset  = spm1d.data.uv0d.anova1rm.Imacelebrity()
+dataset  = spm1d.data.uv0d.anova1rm.Groceries()
+dataset  = spm1d.data.uv0d.anova1rm.Imacelebrity()
 # dataset  = spm1d.data.uv0d.anova1rm.Southampton1rm()
 y,A,SUBJ = dataset.get_data()
 print dataset
@@ -17,30 +17,31 @@ print dataset
 
 
 
-# ### prepare stat computer:
-# calculators = spm1dNP.calculators
-# calc           = calculators.CalculatorANOVA1rm(A, SUBJ)
-# z              = calc.get_test_stat(y)
-# print z
-#
-#
-# ### prepare permuter:
-# permuters = spm1dNP.permuters
-# perm      = permuters.PermuterANOVA1rm(y, A, SUBJ)
-# z0        = perm.get_test_stat_original()
-# perm.build_pdf(iterations=1000)
-# print z0
-
-
-
-
-### test high-level function:
 #(1) Conduct non-parametric test:
 np.random.seed(0)
 alpha      = 0.05
-spm        = spm1dNP.anova1rm(y, A, SUBJ)
-spmi       = spm.inference(alpha, iterations=1000)
-print(spmi)
+F          = spm1d.stats.nonparam.anova1rm(y, A, SUBJ)
+Fi         = F.inference(alpha, iterations=1000)
+print(Fi)
+
+
+#(2) Compare to parametric test:
+Fparam     = spm1d.stats.anova1rm(y, A, SUBJ, equal_var=True)
+Fparami    = Fparam.inference(alpha)
+
+
+
+#(3) Print results:
+print
+print( 'Non-parametric results:' )
+print( '   t=%.3f, p=%.5f' %(Fi.z, Fi.p) )
+print
+print( 'Parametric results:' )
+print( '   t=%.3f, p=%.5f' %(Fparami.z, Fparami.p) )
+print
+
+
+
 
 
 

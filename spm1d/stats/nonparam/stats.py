@@ -4,102 +4,104 @@ import permuters, _snpm
 
 
 
-def _anova(perm):
-	z      = perm.get_test_stat_original()
-	if isinstance(z, list):
-		spm = _snpm.SnPM0D_Flist(z, perm)
+def _get_data_dim(y, ismultivariate=False):
+	if ismultivariate:
+		dim = np.asarray(y).ndim - 2
 	else:
-		spm = _snpm.SnPM0D_F(z, perm)
-	return spm
+		dim = np.asarray(y).ndim - 1
+	return dim
 
-def _build_snpm(STAT, z, perm):
-	# is0d = np.size(z) == 0
-	# print is0d
-	if STAT == 'T':
-		spm     = _snpm.SnPM0D_T(z, perm) if perm.dim==0 else _snpm.SnPM_T(z, perm)
-	return spm
-
-def _get_data_dim(y):
-	return np.asarray(y).ndim - 1
-
-
-
-def anova1(y, A):
-	return _anova(   permuters.PermuterANOVA1(y, A)   )
-def anova1rm(y, A, SUBJ):
-	return _anova(   permuters.PermuterANOVA1rm(y, A, SUBJ)   )
-
-def anova2(y, A, B):
-	return _anova(  permuters.PermuterANOVA2(y, A, B)  )
-def anova2nested(y, A, B):
-	return _anova(  permuters.PermuterANOVA2nested(y, A, B)  )
-def anova2onerm(y, A, B, SUBJ):
-	return _anova(  permuters.PermuterANOVA2onerm(y, A, B, SUBJ)  )
-def anova2rm(y, A, B, SUBJ):
-	return _anova(  permuters.PermuterANOVA2rm(y, A, B, SUBJ)  )
-
-def anova3(y, A, B, C):
-	return _anova(  permuters.PermuterANOVA3(y, A, B, C)  )
-def anova3nested(y, A, B, C):
-	return _anova(  permuters.PermuterANOVA3nested(y, A, B, C)  )
-def anova3onerm(y, A, B, C, SUBJ):
-	return _anova(  permuters.PermuterANOVA3onerm(y, A, B, C, SUBJ)  )
-def anova3tworm(y, A, B, C, SUBJ):
-	return _anova(  permuters.PermuterANOVA3tworm(y, A, B, C, SUBJ)  )
-def anova3rm(y, A, B, C, SUBJ):
-	return _anova(  permuters.PermuterANOVA3rm(y, A, B, C, SUBJ)  )
-
-
-
-
-
-
-
-def cca(y, x):
-	perm    = permuters.PermuterCCA0D(y, x)
+def _get_snpm(STAT, perm):
 	z       = perm.get_test_stat_original()
-	return _snpm.SnPM0D_X2(z, perm)
+	if STAT == 'T':
+		snpm    = _snpm.SnPM0D_T(z, perm) if perm.dim==0 else _snpm.SnPM_T(z, perm)
+	elif STAT == 'T2':
+		snpm    = _snpm.SnPM0D_T2(z, perm) if perm.dim==0 else _snpm.SnPM_T2(z, perm)
+	elif STAT == 'X2':
+		snpm    = _snpm.SnPM0D_X2(z, perm) if perm.dim==0 else _snpm.SnPM_X2(z, perm)
+	elif STAT == 'F':
+		if isinstance(z, list):
+			snpm = _snpm.SnPM0D_Flist(z, perm) if perm.dim==0 else _snpm.SnPM1D_Flist(z, perm)
+		else:
+			snpm = _snpm.SnPM0D_F(z, perm) if perm.dim==0 else _snpm.SnPM0D(z, perm)
+	return snpm
+
+
+
+
+
+### One-way ANOVA:
+def anova1(y, A):
+	return _get_snpm( 'F',   permuters.PermuterANOVA1(y, A)   )
+def anova1rm(y, A, SUBJ):
+	return _get_snpm( 'F',   permuters.PermuterANOVA1rm(y, A, SUBJ)   )
+### Two-way ANOVA:
+def anova2(y, A, B):
+	return _get_snpm( 'F',  permuters.PermuterANOVA2(y, A, B)  )
+def anova2nested(y, A, B):
+	return _get_snpm( 'F',  permuters.PermuterANOVA2nested(y, A, B)  )
+def anova2onerm(y, A, B, SUBJ):
+	return _get_snpm( 'F',  permuters.PermuterANOVA2onerm(y, A, B, SUBJ)  )
+def anova2rm(y, A, B, SUBJ):
+	return _get_snpm( 'F',  permuters.PermuterANOVA2rm(y, A, B, SUBJ)  )
+### Three-way ANOVA:
+def anova3(y, A, B, C):
+	return _get_snpm( 'F',  permuters.PermuterANOVA3(y, A, B, C)  )
+def anova3nested(y, A, B, C):
+	return _get_snpm( 'F',  permuters.PermuterANOVA3nested(y, A, B, C)  )
+def anova3onerm(y, A, B, C, SUBJ):
+	return _get_snpm( 'F',  permuters.PermuterANOVA3onerm(y, A, B, C, SUBJ)  )
+def anova3tworm(y, A, B, C, SUBJ):
+	return _get_snpm( 'F',  permuters.PermuterANOVA3tworm(y, A, B, C, SUBJ)  )
+def anova3rm(y, A, B, C, SUBJ):
+	return _get_snpm( 'F',  permuters.PermuterANOVA3rm(y, A, B, C, SUBJ)  )
+
+
+
+
+
+
+### Basic multivariate tests:
+def cca(y, x):
+	dim     = _get_data_dim(y, ismultivariate=True)
+	perm    = permuters.PermuterCCA1D(y, x) if dim==1 else permuters.PermuterCCA0D(y, x)
+	return _get_snpm('X2', perm)
 
 def hotellings(y, mu=None):
-	perm    = permuters.PermuterHotellings0D(y, mu)
-	z       = perm.get_test_stat_original()
-	return _snpm.SnPM0D_T2(z, perm)
+	dim     = _get_data_dim(y, ismultivariate=True)
+	perm    = permuters.PermuterHotellings1D(y, mu) if dim==1 else permuters.PermuterHotellings0D(y, mu)
+	return _get_snpm('T2', perm)
 
 def hotellings_paired(yA, yB):
-	perm    = permuters.PermuterHotellings0D(yA-yB, mu=None)
-	z       = perm.get_test_stat_original()
-	return _snpm.SnPM0D_T2(z, perm)
+	return hotellings( yA - yB )
 
 def hotellings2(yA, yB):
-	perm    = permuters.PermuterHotellings20D(yA, yB)
-	z       = perm.get_test_stat_original()
-	return _snpm.SnPM0D_T2(z, perm)
+	dim     = _get_data_dim(yA, ismultivariate=True)
+	perm    = permuters.PermuterHotellings21D(yA, yB) if dim==1 else permuters.PermuterHotellings20D(yA, yB)
+	return _get_snpm('T2', perm)
 
 
 
 
 
-
-
-
+### Basic univariate tests:
 def regress(y, x):
-	perm    = permuters.PermuterRegress0D(y, x)
-	z       = perm.get_test_stat_original()
-	return _snpm.SnPM0D_T(z, perm)
+	dim     = _get_data_dim(y)
+	perm    = permuters.PermuterRegress1D(y, x) if dim==1 else permuters.PermuterRegress0D(y, x)
+	return _get_snpm('T', perm)
 
 def ttest(y, mu=0):
 	dim     = _get_data_dim(y)
 	perm    = permuters.PermuterTtest1D(y, mu) if dim==1 else permuters.PermuterTtest0D(y, mu)
-	z       = perm.get_test_stat_original()
-	return _build_snpm('T', z, perm)
+	return _get_snpm('T', perm)
 
 def ttest_paired(yA, yB):
 	return ttest(yA-yB, 0)
 
 def ttest2(yA, yB):
-	perm    = permuters.PermuterTtest20D(yA, yB)
-	z       = perm.get_test_stat_original()
-	return _snpm.SnPM0D_T(z, perm)
+	dim     = _get_data_dim(yA)
+	perm    = permuters.PermuterTtest21D(yA, yB) if dim==1 else permuters.PermuterTtest20D(yA, yB)
+	return _get_snpm('T', perm)
 
 
 

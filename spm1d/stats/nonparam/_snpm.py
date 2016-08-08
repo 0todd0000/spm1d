@@ -1,105 +1,14 @@
 
 from math import ceil
 import numpy as np
-from scipy import stats
-from matplotlib import pyplot
-from rft1d.geom import bwlabel
 from metrics import metric_dict
 from ... plot import plot_spm
 from ... plot import plot_spmi, plot_spmi_p_values, plot_spmi_threshold_label
 from .. import _spm
+from .. _spm import plist2string
+from .. _clusters import ClusterNonparam
 
 
-
-
-
-def df2str(df):
-	return str(df) if not df%1 else '%.3f'%df
-def dflist2str(dfs):
-	return '(%s, %s)' %(df2str(dfs[0]), df2str(dfs[1]))
-def list2str(x):
-	fmt   = '(' + ('%d, '*len(x))[:-2] + ')'
-	return fmt %tuple(x)
-def p2string(p):
-	return '<0.001' if p<0.0005 else '%.03f'%p
-def plist2string(pList):
-	s      = ''
-	if len(pList)>0:
-		for p in pList:
-			s += p2string(p)
-			s += ', '
-		s  = s[:-2]
-	return s
-
-
-
-class ClusterNP(_spm.Cluster):
-	def __init__(self, cluster, metric, iterations, nPermUnique):
-		self._X        = cluster._X
-		self._Z        = cluster._Z
-		self._u        = cluster._u
-		self._other    = cluster._other       #wrapped cluster
-		self._interp   = cluster._interp
-		self.P         = None       #probability value (based on h and extentR)
-		self.csign     = cluster.csign
-		self.endpoints = cluster.endpoints
-		self.extent    = cluster.extent
-		self.iswrapped = cluster.iswrapped
-		self.xy        = cluster.xy       #cluster centroid
-		### non-parametric attributes:
-		self.metric        = metric
-		self.iterations    = iterations
-		self.nPerm         = iterations if iterations > 0 else nPermUnique
-		self.nPermUnique   = nPermUnique
-		self.metric_value  = None
-		self.metric_label  = None
-		self._calculate_metric_value()
-		
-
-	def __repr__(self):
-		s        = ''
-		
-		if self.iswrapped:
-			s       += 'Cluster(NP) at location: (%.3f, %.3f)\n' %self.xy[0]
-		else:
-			s       += 'Cluster(NP) at location: (%.3f, %.3f)\n' %self.xy
-		s           += '   iswrapped       :  %s\n' %self.iswrapped
-		if self._interp:
-			if self.iswrapped:
-				(x0,x1),(x2,x3) = self.endpoints[0], self.endpoints[1]
-				s   += '   endpoints       :  [(%.3f, %.3f), (%.3f, %.3f)]\n' %(x0,x1,x2,x3)
-			else:
-				s   += '   endpoints       :  (%.3f, %.3f)\n' %self.endpoints
-			s       += '   extent          :  %.3f\n' %self.extent
-				
-		else:
-			if self.iswrapped:
-				(x0,x1),(x2,x3) = self.endpoints[0], self.endpoints[1]
-				s   += '   endpoints       :  [(%d, %d), (%d, %d)]\n' %(x0,x1,x2,x3)
-			else:
-				s   += '   endpoints       :  (%d, %d)\n' %self.endpoints
-			s       += '   extent          :  %d\n' %self.extent
-		s           += '   metric          :  %s\n'   %self.metric_label
-		s           += '   metric_value    :  %.5f\n' %self.metric_value
-		if self.P is None:
-			s       += '   P               :  None\n\n'
-		else:
-			s       += 'Inference:\n'
-			s       += '   nPermUnique     :  %d unique permutations possible\n' %self.nPermUnique
-			s       += '   nPermActual     :  %d actual permutations\n' %self.nPerm
-			s       += '   P               :  %.5f\n\n' %self.P
-		return s
-
-
-
-	def _calculate_metric_value(self):
-		self.metric_value    = self.metric.get_single_cluster_metric_xz(self._X, self._Z, self._u)
-		self.metric_label    = self.metric.get_label_single()
-
-
-	def inference(self, pdf):
-		self.P      = (pdf > self.metric_value).mean()
-		self.P      = max( self.P,  1.0/self.nPermUnique )
 
 
 
@@ -319,7 +228,7 @@ class _SnPM1D(_SnPM, _spm._SPM):
 	def _get_clusters(self, zstar, check_neg, interp, circular, iterations, cluster_metric):
 		clusters      = super(_SnPM1D, self)._get_clusters(zstar, check_neg, interp, circular)
 		metric        = metric_dict[cluster_metric]
-		clusters      = [ClusterNP(c, metric, iterations, self.nPermUnique)   for c in clusters]
+		clusters      = [ClusterNonparam(c, metric, iterations, self.nPermUnique)   for c in clusters]
 		
 		# , c, mvalue, mlabel, iterations, nPermUnique
 		

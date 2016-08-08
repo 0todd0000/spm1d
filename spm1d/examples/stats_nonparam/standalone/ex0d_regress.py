@@ -119,10 +119,10 @@ print t, 0.5*results.pvalue
 #
 #
 # ### report results:
-# print 'Non-parametric t test:'
+# print 'Non-parametric test:'
 # print '   t=%.3f, p=%.5f, tCritical=%.3f' %(t0,p,tCrit)
 # print
-# print 'Parametric t test:'
+# print 'Parametric test:'
 # print '   t=%.3f, p=%.5f, tCritical=%.3f' %(t0,p_para,tCrit_para)
 # print
 

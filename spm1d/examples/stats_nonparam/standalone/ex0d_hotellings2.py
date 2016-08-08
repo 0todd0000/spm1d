@@ -86,10 +86,10 @@ print z0
 #
 #
 # ### report results:
-# print 'Non-parametric t test:'
+# print 'Non-parametric test:'
 # print '   T2=%.3f, p=%.5f' %(z0, p)
 # print
-# print 'Parametric t test:'
+# print 'Parametric test:'
 # print '   T2=%.3f, p=%.5f' %(zparam, pparam)
 # print
 

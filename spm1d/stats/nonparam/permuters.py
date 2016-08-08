@@ -27,6 +27,8 @@ class _Permuter(object):
 
 
 class _Permuter0D(_Permuter):
+	dim = 0   #data dimensionality
+	
 	def get_p_value(self, z, zstar, alpha, Z=None):
 		two_tailed    = isinstance(zstar, np.ndarray)
 		Z             = self.Z if Z is None else Z
@@ -52,6 +54,8 @@ class _Permuter0D(_Permuter):
 
 
 class _Permuter1D(_Permuter):
+	dim = 1   #data dimensionality
+	
 	def build_secondary_pdf(self, zstar):
 		self.Z2          = [self.metric.get_max_metric(z, zstar)   for z in self.ZZ]
 	
@@ -114,7 +118,6 @@ class _PermuterOneSample(object):
 
 class _PermuterOneSample0D(_PermuterOneSample, _Permuter0D):
 	def __init__(self, y, mu=None):
-		self.dim        = 0                         #data dimensionality
 		self.Y          = y                         #original responses
 		self.J          = y.shape[0]                #number of responses
 		self.N          = y.size                    #total number of permutable elements
@@ -128,7 +131,6 @@ class _PermuterOneSample0D(_PermuterOneSample, _Permuter0D):
 
 class _PermuterOneSample1D(_PermuterOneSample, _Permuter1D):
 	def __init__(self, y, mu=None):
-		self.dim        = 1                         #data dimensionality
 		self.Y          = y                         #original responses
 		self.J          = y.shape[0]                #number of responses
 		self.Q          = y.shape[1]                #number of continuum nodes
@@ -288,7 +290,9 @@ class PermuterHotellings20D(_PermuterTwoSample, _Permuter0D):
 	def _set_stat_calculator(self):
 		self.calc          = calculators.CalculatorHotellings20D(self.JA, self.JB)
 
-
+class PermuterTtest21D(_PermuterTwoSample, _Permuter1D):
+	def _set_stat_calculator(self):
+		self.calc          = calculators.CalculatorTtest21D(self.JA, self.JB)
 
 
 

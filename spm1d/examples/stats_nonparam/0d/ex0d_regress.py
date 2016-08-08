@@ -1,7 +1,7 @@
 
 import numpy as np
 import scipy.stats
-import spm1dNP
+import spm1d
 
 
 
@@ -37,7 +37,7 @@ y   *= -1
 np.random.seed(0)
 alpha      = 0.05
 two_tailed = False
-t          = spm1dNP.regress(y, x)
+t          = spm1d.stats.nonparam.regress(y, x)
 # ti         = t.inference(alpha, two_tailed=two_tailed, iterations=-1, force_iterations=True)
 ti         = t.inference(alpha, two_tailed=two_tailed, iterations=1000)
 print(ti)

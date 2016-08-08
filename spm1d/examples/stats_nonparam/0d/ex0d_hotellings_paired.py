@@ -1,7 +1,7 @@
 
 import numpy as np
 import scipy.stats
-import spm1dNP
+import spm1d
 import spm1d
 
 
@@ -16,7 +16,7 @@ yA,yB   = dataset.get_data()
 #(1) Conduct non-parametric test:
 np.random.seed(10)
 alpha      = 0.05
-T2         = spm1dNP.hotellings_paired(yA, yB)
+T2         = spm1d.stats.nonparam.hotellings_paired(yA, yB)
 T2i        = T2.inference(alpha, iterations=1000)
 
 
@@ -40,10 +40,10 @@ pparam     = T2parami.p
 
 
 ### report results:
-print 'Non-parametric t test:'
+print 'Non-parametric test:'
 print '   T2=%.3f, p=%.5f' %(T2i.z, T2i.p)
 print
-print 'Parametric t test:'
+print 'Parametric test:'
 print '   T2=%.3f, p=%.5f' %(zparam, pparam)
 print
 

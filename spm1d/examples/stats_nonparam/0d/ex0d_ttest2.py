@@ -1,7 +1,7 @@
 
 import numpy as np
 import scipy.stats
-import spm1dNP
+import spm1d
 
 
 
@@ -31,20 +31,20 @@ yA,yB      = yB, yA
 #(1) Conduct non-parametric test:
 alpha      = 0.05
 two_tailed = True
-t          = spm1dNP.ttest2(yA, yB)
+t          = spm1d.stats.nonparam.ttest2(yA, yB)
 ti         = t.inference(alpha, two_tailed=two_tailed)
 print(ti)
 
 
 
-#(2) Compare to parametric inference:
+#(2) Compare to parametric test:
 results    = scipy.stats.ttest_ind(yA, yB)
 tparam     = results.statistic
 pparam     = get_scipy_pvalue( results, two_tailed )
 
 
 
-#(3) Compare to parametric test:
+#(3) Print results:
 print
 print( 'Non-parametric results:' )
 print( '   t=%.3f, p=%.5f' %(ti.z, ti.p) )
