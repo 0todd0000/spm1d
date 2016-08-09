@@ -28,7 +28,8 @@ print ti.clusters
 #(2) Compare with parametric result:
 tparam     = spm1d.stats.ttest(y, mu)
 tiparam    = tparam.inference(alpha, two_tailed=two_tailed)
-
+print tparam
+print tiparam.clusters
 
 
 #(3) Plot

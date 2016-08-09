@@ -49,7 +49,7 @@ def _set_docstr(childfn, parentfn, args2remove=None):
 	childfn.__func__.__doc__ = docstr
 
 
-eps    = np.finfo(float).eps   #smallest float, used to avoid divide-by-zero errors
+
 
 
 
@@ -207,6 +207,7 @@ class _SPM(object):
 		self.fwhm           = fwhm             #smoothness
 		self.resels         = resels           #resel counts
 		self.roi            = roi              #region of interest
+		self._ClusterClass  = Cluster          #class definition for parametric / non-parametric clusters
 
 
 	def __repr__(self):
@@ -265,7 +266,7 @@ class _SPM(object):
 				z     += [u]
 			# create cluster:
 			x,z  = np.array(x), csign*np.array(z)
-			clusters.append(  Cluster(x, z, csign*u, interp) )
+			clusters.append(  self._ClusterClass(x, z, csign*u, interp) )
 		#merge clusters if necessary (circular fields only)
 		if circular and (clusters!=[]):
 			xy         = np.array([c.endpoints  for c in clusters])

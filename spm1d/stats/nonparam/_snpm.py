@@ -15,7 +15,7 @@ from .. _clusters import ClusterNonparam
 
 '''
 #################
-(1)  SPM CLASS DEFINITIONS
+(1)  SnPM CLASS DEFINITIONS
 #################
 '''
 
@@ -193,6 +193,7 @@ class _SnPM1D(_SnPM, _spm._SPM):
 		self.Q              = z.size           #field size
 		self.nPermUnique    = perm.nPermTotal  #number of unique permutations possible
 		self.z              = z                #test statistic
+		self._ClusterClass  = ClusterNonparam
 
 
 
@@ -228,7 +229,10 @@ class _SnPM1D(_SnPM, _spm._SPM):
 	def _get_clusters(self, zstar, check_neg, interp, circular, iterations, cluster_metric):
 		clusters      = super(_SnPM1D, self)._get_clusters(zstar, check_neg, interp, circular)
 		metric        = metric_dict[cluster_metric]
-		clusters      = [ClusterNonparam(c, metric, iterations, self.nPermUnique)   for c in clusters]
+		for c in clusters:
+			c.set_metric(metric, iterations, self.nPermUnique)
+		# metric        =
+		# clusters      = [ClusterNonparam(c, metric, iterations, self.nPermUnique)   for c in clusters]
 		
 		# , c, mvalue, mlabel, iterations, nPermUnique
 		
