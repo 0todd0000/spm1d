@@ -56,24 +56,10 @@ class _Permuter0D(_Permuter):
 class _Permuter1D(_Permuter):
 	dim = 1   #data dimensionality
 	
-	def build_secondary_pdf(self, zstar):
-		self.Z2          = [self.metric.get_max_metric(z, zstar)   for z in self.ZZ]
-	
-	# def get_cluster_p_values(self, z, zstar, two_tailed=False):
-	# 	p,m   = [],[]
-	# 	if np.any( z > zstar ):
-	# 		m += self.metric.get_all_cluster_metrics(z, zstar)
-	# 	if two_tailed:
-	# 		if np.any(-z>thresh):
-	# 			m += self.metric.get_all_cluster_metrics(-z, zstar)
-	# 	if len(m) > 0:
-	# 		p = [1 - 0.01*percentileofscore(self.Z2, mm) for mm in m]
-	# 	return p
-
+	def build_secondary_pdf(self, zstar, circular=False):
+		self.Z2          = [self.metric.get_max_metric(z, zstar, circular)   for z in self.ZZ]
 	def get_clusters(self, z, zstar, two_tailed=False):
 		return self.metric.get_all_clusters(z, zstar, self.Z2, two_tailed)
-
-	
 	def set_metric(self, metric_name):
 		self.metric     = metric_dict[metric_name]
 
@@ -255,9 +241,10 @@ class _PermuterTwoSample(object):
 	def _stack(self, yA, yB):
 		ndim   = yA.ndim
 		if ndim == 1:
-			Y  = np.matrix(   np.hstack( [yA, yB] )   ).T
+			# Y  = np.matrix(   np.hstack( [yA, yB] )   ).T
+			Y  = np.hstack( [yA, yB] )
 		else:
-			Y  = np.matrix(   np.vstack( [yA, yB] )   )
+			Y  = np.vstack( [yA, yB] )
 		return Y
 
 	def build_pdf(self, iterations=-1):
@@ -270,6 +257,9 @@ class _PermuterTwoSample(object):
 				ones        = np.random.permutation(self.J)[:self.JA]
 				Z.append(  self.get_test_stat_ones(ones)  )
 		self.Z              = np.asarray(Z)
+		if self.dim==1:
+			self.ZZ         = self.Z
+			self.Z          = self.Z.max(axis=1)
 
 	def get_test_stat(self, labels):
 		yA,yB              = self.Y[labels==0], self.Y[labels==1]
@@ -283,8 +273,7 @@ class _PermuterTwoSample(object):
 
 class PermuterTtest20D(_PermuterTwoSample, _Permuter0D):
 	def _set_stat_calculator(self):
-		self.calc          = calculators.CalculatorTtest20D(self.JA, self.JB)
-
+		self.calc          = calculators.CalculatorTtest2(self.JA, self.JB)
 
 class PermuterHotellings20D(_PermuterTwoSample, _Permuter0D):
 	def _set_stat_calculator(self):
@@ -292,7 +281,7 @@ class PermuterHotellings20D(_PermuterTwoSample, _Permuter0D):
 
 class PermuterTtest21D(_PermuterTwoSample, _Permuter1D):
 	def _set_stat_calculator(self):
-		self.calc          = calculators.CalculatorTtest21D(self.JA, self.JB)
+		self.calc          = calculators.CalculatorTtest2(self.JA, self.JB)
 
 
 

@@ -2,10 +2,8 @@
 from math import ceil
 import numpy as np
 from metrics import metric_dict
-from ... plot import plot_spm
-from ... plot import plot_spmi, plot_spmi_p_values, plot_spmi_threshold_label
 from .. import _spm
-from .. _spm import plist2string
+from .. _spm import p2string, plist2string
 from .. _clusters import ClusterNonparam
 
 
@@ -13,14 +11,11 @@ from .. _clusters import ClusterNonparam
 
 
 
-'''
-#################
-(1)  SnPM CLASS DEFINITIONS
-#################
-'''
-
-
 class _SnPM(object):
+	'''Parent class for all non-parametric SPM classes.'''
+	
+	isparametric  = False
+	
 	def _check_iterations(self, iterations, alpha, force_iterations):
 		if iterations > self.nPermUnique:
 			if self.nPermUnique!=-1:
@@ -35,7 +30,20 @@ class _SnPM(object):
 
 
 
+
+
+'''
+################################
+   0D SnPM CLASS DEFINITIONS
+################################
+'''
+
+
+
+
+
 class _SnPM0D(_SnPM):
+	'''Parent class for all 0D non-parametric SPM classes.'''
 	def __init__(self, STAT, z, perm):
 		z                   = 0 if np.isnan(z) else z
 		self.permuter       = perm             #permuter (for conducting inference)
@@ -96,8 +104,6 @@ class _SnPM0Dlist(_SnPM0D):
 			spmi  = SnPM0Dinference(spm, alpha, zstar, p)
 			spmilist.append( spmi )
 		return spmilist
-
-
 
 
 
@@ -185,7 +191,16 @@ class SnPM0Dinference(_SnPM0D):
 
 
 
+
+
+'''
+################################
+   1D SnPM CLASS DEFINITIONS
+################################
+'''
+
 class _SnPM1D(_SnPM, _spm._SPM):
+	'''Parent class for all 1D non-parametric SPM classes.'''
 	def __init__(self, STAT, z, perm):
 		z[np.isnan(z)]      = 0
 		self.permuter       = perm             #permuter (for conducting inference)
@@ -208,81 +223,59 @@ class _SnPM1D(_SnPM, _spm._SPM):
 		return s
 
 
-	# def _get_cluster_p_values(self, thresh, two_tailed=False):
-	# 	p,m   = [],[]
-	# 	if np.any(self.z>thresh):
-	# 		m += self.permuter.metric.get_all_cluster_metrics(self.z, thresh)
-	# 	if two_tailed:
-	# 		if np.any(-self.z>thresh):
-	# 			m += self.permuter.metric.get_all_cluster_metrics(-self.z, thresh)
-	# 	if len(m)>0:
-	# 		p = [1 - 0.01*stats.percentileofscore(self.permuter.Z1, mm) for mm in m]
-	# 	return p,m
-
-
-	def _cluster_inference(self, clusters):
+	def _cluster_inference(self, clusters, two_tailed=False):
 		for cluster in clusters:
-			cluster.inference(self.permuter.Z2)
+			cluster.inference(self.permuter.Z2, two_tailed)
 		return clusters
 
-	
-	def _get_clusters(self, zstar, check_neg, interp, circular, iterations, cluster_metric):
-		clusters      = super(_SnPM1D, self)._get_clusters(zstar, check_neg, interp, circular)
+	def _get_clusters(self, zstar, two_tailed, interp, circular, iterations, cluster_metric):
+		clusters      = super(_SnPM1D, self)._get_clusters(zstar, two_tailed, interp, circular)
 		metric        = metric_dict[cluster_metric]
 		for c in clusters:
-			c.set_metric(metric, iterations, self.nPermUnique)
-		# metric        =
-		# clusters      = [ClusterNonparam(c, metric, iterations, self.nPermUnique)   for c in clusters]
-		
-		# , c, mvalue, mlabel, iterations, nPermUnique
-		
-		
-		# (self, x, z, u, interp=True, mvalue=0, mlabel=None)
-		
+			c.set_metric(metric, iterations, self.nPermUnique, two_tailed)
 		return clusters
 	
 	def inference(self, alpha=0.05, iterations=-1, two_tailed=False, interp=True, circular=False, force_iterations=False, cluster_metric='MaxClusterIntegral'):
 		self._check_iterations(iterations, alpha, force_iterations)
+		### build primary PDF:
 		self.permuter.build_pdf(iterations)
-		check_neg  = two_tailed
-		### conduct inference:
+		### compute critical threshold:
 		a          = 0.5*alpha if two_tailed else alpha  #adjusted alpha (if two-tailed)
 		zstar      = self.permuter.get_z_critical(a, two_tailed)
 		zstar      = zstar[1] if np.size([zstar])==2 else zstar
 		### build secondary PDF:
 		self.permuter.set_metric( cluster_metric )
-		self.permuter.build_secondary_pdf(zstar)
-		
-		
-		clusters   = self._get_clusters(zstar, check_neg, interp, circular, iterations, cluster_metric)  #assemble all suprathreshold clusters
-		clusters   = self._cluster_inference(clusters)  #conduct cluster-level inference
-		# 	clusters    = [Cluster(self, L==(i+1), zstar, metric, iterations, self.nPermUnique)   for i in range(nClusters)]
-		
-		
+		self.permuter.build_secondary_pdf( zstar, circular )
+		### assemble clusters and conduct cluster-level inference:
+		clusters   = self._get_clusters(zstar, two_tailed, interp, circular, iterations, cluster_metric)
+		clusters   = self._cluster_inference(clusters, two_tailed)
 		return SnPMinference(self, alpha, zstar, two_tailed, clusters)
 
-		
-	def plot(self, **kwdargs):
-		return plot_spm(self, **kwdargs)
-		
-	# def plot_design(self, **kwdargs):
-	# 	plot_spm_design(self, **kwdargs)
-		
-	def toarray(self):
-		return self.z.copy()
+	def plot_design(self, **kwdargs):
+		msg        = '\n'
+		msg       += 'The "plot_design" method is not implemented for non-parametric SPMs. '
+		msg       += 'To plot the design matrix use the corresponding parametric procedure and then call "plot_design".\n'
+		msg       += 'For example:\n'
+		msg       += '   >>>  spm = spm1d.stats.ttest2(yA, yB)\n' 
+		msg       += '   >>>  spm.plot_design()\n\n' 
+		raise( NotImplementedError(msg) )
+
+
+
+
 
 
 
 class SnPM_T(_SnPM1D):
 	def __init__(self, z, perm):
 		_SnPM1D.__init__(self, 'T', z, perm)
-	
 
 
 
 
 
-class SnPMinference(_SnPM1D):
+
+class SnPMinference(_SnPM1D, _spm._SPMinference):
 	def __init__(self, spm, alpha, zstar, two_tailed, clusters):
 		super(SnPMinference, self).__init__(spm.STAT, spm.z, spm.permuter)
 		self.PDF0           = self.permuter.Z        #primary permutation PDF
@@ -313,22 +306,6 @@ class SnPMinference(_SnPM1D):
 		s       += '   SPM.p              :  (%s)\n' %plist2string(self.p)
 		return s
 		
-	def plot(self, ax=None, **kwdargs):
-		# ax   = pyplot.gca() if ax is None else ax
-		# ax.plot(self.z, 'b', lw=3)
-		# ax.axhline(self.zstar, color='r', linestyle='--')
-		# if self.two_tailed:
-		# 	ax.axhline(-self.zstar, color='r', linestyle='--')
-		return plot_spmi(self, ax=ax, **kwdargs)
-		
-		
-
-	def plot_p_values(self, **kwdargs):
-		plot_spmi_p_values(self, **kwdargs)
-	
-	def plot_threshold_label(self, **kwdargs):
-		return plot_spmi_threshold_label(self, **kwdargs)
-	
 
 
 

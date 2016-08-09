@@ -162,7 +162,9 @@ class SPMPlotter(DataPlotter):
 			ax.plot(x, self.z, **kwdargs)
 	
 	def plot_ylabel(self):
-		self.ax.set_ylabel('SPM{%s}'%self._get_statstr(), size=16)
+		spmlabel = 'SPM' if self.spm.isparametric else 'SnPM'
+		label    = '%s{%s}' %( spmlabel, self._get_statstr() )
+		self.ax.set_ylabel(label, size=16)
 	
 	def set_data(self):
 		if isinstance(self.spm.z, np.ma.MaskedArray):

@@ -63,13 +63,23 @@ class _CalculatorTwoSample(object):
 		pass
 
 
-class CalculatorTtest20D( _CalculatorTwoSample ):
+class CalculatorTtest2( _CalculatorTwoSample ):
 	def __init__(self, nA, nB):
-		super(CalculatorTtest20D, self).__init__(nA, nB)
+		super(CalculatorTtest2, self).__init__(nA, nB)
 		self.sqrtAB      = (1.0/nA + 1.0/nB)**0.5
 	def get_test_stat(self, yA, yB):
-		mA,mB  = yA.mean(), yB.mean()
-		sA,sB  = yA.std(ddof=1), yB.std(ddof=1)
+		mA,mB  = yA.mean(axis=0), yB.mean(axis=0)
+		sA,sB  = yA.std(axis=0, ddof=1), yB.std(axis=0, ddof=1)
+		
+		# print yA.shape, yB.shape
+		# print mA.shape, mB.shape
+		# print sA.shape, sB.shape
+		# print
+		# print yA.ndim, yB.ndim
+		# print mA.ndim, mB.ndim
+		# print sA.ndim, sB.ndim
+		
+		
 		s      = (   (  self.nA1*sA*sA + self.nB1*sB*sB  )  /  self.df   )**0.5
 		return (mA-mB) / s / self.sqrtAB
 

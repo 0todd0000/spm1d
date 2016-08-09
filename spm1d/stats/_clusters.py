@@ -112,6 +112,7 @@ class _Cluster(object):
 		self.extent     = self.extent + other.extent
 		self.endpoints  = [other.endpoints, self.endpoints]
 		self.xy         = [other.xy, self.xy]
+		self.centroid   = self.xy
 		self._other     = other
 
 
@@ -170,15 +171,19 @@ class ClusterNonparam(Cluster):
 		self.metric_label  = None
 		self._assemble()
 		
-	def set_metric(self, metric, iterations, nPermUnique):
+	def set_metric(self, metric, iterations, nPermUnique, two_tailed):
 		self.metric        = metric
 		self.iterations    = iterations
 		self.nPerm         = iterations if iterations > 0 else nPermUnique
 		self.nPermUnique   = nPermUnique
-		self.metric_value  = metric.get_single_cluster_metric_xz(self._X, self._Z, self.threshold)
 		self.metric_label  = metric.get_label_single()
+		### compute metric value:
+		x                  = metric.get_single_cluster_metric_xz(self._X, self._Z, self.threshold, two_tailed)
+		if self.iswrapped:
+			x             += metric.get_single_cluster_metric_xz(self._other._X, self._other._Z, self.threshold, two_tailed)
+		self.metric_value  = x
 
-	def inference(self, pdf):
+	def inference(self, pdf, two_tailed):
 		self.P             = (pdf >= self.metric_value).mean()
 		# self.P             = max( self.P,  1.0/self.nPermUnique )
 

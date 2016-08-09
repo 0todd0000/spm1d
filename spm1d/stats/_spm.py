@@ -53,6 +53,11 @@ def _set_docstr(childfn, parentfn, args2remove=None):
 
 
 
+class _SPMParent(object):
+	'''Parent class for all parametric SPM classes.'''
+	isparametric  = True
+
+
 
 
 
@@ -66,7 +71,7 @@ def _set_docstr(childfn, parentfn, args2remove=None):
 
 
 
-class _SPM0D(object):
+class _SPM0D(_SPMParent):
 	def __init__(self, STAT, z, df):
 		self.STAT           = STAT             #test statistic ("T" or "F")
 		self.z              = float(z)         #test statistic
@@ -193,8 +198,8 @@ class SPM0Di_X2(_SPM0Dinference):
 '''
 
 
-class _SPM(object):
-	'''Parent class for all SPM.'''
+class _SPM(_SPMParent):
+	'''Parent class for all 1D SPM classes.'''
 	def __init__(self, STAT, z, df, fwhm, resels, X, beta, residuals, roi=None):
 		z[np.isnan(z)]      = 0
 		self.STAT           = STAT             #test statistic ("T" or "F")
