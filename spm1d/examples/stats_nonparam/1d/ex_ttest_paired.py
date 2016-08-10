@@ -7,22 +7,8 @@ import spm1d
 
 
 #(0) Load dataset:
-# dataset    = spm1d.data.uv1d.t1.Random()
-# dataset    = spm1d.data.uv1d.t1.SimulatedPataky2015a()
-dataset    = spm1d.data.uv1d.t1.SimulatedPataky2015b()
-y,mu       = dataset.get_data()
-# y  *= -1
-
-
-
-# roi = None
-# permuters = spm1d.stats.nonparam.permuters
-# _snpm     = spm1d.stats.nonparam._snpm
-#
-# perm    = permuters.PermuterTtest1D(y, mu, roi=roi)
-# z       = perm.get_test_stat_original()
-# t = _snpm.SnPM_T(z, perm, roi)
-
+dataset      = spm1d.data.uv1d.t2.PlantarArchAngle()
+yA,yB        = dataset.get_data()  #normal and fast walking
 
 
 
@@ -30,7 +16,7 @@ y,mu       = dataset.get_data()
 np.random.seed(0)
 alpha      = 0.05
 two_tailed = False
-snpm       = spm1d.stats.nonparam.ttest(y, mu)
+snpm       = spm1d.stats.nonparam.ttest_paired(yA, yB)
 snpmi      = snpm.inference(alpha, two_tailed=two_tailed, iterations=-1)
 print snpmi
 print snpmi.clusters
@@ -38,7 +24,7 @@ print snpmi.clusters
 
 
 #(2) Compare with parametric result:
-spm        = spm1d.stats.ttest(y, mu)
+spm        = spm1d.stats.ttest_paired(yA, yB)
 spmi       = spm.inference(alpha, two_tailed=two_tailed)
 print spmi
 print spmi.clusters

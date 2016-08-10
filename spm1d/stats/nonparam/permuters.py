@@ -203,6 +203,9 @@ class _PermuterRegress(object):
 				ind      = np.random.permutation( self.J )
 				Z.append(  self.get_test_stat(ind)  )
 		self.Z           = np.array(Z)
+		if self.dim==1:
+			self.ZZ    = self.Z
+			self.Z     = self.Z.max(axis=1)
 
 	def get_test_stat(self, ind):
 		return self.calc.get_test_stat( self.Y[ list(ind) ] )
@@ -217,10 +220,29 @@ class PermuterCCA0D(_PermuterRegress, _Permuter0D):
 	def _set_stat_calculator(self):
 		self.calc          = calculators.CalculatorCCA0D(self.x)
 
+class PermuterRegress1D(_PermuterRegress, _Permuter1D):
+	def __init__(self, y, x, roi=None):
+		self.Y             = y
+		self.x             = x
+		self.J             = x.size
+		self.labels0       = np.arange( self.J )  #original labels
+		self.nPermTotal    = int( factorial( self.J ) )
+		self.calc          = None
+		self.ZZ            = None                      #all permuted test statistic fields
+		self.Z             = None                      #primary PDF:    test statistic field maxima distribution
+		self.Z2            = None                      #secondary PDF:  cluster metric distribution
+		self.roi           = None                      #region(s) of interest
+		self._set_stat_calculator()
+		self._set_roi(roi)
+		
+		
+	def _set_stat_calculator(self):
+		self.calc          = calculators.CalculatorRegress1D(self.x)
 
 
-
-
+class PermuterCCA1D(PermuterRegress1D):
+	def _set_stat_calculator(self):
+		self.calc          = calculators.CalculatorCCA1D(self.x)
 
 
 #---------------------------------------------------------------------------------
@@ -280,6 +302,13 @@ class _PermuterTwoSample(object):
 		return self.get_test_stat(labels)
 
 
+class _PermuterTwoSample1D(_PermuterTwoSample, _Permuter1D):
+	def __init__(self, yA, yB, roi=None):
+		super(_PermuterTwoSample1D, self).__init__(yA, yB)
+		self.roi            = None
+		self._set_roi(roi)
+
+
 class PermuterTtest20D(_PermuterTwoSample, _Permuter0D):
 	def _set_stat_calculator(self):
 		self.calc          = calculators.CalculatorTtest2(self.JA, self.JB)
@@ -288,11 +317,13 @@ class PermuterHotellings20D(_PermuterTwoSample, _Permuter0D):
 	def _set_stat_calculator(self):
 		self.calc          = calculators.CalculatorHotellings20D(self.JA, self.JB)
 
-class PermuterTtest21D(_PermuterTwoSample, _Permuter1D):
+class PermuterTtest21D(_PermuterTwoSample1D):
 	def _set_stat_calculator(self):
 		self.calc          = calculators.CalculatorTtest2(self.JA, self.JB)
 
-
+class PermuterHotellings21D(_PermuterTwoSample1D):
+	def _set_stat_calculator(self):
+		self.calc          = calculators.CalculatorHotellings21D(self.JA, self.JB)
 
 
 
@@ -301,7 +332,7 @@ class PermuterTtest21D(_PermuterTwoSample, _Permuter1D):
 #  ANOVA PERMUTERS
 #---------------------------------------------------------------------------------
 
-class _PermuterANOVA0D(_Permuter0D):
+class _PermuterANOVA(object):
 	def __init__(self, y, *args):
 		self.Y          = y                         #original responses
 		self.J          = y.shape[0]                #number of responses
@@ -322,17 +353,54 @@ class _PermuterANOVA0D(_Permuter0D):
 				ind      = np.random.permutation( self.J )
 				Z.append(  self.get_test_stat(ind)  )
 		self.Z           = np.array(Z)
+		if self.dim==1:
+			self.ZZ    = self.Z
+			self.Z     = self.Z.max(axis=-1)
 
 	def get_test_stat(self, ind):
 		return self.calc.get_test_stat( self.Y[ list(ind) ] )
 
 
+class _PermuterANOVA0D(_PermuterANOVA, _Permuter0D):
+	pass
+class _PermuterANOVA1D(_PermuterANOVA, _Permuter1D):
+	def __init__(self, y, roi=None, *args):
+		super(_PermuterANOVA1D, self).__init__(y, *args)
+		self.ZZ         = None                      #all permuted test statistic fields
+		self.Z2         = None                      #secondary PDF:  cluster metric distribution
+		self.roi        = None                      #region(s) of interest
+		self._set_roi(roi)
+
+
+
+
+
 class _PermuterANOVA0DmultiF(_PermuterANOVA0D):
 	def get_p_value_list(self, zz, zzstar, alpha):
 		return [self.get_p_value(z, zstar, alpha, Z=Z)  for z,zstar,Z in zip(zz,zzstar,self.Z.T)]
-
 	def get_z_critical_list(self, alpha=0.05, two_tailed=False):
 		return self.get_z_critical()
+
+class _PermuterANOVA1DmultiF(_PermuterANOVA1D):
+	# def get_p_value_list(self, zz, zzstar, alpha):
+	# 	return [self.get_p_value(z, zstar, alpha, Z=Z)  for z,zstar,Z in zip(zz,zzstar,self.Z.T)]
+
+	def build_secondary_pdfs(self, zstarlist, circular=False):
+		Z2   = []
+		for i,zstar in enumerate(zstarlist):
+			Z    = self.ZZ[:,i,:]   #all test statistic fields for one ANOVA term
+			z2   = [self.metric.get_max_metric(z, zstar, circular)  for z in Z]
+			Z2.append(z2)
+		self.Z2  = np.array(Z2)
+
+
+
+
+
+	def get_z_critical_list(self, alpha=0.05):
+		return self.get_z_critical(alpha)
+
+
 
 
 
@@ -342,7 +410,17 @@ class PermuterANOVA1(_PermuterANOVA0D):
 class PermuterANOVA1rm(_PermuterANOVA0D):
 	def _set_teststat_calculator(self, *args):
 		self.calc  = calculators.CalculatorANOVA1rm(*args)
-	
+
+
+class PermuterANOVA11D(_PermuterANOVA1D):
+	def _set_teststat_calculator(self, *args):
+		self.calc  = calculators.CalculatorANOVA1( args[0] )
+class PermuterANOVA1rm1D(_PermuterANOVA1D):
+	def _set_teststat_calculator(self, *args):
+		self.calc  = calculators.CalculatorANOVA1rm( *args )
+
+
+
 
 
 class PermuterANOVA2(_PermuterANOVA0DmultiF):
@@ -357,6 +435,13 @@ class PermuterANOVA2onerm(_PermuterANOVA0DmultiF):
 class PermuterANOVA2rm(_PermuterANOVA0DmultiF):
 	def _set_teststat_calculator(self, *args):
 		self.calc  = calculators.CalculatorANOVA2rm(*args)
+
+
+class PermuterANOVA21D(_PermuterANOVA1DmultiF):
+	def _set_teststat_calculator(self, *args):
+		self.calc  = calculators.CalculatorANOVA2( *args )
+
+
 
 
 

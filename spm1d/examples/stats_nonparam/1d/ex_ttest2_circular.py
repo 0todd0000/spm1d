@@ -5,20 +5,20 @@ import spm1d
 
 
 
-
-#(0) Load dataset:
-dataset      = spm1d.data.uv1d.t2.PlantarArchAngle()
-# dataset      = spm1d.data.uv1d.t2.SimulatedTwoLocalMax()
-yB,yA        = dataset.get_data()  #normal and fast walking
+#(0) Load a dataset containing a circular field:
+dataset  = spm1d.data.uv1d.anova1.Weather()
+Y,A      = dataset.get_data()
+yA,yB    = Y[A==0], Y[A==2]  #Atlantic and Contintental regions
 
 
 
 #(1) Conduct non-parametric test:
 np.random.seed(0)
 alpha      = 0.05
-two_tailed = True
+two_tailed = False
+circular   = True
 snpm       = spm1d.stats.nonparam.ttest2(yA, yB)
-snpmi      = snpm.inference(alpha, two_tailed=two_tailed, iterations=500)
+snpmi      = snpm.inference(alpha, two_tailed=two_tailed, iterations=1000, circular=circular)
 print snpmi
 print snpmi.clusters
 
@@ -26,7 +26,7 @@ print snpmi.clusters
 
 #(2) Compare with parametric result:
 spm        = spm1d.stats.ttest2(yA, yB)
-spmi       = spm.inference(alpha, two_tailed=two_tailed)
+spmi       = spm.inference(alpha, two_tailed=two_tailed, circular=circular)
 print spmi
 print spmi.clusters
 

@@ -14,6 +14,7 @@ from .. _clusters import ClusterNonparam
 class _SnPM(object):
 	'''Parent class for all non-parametric SPM classes.'''
 	
+	STAT          = 'Z'     #test statistic ("T", "F", "X2" or "T2")
 	isparametric  = False
 	
 	def _check_iterations(self, iterations, alpha, force_iterations):
@@ -44,10 +45,9 @@ class _SnPM(object):
 
 class _SnPM0D(_SnPM):
 	'''Parent class for all 0D non-parametric SPM classes.'''
-	def __init__(self, STAT, z, perm):
+	def __init__(self, z, perm):
 		z                   = 0 if np.isnan(z) else z
 		self.permuter       = perm             #permuter (for conducting inference)
-		self.STAT           = STAT             #test statistic ("T", "F" or "Manual")
 		self.nPermUnique    = perm.nPermTotal  #number of unique permutations possible
 		self.z              = z                #test statistic
 
@@ -73,10 +73,9 @@ class _SnPM0D(_SnPM):
 
 
 class _SnPM0Dlist(_SnPM0D):
-	def __init__(self, STAT, z, perm):
+	def __init__(self, z, perm):
 		z                   = [0 if np.isnan(zz) else zz  for zz in z]
 		self.permuter       = perm             #permuter (for conducting inference)
-		self.STAT           = STAT             #test statistic ("T", "F" or "Manual")
 		self.nPermUnique    = perm.nPermTotal  #number of unique permutations possible
 		self.z              = z                #test statistic
 
@@ -108,9 +107,12 @@ class _SnPM0Dlist(_SnPM0D):
 
 
 
+
+
+
+
 class SnPM0D_T(_SnPM0D):
-	def __init__(self, z, perm):
-		_SnPM0D.__init__(self, 'T', z, perm)
+	STAT = 'T'
 	
 	def inference(self, alpha=0.05, two_tailed=True, iterations=-1, force_iterations=False):
 		self._check_iterations(iterations, alpha, force_iterations)
@@ -121,21 +123,13 @@ class SnPM0D_T(_SnPM0D):
 		return SnPM0Dinference(self, alpha, zstar, p, two_tailed)
 
 class SnPM0D_F(_SnPM0D):
-	def __init__(self, z, perm):
-		_SnPM0D.__init__(self, 'F', z, perm)
-
+	STAT = 'F'
 class SnPM0D_X2(_SnPM0D):
-	def __init__(self, z, perm):
-		_SnPM0D.__init__(self, 'X2', z, perm)
-
+	STAT = 'X2'
 class SnPM0D_T2(_SnPM0D):
-	def __init__(self, z, perm):
-		_SnPM0D.__init__(self, 'T2', z, perm)
-
-
+	STAT = 'T2'
 class SnPM0D_Flist(_SnPM0Dlist):
-	def __init__(self, zz, perm):
-		_SnPM0Dlist.__init__(self, 'F', zz, perm)
+	STAT = 'F'
 
 
 
@@ -143,7 +137,8 @@ class SnPM0D_Flist(_SnPM0Dlist):
 
 class SnPM0Dinference(_SnPM0D):
 	def __init__(self, spm, alpha, zstar, p, two_tailed=False):
-		super(SnPM0Dinference, self).__init__(spm.STAT, spm.z, spm.permuter)
+		super(SnPM0Dinference, self).__init__(spm.z, spm.permuter)
+		self.STAT           = spm.STAT
 		self.PDF            = self.permuter.Z       #permutation PDF
 		self.alpha          = alpha                 #Type I error rate
 		self.nPerm          = self.permuter.Z.size  #number of permutations
@@ -201,13 +196,12 @@ class SnPM0Dinference(_SnPM0D):
 
 class _SnPM1D(_SnPM, _spm._SPM):
 	'''Parent class for all 1D non-parametric SPM classes.'''
-	def __init__(self, STAT, z, perm, roi=None):
+	def __init__(self, z, perm):
 		z[np.isnan(z)]      = 0
 		self.permuter       = perm             #permuter (for conducting inference)
-		self.STAT           = STAT             #test statistic ("T", "F", "X2" or "T2")
 		self.Q              = z.size           #field size
 		self.nPermUnique    = perm.nPermTotal  #number of unique permutations possible
-		self.roi            = roi              #region(s) of interest
+		self.roi            = perm.roi         #region(s) of interest
 		self.z              = z                #test statistic
 		self._ClusterClass  = ClusterNonparam
 
@@ -229,8 +223,8 @@ class _SnPM1D(_SnPM, _spm._SPM):
 			cluster.inference(self.permuter.Z2, two_tailed)
 		return clusters
 
-	def _get_clusters(self, zstar, two_tailed, interp, circular, iterations, cluster_metric):
-		clusters      = super(_SnPM1D, self)._get_clusters(zstar, two_tailed, interp, circular)
+	def _get_clusters(self, zstar, two_tailed, interp, circular, iterations, cluster_metric, z=None):
+		clusters      = super(_SnPM1D, self)._get_clusters(zstar, two_tailed, interp, circular, z=z)
 		metric        = metric_dict[cluster_metric]
 		for c in clusters:
 			c.set_metric(metric, iterations, self.nPermUnique, two_tailed)
@@ -262,15 +256,102 @@ class _SnPM1D(_SnPM, _spm._SPM):
 		raise( NotImplementedError(msg) )
 
 
+class _SnPM1Donetailed(_SnPM1D):
+	def inference(self, alpha=0.05, iterations=-1, interp=True, circular=False, force_iterations=False, cluster_metric='MaxClusterIntegral'):
+		return super(_SnPM1Donetailed, self).inference(alpha=alpha, iterations=iterations, two_tailed=False, interp=interp, circular=circular, force_iterations=force_iterations, cluster_metric=cluster_metric)
 
 
 
+class _SnPM1Dlist(_SnPM1D):
+	# def __init__(self, z, perm):
+	# 	self.permuter       = perm             #permuter (for conducting inference)
+	# 	self.nPermUnique    = perm.nPermTotal  #number of unique permutations possible
+	# 	self.z              = z                #test statistic
+
+	def __repr__(self):
+		stat     = self.STAT
+		zs       = ''
+		for zz in self.z:
+			zs  += '%.3f, ' %zz
+		zs       = zs[:-2]
+		nPermU   = 'inf' if (self.nPermUnique==-1) else str(self.nPermUnique)
+		s        = ''
+		s       += 'SnPM{%s}\n' %stat
+		s       += '   SPM.z            :  %s\n' %zs
+		s       += '   SnPM.nPermUnique :  %s unique permutations available\n' %nPermU
+		return s
+
+	# def _get_clusters(self, zstar, interp, circular, iterations, cluster_metric):
+	# 	clusters      = super(_SnPM1D, self)._get_clusters(zstar, two_tailed, interp, circular)
+	# 	metric        = metric_dict[cluster_metric]
+	# 	for c in clusters:
+	# 		c.set_metric(metric, iterations, self.nPermUnique, two_tailed)
+	# 	return clusters
+
+
+	# def _get_clusters(self, z, zstar, check_neg, interp, circular):
+	# 	clusters      = self._cluster_geom(zstar, interp, circular, csign=+1)
+	# 	if check_neg:
+	# 		clustersn = self._cluster_geom(zstar, interp, circular, csign=-1)
+	# 		clusters += clustersn
+	# 		if len(clusters) > 1:
+	# 			### reorder clusters left-to-right:
+	# 			x         = [c.xy[0]  for c in clusters]
+	# 			ind       = np.argsort(x).flatten()
+	# 			clusters  = np.array(clusters)[ind].tolist()
+	# 	return clusters
+
+	def inference(self, alpha=0.05, iterations=-1, interp=True, circular=False, force_iterations=False, cluster_metric='MaxClusterIntegral'):
+		self._check_iterations(iterations, alpha, force_iterations)
+		self.permuter.build_pdf(iterations)
+		### compute critical threshold:
+		zstarlist = self.permuter.get_z_critical_list(alpha)
+		### build secondary PDFs:
+		self.permuter.set_metric( cluster_metric )
+		self.permuter.build_secondary_pdfs( zstarlist, circular )
+		### assemble clusters and conduct cluster-level inference:
+		FF         = []
+		two_tailed = False
+		for i,(z,zstar) in enumerate( zip(self.z,zstarlist) ):
+			clusters   = self._get_clusters(zstar, two_tailed, interp, circular, iterations, cluster_metric, z=z)
+		# clusters   = self._cluster_inference(clusters, two_tailed)
+		# return SnPMinference(self, alpha, zstar, two_tailed, clusters)
+		
+		
+		
+		# plist     = self.permuter.get_p_value_list(self.z, zstarlist, alpha)
+		# spmilist  = []
+		# for z,zstar,p in zip(self.z, zstarlist, plist):
+		# 	spm   = SnPM_F(z, self.permuter)
+		# 	spmi  = SnPM0Dinference(spm, alpha, zstar, p)
+		# 	spmilist.append( spmi )
+		# return spmilist
+
+
+	# def inference(self, alpha=0.05, iterations=-1, two_tailed=False, interp=True, circular=False, force_iterations=False, cluster_metric='MaxClusterIntegral'):
+	# 	self._check_iterations(iterations, alpha, force_iterations)
+	# 	### build primary PDF:
+	# 	self.permuter.build_pdf(iterations)
+	#
+	# 	### build secondary PDF:
+	# 	self.permuter.set_metric( cluster_metric )
+	# 	self.permuter.build_secondary_pdf( zstar, circular )
+	# 	### assemble clusters and conduct cluster-level inference:
+	# 	clusters   = self._get_clusters(zstar, two_tailed, interp, circular, iterations, cluster_metric)
+	# 	clusters   = self._cluster_inference(clusters, two_tailed)
+	# 	return SnPMinference(self, alpha, zstar, two_tailed, clusters)
 
 
 class SnPM_T(_SnPM1D):
-	def __init__(self, z, perm, roi=None):
-		_SnPM1D.__init__(self, 'T', z, perm, roi)
-
+	STAT = 'T'
+class SnPM_F(_SnPM1Donetailed):
+	STAT = 'F'
+class SnPM_X2(_SnPM1Donetailed):
+	STAT = 'X2'
+class SnPM_T2(_SnPM1Donetailed):
+	STAT = 'T2'
+class SnPM_Flist(_SnPM1Dlist):
+	STAT = 'F'
 
 
 
@@ -278,7 +359,8 @@ class SnPM_T(_SnPM1D):
 
 class SnPMinference(_SnPM1D, _spm._SPMinference):
 	def __init__(self, spm, alpha, zstar, two_tailed, clusters):
-		super(SnPMinference, self).__init__(spm.STAT, spm.z, spm.permuter)
+		super(SnPMinference, self).__init__(spm.z, spm.permuter)
+		self.STAT           = spm.STAT
 		self.PDF0           = self.permuter.Z        #primary permutation PDF
 		self.PDF1           = self.permuter.Z2       #secondary PDF (cluster-level)
 		self.alpha          = alpha               #Type I error rate

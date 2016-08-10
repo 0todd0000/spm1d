@@ -13,18 +13,17 @@ def _get_data_dim(y, ismultivariate=False):
 
 def _get_snpm(STAT, perm):
 	z       = perm.get_test_stat_original()
-	roi     = perm.roi
 	if STAT == 'T':
-		snpm    = _snpm.SnPM0D_T(z, perm) if perm.dim==0 else _snpm.SnPM_T(z, perm, roi)
+		snpm    = _snpm.SnPM0D_T(z, perm) if perm.dim==0 else _snpm.SnPM_T(z, perm)
 	elif STAT == 'T2':
-		snpm    = _snpm.SnPM0D_T2(z, perm) if perm.dim==0 else _snpm.SnPM_T2(z, perm, roi)
+		snpm    = _snpm.SnPM0D_T2(z, perm) if perm.dim==0 else _snpm.SnPM_T2(z, perm)
 	elif STAT == 'X2':
-		snpm    = _snpm.SnPM0D_X2(z, perm) if perm.dim==0 else _snpm.SnPM_X2(z, perm, roi)
+		snpm    = _snpm.SnPM0D_X2(z, perm) if perm.dim==0 else _snpm.SnPM_X2(z, perm)
 	elif STAT == 'F':
 		if isinstance(z, list):
-			snpm = _snpm.SnPM0D_Flist(z, perm) if perm.dim==0 else _snpm.SnPM1D_Flist(z, perm, roi)
+			snpm = _snpm.SnPM0D_Flist(z, perm) if perm.dim==0 else _snpm.SnPM_Flist(z, perm)
 		else:
-			snpm = _snpm.SnPM0D_F(z, perm) if perm.dim==0 else _snpm.SnPM0D(z, perm, roi)
+			snpm = _snpm.SnPM0D_F(z, perm) if perm.dim==0 else _snpm.SnPM_F(z, perm)
 	return snpm
 
 
@@ -32,13 +31,23 @@ def _get_snpm(STAT, perm):
 
 
 ### One-way ANOVA:
-def anova1(y, A):
-	return _get_snpm( 'F',   permuters.PermuterANOVA1(y, A)   )
-def anova1rm(y, A, SUBJ):
-	return _get_snpm( 'F',   permuters.PermuterANOVA1rm(y, A, SUBJ)   )
+def anova1(y, A, roi=None):
+	dim     = _get_data_dim(y)
+	perm    = permuters.PermuterANOVA1(y, A) if dim==0 else permuters.PermuterANOVA11D(y, roi, A)
+	return _get_snpm( 'F', perm )
+def anova1rm(y, A, SUBJ, roi=None):
+	dim     = _get_data_dim(y)
+	perm    = permuters.PermuterANOVA1rm(y, A, SUBJ) if dim==0 else permuters.PermuterANOVA1rm1D(y, roi, A, SUBJ)
+	return _get_snpm( 'F', perm )
 ### Two-way ANOVA:
-def anova2(y, A, B):
-	return _get_snpm( 'F',  permuters.PermuterANOVA2(y, A, B)  )
+def anova2(y, A, B, roi=None):
+	dim     = _get_data_dim(y)
+	perm    = permuters.PermuterANOVA2(y, A, B) if dim==0 else permuters.PermuterANOVA21D(y, roi, A, B)
+	return _get_snpm( 'F', perm )
+
+
+
+
 def anova2nested(y, A, B):
 	return _get_snpm( 'F',  permuters.PermuterANOVA2nested(y, A, B)  )
 def anova2onerm(y, A, B, SUBJ):

@@ -7,26 +7,25 @@ import spm1d
 
 
 #(0) Load dataset:
-dataset      = spm1d.data.uv1d.t2.PlantarArchAngle()
-# dataset      = spm1d.data.uv1d.t2.SimulatedTwoLocalMax()
-yB,yA        = dataset.get_data()  #normal and fast walking
+dataset      = spm1d.data.uv1d.anova1rm.SpeedGRFcategoricalRM()
+y,A,SUBJ     = dataset.get_data()
 
 
 
-#(1) Conduct non-parametric test:
+
+# #(1) Conduct non-parametric test:
 np.random.seed(0)
 alpha      = 0.05
-two_tailed = True
-snpm       = spm1d.stats.nonparam.ttest2(yA, yB)
-snpmi      = snpm.inference(alpha, two_tailed=two_tailed, iterations=500)
+snpm       = spm1d.stats.nonparam.anova1rm(y, A, SUBJ)
+snpmi      = snpm.inference(alpha, iterations=500)
 print snpmi
 print snpmi.clusters
 
 
 
 #(2) Compare with parametric result:
-spm        = spm1d.stats.ttest2(yA, yB)
-spmi       = spm.inference(alpha, two_tailed=two_tailed)
+spm        = spm1d.stats.anova1rm(y, A, SUBJ, equal_var=True)
+spmi       = spm.inference(alpha)
 print spmi
 print spmi.clusters
 

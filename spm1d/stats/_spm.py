@@ -243,8 +243,9 @@ class _SPM(_SPMParent):
 			spmi    = SPMi_X2(self, alpha, zstar, clusters, p_set, p_clusters, two_tailed)
 		return spmi
 		
-	def _cluster_geom(self, u, interp, circular, csign=+1):
-		Q,Z      = self.Q, self.z
+	def _cluster_geom(self, u, interp, circular, csign=+1, z=None):
+		Q        = self.Q
+		z        = self.z if z is None else z
 		X        = np.arange(Q)
 		if np.ma.is_masked(Z):
 			i    = Z.mask
@@ -292,10 +293,10 @@ class _SPM(_SPMParent):
 			cluster.inference(self.STAT, self.df, self.fwhm, self.resels, two_tailed, withBonf, self.Q)
 		return clusters
 
-	def _get_clusters(self, zstar, check_neg, interp, circular):
-		clusters      = self._cluster_geom(zstar, interp, circular, csign=+1)
+	def _get_clusters(self, zstar, check_neg, interp, circular, z=None):
+		clusters      = self._cluster_geom(zstar, interp, circular, csign=+1, z=z)
 		if check_neg:
-			clustersn = self._cluster_geom(zstar, interp, circular, csign=-1)
+			clustersn = self._cluster_geom(zstar, interp, circular, csign=-1, z=z)
 			clusters += clustersn
 			if len(clusters) > 1:
 				### reorder clusters left-to-right:

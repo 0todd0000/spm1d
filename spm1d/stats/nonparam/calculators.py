@@ -39,13 +39,19 @@ class CalculatorHotellings0D(_CalculatorOneSample):
 		T2      = self.J * m * np.linalg.inv(W) * m.T
 		return float(T2)
 
+class CalculatorHotellings1D(_CalculatorOneSample):
+	def _T2_onesample_singlenode(self, y):
+		y        = np.matrix(y)
+		n        = y.shape[0]      #nResponses
+		m        = y.mean(axis=0)  #mean vector
+		W        = np.cov(y.T)     #covariance
+		T2       = n * m * np.linalg.inv(W) * m.T
+		return float(T2)
+	
+	def get_test_stat_mu_subtracted(self, y):
+		T2      = [self._T2_onesample_singlenode( y[:,i,:] )   for i in range(y.shape[1])]
+		return np.asarray(T2)
 
-# class CalculatorTtest(_CalculatorOneSample):
-# 	def __init__(self, nResponses, mu=None):
-# 		super(CalculatorTtest, self).__init__(nResponses, mu)
-# 		self.sqrtN       = int(self.J)**0.5
-# 	def get_test_stat_mu_subtracted(self, y):
-# 		return y.mean(axis=0) / (  y.std(axis=0, ddof=1) / self.sqrtN  )
 
 
 
@@ -86,6 +92,23 @@ class CalculatorHotellings20D( _CalculatorTwoSample ):
 		T2        = self.nABAB  * (mB-mA) * np.linalg.inv(W) * (mB-mA).T
 		return float(T2)
 
+class CalculatorHotellings21D( _CalculatorTwoSample ):
+	def __init__(self, nA, nB):
+		super(CalculatorHotellings21D, self).__init__(nA, nB)
+		self.nABAB       = (nA * nB) / float( nA + nB )
+
+	def _T2_twosample_singlenode(self, yA, yB):  #at a single node:
+		yA,yB    = np.matrix(yA), np.matrix(yB)
+		mA,mB    = yA.mean(axis=0), yB.mean(axis=0)  #means
+		WA,WB    = np.cov(yA.T), np.cov(yB.T)
+		W        = (self.nA1*WA + self.nB1*WB) / self.df
+		T2       = self.nABAB  * (mB-mA) * np.linalg.inv(W) * (mB-mA).T
+		return float(T2)
+
+	def get_test_stat(self, yA, yB):
+		T2      = [self._T2_twosample_singlenode( yA[:,i,:], yB[:,i,:] )   for i in range(yA.shape[1])]
+		return np.asarray(T2)
+
 
 
 
@@ -119,6 +142,16 @@ class CalculatorRegress0D(object):
 		return t
 
 
+class CalculatorRegress1D(CalculatorRegress0D):
+	def get_test_stat(self, y):
+		Y      = np.matrix(y)
+		b      = self.Xi * Y            #parameters
+		eij    = Y - self.X*b           #residuals
+		R      = eij.T*eij              #residual sum of squares
+		sigma2 = np.diag(R) / self.df   #variance
+		t      = np.array(self.c.T*b).flatten()  /   ((sigma2*self.cXXc)**0.5 + eps)
+		return t
+
 
 class CalculatorCCA0D(object):
 	def __init__(self, x):
@@ -148,6 +181,13 @@ class CalculatorCCA0D(object):
 		m          = y.shape[1]  # df = m  (nComponents)
 		x2         = -(self.J - 1 - 0.5*(m+2) )  *  log( (1-rmax**2) )
 		return x2
+
+
+class CalculatorCCA1D(CalculatorCCA0D):
+
+	def get_test_stat(self, y):
+		x2         = [super(CalculatorCCA1D, self).get_test_stat(y[:,i,:])   for i in range(y.shape[1])]
+		return np.array(x2)
 
 
 
