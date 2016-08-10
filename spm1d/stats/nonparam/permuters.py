@@ -56,6 +56,12 @@ class _Permuter0D(_Permuter):
 class _Permuter1D(_Permuter):
 	dim = 1   #data dimensionality
 	
+	def _set_roi(self, roi):
+		if roi is not None:
+			self.roi  = np.asarray(roi, dtype=bool)
+			roi       = np.asarray( [self.roi]*self.J, dtype=bool )
+			self.Y    = np.ma.masked_array( self.Y, np.logical_not(roi) )
+	
 	def build_secondary_pdf(self, zstar, circular=False):
 		self.Z2          = [self.metric.get_max_metric(z, zstar, circular)   for z in self.ZZ]
 	def get_clusters(self, z, zstar, two_tailed=False):
@@ -113,10 +119,11 @@ class _PermuterOneSample0D(_PermuterOneSample, _Permuter0D):
 		self.nPermTotal = 2**self.N                 #total possible permutations
 		self.calc       = None                      #test statistic calculator (set by subclasses)
 		self._set_stat_calculator()
-	
+
+
 
 class _PermuterOneSample1D(_PermuterOneSample, _Permuter1D):
-	def __init__(self, y, mu=None):
+	def __init__(self, y, mu=None, roi=None):
 		self.Y          = y                         #original responses
 		self.J          = y.shape[0]                #number of responses
 		self.Q          = y.shape[1]                #number of continuum nodes
@@ -126,10 +133,12 @@ class _PermuterOneSample1D(_PermuterOneSample, _Permuter1D):
 		self.Z          = None                      #primary PDF:    test statistic field maxima distribution
 		self.Z2         = None                      #secondary PDF:  cluster metric distribution
 		self.mu         = 0 if mu is None else mu   #datum
+		self.roi        = None                      #region(s) of interest
 		self.labels0    = np.array( [0]*self.N )    #original labels
 		self.nPermTotal = 2**self.N                 #total possible permutations
 		self.calc       = None                      #test statistic calculator (set by subclasses)
 		self._set_stat_calculator()
+		self._set_roi(roi)
 
 
 

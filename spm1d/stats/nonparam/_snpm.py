@@ -201,12 +201,13 @@ class SnPM0Dinference(_SnPM0D):
 
 class _SnPM1D(_SnPM, _spm._SPM):
 	'''Parent class for all 1D non-parametric SPM classes.'''
-	def __init__(self, STAT, z, perm):
+	def __init__(self, STAT, z, perm, roi=None):
 		z[np.isnan(z)]      = 0
 		self.permuter       = perm             #permuter (for conducting inference)
 		self.STAT           = STAT             #test statistic ("T", "F", "X2" or "T2")
 		self.Q              = z.size           #field size
 		self.nPermUnique    = perm.nPermTotal  #number of unique permutations possible
+		self.roi            = roi              #region(s) of interest
 		self.z              = z                #test statistic
 		self._ClusterClass  = ClusterNonparam
 
@@ -267,8 +268,8 @@ class _SnPM1D(_SnPM, _spm._SPM):
 
 
 class SnPM_T(_SnPM1D):
-	def __init__(self, z, perm):
-		_SnPM1D.__init__(self, 'T', z, perm)
+	def __init__(self, z, perm, roi=None):
+		_SnPM1D.__init__(self, 'T', z, perm, roi)
 
 
 
@@ -282,15 +283,11 @@ class SnPMinference(_SnPM1D, _spm._SPMinference):
 		self.PDF1           = self.permuter.Z2       #secondary PDF (cluster-level)
 		self.alpha          = alpha               #Type I error rate
 		self.clusters       = clusters            #supra-threshold cluster information
-		# self.cluster_metric = cluster_metric      #cluster metric (upon which secondary PDF is based)
 		self.nClusters      = len(clusters)         #number of supra-threshold clusters
-		# self.nPerm0         = self.permuter.Z0.size  #number of primary permutations
-		# self.nPerm1         = self.permuter.Z1.size    #number of secondary permutations
-		
 		self.p              = [c.P for c in clusters]  #P values for each cluster
 		self.two_tailed     = two_tailed          #two-tailed test boolean
 		self.zstar          = zstar               #critical threshold
-		self.roi            = None
+		self.roi            = spm.roi
 
 
 	def __repr__(self):

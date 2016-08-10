@@ -13,17 +13,18 @@ def _get_data_dim(y, ismultivariate=False):
 
 def _get_snpm(STAT, perm):
 	z       = perm.get_test_stat_original()
+	roi     = perm.roi
 	if STAT == 'T':
-		snpm    = _snpm.SnPM0D_T(z, perm) if perm.dim==0 else _snpm.SnPM_T(z, perm)
+		snpm    = _snpm.SnPM0D_T(z, perm) if perm.dim==0 else _snpm.SnPM_T(z, perm, roi)
 	elif STAT == 'T2':
-		snpm    = _snpm.SnPM0D_T2(z, perm) if perm.dim==0 else _snpm.SnPM_T2(z, perm)
+		snpm    = _snpm.SnPM0D_T2(z, perm) if perm.dim==0 else _snpm.SnPM_T2(z, perm, roi)
 	elif STAT == 'X2':
-		snpm    = _snpm.SnPM0D_X2(z, perm) if perm.dim==0 else _snpm.SnPM_X2(z, perm)
+		snpm    = _snpm.SnPM0D_X2(z, perm) if perm.dim==0 else _snpm.SnPM_X2(z, perm, roi)
 	elif STAT == 'F':
 		if isinstance(z, list):
-			snpm = _snpm.SnPM0D_Flist(z, perm) if perm.dim==0 else _snpm.SnPM1D_Flist(z, perm)
+			snpm = _snpm.SnPM0D_Flist(z, perm) if perm.dim==0 else _snpm.SnPM1D_Flist(z, perm, roi)
 		else:
-			snpm = _snpm.SnPM0D_F(z, perm) if perm.dim==0 else _snpm.SnPM0D(z, perm)
+			snpm = _snpm.SnPM0D_F(z, perm) if perm.dim==0 else _snpm.SnPM0D(z, perm, roi)
 	return snpm
 
 
@@ -85,22 +86,22 @@ def hotellings2(yA, yB):
 
 
 ### Basic univariate tests:
-def regress(y, x):
+def regress(y, x, roi=None):
 	dim     = _get_data_dim(y)
-	perm    = permuters.PermuterRegress1D(y, x) if dim==1 else permuters.PermuterRegress0D(y, x)
+	perm    = permuters.PermuterRegress1D(y, x, roi=roi) if dim==1 else permuters.PermuterRegress0D(y, x)
 	return _get_snpm('T', perm)
 
-def ttest(y, mu=0):
+def ttest(y, mu=0, roi=None):
 	dim     = _get_data_dim(y)
-	perm    = permuters.PermuterTtest1D(y, mu) if dim==1 else permuters.PermuterTtest0D(y, mu)
+	perm    = permuters.PermuterTtest1D(y, mu, roi=roi) if dim==1 else permuters.PermuterTtest0D(y, mu)
 	return _get_snpm('T', perm)
 
-def ttest_paired(yA, yB):
-	return ttest(yA-yB, 0)
+def ttest_paired(yA, yB, roi=None):
+	return ttest(yA-yB, 0, roi=roi)
 
-def ttest2(yA, yB):
+def ttest2(yA, yB, roi=None):
 	dim     = _get_data_dim(yA)
-	perm    = permuters.PermuterTtest21D(yA, yB) if dim==1 else permuters.PermuterTtest20D(yA, yB)
+	perm    = permuters.PermuterTtest21D(yA, yB, roi=roi) if dim==1 else permuters.PermuterTtest20D(yA, yB)
 	return _get_snpm('T', perm)
 
 

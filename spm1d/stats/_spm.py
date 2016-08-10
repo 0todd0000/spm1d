@@ -204,6 +204,7 @@ class _SPM(_SPMParent):
 		z[np.isnan(z)]      = 0
 		self.STAT           = STAT             #test statistic ("T" or "F")
 		self.Q              = z.size           #number of nodes (field size = Q-1)
+		self.Qmasked        = z.size           #number of nodes in mask (if "roi" is not None)
 		self.X              = X                #design matrix
 		self.beta           = beta             #fitted parameters
 		self.residuals      = residuals        #model residuals
@@ -213,6 +214,8 @@ class _SPM(_SPMParent):
 		self.resels         = resels           #resel counts
 		self.roi            = roi              #region of interest
 		self._ClusterClass  = Cluster          #class definition for parametric / non-parametric clusters
+		if roi is not None:
+			self.Qmasked    = self.z.count()
 
 
 	def __repr__(self):

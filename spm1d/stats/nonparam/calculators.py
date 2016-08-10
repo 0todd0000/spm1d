@@ -70,16 +70,6 @@ class CalculatorTtest2( _CalculatorTwoSample ):
 	def get_test_stat(self, yA, yB):
 		mA,mB  = yA.mean(axis=0), yB.mean(axis=0)
 		sA,sB  = yA.std(axis=0, ddof=1), yB.std(axis=0, ddof=1)
-		
-		# print yA.shape, yB.shape
-		# print mA.shape, mB.shape
-		# print sA.shape, sB.shape
-		# print
-		# print yA.ndim, yB.ndim
-		# print mA.ndim, mB.ndim
-		# print sA.ndim, sB.ndim
-		
-		
 		s      = (   (  self.nA1*sA*sA + self.nB1*sB*sB  )  /  self.df   )**0.5
 		return (mA-mB) / s / self.sqrtAB
 
