@@ -8,13 +8,14 @@ import spm1d
 #(0) Load dataset:
 dataset    = spm1d.data.uv1d.t1.Random()
 # dataset    = spm1d.data.uv1d.t1.SimulatedPataky2015a()
-# dataset    = spm1d.data.uv1d.t1.SimulatedPataky2015b()
+dataset    = spm1d.data.uv1d.t1.SimulatedPataky2015b()
 y,mu       = dataset.get_data()
 
 
 
 #(1) Compute confidence interval:
 ci         = spm1d.stats.ci_onesample(y)
+print( ci )
 
 
 

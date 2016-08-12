@@ -36,20 +36,54 @@ from _plot import DataPlotter, SPMPlotter, SPMiPlotter
 
 
 
-def plot_ci(ci, ax=None, x=None, facecolor='0.8', edgecolor='0.8', alpha=0.5, autoset_ylim=True):
+def plot_ci(ci, ax=None, x=None, linecolor='k', facecolor='0.8', edgecolor='0.8', alpha=0.5, autoset_ylim=True):
 	'''
 	Plot a condfidence interval.
 	'''
 	ymean,h,Q = ci.datum, ci.hstar, ci.Q
 	plotter   = DataPlotter(ax)
 	plotter._set_x(x, Q)
-	plotter.plot(ymean, color='k', lw=3)
+	plotter.plot(ymean, color=linecolor, lw=3)
 	Y         = np.array([ymean+h, ymean-h])
 	h         = plotter.plot_cloud(Y, facecolor, edgecolor, alpha)
+	if ci.criterion is None:
+		ax.axhline(0, color='k', linestyle='--')
+	else:
+		ax.plot(ci.criterion, color='k', linestyle='--')
 	if autoset_ylim:
 		plotter._set_ylim(ax)
+	plotter._set_xlim()
 
 
+
+
+def plot_ci_multi(ci, ax=None, x=None, linecolors=('k','r'), facecolors=('0.8','r'), edgecolors=('0.8','r'), alphas=(0.5,0.5), autoset_ylim=True):
+	'''
+	Plot a condfidence interval.
+	'''
+	ymean0,h,Q = ci.datum, ci.hstar, ci.Q
+	ymean1     = ci.other
+	plotter    = DataPlotter(ax)
+	plotter._set_x(x, Q)
+	### get colors:
+	linecolors = linecolors if isinstance(linecolors, (tuple,list)) else [linecolors]*2
+	facecolors = facecolors if isinstance(facecolors, (tuple,list)) else [facecolors]*2
+	edgecolors = edgecolors if isinstance(edgecolors, (tuple,list)) else [edgecolors]*2
+	alphas     = alphas if isinstance(alphas, (tuple,list)) else [alphas]*2
+	### plot:
+	plotter.plot(ymean0, color=linecolors[0], lw=3)
+	plotter.plot(ymean1, color=linecolors[1], lw=3)
+	Y0         = np.array([ymean0+h, ymean0-h])
+	Y1         = np.array([ymean1+h, ymean1-h])
+	h0         = plotter.plot_cloud(Y0, facecolors[0], edgecolors[0], alphas[0])
+	h1         = plotter.plot_cloud(Y1, facecolors[1], edgecolors[1], alphas[1])
+	h0.set_linestyle('--')
+	h1.set_linestyle('--')
+	if autoset_ylim:
+		plotter._set_ylim(ax)
+	plotter._set_xlim()
+	
+	
 
 def plot_errorcloud(datum, sd, ax=None, x=None, facecolor='0.8', edgecolor='0.8', alpha=0.5, autoset_ylim=True):
 	'''

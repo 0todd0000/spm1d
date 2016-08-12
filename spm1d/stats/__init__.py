@@ -25,7 +25,7 @@ Specifically:
 import _spm
 
 from t import ttest, ttest_paired, ttest2, regress, glm
-from ci import ci_onesample#, pairedsample, twosample
+from ci import ci_onesample, ci_pairedsample, ci_twosample
 
 from anova import anova1,anova1rm
 from anova import anova2,anova2nested,anova2rm,anova2onerm
