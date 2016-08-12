@@ -56,7 +56,7 @@ def glm(Y, X, c, Q=None, roi=None):
 	### compute t statistic
 	t      = np.array(c.T*b).flatten()  /   (np.sqrt(sigma2*float(c.T*(np.linalg.inv(X.T*X))*c)) + eps)
 	### estimate df due to non-sphericity:
-	if Q!=None:
+	if Q is not None:
 		df = _reml.estimate_df_T(Y, X, eij, Q)
 	eij    = np.asarray(eij)
 	if Y.shape[1] > 1:
@@ -148,7 +148,7 @@ def ttest(Y, y0=None, roi=None):
 	_datachecks.check('ttest', Y, y0)
 	J       = Y.shape[0]
 	Ytemp   = Y.copy()
-	if y0!=None:
+	if y0 is not None:
 		Ytemp -= y0
 	X       = np.ones((J,1))
 	c       = (1)

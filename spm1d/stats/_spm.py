@@ -245,7 +245,7 @@ class _SPM(_SPMParent):
 		
 	def _cluster_geom(self, u, interp, circular, csign=+1, z=None):
 		Q        = self.Q
-		z        = self.z if z is None else z
+		Z        = self.z if z is None else z
 		X        = np.arange(Q)
 		if np.ma.is_masked(Z):
 			i    = Z.mask

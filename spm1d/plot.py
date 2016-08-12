@@ -36,6 +36,20 @@ from _plot import DataPlotter, SPMPlotter, SPMiPlotter
 
 
 
+def plot_ci(ci, ax=None, x=None, facecolor='0.8', edgecolor='0.8', alpha=0.5, autoset_ylim=True):
+	'''
+	Plot a condfidence interval.
+	'''
+	ymean,h,Q = ci.datum, ci.hstar, ci.Q
+	plotter   = DataPlotter(ax)
+	plotter._set_x(x, Q)
+	plotter.plot(ymean, color='k', lw=3)
+	Y         = np.array([ymean+h, ymean-h])
+	h         = plotter.plot_cloud(Y, facecolor, edgecolor, alpha)
+	if autoset_ylim:
+		plotter._set_ylim(ax)
+
+
 
 def plot_errorcloud(datum, sd, ax=None, x=None, facecolor='0.8', edgecolor='0.8', alpha=0.5, autoset_ylim=True):
 	'''
