@@ -56,6 +56,7 @@ def _set_docstr(childfn, parentfn, args2remove=None):
 class _SPMParent(object):
 	'''Parent class for all parametric SPM classes.'''
 	isparametric  = True
+	dim           = 0
 
 
 
@@ -72,10 +73,12 @@ class _SPMParent(object):
 
 
 class _SPM0D(_SPMParent):
-	def __init__(self, STAT, z, df):
+	def __init__(self, STAT, z, df, beta=None, sigma2=None):
 		self.STAT           = STAT             #test statistic ("T" or "F")
 		self.z              = float(z)         #test statistic
 		self.df             = df               #degrees of freedom
+		self.beta           = beta             #fitted parameters
+		self.sigma2         = sigma2           #variance
 		self.isanova        = False
 		self.isregress      = False
 
@@ -99,7 +102,7 @@ class _SPM0D(_SPMParent):
 
 class _SPM0Dinference(_SPM0D):
 	def __init__(self, spm, alpha, zstar, p, two_tailed=False):
-		_SPM0D.__init__(self, spm.STAT, spm.z, spm.df)
+		_SPM0D.__init__(self, spm.STAT, spm.z, spm.df, spm.beta, spm.sigma2)
 		self.alpha       = alpha       #Type I error rate
 		self.zstar       = zstar       #critical threshold
 		self.h0reject    = abs(spm.z) > zstar if two_tailed else spm.z > zstar
@@ -146,8 +149,8 @@ class SPM0D_F(_SPM0D):
 
 
 class SPM0D_T(_SPM0D):
-	def __init__(self, z, df):
-		_SPM0D.__init__(self, 'T', z, df)
+	def __init__(self, z, df, beta=None, sigma2=None):
+		_SPM0D.__init__(self, 'T', z, df, beta, sigma2)
 	def inference(self, alpha=0.05, two_tailed=True):
 		a      = 0.5*alpha if two_tailed else alpha
 		zstar  = stats.t.isf(a, self.df[1])
@@ -199,8 +202,9 @@ class SPM0Di_X2(_SPM0Dinference):
 
 
 class _SPM(_SPMParent):
+	dim                     = 1
 	'''Parent class for all 1D SPM classes.'''
-	def __init__(self, STAT, z, df, fwhm, resels, X, beta, residuals, roi=None):
+	def __init__(self, STAT, z, df, fwhm, resels, X, beta, residuals, sigma2=None, roi=None):
 		z[np.isnan(z)]      = 0
 		self.STAT           = STAT             #test statistic ("T" or "F")
 		self.Q              = z.size           #number of nodes (field size = Q-1)
@@ -208,6 +212,7 @@ class _SPM(_SPMParent):
 		self.X              = X                #design matrix
 		self.beta           = beta             #fitted parameters
 		self.residuals      = residuals        #model residuals
+		self.sigma2         = sigma2           #variance
 		self.z              = z                #test statistic
 		self.df             = df               #degrees of freedom
 		self.fwhm           = fwhm             #smoothness
@@ -396,8 +401,8 @@ class SPM_F(_SPM):
 	
 	:Methods:
 	'''
-	def __init__(self, z, df, fwhm, resels, X, beta, residuals, X0=None, roi=None):
-		_SPM.__init__(self, 'F', z, df, fwhm, resels, X, beta, residuals, roi=roi)
+	def __init__(self, z, df, fwhm, resels, X, beta, residuals, X0=None, sigma2=None, roi=None):
+		_SPM.__init__(self, 'F', z, df, fwhm, resels, X, beta, residuals, sigma2=sigma2, roi=roi)
 		self.X0 = X0
 		
 	def inference(self, alpha=0.05, cluster_size=0, interp=True, circular=False):
@@ -444,8 +449,8 @@ class SPM_T(_SPM):
 	
 	:Methods:
 	'''
-	def __init__(self, z, df, fwhm, resels, X, beta, residuals, roi=None):
-		_SPM.__init__(self, 'T', z, df, fwhm, resels, X, beta, residuals, roi=roi)
+	def __init__(self, z, df, fwhm, resels, X, beta, residuals, sigma2=None, roi=None):
+		_SPM.__init__(self, 'T', z, df, fwhm, resels, X, beta, residuals, sigma2=sigma2, roi=roi)
 		
 	def inference(self, alpha=0.05, cluster_size=0, two_tailed=True, interp=True, circular=False):
 		'''
@@ -469,8 +474,8 @@ class SPM_T(_SPM):
 
 
 class SPM_T2(_SPM):
-	def __init__(self, z, df, fwhm, resels, X, beta, residuals, roi=None):
-		super(SPM_T2, self).__init__('T2', z, df, fwhm, resels, X, beta, residuals, roi=roi)
+	def __init__(self, z, df, fwhm, resels, X, beta, residuals, sigma2=None, roi=None):
+		super(SPM_T2, self).__init__('T2', z, df, fwhm, resels, X, beta, residuals, sigma2=sigma2, roi=roi)
 		
 	def inference(self, alpha=0.05, cluster_size=0, interp=True, circular=False):
 		'''
@@ -490,8 +495,8 @@ class SPM_T2(_SPM):
 
 
 class SPM_X2(_SPM):
-	def __init__(self, z, df, fwhm, resels, X, beta, residuals, roi=None):
-		super(SPM_X2, self).__init__('X2', z, df, fwhm, resels, X, beta, residuals, roi=roi)
+	def __init__(self, z, df, fwhm, resels, X, beta, residuals, sigma2=None, roi=None):
+		super(SPM_X2, self).__init__('X2', z, df, fwhm, resels, X, beta, residuals, sigma2=sigma2, roi=roi)
 
 	def inference(self, alpha=0.05, cluster_size=0, interp=True, circular=False):
 		'''
@@ -525,7 +530,7 @@ class SPM_X2(_SPM):
 class _SPMinference(_SPM):
 	'''Parent class for SPM inference objects.'''
 	def __init__(self, spm, alpha, zstar, clusters, p_set, p, two_tailed=False):
-		_SPM.__init__(self, spm.STAT, spm.z, spm.df, spm.fwhm, spm.resels, spm.X, spm.beta, spm.residuals, roi=spm.roi)
+		_SPM.__init__(self, spm.STAT, spm.z, spm.df, spm.fwhm, spm.resels, spm.X, spm.beta, spm.residuals, sigma2=spm.sigma2, roi=spm.roi)
 		self.alpha       = alpha               #Type I error rate
 		self.zstar       = zstar               #critical threshold
 		self.clusters    = clusters            #supra-threshold cluster information

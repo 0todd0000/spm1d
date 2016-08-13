@@ -233,7 +233,31 @@ class DatasetMANOVA1(_DatasetX2):
 
 
 
+class _CI(object):
+	def get_expected_results_as_string(self):
+		s      = '  (Expected results)\n'
+		s     += '   ci        :  (%.5f, %.5f)\n' %self.ci
+		return s
 
+
+class DatasetCI1(_CI, _DatasetT):
+	def __init__(self):
+		self.mu     = 0
+		self.ci     = (0, 0)
+		super(DatasetCI1, self).__init__()
+		self.design = 'One-sample CI'
+	def get_data(self):
+		return self.Y, self.mu
+
+
+class DatasetCIpaired(_CI, _DatasetT):
+	def __init__(self):
+		self.YA     = None
+		self.YB     = None
+		super(DatasetCIpaired, self).__init__()
+		self.design = 'Paired sample CI'
+	def get_data(self):
+		return self.YA, self.YB
 
 
 class DatasetT1(_DatasetT):

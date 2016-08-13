@@ -47,7 +47,7 @@ ax.text(0.3, 0.1, 'Datum: zero\nCriterion:  $t ^*$', transform=ax.transAxes, bbo
 ### plot confidence interval for mean paired difference:
 ax     = pyplot.subplot(233)
 ci.plot(ax=ax)
-ax.set_title('CI for mean paired difference')
+ax.set_title('CI for mean difference')
 ax.text(0.3, 0.1, 'Datum="difference"\nCriterion="zero"', transform=ax.transAxes, bbox=dict(color='w', alpha=0.8))
 
 
@@ -55,14 +55,14 @@ ax.text(0.3, 0.1, 'Datum="difference"\nCriterion="zero"', transform=ax.transAxes
 ax     = pyplot.subplot(234)
 ciA.plot(ax=ax)
 # ax.plot(  yB.mean(axis=0), color='r', lw=3 )
-ax.set_title('Paired CI (criterion: mean)')
+ax.set_title('Group A CI (criterion: Group B mean)')
 ax.text(0.3, 0.1, 'Datum="meanA"\nCriterion="meanB"', transform=ax.transAxes, bbox=dict(color='w', alpha=0.8))
 
 
 ### plot confidence interval (tail criterion)
 ax     = pyplot.subplot(235)
 ciAB.plot(ax=ax, linecolors=['k', 'r'], facecolors=['0.8', 'r'], edgecolors=['k','r'], alphas=[0.5,0.5])
-ax.set_title('Paired CIs (criterion: tail)')
+ax.set_title('CIs (criterion: tail)')
 ax.text(0.3, 0.1, 'Datum="meanA"\nCriterion="tailsAB"', transform=ax.transAxes, bbox=dict(color='w', alpha=0.8))
 
 

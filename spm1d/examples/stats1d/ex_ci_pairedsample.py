@@ -61,7 +61,7 @@ ax.text(0.1, 0.5, 'Datum="meanA"\nCriterion="meanB"', transform=ax.transAxes)
 
 ### plot confidence interval (tail criterion)
 ax     = pyplot.subplot(235)
-ciAB.plot(ax=ax, linecolors=['k', 'r'], facecolors=['0.8', 'r'], edgecolors=['k','r'], alphas=[0.5,0.5])
+ciAB.plot(ax=ax, linecolors=('k', 'r'), facecolors=('0.8', 'r'), edgecolors=('k','r'), alphas=0.5)
 ax.set_title('Paired CIs (criterion: tail)')
 ax.text(0.1, 0.5, 'Datum="meanA"\nCriterion="tailsAB"', transform=ax.transAxes)
 
