@@ -260,6 +260,16 @@ class DatasetCIpaired(_CI, _DatasetT):
 		return self.YA, self.YB
 
 
+class DatasetCI2(_CI, _DatasetT):
+	def __init__(self):
+		self.YA     = None
+		self.YB     = None
+		super(DatasetCI2, self).__init__()
+		self.design = 'Two-sample CI'
+	def get_data(self):
+		return self.YA, self.YB
+
+
 class DatasetT1(_DatasetT):
 	def __init__(self):
 		self.mu     = None

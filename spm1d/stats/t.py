@@ -108,7 +108,7 @@ def regress(Y, x, roi=None):
 		- the correlation coefficient is retrievable as "t.r" where "t" is the output from **spm1d.stats.regress**
 		- statistical inferences are based on *t*, not on *r*
 	'''
-	Y              = _datachecks.asmatrix(Y)
+	Y              = _datachecks.asmatrix(Y, dtype=float)
 	_datachecks.check('regress', Y, x)
 	J              = Y.shape[0]
 	X              = np.ones((J,2))
@@ -145,7 +145,7 @@ def ttest(Y, y0=None, roi=None):
 	>>> ti = t.inference(alpha=0.05, two_tailed=True)
 	>>> ti.plot()
 	'''
-	Y       = _datachecks.asmatrix(Y)
+	Y       = _datachecks.asmatrix(Y, dtype=float)
 	_datachecks.check('ttest', Y, y0)
 	J       = Y.shape[0]
 	Ytemp   = Y.copy()
@@ -180,7 +180,7 @@ def ttest_paired(YA, YB, roi=None):
 	>>> ti = t.inference(alpha=0.05)
 	>>> ti.plot()
 	'''
-	YA,YB    = _datachecks.asmatrix(YA), _datachecks.asmatrix(YB)
+	YA,YB    = _datachecks.asmatrix(YA, dtype=float), _datachecks.asmatrix(YB, dtype=float)
 	_datachecks.check('ttest_paired', YA, YB)
 	return ttest(YA-YB, roi=roi)
 
@@ -210,7 +210,7 @@ def ttest2(YA, YB, equal_var=False, roi=None):
 	>>> ti.plot()
 	'''
 	### check data:
-	YA,YB    = _datachecks.asmatrix(YA), _datachecks.asmatrix(YB)
+	YA,YB    = _datachecks.asmatrix(YA, dtype=float), _datachecks.asmatrix(YB, dtype=float)
 	_datachecks.check('ttest2', YA, YB)
 	### assemble data
 	JA,JB    = YA.shape[0], YB.shape[0]

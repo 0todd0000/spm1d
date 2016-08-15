@@ -38,7 +38,8 @@ class DataPlotter(object):
 	# def _getQ(x, Q):
 	# 	return np.arange(Q) if x is None else x
 	
-	def _gca(self, ax):
+	@staticmethod
+	def _gca(ax):
 		return pyplot.gca() if ax is None else ax
 	
 	def _set_axlim(self):
@@ -74,10 +75,13 @@ class DataPlotter(object):
 		dy = 0.075*(ymax-ymin)
 		ax.set_ylim(ymin-dy, ymax+dy)
 	
-	def plot(self, y, **kwdargs):
-		return self.ax.plot(y, **kwdargs)
+	def plot(self, *args, **kwdargs):
+		return self.ax.plot(*args, **kwdargs)
+
+	# def plot(self, y, **kwdargs):
+	# 	return self.ax.plot(y, **kwdargs)
 	
-	def plot_cloud(self, Y, facecolor='0.8', edgecolor='0.8', alpha=0.5):
+	def plot_cloud(self, Y, facecolor='0.8', edgecolor='0.8', alpha=0.5, edgelinestyle='-'):
 		### create patches:
 		y0,y1       = Y
 		x,y0,y1     = self.x.tolist(), y0.tolist(), y1.tolist()
@@ -92,11 +96,18 @@ class DataPlotter(object):
 		patches     = PatchCollection([Polygon(zip(x,y))], edgecolors=None)
 		### plot:
 		self.ax.add_collection(patches)
-		pyplot.setp(patches, facecolor=facecolor, edgecolor=edgecolor, alpha=alpha)
+		pyplot.setp(patches, facecolor=facecolor, edgecolor=edgecolor, alpha=alpha, linestyle=edgelinestyle)
 		return patches
 
-	def plot_datum(self):
-		self.ax.axhline(0, color='k', lw=1, linestyle=':')
+	def plot_datum(self, y=0, color='k', linestyle=':'):
+		self.ax.axhline(y, color=color, lw=1, linestyle=linestyle)
+		
+	def plot_errorbar(self, y, e, x=0, color=None, markersize=10, linewidth=2, hbarw=0.1):
+		self.ax.plot(x, y, 'o', markersize=markersize, color=color)
+		self.ax.plot([x,x], [y-e, y+e], '-', color=color, lw=linewidth)
+		w  = hbarw * e
+		self.ax.plot([x-w,x+w], [y-e]*2, '-', color=color, lw=linewidth)
+		self.ax.plot([x-w,x+w], [y+e]*2, '-', color=color, lw=linewidth)
 
 	def plot_roi(self, roi, ylim=None, facecolor='b', edgecolor='w', alpha=0.5):
 		L,n       = ndimage.label(roi)
@@ -108,6 +119,10 @@ class DataPlotter(object):
 			poly.append( Polygon(verts) )
 			pyplot.setp(poly, facecolor=facecolor, edgecolor=edgecolor, alpha=alpha)
 		self.ax.add_collection( PatchCollection(poly, match_original=True) )
+		
+		
+	def set_ax_prop(self, *args, **kwdargs):
+		pyplot.setp(self.ax, *args, **kwdargs)
 
 
 
@@ -265,3 +280,19 @@ class SPMiPlotter(SPMPlotter):
 
 
 
+
+
+def _legend_manual(ax, colors=None, labels=None, linestyles=None, markerfacecolors=None, linewidths=None, **kwdargs):
+	n      = len(colors)
+	if linestyles is None:
+		linestyles = ['-']*n
+	if linewidths is None:
+		linewidths = [1]*n
+	if markerfacecolors is None:
+		markerfacecolors = colors
+	x0,x1  = ax.get_xlim()
+	y0,y1  = ax.get_ylim()
+	h      = [ax.plot([x1+1,x1+2,x1+3], [y1+1,y1+2,y1+3], ls, color=color, linewidth=lw, markerfacecolor=mfc)[0]   for color,ls,lw,mfc in zip(colors,linestyles,linewidths,markerfacecolors)]
+	ax.set_xlim(x0, x1)
+	ax.set_ylim(y0, y1)
+	return ax.legend(h, labels, **kwdargs)

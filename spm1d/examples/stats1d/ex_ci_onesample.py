@@ -1,4 +1,21 @@
 
+'''
+One-sample confidence intervals for 1D data:
+
+NOTES:
+1.  If mu=None then explicit hypothesis testing is suppressed (i.e. exploratory analysis)
+Note that the hypothesis test is still conducted implicitly (to compute the CI).
+However, the explicit null hypothesis rejection decision will not appear when using either "print(ci)" or "ci.plot()".
+Note especially that these one-sample CIs are invalid for two-sample, regression and ANOVA-like experiments.
+Thus "mu=None" is generally useful only for exploratory purposes.
+
+2.  If mu is a 0D scalar or a 1D scalar field then:
+- Explicit null hypothesis testing is conducted
+- The null hypothesis is rejected if mu lies outside the CI at any point in the 1D field
+- A 0D scalar value for mu represents a constant 1D field
+'''
+
+
 import numpy as np
 from matplotlib import pyplot
 import spm1d
@@ -6,47 +23,75 @@ import spm1d
 
 
 #(0) Load dataset:
-dataset    = spm1d.data.uv1d.t1.Random()
+# dataset    = spm1d.data.uv1d.t1.Random()
 # dataset    = spm1d.data.uv1d.t1.SimulatedPataky2015a()
 dataset    = spm1d.data.uv1d.t1.SimulatedPataky2015b()
 y,mu       = dataset.get_data()
+### create arbitrary population means to which the data will be compared:
+mu0        = 0
+mu1        = 5*np.sin( np.linspace(0, np.pi, y.shape[1]) )
 
 
 
-#(1) Compute confidence interval:
+
+#(1) Compute confidence intervals:
 alpha      = 0.05
-ci         = spm1d.stats.ci_onesample(y, alpha)
-print( ci )
+ci0        = spm1d.stats.ci_onesample(y, alpha, mu=mu0)
+ci1        = spm1d.stats.ci_onesample(y, alpha, mu=mu1)
+print( ci0 )
+print( ci1 )
 
 
 
-#(2) Plot:
+#(2) Plot the CIs:
 pyplot.close('all')
-pyplot.figure(figsize=(10,6))
+pyplot.figure(figsize=(14,7))
 pyplot.get_current_fig_manager().window.move(0, 0)
 
+### FIRST POPULATION MEAN
 
-### plot means and standard deviations:
-ax     = pyplot.subplot(221)
-spm1d.plot.plot_mean_sd(y)
-ax.axhline(0, color='k', linestyle='--')
-ax.set_title('Mean and SD')
-
+### plot means and SD:
+ax = pyplot.subplot(231)
+spm1d.plot.plot_mean_sd(y-mu0, ax=ax)
+ax.set_title('Mean and SD', size=10)
+spm1d.plot.legend_manual(ax, labels=['Mean', 'SD'], colors=['k','0.85'], linestyles=['-', '-'], linewidths=[3, 10], loc='upper left', fontsize=10)
 
 ### plot hypothesis test results:
-ax     = pyplot.subplot(222)
-spmi   = spm1d.stats.ttest(y, mu).inference(alpha, two_tailed=True)
+ax = pyplot.subplot(232)
+spmi = spm1d.stats.ttest(y, mu0).inference(alpha, two_tailed=True)
 spmi.plot(ax=ax)
-spmi.plot_threshold_label()
-ax.set_title('Hypothesis test')
-# ax.text(0.6, 0.2, 'Datum: zero\nCriterion:  $t ^*$', transform=ax.transAxes)
+spmi.plot_p_values()
+ax.set_title('Hypothesis test', size=10)
+
+### plot CIs:
+ax = pyplot.subplot(233)
+ci0.plot(ax)
+ax.set_title('CI  (criterion: mu=0)', size=10)
+spm1d.plot.legend_manual(ax, labels=['Mean', 'CI', 'Criterion'], colors=['k','0.85','r'], linestyles=['-', '-','--'], linewidths=[3, 10, 1], loc='upper left', fontsize=10)
 
 
-### plot confidence interval:
-ax     = pyplot.subplot(223)
-ci.plot(ax=ax)
-ax.set_title('Confidence Interval')
-ax.text(0.1, 0.8, 'Datum="difference"\nCriterion="zero"', transform=ax.transAxes)
+### SECOND POPULATION MEAN
+
+### plot means and SD:
+ax = pyplot.subplot(234)
+spm1d.plot.plot_mean_sd(y-mu1, ax=ax)
+ax.set_title('Mean and SD  (y - mu1)', size=10)
+
+### plot hypothesis test results:
+ax = pyplot.subplot(235)
+spmi = spm1d.stats.ttest(y, mu1).inference(alpha, two_tailed=True)
+spmi.plot(ax=ax)
+spmi.plot_p_values()
+ax.set_title('Hypothesis test (y - mu1)', size=10)
+
+### plot CIs:
+ax = pyplot.subplot(236)
+ci1.plot(ax)
+ax.set_title('CI  (criterion: mu1)', size=10)
 
 
+pyplot.suptitle('One-sample analysis')
 pyplot.show()
+
+
+
