@@ -8,7 +8,7 @@ import spm1d
 #(0) Load dataset:
 dataset = spm1d.data.uv0d.ci2.AnimalsInResearch()
 yA,yB   = dataset.get_data()
-print( dataset )
+# print( dataset )
 
 
 
@@ -18,7 +18,7 @@ mu      = 0
 ci0     = spm1d.stats.ci_twosample(yA, yB, alpha, datum='difference', mu=None)  # datum: inter-group mean difference  (explicit hypothesis test suppressed using "mu=None")
 ci1     = spm1d.stats.ci_twosample(yA, yB, alpha, datum='difference', mu=mu)    # datum: inter-group mean difference  (hypothesis test regarding a specific inter-group difference "mu=0")
 ci2     = spm1d.stats.ci_twosample(yA, yB, alpha, datum='meanA', mu='meanB')    # datum: meanA,  criterion: whether CI reaches meanB
-ci3     = spm1d.stats.ci_twosample(yA, yB, alpha, datum='meanA', mu='tailsAB')  # datum: meanA,  criterion: whether CI tails overlap
+ci3     = spm1d.stats.ci_twosample(yA, yB, alpha, datum='meanA', mu='tailB')    # datum: meanA,  criterion: whether CI tails overlap
 print( ci0 )
 print( ci1 )
 print( ci2 )

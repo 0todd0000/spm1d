@@ -16,6 +16,7 @@ class _SnPM(object):
 	
 	STAT          = 'Z'     #test statistic ("T", "F", "X2" or "T2")
 	isparametric  = False
+	dim           = 0
 	
 	def _check_iterations(self, iterations, alpha, force_iterations):
 		if iterations > self.nPermUnique:
@@ -195,6 +196,9 @@ class SnPM0Dinference(_SnPM0D):
 '''
 
 class _SnPM1D(_SnPM, _spm._SPM):
+	
+	dim           = 1
+	
 	'''Parent class for all 1D non-parametric SPM classes.'''
 	def __init__(self, z, perm):
 		z[np.isnan(z)]      = 0
@@ -369,6 +373,7 @@ class SnPMinference(_SnPM1D, _spm._SPMinference):
 		self.p              = [c.P for c in clusters]  #P values for each cluster
 		self.two_tailed     = two_tailed          #two-tailed test boolean
 		self.zstar          = zstar               #critical threshold
+		self.h0reject       = self.nClusters > 0  #null hypothesis rejection decision
 		self.roi            = spm.roi
 
 

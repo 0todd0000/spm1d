@@ -16,7 +16,7 @@ yB,yA        = dataset.get_data()
 alpha      = 0.05
 ci0        = spm1d.stats.ci_twosample(yA, yB, alpha, datum='difference', mu=0)
 ci1        = spm1d.stats.ci_twosample(yA, yB, alpha, datum='meanA', mu='meanB')
-ci2        = spm1d.stats.ci_twosample(yA, yB, alpha, datum='meanA', mu='tailsAB')
+ci2        = spm1d.stats.ci_twosample(yA, yB, alpha, datum='meanA', mu='tailB')
 print( ci0 )
 print( ci1 )
 print( ci2 )
@@ -73,7 +73,7 @@ ax.text(0.1, 0.2, 'Datum: meanA\nCriterion: meanB', transform=ax.transAxes, bbox
 ax     = pyplot.subplot(235)
 ci2.plot(ax=ax)
 ax.set_title('CI  (possibility 3)')
-ax.text(0.1, 0.2, 'Datum: meanA\nCriterion: tailsAB', transform=ax.transAxes, bbox=dict(color='w', alpha=0.8))
+ax.text(0.1, 0.2, 'Datum: meanA\nCriterion: tailB', transform=ax.transAxes, bbox=dict(color='w', alpha=0.8))
 
 
 ### plot CIs computed separately for the means (INCORRECT!!!)

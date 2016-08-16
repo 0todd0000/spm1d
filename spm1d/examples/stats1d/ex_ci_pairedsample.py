@@ -17,7 +17,7 @@ yA,yB        = dataset.get_data()  #normal and fast walking
 alpha      = 0.05
 ci0        = spm1d.stats.ci_pairedsample(yA, yB, alpha, datum='difference', mu=0)
 ci1        = spm1d.stats.ci_pairedsample(yA, yB, alpha, datum='meanA', mu='meanB')
-ci2        = spm1d.stats.ci_pairedsample(yA, yB, alpha, datum='meanA', mu='tailsAB')
+ci2        = spm1d.stats.ci_pairedsample(yA, yB, alpha, datum='meanA', mu='tailB')
 print( ci0 )
 print( ci1 )
 print( ci2 )
@@ -38,6 +38,7 @@ pyplot.get_current_fig_manager().window.move(0, 0)
 ax     = pyplot.subplot(231)
 spm1d.plot.plot_mean_sd(yA)
 spm1d.plot.plot_mean_sd(yB, linecolor='r', facecolor='r', edgecolor='r')
+spm1d.plot.legend_manual(ax, labels=['Group A', 'Group B', 'Mean', 'SD'], colors=['0.3', 'r', 'k','0.85'], linestyles=['-']*4, linewidths=[10, 10, 3, 10], loc='lower left', fontsize=10)
 ax.set_title('Means and SDs')
 
 
