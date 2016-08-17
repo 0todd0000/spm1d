@@ -15,11 +15,12 @@ def get_datafilepath():
 
 
 class _Dataset(object):
+	STAT              = 'Z'    #test statistic
+	design            = ''     #design string (e.g. "One-way ANOVA")
+	dim               = 0      #data dimensionality
+	
 	def __init__(self):
 		self._rtol    = 0.001  #relative tolerance (for unit tests)
-		self.STAT     = 'Z'
-		self.design   = None   #design string (e.g. "One-way ANOVA")
-		self.dim      = 0      #data dimensionality (0 or 1)
 		self.Y        = None   #dataset
 		self.z        = None   #expected test stat
 		self.df       = None   #expected degrees of freedom
@@ -65,39 +66,29 @@ class _Dataset(object):
 		return self.p
 	def get_expected_results_as_string(self):
 		s      = '  (Expected results)\n'
-		s     += '  %s          :  %s\n' %(self.STAT, str(self.z))
+		s     += '  %s         :  %s\n' %("{:<2}".format(self.STAT), str(self.z))
 		s     += '  df         :  %s\n' %str(self.df)
 		s     += '  p          :  %s\n' %str(self.p)
 		return s
 
 
 
-
-# class _Dataset0D(_Dataset):
-# 	pass
+class _Dataset0D(_Dataset):
+	dim   = 0
 class Dataset1D(_Dataset):
-	def __init__(self):
-		super(Dataset1D, self).__init__()
-		self.dim       = 1
+	dim   = 1
 
 
 class _DatasetANOVA(_Dataset):
-	def __init__(self):
-		super(_DatasetANOVA, self).__init__()
-		self.STAT   = 'F'
+	STAT  = 'F'
 class _DatasetT(_Dataset):
-	def __init__(self):
-		super(_DatasetT, self).__init__()
-		self.STAT   = 't'
+	STAT  = 't'
 class _DatasetT2(_Dataset):
-	def __init__(self):
-		super(_DatasetT2, self).__init__()
-		self.STAT   = 'T2'
+	STAT  = 'T2'
 class _DatasetX2(_Dataset):
-	def __init__(self):
-		super(_DatasetX2, self).__init__()
-		self.STAT   = 'X2'
-
+	STAT  = 'X2'
+class _DatasetK2(_Dataset):
+	STAT = 'K2'
 
 
 class DatasetANOVA1(_DatasetANOVA):
@@ -239,65 +230,58 @@ class _CI(object):
 		s     += '   ci        :  (%.5f, %.5f)\n' %self.ci
 		return s
 
-
 class DatasetCI1(_CI, _DatasetT):
-	def __init__(self):
-		self.mu     = 0
-		self.ci     = (0, 0)
-		super(DatasetCI1, self).__init__()
-		self.design = 'One-sample CI'
+	design  = 'One-sample CI'
+	mu      = 0
+	ci      = (0, 0)
 	def get_data(self):
 		return self.Y, self.mu
 
-
 class DatasetCIpaired(_CI, _DatasetT):
-	def __init__(self):
-		self.YA     = None
-		self.YB     = None
-		super(DatasetCIpaired, self).__init__()
-		self.design = 'Paired sample CI'
+	design  = 'Paired-sample CI'
+	YA      = None
+	YB      = None
 	def get_data(self):
 		return self.YA, self.YB
-
 
 class DatasetCI2(_CI, _DatasetT):
-	def __init__(self):
-		self.YA     = None
-		self.YB     = None
-		super(DatasetCI2, self).__init__()
-		self.design = 'Two-sample CI'
+	design  = 'Two-sample CI'
+	YA      = None
+	YB      = None
 	def get_data(self):
 		return self.YA, self.YB
 
 
-class DatasetT1(_DatasetT):
+
+
+
+class DatasetNormality(_DatasetK2):
 	def __init__(self):
-		self.mu     = None
-		super(DatasetT1, self).__init__()
-		self.design = 'One-sample t test'
+		super(DatasetNormality, self).__init__()
+		self.design = 'Normality test'
+	def get_data(self):
+		return self.Y
+
+class DatasetT1(_DatasetT):
+	design  = 'One-sample t test'
+	mu      = None
 	def get_data(self):
 		return self.Y, self.mu
 
 class DatasetT2(_DatasetT):
-	def __init__(self):
-		self.YA     = None
-		self.YB     = None
-		self.A      = None
-		super(DatasetT2, self).__init__()
-		self.design = 'Two-sample t test'
+	design  = 'Two-sample t test'
+	YA      = None
+	YB      = None
+	A       = None
 	def get_data(self):
 		return self.YA, self.YB
 
 class DatasetTpaired(DatasetT2):
-	def __init__(self):
-		super(DatasetTpaired, self).__init__()
-		self.design = 'Paired t test'
-
+	design  = 'Paired t test'
 
 class DatasetRegress(_DatasetT):
-	def __init__(self):
-		super(DatasetRegress, self).__init__()
-		self.design = 'Simple linear regression'
+	design  = 'Simple linear regression OK?'
+	x       = None
 	def get_data(self):
 		return self.Y, self.x
 	def get_expected_results_as_string(self):

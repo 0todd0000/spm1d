@@ -8,7 +8,7 @@ import spm1d
 #(0) Load dataset:
 dataset = spm1d.data.uv0d.ci2.AnimalsInResearch()
 yA,yB   = dataset.get_data()
-# print( dataset )
+print( dataset )
 
 
 

@@ -75,7 +75,8 @@ def glm(Y, X, c, Q=None, roi=None):
 		s      = np.asarray(sigma2).flatten()
 		t      = _spm.SPM_T(t, (1,df), fwhm, resels, np.asarray(X), np.asarray(b), eij, sigma2=s, roi=roi)
 	else:
-		t      = _spm.SPM0D_T(t, (1,df), beta=np.asarray(b).flatten(), sigma2=float(sigma2))
+		b,r,s2 = np.asarray(b).flatten(), eij.flatten(), float(sigma2)
+		t      = _spm.SPM0D_T(t, (1,df), beta=b, residuals=r, sigma2=s2)
 	return t
 
 

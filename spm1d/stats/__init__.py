@@ -36,3 +36,4 @@ from cca import cca
 from manova import manova1
 
 import nonparam
+import normality
