@@ -39,7 +39,7 @@ def aov(model, contrasts, f_terms):
 			if model.roi is not None:
 				f   = np.ma.masked_array(f, np.logical_not(model.roi))
 			F.append( _spm.SPM_F(f, (df0,df1), model.fwhm, model.resels, model.X, model._beta, model.eij, model.QT, roi=model.roi) )
-	return F
+	return _spm.SPMFList( F )
 
 
 ### ONE-WAY DESIGNS ##############
@@ -128,6 +128,11 @@ def anova1rm(Y, A, SUBJ, equal_var=True, roi=None, _force_approx0D=False):
 
 ### TWO-WAY DESIGNS ##############
 
+def _set_labels(FF, design):
+	FF.set_design_label( design.__class__.__name__ )
+	[F.set_effect_label(label)  for F,label in zip(FF, design.effect_labels)]
+
+
 
 def anova2(Y, A, B, equal_var=True, roi=None):
 	'''
@@ -151,6 +156,8 @@ def anova2(Y, A, B, equal_var=True, roi=None):
 	model   = models.LinearModel(Y, design.X, roi=roi)
 	model.fit()
 	F       = aov(model, design.contrasts, design.f_terms)
+	_set_labels( F, design )
+
 	# if not equal_var:
 		# Y,X,r   = model.Y, model.X, model.eij
 		# QA,QB,C = design.A.get_Q(), design.B.get_Q(), design.contrasts.C.T
@@ -185,6 +192,7 @@ def anova2nested(Y, A, B, equal_var=True, roi=None):
 	model   = models.LinearModel(Y, design.X, roi=roi)
 	model.fit()
 	F       = aov(model, design.contrasts, design.f_terms)
+	_set_labels( F, design )
 	return F
 
 
@@ -218,6 +226,7 @@ def anova2rm(Y, A, B, SUBJ, equal_var=True, roi=None, _force_approx0D=False):
 	else:
 		model.fit( )
 	F       = aov(model, design.contrasts, design.f_terms)
+	_set_labels( F, design )
 	# if not equal_var:
 	# 	Y,X,r   = solver.Y, solver.X, solver.eij
 	# 	QA,QB,C = design.A.get_Q(), design.B.get_Q(), [c.C.T for c in design.contrasts]
@@ -257,6 +266,7 @@ def anova2onerm(Y, A, B, SUBJ, equal_var=True, roi=None, _force_approx0D=False):
 	else:
 		model.fit( )
 	F       = aov(model, design.contrasts, design.f_terms)
+	_set_labels( F, design )
 	return F
 
 
@@ -292,6 +302,7 @@ def anova3(Y, A, B, C, equal_var=True, roi=None):
 	model   = models.LinearModel(Y, design.X, roi=roi)
 	model.fit()
 	F       = aov(model, design.contrasts, design.f_terms)
+	_set_labels( F, design )
 	return F
 	# if not equal_var:
 	# 	Y,X,r   = solver.Y, solver.X, solver.eij
@@ -328,6 +339,7 @@ def anova3nested(Y, A, B, C, equal_var=True, roi=None):
 	model   = models.LinearModel(Y, design.X, roi=roi)
 	model.fit()
 	F       = aov(model, design.contrasts, design.f_terms)
+	_set_labels( F, design )
 	return F
 
 
@@ -361,6 +373,7 @@ def anova3rm(Y, A, B, C, SUBJ, equal_var=True, roi=None, _force_approx0D=False):
 	else:
 		model.fit( )
 	F       = aov(model, design.contrasts, design.f_terms)
+	_set_labels( F, design )
 	return F
 	
 
@@ -399,6 +412,7 @@ def anova3onerm(Y, A, B, C, SUBJ, equal_var=True, roi=None, _force_approx0D=Fals
 	else:
 		model.fit( )
 	F       = aov(model, design.contrasts, design.f_terms)
+	_set_labels( F, design  )
 	return F
 
 
@@ -437,6 +451,7 @@ def anova3tworm(Y, A, B, C, SUBJ, equal_var=True, roi=None, _force_approx0D=Fals
 	else:
 		model.fit( )
 	F       = aov(model, design.contrasts, design.f_terms)
+	_set_labels( F, design )
 	return F
 
 

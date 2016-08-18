@@ -22,10 +22,9 @@ print dataset
 
 
 #(1) Run ANOVA:
-F = spm1d.stats.anova2rm(y, A, B, SUBJ)
-# F = spm1d.stats.anova2rm(y, B, A, SUBJ)
-Fvalues = [f.z for f in F]
-print Fvalues
+FF        = spm1d.stats.anova2rm(y, A, B, SUBJ)
+FFi       = FF.inference(0.05)
+print( FFi )
 
 
 

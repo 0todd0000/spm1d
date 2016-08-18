@@ -13,8 +13,7 @@ print dataset
 
 
 #(1) Run ANOVA:
-F = spm1d.stats.anova3onerm(y, A, B, C, SUBJ, equal_var=True)
-Fvalues = [f.z for f in F]
-print Fvalues
-
+FF        = spm1d.stats.anova3onerm(y, A, B, C, SUBJ, equal_var=True)
+FFi       = FF.inference(0.05)
+print( FFi )
 

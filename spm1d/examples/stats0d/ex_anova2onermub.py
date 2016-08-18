@@ -14,11 +14,8 @@ print dataset
 
 
 #(1) Run ANOVA:
-F = spm1d.stats.anova2onerm(y, A, B, SUBJ)
-Fvalues = [f.z for f in F]
-DF = [f.df for f in F]
-print Fvalues
-print DF
-
+FF        = spm1d.stats.anova2onerm(y, A, B, SUBJ)
+FFi       = FF.inference(0.05)
+print( FFi )
 
 

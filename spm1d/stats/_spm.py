@@ -55,12 +55,74 @@ def _set_docstr(childfn, parentfn, args2remove=None):
 
 class _SPMParent(object):
 	'''Parent class for all parametric SPM classes.'''
+	isanova       = False
+	isregress     = False
 	isparametric  = True
 	dim           = 0
 
 
 
+class SPMFList(list):
+	STAT          = 'F'
+	name          = 'SPM{F} list'
+	design        = ''
+	dim           = 0
+	nEffects      = 1
+	
+	def __init__(self, *args):
+		super(SPMFList, self).__init__(*args)
+		self.nEffects  = len(self)
+		self.dim       = self[0].dim
+		if self.dim==0:
+			self.name += ' (0D)'
+	def __repr__(self):
+		return self._repr_summ()
+	
+	def _repr_get_header(self):
+		s        = '%s\n'  %self.name
+		s       += '   design    :  %s\n'      %self.design
+		s       += '   nEffects  :  %d\n'      %self.nEffects
+		return s
+	def _repr_summ(self):
+		s         = self._repr_get_header()
+		s        += 'Effects:\n'
+		for f in self:
+			s    += '   %s' %f._repr_summ()
+		return s
+	def _repr_verbose(self):
+		s        = self._repr_get_header()
+		s       += '\n'
+		for f in self:
+			s   += f.__repr__()
+			s   += '\n'
+		return s
+	
+	def get_df_values(self):
+		return [f.df for f in self]
+	def get_effect_labels(self):
+		return tuple( [f.effect for f in self] )
+	def get_f_values(self):
+		return tuple( [f.z for f in self] )
+	def inference(self, alpha=0.05):
+		FFi = SPMFiList(  [f.inference(alpha=alpha)   for f in self]  )
+		FFi.set_design_label( self.design )
+		return FFi
+	def print_summary(self):
+		print( self._repr_summ() )
+	def print_verbose(self):
+		print( self._repr_verbose() )
+	def set_design_label(self, label):
+		self.design  = str(label)
 
+
+class SPMFiList(SPMFList):
+	name          = 'SPM{F} inference list'
+	def get_h0reject_values(self):
+		return tuple( [f.h0reject for f in self] )
+	def get_p_values(self):
+		return tuple( [f.p for f in self] )
+	def get_zstar_values(self):
+		return tuple( [f.zstar for f in self] )
 
 
 
@@ -80,8 +142,6 @@ class _SPM0D(_SPMParent):
 		self.beta           = beta             #fitted parameters
 		self.residuals      = residuals        #model residuals
 		self.sigma2         = sigma2           #variance
-		self.isanova        = False
-		self.isregress      = False
 
 
 	def __repr__(self):
@@ -89,15 +149,16 @@ class _SPM0D(_SPMParent):
 		s        = ''
 		s       += 'SPM{%s} (0D)\n' %stat
 		if self.isanova:
-			s   += '   SPM.SS       : (%s,%s)\n' %self.ss
-			s   += '   SPM.df       : (%s,%s)\n' %self.df
-			s   += '   SPM.MS       : (%s,%s)\n' %self.ms
-			s   += '   SPM.z        :  %.5f\n' %self.z
+			s   += '   SPM.effect   :  %s\n'      %self.effect
+			s   += '   SPM.SS       : (%s, %s)\n' %self.ss
+			s   += '   SPM.df       : (%s, %s)\n' %self.df
+			s   += '   SPM.MS       : (%s, %s)\n' %self.ms
+			s   += '   SPM.z        :  %.5f\n'    %self.z
 		else:
-			s   += '   SPM.z      :  %.5f\n' %self.z
-			s   += '   SPM.df     :  %s\n' %dflist2str(self.df)
+			s   += '   SPM.z      :  %.5f\n'      %self.z
+			s   += '   SPM.df     :  %s\n'        %dflist2str(self.df)
 		if self.isregress:
-			s   += '   SPM.r      :  %.5f\n'   %self.r
+			s   += '   SPM.r      :  %.5f\n'      %self.r
 		s       += '\n'
 		return s
 
@@ -113,6 +174,7 @@ class _SPM0Dinference(_SPM0D):
 		self.isanova     = spm.isanova
 		self.isregress   = spm.isregress
 		if self.isanova:
+			self.set_effect_label( spm.effect )
 			self.ss      = spm.ss
 			self.ms      = spm.ms
 		if self.isregress:
@@ -120,21 +182,38 @@ class _SPM0Dinference(_SPM0D):
 
 	def __repr__(self):
 		s        = ''
-		s       += 'SPM{%s} (0D) inference\n'    %self.STAT
-		s       += '   SPM.z        :  %.5f\n'   %self.z
-		s       += '   SPM.df       :  %s\n'     %dflist2str(self.df)
+		s       += 'SPM{%s} (0D) inference\n'     %self.STAT
+		if self.isanova:
+			s   += '   SPM.effect   :  %s\n'      %self.effect
+			s   += '   SPM.SS       : (%s, %s)\n' %self.ss
+			s   += '   SPM.df       : (%s, %s)\n' %self.df
+			s   += '   SPM.MS       : (%s, %s)\n' %self.ms
+			s   += '   SPM.z        :  %.5f\n'    %self.z
+		else:
+			s   += '   SPM.z        :  %.5f\n'    %self.z
+			s   += '   SPM.df       :  %s\n'      %dflist2str(self.df)
 		if self.isregress:
-			s   += '   SPM.r        :  %.5f\n'   %self.r
+			s   += '   SPM.r        :  %.5f\n'    %self.r
 		s       += 'Inference:\n'
-		s       += '   SPM.alpha    :  %.3f\n'   %self.alpha
-		s       += '   SPM.zstar    :  %.5f\n'   %self.zstar
-		s       += '   SPM.h0reject :  %s\n'     %self.h0reject
-		s       += '   SPM.p        :  %.5f\n'   %self.p
+		s       += '   SPM.alpha    :  %.3f\n'    %self.alpha
+		s       += '   SPM.zstar    :  %.5f\n'    %self.zstar
+		s       += '   SPM.h0reject :  %s\n'      %self.h0reject
+		s       += '   SPM.p        :  %.5f\n'    %self.p
+		s       += '\n'
 		return s
 	
 
+class _SPMF(object):
+	effect        = 'Main A'
+	effect_short  = 'A'
+	isanova       = True
+	def set_effect_label(self, label=""):
+		self.effect        = str(label)
+		self.effect_short  = self.effect.split(' ')[1]
 
-class SPM0D_F(_SPM0D):
+
+
+class SPM0D_F(_SPMF, _SPM0D):
 	def __init__(self, z, df, ss=(0,0), ms=(0,0), eij=0, X0=None):
 		_SPM0D.__init__(self, 'F', z, df)
 		self.ss        = tuple( map(float, ss) )
@@ -142,7 +221,10 @@ class SPM0D_F(_SPM0D):
 		self.eij       = eij
 		self.residuals = np.asarray(eij).flatten()
 		self.X0        = X0
-		self.isanova   = True
+
+	def _repr_summ(self):
+		return '{:<5} z = {:<8} df = {}\n'.format(self.effect_short,  '%.3f'%self.z, dflist2str(self.df))
+
 	def inference(self, alpha=0.05):
 		zstar  = stats.f.isf(alpha, self.df[0], self.df[1])
 		p      = stats.f.sf(self.z, self.df[0], self.df[1])
@@ -179,9 +261,10 @@ class SPM0D_X2(_SPM0D):
 
 
 
-class SPM0Di_F(_SPM0Dinference):
+class SPM0Di_F(_SPMF, _SPM0Dinference):
 	'''An SPM{F} (0D) inference object.'''
-	pass
+	def _repr_summ(self):
+		return '{:<5} z = {:<8} df = {:<9} p = {}\n'.format(self.effect.split(' ')[1],  '%.3f'%self.z, dflist2str(self.df), p2string(self.p))
 class SPM0Di_T(_SPM0Dinference):
 	'''An SPM{T} (0D) inference object.'''
 	pass
@@ -232,12 +315,19 @@ class _SPM(_SPMParent):
 			stat = 't'
 		s        = ''
 		s       += 'SPM{%s}\n' %stat
-		s       += '   SPM.z      :  (1x%d) test stat field\n' %self.Q
+		if self.isanova:
+			s   += '   SPM.effect :   %s\n' %self.effect
+		s       += '   SPM.z      :  %s\n' %self._repr_teststat()
 		s       += '   SPM.df     :  %s\n' %dflist2str(self.df)
 		s       += '   SPM.fwhm   :  %.5f\n' %self.fwhm
 		s       += '   SPM.resels :  (%d, %.5f)\n\n\n' %tuple(self.resels)
 		return s
-		
+	
+	def _repr_teststat(self):
+		return '(1x%d) test stat field' %self.Q
+	def _repr_teststat_short(self):
+		return '(1x%d) %s field' %(self.Q, self.STAT)
+	
 
 	def _build_spmi(self, alpha, zstar, clusters, p_set, two_tailed):
 		p_clusters  = [c.P for c in clusters]
@@ -377,7 +467,7 @@ class _SPM(_SPMParent):
 
 
 
-class SPM_F(_SPM):
+class SPM_F(_SPMF, _SPM):
 	'''
 	Create an SPM{F} continuum.
 	SPM objects are instantiated in the **spm1d.stats** module.
@@ -408,6 +498,9 @@ class SPM_F(_SPM):
 		_SPM.__init__(self, 'F', z, df, fwhm, resels, X, beta, residuals, sigma2=sigma2, roi=roi)
 		self.X0 = X0
 		
+	def _repr_summ(self):
+		return '{:<5} z = {:<18} df = {}\n'.format(self.effect_short,  self._repr_teststat_short(), dflist2str(self.df))
+
 	def inference(self, alpha=0.05, cluster_size=0, interp=True, circular=False):
 		'''
 		Conduct statistical inference using random field theory.
@@ -542,10 +635,14 @@ class _SPMinference(_SPM):
 		self.p_set       = p_set               #set-level p value
 		self.p           = p                   #cluster-level p values
 		self.two_tailed  = two_tailed          #two-tailed test boolean
+		if self.isanova:
+			self.set_effect_label( spm.effect )
 
 	def __repr__(self):
 		s        = ''
 		s       += 'SPM{%s} inference field\n' %self.STAT
+		if self.isanova:
+			s   += '   SPM.effect    :   %s\n' %self.effect
 		s       += '   SPM.z         :  (1x%d) raw test stat field\n' %self.Q
 		s       += '   SPM.df        :  %s\n' %dflist2str(self.df)
 		s       += '   SPM.fwhm      :  %.5f\n' %self.fwhm
@@ -576,9 +673,11 @@ class _SPMinference(_SPM):
 class SPMi_T(_SPMinference):
 	'''An SPM{T} inference continuum.'''
 	pass
-class SPMi_F(_SPMinference):
+class SPMi_F(_SPMF, _SPMinference):
 	'''An SPM{F} inference continuum.'''
-	pass
+	def _repr_summ(self):
+		return '{:<5} z={:<18} df={:<9} h0reject={}\n'.format(self.effect_short,  self._repr_teststat_short(), dflist2str(self.df), self.h0reject)
+	
 class SPMi_T2(_SPMinference):
 	'''An SPM{T2} inference continuum.'''
 	pass

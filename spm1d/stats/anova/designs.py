@@ -102,6 +102,9 @@ class _Design(object):
 
 
 class ANOVA1(_Design):
+	
+	effect_labels        = ('Main A', )
+	
 	def __init__(self, A):
 		self.X           = None       #design matrix
 		self.A           = Factor(A)  #factor levels
@@ -129,6 +132,9 @@ class ANOVA1(_Design):
 
 
 class ANOVA1rm(_Design):
+	
+	effect_labels       = ('Main A', )
+	
 	def __init__(self, A, SUBJ):
 		self.X          = None          #design matrix
 		self.S          = Factor(SUBJ)  #subjects
@@ -180,6 +186,9 @@ class ANOVA1rm(_Design):
 
 
 class ANOVA2(_Design):
+	
+	effect_labels       = ('Main A', 'Main B', 'Interaction AB')
+	
 	def __init__(self, A, B):
 		self.X           = None       #design matrix
 		self.A           = Factor(A)  #factor level vector
@@ -221,6 +230,9 @@ class ANOVA2(_Design):
 
 
 class ANOVA2nested(ANOVA2):
+	
+	effect_labels       = ('Main A', 'Main B')
+	
 	def __init__(self, A, B):
 		self.X          = None
 		self.A          = Factor(A)
@@ -375,6 +387,9 @@ class ANOVA2onerm(ANOVA2rm):
 
 
 class ANOVA3(_Design):
+	
+	effect_labels       = ('Main A', 'Main B', 'Main C', 'Interaction AB', 'Interaction AC', 'Interaction BC','Interaction ABC')
+	
 	def __init__(self, A, B, C):
 		self.X          = None       #design matrix
 		self.A          = Factor(A)  #factor level vector
@@ -427,6 +442,9 @@ class ANOVA3(_Design):
 
 
 class ANOVA3nested(ANOVA3):
+	
+	effect_labels       = ('Main A', 'Main B', 'Main C')
+	
 	def __init__(self, A, B, C):
 		self.X          = None
 		self.A          = Factor(A)

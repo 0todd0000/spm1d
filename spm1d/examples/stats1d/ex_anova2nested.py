@@ -21,13 +21,14 @@ Y,A,B        = dataset.get_data()
 #(1) Conduct ANOVA:
 alpha        = 0.05
 FF           = spm1d.stats.anova2nested(Y, A, B, equal_var=True)
-FFi          = [F.inference(alpha)   for F in FF]
+FFi          = FF.inference(0.05)
+print( FFi )
 
 
 #(2) Plot results:
 pyplot.close('all')
-pyplot.subplot(221);  FFi[0].plot();  pyplot.title('Main effect A')
-pyplot.subplot(222);  FFi[1].plot();  pyplot.title('Main effect B')
+pyplot.subplot(221);  FFi[0].plot();  pyplot.title( FFi[0].effect )
+pyplot.subplot(222);  FFi[1].plot();  pyplot.title( FFi[1].effect )
 pyplot.show()
 
 

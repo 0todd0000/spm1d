@@ -11,10 +11,7 @@ print dataset
 
 
 #(1) Run ANOVA:
-F = spm1d.stats.anova3nested(y, A, B, C)
-Fvalues = [f.z for f in F]
-DF = [f.df for f in F]
-print Fvalues
-print DF
-
+FF        = spm1d.stats.anova3nested(y, A, B, C)
+FFi       = FF.inference(0.05)
+print( FFi )
 

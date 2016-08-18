@@ -4,9 +4,6 @@ import spm1d
 
 
 
-
-
-
 #(0) Load dataset:
 dataset = spm1d.data.uv0d.anova1.Cars()
 # dataset = spm1d.data.uv0d.anova1.Sound()
@@ -20,7 +17,8 @@ print dataset
 
 #(1) Run ANOVA
 F = spm1d.stats.anova1(y, A, equal_var=True)
-print F
+Fi = F.inference(0.05)
+print Fi
 
 
 
