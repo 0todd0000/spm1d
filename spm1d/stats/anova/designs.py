@@ -73,7 +73,12 @@ class _Design(object):
 	def _get_column_const(self):
 		return np.matrix( np.ones(self.J) ).T
 
-
+	def get_design_label(self):
+		return self.__class__.__name__
+	def get_effect_labels(self):
+		return self.effect_labels
+	
+	
 	def plot(self, ax=None, plot_contrasts=True, contrastnums=[0,1,2]):
 		if plot_contrasts:
 			ax0 = pyplot.axes([0.05,0.05,0.4,0.9])

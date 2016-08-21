@@ -21,7 +21,16 @@ def _get_snpm(STAT, perm):
 		snpm    = _snpm.SnPM0D_X2(z, perm) if perm.dim==0 else _snpm.SnPM_X2(z, perm)
 	elif STAT == 'F':
 		if isinstance(z, list):
-			snpm = _snpm.SnPM0D_Flist(z, perm) if perm.dim==0 else _snpm.SnPM_Flist(z, perm)
+			# snpm = _snpm.SnPM0D_Flist(z, perm) if perm.dim==0 else _snpm.SnPM_Flist(z, perm)
+			snpm = _snpm.SnPMFList0D(z, perm)
+			# snpm.set_labels(  )
+			
+
+			
+			
+			
+			
+			# snpm = _snpm.SnPMFlist0D(z, perm) if perm.dim==0 else _snpm.SnPMFlist(z, perm)
 		else:
 			snpm = _snpm.SnPM0D_F(z, perm) if perm.dim==0 else _snpm.SnPM_F(z, perm)
 	return snpm

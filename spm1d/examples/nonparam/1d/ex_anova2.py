@@ -35,10 +35,10 @@ y,A,B        = dataset.get_data()
 
 
 
-# # #(1) Conduct non-parametric test:
-# np.random.seed(0)
-# alpha      = 0.05
-# snpm       = spm1d.stats.nonparam.anova2(y, A, B)
+# #(1) Conduct non-parametric test:
+np.random.seed(0)
+alpha      = 0.05
+snpm       = spm1d.stats.nonparam.anova2(y, A, B)
 # snpmi      = snpm.inference(alpha, iterations=200)
 # # # # print snpmi
 # # # # print snpmi.clusters
@@ -59,10 +59,11 @@ y,A,B        = dataset.get_data()
 # pyplot.get_current_fig_manager().window.move(0, 0)
 # ax0 = pyplot.subplot(121)
 # ax1 = pyplot.subplot(122)
-# for ax,zi in zip([ax0,ax1], [spmi,snpmi]):
+# labels = 'Parametric', 'Non-parametric'
+# for ax,zi,label in zip([ax0,ax1], [spmi,snpmi], labels):
 # 	zi.plot(ax=ax)
 # 	zi.plot_threshold_label(ax=ax, fontsize=8)
 # 	zi.plot_p_values(ax=ax, size=10)
+# 	ax.set_title( label )
 # pyplot.show()
-
 

@@ -72,7 +72,7 @@ class _Cluster(object):
 			s       += '   P               :  None\n\n'
 		else:
 			if not self.isparam:
-				s   += '   nPermUnique     :  %d unique permutations possible\n' %self.nPermUnique
+				s   += '   nPermUnique     :  %s unique permutations possible\n' %self.get_nPermUnique_asstr()
 				s   += '   nPermActual     :  %d actual permutations\n' %self.nPerm
 			s       += '   P               :  %.5f\n\n' %self.P
 		return s
@@ -171,6 +171,10 @@ class ClusterNonparam(Cluster):
 		self.metric_label  = None
 		self._assemble()
 		
+	def get_nPermUnique_asstr(self):
+		n = self.nPermUnique
+		return n if (n < 1e6) else '%.4g' %n
+	
 	def set_metric(self, metric, iterations, nPermUnique, two_tailed):
 		self.metric        = metric
 		self.iterations    = iterations

@@ -357,6 +357,11 @@ class _PermuterANOVA(object):
 			self.ZZ    = self.Z
 			self.Z     = self.Z.max(axis=-1)
 
+	def get_design_label(self):
+		return self.calc.design.get_design_label()
+		
+	def get_effect_labels(self):
+		return self.calc.design.get_effect_labels()
 	def get_test_stat(self, ind):
 		return self.calc.get_test_stat( self.Y[ list(ind) ] )
 

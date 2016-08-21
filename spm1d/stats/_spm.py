@@ -68,6 +68,7 @@ class SPMFList(list):
 	design        = ''
 	dim           = 0
 	nEffects      = 1
+	isparametric  = True
 	
 	def __init__(self, *args):
 		super(SPMFList, self).__init__(*args)
@@ -113,6 +114,8 @@ class SPMFList(list):
 		print( self._repr_verbose() )
 	def set_design_label(self, label):
 		self.design  = str(label)
+	def set_effect_labels(self, labels):
+		[F.set_effect_label(label)  for F,label in zip(self, labels)]
 
 
 class SPMFiList(SPMFList):
@@ -223,7 +226,7 @@ class SPM0D_F(_SPMF, _SPM0D):
 		self.X0        = X0
 
 	def _repr_summ(self):
-		return '{:<5} z = {:<8} df = {}\n'.format(self.effect_short,  '%.3f'%self.z, dflist2str(self.df))
+		return '{:<5} F = {:<8} df = {}\n'.format(self.effect_short,  '%.3f'%self.z, dflist2str(self.df))
 
 	def inference(self, alpha=0.05):
 		zstar  = stats.f.isf(alpha, self.df[0], self.df[1])
@@ -264,7 +267,7 @@ class SPM0D_X2(_SPM0D):
 class SPM0Di_F(_SPMF, _SPM0Dinference):
 	'''An SPM{F} (0D) inference object.'''
 	def _repr_summ(self):
-		return '{:<5} z = {:<8} df = {:<9} p = {}\n'.format(self.effect.split(' ')[1],  '%.3f'%self.z, dflist2str(self.df), p2string(self.p))
+		return '{:<5} F = {:<8} df = {:<9} p = {}\n'.format(self.effect.split(' ')[1],  '%.3f'%self.z, dflist2str(self.df), p2string(self.p))
 class SPM0Di_T(_SPM0Dinference):
 	'''An SPM{T} (0D) inference object.'''
 	pass
