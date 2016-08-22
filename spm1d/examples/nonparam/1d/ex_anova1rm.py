@@ -19,7 +19,7 @@ alpha      = 0.05
 snpm       = spm1d.stats.nonparam.anova1rm(y, A, SUBJ)
 snpmi      = snpm.inference(alpha, iterations=500)
 print snpmi
-print snpmi.clusters
+
 
 
 
@@ -27,7 +27,7 @@ print snpmi.clusters
 spm        = spm1d.stats.anova1rm(y, A, SUBJ, equal_var=True)
 spmi       = spm.inference(alpha)
 print spmi
-print spmi.clusters
+
 
 
 

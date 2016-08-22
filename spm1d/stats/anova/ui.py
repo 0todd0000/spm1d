@@ -9,7 +9,7 @@ High-level ANOVA user interface.
 import warnings
 import numpy as np
 import designs,models
-from .. import _datachecks, _reml, _spm
+from .. import _datachecks, _reml, _spm, _spmlist
 
 
 def aov(model, contrasts, f_terms):
@@ -39,7 +39,8 @@ def aov(model, contrasts, f_terms):
 			if model.roi is not None:
 				f   = np.ma.masked_array(f, np.logical_not(model.roi))
 			F.append( _spm.SPM_F(f, (df0,df1), model.fwhm, model.resels, model.X, model._beta, model.eij, model.QT, roi=model.roi) )
-	return _spm.SPMFList( F )
+	return _spmlist.SPMFList( F )
+
 
 
 ### ONE-WAY DESIGNS ##############
@@ -130,7 +131,8 @@ def anova1rm(Y, A, SUBJ, equal_var=True, roi=None, _force_approx0D=False):
 
 def _set_labels(FF, design):
 	FF.set_design_label( design.__class__.__name__ )
-	[F.set_effect_label(label)  for F,label in zip(FF, design.effect_labels)]
+	FF.set_effect_labels( design.effect_labels )
+	# [F.set_effect_label(label)  for F,label in zip(FF, design.effect_labels)]
 
 
 

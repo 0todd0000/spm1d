@@ -8,7 +8,7 @@ import spm1d
 #(0) Load dataset:
 dataset   = spm1d.data.uv0d.anova2.Mouse()       #2x2
 dataset   = spm1d.data.uv0d.anova2.Detergent()     #2x3
-# dataset   = spm1d.data.uv0d.anova2.Satisfaction()  #2x3
+dataset   = spm1d.data.uv0d.anova2.Satisfaction()  #2x3
 # dataset   = spm1d.data.uv0d.anova2.SouthamptonCrossed1()  #2x3
 # dataset   = spm1d.data.uv0d.anova2.SPM1D3x3()
 # dataset   = spm1d.data.uv0d.anova2.SPM1D3x4()

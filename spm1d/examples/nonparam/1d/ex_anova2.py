@@ -39,6 +39,11 @@ y,A,B        = dataset.get_data()
 np.random.seed(0)
 alpha      = 0.05
 snpm       = spm1d.stats.nonparam.anova2(y, A, B)
+print( snpm )
+
+
+
+# print( snpm[0] )
 # snpmi      = snpm.inference(alpha, iterations=200)
 # # # # print snpmi
 # # # # print snpmi.clusters

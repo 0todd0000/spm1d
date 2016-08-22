@@ -62,70 +62,18 @@ class _SPMParent(object):
 
 
 
-class SPMFList(list):
-	STAT          = 'F'
-	name          = 'SPM{F} list'
-	design        = ''
-	dim           = 0
-	nEffects      = 1
-	isparametric  = True
-	
-	def __init__(self, *args):
-		super(SPMFList, self).__init__(*args)
-		self.nEffects  = len(self)
-		self.dim       = self[0].dim
-		if self.dim==0:
-			self.name += ' (0D)'
-	def __repr__(self):
-		return self._repr_summ()
-	
-	def _repr_get_header(self):
-		s        = '%s\n'  %self.name
-		s       += '   design    :  %s\n'      %self.design
-		s       += '   nEffects  :  %d\n'      %self.nEffects
-		return s
-	def _repr_summ(self):
-		s         = self._repr_get_header()
-		s        += 'Effects:\n'
-		for f in self:
-			s    += '   %s' %f._repr_summ()
-		return s
-	def _repr_verbose(self):
-		s        = self._repr_get_header()
-		s       += '\n'
-		for f in self:
-			s   += f.__repr__()
-			s   += '\n'
-		return s
-	
-	def get_df_values(self):
-		return [f.df for f in self]
-	def get_effect_labels(self):
-		return tuple( [f.effect for f in self] )
-	def get_f_values(self):
-		return tuple( [f.z for f in self] )
-	def inference(self, alpha=0.05):
-		FFi = SPMFiList(  [f.inference(alpha=alpha)   for f in self]  )
-		FFi.set_design_label( self.design )
-		return FFi
-	def print_summary(self):
-		print( self._repr_summ() )
-	def print_verbose(self):
-		print( self._repr_verbose() )
-	def set_design_label(self, label):
-		self.design  = str(label)
-	def set_effect_labels(self, labels):
-		[F.set_effect_label(label)  for F,label in zip(self, labels)]
+class _SPMF(object):
+	'''Additional attrubutes and methods specific to SPM{F} objects.'''
+	effect        = 'Main A'
+	effect_short  = 'A'
+	isanova       = True
+	def set_effect_label(self, label=""):
+		self.effect        = str(label)
+		self.effect_short  = self.effect.split(' ')[1]
 
 
-class SPMFiList(SPMFList):
-	name          = 'SPM{F} inference list'
-	def get_h0reject_values(self):
-		return tuple( [f.h0reject for f in self] )
-	def get_p_values(self):
-		return tuple( [f.p for f in self] )
-	def get_zstar_values(self):
-		return tuple( [f.zstar for f in self] )
+
+
 
 
 
@@ -205,14 +153,6 @@ class _SPM0Dinference(_SPM0D):
 		s       += '\n'
 		return s
 	
-
-class _SPMF(object):
-	effect        = 'Main A'
-	effect_short  = 'A'
-	isanova       = True
-	def set_effect_label(self, label=""):
-		self.effect        = str(label)
-		self.effect_short  = self.effect.split(' ')[1]
 
 
 
