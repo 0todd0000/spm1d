@@ -1,20 +1,12 @@
 /*
- * bootstrap-sphinx.css
- * ~~~~~~~~~~~~~~~~~~~~
- *
- * Sphinx stylesheet -- Bootstrap theme.
- */
+* bootstrap-sphinx.css
+* ~~~~~~~~~~~~~~~~~~~~
+*
+* Sphinx stylesheet -- Bootstrap theme.
+*/
 
 .navbar-inverse .brand {
   color: #FFF;
-}
-
-/*
- * Reset navbar styles from overrides in:
- * https://bitbucket.org/birkenfeld/sphinx/commits/78d8ebf76b630ab4073a7328af9d91e8123b8d96
- */
-.navbar .container {
-  padding-top: 0;
 }
 
 .page-top {
@@ -22,20 +14,17 @@
 }
 
 
-
-
-
+  
   body {
-    
-      padding-top: 40px;
-    
+  
+    padding-top: 40px;
+  
   }
   .page-top {
-    
-      top: 40px;
-    
+  
+    top: 40px;
+  
   }
-
 
 
 .navbar-inner {
@@ -165,6 +154,7 @@ table.field-list {
   }
   .bs-sidenav.affix {
     position: fixed; /* Undo the static from mobile first approach */
+    top: 80px;
   }
   .bs-sidenav.affix-bottom {
     position: absolute; /* Undo the static from mobile first approach */
