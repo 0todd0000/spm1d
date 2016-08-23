@@ -13,7 +13,7 @@ y,x          = dataset.get_data()  #A:slow, B:fast
 
 #(0a) Create region of interest(ROI):
 roi        = np.array( [False]*y.shape[1] )
-roi[70:80] = True
+roi[50:80] = True
 
 
 #(1) Conduct non-parametric test:
