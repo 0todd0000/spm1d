@@ -7,27 +7,30 @@ import spm1d
 
 
 #(0) Load dataset:
-dataset      = spm1d.data.mv1d.cca.Dorn2012()
-y,x          = dataset.get_data()  #A:slow, B:fast
+dataset    = spm1d.data.uv1d.anova1.SpeedGRFcategorical()
+# dataset    = spm1d.data.uv1d.anova1.Weather()
+y,A        = dataset.get_data()
+
+#(0a) Create region of interest(ROI):
+roi        = np.array( [False]*y.shape[1] )
+roi[15:75] = True
 
 
-
-#(1) Conduct non-parametric test:
+# #(1) Conduct non-parametric test:
 np.random.seed(0)
 alpha      = 0.05
-two_tailed = False
-snpm       = spm1d.stats.nonparam.cca(y, x)
-snpmi      = snpm.inference(alpha, iterations=100)
+snpm       = spm1d.stats.nonparam.anova1(y, A, roi=roi)
+snpmi      = snpm.inference(alpha, iterations=200)
 print snpmi
-print snpmi.clusters
+
 
 
 
 #(2) Compare with parametric result:
-spm        = spm1d.stats.cca(y, x)
+spm        = spm1d.stats.anova1(y, A, equal_var=True, roi=roi)
 spmi       = spm.inference(alpha)
 print spmi
-print spmi.clusters
+
 
 
 
@@ -44,5 +47,4 @@ for ax,zi,label in zip([ax0,ax1], [spmi,snpmi], labels):
 	zi.plot_p_values(ax=ax, size=10)
 	ax.set_title( label )
 pyplot.show()
-
 

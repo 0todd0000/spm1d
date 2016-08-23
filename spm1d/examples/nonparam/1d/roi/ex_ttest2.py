@@ -7,25 +7,31 @@ import spm1d
 
 
 #(0) Load dataset:
-dataset      = spm1d.data.mv1d.cca.Dorn2012()
-y,x          = dataset.get_data()  #A:slow, B:fast
+dataset      = spm1d.data.uv1d.t2.PlantarArchAngle()
+# dataset      = spm1d.data.uv1d.t2.SimulatedTwoLocalMax()
+yB,yA        = dataset.get_data()  #normal and fast walking
+
+
+#(0a) Create region of interest(ROI):
+roi        = np.array( [False]*yA.shape[1] )
+roi[70:80] = True
 
 
 
 #(1) Conduct non-parametric test:
 np.random.seed(0)
 alpha      = 0.05
-two_tailed = False
-snpm       = spm1d.stats.nonparam.cca(y, x)
-snpmi      = snpm.inference(alpha, iterations=100)
+two_tailed = True
+snpm       = spm1d.stats.nonparam.ttest2(yA, yB, roi=roi)
+snpmi      = snpm.inference(alpha, two_tailed=two_tailed, iterations=500)
 print snpmi
 print snpmi.clusters
 
 
 
 #(2) Compare with parametric result:
-spm        = spm1d.stats.cca(y, x)
-spmi       = spm.inference(alpha)
+spm        = spm1d.stats.ttest2(yA, yB, roi=roi)
+spmi       = spm.inference(alpha, two_tailed=two_tailed)
 print spmi
 print spmi.clusters
 

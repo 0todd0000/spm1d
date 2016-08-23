@@ -7,27 +7,29 @@ import spm1d
 
 
 #(0) Load dataset:
-dataset      = spm1d.data.mv1d.cca.Dorn2012()
-y,x          = dataset.get_data()  #A:slow, B:fast
+dataset      = spm1d.data.uv1d.anova1rm.SpeedGRFcategoricalRM()
+y,A,SUBJ     = dataset.get_data()
+
+#(0a) Create region of interest(ROI):
+roi        = np.array( [False]*y.shape[1] )
+roi[25:45] = True
 
 
-
-#(1) Conduct non-parametric test:
+# #(1) Conduct non-parametric test:
 np.random.seed(0)
 alpha      = 0.05
-two_tailed = False
-snpm       = spm1d.stats.nonparam.cca(y, x)
-snpmi      = snpm.inference(alpha, iterations=100)
+snpm       = spm1d.stats.nonparam.anova1rm(y, A, SUBJ, roi=roi)
+snpmi      = snpm.inference(alpha, iterations=500)
 print snpmi
-print snpmi.clusters
+
 
 
 
 #(2) Compare with parametric result:
-spm        = spm1d.stats.cca(y, x)
+spm        = spm1d.stats.anova1rm(y, A, SUBJ, equal_var=True, roi=roi)
 spmi       = spm.inference(alpha)
 print spmi
-print spmi.clusters
+
 
 
 

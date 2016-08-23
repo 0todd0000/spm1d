@@ -7,8 +7,16 @@ import spm1d
 
 
 #(0) Load dataset:
-dataset      = spm1d.data.mv1d.cca.Dorn2012()
-y,x          = dataset.get_data()  #A:slow, B:fast
+# dataset    = spm1d.data.uv1d.t1.Random()
+# dataset    = spm1d.data.uv1d.t1.SimulatedPataky2015a()
+dataset    = spm1d.data.uv1d.t1.SimulatedPataky2015b()
+y,mu       = dataset.get_data()
+
+
+
+#(0a) Create region of interest(ROI):
+roi        = np.array( [False]*y.shape[1] )
+roi[70:80] = True
 
 
 
@@ -16,16 +24,16 @@ y,x          = dataset.get_data()  #A:slow, B:fast
 np.random.seed(0)
 alpha      = 0.05
 two_tailed = False
-snpm       = spm1d.stats.nonparam.cca(y, x)
-snpmi      = snpm.inference(alpha, iterations=100)
+snpm       = spm1d.stats.nonparam.ttest(y, mu, roi=roi)
+snpmi      = snpm.inference(alpha, two_tailed=two_tailed, iterations=-1)
 print snpmi
 print snpmi.clusters
 
 
 
 #(2) Compare with parametric result:
-spm        = spm1d.stats.cca(y, x)
-spmi       = spm.inference(alpha)
+spm        = spm1d.stats.ttest(y, mu, roi=roi)
+spmi       = spm.inference(alpha, two_tailed=two_tailed)
 print spmi
 print spmi.clusters
 

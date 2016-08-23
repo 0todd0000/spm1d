@@ -55,17 +55,28 @@ class _Permuter0D(_Permuter):
 
 class _Permuter1D(_Permuter):
 	dim = 1   #data dimensionality
+	roi = None
+	ismultivariate = False
 	
 	def _set_roi(self, roi):
 		if roi is not None:
 			self.roi  = np.asarray(roi, dtype=bool)
 			roi       = np.asarray( [self.roi]*self.J, dtype=bool )
+			if self.ismultivariate:
+				roi   = np.dstack( [roi]*self.I )
 			self.Y    = np.ma.masked_array( self.Y, np.logical_not(roi) )
+			
 	
 	def build_secondary_pdf(self, zstar, circular=False):
 		self.Z2          = [self.metric.get_max_metric(z, zstar, circular)   for z in self.ZZ]
 	def get_clusters(self, z, zstar, two_tailed=False):
 		return self.metric.get_all_clusters(z, zstar, self.Z2, two_tailed)
+	def get_test_stat_original(self):
+		z = self.get_test_stat( self.labels0 )
+		if self.roi is not None:
+			# z = np.ma.masked_array(z, self.roi)
+			z = np.ma.masked_array( z, np.logical_not(self.roi) )
+		return z
 	def set_metric(self, metric_name):
 		self.metric     = metric_dict[metric_name]
 
@@ -105,6 +116,8 @@ class _PermuterOneSample(object):
 		y              = signs * (self.Y - self.mu)
 		return self.calc.get_test_stat_mu_subtracted(y)
 
+	def _set_stat_calculator(self):
+		self.calc       = self.CalculatorClass(self.J, self.mu)
 
 
 
@@ -143,24 +156,22 @@ class _PermuterOneSample1D(_PermuterOneSample, _Permuter1D):
 
 
 class PermuterTtest0D(_PermuterOneSample0D):
-	def _set_stat_calculator(self):
-		self.calc       = calculators.CalculatorTtest(self.J, self.mu)
+	CalculatorClass    = calculators.CalculatorTtest
 
 class PermuterHotellings0D(_PermuterOneSample0D):
-	def _set_stat_calculator(self):
-		self.calc       = calculators.CalculatorHotellings0D(self.J, self.mu)
+	ismultivariate  = True
+	CalculatorClass = calculators.CalculatorHotellings0D
 	def get_signs(self, labels):
 		return self._get_signs(labels).reshape( self.Y.shape )
 
 class PermuterTtest1D(_PermuterOneSample1D):
-	def _set_stat_calculator(self):
-		self.calc       = calculators.CalculatorTtest(self.J, self.mu)
+	CalculatorClass    = calculators.CalculatorTtest
 	def get_signs(self, labels):
 		return np.array(  [self._get_signs(labels)] * self.Q ).T
 
 class PermuterHotellings1D(_PermuterOneSample1D):
-	def _set_stat_calculator(self):
-		self.calc       = calculators.CalculatorHotellings1D(self.J, self.mu)
+	ismultivariate  = True
+	CalculatorClass = calculators.CalculatorHotellings1D
 	def get_signs(self, labels):
 		signs           = self._get_signs(labels).reshape( (self.J, self.I) )
 		return np.array([signs]*self.Q).swapaxes(0, 1)
@@ -193,6 +204,7 @@ class _PermuterRegress(object):
 		self.Z             = None  #PDF
 		self._set_stat_calculator()
 
+
 	def build_pdf(self, iterations=-1):
 		if iterations==-1:
 			LABELS       = itertools.permutations( range(self.J) )
@@ -217,6 +229,7 @@ class PermuterRegress0D(_PermuterRegress, _Permuter0D):
 
 
 class PermuterCCA0D(_PermuterRegress, _Permuter0D):
+	ismultivariate = True
 	def _set_stat_calculator(self):
 		self.calc          = calculators.CalculatorCCA0D(self.x)
 
@@ -225,13 +238,14 @@ class PermuterRegress1D(_PermuterRegress, _Permuter1D):
 		self.Y             = y
 		self.x             = x
 		self.J             = x.size
+		self.I             = y.shape[2] if self.ismultivariate else 1   #number of vector components
 		self.labels0       = np.arange( self.J )  #original labels
 		self.nPermTotal    = int( factorial( self.J ) )
 		self.calc          = None
 		self.ZZ            = None                      #all permuted test statistic fields
 		self.Z             = None                      #primary PDF:    test statistic field maxima distribution
 		self.Z2            = None                      #secondary PDF:  cluster metric distribution
-		self.roi           = None                      #region(s) of interest
+		self.roi           = roi                       #region(s) of interest
 		self._set_stat_calculator()
 		self._set_roi(roi)
 		
@@ -241,6 +255,7 @@ class PermuterRegress1D(_PermuterRegress, _Permuter1D):
 
 
 class PermuterCCA1D(PermuterRegress1D):
+	ismultivariate = True
 	def _set_stat_calculator(self):
 		self.calc          = calculators.CalculatorCCA1D(self.x)
 
@@ -306,6 +321,7 @@ class _PermuterTwoSample1D(_PermuterTwoSample, _Permuter1D):
 	def __init__(self, yA, yB, roi=None):
 		super(_PermuterTwoSample1D, self).__init__(yA, yB)
 		self.roi            = None
+		self.I              = yA.shape[2] if self.ismultivariate else 1   #number of vector components
 		self._set_roi(roi)
 
 
@@ -314,6 +330,7 @@ class PermuterTtest20D(_PermuterTwoSample, _Permuter0D):
 		self.calc          = calculators.CalculatorTtest2(self.JA, self.JB)
 
 class PermuterHotellings20D(_PermuterTwoSample, _Permuter0D):
+	ismultivariate = True
 	def _set_stat_calculator(self):
 		self.calc          = calculators.CalculatorHotellings20D(self.JA, self.JB)
 
@@ -322,6 +339,7 @@ class PermuterTtest21D(_PermuterTwoSample1D):
 		self.calc          = calculators.CalculatorTtest2(self.JA, self.JB)
 
 class PermuterHotellings21D(_PermuterTwoSample1D):
+	ismultivariate = True
 	def _set_stat_calculator(self):
 		self.calc          = calculators.CalculatorHotellings21D(self.JA, self.JB)
 
@@ -375,6 +393,46 @@ class _PermuterANOVA1D(_PermuterANOVA, _Permuter1D):
 		self.Z2         = None                      #secondary PDF:  cluster metric distribution
 		self.roi        = None                      #region(s) of interest
 		self._set_roi(roi)
+		self._roin      = None if self.roi is None else np.logical_not( self.roi )
+		
+	def get_test_stat(self, ind):
+		z               = super(_PermuterANOVA1D, self).get_test_stat(ind)
+		if self.roi is not None:
+			z[ self._roin ] = 0
+		return z
+
+
+
+
+
+
+
+
+
+class PermuterMANOVA10D(_PermuterANOVA, _Permuter0D):
+	ismultivariate = True
+	
+	def __init__(self, y, A):
+		self.A   = A
+		self.I   = y.shape[1]
+		super(PermuterMANOVA10D, self).__init__(y, A)
+	
+	def _set_teststat_calculator(self, *args):
+		self.calc  = calculators.CalculatorMANOVA10D( self.A, self.I )
+
+
+class PermuterMANOVA11D(_PermuterANOVA1D):
+	ismultivariate = True
+	
+	def __init__(self, y, roi, A):
+		self.A   = A
+		self.I   = y.shape[2]
+		super(PermuterMANOVA11D, self).__init__(y, roi, A)
+	
+	def _set_teststat_calculator(self, *args):
+		self.calc  = calculators.CalculatorMANOVA11D( self.A, self.I )
+
+
 
 
 
@@ -398,8 +456,25 @@ class _PermuterANOVA1DmultiF(_PermuterANOVA1D):
 			Z2.append(z2)
 		self.Z2  = np.array(Z2)
 
+	def get_test_stat(self, ind):
+		zz       = self.calc.get_test_stat( self.Y[ list(ind) ] )
+		if self.roi is not None:
+			for z in zz:
+				z[ self._roin ] = 0
+		return zz
+	
 
-
+	# def get_test_stat_original(self):
+	# 	return self.get_test_stat( self.labels0 )
+		
+	def get_test_stat_original(self):
+		z = self.get_test_stat( self.labels0 )
+		if self.roi is not None:
+			for i,zz in enumerate(z):
+				zz = np.ma.masked_array( zz, self._roin )
+				z[i] = zz
+		return z
+	
 
 
 	def get_z_critical_list(self, alpha=0.05):
@@ -445,8 +520,15 @@ class PermuterANOVA2rm(_PermuterANOVA0DmultiF):
 class PermuterANOVA21D(_PermuterANOVA1DmultiF):
 	def _set_teststat_calculator(self, *args):
 		self.calc  = calculators.CalculatorANOVA2( *args )
-
-
+class PermuterANOVA2nested1D(_PermuterANOVA1DmultiF):
+	def _set_teststat_calculator(self, *args):
+		self.calc  = calculators.CalculatorANOVA2nested( *args )
+class PermuterANOVA2onerm1D(_PermuterANOVA1DmultiF):
+	def _set_teststat_calculator(self, *args):
+		self.calc  = calculators.CalculatorANOVA2onerm( *args )
+class PermuterANOVA2rm1D(_PermuterANOVA1DmultiF):
+	def _set_teststat_calculator(self, *args):
+		self.calc  = calculators.CalculatorANOVA2rm( *args )
 
 
 
@@ -468,123 +550,23 @@ class PermuterANOVA3rm(_PermuterANOVA0DmultiF):
 
 
 
+class PermuterANOVA31D(_PermuterANOVA1DmultiF):
+	def _set_teststat_calculator(self, *args):
+		self.calc  = calculators.CalculatorANOVA3( *args )
+class PermuterANOVA3nested1D(_PermuterANOVA1DmultiF):
+	def _set_teststat_calculator(self, *args):
+		self.calc  = calculators.CalculatorANOVA3nested( *args )
+class PermuterANOVA3onerm1D(_PermuterANOVA1DmultiF):
+	def _set_teststat_calculator(self, *args):
+		self.calc  = calculators.CalculatorANOVA3onerm( *args )
+class PermuterANOVA3tworm1D(_PermuterANOVA1DmultiF):
+	def _set_teststat_calculator(self, *args):
+		self.calc  = calculators.CalculatorANOVA3tworm( *args )
+class PermuterANOVA3rm1D(_PermuterANOVA1DmultiF):
+	def _set_teststat_calculator(self, *args):
+		self.calc  = calculators.CalculatorANOVA3rm( *args )
 
 
 
-
-
-
-
-
-
-
-
-
-
-#---------------------------------------------------------------------------------
-#  1D PERMUTERS
-#---------------------------------------------------------------------------------
-
-
-
-
-
-#
-#
-# class PermuterOneSampleT(_Permuter):
-# 	def __init__(self, y, mu):
-# 		self.Y             = y
-# 		self.J             = int(y.shape[0])
-# 		self.calc          = calculators.CalculatorOneSampleT(self.J, mu)
-# 		self.labels0       = np.array([0]*self.J)  #original labels
-# 		self.nPermTotal    = 2**self.J
-# 		self.Z0            = None  #primary PDF
-# 		self.Z1            = None  #secondary PDF
-# 		self.metric        = None  #metric for secondary PDF
-#
-# 	def build_primary_PDF(self, iterations=-1):
-# 		if iterations==-1:
-# 			LABELS       = itertools.product((0,1), repeat=self.J)
-# 			self.Z0      = np.array([self.get_test_stat(labels).max()  for labels in LABELS])
-# 		else:
-# 			Z            = []
-# 			for i in range(iterations):
-# 				labels   = np.random.binomial(1, 0.5, self.J)
-# 				Z.append(  self.get_test_stat(labels).max()  )
-# 			self.Z0      = np.array(Z)
-#
-# 	def build_secondary_PDF(self, thresh, iterations=-1):
-# 		if iterations==-1:
-# 			LABELS       = itertools.product((0,1), repeat=self.J)
-# 			self.Z1      = np.array([self.metric.get_max_metric(self.get_test_stat(labels), thresh)  for labels in LABELS])
-# 		else:
-# 			Z            = []
-# 			for i in range(iterations):
-# 				labels   = np.random.binomial(1, 0.5, self.J)
-# 				Z.append(  self.metric.get_max_metric(self.get_test_stat(labels), thresh)  )
-# 			self.Z1      = np.array(Z)
-#
-# 	def get_test_stat(self, labels):
-# 		y      = self.Y.copy()
-# 		signs  = -2*np.array(labels) + 1
-# 		y      = (signs*y.T).T
-# 		return self.calc.get_test_stat(y)
-#
-# 	def get_test_stat(self, labels):
-# 		return self.get_test_stat(labels)
-#
-#
-#
-#
-#
-# class PermuterTwoSampleT(_Permuter):
-# 	def __init__(self, yA, yB):
-# 		self.Y             = np.matrix(np.vstack([yA, yB]))
-# 		self.JA            = int(yA.shape[0])
-# 		self.JB            = int(yB.shape[0])
-# 		self.J             = self.JA + self.JB
-# 		self.calc          = calculators.CalculatorTwoSampleT(self.JA, self.JB)
-# 		self.labels0       = np.array([0]*self.JA + [1]*self.JB)  #original labels
-# 		self.labelsZeros   = np.array([0]*self.J)  #empty labels
-# 		if factorial(self.J)==np.inf:
-# 			self.nPermTotal = -1
-# 		else:
-# 			self.nPermTotal    = int(factorial(self.J) / ( factorial(self.JA)*factorial(self.JB) ))
-# 		self.Z0            = None  #primary PDF
-# 		self.Z1            = None  #secondary PDF
-# 		self.metric        = None  #metric for secondary PDF
-#
-# 	def build_primary_PDF(self, iterations=-1):
-# 		if iterations==-1:
-# 			ONES         = itertools.combinations(range(self.J), self.JA)
-# 			self.Z0      = np.array([self.get_test_stat(ones).max()  for ones in ONES])
-# 		else:
-# 			Z            = []
-# 			for i in range(iterations):
-# 				ones     = np.random.permutation(self.J)[:self.JA]
-# 				Z.append(  self.get_test_stat(ones).max()  )
-# 			self.Z0      = np.array(Z)
-#
-#
-# 	def build_secondary_PDF(self, thresh, iterations=-1):
-# 		if iterations==-1:
-# 			ONES         = itertools.combinations(range(self.J), self.JA)
-# 			self.Z1      = np.array([self.metric.get_max_metric(self.get_test_stat(ones), thresh)  for ones in ONES])
-# 		else:
-# 			Z            = []
-# 			for i in range(iterations):
-# 				ones     = np.random.permutation(self.J)[:self.JA]
-# 				Z.append(  self.metric.get_max_metric(self.get_test_stat(ones), thresh)  )
-# 			self.Z1      = np.array(Z)
-#
-# 	def get_test_stat(self, labels):
-# 		yA,yB              = self.Y[labels==0], self.Y[labels==1]
-# 		return self.calc.get_test_stat(yA, yB)
-#
-# 	def get_test_stat(self, ones):
-# 		labels             = self.labelsZeros.copy()
-# 		labels[list(ones)] = 1
-# 		return self.get_test_stat(labels)
-#
 
 

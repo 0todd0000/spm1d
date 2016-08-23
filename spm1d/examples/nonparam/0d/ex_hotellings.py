@@ -18,18 +18,7 @@ T2         = spm1d.stats.nonparam.hotellings(y, mu)
 T2i        = T2.inference(alpha, iterations=1000)
 
 
-# from matplotlib import pyplot
-# pyplot.close('all')
-# pyplot.figure(figsize=(8,6))
-# pyplot.get_current_fig_manager().window.move(0, 0)
-# ax = pyplot.axes()
-# Z  = T2i.permuter.Z
-# ax.hist( Z, range=(0,25) )
-# pyplot.show()
-#
-
-
-#(3) Compare to parametric inference:
+#(2) Compare to parametric result:
 T2param    = spm1d.stats.hotellings(y, mu)
 T2parami   = T2param.inference(alpha)
 zparam     = T2parami.z

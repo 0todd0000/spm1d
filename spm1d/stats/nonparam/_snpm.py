@@ -15,6 +15,7 @@ class _SnPM(object):
 	'''Parent class for all non-parametric SPM classes.'''
 	
 	STAT          = 'Z'     #test statistic ("T", "F", "X2" or "T2")
+	isanova       = False
 	isparametric  = False
 	dim           = 0
 	
@@ -277,14 +278,14 @@ class _SnPM1D(_SnPM, _spm._SPM):
 		clusters   = self._get_clusters(zstar, two_tailed, interp, circular, iterations, cluster_metric)
 		clusters   = self._cluster_inference(clusters, two_tailed)
 		if self.isanova:
-			Fi     = SnPMiF(self, alpha, zstar, two_tailed, clusters)
+			Fi     = SnPMiF(self, alpha, zstar, clusters)
 		else:
 			Fi     = SnPMinference(self, alpha, zstar, two_tailed, clusters)
 		return Fi
 
 	def plot_design(self, **kwdargs):
 		msg        = '\n'
-		msg       += 'The "plot_design" method is not implemented for non-parametric SPMs. '
+		msg       += '"plot_design" is not implemented for non-parametric SPMs. '
 		msg       += 'To plot the design matrix use the corresponding parametric procedure and then call "plot_design".\n'
 		msg       += 'For example:\n'
 		msg       += '   >>>  spm = spm1d.stats.ttest2(yA, yB)\n' 
@@ -364,24 +365,28 @@ class SnPMinference(_SnPM1D, _spm._SPMinference):
 		if self.isanova:
 			s   += '   SPM.effect         :  %s\n'      %self.effect
 		s       += '   SPM.z              :  (1x%d) raw test stat field\n' %self.Q
-		s       += '   SnPM.nPermUnique   :  %s\n' %self.get_nPermUnique_asstr()
+		s       += '   SnPM.nPermUnique   :  %s\n'      %self.get_nPermUnique_asstr()
 		s       += 'Inference:\n'
 		# s       += '   SnPM.nPermActual   :  (%d) actual permutations\n' %self.nPerm0
-		s       += '   SPM.alpha          :  %.3f\n' %self.alpha
-		s       += '   SPM.zstar          :  %.5f\n' %self.zstar
+		s       += '   SPM.alpha          :  %.3f\n'    %self.alpha
+		s       += '   SPM.zstar          :  %.5f\n'    %self.zstar
+		s       += '   SPM.h0reject       :  %s\n'      %self.h0reject
 		# s       += '   SPM.cluster_metric :  %s\n'   %self.cluster_metric
-		s       += '   SPM.p              :  (%s)\n' %plist2string(self.p)
+		s       += '   SPM.p              :  (%s)\n'   %plist2string(self.p)
 		return s
 		
 
 
-class SnPMiF(SnPMinference):
-	def __init__(self, spm, alpha, zstar, two_tailed, clusters):
-		super(SnPMiF, self).__init__(spm, alpha, zstar, two_tailed, clusters)
+class SnPMiF(SnPMinference, _SPMF):
+	def __init__(self, spm, alpha, zstar, clusters):
+		super(SnPMiF, self).__init__(spm, alpha, zstar, False, clusters)
 		self.isanova        = True
 		self.effect         = spm.effect
 		self.effect_short   = spm.effect_short
 
+	def _repr_summ(self):
+		return '{:<5} z={:<18} h0reject={}\n'.format(self.effect_short,  self._repr_teststat_short(), self.h0reject)
+	
 
 
 

@@ -44,50 +44,68 @@ def anova2(y, A, B, roi=None):
 	dim     = _get_data_dim(y)
 	perm    = permuters.PermuterANOVA2(y, A, B) if dim==0 else permuters.PermuterANOVA21D(y, roi, A, B)
 	return _get_snpm( 'F', perm )
-
-
-
-
-def anova2nested(y, A, B):
-	return _get_snpm( 'F',  permuters.PermuterANOVA2nested(y, A, B)  )
-def anova2onerm(y, A, B, SUBJ):
-	return _get_snpm( 'F',  permuters.PermuterANOVA2onerm(y, A, B, SUBJ)  )
-def anova2rm(y, A, B, SUBJ):
-	return _get_snpm( 'F',  permuters.PermuterANOVA2rm(y, A, B, SUBJ)  )
+def anova2nested(y, A, B, roi=None):
+	dim     = _get_data_dim(y)
+	perm    = permuters.PermuterANOVA2nested(y, A, B) if dim==0 else permuters.PermuterANOVA2nested1D(y, roi, A, B)
+	return _get_snpm( 'F', perm )
+def anova2onerm(y, A, B, SUBJ, roi=None):
+	dim     = _get_data_dim(y)
+	perm    = permuters.PermuterANOVA2onerm(y, A, B, SUBJ) if dim==0 else permuters.PermuterANOVA2onerm1D(y, roi, A, B, SUBJ)
+	return _get_snpm( 'F', perm )
+def anova2rm(y, A, B, SUBJ, roi=None):
+	dim     = _get_data_dim(y)
+	perm    = permuters.PermuterANOVA2rm(y, A, B, SUBJ) if dim==0 else permuters.PermuterANOVA2rm1D(y, roi, A, B, SUBJ)
+	return _get_snpm( 'F', perm )
 ### Three-way ANOVA:
-def anova3(y, A, B, C):
-	return _get_snpm( 'F',  permuters.PermuterANOVA3(y, A, B, C)  )
-def anova3nested(y, A, B, C):
-	return _get_snpm( 'F',  permuters.PermuterANOVA3nested(y, A, B, C)  )
-def anova3onerm(y, A, B, C, SUBJ):
-	return _get_snpm( 'F',  permuters.PermuterANOVA3onerm(y, A, B, C, SUBJ)  )
-def anova3tworm(y, A, B, C, SUBJ):
-	return _get_snpm( 'F',  permuters.PermuterANOVA3tworm(y, A, B, C, SUBJ)  )
-def anova3rm(y, A, B, C, SUBJ):
-	return _get_snpm( 'F',  permuters.PermuterANOVA3rm(y, A, B, C, SUBJ)  )
+def anova3(y, A, B, C, roi=None):
+	dim     = _get_data_dim(y)
+	perm    = permuters.PermuterANOVA3(y, A, B, C) if dim==0 else permuters.PermuterANOVA31D(y, roi, A, B, C)
+	return _get_snpm( 'F', perm )
+def anova3nested(y, A, B, C, roi=None):
+	dim     = _get_data_dim(y)
+	perm    = permuters.PermuterANOVA3nested(y, A, B, C) if dim==0 else permuters.PermuterANOVA3nested1D(y, roi, A, B, C)
+	return _get_snpm( 'F', perm )
+def anova3onerm(y, A, B, C, SUBJ, roi=None):
+	dim     = _get_data_dim(y)
+	perm    = permuters.PermuterANOVA3onerm(y, A, B, C, SUBJ) if dim==0 else permuters.PermuterANOVA3onerm1D(y, roi, A, B, C, SUBJ)
+	return _get_snpm( 'F', perm )
+def anova3tworm(y, A, B, C, SUBJ, roi=None):
+	dim     = _get_data_dim(y)
+	perm    = permuters.PermuterANOVA3tworm(y, A, B, C, SUBJ) if dim==0 else permuters.PermuterANOVA3tworm1D(y, roi, A, B, C, SUBJ)
+	return _get_snpm( 'F', perm )
+def anova3rm(y, A, B, C, SUBJ, roi=None):
+	dim     = _get_data_dim(y)
+	perm    = permuters.PermuterANOVA3rm(y, A, B, C, SUBJ) if dim==0 else permuters.PermuterANOVA3rm1D(y, roi, A, B, C, SUBJ)
+	return _get_snpm( 'F', perm )
+	
 
 
 
+### One-way MANOVA:
+def manova1(y, A, roi=None):
+	dim     = _get_data_dim(y, ismultivariate=True)
+	perm    = permuters.PermuterMANOVA10D(y, A) if dim==0 else permuters.PermuterMANOVA11D(y, roi, A)
+	return _get_snpm( 'X2', perm )
 
 
 
 ### Basic multivariate tests:
-def cca(y, x):
+def cca(y, x, roi=None):
 	dim     = _get_data_dim(y, ismultivariate=True)
-	perm    = permuters.PermuterCCA1D(y, x) if dim==1 else permuters.PermuterCCA0D(y, x)
+	perm    = permuters.PermuterCCA1D(y, x, roi=roi) if dim==1 else permuters.PermuterCCA0D(y, x)
 	return _get_snpm('X2', perm)
 
-def hotellings(y, mu=None):
+def hotellings(y, mu=None, roi=None):
 	dim     = _get_data_dim(y, ismultivariate=True)
-	perm    = permuters.PermuterHotellings1D(y, mu) if dim==1 else permuters.PermuterHotellings0D(y, mu)
+	perm    = permuters.PermuterHotellings1D(y, mu, roi=roi) if dim==1 else permuters.PermuterHotellings0D(y, mu)
 	return _get_snpm('T2', perm)
 
-def hotellings_paired(yA, yB):
-	return hotellings( yA - yB )
+def hotellings_paired(yA, yB, roi=None):
+	return hotellings( yA - yB, roi=roi )
 
-def hotellings2(yA, yB):
+def hotellings2(yA, yB, roi=None):
 	dim     = _get_data_dim(yA, ismultivariate=True)
-	perm    = permuters.PermuterHotellings21D(yA, yB) if dim==1 else permuters.PermuterHotellings20D(yA, yB)
+	perm    = permuters.PermuterHotellings21D(yA, yB, roi=roi) if dim==1 else permuters.PermuterHotellings20D(yA, yB)
 	return _get_snpm('T2', perm)
 
 

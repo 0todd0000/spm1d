@@ -7,16 +7,18 @@ import spm1d
 
 
 #(0) Load dataset:
-dataset      = spm1d.data.mv1d.cca.Dorn2012()
-y,x          = dataset.get_data()  #A:slow, B:fast
+dataset      = spm1d.data.mv1d.hotellings2.Besier2009muscleforces()
+yA,yB        = dataset.get_data()  #A:slow, B:fast
 
+#(0a) Create region of interest(ROI):
+roi        = np.array( [False]*yA.shape[1] )
+roi[70:80] = True
 
 
 #(1) Conduct non-parametric test:
 np.random.seed(0)
 alpha      = 0.05
-two_tailed = False
-snpm       = spm1d.stats.nonparam.cca(y, x)
+snpm       = spm1d.stats.nonparam.hotellings2(yA, yB, roi=roi)
 snpmi      = snpm.inference(alpha, iterations=100)
 print snpmi
 print snpmi.clusters
@@ -24,7 +26,7 @@ print snpmi.clusters
 
 
 #(2) Compare with parametric result:
-spm        = spm1d.stats.cca(y, x)
+spm        = spm1d.stats.hotellings2(yA, yB, roi=roi)
 spmi       = spm.inference(alpha)
 print spmi
 print spmi.clusters
