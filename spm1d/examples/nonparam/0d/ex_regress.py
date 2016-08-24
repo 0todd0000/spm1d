@@ -15,7 +15,7 @@ y    = np.array([80, 78, 60, 53, 85, 84, 73, 79, 81, 75, 68, 72, 58, 92, 65], dt
 #(1) Conduct non-parametric test:
 np.random.seed(0)
 alpha      = 0.05
-two_tailed = False
+two_tailed = True
 tn         = spm1d.stats.nonparam.regress(y, x)
 tni        = tn.inference(alpha, two_tailed=two_tailed, iterations=1000)
 print( 'Non-parametric results:' )

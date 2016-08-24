@@ -40,7 +40,7 @@ print( FFi )
 #(3) Plot
 pyplot.close('all')
 pyplot.figure(figsize=(15,4))
-pyplot.get_current_fig_manager().window.move(0, 0)
+
 for i,(Fi,Fni) in enumerate( zip(FFi,FFni) ):
 	ax = pyplot.subplot(1,3,i+1)
 	Fni.plot(ax=ax)

@@ -93,7 +93,7 @@ class DataPlotter(object):
 		x1          = np.copy(x).tolist()
 		x1.reverse()
 		x,y         = x + x1, y0 + y1
-		patches     = PatchCollection([Polygon(zip(x,y))], edgecolors=None)
+		patches     = PatchCollection(   [  Polygon(  np.array([x,y]).T  )  ], edgecolors=None)
 		### plot:
 		self.ax.add_collection(patches)
 		pyplot.setp(patches, facecolor=facecolor, edgecolor=edgecolor, alpha=alpha, linestyle=edgelinestyle)
@@ -210,10 +210,10 @@ class SPMiPlotter(SPMPlotter):
 			polyg      = []
 			for cluster in self.spm.clusters:
 				x,z    = cluster.get_patch_vertices()
-				polyg.append(  Polygon(zip(x,z))  )
+				polyg.append(  Polygon( np.array([x,z]).T )  )
 				if cluster.iswrapped:
 					x,z    = cluster._other.get_patch_vertices()
-					polyg.append(  Polygon(zip(x,z))  )
+					polyg.append(  Polygon(  np.array([x,z]).T  )  )
 			patches    = PatchCollection(polyg, edgecolors=None)
 			self.ax.add_collection(patches)
 			pyplot.setp(patches, facecolor=facecolor, edgecolor=facecolor)

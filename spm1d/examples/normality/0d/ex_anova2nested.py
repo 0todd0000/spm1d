@@ -30,8 +30,8 @@ FFi        = [F.inference(alpha)  for F in FF]
 
 #(3) Print results:
 for spmi,snpmi in zip(FFi, snpmilist):
-	print 'Parametric:      (F = %.3f, p = %.3f)' %(spmi.z, spmi.p)
-	print 'Non-parametric:  (F = %.3f, p = %.3f)\n' %(snpmi.z, snpmi.p)
+	print( 'Parametric:      (F = %.3f, p = %.3f)' %(spmi.z, spmi.p) )
+	print( 'Non-parametric:  (F = %.3f, p = %.3f)\n' %(snpmi.z, snpmi.p) )
 
 
 

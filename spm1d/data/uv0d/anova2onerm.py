@@ -14,7 +14,7 @@ class RSXLDrug(_base.DatasetANOVA2onerm):
 		y2          = np.array([118,124,365,311,331,  83,266,382,369,295,   38,207,289,385,373,   71,211,356,380,305,  123,331,407,461,445,   71,285,471,407,433,  108,247,317,307,324])
 		a0,a1,a2    = [0]*y0.size, [1]*y1.size, [2]*y2.size
 		b0          = [1,2,3,4,5]*7
-		s0          = np.sort(range(7)*5)
+		s0          = np.sort(  list( range(7) ) * 5  )
 		self.Y      = np.hstack([y0,y1,y2])
 		self.A      = np.hstack([a0,a1,a2])
 		self.B      = np.hstack([b0]*3)
@@ -32,7 +32,7 @@ class Santa23(_base.DatasetANOVA2onerm):
 		self.Y      = np.array([1,3,1, 2,5,3, 4,6,6, 5,7,4, 5,9,1, 6,9,3,     1,10,2, 4,8,1, 5,7,3, 4,9,2, 2,10,4, 5,10,2])
 		self.A      = np.array([0]*18 + [1]*18)
 		self.B      = np.hstack([0,1,2]*12)
-		subj0       = np.sort(range(6)*3)
+		subj0       = np.sort(  list( range(6) ) * 3  )
 		self.SUBJ   = np.hstack([subj0, subj0+10])
 		self.z      = 0.511, 36.946, 3.856
 		self.df     = (1,10), (2,20), (2, 20)
@@ -75,7 +75,7 @@ class SPM1D3x4(_base.DatasetANOVA2rm):
 	def _set_values(self):
 		nA,nB,nSubj  = 3,4,10
 		self.A       = np.array([0]*nSubj*nB + [1]*nSubj*nB + [2]*nSubj*nB)
-		self.B       = np.array(range(nB)*nSubj*nA)
+		self.B       = np.array(  list( range(nB) ) * nSubj * nA  )
 		self.SUBJ    = np.array( [np.sort( (i*10 + np.arange(nSubj)).tolist() *nB)  for i in range(nA)] ).flatten()
 		self.Y       = np.array([2, 2, 5, 5, 4, 8, 6, 5, 5, 5, 0, 0, 6, 1, 0, 3, 6, 5, 7, 9, 4, 6, 7, 5, 1, 7, 4, 3, 4, 8, 6, 7, 8, 2, 0, 2, 9, 5, 1, 3, 9, 2, 7, 8, 9, 7, 4, 2, 3, 0, 1, 5, 0, 0, 6, 3, 7, 5, 3, 0, 8, 3, 4, 6, 9, 6, 0, 5, 9, 8, 5, 1, 7, 2, 4, 7, 0, 7, 5, 1, 1, 1, 0, 4, 3, 7, 4, 6, 7, 5, 9, 2, 0, 2, 3, 9, 1, 4, 6, 5, 8, 7, 4, 1, 3, 1, 7, 0, 0, 7, 0, 6, 2, 4, 0, 0, 6, 1, 3, 5])
 		# self.Y       = np.array([41, 72, 48, 87, 27, 28, 12, 10, 32, 98, 71, 38,  9, 60, 13, 29, 56, 22, 64, 13, 17,  1, 71, 65, 20, 62, 71, 95, 57, 75, 31, 93, 58, 52, 88, 64, 78, 70, 23, 55, 96, 44, 21, 68, 16, 79, 83, 33, 69, 92, 77, 63, 30, 79, 62, 82, 41, 50, 15, 52, 14,  6, 51, 14, 50, 22, 55, 18, 16, 14, 11, 31, 57, 22, 76,  5, 16, 92, 44, 44, 77, 65, 71, 27, 69, 71, 66, 81, 81,  6, 78, 23, 38, 87, 69, 66, 64, 99, 75, 73, 52, 24, 12, 90,  8, 59, 18, 15, 71, 26, 45, 53, 21, 16, 13,  5, 23, 62, 89, 7])
@@ -88,7 +88,7 @@ class SPM1D3x4A(_base.DatasetANOVA2rm):
 	def _set_values(self):
 		nA,nB,nSubj  = 3,4,5
 		self.A       = np.array([0]*nSubj*nB + [1]*nSubj*nB + [2]*nSubj*nB)
-		self.B       = np.array(range(nB)*nSubj*nA)
+		self.B       = np.array(  list( range(nB) ) * nSubj * nA  )
 		self.SUBJ    = np.array( [np.sort( (i*10 + np.arange(nSubj)).tolist() *nB)  for i in range(nA)] ).flatten()
 		self.Y       = np.array([7, 4, 8, 2, 8, 7, 9, 2, 2, 0, 1, 7, 7, 1, 7, 4, 3, 4, 2, 0, 3, 5, 9, 0, 8, 3, 2, 5, 8, 9, 3, 1, 7, 6, 7, 2, 3, 6, 5, 7, 1, 5, 8, 4, 9, 4, 9, 6, 8, 3, 9, 0, 2, 7, 5, 1, 8, 4, 2, 5])
 		# #results computed using R (r-project.org):  aov(Y ~ A + B + A*B + Error(SUBJ/B ))
@@ -101,7 +101,7 @@ class SPM1D3x5(_base.DatasetANOVA2rm):
 	def _set_values(self):
 		nA,nB,nSubj  = 3,5,7
 		self.A       = np.array([0]*nSubj*nB + [1]*nSubj*nB + [2]*nSubj*nB)
-		self.B       = np.array(range(nB)*nSubj*nA)
+		self.B       = np.array(  list( range(nB) ) * nSubj * nA  )
 		self.SUBJ    = np.array( [np.sort( (i*10 + np.arange(nSubj)).tolist() *nB)  for i in range(nA)] ).flatten()
 		self.Y       = np.array([2, 6, 5, 0, 5, 1, 1, 5, 4, 0, 8, 8, 4, 7, 3, 0, 4, 7, 5, 7, 1, 3, 2, 3, 7, 3, 3, 0, 8, 6, 9, 3, 0, 7, 6, 5, 8, 8, 3, 5, 2, 2, 2, 6, 8, 7, 9, 8, 4, 8, 2, 4, 3, 8, 7, 2, 0, 8, 9, 5, 9, 4, 8, 0, 0, 6, 6, 8, 6, 7, 1, 8, 4, 4, 7, 7, 2, 6, 9, 6, 1, 8, 2, 5, 0, 9, 8, 7, 9, 4, 7, 9, 6, 9, 4, 6, 4, 2, 1, 4, 0, 8, 1, 8, 8])
 		#results computed using R (r-project.org):  aov(Y ~ A + B + A*B + Error(SUBJ/B ))
@@ -113,9 +113,9 @@ class SPM1D4x4(_base.DatasetANOVA2rm):
 	def _set_values(self):
 		nA,nB,nSubj  = 4,4,20
 		self.A       = np.array([0]*nSubj*nB + [1]*nSubj*nB + [2]*nSubj*nB + [3]*nSubj*nB)
-		self.B       = np.array(range(nB)*nSubj*nA)
-		subj         = np.array( np.sort(range(nSubj)*nB) )
-		self.SUBJ    = np.hstack(  [ (i*nSubj)+subj  for i in range(nA)])
+		self.B       = np.array(  list( range(nB) ) * nSubj * nA  )
+		subj         = np.array( np.sort(  list( range(nSubj) ) * nB  )  )
+		self.SUBJ    = np.hstack(  [ (i*nSubj)+subj  for i in range(nA)] )
 		self.Y       = np.array([5, 1, 9, 1, 9, 5, 2, 0, 8, 9, 2, 8, 0, 9, 5, 7, 4, 2, 1, 8, 5, 4, 3, 3, 3, 4, 3, 3, 6, 5, 5, 2, 7, 3, 2, 8, 2, 6, 3, 9, 4, 0, 5, 0, 1, 4, 5, 1, 4, 1, 8, 3, 6, 2, 0, 1, 2, 6, 4, 9, 0, 2, 0, 3, 8, 2, 2, 1, 3, 7, 0, 6, 4, 8, 4, 2, 0, 3, 5, 3, 0, 4, 4, 9, 0, 0, 5, 6, 7, 0, 9, 6, 9, 1, 7, 8, 5, 6, 9, 9, 4, 6, 6, 9, 4, 3, 0, 0, 1, 4, 0, 5, 2, 7, 0, 9, 6, 2, 2, 4, 0, 9, 5, 5, 5, 5, 6, 8, 3, 5, 1, 8, 7, 1, 8, 5, 1, 9, 8, 4, 9, 2, 6, 7, 4, 8, 9, 1, 6, 7, 6, 5, 7, 2, 4, 1, 1, 1, 4, 4, 2, 8, 2, 6, 2, 9, 1, 3, 5, 1, 2, 4, 4, 5, 4, 0, 0, 2, 7, 6, 8, 1, 6, 6, 0, 4, 4, 5, 1, 6, 1, 0, 9, 5, 1, 5, 5, 6, 5, 6, 9, 1, 7, 5, 9, 4, 6, 8, 2, 0, 1, 3, 6, 9, 4, 7, 4, 1, 8, 1, 6, 6, 6, 2, 3, 9, 1, 5, 2, 8, 2, 8, 5, 4, 3, 0, 2, 1, 9, 8, 6, 7, 2, 4, 5, 5, 2, 1, 3, 3, 2, 1, 6, 2, 0, 9, 6, 0, 0, 4, 4, 5, 4, 7, 7, 5, 2, 1, 3, 3, 7, 3, 0, 6, 9, 7, 4, 9, 4, 4, 3, 2, 9, 4, 5, 1, 4, 0, 5, 7, 1, 1, 7, 7, 7, 7, 7, 0, 7, 6, 2, 3, 9, 6, 7, 3, 4, 6, 2, 0, 2, 0, 5, 1, 7, 1, 9, 6, 5, 4])
 		#results computed using R (r-project.org):  aov(Y ~ A + B + A*B + Error(SUBJ/B ))
 		self.z       = 1.139, 0.193, 0.773
@@ -126,8 +126,8 @@ class SPM1D4x5(_base.DatasetANOVA2rm):
 	def _set_values(self):
 		nA,nB,nSubj  = 4,5,10
 		self.A       = np.array([0]*nSubj*nB + [1]*nSubj*nB + [2]*nSubj*nB + [3]*nSubj*nB)
-		self.B       = np.array(range(nB)*nSubj*nA)
-		subj         = np.array( np.sort(range(nSubj)*nB) )
+		self.B       = np.array(  list( range(nB) ) * nSubj * nA  )
+		subj         = np.array( np.sort(  list(range(nSubj)) *nB ) )
 		self.SUBJ    = np.hstack(  [ (i*nSubj)+subj  for i in range(nA)])
 		self.Y       = np.array([9, 4, 6, 6, 4, 0, 7, 7, 1, 5, 7, 9, 2, 9, 8, 3, 3, 3, 0, 9, 8, 6, 2, 4, 2, 9, 1, 9, 3, 3, 7, 6, 1, 5, 5, 3, 6, 8, 5, 6, 7, 9, 4, 1, 5, 3, 1, 6, 6, 3, 3, 8, 5, 0, 9, 1, 4, 3, 4, 2, 2, 3, 3, 5, 4, 3, 9, 6, 1, 0, 5, 9, 4, 8, 6, 4, 2, 3, 3, 1, 6, 0, 4, 6, 2, 9, 2, 2, 6, 1, 6, 9, 6, 3, 3, 3, 5, 5, 9, 6, 6, 9, 7, 7, 3, 9, 9, 2, 0, 0, 6, 0, 4, 8, 5, 1, 1, 7, 0, 9, 0, 7, 0, 0, 6, 3, 9, 0, 7, 9, 0, 6, 1, 0, 7, 1, 7, 8, 0, 3, 2, 6, 3, 1, 4, 7, 6, 5, 8, 8, 1, 6, 5, 0, 9, 5, 9, 7, 2, 9, 5, 0, 4, 4, 8, 9, 8, 8, 7, 7, 6, 2, 0, 9, 9, 9, 2, 2, 1, 6, 1, 7, 5, 4, 7, 6, 9, 3, 9, 9, 6, 0, 5, 6, 8, 3, 9, 4, 5, 0])
 		#results computed using R (r-project.org):  aov(Y ~ A + B + A*B + Error(SUBJ/B ))

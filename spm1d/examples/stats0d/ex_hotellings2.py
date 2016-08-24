@@ -15,7 +15,7 @@ print( dataset )
 #(1) Conduct T2 test using spm1d:
 T2      = spm1d.stats.hotellings2(yA, yB)
 T2i     = T2.inference(alpha=0.05)
-print T2i
+print( T2i )
 
 
 

@@ -16,12 +16,12 @@ print( dataset )
 #(1) Conduct test using spm1d:
 spmt    = spm1d.stats.regress(y, x)
 spmti   = spmt.inference(0.05, two_tailed=True)
-print spmti
+print( spmti )
 
 
 #(2) Compare to scipy.stats result:
 slope,intercept,r,p,se = stats.linregress(x, y)
 t       = r * ((y.size-2)/(1-r*r) )**0.5
-print 'scipy.stats result:\n   r = %.5f\n   t = %.5f\n   p = %.5f' %(r,t,p)
+print( 'scipy.stats result:\n   r = %.5f\n   t = %.5f\n   p = %.5f' %(r,t,p) )
 
 

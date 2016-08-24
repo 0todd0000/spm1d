@@ -31,7 +31,7 @@ ciB_bad    = spm1d.stats.ci_onesample(yB, alpha)
 #(2) Plot:
 pyplot.close('all')
 pyplot.figure(figsize=(14,7))
-pyplot.get_current_fig_manager().window.move(0, 0)
+
 
 
 ### plot means and standard deviations:

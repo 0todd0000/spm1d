@@ -27,10 +27,11 @@ pparam     = T2parami.p
 
 
 ### report results:
-print 'Non-parametric test:'
-print '   T2=%.3f, p=%.5f' %(T2i.z, T2i.p)
+print( 'Non-parametric test:' )
+print( '   T2=%.3f, p=%.5f' %(T2i.z, T2i.p) ) 
 print
-print 'Parametric test:'
-print '   T2=%.3f, p=%.5f' %(zparam, pparam)
+print( 'Parametric test:' )
+print( '   T2=%.3f, p=%.5f' %(zparam, pparam) ) 
 print
+
 

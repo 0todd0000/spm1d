@@ -19,7 +19,7 @@ two_tailed = False
 snpm       = spm1d.stats.nonparam.ttest_paired(yA, yB)
 snpmi      = snpm.inference(alpha, two_tailed=two_tailed, iterations=-1)
 print( snpmi )
-print( snpmi ).clusters
+print( snpmi.clusters )
 
 
 
@@ -27,14 +27,14 @@ print( snpmi ).clusters
 spm        = spm1d.stats.ttest_paired(yA, yB)
 spmi       = spm.inference(alpha, two_tailed=two_tailed)
 print( spmi )
-print( spmi ).clusters
+print( spmi.clusters )
 
 
 
 #(3) Plot
 pyplot.close('all')
 pyplot.figure(figsize=(12,4))
-pyplot.get_current_fig_manager().window.move(0, 0)
+
 ax0 = pyplot.subplot(121)
 ax1 = pyplot.subplot(122)
 labels = 'Parametric', 'Non-parametric'

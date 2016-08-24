@@ -26,8 +26,7 @@ ci         = m - hstar, m + hstar  #confidence interval
 
 #(2) Compare to spm1d result:
 ci_spm1d   = spm1d.stats.ci_onesample(y, alpha, mu)
-
-print ci_spm1d
+print( ci_spm1d )
 print
-print 'Manually computed CI:'
-print ci
+print( 'Manually computed CI:' )
+print( ci )

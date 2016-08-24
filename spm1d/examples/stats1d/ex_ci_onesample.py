@@ -46,7 +46,7 @@ print( ci1 )
 #(2) Plot the CIs:
 pyplot.close('all')
 pyplot.figure(figsize=(14,7))
-pyplot.get_current_fig_manager().window.move(0, 0)
+
 
 ### FIRST POPULATION MEAN
 

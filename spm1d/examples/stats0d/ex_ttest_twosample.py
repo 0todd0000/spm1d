@@ -15,6 +15,6 @@ print( dataset )
 #(1) Conduct t test using spm1d:
 spmt    = spm1d.stats.ttest2(yA, yB, equal_var=False)
 spmti   = spmt.inference(0.05, two_tailed=False)
-print spmti
+print( spmti )
 
 

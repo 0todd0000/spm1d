@@ -36,7 +36,7 @@ def here_cca(y, x):
 	z  = []
 	for q in range(Q):
 		yy  = y[:,q,:]
-	 	if np.any(np.isnan(yy)):
+		if np.any(np.isnan(yy)):
 			z.append(0)
 		else:
 			z.append(   here_cca_single_node(yy, x)  )

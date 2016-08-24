@@ -235,7 +235,7 @@ class _SPM(_SPMParent):
 	dim                     = 1
 	'''Parent class for all 1D SPM classes.'''
 	def __init__(self, STAT, z, df, fwhm, resels, X=None, beta=None, residuals=None, sigma2=None, roi=None):
-		z[np.isnan(z)]      = 0
+		# z[np.isnan(z)]      = 0              #this produces a MaskedArrayFutureWarning in Python 3.X
 		self.STAT           = STAT             #test statistic ("T" or "F")
 		self.Q              = z.size           #number of nodes (field size = Q-1)
 		self.Qmasked        = z.size           #number of nodes in mask (if "roi" is not None)

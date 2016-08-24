@@ -28,9 +28,9 @@ x2parami   = x2param.inference(alpha)
 
 
 ### report results:
-print 'Non-parametric test:'
-print '   T2=%.3f, p=%.5f' %(x2i.z, x2i.p)
+print( 'Non-parametric test:' )
+print( '   X2=%.3f, p=%.5f' %(x2i.z, x2i.p) ) 
 print
-print 'Parametric test:'
-print '   T2=%.3f, p=%.5f' %(x2parami.z, x2parami.p)
+print( 'Parametric test:' )
+print( '   X2=%.3f, p=%.5f' %(x2parami.z, x2parami.p) ) 
 print

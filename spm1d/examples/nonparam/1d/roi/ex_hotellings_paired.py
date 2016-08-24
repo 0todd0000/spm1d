@@ -24,7 +24,7 @@ alpha      = 0.05
 snpm       = spm1d.stats.nonparam.hotellings_paired(yA, yB, roi=roi)
 snpmi      = snpm.inference(alpha, iterations=100)
 print( snpmi )
-print( snpmi ).clusters
+
 
 
 
@@ -32,14 +32,14 @@ print( snpmi ).clusters
 spm        = spm1d.stats.hotellings_paired(yA, yB, roi=roi)
 spmi       = spm.inference(alpha)
 print( spmi )
-print( spmi ).clusters
+
 
 
 
 #(3) Plot
 pyplot.close('all')
 pyplot.figure(figsize=(12,4))
-pyplot.get_current_fig_manager().window.move(0, 0)
+
 ax0 = pyplot.subplot(121)
 ax1 = pyplot.subplot(122)
 labels = 'Parametric', 'Non-parametric'

@@ -57,7 +57,7 @@ def plot_filled(y, ax, thresh=None, plot_thresh=True, color='k', lw=2, facecolor
 				dx      = x0[ind[-1]+1] - x0[ind[-1]]
 				dy      = (csign*thresh - y0[ind[-1]])  / (y0[ind[-1]+1] - y0[ind[-1]])
 				x[-1]  += dy*dx
-			polyg.append(  Polygon(zip(x,y))  )
+			polyg.append(  Polygon( np.array((x,y)).T  )  )
 		patches         = PatchCollection(polyg, edgecolors=None)
 		ax.add_collection(patches)
 		pyplot.setp(patches, facecolor=facecolor, edgecolor=facecolor)

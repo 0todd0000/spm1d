@@ -30,7 +30,7 @@ print( cinp )
 #(2) Plot the CIs:
 pyplot.close('all')
 pyplot.figure(figsize=(10,4))
-pyplot.get_current_fig_manager().window.move(0, 0)
+
 ### plot parametric CI:
 ax = pyplot.subplot(121)
 ci.plot(ax)

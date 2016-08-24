@@ -41,7 +41,7 @@ X2i          = X2.inference(0.05)
 #(3) Plot
 pyplot.close('all')
 pyplot.figure(figsize=(12,4))
-pyplot.get_current_fig_manager().window.move(0, 0)
+
 ax0 = pyplot.subplot(121)
 ax1 = pyplot.subplot(122)
 labels = 'Parametric', 'Non-parametric'

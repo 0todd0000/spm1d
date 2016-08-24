@@ -22,7 +22,7 @@ roi[65:85] = True
 alpha      = 0.05
 t          = spm1d.stats.ttest2(YB, YA, equal_var=True, roi=roi)
 ti         = t.inference(alpha, two_tailed=False, interp=True)
-print ti
+print( ti )
 
 
 

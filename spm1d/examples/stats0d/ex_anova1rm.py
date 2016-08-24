@@ -17,7 +17,7 @@ print( dataset )
 #(1) Run ANOVA:
 F = spm1d.stats.anova1rm(y, A, SUBJ, equal_var=True)
 Fi = F.inference(0.05)
-print Fi
+print( Fi )
 
 
 

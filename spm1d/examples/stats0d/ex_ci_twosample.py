@@ -29,7 +29,6 @@ print( ci3 )
 #(2) Plot the CIs:
 pyplot.close('all')
 pyplot.figure(figsize=(8,8))
-pyplot.get_current_fig_manager().window.move(0, 0)
 ax0 = pyplot.subplot(221);  ci0.plot(ax0);  ax0.set_title('datum="difference", mu=None', size=10)
 ax1 = pyplot.subplot(222);  ci1.plot(ax1);  ax1.set_title('datum="difference", mu=%.5f'%mu, size=10)
 ax2 = pyplot.subplot(223);  ci2.plot(ax2);  ax2.set_title('datum="meanA", mu="meanB"', size=10)

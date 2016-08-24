@@ -200,7 +200,7 @@ class _SnPM1D(_SnPM, _spm._SPM):
 	dim           = 1
 	
 	def __init__(self, z, perm, isinlist=False):
-		z[np.isnan(z)]      = 0
+		# z[np.isnan(z)]      = 0
 		self.permuter       = perm             #permuter (for conducting inference)
 		self.Q              = z.size           #field size
 		self.nPermUnique    = perm.nPermTotal  #number of unique permutations possible

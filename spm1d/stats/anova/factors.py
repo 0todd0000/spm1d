@@ -68,7 +68,20 @@ class Factor(object):
 		S,A = self.A, other.A
 		N   = []
 		for uS in self.u:
-			UA  = np.unique(A[S==uS])
+			# UA  = np.unique(A[S==uS])  #fine for Python 2.7 but not Python 3.X
+			if np.size(uS)==1:
+				UA  = np.unique(  A[ S==int(uS) ]  )
+			elif isinstance(uS, list):  #three-way RM ANOVA
+				B   = np.array( [False]*S.size )
+				for uuS in uS:
+					for uuuS in uuS:
+						B  = np.logical_or(B, S==uuuS)
+				UA  = np.unique( A[B] )
+			else:  #two-way RM ANOVA
+				B   = np.array( [False]*S.size )
+				for uuS in uS:
+					B  = np.logical_or(B, S==uuS)
+				UA  = np.unique( A[B] )
 			for uA in UA:
 				N.append( ((S==uS) & (A==uA)).sum()  )
 		return np.all( N==N[0] )

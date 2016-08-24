@@ -14,7 +14,7 @@ Y0,Y1    = Y[A==0], Y[A==2]  #Atlantic and Contintental
 #(1) Run stats
 t = spm1d.stats.ttest2(Y0, Y1)
 ti = t.inference(0.05, circular=True)
-print ti
+print( ti )
 
 
 #(2) Plot:
