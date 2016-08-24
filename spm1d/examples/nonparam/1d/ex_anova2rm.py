@@ -18,7 +18,7 @@ y,A,B,SUBJ   = dataset.get_data()
 
 
 
-# #(1) Conduct non-parametric test:
+#(1) Conduct non-parametric test:
 np.random.seed(0)
 alpha      = 0.05
 FFn        = spm1d.stats.nonparam.anova2rm(y, A, B, SUBJ)
@@ -44,10 +44,11 @@ for i,(Fi,Fni) in enumerate( zip(FFi,FFni) ):
 	Fni.plot_threshold_label(ax=ax, fontsize=8)
 	Fni.plot_p_values(ax=ax, size=10)
 	ax.axhline( Fi.zstar, color='orange', linestyle='--', label='Parametric threshold')
-	if Fi.zstar > Fi.z.max():
+	if (Fi.zstar > Fi.z.max()) and (Fi.zstar>Fni.zstar):
 		ax.set_ylim(0, Fi.zstar+1)
 	if i==0:
 		ax.legend(fontsize=10, loc='best')
+	ax.set_title( Fni.effect )
 pyplot.show()
 
 

@@ -11,17 +11,6 @@ import spm1d
 # dataset    = spm1d.data.uv1d.t1.SimulatedPataky2015a()
 dataset    = spm1d.data.uv1d.t1.SimulatedPataky2015b()
 y,mu       = dataset.get_data()
-# y  *= -1
-
-
-
-# roi = None
-# permuters = spm1d.stats.nonparam.permuters
-# _snpm     = spm1d.stats.nonparam._snpm
-#
-# perm    = permuters.PermuterTtest1D(y, mu, roi=roi)
-# z       = perm.get_test_stat_original()
-# t = _snpm.SnPM_T(z, perm, roi)
 
 
 
@@ -32,16 +21,16 @@ alpha      = 0.05
 two_tailed = False
 snpm       = spm1d.stats.nonparam.ttest(y, mu)
 snpmi      = snpm.inference(alpha, two_tailed=two_tailed, iterations=-1)
-print snpmi
-print snpmi.clusters
+print( snpmi )
+print( snpmi ).clusters
 
 
 
 #(2) Compare with parametric result:
 spm        = spm1d.stats.ttest(y, mu)
 spmi       = spm.inference(alpha, two_tailed=two_tailed)
-print spmi
-print spmi.clusters
+print( spmi )
+print( spmi ).clusters
 
 
 

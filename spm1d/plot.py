@@ -30,7 +30,7 @@ These include:
 
 
 import numpy as np
-from _plot import DataPlotter, SPMPlotter, SPMiPlotter, _legend_manual
+from . _plot import DataPlotter, SPMPlotter, SPMiPlotter, _legend_manual
 
 
 

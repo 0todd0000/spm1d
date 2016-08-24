@@ -9,22 +9,20 @@ on the residuals.
 
 from math import log
 import numpy as np
-from _spm import SPM0D_X2, SPM_X2
-from t import regress as _main_regress
-from anova import anova1 as _main_anova1
-from anova import anova1rm as _main_anova1rm
-from anova import anova2 as _main_anova2
-from anova import anova2nested as _main_anova2nested
-from anova import anova2rm as _main_anova2rm
-from anova import anova2onerm as _main_anova2onerm
-from anova import anova3 as _main_anova3
-from anova import anova3nested as _main_anova3nested
-from anova import anova3rm as _main_anova3rm
-from anova import anova3onerm as _main_anova3onerm
-from anova import anova3tworm as _main_anova3tworm
-
-
-import rft1d
+from . _spm import SPM0D_X2, SPM_X2
+from . t import regress as _main_regress
+from . anova import anova1 as _main_anova1
+from . anova import anova1rm as _main_anova1rm
+from . anova import anova2 as _main_anova2
+from . anova import anova2nested as _main_anova2nested
+from . anova import anova2rm as _main_anova2rm
+from . anova import anova2onerm as _main_anova2onerm
+from . anova import anova3 as _main_anova3
+from . anova import anova3nested as _main_anova3nested
+from . anova import anova3rm as _main_anova3rm
+from . anova import anova3onerm as _main_anova3onerm
+from . anova import anova3tworm as _main_anova3tworm
+from .. import rft1d
 
 
 

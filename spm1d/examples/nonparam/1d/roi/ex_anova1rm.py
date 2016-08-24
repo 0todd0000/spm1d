@@ -15,12 +15,12 @@ roi        = np.array( [False]*y.shape[1] )
 roi[25:45] = True
 
 
-# #(1) Conduct non-parametric test:
+#(1) Conduct non-parametric test:
 np.random.seed(0)
 alpha      = 0.05
 snpm       = spm1d.stats.nonparam.anova1rm(y, A, SUBJ, roi=roi)
 snpmi      = snpm.inference(alpha, iterations=500)
-print snpmi
+print( snpmi )
 
 
 
@@ -28,7 +28,7 @@ print snpmi
 #(2) Compare with parametric result:
 spm        = spm1d.stats.anova1rm(y, A, SUBJ, equal_var=True, roi=roi)
 spmi       = spm.inference(alpha)
-print spmi
+print( spmi )
 
 
 

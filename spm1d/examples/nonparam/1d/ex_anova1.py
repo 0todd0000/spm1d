@@ -14,12 +14,12 @@ y,A          = dataset.get_data()
 
 
 
-# #(1) Conduct non-parametric test:
+#(1) Conduct non-parametric test:
 np.random.seed(0)
 alpha      = 0.05
 snpm       = spm1d.stats.nonparam.anova1(y, A)
 snpmi      = snpm.inference(alpha, iterations=500)
-print snpmi
+print( snpmi )
 
 
 
@@ -27,7 +27,7 @@ print snpmi
 #(2) Compare with parametric result:
 spm        = spm1d.stats.anova1(y, A, equal_var=True)
 spmi       = spm.inference(alpha)
-print spmi
+print( spmi )
 
 
 

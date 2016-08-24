@@ -13,7 +13,7 @@ y,A,B,C      = dataset.get_data()
 
 
 
-# #(1) Conduct non-parametric test:
+#(1) Conduct non-parametric test:
 np.random.seed(0)
 alpha      = 0.05
 FFn        = spm1d.stats.nonparam.anova3(y, A, B, C)
@@ -31,7 +31,7 @@ print( FFi )
 
 #(3) Plot
 pyplot.close('all')
-pyplot.figure(figsize=(15,8))
+pyplot.figure(figsize=(15,10))
 pyplot.get_current_fig_manager().window.move(0, 0)
 for i,(Fi,Fni) in enumerate( zip(FFi,FFni) ):
 	ax = pyplot.subplot(3,3,i+1)
@@ -39,10 +39,11 @@ for i,(Fi,Fni) in enumerate( zip(FFi,FFni) ):
 	Fni.plot_threshold_label(ax=ax, fontsize=8)
 	Fni.plot_p_values(ax=ax, size=10)
 	ax.axhline( Fi.zstar, color='orange', linestyle='--', label='Parametric threshold')
-	if Fi.zstar > Fi.z.max():
+	if (Fi.zstar > Fi.z.max()) and (Fi.zstar>Fni.zstar):
 		ax.set_ylim(0, Fi.zstar+1)
 	if i==0:
 		ax.legend(fontsize=10, loc='best')
+	ax.set_title( Fni.effect )
 pyplot.show()
 
 

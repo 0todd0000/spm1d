@@ -1,6 +1,5 @@
 
 import numpy as np
-from scipy import stats
 import spm1d
 
 
@@ -10,7 +9,7 @@ import spm1d
 dataset = spm1d.data.uv0d.t2nonspher.RSFlavor()
 # dataset = spm1d.data.uv0d.t2nonspher.ColumbiaPlacebo()
 yA,yB   = dataset.get_data()
-print dataset
+print( dataset )
 
 
 
@@ -21,7 +20,3 @@ print spmti
 
 
 
-#(2) Compare to scipy.stats result:
-t,p     = stats.ttest_ind(yA, yB, equal_var=False)
-p       = 0.5*p  #one-tailed inference
-print 'scipy.stats result:\n   t = %.5f\n   p = %.5f' %(t,p)

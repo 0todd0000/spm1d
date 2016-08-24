@@ -15,10 +15,10 @@ and inference SPMs (thresholded test statistic).
 
 import numpy as np
 from scipy import stats
-import rft1d
+from .. import rft1d
 from .. plot import plot_spm, plot_spm_design
 from .. plot import plot_spmi, plot_spmi_p_values, plot_spmi_threshold_label
-from _clusters import Cluster
+from . _clusters import Cluster
 
 
 
@@ -46,7 +46,7 @@ def _set_docstr(childfn, parentfn, args2remove=None):
 				docstrlist1.append(s)
 		docstrlist1 = [s + '\n\t'  for s in docstrlist1]
 		docstr  = ''.join(docstrlist1)
-	childfn.__func__.__doc__ = docstr
+	# childfn.__func__.__doc__ = docstr
 
 
 
@@ -181,8 +181,9 @@ class SPM0D_T(_SPM0D):
 		_SPM0D.__init__(self, 'T', z, df, beta=beta, residuals=residuals, sigma2=sigma2)
 	def inference(self, alpha=0.05, two_tailed=True):
 		a      = 0.5*alpha if two_tailed else alpha
+		z      = abs(self.z) if two_tailed else self.z
 		zstar  = stats.t.isf(a, self.df[1])
-		p      = stats.t.sf( abs(self.z), self.df[1])
+		p      = stats.t.sf( z, self.df[1])
 		p      = min(1, 2*p) if two_tailed else p
 		return SPM0Di_T(self, alpha, zstar, p, two_tailed)
 

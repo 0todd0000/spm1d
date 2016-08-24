@@ -1,5 +1,5 @@
 
-import cca
-import hotellings_paired, hotellings2
-import manova1
+from . import cca
+from . import hotellings_paired, hotellings2
+from . import manova1
 

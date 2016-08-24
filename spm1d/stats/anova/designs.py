@@ -10,9 +10,7 @@ High-level ANOVA designs.
 import warnings
 import numpy as np
 from matplotlib import pyplot
-
-
-from factors import Factor,FactorNested,FactorNested2,FactorNestedTwoWay #FactorRM,FactorSubject
+from . factors import Factor,FactorNested,FactorNested2,FactorNestedTwoWay #FactorRM,FactorSubject
 
 
 

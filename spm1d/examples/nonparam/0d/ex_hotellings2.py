@@ -1,6 +1,5 @@
 
 import numpy as np
-import scipy.stats
 import spm1d
 
 
@@ -13,24 +12,6 @@ yA,yB   = dataset.get_data()
 
 
 
-# ### prepare stat computer:
-# calculators = spm1d.stats.nonparam.calculators
-# calc           = calculators.CalculatorHotellings20D(yA.shape[0], yB.shape[0])
-# z              = calc.get_test_stat(yA, yB)
-
-
-
-# ### prepare permuter:
-# permuters = spm1d.stats.nonparam.permuters
-# perm      = permuters.PermuterHotellings20D(yA, yB)
-# z0        = perm.get_test_stat_original()
-# perm.build_pdf(iterations=1000)
-# print z0
-
-
-
-
-
 #(1) Conduct non-parametric test:
 np.random.seed(0)
 alpha      = 0.05
@@ -38,18 +19,7 @@ T2         = spm1d.stats.nonparam.hotellings2(yA, yB)
 T2i        = T2.inference(alpha, iterations=1000)
 
 
-# # from matplotlib import pyplot
-# # pyplot.close('all')
-# # pyplot.figure(figsize=(8,6))
-# # pyplot.get_current_fig_manager().window.move(0, 0)
-# # ax = pyplot.axes()
-# # Z  = T2i.permuter.Z
-# # ax.hist( Z, range=(0,25) )
-# # pyplot.show()
-# #
-
-
-#(3) Compare to parametric inference:
+#(2) Compare to parametric inference:
 T2param    = spm1d.stats.hotellings2(yA, yB)
 T2parami   = T2param.inference(0.05)
 zparam     = T2parami.z

@@ -16,7 +16,7 @@ roi        = np.array( [False]*y.shape[1] )
 roi[25:45] = True
 
 
-# #(1) Conduct non-parametric test:
+#(1) Conduct non-parametric test:
 np.random.seed(0)
 alpha      = 0.05
 FFn        = spm1d.stats.nonparam.anova3nested(y, A, B, C, roi=roi)
@@ -46,6 +46,7 @@ for i,(Fi,Fni) in enumerate( zip(FFi,FFni) ):
 		ax.set_ylim(0, Fi.zstar+1)
 	if i==0:
 		ax.legend(fontsize=10, loc='best')
+	ax.set_title( Fni.effect )
 pyplot.show()
 
 

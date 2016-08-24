@@ -1,6 +1,5 @@
 
 import numpy as np
-import scipy.stats
 import spm1d
 
 
@@ -10,7 +9,7 @@ dataset    = spm1d.data.uv0d.anova2onerm.Santa23()
 dataset    = spm1d.data.uv0d.anova2onerm.Southampton2onerm()
 dataset    = spm1d.data.uv0d.anova2onerm.RSXLDrug()
 y,A,B,SUBJ = dataset.get_data()
-print dataset
+print( dataset )
 
 
 

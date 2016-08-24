@@ -17,7 +17,7 @@ y,A,SUBJ     = dataset.get_data()
 np.random.seed(0)
 alpha      = 0.05
 spmi       = spm1d.stats.normality.anova1rm(y, A, SUBJ).inference(alpha)
-print spmi
+print( spmi )
 
 
 

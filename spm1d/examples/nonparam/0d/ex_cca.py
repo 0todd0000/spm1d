@@ -7,7 +7,7 @@ dataset = spm1d.data.mv0d.cca.FitnessClub()
 # dataset = spm1d.data.mv0d.cca.StackExchange()
 y,x     = dataset.Y, dataset.x
 # x      *= -1
-# print dataset
+# print( dataset )
 
 y,x     = [a[:10]  for a in [y,x]]
 

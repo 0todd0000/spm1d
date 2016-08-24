@@ -47,7 +47,7 @@ class _Dataset(object):
 		s     += ss 
 		return s
 	def _printR(self, x, name='x'):
-		print '%s = c(%s)' %(name, str(x.tolist())[1:-1])
+		print( '%s = c(%s)' %(name, str(x.tolist())[1:-1]) )
 	def _printRs(self, xx, names=('x')):
 		for x,name in zip(xx,names):
 			print

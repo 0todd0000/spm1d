@@ -8,7 +8,7 @@ import spm1d
 dataset = spm1d.data.mv0d.hotellings1.RSXLHotellings1()
 # dataset = spm1d.data.mv0d.hotellings1.Sweat()
 y,mu    = dataset.Y, dataset.mu
-print dataset
+print( dataset )
 
 
 #(1) Conduct T2 test:

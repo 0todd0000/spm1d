@@ -136,7 +136,6 @@ class CalculatorMANOVA10D( object ):
 		self.X0     = np.matrix(  np.ones(J)  ).T
 		self.X0i    = np.linalg.pinv( self.X0 )
 
-
 	def get_test_stat(self, Y):
 		### SS for original design:
 		Y     = np.matrix(Y)
@@ -154,7 +153,6 @@ class CalculatorMANOVA10D( object ):
 
 
 class CalculatorMANOVA11D( CalculatorMANOVA10D ):
-
 	def get_test_stat(self, Y):
 		x2    = [CalculatorMANOVA10D.get_test_stat(self, Y[:,i,:])   for i in range(Y.shape[1])]
 		return np.array(x2)

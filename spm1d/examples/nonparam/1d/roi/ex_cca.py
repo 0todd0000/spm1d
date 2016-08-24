@@ -22,16 +22,16 @@ alpha      = 0.05
 two_tailed = False
 snpm       = spm1d.stats.nonparam.cca(y, x, roi=roi)
 snpmi      = snpm.inference(alpha, iterations=100)
-print snpmi
-print snpmi.clusters
+print( snpmi )
+print( snpmi ).clusters
 
 
 
 #(2) Compare with parametric result:
 spm        = spm1d.stats.cca(y, x, roi=roi)
 spmi       = spm.inference(alpha)
-print spmi
-print spmi.clusters
+print( spmi )
+print( spmi ).clusters
 
 
 

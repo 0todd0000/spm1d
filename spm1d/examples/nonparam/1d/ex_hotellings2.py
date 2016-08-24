@@ -17,16 +17,16 @@ np.random.seed(0)
 alpha      = 0.05
 snpm       = spm1d.stats.nonparam.hotellings2(yA, yB)
 snpmi      = snpm.inference(alpha, iterations=100)
-print snpmi
-print snpmi.clusters
+print( snpmi )
+print( snpmi ).clusters
 
 
 
 #(2) Compare with parametric result:
 spm        = spm1d.stats.hotellings2(yA, yB)
 spmi       = spm.inference(alpha)
-print spmi
-print spmi.clusters
+print( spmi )
+print( spmi ).clusters
 
 
 

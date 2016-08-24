@@ -10,9 +10,7 @@ MANOVA
 
 from math import sqrt,log
 import numpy as np
-import _mvbase
-import _spm
-
+from . import _mvbase, _spm
 
 eps        = np.finfo(float).eps   #smallest float, used to avoid divide-by-zero errors
 
@@ -76,12 +74,9 @@ def _manova1_single_node_efficient(Y, GROUP, X, Xi, X0, X0i, nGroups):
 	R0    = R0.T*R0
 	### Wilk's lambda:
 	lam   = np.linalg.det(R) / (np.linalg.det(R0) + eps)
-	# print lam
 	### test statistic:
 	(N,p),k = Y.shape, float(nGroups)
 	x2    = -((N-1) - 0.5*(p+k)) * log(lam)
-	# df    = p*(k-1)
-	# return lam, x2, df
 	return x2
 
 

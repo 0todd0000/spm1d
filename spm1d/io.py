@@ -26,7 +26,7 @@ SPMs.
 import numpy as np
 from scipy.io import loadmat as scipy_loadmat
 from scipy.io import savemat as scipy_savemat
-from stats import _spm
+from . stats import _spm
 
 
 

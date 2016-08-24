@@ -16,7 +16,7 @@ yA,yB        = dataset.get_data()  #normal and fast walking
 np.random.seed(0)
 alpha      = 0.05
 spmi       = spm1d.stats.normality.ttest_paired(yA, yB).inference(alpha)
-print spmi
+print( spmi )
 
 
 

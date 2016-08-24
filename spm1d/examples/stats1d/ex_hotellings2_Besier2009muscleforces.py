@@ -7,7 +7,7 @@ import spm1d
 #(0) Load data:
 dataset      = spm1d.data.mv1d.hotellings2.Besier2009muscleforces()
 YA,YB        = dataset.get_data()  #A:slow, B:fast
-print dataset
+print( dataset )
 
 
 

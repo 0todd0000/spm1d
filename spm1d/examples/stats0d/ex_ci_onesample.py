@@ -26,7 +26,7 @@ import spm1d
 dataset = spm1d.data.uv0d.ci1.MinnesotaGeyerRate()
 dataset = spm1d.data.uv0d.ci1.WebsterSleep()
 y,mu    = dataset.get_data()
-print dataset
+print( dataset )
 
 
 

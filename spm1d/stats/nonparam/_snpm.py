@@ -1,7 +1,7 @@
 
 from math import ceil
 import numpy as np
-from metrics import metric_dict
+from . metrics import metric_dict
 from .. import _spm
 from .. _spm import p2string, plist2string, _SPMF
 from .. _clusters import ClusterNonparam
@@ -163,7 +163,6 @@ class SnPM0Dinference(_SnPM0D):
 		s       += '   SPM.p              :  %s\n' %p2string(self.p)
 		return s
 
-
 	def _check_null(self):
 		if self.two_tailed:
 			zc0,zc1         = self.zstar
@@ -176,9 +175,7 @@ class SnPM0Dinference(_SnPM0D):
 
 
 class SnPM0DiF(SnPM0Dinference, _SPMF):
-	
 	isanova = True
-	
 	def _repr_summ(self):
 		return '{:<5} F = {:<8} p = {}\n'.format(self.effect.split(' ')[1],  '%.3f'%self.z, p2string(self.p))
 	
@@ -198,10 +195,10 @@ class SnPM0DiF(SnPM0Dinference, _SPMF):
 '''
 
 class _SnPM1D(_SnPM, _spm._SPM):
+	'''Parent class for all 1D non-parametric SPM classes.'''
 	
 	dim           = 1
 	
-	'''Parent class for all 1D non-parametric SPM classes.'''
 	def __init__(self, z, perm, isinlist=False):
 		z[np.isnan(z)]      = 0
 		self.permuter       = perm             #permuter (for conducting inference)
@@ -211,32 +208,6 @@ class _SnPM1D(_SnPM, _spm._SPM):
 		self.z              = z                #test statistic
 		self.isinlist       = isinlist
 		self._ClusterClass  = ClusterNonparam
-
-
-	# def __init__(self, z, perm, isinlist=False):
-	# 	z[np.isnan(z)]      = 0
-	# 	self.permuter       = perm             #permuter (for conducting inference)
-	# 	self.Q              = z.size           #field size
-	# 	self.nPermUnique    = perm.nPermTotal  #number of unique permutations possible
-	# 	self.roi            = perm.roi         #region(s) of interest
-	# 	self.z              = z                #test statistic
-	# 	self.isinlist       = isinlist
-	# 	self._ClusterClass  = ClusterNonparam
-	#
-	#
-	# 	def __init__(self, spm, alpha, zstar, p, two_tailed=False, isinlist=False):
-	# 		super(SnPM0Dinference, self).__init__(spm.z, spm.permuter, isinlist=isinlist)
-	# 		self.STAT           = spm.STAT
-	# 		self.PDF            = None if isinlist else self.permuter.Z       #permutation PDF
-	# 		self.alpha          = alpha                 #Type I error rate
-	# 		self.nPerm          = None if isinlist else self.permuter.Z.size  #number of permutations
-	# 		self.p              = p                     #P values for each cluster
-	# 		self.two_tailed     = two_tailed            #two-tailed test boolean
-	# 		self.h0reject       = None                  #null rejection decision
-	# 		self.zstar          = zstar                 #critical threshold
-	# 		self._check_null()
-
-
 
 	def __repr__(self):
 		stat     = self.STAT
@@ -303,40 +274,17 @@ class _SnPM1Donetailed(_SnPM1D):
 
 
 class SnPM_T(_SnPM1D):
-	STAT = 'T'
+	STAT     = 'T'
 class SnPM_F(_SnPM1Donetailed, _SPMF):
 	STAT     = 'F'
 	isinlist = False
 	isanova  = True
-	
-	# def __init__(self, spm, alpha, zstar, p, two_tailed=False, isinlist=False):
-	# 	super(SnPM0Dinference, self).__init__(spm.z, spm.permuter, isinlist=isinlist)
-	# 	self.STAT           = spm.STAT
-	# 	self.PDF            = self.permuter.Z       #permutation PDF
-	# 	self.alpha          = alpha                 #Type I error rate
-	# 	self.nPerm          = self.permuter.Z.size  #number of permutations
-	# 	self.p              = p                     #P values for each cluster
-	# 	self.two_tailed     = two_tailed            #two-tailed test boolean
-	# 	self.h0reject       = None                  #null rejection decision
-	# 	self.zstar          = zstar                 #critical threshold
-	# 	self._check_null()
-
 	def _repr_summ(self):
 		return '{:<5} F = {:<18}\n'.format(self.effect_short,  self._repr_teststat_short())
-
-	# def _repr_summ(self):
-	# 	return '{:<5} F = {:<8}\n'.format(self.effect_short,  '%.3f'%self.z)
-	
-	
-
-
-
 class SnPM_X2(_SnPM1Donetailed):
 	STAT = 'X2'
 class SnPM_T2(_SnPM1Donetailed):
 	STAT = 'T2'
-# class SnPM_Flist(_SnPM1Dlist):
-# 	STAT = 'F'
 
 
 

@@ -1,7 +1,7 @@
 
 import numpy as np
-import _mvbase
-import _spm
+from . import _mvbase, _spm
+
 
 
 

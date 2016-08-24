@@ -1,7 +1,5 @@
 
 import numpy as np
-import scipy.stats
-import spm1d
 import spm1d
 
 
@@ -9,7 +7,7 @@ import spm1d
 #(0) Load dataset:
 dataset   = spm1d.data.uv0d.anova3nested.SouthamptonNested3()
 y,A,B,C   = dataset.get_data()
-print dataset
+print( dataset )
 
 
 

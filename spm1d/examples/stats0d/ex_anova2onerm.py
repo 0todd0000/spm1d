@@ -15,7 +15,7 @@ dataset    = spm1d.data.uv0d.anova2onerm.Southampton2onerm()
 # dataset    = spm1d.data.uv0d.anova2onerm.SPM1D4x4()
 # dataset    = spm1d.data.uv0d.anova2onerm.SPM1D4x5()
 y,A,B,SUBJ = dataset.get_data()
-print dataset
+print( dataset )
 
 
 

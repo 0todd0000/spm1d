@@ -10,7 +10,7 @@ dataset  = spm1d.data.uv0d.anova1rm.Groceries()
 # dataset  = spm1d.data.uv0d.anova1rm.Imacelebrity()
 # dataset  = spm1d.data.uv0d.anova1rm.Southampton1rm()
 y,A,SUBJ = dataset.get_data()
-print dataset
+print( dataset )
 
 
 

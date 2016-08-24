@@ -11,7 +11,7 @@ dataset = spm1d.data.uv0d.anova1.Cars()
 # dataset = spm1d.data.uv0d.anova1.ConstructionUnequalSampleSizes()
 # dataset = spm1d.data.uv0d.anova1.RSUnequalSampleSizes()
 y,A     = dataset.get_data()
-print dataset
+print( dataset )
 
 
 

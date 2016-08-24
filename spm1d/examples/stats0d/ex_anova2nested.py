@@ -8,7 +8,7 @@ import spm1d
 dataset    = spm1d.data.uv0d.anova2nested.QIMacros()
 dataset    = spm1d.data.uv0d.anova2nested.SouthamptonNested1()
 y,A,B      = dataset.get_data()
-print dataset
+print( dataset )
 
 
 #(1) Run ANOVA:

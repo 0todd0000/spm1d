@@ -8,7 +8,7 @@ import spm1d
 dataset      = spm1d.data.uv0d.anova3onerm.NYUCaffeine()
 dataset      = spm1d.data.uv0d.anova3onerm.Southampton3onerm()
 y,A,B,C,SUBJ = dataset.get_data()
-print dataset
+print( dataset )
 
 
 

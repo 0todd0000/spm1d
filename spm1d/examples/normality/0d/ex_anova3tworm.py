@@ -1,7 +1,5 @@
 
 import numpy as np
-import scipy.stats
-import spm1d
 import spm1d
 
 
@@ -10,7 +8,7 @@ import spm1d
 dataset      = spm1d.data.uv0d.anova3tworm.NYUHiringExperience()
 dataset      = spm1d.data.uv0d.anova3tworm.Southampton3tworm()
 y,A,B,C,SUBJ = dataset.get_data()
-print dataset
+print( dataset )
 
 
 

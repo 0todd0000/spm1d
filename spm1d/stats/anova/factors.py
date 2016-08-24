@@ -278,18 +278,8 @@ class FactorNestedTwoWay(Factor):
 	def _01_check_unbalanced(self):
 		pass
 
-
 	def get_Q(self):
 		pass
-		# Q = []
-		# for u in self.u:
-		# 	for uu in u:
-		# 		for uuu in uu:
-		# 			q = np.matrix(np.diag(self.A==uuu), dtype=float)
-		# 			Q.append(q)
-		# return Q
-
-
 		
 	def get_design_main(self):
 		A,B,S    = self.NEST0.A, self.NEST1.A, self.A

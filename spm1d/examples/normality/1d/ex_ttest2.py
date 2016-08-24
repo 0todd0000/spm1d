@@ -17,7 +17,7 @@ yA,yB        = dataset.get_data()
 np.random.seed(0)
 alpha      = 0.05
 spmi       = spm1d.stats.normality.ttest2(yA, yB).inference(alpha)
-print spmi
+print( spmi )
 
 
 

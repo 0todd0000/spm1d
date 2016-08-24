@@ -18,16 +18,16 @@ alpha      = 0.05
 two_tailed = False
 snpm       = spm1d.stats.nonparam.ttest_paired(yA, yB)
 snpmi      = snpm.inference(alpha, two_tailed=two_tailed, iterations=-1)
-print snpmi
-print snpmi.clusters
+print( snpmi )
+print( snpmi ).clusters
 
 
 
 #(2) Compare with parametric result:
 spm        = spm1d.stats.ttest_paired(yA, yB)
 spmi       = spm.inference(alpha, two_tailed=two_tailed)
-print spmi
-print spmi.clusters
+print( spmi )
+print( spmi ).clusters
 
 
 

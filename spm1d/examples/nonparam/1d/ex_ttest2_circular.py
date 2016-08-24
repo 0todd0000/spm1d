@@ -19,16 +19,16 @@ two_tailed = False
 circular   = True
 snpm       = spm1d.stats.nonparam.ttest2(yA, yB)
 snpmi      = snpm.inference(alpha, two_tailed=two_tailed, iterations=1000, circular=circular)
-print snpmi
-print snpmi.clusters
+print( snpmi )
+print( snpmi ).clusters
 
 
 
 #(2) Compare with parametric result:
 spm        = spm1d.stats.ttest2(yA, yB)
 spmi       = spm.inference(alpha, two_tailed=two_tailed, circular=circular)
-print spmi
-print spmi.clusters
+print( spmi )
+print( spmi ).clusters
 
 
 

@@ -1,6 +1,5 @@
 
 import numpy as np
-import scipy.stats
 import spm1d
 
 
@@ -11,7 +10,7 @@ dataset    = spm1d.data.uv0d.anova2rm.RSXLTraining()
 dataset    = spm1d.data.uv0d.anova2rm.SocialNetworks()
 dataset    = spm1d.data.uv0d.anova2rm.Southampton2rm()
 y,A,B,SUBJ = dataset.get_data()
-print dataset
+print( dataset )
 
 
 

@@ -8,7 +8,7 @@ High-level ANOVA user interface.
 
 import warnings
 import numpy as np
-import designs,models
+from . import designs,models
 from .. import _datachecks, _reml, _spm, _spmlist
 
 

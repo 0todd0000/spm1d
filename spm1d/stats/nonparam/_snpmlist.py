@@ -1,6 +1,6 @@
 
 import numpy as np
-import _snpm
+from . import _snpm
 from .. import _spmlist
 
 

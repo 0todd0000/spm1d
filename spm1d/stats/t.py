@@ -10,8 +10,8 @@ One-sample statistical tests.
 
 import numpy as np
 from matplotlib import pyplot, cm as colormaps
-import _datachecks, _reml, _spm
-import rft1d
+from . import _datachecks, _reml, _spm
+from .. import rft1d
 
 
 rank   = np.linalg.matrix_rank
