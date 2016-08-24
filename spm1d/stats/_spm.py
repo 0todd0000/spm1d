@@ -12,7 +12,7 @@ and inference SPMs (thresholded test statistic).
 # Copyright (C) 2016  Todd Pataky
 # _spm.py version: 0.3.2.5 (2016/06/27)
 
-
+import sys
 import numpy as np
 from scipy import stats
 from .. import rft1d
@@ -46,7 +46,11 @@ def _set_docstr(childfn, parentfn, args2remove=None):
 				docstrlist1.append(s)
 		docstrlist1 = [s + '\n\t'  for s in docstrlist1]
 		docstr  = ''.join(docstrlist1)
-	# childfn.__func__.__doc__ = docstr
+	if sys.version_info.major==2:
+		childfn.__func__.__doc__ = docstr
+	elif sys.version_info.major==3:
+		childfn.__doc__ = docstr
+
 
 
 
