@@ -324,7 +324,10 @@ def ci_onesample(y, alpha=0.05, mu=None):
 
 
 def ci_pairedsample(yA, yB, alpha=0.05, datum='difference', mu=None):
-	spmi     = ttest(yA-yB, 0).inference(alpha, two_tailed=True)
+	muvalue  = 0
+	if datum=='difference':
+		muvalue = 0 if mu is None else mu
+	spmi     = ttest(yA-yB, muvalue).inference(alpha, two_tailed=True)
 	mA,mB    = yA.mean(axis=0), yB.mean(axis=0)   #sample means
 	s        = spmi.sigma2**0.5                   #sample standard deviation
 	hstar    = spmi.zstar * s / yA.shape[0]**0.5  #CI height
@@ -342,9 +345,13 @@ def ci_pairedsample(yA, yB, alpha=0.05, datum='difference', mu=None):
 def ci_twosample(yA, yB, alpha=0.05, equal_var=True, datum='difference', mu=None):
 	if equal_var is not True:
 		raise NotImplementedError('Two-sample confidence interval calculations are currently implemented only for assumed equal variance. Set "equal_var=True" to force an equal variance assumption.')
-	spmi         = ttest2(yA, yB, equal_var=True).inference(alpha, two_tailed=True)
+	muvalue      = 0
+	if datum=='difference':
+		muvalue  = 0 if mu is None else mu
+	spmi         = ttest2(yA-muvalue, yB, equal_var=True).inference(alpha, two_tailed=True)
 	JA,JB        = yA.shape[0], yB.shape[0]
 	mA,mB        = spmi.beta            #sample means
+	mA          += muvalue
 	s            = spmi.sigma2**0.5     #sample standard deviation
 	hstar        = spmi.zstar * s * (1./JA + 1./JB)**0.5
 	if datum == 'difference':
