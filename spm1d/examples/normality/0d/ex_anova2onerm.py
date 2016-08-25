@@ -1,5 +1,4 @@
 
-import numpy as np
 import spm1d
 
 
@@ -17,7 +16,6 @@ print( dataset )
 
 
 #(1) Conduct normality test:
-np.random.seed(0)
 alpha      = 0.05
 spmi       = spm1d.stats.normality.anova2onerm(y, A, B, SUBJ).inference(alpha)
 print( spmi )

@@ -17,7 +17,7 @@ from . t import ttest,ttest2
 
 
 class _CI(object):
-	### summary variables:
+	### summary attributes:
 	name             = None    #confidence interval name ("0D CI" or "1D CI")
 	dim              = None    #data dimensionality (0 or 1)
 	kind             = None    #type of confidence interval (one-, paried- or two-sample)

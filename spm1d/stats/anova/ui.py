@@ -14,7 +14,7 @@ from .. import _datachecks, _reml, _spm, _spmlist
 
 def aov(model, contrasts, f_terms):
 	'''
-	This code is borrowed and modified from statsmodels.stats.anova_lm
+	This code is modified from statsmodels.stats.anova_lm
 	'''
 	effects = np.asarray( np.dot(model.QT, model.Y) )
 	if model.dim==0:

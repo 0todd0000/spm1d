@@ -8,7 +8,7 @@ import spm1d
 
 #(0) Load dataset:
 dataset    = spm1d.data.uv1d.regress.SimulatedPataky2015c()
-dataset    = spm1d.data.uv1d.regress.SpeedGRF()
+# dataset    = spm1d.data.uv1d.regress.SpeedGRF()
 y,x        = dataset.get_data()
 
 

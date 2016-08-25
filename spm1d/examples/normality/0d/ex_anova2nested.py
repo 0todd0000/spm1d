@@ -1,5 +1,4 @@
 
-import numpy as np
 import spm1d
 
 
@@ -13,26 +12,10 @@ print( dataset )
 
 
 
-#(1) Conduct non-parametric test:
-np.random.seed(0)
+#(1) Conduct normality test:
 alpha      = 0.05
-snpmlist   = spm1d.stats.nonparam.anova2nested(y, A, B)
-snpmilist  = snpmlist.inference(alpha, iterations=1000)
-F,p        = np.array(   [(s.z, s.p)  for s in snpmilist]   ).T
-
-
-
-#(2) Compare to parametric test:
-FF         = spm1d.stats.anova2nested(y, A, B, equal_var=True)
-FFi        = [F.inference(alpha)  for F in FF]
-
-
-
-#(3) Print results:
-for spmi,snpmi in zip(FFi, snpmilist):
-	print( 'Parametric:      (F = %.3f, p = %.3f)' %(spmi.z, spmi.p) )
-	print( 'Non-parametric:  (F = %.3f, p = %.3f)\n' %(snpmi.z, snpmi.p) )
-
+spmi       = spm1d.stats.normality.anova2nested(y, A, B).inference(alpha)
+print( spmi )
 
 
 

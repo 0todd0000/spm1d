@@ -8,7 +8,7 @@ import spm1d
 
 #(0) Load dataset:
 dataset      = spm1d.data.uv1d.anova1.SpeedGRFcategorical()
-# dataset      = spm1d.data.uv1d.anova1.Weather()
+dataset      = spm1d.data.uv1d.anova1.Weather()
 y,A          = dataset.get_data()
 
 
@@ -25,7 +25,6 @@ print( spmi )
 #(2) Plot
 pyplot.close('all')
 pyplot.figure(figsize=(14,4))
-
 ax = pyplot.subplot(131);  ax.plot(y.T, 'k', lw=0.5);   ax.set_title('Data')
 ax = pyplot.subplot(132);  ax.plot(spmi.residuals.T, 'k', lw=0.5);   ax.set_title('Residuals')
 ax = pyplot.subplot(133);  spmi.plot(ax=ax);   spmi.plot_threshold_label(ax=ax); ax.set_title('Normality test')
