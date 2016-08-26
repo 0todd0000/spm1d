@@ -14,7 +14,7 @@ print( dataset )
 
 #(1) Compute confidence intervals:
 alpha   = 0.05
-mu      = 0.1
+mu      = 0
 ci0     = spm1d.stats.ci_twosample(yA, yB, alpha, datum='difference', mu=None)  # datum: inter-group mean difference  (explicit hypothesis test suppressed using "mu=None")
 ci1     = spm1d.stats.ci_twosample(yA, yB, alpha, datum='difference', mu=mu)    # datum: inter-group mean difference  (hypothesis test regarding a specific inter-group difference "mu=0")
 ci2     = spm1d.stats.ci_twosample(yA, yB, alpha, datum='meanA', mu='meanB')    # datum: meanA,  criterion: whether CI reaches meanB
