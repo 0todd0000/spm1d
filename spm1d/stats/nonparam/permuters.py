@@ -24,7 +24,9 @@ class _Permuter(object):
 		return self.get_test_stat( self.labels0 )
 	def get_z_critical(self, alpha=0.05, two_tailed=False):
 		perc     = [100*alpha, 100*(1-alpha)]  if two_tailed else 100*(1-alpha)
-		return np.percentile(self.Z, perc, interpolation='linear', axis=0)
+		# zstar    = np.percentile(self.Z, perc, interpolation='linear', axis=0)
+		zstar    = np.percentile(self.Z, perc, interpolation='midpoint', axis=0)
+		return zstar
 	
 
 
