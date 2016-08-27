@@ -25,7 +25,7 @@ class _SnPM(object):
 				raise( ValueError('\nNumber of specified iterations (%d) exceeds the maximum possible number of iterations (%d)\n'%(iterations,self.nPermUnique)) )
 		elif (((iterations==-1) and (self.nPermUnique>10000)) or (iterations>10000)) and not force_iterations:
 			n    = self.nPermUnique if iterations==-1 else iterations
-			raise( Warning('\nThe total nuumber of permutations is very large: %d\nTo enable non-parametric calculations for this many iterations set "force_iterations=True" when calling "inference".\nNOTE: Setting "force_iterations=True" may require substantial computational resources and may cause crashes. USE WITH CAUTION.'%n ))
+			raise( Warning('\nThe total nuumber of permutations (%d) is very large and may cause computational problems. To enable non-parametric calculations for this many iterations set "force_iterations=True" when calling "inference".\nNOTE: Setting "force_iterations=True" may require substantial computational resources and may cause crashes. USE WITH CAUTION.'%n ))
 		elif (iterations!=-1) and (iterations<10):
 			raise( ValueError('\nNumber of specified iterations (%d) must be at least 10\n'%iterations) )
 		elif (iterations>0) and (iterations<1/alpha):

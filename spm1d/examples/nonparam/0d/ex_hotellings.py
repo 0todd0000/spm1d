@@ -8,7 +8,7 @@ import spm1d
 dataset = spm1d.data.mv0d.hotellings1.RSXLHotellings1()
 # dataset = spm1d.data.mv0d.hotellings1.Sweat()
 y,mu    = dataset.Y, dataset.mu
-y       = y[:10]
+# y       = y[:10]
 
 
 #(1) Conduct non-parametric test:

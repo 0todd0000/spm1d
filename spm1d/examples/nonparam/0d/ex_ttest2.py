@@ -16,11 +16,12 @@ yB         = np.array([ 0.950, -0.151, -0.103,  0.410,  0.144,  1.454])
 
 #(1) Conduct non-parametric test:
 alpha      = 0.05
-two_tailed = False
+two_tailed = True
 tn         = spm1d.stats.nonparam.ttest2(yA, yB)
 tni        = tn.inference(alpha, two_tailed=two_tailed)
 print( 'Non-parametric results:' )
 print(tni)
+
 
 
 #(2) Compare to parametric test:

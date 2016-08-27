@@ -23,7 +23,7 @@ class _Permuter(object):
 	def get_test_stat_original(self):
 		return self.get_test_stat( self.labels0 )
 	def get_z_critical(self, alpha=0.05, two_tailed=False):
-		perc     = [100*alpha, 100*(1-alpha)]  if two_tailed else 100*(1-alpha)
+		perc     = [100*0.5*alpha, 100*(1-0.5*alpha)]  if two_tailed else 100*(1-alpha)
 		# zstar    = np.percentile(self.Z, perc, interpolation='linear', axis=0)
 		zstar    = np.percentile(self.Z, perc, interpolation='midpoint', axis=0)
 		return zstar
@@ -31,7 +31,10 @@ class _Permuter(object):
 
 
 class _Permuter0D(_Permuter):
-	dim = 0   #data dimensionality
+	dim  = 0   #data dimensionality
+	minp = 0   #minimum possible p value
+	maxp = 1   #maximum possible p value
+	
 	
 	def get_p_value(self, z, zstar, alpha, Z=None):
 		two_tailed    = isinstance(zstar, np.ndarray)
@@ -43,16 +46,17 @@ class _Permuter0D(_Permuter):
 				p     = 2 * ( self.Z < z ).mean()
 		else:
 			p         = ( self.Z > z ).mean()
-		### substitute with minimum p value if applicable:
-		minp          = 1.0 / self.Z.size
-		if two_tailed:
-			zc0,zc1   = zstar      #lower and upper critical thresholds
-			if (z < 0) and (z < zc0) and (p > alpha):
-				p     = minp
-			elif (z > 0) and (z > zc1) and (p > alpha):
-				p     = minp
-		elif (z > 0) and (z > zstar) and (p > alpha):
-			p         = minp
+		### set miminum and maximum p values:
+		self.minp     = 1.0 / self.Z.size
+		self.maxp     = 1 - self.minp
+		### adjust the p value to alpha if (z > z*) but (p > alpha)
+		zc0,zc1       = zstar if two_tailed else (-np.inf, zstar)
+		if (z > zc1) and (p > alpha):
+			p         = alpha
+		elif (z < zc0) and (p > alpha):
+			p         = alpha
+		### substitute with min/max p value if applicable:
+		p             = min( max(p, self.minp), self.maxp )
 		return p
 
 
@@ -400,7 +404,7 @@ class _PermuterANOVA0DmultiF(_PermuterANOVA0D):
 	def get_p_value_list(self, zz, zzstar, alpha):
 		return [self.get_p_value(z, zstar, alpha, Z=Z)  for z,zstar,Z in zip(zz,zzstar,self.Z.T)]
 	def get_z_critical_list(self, alpha=0.05, two_tailed=False):
-		return self.get_z_critical()
+		return self.get_z_critical(alpha)
 
 class _PermuterANOVA1DmultiF(_PermuterANOVA1D):
 	def build_secondary_pdfs(self, zstarlist, circular=False):
