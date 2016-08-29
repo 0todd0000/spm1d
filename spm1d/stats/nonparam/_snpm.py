@@ -106,7 +106,8 @@ class SnPM0D_T(_SnPM0D):
 		return SnPM0Dinference(self, alpha, zstar, p, two_tailed)
 
 class SnPM0D_F(_SnPM0D, _SPMF):
-	STAT = 'F'
+	STAT    = 'F'
+	isanova = True
 	def _repr_summ(self):
 		return '{:<5} F = {:<8}\n'.format(self.effect_short,  '%.3f'%self.z)
 	
