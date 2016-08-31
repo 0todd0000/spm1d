@@ -12,6 +12,7 @@ class RSWeightClinic(_base.DatasetTpaired):
 		self.YB   = np.array([197,195,191,174,236,226,157,196,201,196,181,164,181,229,231])
 		# self.Y    = np.hstack([self.YA, self.YB])
 		# self.A    = np.array([0]*15 + [1]*15)
+		self.two_tailed = True
 		self.z    = 6.6896995
 		self.df   = 1,14
 		self.p    = 1.028e-5
@@ -25,6 +26,7 @@ class ColumbiaMileage(_base.DatasetTpaired):
 		self.YB   = np.array([16, 20, 21, 22, 23, 22, 27, 25, 27, 28])
 		# self.Y    = np.hstack([self.YA, self.YB])
 		# self.A    = np.array([0]*15 + [1]*15)
+		self.two_tailed = False
 		self.z    = 4.4721
 		self.df   = 1,9
 		self.p    = 0.000775
