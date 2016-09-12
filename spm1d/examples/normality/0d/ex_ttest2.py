@@ -18,8 +18,8 @@ yB2        = np.array([ 0.950, -0.151, -0.103,  0.410,  0.144])
 
 #(1) Conduct normality tests:
 alpha      = 0.05
-spmi1      = spm1d.stats.normality.ttest2(yA1, yB1).inference(alpha)
-spmi2      = spm1d.stats.normality.ttest2(yA2, yB2).inference(alpha)
+spmi1      = spm1d.stats.normality.k2.ttest2(yA1, yB1).inference(alpha)
+spmi2      = spm1d.stats.normality.k2.ttest2(yA2, yB2).inference(alpha)
 print( 'Non-normally distributed data:')
 print( spmi1 )
 print

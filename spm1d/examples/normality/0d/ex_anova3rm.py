@@ -14,7 +14,7 @@ print( dataset )
 
 #(1) Conduct normality test:
 alpha      = 0.05
-spmi       = spm1d.stats.normality.anova3rm(y, A, B, C, SUBJ).inference(alpha)
+spmi       = spm1d.stats.normality.k2.anova3rm(y, A, B, C, SUBJ).inference(alpha)
 print( spmi )
 
 

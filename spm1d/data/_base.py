@@ -67,7 +67,8 @@ class _Dataset(object):
 	def get_expected_results_as_string(self):
 		s      = '  (Expected results)\n'
 		s     += '  %s         :  %s\n' %("{:<2}".format(self.STAT), str(self.z))
-		s     += '  df         :  %s\n' %str(self.df)
+		if self.df is not None:
+			s += '  df         :  %s\n' %str(self.df)
 		s     += '  p          :  %s\n' %str(self.p)
 		return s
 
@@ -89,6 +90,20 @@ class _DatasetX2(_Dataset):
 	STAT  = 'X2'
 class _DatasetK2(_Dataset):
 	STAT = 'K2'
+class _DatasetSW(_Dataset):
+	STAT = 'W'
+
+
+
+
+
+class DatasetNormality(_DatasetK2):
+	design = "Normality test (D'Agostino-Pearson K2)"
+class DatasetNormalitySW(_DatasetSW):
+	design = 'Normality test (Shapiro-Wilk)'
+
+
+
 
 
 class DatasetANOVA1(_DatasetANOVA):
@@ -255,12 +270,7 @@ class DatasetCI2(_CI, _DatasetT):
 
 
 
-class DatasetNormality(_DatasetK2):
-	def __init__(self):
-		super(DatasetNormality, self).__init__()
-		self.design = 'Normality test'
-	def get_data(self):
-		return self.Y
+
 
 class DatasetT1(_DatasetT):
 	design  = 'One-sample t test'

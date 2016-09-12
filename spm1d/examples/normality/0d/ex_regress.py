@@ -12,7 +12,7 @@ y,x     = dataset.get_data()
 
 #(1) Conduct normality test:
 alpha      = 0.05
-spmi       = spm1d.stats.normality.regress(y, x).inference(alpha)
+spmi       = spm1d.stats.normality.k2.regress(y, x).inference(alpha)
 print( spmi )
 
 

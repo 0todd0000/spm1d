@@ -15,7 +15,7 @@ y,A,SUBJ = dataset.get_data()
 #(1) Conduct normality test:
 
 alpha      = 0.05
-spmi       = spm1d.stats.normality.anova1rm(y, A, SUBJ).inference(alpha)
+spmi       = spm1d.stats.normality.k2.anova1rm(y, A, SUBJ).inference(alpha)
 print( spmi )
 
 

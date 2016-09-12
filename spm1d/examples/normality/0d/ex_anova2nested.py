@@ -14,7 +14,7 @@ print( dataset )
 
 #(1) Conduct normality test:
 alpha      = 0.05
-spmi       = spm1d.stats.normality.anova2nested(y, A, B).inference(alpha)
+spmi       = spm1d.stats.normality.k2.anova2nested(y, A, B).inference(alpha)
 print( spmi )
 
 

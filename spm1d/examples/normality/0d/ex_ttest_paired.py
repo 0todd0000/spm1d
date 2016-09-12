@@ -13,7 +13,7 @@ yA,yB   = dataset.get_data()
 
 #(1) Conduct normality test:
 alpha      = 0.05
-spmi       = spm1d.stats.normality.ttest_paired(yA, yB).inference(alpha)
+spmi       = spm1d.stats.normality.k2.ttest_paired(yA, yB).inference(alpha)
 print( spmi )
 
 
