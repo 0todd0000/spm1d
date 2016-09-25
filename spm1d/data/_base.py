@@ -101,7 +101,10 @@ class DatasetNormality(_DatasetK2):
 	design = "Normality test (D'Agostino-Pearson K2)"
 class DatasetNormalitySW(_DatasetSW):
 	design = 'Normality test (Shapiro-Wilk)'
-
+class DatasetNormality1D(DatasetNormality, Dataset1D):
+	design = "Normality test (D'Agostino-Pearson K2)"
+class DatasetNormalitySW1D(DatasetNormalitySW, Dataset1D):
+	design = 'Normality test (Shapiro-Wilk)'
 
 
 
