@@ -1,6 +1,8 @@
 spm1d
 =====
 
+(nonparam branch)
+
 One-Dimensional <b>Statistical Parametric Mapping</b> in Python and MATLAB.
  
  
