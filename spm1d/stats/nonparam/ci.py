@@ -7,13 +7,13 @@ If the CI cloud starting from the "datum" reaches the "criterion", the null hypo
 
 
 import numpy as np
-from . stats import ttest, ttest2
+# from . stats import ttest, ttest2
 from .. ci import CIOneSample0D, CIOneSample1D
 from .. ci import CIPairedSample0D, CIPairedSample1D, CIPairedDifference0D, CIPairedDifference1D
 from .. ci import CITwoSample0D, CITwoSample1D, CITwoSampleDifference0D, CITwoSampleDifference1D
 from ... stats import ttest as ttest_parametric
 from ... stats import ttest2 as ttest2_parametric
-
+from . stats import ttest, ttest2
 
 
 

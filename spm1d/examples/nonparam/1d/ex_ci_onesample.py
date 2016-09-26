@@ -6,9 +6,9 @@ import spm1d
 
 
 #(0) Load dataset:
-# dataset    = spm1d.data.uv1d.t1.Random()
+dataset    = spm1d.data.uv1d.t1.Random()
 # dataset    = spm1d.data.uv1d.t1.SimulatedPataky2015a()
-dataset    = spm1d.data.uv1d.t1.SimulatedPataky2015b()
+# dataset    = spm1d.data.uv1d.t1.SimulatedPataky2015b()
 y,mu       = dataset.get_data()
 
 
@@ -18,7 +18,7 @@ y,mu       = dataset.get_data()
 np.random.seed(0)
 alpha      = 0.05
 mu         = 0
-iterations = 1000
+iterations = -1
 ci         = spm1d.stats.ci_onesample(y, alpha, mu=mu)
 cinp       = spm1d.stats.nonparam.ci_onesample(y, alpha, mu=mu, iterations=iterations)
 print( ci )

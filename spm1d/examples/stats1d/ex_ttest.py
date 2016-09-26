@@ -13,7 +13,7 @@ Y,mu       = dataset.get_data()
 #(1) Conduct t test:
 alpha      = 0.05
 t          = spm1d.stats.ttest(Y, mu)
-ti         = t.inference(alpha, two_tailed=False, interp=True, circular=True)
+ti         = t.inference(alpha, two_tailed=False, interp=True, circular=False)
 print( ti )
 
 

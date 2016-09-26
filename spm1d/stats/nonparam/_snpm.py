@@ -240,8 +240,8 @@ class _SnPM1D(_SnPM, _spm._SPM):
 		### build primary PDF:
 		self.permuter.build_pdf(iterations)
 		### compute critical threshold:
-		a          = 0.5*alpha if two_tailed else alpha  #adjusted alpha (if two-tailed)
-		zstar      = self.permuter.get_z_critical(a, two_tailed)
+		# a          = 0.5*alpha if two_tailed else alpha  #adjusted alpha (if two-tailed)
+		zstar      = self.permuter.get_z_critical(alpha, two_tailed)
 		zstar      = zstar[1] if np.size([zstar])==2 else zstar
 		### build secondary PDF:
 		self.permuter.set_metric( cluster_metric )
