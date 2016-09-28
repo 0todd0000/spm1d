@@ -7,8 +7,8 @@ import spm1d
 
 
 #(0) Load dataset:
-dataset      = spm1d.data.uv1d.anova3nested.SPM1D_ANOVA3NESTED_2x2x2()
-# dataset      = spm1d.data.uv1d.anova3nested.SPM1D_ANOVA3NESTED_2x4x2()
+# dataset      = spm1d.data.uv1d.anova3nested.SPM1D_ANOVA3NESTED_2x2x2()
+dataset      = spm1d.data.uv1d.anova3nested.SPM1D_ANOVA3NESTED_2x4x2()
 y,A,B,C      = dataset.get_data()
 
 
@@ -47,4 +47,12 @@ pyplot.show()
 
 
 
-
+#(3) Plot results:
+pyplot.close('all')
+FFni.plot(plot_threshold_label=False, plot_p_values=True, autoset_ylim=True)
+### optionally plot parametric thresholds for comparison:
+for i,Fi in enumerate(FFi):
+	ax = pyplot.subplot(3,3,i+1)
+	ax.axhline( Fi.zstar, color='c', linestyle='--' )
+	ax.text(2, Fi.zstar, 'Parametric', color='c')
+pyplot.show()

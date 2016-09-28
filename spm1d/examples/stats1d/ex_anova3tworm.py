@@ -20,15 +20,18 @@ FFi          = FF.inference(0.05)
 print( FFi )
 
 
+# #(2) Plot results:
+# pyplot.close('all')
+# for i,Fi in enumerate(FFi):
+# 	ax = pyplot.subplot(3,3,i+1)
+# 	Fi.plot()
+# 	ax.text(0.1, 0.85, Fi.effect, transform=ax.transAxes)
+# pyplot.show()
+
+
 #(2) Plot results:
 pyplot.close('all')
-for i,Fi in enumerate(FFi):
-	ax = pyplot.subplot(3,3,i+1)
-	Fi.plot()
-	ax.text(0.1, 0.85, Fi.effect, transform=ax.transAxes)
+FFi.plot(plot_threshold_label=True, plot_p_values=True, autoset_ylim=True)
 pyplot.show()
-
-
-
 
 

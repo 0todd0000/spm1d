@@ -60,6 +60,7 @@ def _set_docstr(childfn, parentfn, args2remove=None):
 class _SPMParent(object):
 	'''Parent class for all parametric SPM classes.'''
 	isanova       = False
+	isinference   = False
 	isregress     = False
 	isparametric  = True
 	dim           = 0
@@ -119,6 +120,9 @@ class _SPM0D(_SPMParent):
 
 
 class _SPM0Dinference(_SPM0D):
+	
+	isinference = True
+	
 	def __init__(self, spm, alpha, zstar, p, two_tailed=False):
 		_SPM0D.__init__(self, spm.STAT, spm.z, spm.df, beta=spm.beta, residuals=spm.residuals, sigma2=spm.sigma2)
 		self.alpha       = alpha       #Type I error rate
@@ -274,7 +278,8 @@ class _SPM(_SPMParent):
 	def _repr_teststat(self):
 		return '(1x%d) test stat field' %self.Q
 	def _repr_teststat_short(self):
-		return '(1x%d) %s field' %(self.Q, self.STAT)
+		return '(1x%d) array' %self.Q
+		# return '(1x%d) %s field' %(self.Q, self.STAT)
 	
 
 	def _build_spmi(self, alpha, zstar, clusters, p_set, two_tailed):
@@ -573,6 +578,9 @@ class SPM_X2(_SPM):
 
 class _SPMinference(_SPM):
 	'''Parent class for SPM inference objects.'''
+	
+	isinference = True
+	
 	def __init__(self, spm, alpha, zstar, clusters, p_set, p, two_tailed=False):
 		_SPM.__init__(self, spm.STAT, spm.z, spm.df, spm.fwhm, spm.resels, X=spm.X, beta=spm.beta, residuals=spm.residuals, sigma2=spm.sigma2, roi=spm.roi)
 		self.alpha       = alpha               #Type I error rate

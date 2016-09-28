@@ -34,6 +34,9 @@ class Contrasts(object):
 
 
 class DesignBuilder(object):
+	
+	nFactors         = 1
+	
 	def __init__(self, labels=[]):
 		self.COLS    = []
 		self.labels  = list(labels)
@@ -107,6 +110,7 @@ class _Design(object):
 class ANOVA1(_Design):
 	
 	effect_labels        = ('Main A', )
+	nFactors             = 1
 	
 	def __init__(self, A):
 		self.X           = None       #design matrix
@@ -137,6 +141,7 @@ class ANOVA1(_Design):
 class ANOVA1rm(_Design):
 	
 	effect_labels       = ('Main A', )
+	nFactors            = 1
 	
 	def __init__(self, A, SUBJ):
 		self.X          = None          #design matrix
@@ -190,7 +195,8 @@ class ANOVA1rm(_Design):
 
 class ANOVA2(_Design):
 	
-	effect_labels       = ('Main A', 'Main B', 'Interaction AB')
+	effect_labels        = ('Main A', 'Main B', 'Interaction AB')
+	nFactors             = 2
 	
 	def __init__(self, A, B):
 		self.X           = None       #design matrix
@@ -235,6 +241,7 @@ class ANOVA2(_Design):
 class ANOVA2nested(ANOVA2):
 	
 	effect_labels       = ('Main A', 'Main B')
+	nFactors            = 2
 	
 	def __init__(self, A, B):
 		self.X          = None
@@ -392,6 +399,7 @@ class ANOVA2onerm(ANOVA2rm):
 class ANOVA3(_Design):
 	
 	effect_labels       = ('Main A', 'Main B', 'Main C', 'Interaction AB', 'Interaction AC', 'Interaction BC','Interaction ABC')
+	nFactors            = 3
 	
 	def __init__(self, A, B, C):
 		self.X          = None       #design matrix

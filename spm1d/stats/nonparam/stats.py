@@ -8,7 +8,7 @@ def _get_data_dim(y, ismultivariate=False):
 	n = np.asarray(y).ndim
 	return (n - 2) if ismultivariate else (n - 1)
 
-def _get_snpm(STAT, perm):
+def _get_snpm(STAT, perm, nFactors=None):
 	z            = perm.get_test_stat_original()
 	if STAT == 'T':
 		snpm     = _snpm.SnPM0D_T(z, perm) if perm.dim==0 else _snpm.SnPM_T(z, perm)
@@ -18,7 +18,7 @@ def _get_snpm(STAT, perm):
 		snpm     = _snpm.SnPM0D_X2(z, perm) if perm.dim==0 else _snpm.SnPM_X2(z, perm)
 	elif STAT == 'F':
 		if isinstance(z, list):
-			snpm = _snpmlist.SnPMFList0D(z, perm) if perm.dim==0 else _snpmlist.SnPMFList(z, perm)
+			snpm = _snpmlist.SnPMFList0D(z, perm, nFactors=nFactors) if perm.dim==0 else _snpmlist.SnPMFList(z, perm, nFactors=nFactors)
 		else:
 			snpm = _snpm.SnPM0D_F(z, perm) if perm.dim==0 else _snpm.SnPM_F(z, perm)
 	return snpm
@@ -41,41 +41,41 @@ def anova1rm(y, A, SUBJ, roi=None):
 def anova2(y, A, B, roi=None):
 	dim     = _get_data_dim(y)
 	perm    = permuters.PermuterANOVA20D(y, A, B) if dim==0 else permuters.PermuterANOVA21D(y, roi, A, B)
-	return _get_snpm( 'F', perm )
+	return _get_snpm( 'F', perm, nFactors=2 )
 def anova2nested(y, A, B, roi=None):
 	dim     = _get_data_dim(y)
 	perm    = permuters.PermuterANOVA2nested0D(y, A, B) if dim==0 else permuters.PermuterANOVA2nested1D(y, roi, A, B)
-	return _get_snpm( 'F', perm )
+	return _get_snpm( 'F', perm, nFactors=2 )
 def anova2onerm(y, A, B, SUBJ, roi=None):
 	dim     = _get_data_dim(y)
 	perm    = permuters.PermuterANOVA2onerm0D(y, A, B, SUBJ) if dim==0 else permuters.PermuterANOVA2onerm1D(y, roi, A, B, SUBJ)
-	return _get_snpm( 'F', perm )
+	return _get_snpm( 'F', perm, nFactors=2 )
 def anova2rm(y, A, B, SUBJ, roi=None):
 	dim     = _get_data_dim(y)
 	perm    = permuters.PermuterANOVA2rm0D(y, A, B, SUBJ) if dim==0 else permuters.PermuterANOVA2rm1D(y, roi, A, B, SUBJ)
-	return _get_snpm( 'F', perm )
+	return _get_snpm( 'F', perm, nFactors=2 )
 
 ### Three-way ANOVA:
 def anova3(y, A, B, C, roi=None):
 	dim     = _get_data_dim(y)
 	perm    = permuters.PermuterANOVA30D(y, A, B, C) if dim==0 else permuters.PermuterANOVA31D(y, roi, A, B, C)
-	return _get_snpm( 'F', perm )
+	return _get_snpm( 'F', perm, nFactors=3 )
 def anova3nested(y, A, B, C, roi=None):
 	dim     = _get_data_dim(y)
 	perm    = permuters.PermuterANOVA3nested0D(y, A, B, C) if dim==0 else permuters.PermuterANOVA3nested1D(y, roi, A, B, C)
-	return _get_snpm( 'F', perm )
+	return _get_snpm( 'F', perm, nFactors=3 )
 def anova3onerm(y, A, B, C, SUBJ, roi=None):
 	dim     = _get_data_dim(y)
 	perm    = permuters.PermuterANOVA3onerm0D(y, A, B, C, SUBJ) if dim==0 else permuters.PermuterANOVA3onerm1D(y, roi, A, B, C, SUBJ)
-	return _get_snpm( 'F', perm )
+	return _get_snpm( 'F', perm, nFactors=3 )
 def anova3tworm(y, A, B, C, SUBJ, roi=None):
 	dim     = _get_data_dim(y)
 	perm    = permuters.PermuterANOVA3tworm0D(y, A, B, C, SUBJ) if dim==0 else permuters.PermuterANOVA3tworm1D(y, roi, A, B, C, SUBJ)
-	return _get_snpm( 'F', perm )
+	return _get_snpm( 'F', perm, nFactors=3 )
 def anova3rm(y, A, B, C, SUBJ, roi=None):
 	dim     = _get_data_dim(y)
 	perm    = permuters.PermuterANOVA3rm0D(y, A, B, C, SUBJ) if dim==0 else permuters.PermuterANOVA3rm1D(y, roi, A, B, C, SUBJ)
-	return _get_snpm( 'F', perm )
+	return _get_snpm( 'F', perm, nFactors=3 )
 	
 
 

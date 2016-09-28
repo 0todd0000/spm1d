@@ -34,23 +34,15 @@ print( FFi )
 
 
 
-#(3) Plot
+#(3) Plot results:
 pyplot.close('all')
-pyplot.figure(figsize=(15,4))
-
-for i,(Fi,Fni) in enumerate( zip(FFi,FFni) ):
-	ax = pyplot.subplot(1,3,i+1)
-	Fni.plot(ax=ax)
-	Fni.plot_threshold_label(ax=ax, fontsize=8)
-	Fni.plot_p_values(ax=ax, size=10)
-	ax.axhline( Fi.zstar, color='orange', linestyle='--', label='Parametric threshold')
-	if (Fi.zstar > Fi.z.max()) and (Fi.zstar>Fni.zstar):
-		ax.set_ylim(0, Fi.zstar+1)
-	if i==0:
-		ax.legend(fontsize=10, loc='best')
-	ax.set_title( Fni.effect )
+FFni.plot(plot_threshold_label=True, plot_p_values=True, autoset_ylim=True)
+### optionally plot parametric thresholds for comparison:
+for i,Fi in enumerate(FFi):
+	ax = pyplot.subplot(2,2,i+1)
+	ax.axhline( Fi.zstar, color='c', linestyle='--' )
+	ax.text(2, Fi.zstar, 'Parametric', color='c')
 pyplot.show()
-
 
 
 

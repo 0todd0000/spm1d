@@ -9,6 +9,7 @@ This module contains class definitions for raw SPMs (raw test statistic continua
 and inference SPMs (thresholded test statistic).
 '''
 
+from .. _plot import _plot_F_list
 
 
 class SPMFList(list):
@@ -20,9 +21,10 @@ class SPMFList(list):
 	isparametric  = True
 	effect_labels = None
 	
-	def __init__(self, *args):
-		super(SPMFList, self).__init__(*args)
+	def __init__(self, FF, nFactors=2):
+		super(SPMFList, self).__init__(FF)
 		self.nEffects  = len(self)
+		self.nFactors  = nFactors
 		self.dim       = self[0].dim
 		if self.dim==0:
 			self.name += ' (0D)'
@@ -60,10 +62,13 @@ class SPMFList(list):
 	def get_f_values(self):
 		return tuple( [f.z for f in self] )
 	def inference(self, alpha=0.05):
-		FFi = SPMFiList(  [f.inference(alpha=alpha)   for f in self]  )
+		FFi               = SPMFiList(  [f.inference(alpha=alpha)   for f in self]  )
 		FFi.set_design_label( self.design )
 		FFi.effect_labels = self.effect_labels
+		FFi.nFactors      = self.nFactors
 		return FFi
+	def plot(self, plot_threshold_label=True, plot_p_values=True, autoset_ylim=True):
+		_plot_F_list(self, plot_threshold_label, plot_p_values, autoset_ylim)
 	def print_summary(self):
 		print( self._repr_summ() )
 	def print_verbose(self):

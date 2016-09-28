@@ -10,12 +10,13 @@ class SnPMFList0D(_spmlist.SPMFList, _snpm._SnPM0D):
 	name          = 'SnPM{F} list'
 	isparametric  = False
 	
-	def __init__(self, z, perm):
+	def __init__(self, z, perm, nFactors=2):
 		z                   = [0 if np.isnan(zz) else zz  for zz in z]
 		FF                  = [_snpm.SnPM0D_F(zz, isinlist=True)   for zz in z]
 		super(SnPMFList0D, self).__init__(FF)
 		self.permuter       = perm             #permuter (for conducting inference)
 		self.nPermUnique    = perm.nPermTotal  #number of unique permutations possible
+		self.nFactors       = nFactors
 		self.z              = z                #test statistic
 		self.set_design_label( perm.get_design_label() )
 		self.set_effect_labels( perm.get_effect_labels() )
@@ -46,7 +47,7 @@ class SnPMFiList0D(_spmlist.SPMFiList, _snpm._SnPM):
 	def __init__(self, snpmlist, alpha, zstarvalues, pvalues, iterations):
 		FFi       = []
 		for F,zstar,p in zip(snpmlist, zstarvalues, pvalues):
-			Fi    = _snpm.SnPM0DiF(F, alpha, zstar, p, isinlist=True)
+			Fi          = _snpm.SnPM0DiF(F, alpha, zstar, p, isinlist=True)
 			FFi.append( Fi )
 		super(SnPMFiList0D, self).__init__( FFi )
 		
@@ -57,6 +58,7 @@ class SnPMFiList0D(_spmlist.SPMFiList, _snpm._SnPM):
 		self.permuter       = snpmlist.permuter             #permuter (for conducting inference)
 		self.nPermUnique    = snpmlist.permuter.nPermTotal  #number of unique permutations possible
 		self.nPermActual    = snpmlist.permuter.Z.shape[0]
+		self.nFactors       = snpmlist.nFactors
 		self.z              = [Fi.z  for Fi in self]    #test statistic
 		self.set_design_label( self.permuter.get_design_label() )
 		self.set_effect_labels( self.permuter.get_effect_labels() )
@@ -81,11 +83,12 @@ class SnPMFList(_spmlist.SPMFList, _snpm._SnPM1D):
 	name          = 'SnPM{F} list'
 	isparametric  = False
 	
-	def __init__(self, z, perm):
+	def __init__(self, z, perm, nFactors=2):
 		FF                  = [_snpm.SnPM_F(zz, perm, isinlist=True)   for zz in z]
 		super(SnPMFList, self).__init__(FF)
 		self.permuter       = perm             #permuter (for conducting inference)
 		self.nPermUnique    = perm.nPermTotal  #number of unique permutations possible
+		self.nFactors       = nFactors
 		self.z              = z                #test statistic
 		self.set_design_label( perm.get_design_label() )
 		self.set_effect_labels( perm.get_effect_labels() )
@@ -148,10 +151,11 @@ class SnPMFiList(SnPMFList):
 	name          = 'SnPM{F} inference list'
 	isparametric  = False
 
-	def __init__(self, snpmlist, FFi ):
+	def __init__(self, snpmlist, FFi, nFactors=2 ):
 		super(SnPMFList, self).__init__(FFi)
 		self.permuter       = snpmlist.permuter
 		self.nPermUnique    = snpmlist.nPermUnique
+		self.nFactors       = snpmlist.nFactors
 		# self.z              = z                #test statistic
 		self.set_design_label( self.permuter.get_design_label() )
 		self.set_effect_labels( self.permuter.get_effect_labels() )

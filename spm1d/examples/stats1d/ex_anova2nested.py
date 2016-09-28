@@ -7,9 +7,9 @@ import spm1d
 
 
 #(0) Load data:
-dataset      = spm1d.data.uv1d.anova2nested.SPM1D_ANOVA2NESTED_2x2()
+# dataset      = spm1d.data.uv1d.anova2nested.SPM1D_ANOVA2NESTED_2x2()
 # dataset      = spm1d.data.uv1d.anova2nested.SPM1D_ANOVA2NESTED_2x3()
-# dataset      = spm1d.data.uv1d.anova2nested.SPM1D_ANOVA2NESTED_3x3()
+dataset      = spm1d.data.uv1d.anova2nested.SPM1D_ANOVA2NESTED_3x3()
 # dataset      = spm1d.data.uv1d.anova2nested.SPM1D_ANOVA2NESTED_3x4()
 # dataset      = spm1d.data.uv1d.anova2nested.SPM1D_ANOVA2NESTED_3x5()
 # dataset      = spm1d.data.uv1d.anova2nested.SPM1D_ANOVA2NESTED_4x4()
@@ -27,10 +27,8 @@ print( FFi )
 
 #(2) Plot results:
 pyplot.close('all')
-pyplot.subplot(221);  FFi[0].plot();  pyplot.title( FFi[0].effect )
-pyplot.subplot(222);  FFi[1].plot();  pyplot.title( FFi[1].effect )
+FFi.plot(plot_threshold_label=True, plot_p_values=True)
 pyplot.show()
-
 
 
 

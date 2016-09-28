@@ -15,7 +15,7 @@ yB,yA        = dataset.get_data()
 #(1) Compute confidence intervals:
 np.random.seed(0)
 alpha      = 0.05
-iterations = 500
+iterations = -1
 ci         = spm1d.stats.ci_twosample(yA, yB, alpha, datum='meanA', mu='meanB')
 cinp       = spm1d.stats.nonparam.ci_twosample(yA, yB, alpha, datum='meanA', mu='meanB', iterations=iterations)
 print( ci )

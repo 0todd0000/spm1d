@@ -12,7 +12,7 @@ from . import designs,models
 from .. import _datachecks, _reml, _spm, _spmlist
 
 
-def aov(model, contrasts, f_terms):
+def aov(model, contrasts, f_terms, nFactors=1):
 	'''
 	This code is modified from statsmodels.stats.anova_lm
 	'''
@@ -39,7 +39,7 @@ def aov(model, contrasts, f_terms):
 			if model.roi is not None:
 				f   = np.ma.masked_array(f, np.logical_not(model.roi))
 			F.append( _spm.SPM_F(f, (df0,df1), model.fwhm, model.resels, model.X, model._beta, model.eij, model.QT, roi=model.roi) )
-	return _spmlist.SPMFList( F )
+	return _spmlist.SPMFList( F, nFactors=nFactors )
 
 
 
@@ -78,7 +78,7 @@ def anova1(Y, A=None, equal_var=False, roi=None):
 	design  = designs.ANOVA1(A)
 	model   = models.LinearModel(Y, design.X, roi=roi)
 	model.fit()
-	F       = aov(model, design.contrasts, design.f_terms)[0]
+	F       = aov(model, design.contrasts, design.f_terms, nFactors=1)[0]
 	if not equal_var:
 		warnings.warn('\nWARNING:  Non-sphericity corrections for one-way ANOVA are currently approximate and have not been verified.\n', UserWarning, stacklevel=2)
 		Y,X,r = model.Y, model.X, model.eij
@@ -119,7 +119,7 @@ def anova1rm(Y, A, SUBJ, equal_var=True, roi=None, _force_approx0D=False):
 		model.fit( approx_residuals=design.contrasts.C[:3] )
 	else:
 		model.fit( )
-	F       = aov(model, design.contrasts, design.f_terms)[0]
+	F       = aov(model, design.contrasts, design.f_terms, nFactors=1)[0]
 	return F
 
 
@@ -157,7 +157,7 @@ def anova2(Y, A, B, equal_var=True, roi=None):
 	design  = designs.ANOVA2(A, B)
 	model   = models.LinearModel(Y, design.X, roi=roi)
 	model.fit()
-	F       = aov(model, design.contrasts, design.f_terms)
+	F       = aov(model, design.contrasts, design.f_terms, nFactors=2)
 	_set_labels( F, design )
 
 	# if not equal_var:
@@ -193,7 +193,7 @@ def anova2nested(Y, A, B, equal_var=True, roi=None):
 	design  = designs.ANOVA2nested(A, B)
 	model   = models.LinearModel(Y, design.X, roi=roi)
 	model.fit()
-	F       = aov(model, design.contrasts, design.f_terms)
+	F       = aov(model, design.contrasts, design.f_terms, nFactors=2)
 	_set_labels( F, design )
 	return F
 
@@ -227,7 +227,7 @@ def anova2rm(Y, A, B, SUBJ, equal_var=True, roi=None, _force_approx0D=False):
 		model.fit( approx_residuals=design.contrasts.C[:5] )
 	else:
 		model.fit( )
-	F       = aov(model, design.contrasts, design.f_terms)
+	F       = aov(model, design.contrasts, design.f_terms, nFactors=2)
 	_set_labels( F, design )
 	# if not equal_var:
 	# 	Y,X,r   = solver.Y, solver.X, solver.eij
@@ -267,7 +267,7 @@ def anova2onerm(Y, A, B, SUBJ, equal_var=True, roi=None, _force_approx0D=False):
 		model.fit( approx_residuals=design.contrasts.C[:5] )
 	else:
 		model.fit( )
-	F       = aov(model, design.contrasts, design.f_terms)
+	F       = aov(model, design.contrasts, design.f_terms, nFactors=2)
 	_set_labels( F, design )
 	return F
 
@@ -303,7 +303,7 @@ def anova3(Y, A, B, C, equal_var=True, roi=None):
 	design  = designs.ANOVA3(A, B, C)
 	model   = models.LinearModel(Y, design.X, roi=roi)
 	model.fit()
-	F       = aov(model, design.contrasts, design.f_terms)
+	F       = aov(model, design.contrasts, design.f_terms, nFactors=3)
 	_set_labels( F, design )
 	return F
 	# if not equal_var:
@@ -340,7 +340,7 @@ def anova3nested(Y, A, B, C, equal_var=True, roi=None):
 	design  = designs.ANOVA3nested(A, B, C)
 	model   = models.LinearModel(Y, design.X, roi=roi)
 	model.fit()
-	F       = aov(model, design.contrasts, design.f_terms)
+	F       = aov(model, design.contrasts, design.f_terms, nFactors=3)
 	_set_labels( F, design )
 	return F
 
@@ -374,7 +374,7 @@ def anova3rm(Y, A, B, C, SUBJ, equal_var=True, roi=None, _force_approx0D=False):
 		model.fit( approx_residuals=design.contrasts.C[:8] )
 	else:
 		model.fit( )
-	F       = aov(model, design.contrasts, design.f_terms)
+	F       = aov(model, design.contrasts, design.f_terms, nFactors=3)
 	_set_labels( F, design )
 	return F
 	
@@ -413,7 +413,7 @@ def anova3onerm(Y, A, B, C, SUBJ, equal_var=True, roi=None, _force_approx0D=Fals
 		model.fit( approx_residuals=design.contrasts.C[:8] )
 	else:
 		model.fit( )
-	F       = aov(model, design.contrasts, design.f_terms)
+	F       = aov(model, design.contrasts, design.f_terms, nFactors=3)
 	_set_labels( F, design  )
 	return F
 
@@ -452,7 +452,7 @@ def anova3tworm(Y, A, B, C, SUBJ, equal_var=True, roi=None, _force_approx0D=Fals
 		model.fit( approx_residuals=design.contrasts.C[:8] )
 	else:
 		model.fit( )
-	F       = aov(model, design.contrasts, design.f_terms)
+	F       = aov(model, design.contrasts, design.f_terms, nFactors=3)
 	_set_labels( F, design )
 	return F
 

@@ -296,3 +296,45 @@ def _legend_manual(ax, colors=None, labels=None, linestyles=None, markerfacecolo
 	ax.set_xlim(x0, x1)
 	ax.set_ylim(y0, y1)
 	return ax.legend(h, labels, **kwdargs)
+
+
+def _plot_F_list(FF, plot_threshold_label=True, plot_p_values=True, autoset_ylim=True):
+	m      = FF.nFactors
+	# mm     = 2 if len(FF)<5 else 3
+	AX     = []
+	for i,F in enumerate(FF):
+		ax = pyplot.subplot(m,m,i+1)
+		F.plot(ax=ax)
+		ax.set_title( F.effect )
+		if F.isinference:
+			if plot_threshold_label:
+				F.plot_threshold_label(fontsize=8)
+			if plot_p_values:
+				F.plot_p_values(size=8)
+		AX.append(ax)
+		### remove y label:
+		if i%m > 0:
+			ax.set_ylabel('')
+	### set x ticklabels:
+	if len(FF)>2:
+		AXX  = []
+		if m==2:
+			AXX  = [ AX[0] ]
+		elif m==3:
+			if len(FF)==7:
+				AXX = AX[:4]
+		[ax.set_xticklabels([])    for ax in AXX]
+	### set y limits:
+	if autoset_ylim:
+		ylim   = np.array(  [ax.get_ylim()  for ax in AX]  )
+		ylim   = ylim[:,0].min(), ylim[:,1].max()
+		pyplot.setp(AX, ylim=ylim)
+	
+	# AXX    = [AX[0],AX[2]] if m==2 else [AX[0],AX[3]]
+	# if m==2:
+	#
+	# AX     = np.reshape(AX, (m,m))
+	# pyplot.setp(AX[:,1:], ylabel=None)
+
+
+

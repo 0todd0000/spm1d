@@ -16,7 +16,7 @@ yA,yB        = dataset.get_data()  #normal and fast walking
 #(1) Compute confidence intervals:
 np.random.seed(0)
 alpha      = 0.05
-iterations = 1000
+iterations = -1
 ci         = spm1d.stats.ci_pairedsample(yA, yB, alpha, datum='meanA', mu='meanB')
 cinp       = spm1d.stats.nonparam.ci_pairedsample(yA, yB, alpha, datum='meanA', mu='meanB', iterations=iterations)
 print( ci )
