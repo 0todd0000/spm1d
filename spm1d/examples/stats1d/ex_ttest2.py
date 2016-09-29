@@ -7,7 +7,7 @@ import spm1d
 #(0) Load data:
 dataset      = spm1d.data.uv1d.t2.PlantarArchAngle()
 dataset      = spm1d.data.uv1d.t2.SimulatedTwoLocalMax()
-YA,YB        = dataset.get_data()  #normal and fast walking
+YA,YB        = dataset.get_data()
 
 
 
@@ -15,7 +15,7 @@ YA,YB        = dataset.get_data()  #normal and fast walking
 alpha      = 0.05
 t          = spm1d.stats.ttest2(YB, YA, equal_var=True)
 ti         = t.inference(alpha, two_tailed=False, interp=True)
-print ti
+print( ti )
 
 
 

@@ -7,7 +7,7 @@ def _here_stack(Y):
 	m,n  = Y.shape
 	y    = np.hstack( Y.T )
 	A    = np.hstack(  [ [i]*m for i in range(n) ]  )
-	SUBJ = np.hstack(  range(m)*n  )
+	SUBJ = np.hstack(  list(range(m)) * n  )
 	return y, A, SUBJ
 
 

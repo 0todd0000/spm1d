@@ -1,10 +1,10 @@
 
 '''
-ANOVA categorical factor classes.
+Factor classes for ANOVA.
 '''
 
 # Copyright (C) 2016  Todd Pataky
-# designs.py version: 0.3.2 (2016/01/03)
+
 
 
 import numpy as np
@@ -68,7 +68,20 @@ class Factor(object):
 		S,A = self.A, other.A
 		N   = []
 		for uS in self.u:
-			UA  = np.unique(A[S==uS])
+			# UA  = np.unique(A[S==uS])  #fine for Python 2.7 but not Python 3.X
+			if np.size(uS)==1:
+				UA  = np.unique(  A[ S==int(uS) ]  )
+			elif isinstance(uS, list):  #three-way RM ANOVA
+				B   = np.array( [False]*S.size )
+				for uuS in uS:
+					for uuuS in uuS:
+						B  = np.logical_or(B, S==uuuS)
+				UA  = np.unique( A[B] )
+			else:  #two-way RM ANOVA
+				B   = np.array( [False]*S.size )
+				for uuS in uS:
+					B  = np.logical_or(B, S==uuS)
+				UA  = np.unique( A[B] )
 			for uA in UA:
 				N.append( ((S==uS) & (A==uA)).sum()  )
 		return np.all( N==N[0] )
@@ -278,18 +291,8 @@ class FactorNestedTwoWay(Factor):
 	def _01_check_unbalanced(self):
 		pass
 
-
 	def get_Q(self):
 		pass
-		# Q = []
-		# for u in self.u:
-		# 	for uu in u:
-		# 		for uuu in uu:
-		# 			q = np.matrix(np.diag(self.A==uuu), dtype=float)
-		# 			Q.append(q)
-		# return Q
-
-
 		
 	def get_design_main(self):
 		A,B,S    = self.NEST0.A, self.NEST1.A, self.A

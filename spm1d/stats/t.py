@@ -1,17 +1,17 @@
 '''
-One-sample statistical tests.
+One- and two sample tests.
 '''
 
 # Copyright (C) 2016  Todd Pataky
-# t.py version: 0.3.2 (2016/01/03)
+
 
 
 
 
 import numpy as np
 from matplotlib import pyplot, cm as colormaps
-import _datachecks, _reml, _spm
-import rft1d
+from . import _datachecks, _reml, _spm
+from .. import rft1d
 
 
 rank   = np.linalg.matrix_rank
@@ -56,7 +56,7 @@ def glm(Y, X, c, Q=None, roi=None):
 	### compute t statistic
 	t      = np.array(c.T*b).flatten()  /   (np.sqrt(sigma2*float(c.T*(np.linalg.inv(X.T*X))*c)) + eps)
 	### estimate df due to non-sphericity:
-	if Q!=None:
+	if Q is not None:
 		df = _reml.estimate_df_T(Y, X, eij, Q)
 	eij    = np.asarray(eij)
 	if Y.shape[1] > 1:
@@ -72,9 +72,11 @@ def glm(Y, X, c, Q=None, roi=None):
 			resels = rft1d.geom.resel_counts(mask, fwhm, element_based=False)
 			t      = np.ma.masked_array(t, np.logical_not(roi))
 		### assemble SPM{t} object
-		t      = _spm.SPM_T(t, (1,df), fwhm, resels, np.asarray(X), np.asarray(b), eij, roi=roi)
+		s      = np.asarray(sigma2).flatten()
+		t      = _spm.SPM_T(t, (1,df), fwhm, resels, np.asarray(X), np.asarray(b), eij, sigma2=s, roi=roi)
 	else:
-		t      = _spm.SPM0D_T(t, (1,df))
+		b,r,s2 = np.asarray(b).flatten(), eij.flatten(), float(sigma2)
+		t      = _spm.SPM0D_T(t, (1,df), beta=b, residuals=r, sigma2=s2)
 	return t
 
 
@@ -107,7 +109,7 @@ def regress(Y, x, roi=None):
 		- the correlation coefficient is retrievable as "t.r" where "t" is the output from **spm1d.stats.regress**
 		- statistical inferences are based on *t*, not on *r*
 	'''
-	Y              = _datachecks.asmatrix(Y)
+	Y              = _datachecks.asmatrix(Y, dtype=float)
 	_datachecks.check('regress', Y, x)
 	J              = Y.shape[0]
 	X              = np.ones((J,2))
@@ -144,11 +146,11 @@ def ttest(Y, y0=None, roi=None):
 	>>> ti = t.inference(alpha=0.05, two_tailed=True)
 	>>> ti.plot()
 	'''
-	Y       = _datachecks.asmatrix(Y)
+	Y       = _datachecks.asmatrix(Y, dtype=float)
 	_datachecks.check('ttest', Y, y0)
 	J       = Y.shape[0]
 	Ytemp   = Y.copy()
-	if y0!=None:
+	if y0 is not None:
 		Ytemp -= y0
 	X       = np.ones((J,1))
 	c       = (1)
@@ -179,7 +181,7 @@ def ttest_paired(YA, YB, roi=None):
 	>>> ti = t.inference(alpha=0.05)
 	>>> ti.plot()
 	'''
-	YA,YB    = _datachecks.asmatrix(YA), _datachecks.asmatrix(YB)
+	YA,YB    = _datachecks.asmatrix(YA, dtype=float), _datachecks.asmatrix(YB, dtype=float)
 	_datachecks.check('ttest_paired', YA, YB)
 	return ttest(YA-YB, roi=roi)
 
@@ -209,7 +211,7 @@ def ttest2(YA, YB, equal_var=False, roi=None):
 	>>> ti.plot()
 	'''
 	### check data:
-	YA,YB    = _datachecks.asmatrix(YA), _datachecks.asmatrix(YB)
+	YA,YB    = _datachecks.asmatrix(YA, dtype=float), _datachecks.asmatrix(YB, dtype=float)
 	_datachecks.check('ttest2', YA, YB)
 	### assemble data
 	JA,JB    = YA.shape[0], YB.shape[0]

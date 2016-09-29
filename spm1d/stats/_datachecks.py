@@ -6,7 +6,7 @@ are not meant to be accessed directly by the user.)
 '''
 
 # Copyright (C) 2016  Todd Pataky
-# t.py version: 0.3.2 (2016/01/03)
+
 
 
 import warnings
@@ -14,8 +14,8 @@ import numpy as np
 
 
 
-def asmatrix(Y):
-	Y = np.asarray(Y)
+def asmatrix(Y, dtype=None):
+	Y = np.asarray(Y, dtype=dtype)
 	return np.matrix(Y).T if Y.ndim==1 else np.matrix(Y)
 
 

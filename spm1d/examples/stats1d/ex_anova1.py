@@ -15,7 +15,7 @@ Y,A          = dataset.get_data()
 alpha        = 0.0005
 F            = spm1d.stats.anova1(Y, A, equal_var=False)
 Fi           = F.inference(alpha, interp=True, circular=False)
-print Fi
+print( Fi )
 ### alternative syntax:
 # Y0,Y1,Y2     = [Y[A==u] for u in np.unique(A)]
 # F            = spm1d.stats.anova1((Y0,Y1,Y2), equal_var=False)

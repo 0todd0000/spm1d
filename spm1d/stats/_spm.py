@@ -10,15 +10,15 @@ and inference SPMs (thresholded test statistic).
 '''
 
 # Copyright (C) 2016  Todd Pataky
-# _spm.py version: 0.3.2.5 (2016/06/27)
 
 
-from math import floor,ceil
+import sys
 import numpy as np
-from scipy import ndimage,optimize,stats
+from scipy import stats
+from .. import rft1d
 from .. plot import plot_spm, plot_spm_design
 from .. plot import plot_spmi, plot_spmi_p_values, plot_spmi_threshold_label
-import rft1d
+from . _clusters import Cluster
 
 
 
@@ -46,117 +46,38 @@ def _set_docstr(childfn, parentfn, args2remove=None):
 				docstrlist1.append(s)
 		docstrlist1 = [s + '\n\t'  for s in docstrlist1]
 		docstr  = ''.join(docstrlist1)
-	childfn.__func__.__doc__ = docstr
-
-
-eps    = np.finfo(float).eps   #smallest float, used to avoid divide-by-zero errors
-
-
-
+	if sys.version_info.major==2:
+		childfn.__func__.__doc__ = docstr
+	elif sys.version_info.major==3:
+		childfn.__doc__ = docstr
 
 
 
-'''
-#################
-(0)  CLUSTER CLASS DEFINITION
-#################
-'''
 
-class Cluster(object):
-	def __init__(self, x, z, u, interp=True):
-		self._X        = x
-		self._Z        = z
-		self._u        = u
-		self._other    = None       #wrapped cluster
-		self._interp   = interp
-		self.P         = None       #probability value (based on h and extentR)
-		self.csign     = int(np.sign(u))
-		self.endpoints = None
-		self.extent    = None       #cluster size (absolute)
-		self.extentR   = None      #cluster size (resels)
-		self.h         = None       #cluster height (minimum above threshold)
-		self.iswrapped = False
-		self.xy        = None      #cluster centroid
-		self._assemble()
-		
-	def __repr__(self):
-		s            = ''
-		if self.iswrapped:
-			s       += 'Cluster at location: (%.3f, %.3f)\n' %self.xy[0]
-		else:
-			s       += 'Cluster at location: (%.3f, %.3f)\n' %self.xy
-		s           += '   iswrapped       :  %s\n' %self.iswrapped
-		if self._interp:
-			if self.iswrapped:
-				(x0,x1),(x2,x3) = self.endpoints[0], self.endpoints[1]
-				s   += '   endpoints       :  [(%.3f, %.3f), (%.3f, %.3f)]\n' %(x0,x1,x2,x3)
-			else:
-				s   += '   endpoints       :  (%.3f, %.3f)\n' %self.endpoints
-			s       += '   extent          :  %.3f\n' %self.extent
-				
-		else:
-			if self.iswrapped:
-				(x0,x1),(x2,x3) = self.endpoints[0], self.endpoints[1]
-				s   += '   endpoints       :  [(%d, %d), (%d, %d)]\n' %(x0,x1,x2,x3)
-			else:
-				s   += '   endpoints       :  (%d, %d)\n' %self.endpoints
-			s       += '   extent          :  %d\n' %self.extent
-		if self.extentR is None:
-			s       += '   extent (resels) :  None\n'
-		else:
-			s       += '   extent (resels) :  %.5f\n' %self.extentR
-		s           += '   height (min)    :  %.5f\n' %self.h
-		if self.P is None:
-			s       += '   P               :  None\n\n'
-		else:
-			s       += '   P               :  %.5f\n\n' %self.P
-		return s
 
-	def _assemble(self):
-		x0,x1               = self._X[0], self._X[-1]
-		z                   = self._Z
-		if not self._interp:
-			x0,x1           = int(ceil(x0)), int(floor(x1))
-			z               = z[1:-1]
-		self.endpoints      = x0, x1
-		self.extent         = x1 - x0
-		if self.extent==0:  #to reproduce results from previous versions, minimum extent must be one (when not interpolated)
-			self.extent     = 1
-		self.h              = (self.csign*z).min()
-		x,z                 = self._X, self._Z
-		self.xy             = (x*z).sum() / z.sum(),  z.mean()
 
-	def get_patch_vertices(self):
-		x,z,u   = self._X.tolist(), self._Z.tolist(), self._u
-		if z[0]!=u:
-			x  = [x[0]] + x
-			z  = [u] + z
-		if z[-1]!=u:
-			x += [x[-1]]
-			z += [u]
-		return x,z
 
-	def inference(self, STAT, df, fwhm, resels, two_tailed, withBonf, nNodes):
-		self.extentR        = float(self.extent) / fwhm
-		k,u                 = self.extentR, self.h
-		if STAT == 'T':
-			p = rft1d.t.p_cluster_resels(k, u, df[1], resels, withBonf=withBonf, nNodes=nNodes)
-			p = min(1, 2*p) if two_tailed else p
-		elif STAT == 'F':
-			p = rft1d.f.p_cluster_resels(k, u, df, resels, withBonf=withBonf, nNodes=nNodes)
-		elif STAT == 'T2':
-			p = rft1d.T2.p_cluster_resels(k, u, df, resels, withBonf=withBonf, nNodes=nNodes)
-		elif STAT == 'X2':
-			p = rft1d.chi2.p_cluster_resels(k, u, df[1], resels, withBonf=withBonf, nNodes=nNodes)
-		self.P    = p
-		
-	def merge(self, other):
-		self.iswrapped  = True
-		self.extent     = self.extent + other.extent
-		self.endpoints  = [other.endpoints, self.endpoints]
-		self.h          = min(self.h, other.h)
-		self.xy         = [other.xy, self.xy]
-		self._other     = other
+class _SPMParent(object):
+	'''Parent class for all parametric SPM classes.'''
+	isanova       = False
+	isinference   = False
+	isregress     = False
+	isparametric  = True
+	dim           = 0
+
+
+
+class _SPMF(object):
+	'''Additional attrubutes and methods specific to SPM{F} objects.'''
+	effect        = 'Main A'
+	effect_short  = 'A'
+	isanova       = True
+	def set_effect_label(self, label=""):
+		self.effect        = str(label)
+		self.effect_short  = self.effect.split(' ')[1]
+
+
+
 
 
 
@@ -169,35 +90,41 @@ class Cluster(object):
 
 
 
-class _SPM0D(object):
-	def __init__(self, STAT, z, df):
+class _SPM0D(_SPMParent):
+	def __init__(self, STAT, z, df, beta=None, residuals=None, sigma2=None):
 		self.STAT           = STAT             #test statistic ("T" or "F")
 		self.z              = float(z)         #test statistic
 		self.df             = df               #degrees of freedom
-		self.isanova        = False
-		self.isregress      = False
+		self.beta           = beta             #fitted parameters
+		self.residuals      = residuals        #model residuals
+		self.sigma2         = sigma2           #variance
+
 
 	def __repr__(self):
 		stat     = 't' if self.STAT=='T' else self.STAT
 		s        = ''
 		s       += 'SPM{%s} (0D)\n' %stat
 		if self.isanova:
-			s   += '   SPM.SS       : (%s,%s)\n' %self.ss
-			s   += '   SPM.df       : (%s,%s)\n' %self.df
-			s   += '   SPM.MS       : (%s,%s)\n' %self.ms
-			s   += '   SPM.z        :  %.5f\n' %self.z
+			s   += '   SPM.effect   :  %s\n'      %self.effect
+			s   += '   SPM.SS       : (%s, %s)\n' %self.ss
+			s   += '   SPM.df       : (%s, %s)\n' %self.df
+			s   += '   SPM.MS       : (%s, %s)\n' %self.ms
+			s   += '   SPM.z        :  %.5f\n'    %self.z
 		else:
-			s   += '   SPM.z      :  %.5f\n' %self.z
-			s   += '   SPM.df     :  %s\n' %dflist2str(self.df)
+			s   += '   SPM.z      :  %.5f\n'      %self.z
+			s   += '   SPM.df     :  %s\n'        %dflist2str(self.df)
 		if self.isregress:
-			s   += '   SPM.r      :  %.5f\n'   %self.r
+			s   += '   SPM.r      :  %.5f\n'      %self.r
 		s       += '\n'
 		return s
 
 
 class _SPM0Dinference(_SPM0D):
+	
+	isinference = True
+	
 	def __init__(self, spm, alpha, zstar, p, two_tailed=False):
-		_SPM0D.__init__(self, spm.STAT, spm.z, spm.df)
+		_SPM0D.__init__(self, spm.STAT, spm.z, spm.df, beta=spm.beta, residuals=spm.residuals, sigma2=spm.sigma2)
 		self.alpha       = alpha       #Type I error rate
 		self.zstar       = zstar       #critical threshold
 		self.h0reject    = abs(spm.z) > zstar if two_tailed else spm.z > zstar
@@ -206,6 +133,7 @@ class _SPM0Dinference(_SPM0D):
 		self.isanova     = spm.isanova
 		self.isregress   = spm.isregress
 		if self.isanova:
+			self.set_effect_label( spm.effect )
 			self.ss      = spm.ss
 			self.ms      = spm.ms
 		if self.isregress:
@@ -213,28 +141,41 @@ class _SPM0Dinference(_SPM0D):
 
 	def __repr__(self):
 		s        = ''
-		s       += 'SPM{%s} (0D) inference\n'    %self.STAT
-		s       += '   SPM.z        :  %.5f\n'   %self.z
-		s       += '   SPM.df       :  %s\n'     %dflist2str(self.df)
+		s       += 'SPM{%s} (0D) inference\n'     %self.STAT
+		if self.isanova:
+			s   += '   SPM.effect   :  %s\n'      %self.effect
+			s   += '   SPM.SS       : (%s, %s)\n' %self.ss
+			s   += '   SPM.df       : (%s, %s)\n' %self.df
+			s   += '   SPM.MS       : (%s, %s)\n' %self.ms
+			s   += '   SPM.z        :  %.5f\n'    %self.z
+		else:
+			s   += '   SPM.z        :  %.5f\n'    %self.z
+			s   += '   SPM.df       :  %s\n'      %dflist2str(self.df)
 		if self.isregress:
-			s   += '   SPM.r        :  %.5f\n'   %self.r
+			s   += '   SPM.r        :  %.5f\n'    %self.r
 		s       += 'Inference:\n'
-		s       += '   SPM.alpha    :  %.3f\n'   %self.alpha
-		s       += '   SPM.zstar    :  %.5f\n'   %self.zstar
-		s       += '   SPM.h0reject :  %s\n'     %self.h0reject
-		s       += '   SPM.p        :  %.5f\n'   %self.p
+		s       += '   SPM.alpha    :  %.3f\n'    %self.alpha
+		s       += '   SPM.zstar    :  %.5f\n'    %self.zstar
+		s       += '   SPM.h0reject :  %s\n'      %self.h0reject
+		s       += '   SPM.p        :  %.5f\n'    %self.p
+		s       += '\n'
 		return s
 	
 
 
-class SPM0D_F(_SPM0D):
+
+class SPM0D_F(_SPMF, _SPM0D):
 	def __init__(self, z, df, ss=(0,0), ms=(0,0), eij=0, X0=None):
 		_SPM0D.__init__(self, 'F', z, df)
 		self.ss        = tuple( map(float, ss) )
 		self.ms        = tuple( map(float, ms) )
 		self.eij       = eij
+		self.residuals = np.asarray(eij).flatten()
 		self.X0        = X0
-		self.isanova   = True
+
+	def _repr_summ(self):
+		return '{:<5} F = {:<8} df = {}\n'.format(self.effect_short,  '%.3f'%self.z, dflist2str(self.df))
+
 	def inference(self, alpha=0.05):
 		zstar  = stats.f.isf(alpha, self.df[0], self.df[1])
 		p      = stats.f.sf(self.z, self.df[0], self.df[1])
@@ -244,12 +185,13 @@ class SPM0D_F(_SPM0D):
 
 
 class SPM0D_T(_SPM0D):
-	def __init__(self, z, df):
-		_SPM0D.__init__(self, 'T', z, df)
+	def __init__(self, z, df, beta=None, residuals=None, sigma2=None):
+		_SPM0D.__init__(self, 'T', z, df, beta=beta, residuals=residuals, sigma2=sigma2)
 	def inference(self, alpha=0.05, two_tailed=True):
 		a      = 0.5*alpha if two_tailed else alpha
+		z      = abs(self.z) if two_tailed else self.z
 		zstar  = stats.t.isf(a, self.df[1])
-		p      = stats.t.sf( abs(self.z), self.df[1])
+		p      = stats.t.sf( z, self.df[1])
 		p      = min(1, 2*p) if two_tailed else p
 		return SPM0Di_T(self, alpha, zstar, p, two_tailed)
 
@@ -262,8 +204,8 @@ class SPM0D_T2(_SPM0D):
 		return SPM0Di_T2(self, alpha, zstar, p)
 
 class SPM0D_X2(_SPM0D):
-	def __init__(self, z, df):
-		_SPM0D.__init__(self, 'X2', z, df)
+	def __init__(self, z, df, residuals=None):
+		_SPM0D.__init__(self, 'X2', z, df, residuals=residuals)
 	def inference(self, alpha=0.05):
 		zstar  = rft1d.chi2.isf0d(alpha, self.df[1])
 		p      = rft1d.chi2.sf0d( self.z, self.df[1])
@@ -271,9 +213,10 @@ class SPM0D_X2(_SPM0D):
 
 
 
-class SPM0Di_F(_SPM0Dinference):
+class SPM0Di_F(_SPMF, _SPM0Dinference):
 	'''An SPM{F} (0D) inference object.'''
-	pass
+	def _repr_summ(self):
+		return '{:<5} F = {:<8} df = {:<9} p = {}\n'.format(self.effect.split(' ')[1],  '%.3f'%self.z, dflist2str(self.df), p2string(self.p))
 class SPM0Di_T(_SPM0Dinference):
 	'''An SPM{T} (0D) inference object.'''
 	pass
@@ -296,20 +239,26 @@ class SPM0Di_X2(_SPM0Dinference):
 '''
 
 
-class _SPM(object):
-	'''Parent class for all SPM.'''
-	def __init__(self, STAT, z, df, fwhm, resels, X, beta, residuals, roi=None):
-		z[np.isnan(z)]      = 0
+class _SPM(_SPMParent):
+	dim                     = 1
+	'''Parent class for all 1D SPM classes.'''
+	def __init__(self, STAT, z, df, fwhm, resels, X=None, beta=None, residuals=None, sigma2=None, roi=None):
+		# z[np.isnan(z)]      = 0              #this produces a MaskedArrayFutureWarning in Python 3.X
 		self.STAT           = STAT             #test statistic ("T" or "F")
 		self.Q              = z.size           #number of nodes (field size = Q-1)
+		self.Qmasked        = z.size           #number of nodes in mask (if "roi" is not None)
 		self.X              = X                #design matrix
 		self.beta           = beta             #fitted parameters
 		self.residuals      = residuals        #model residuals
+		self.sigma2         = sigma2           #variance
 		self.z              = z                #test statistic
 		self.df             = df               #degrees of freedom
 		self.fwhm           = fwhm             #smoothness
 		self.resels         = resels           #resel counts
 		self.roi            = roi              #region of interest
+		self._ClusterClass  = Cluster          #class definition for parametric / non-parametric clusters
+		if roi is not None:
+			self.Qmasked    = self.z.count()
 
 
 	def __repr__(self):
@@ -318,12 +267,20 @@ class _SPM(object):
 			stat = 't'
 		s        = ''
 		s       += 'SPM{%s}\n' %stat
-		s       += '   SPM.z      :  (1x%d) test stat field\n' %self.Q
+		if self.isanova:
+			s   += '   SPM.effect :   %s\n' %self.effect
+		s       += '   SPM.z      :  %s\n' %self._repr_teststat()
 		s       += '   SPM.df     :  %s\n' %dflist2str(self.df)
 		s       += '   SPM.fwhm   :  %.5f\n' %self.fwhm
 		s       += '   SPM.resels :  (%d, %.5f)\n\n\n' %tuple(self.resels)
 		return s
-		
+	
+	def _repr_teststat(self):
+		return '(1x%d) test stat field' %self.Q
+	def _repr_teststat_short(self):
+		return '(1x%d) array' %self.Q
+		# return '(1x%d) %s field' %(self.Q, self.STAT)
+	
 
 	def _build_spmi(self, alpha, zstar, clusters, p_set, two_tailed):
 		p_clusters  = [c.P for c in clusters]
@@ -337,8 +294,9 @@ class _SPM(object):
 			spmi    = SPMi_X2(self, alpha, zstar, clusters, p_set, p_clusters, two_tailed)
 		return spmi
 		
-	def _cluster_geom(self, u, interp, circular, csign=+1):
-		Q,Z      = self.Q, self.z
+	def _cluster_geom(self, u, interp, circular, csign=+1, z=None):
+		Q        = self.Q
+		Z        = self.z if z is None else z
 		X        = np.arange(Q)
 		if np.ma.is_masked(Z):
 			i    = Z.mask
@@ -368,7 +326,7 @@ class _SPM(object):
 				z     += [u]
 			# create cluster:
 			x,z  = np.array(x), csign*np.array(z)
-			clusters.append(  Cluster(x, z, csign*u, interp) )
+			clusters.append(  self._ClusterClass(x, z, csign*u, interp) )
 		#merge clusters if necessary (circular fields only)
 		if circular and (clusters!=[]):
 			xy         = np.array([c.endpoints  for c in clusters])
@@ -386,10 +344,10 @@ class _SPM(object):
 			cluster.inference(self.STAT, self.df, self.fwhm, self.resels, two_tailed, withBonf, self.Q)
 		return clusters
 
-	def _get_clusters(self, zstar, check_neg, interp, circular):
-		clusters      = self._cluster_geom(zstar, interp, circular, csign=+1)
+	def _get_clusters(self, zstar, check_neg, interp, circular, z=None):
+		clusters      = self._cluster_geom(zstar, interp, circular, csign=+1, z=z)
 		if check_neg:
-			clustersn = self._cluster_geom(zstar, interp, circular, csign=-1)
+			clustersn = self._cluster_geom(zstar, interp, circular, csign=-1, z=z)
 			clusters += clustersn
 			if len(clusters) > 1:
 				### reorder clusters left-to-right:
@@ -462,7 +420,7 @@ class _SPM(object):
 
 
 
-class SPM_F(_SPM):
+class SPM_F(_SPMF, _SPM):
 	'''
 	Create an SPM{F} continuum.
 	SPM objects are instantiated in the **spm1d.stats** module.
@@ -489,10 +447,13 @@ class SPM_F(_SPM):
 	
 	:Methods:
 	'''
-	def __init__(self, z, df, fwhm, resels, X, beta, residuals, X0=None, roi=None):
-		_SPM.__init__(self, 'F', z, df, fwhm, resels, X, beta, residuals, roi=roi)
+	def __init__(self, z, df, fwhm, resels, X=None, beta=None, residuals=None, X0=None, sigma2=None, roi=None):
+		_SPM.__init__(self, 'F', z, df, fwhm, resels, X, beta, residuals, sigma2=sigma2, roi=roi)
 		self.X0 = X0
 		
+	def _repr_summ(self):
+		return '{:<5} z = {:<18} df = {}\n'.format(self.effect_short,  self._repr_teststat_short(), dflist2str(self.df))
+
 	def inference(self, alpha=0.05, cluster_size=0, interp=True, circular=False):
 		'''
 		Conduct statistical inference using random field theory.
@@ -537,8 +498,8 @@ class SPM_T(_SPM):
 	
 	:Methods:
 	'''
-	def __init__(self, z, df, fwhm, resels, X, beta, residuals, roi=None):
-		_SPM.__init__(self, 'T', z, df, fwhm, resels, X, beta, residuals, roi=roi)
+	def __init__(self, z, df, fwhm, resels, X=None, beta=None, residuals=None, sigma2=None, roi=None):
+		_SPM.__init__(self, 'T', z, df, fwhm, resels, X, beta, residuals, sigma2=sigma2, roi=roi)
 		
 	def inference(self, alpha=0.05, cluster_size=0, two_tailed=True, interp=True, circular=False):
 		'''
@@ -562,8 +523,8 @@ class SPM_T(_SPM):
 
 
 class SPM_T2(_SPM):
-	def __init__(self, z, df, fwhm, resels, X, beta, residuals, roi=None):
-		super(SPM_T2, self).__init__('T2', z, df, fwhm, resels, X, beta, residuals, roi=roi)
+	def __init__(self, z, df, fwhm, resels, X=None, beta=None, residuals=None, sigma2=None, roi=None):
+		super(SPM_T2, self).__init__('T2', z, df, fwhm, resels, X, beta, residuals, sigma2=sigma2, roi=roi)
 		
 	def inference(self, alpha=0.05, cluster_size=0, interp=True, circular=False):
 		'''
@@ -583,8 +544,8 @@ class SPM_T2(_SPM):
 
 
 class SPM_X2(_SPM):
-	def __init__(self, z, df, fwhm, resels, X, beta, residuals, roi=None):
-		super(SPM_X2, self).__init__('X2', z, df, fwhm, resels, X, beta, residuals, roi=roi)
+	def __init__(self, z, df, fwhm, resels, X=None, beta=None, residuals=None, sigma2=None, roi=None):
+		super(SPM_X2, self).__init__('X2', z, df, fwhm, resels, X, beta, residuals, sigma2=sigma2, roi=roi)
 
 	def inference(self, alpha=0.05, cluster_size=0, interp=True, circular=False):
 		'''
@@ -617,8 +578,11 @@ class SPM_X2(_SPM):
 
 class _SPMinference(_SPM):
 	'''Parent class for SPM inference objects.'''
+	
+	isinference = True
+	
 	def __init__(self, spm, alpha, zstar, clusters, p_set, p, two_tailed=False):
-		_SPM.__init__(self, spm.STAT, spm.z, spm.df, spm.fwhm, spm.resels, spm.X, spm.beta, spm.residuals, roi=spm.roi)
+		_SPM.__init__(self, spm.STAT, spm.z, spm.df, spm.fwhm, spm.resels, X=spm.X, beta=spm.beta, residuals=spm.residuals, sigma2=spm.sigma2, roi=spm.roi)
 		self.alpha       = alpha               #Type I error rate
 		self.zstar       = zstar               #critical threshold
 		self.clusters    = clusters            #supra-threshold cluster information
@@ -627,10 +591,14 @@ class _SPMinference(_SPM):
 		self.p_set       = p_set               #set-level p value
 		self.p           = p                   #cluster-level p values
 		self.two_tailed  = two_tailed          #two-tailed test boolean
+		if self.isanova:
+			self.set_effect_label( spm.effect )
 
 	def __repr__(self):
 		s        = ''
 		s       += 'SPM{%s} inference field\n' %self.STAT
+		if self.isanova:
+			s   += '   SPM.effect    :   %s\n' %self.effect
 		s       += '   SPM.z         :  (1x%d) raw test stat field\n' %self.Q
 		s       += '   SPM.df        :  %s\n' %dflist2str(self.df)
 		s       += '   SPM.fwhm      :  %.5f\n' %self.fwhm
@@ -661,9 +629,11 @@ class _SPMinference(_SPM):
 class SPMi_T(_SPMinference):
 	'''An SPM{T} inference continuum.'''
 	pass
-class SPMi_F(_SPMinference):
+class SPMi_F(_SPMF, _SPMinference):
 	'''An SPM{F} inference continuum.'''
-	pass
+	def _repr_summ(self):
+		return '{:<5} z={:<18} df={:<9} h0reject={}\n'.format(self.effect_short,  self._repr_teststat_short(), dflist2str(self.df), self.h0reject)
+	
 class SPMi_T2(_SPMinference):
 	'''An SPM{T2} inference continuum.'''
 	pass

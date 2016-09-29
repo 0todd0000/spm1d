@@ -24,14 +24,111 @@ These include:
 '''
 
 # Copyright (C) 2016  Todd Pataky
-# plot.py version: 0.3.2 (2016/01/03)
+# updated (2016/10/01) todd
 
 
 
 
 import numpy as np
-from _plot import DataPlotter, SPMPlotter, SPMiPlotter
+from . _plot import DataPlotter, SPMPlotter, SPMiPlotter, _legend_manual
 
+
+
+
+def legend_manual(ax, colors=None, labels=None, linestyles=None, markerfacecolors=None, linewidths=None, **kwdargs):
+	return _legend_manual(ax, colors, labels, linestyles, markerfacecolors, linewidths, **kwdargs)
+
+
+
+def plot_ci_0d(ci, ax=None, color='b', color_criterion='r', markersize=10, autoset_ylim=True):
+	'''
+	Plot a one-sample confidence interval for 0D data.
+	'''
+	plotter   = DataPlotter(ax)
+	plotter.plot_errorbar(ci.mean, ci.hstar, color=color, x=0)
+	if ci.mu is not None:
+		plotter.plot_datum(ci.mu, color=color_criterion, linestyle='--')
+	plotter.set_ax_prop(xticks=[])
+	if autoset_ylim:
+		plotter._set_ylim(ax)
+
+
+
+def plot_ci_multisample_0d(ci, ax=None, color='b', color_criterion='r', markersize=10, autoset_ylim=True):
+	'''
+	Plot a paired- or two-sample confidence interval for 0D data.
+	'''
+	plotter   = DataPlotter(ax)
+	if ci.criterion_type == 'meanB':
+		hbarw = 0.1
+		x0,x1 = 0, 2.4*hbarw*ci.hstar
+		plotter.plot_errorbar(ci.meanA, ci.hstar, color=color, x=x0, hbarw=hbarw)
+		plotter.plot(x1, ci.meanB, 'o', color=color_criterion, markersize=markersize)
+		# plotter.plot_errorbar(ci.meanB, ci.hstar, color=color_criterion, x=x1, hbarw=hbarw)
+		plotter.plot_datum(ci.meanB, color=color_criterion, linestyle='--')
+	elif ci.criterion_type == 'tailB':
+		hbarw = 0.1
+		x0,x1 = 0, 1.2*hbarw*ci.hstar
+		plotter.plot_errorbar(ci.meanA, 0.5*ci.hstar, color=color, x=x0, hbarw=hbarw)
+		plotter.plot_errorbar(ci.meanB, 0.5*ci.hstar, color=color_criterion, x=x1, hbarw=hbarw)
+		y     = (ci.meanB - 0.5*ci.hstar) if ( ci.meanB > ci.meanA ) else (ci.meanB + 0.5*ci.hstar)
+		plotter.plot_datum(y, color=color_criterion, linestyle='--')
+	if autoset_ylim:
+		plotter._set_ylim(ax)
+
+
+
+
+
+def plot_ci(ci, ax=None, x=None, linecolor='k', facecolor='0.8', edgecolor='0.8', alpha=0.5, autoset_ylim=True):
+	'''
+	Plot a condfidence interval.
+	'''
+	y,h,Q     = ci.mean, ci.hstar, ci.Q
+	### initialize plotter:
+	plotter   = DataPlotter(ax)
+	plotter._set_x(x, Q)
+	### plot datum, error cloud and threshold:
+	plotter.plot(y, color=linecolor, lw=3)
+	plotter.plot_cloud([y+h, y-h], facecolor, edgecolor, alpha)
+	if ci.mu is not None:
+		if ci.isscalarmu:
+			plotter.plot_datum(y=ci.mu, color='r', linestyle='--')
+		else:
+			plotter.plot(ci.mu, color='r', linestyle='--')
+	### set axes limits:
+	if autoset_ylim:
+		plotter._set_ylim(ax)
+	plotter._set_xlim()
+
+
+def plot_ci_multisample(ci, ax=None, x=None, linecolors=('k','b'), facecolors=('0.8','b'), edgecolors=('0.8','b'), color_criterion='r', alphas=(0.5,0.5), autoset_ylim=True):
+	'''
+	Plot a multi-mean condfidence interval.
+	'''
+	### assemble means and thresholds:
+	mA,mB,h     = ci.meanA, ci.meanB, ci.hstar
+	### initialize plotter:
+	plotter     = DataPlotter(ax)
+	plotter._set_x(x, ci.Q)
+	### assemble line and face properties:
+	linecolors  = linecolors if isinstance(linecolors, (tuple,list)) else [linecolors]*2
+	facecolors  = facecolors if isinstance(facecolors, (tuple,list)) else [facecolors]*2
+	edgecolors  = edgecolors if isinstance(edgecolors, (tuple,list)) else [edgecolors]*2
+	alphas      = alphas     if isinstance(alphas, (tuple,list))     else [alphas]*2
+	### datum- and criterion-dependent plotting:
+	if ci.criterion_type == 'meanB':
+		plotter.plot(mA, color=linecolors[0], lw=3)
+		plotter.plot_cloud([mA+h, mA-h], facecolors[0], edgecolors[0], alphas[0])
+		plotter.plot(mB, color=color_criterion, linestyle='--')
+	elif ci.criterion_type == 'tailB':
+		plotter.plot(mA, color=linecolors[0], lw=3)
+		plotter.plot(mB, color=linecolors[1], lw=3)
+		hA = plotter.plot_cloud([mA+0.5*h, mA-0.5*h], facecolors[0], edgecolors[0], alphas[0], edgelinestyle='--')
+		hB = plotter.plot_cloud([mB+0.5*h, mB-0.5*h], facecolors[1], edgecolors[1], alphas[1], edgelinestyle='--')
+	if autoset_ylim:
+		plotter._set_ylim(ax)
+	plotter._set_xlim()
 
 
 

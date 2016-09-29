@@ -19,7 +19,7 @@ roi[85:]   = True
 alpha        = 0.05
 F            = spm1d.stats.anova1(Y, A, equal_var=True, roi=roi)
 Fi           = F.inference(alpha, interp=True)
-print Fi
+print( Fi )
 
 
 

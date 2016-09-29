@@ -3,13 +3,11 @@ CANONICAL CORRELATION ANALYSIS
 '''
 
 # Copyright (C) 2016  Todd Pataky
-# cca.py version: 0.3.2 (2016/01/03)
+
 
 from math import sqrt,log
 import numpy as np
-import _mvbase
-import _spm
-
+from . import _mvbase, _spm
 
 
 

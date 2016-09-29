@@ -8,7 +8,7 @@ import spm1d
 #(0) Load data:
 dataset      = spm1d.data.mv1d.manova1.Dorn2012()
 Y,A          = dataset.get_data()  #A:slow, B:fast
-print dataset
+print( dataset )
 
 
 
@@ -22,7 +22,7 @@ roi[60:90] = True
 alpha        = 0.05
 X2           = spm1d.stats.manova1(Y, A, roi=roi)
 X2i          = X2.inference(0.05)
-print X2i
+print( X2i )
 
 
 #(2) Plot:

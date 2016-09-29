@@ -1,7 +1,10 @@
 
+# Copyright (C) 2016  Todd Pataky
+
+
 import numpy as np
-import _mvbase
-import _spm
+from . import _mvbase, _spm
+
 
 
 

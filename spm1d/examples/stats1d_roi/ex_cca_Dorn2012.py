@@ -8,7 +8,7 @@ import spm1d
 #(0) Load dataset:
 dataset      = spm1d.data.mv1d.cca.Dorn2012()
 Y,x          = dataset.get_data()  #A:slow, B:fast
-print dataset
+print( dataset )
 
 
 
@@ -23,7 +23,7 @@ roi[60:90] = True
 alpha        = 0.05
 X2           = spm1d.stats.cca(Y, x, roi=roi)
 X2i          = X2.inference(0.05)
-print X2i
+print( X2i )
 
 
 #(2) Plot:

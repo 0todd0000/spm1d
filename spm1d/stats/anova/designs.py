@@ -4,15 +4,13 @@ High-level ANOVA designs.
 '''
 
 # Copyright (C) 2016  Todd Pataky
-# designs.py version: 0.3.2 (2016/01/03)
+
 
 
 import warnings
 import numpy as np
 from matplotlib import pyplot
-
-
-from factors import Factor,FactorNested,FactorNested2,FactorNestedTwoWay #FactorRM,FactorSubject
+from . factors import Factor,FactorNested,FactorNested2,FactorNestedTwoWay #FactorRM,FactorSubject
 
 
 
@@ -36,6 +34,9 @@ class Contrasts(object):
 
 
 class DesignBuilder(object):
+	
+	nFactors         = 1
+	
 	def __init__(self, labels=[]):
 		self.COLS    = []
 		self.labels  = list(labels)
@@ -73,7 +74,12 @@ class _Design(object):
 	def _get_column_const(self):
 		return np.matrix( np.ones(self.J) ).T
 
-
+	def get_design_label(self):
+		return self.__class__.__name__
+	def get_effect_labels(self):
+		return self.effect_labels
+	
+	
 	def plot(self, ax=None, plot_contrasts=True, contrastnums=[0,1,2]):
 		if plot_contrasts:
 			ax0 = pyplot.axes([0.05,0.05,0.4,0.9])
@@ -102,6 +108,10 @@ class _Design(object):
 
 
 class ANOVA1(_Design):
+	
+	effect_labels        = ('Main A', )
+	nFactors             = 1
+	
 	def __init__(self, A):
 		self.X           = None       #design matrix
 		self.A           = Factor(A)  #factor levels
@@ -129,6 +139,10 @@ class ANOVA1(_Design):
 
 
 class ANOVA1rm(_Design):
+	
+	effect_labels       = ('Main A', )
+	nFactors            = 1
+	
 	def __init__(self, A, SUBJ):
 		self.X          = None          #design matrix
 		self.S          = Factor(SUBJ)  #subjects
@@ -163,14 +177,15 @@ class ANOVA1rm(_Design):
 		if not self.S.check_balanced(self.A):
 			raise( ValueError('Design must be balanced.') )
 
-	def check_for_single_responses(self):
+	def check_for_single_responses(self, dim=1):
 		A,S  = self.A.A, self.S.A
 		only_single = False
 		for a in self.A.u:
 			s = S[(A==a)]
 			if np.unique(s).size == s.size:
 				only_single = True
-				warnings.warn('\nWARNING:  Only one observation per subject found.  Residuals and inference will be approximate. To avoid approximate residuals: (a) Add multiple observations per subject and per condition, and (b) ensure that all subjects and conditions have the same number of observations.\n', UserWarning, stacklevel=2)
+				if dim==1:
+					warnings.warn('\nWARNING:  Only one observation per subject found.  Residuals and inference will be approximate. To avoid approximate residuals: (a) Add multiple observations per subject and per condition, and (b) ensure that all subjects and conditions have the same number of observations.\n', UserWarning, stacklevel=2)
 				continue
 		return only_single
 
@@ -179,6 +194,10 @@ class ANOVA1rm(_Design):
 
 
 class ANOVA2(_Design):
+	
+	effect_labels        = ('Main A', 'Main B', 'Interaction AB')
+	nFactors             = 2
+	
 	def __init__(self, A, B):
 		self.X           = None       #design matrix
 		self.A           = Factor(A)  #factor level vector
@@ -220,6 +239,10 @@ class ANOVA2(_Design):
 
 
 class ANOVA2nested(ANOVA2):
+	
+	effect_labels       = ('Main A', 'Main B')
+	nFactors            = 2
+	
 	def __init__(self, A, B):
 		self.X          = None
 		self.A          = Factor(A)
@@ -304,7 +327,7 @@ class ANOVA2rm(ANOVA2):
 			raise( ValueError('Design must be balanced.') )
 
 
-	def check_for_single_responses(self):
+	def check_for_single_responses(self, dim=1):
 		A,B,S  = self.A.A, self.B.A, self.S.A
 		only_single = False
 		for a in self.A.u:
@@ -312,7 +335,8 @@ class ANOVA2rm(ANOVA2):
 				s = S[(A==a) & (B==b)]
 				if np.unique(s).size == s.size:
 					only_single = True
-					warnings.warn('\nWARNING:  Only one observation per subject found.  Residuals and inference will be approximate. To avoid approximate residuals: (a) Add multiple observations per subject and per condition, and (b) ensure that all subjects and conditions have the same number of observations.\n', UserWarning, stacklevel=2)
+					if dim==1:
+						warnings.warn('\nWARNING:  Only one observation per subject found.  Residuals and inference will be approximate. To avoid approximate residuals: (a) Add multiple observations per subject and per condition, and (b) ensure that all subjects and conditions have the same number of observations.\n', UserWarning, stacklevel=2)
 					continue
 		return only_single
 
@@ -373,6 +397,10 @@ class ANOVA2onerm(ANOVA2rm):
 
 
 class ANOVA3(_Design):
+	
+	effect_labels       = ('Main A', 'Main B', 'Main C', 'Interaction AB', 'Interaction AC', 'Interaction BC','Interaction ABC')
+	nFactors            = 3
+	
 	def __init__(self, A, B, C):
 		self.X          = None       #design matrix
 		self.A          = Factor(A)  #factor level vector
@@ -425,6 +453,9 @@ class ANOVA3(_Design):
 
 
 class ANOVA3nested(ANOVA3):
+	
+	effect_labels       = ('Main A', 'Main B', 'Main C')
+	
 	def __init__(self, A, B, C):
 		self.X          = None
 		self.A          = Factor(A)
@@ -536,7 +567,7 @@ class ANOVA3rm(ANOVA3):
 			raise( ValueError('Design must be balanced.') )
 
 
-	def check_for_single_responses(self):
+	def check_for_single_responses(self, dim=1):
 		A,B,C,S  = self.A.A, self.B.A, self.C.A, self.S.A
 		only_single = False
 		for a in self.A.u:
@@ -545,7 +576,8 @@ class ANOVA3rm(ANOVA3):
 					s = S[(A==a) & (B==b) & (C==c)]
 					if np.unique(s).size == s.size:
 						only_single = True
-						warnings.warn('\nWARNING:  Only one observation per subject found.  Residuals and inference will be approximate. To avoid approximate residuals: (a) Add multiple observations per subject and per condition, and (b) ensure that all subjects and conditions have the same number of observations.\n', UserWarning, stacklevel=2)
+						if dim==1:
+							warnings.warn('\nWARNING:  Only one observation per subject found.  Residuals and inference will be approximate. To avoid approximate residuals: (a) Add multiple observations per subject and per condition, and (b) ensure that all subjects and conditions have the same number of observations.\n', UserWarning, stacklevel=2)
 						continue
 		return only_single
 

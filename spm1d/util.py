@@ -13,13 +13,13 @@ This module contains a variety of convenience functions, including:
 '''
 
 # Copyright (C) 2016  Todd Pataky
-# util.py version: 0.3.2 (2016/01/03)
+# updated (2016/10/01) todd
 
 
 
 from math import sqrt,log
 import numpy as np
-from stats._spm import plist2string as p2s
+from . stats._spm import plist2string as p2s
 from scipy.ndimage.filters import gaussian_filter1d
 
 

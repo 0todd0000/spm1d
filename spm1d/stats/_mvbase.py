@@ -1,9 +1,11 @@
 
+# Copyright (C) 2016  Todd Pataky
+
 from math import sqrt,log
 import numpy as np
 from scipy import ndimage
-import _spm
-import rft1d
+from . import _spm
+from .. import rft1d
 
 eps        = np.finfo(float).eps   #smallest float, used to avoid divide-by-zero errors
 

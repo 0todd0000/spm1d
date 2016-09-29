@@ -17,15 +17,19 @@ probabilities in Python, Journal of Statistical Software, in press.
 
 
 Copyright (C) 2016  Todd Pataky
-Version: 0.3.2.5 (2016/06/27)
+Version: 0.4.0 (2016/10/01)
 '''
 
 
-__version__ = '0.3.2.5 (2016/06/27)'
+__version__ = '0.4.0 (2016/10/01)'
 
 
-__all__ = ['io', 'plot', 'stats', 'util']
+__all__ = ['data', 'io', 'plot', 'rft1d', 'stats', 'util']
 
-
-import data, io, plot, stats, util
+from . import data
+from . import io
+from . import plot
+from . import rft1d
+from . import stats
+from . import util
 

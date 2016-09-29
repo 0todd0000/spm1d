@@ -23,7 +23,7 @@ roi[30:65] = -1
 alpha      = 0.05
 t          = spm1d.stats.regress(Y, x, roi=roi)
 ti         = t.inference(alpha, two_tailed=False, interp=True)
-print ti
+print( ti )
 
 
 
