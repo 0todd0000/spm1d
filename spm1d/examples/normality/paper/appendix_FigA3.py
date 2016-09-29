@@ -24,7 +24,6 @@ pyplot.close('all')
 figw       = 8
 figh       = figw / 1.6
 pyplot.figure(figsize=(figw,figh))
-pyplot.get_current_fig_manager().window.move(0, 0)
 ### create axes:
 axw = axh  = 0.27
 axx,axy    = np.linspace(0.07, 0.71, 3), np.linspace(0.72, 0.09, 3)

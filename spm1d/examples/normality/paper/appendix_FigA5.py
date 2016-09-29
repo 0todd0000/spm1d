@@ -22,7 +22,6 @@ logP       = -np.log10(P)
 #(2) Plot:
 pyplot.close('all')
 pyplot.figure(figsize=(6,6))
-pyplot.get_current_fig_manager().window.move(0, 0)
 ### create axes:
 axw,axh    = 0.42, 0.27
 axx,axy    = [0.10,0.56], np.linspace(0.72, 0.09, 3)
