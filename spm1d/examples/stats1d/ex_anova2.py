@@ -21,7 +21,7 @@ Y,A,B        = dataset.get_data()
 #(1) Conduct ANOVA:
 alpha        = 0.05
 FF           = spm1d.stats.anova2(Y, A, B, equal_var=True)
-FFi          = FF.inference(0.05)
+FFi          = FF.inference(alpha)
 print( FFi )
 
 

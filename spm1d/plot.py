@@ -132,42 +132,6 @@ def plot_ci_multisample(ci, ax=None, x=None, linecolors=('k','b'), facecolors=('
 
 
 
-# def plot_ci_multisample(ci, ax=None, x=None, linecolors=('k','b'), facecolors=('0.8','b'), edgecolors=('0.8','b'), color_criterion='r', alphas=(0.5,0.5), autoset_ylim=True):
-# 	'''
-# 	Plot a multi-mean condfidence interval.
-# 	'''
-# 	### assemble means and thresholds:
-# 	mA,mB,mAB,h = ci.meanA, ci.meanB, ci.meanAB, ci.hstar
-# 	### initialize plotter:
-# 	plotter     = DataPlotter(ax)
-# 	plotter._set_x(x, ci.Q)
-# 	### assemble line and face properties:
-# 	linecolors  = linecolors if isinstance(linecolors, (tuple,list)) else [linecolors]*2
-# 	facecolors  = facecolors if isinstance(facecolors, (tuple,list)) else [facecolors]*2
-# 	edgecolors  = edgecolors if isinstance(edgecolors, (tuple,list)) else [edgecolors]*2
-# 	alphas      = alphas     if isinstance(alphas, (tuple,list))     else [alphas]*2
-# 	### datum- and criterion-dependent plotting:
-# 	if ci.datum == 'difference':
-# 		plotter.plot(mAB, color=linecolors[0], lw=3)
-# 		plotter.plot_cloud([mAB+h, mAB-h], facecolors[0], edgecolors[0], alphas[0])
-# 		if ci.mu is not None:
-# 			plotter.plot_datum(0, color=color_criterion, linestyle='--')
-#
-# 	else:
-# 		if ci.criterion=='meanB':
-# 			plotter.plot(mA, color=linecolors[0], lw=3)
-# 			plotter.plot_cloud([mA+h, mA-h], facecolors[0], edgecolors[0], alphas[0])
-# 			plotter.plot(mB, color=color_criterion, linestyle='--')
-# 		elif ci.criterion=='tailsAB':
-# 			plotter.plot(mA, color=linecolors[0], lw=3)
-# 			plotter.plot(mB, color=linecolors[1], lw=3)
-# 			hA = plotter.plot_cloud([mA+0.5*h, mA-0.5*h], facecolors[0], edgecolors[0], alphas[0], edgelinestyle='--')
-# 			hB = plotter.plot_cloud([mB+0.5*h, mB-0.5*h], facecolors[1], edgecolors[1], alphas[1], edgelinestyle='--')
-# 	if autoset_ylim:
-# 		plotter._set_ylim(ax)
-# 	plotter._set_xlim()
-
-
 
 
 def plot_errorcloud(datum, sd, ax=None, x=None, facecolor='0.8', edgecolor='0.8', alpha=0.5, autoset_ylim=True):
