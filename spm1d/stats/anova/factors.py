@@ -1,10 +1,10 @@
 
 '''
-ANOVA categorical factor classes.
+Factor classes for ANOVA.
 '''
 
 # Copyright (C) 2016  Todd Pataky
-# designs.py version: 0.3.2 (2016/01/03)
+
 
 
 import numpy as np

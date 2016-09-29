@@ -5,8 +5,8 @@ The core RFT computations are conducted inside **prob.rft**, and the
 **RFTCalculator** class serves as a high-level interface to **prob.rft**
 '''
 
-# Copyright (C) 2015  Todd Pataky
-# version: 0.1.3 (2015/12/27)
+# Copyright (C) 2016  Todd Pataky
+
 
 
 from math import pi,log,sqrt,exp

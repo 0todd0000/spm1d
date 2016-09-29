@@ -1,4 +1,6 @@
 
+# Copyright (C) 2016  Todd Pataky
+
 import numpy as np
 from . import permuters, _snpm, _snpmlist
 

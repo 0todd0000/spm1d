@@ -7,8 +7,7 @@ Current datasets include:
 	* Weather (Ramsay & Silverman, 2005)
 '''
 
-# Copyright (C) 2015  Todd Pataky
-# version: 0.1.1 (2015/04/26)
+# Copyright (C) 2016  Todd Pataky
 
 import os
 import numpy as np

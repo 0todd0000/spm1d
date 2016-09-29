@@ -3,7 +3,7 @@ Base classes for all built-in datasets.
 '''
 
 # Copyright (C) 2016  Todd Pataky
-# designs.py version: 0.3.2 (2016/01/03)
+# updated (2016/10/01) todd
 
 
 import os

@@ -1,4 +1,6 @@
 
+# Copyright (C) 2016  Todd Pataky
+
 from math import log
 import numpy as np
 from spm1d.stats.anova import designs,models

@@ -1,9 +1,9 @@
 '''
-High-level ANOVA user interface.
+High-level ANOVA user interface using an R-like aov function.
 '''
 
 # Copyright (C) 2016  Todd Pataky
-# ui.py version: 0.3.2 (2016/01/03)
+
 
 
 import warnings

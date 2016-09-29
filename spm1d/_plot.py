@@ -6,7 +6,7 @@ Users should access plotting functions through spm1d.plot (not spm1d._plot).
 '''
 
 # Copyright (C) 2016  Todd Pataky
-# _plot.py version: 0.3.2 (2016/01/03)
+# updated (2016/10/01) todd
 
 
 from copy import copy,deepcopy
@@ -35,9 +35,6 @@ class DataPlotter(object):
 		self.ax        = self._gca(ax)
 		self.x         = None
 		
-	# def _getQ(x, Q):
-	# 	return np.arange(Q) if x is None else x
-	
 	@staticmethod
 	def _gca(ax):
 		return pyplot.gca() if ax is None else ax
@@ -330,11 +327,6 @@ def _plot_F_list(FF, plot_threshold_label=True, plot_p_values=True, autoset_ylim
 		ylim   = ylim[:,0].min(), ylim[:,1].max()
 		pyplot.setp(AX, ylim=ylim)
 	
-	# AXX    = [AX[0],AX[2]] if m==2 else [AX[0],AX[3]]
-	# if m==2:
-	#
-	# AX     = np.reshape(AX, (m,m))
-	# pyplot.setp(AX[:,1:], ylabel=None)
 
 
 

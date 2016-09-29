@@ -24,7 +24,7 @@ These include:
 '''
 
 # Copyright (C) 2016  Todd Pataky
-# plot.py version: 0.3.2 (2016/01/03)
+# updated (2016/10/01) todd
 
 
 

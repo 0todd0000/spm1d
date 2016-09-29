@@ -1,4 +1,6 @@
 
+# Copyright (C) 2016  Todd Pataky
+
 from math import sqrt,log
 import numpy as np
 from scipy import ndimage

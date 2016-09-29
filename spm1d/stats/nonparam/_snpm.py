@@ -1,4 +1,6 @@
 
+# Copyright (C) 2016  Todd Pataky
+
 from math import ceil
 import numpy as np
 from . metrics import metric_dict

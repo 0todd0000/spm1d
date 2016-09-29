@@ -1,11 +1,9 @@
 
-
 '''
-spm1dNP: A Python package for 1D Statistical non-Parametric Mapping
+Non-parametric hypothesis tests for 1D data (Statistical non-Parametric Mapping)
 '''
 
-__version__ = '0.X (2014/06/21)'
-
+# Copyright (C) 2016  Todd Pataky
 
 __all__ = ['stats']
 

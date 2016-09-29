@@ -1,4 +1,6 @@
 
+# Copyright (C) 2016  Todd Pataky
+
 import itertools
 import numpy as np
 from scipy.special import factorial

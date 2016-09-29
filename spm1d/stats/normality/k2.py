@@ -7,6 +7,8 @@ All procedures fit the given model, calculate residuals then
 on the residuals.
 '''
 
+# Copyright (C) 2016  Todd Pataky
+
 from math import log
 import numpy as np
 from .. _spm import SPM0D_X2, SPM_X2

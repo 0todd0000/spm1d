@@ -7,8 +7,8 @@ If a large number of random fields are required (e.g. for RFT validations)
 it may be more efficient to use the **Generator1D** and **GeneratorMulti1D** classes.
 '''
 
-# Copyright (C) 2015  Todd Pataky
-# version: 0.1.3 (2015/12/27)
+# Copyright (C) 2016  Todd Pataky
+
 
 
 from math import sqrt,log

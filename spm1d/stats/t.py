@@ -1,9 +1,9 @@
 '''
-One-sample statistical tests.
+One- and two sample tests.
 '''
 
 # Copyright (C) 2016  Todd Pataky
-# t.py version: 0.3.2 (2016/01/03)
+
 
 
 

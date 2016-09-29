@@ -3,7 +3,7 @@ MANOVA
 '''
 
 # Copyright (C) 2016  Todd Pataky
-# manova.py version: 0.3.2 (2016/01/03)
+
 
 
 
