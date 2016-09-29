@@ -1,6 +1,259 @@
 .. _label-NewFeatures:
 
 
+New Features (version 0.4)
+=====================================
+
+The main new features in **spm1d** version 0.4 are listed below.
+
+* :ref:`Non-parametric inference <label-NonParametricInference>`
+* :ref:`Confidence intervals <label-NonParametricInference>`
+* :ref:`Normality tests <label-NonParametricInference>`
+* :ref:`Python 3 compatibility <label-NonParametricInference>`
+* :ref:`Python: rft1d inside spm1d <label-NonParametricInference>`
+* :ref:`Improved ANOVA interface <label-NonParametricInference>`
+
+
+.. note:: Additional documentation will be added following peer review.
+
+
+.. _label-NonParametricInference:
+
+Non-parametric inference
+________________________________
+
+All statistical tests can now be conducted non-parametrically through the new **spm1d.stats.nonparam** interface.
+
+Example (0D parametric):
+
+>>> import spm1d
+>>> yA = [1, 2, 4, 1, 2, 3, 2, 2]
+>>> yB = [3, 2, 3, 4, 2, 5, 4, 3]
+>>> t = spm1d.stats.ttest2(yA, yB)
+>>> ti = t.inference(0.05)
+>>> print(ti)
+
+Example (0D non-parametric):
+
+>>> tn = spm1d.stats.nonparam.ttest2(yA, yB)
+>>> tni = tn.inference(0.05, iterations=1000)
+>>> print(tni)
+
+The key difference is the "iterations" keyword for non-parametric inference. This sets the number of random data permutations used. Setting iterations to "-1" performs all possible permutations. 
+
+
+.. note::  **spm1d**'s non-parametric procedures follow **Nichols & Holmes (2002)**.  Please consider citing:
+
+	Nichols TE, Holmes AP (2002). `Nonparametric permutation tests for functional neuroimaging: a primer with examples. <https://www.researchgate.net/publication/11610090_Nonparametric_permutation_tests_for_functional_neuroimaging_A_primer_with_examples>`_ *Human Brain Mapping* **15(1)**, 1–25.
+
+
+
+
+
+
+
+
+.. _label-ConfidenceIntervals:
+
+Confidence intervals
+________________________________
+
+Parametric and non-parametric confidence intervals (CIs) can be constructed using the following functions:
+
+Parametric:
+
+* **spm1d.stats.ci_onesample**
+* **spm1d.stats.ci_pairedsample**
+* **spm1d.stats.ci_twosample**
+
+Non-parametric:
+
+* spm1d.stats.nonparam.ci_onesample
+* spm1d.stats.nonparam.ci_pairedsample
+* spm1d.stats.nonparam.ci_twosample
+
+For more details refer the example scripts listed below. The standalone scripts construct CIs outside of **spm1d** and show all computational details.
+
+* ./spm1d/examples/stats0d/
+
+  * ex_ci_onesample_standalone.py
+  * ex_ci_onesample.py
+  * ex_ci_pairedsample.py
+  * ex_ci_twosample.py
+
+* ./spm1d/examples/stats1d/
+
+  * ex_ci_onesample_standalone.py
+  * ex_ci_onesample.py
+  * ex_ci_pairedsample.py
+  * ex_ci_twosample.py
+
+* ./spm1d/examples/nonparam/0d/
+
+  * ex_ci_onesample.py
+  * ex_ci_pairedsample.py
+  * ex_ci_twosample.py
+
+* ./spm1d/examples/nonparam/1d/
+
+  * ex_ci_onesample.py
+  * ex_ci_pairedsample.py
+  * ex_ci_twosample.py
+
+
+
+
+
+
+
+
+
+
+.. _label-NormalityTests:
+
+Normality tests
+________________________________
+
+Normality tests can be conducted using the new **spm1d.stats.normality** interface.
+
+The normality assessments currently available include:
+
+#. D'Agostino-Pearson K2 test  (**spm1d.stats.normality.k2**)
+#. Shapiro-Wilk statistic     (**spm1d.stats.normality.sw**)
+
+**spm1d** provides convenience functions for all statistical procedures, making it easy to assess normality for arbitrary designs.
+
+For example:
+
+>>> t  = spm1d.stats.regress(y, x)                #linear regression test statistic (t value)
+>>> ti = t.inference(0.05)                        #assess whether the observed linear correlation is significant
+>>> n  = spm1d.stats.normality.k2.regress(y, x)   #normality test statistic (K2)
+>>> ni = spm.inference(0.05)                      #assesses whether the observed non-normality is significant
+
+
+
+
+
+
+.. _label-Python3compatibility:
+
+Python 3 compatibility
+________________________________
+
+FINALLY!
+
+**spm1d** is now compatible with both Python 2.7 and Python 3.5
+
+Python 2.7 and Python 3.X will both be supported for the forseeable future.
+
+
+
+
+
+.. _label-rft1dINspm1d:
+
+rft1d in spm1d
+________________________________
+
+The **rft1d** package, which **spm1d** uses to compute probabilities, is now packaged inside **spm1d**.
+
+All **rft1d** updates will be pushed to **spm1d**, so now you only need to keep **spm1d** up-to-date.
+
+
+
+.. _label-improvedANOVAinferface:
+
+Improved ANOVA interface
+________________________________
+
+Results from two- and three-way ANOVA are now much easier to summarize, visualize and navigate.
+
+Example (two-way ANOVA for 1D data):
+
+>>> dataset      = spm1d.data.uv1d.anova2.SPM1D_ANOVA2_2x2()
+>>> Y,A,B        = dataset.get_data()
+
+Here Y is the data array, and A and B are vectors containing experimental condition labels as integers, one integer label for each row of Y.
+
+
+>>> FF           = spm1d.stats.anova2(Y, A, B, equal_var=True)
+>>> FFi          = FF.inference(0.05)
+>>> print( FFi )
+
+The "print" statement prints the following ANOVA summary to the screen:
+
+.. code-block:: html
+
+	SPM{F} inference list
+	   design    :  ANOVA2
+	   nEffects  :  3
+	Effects:
+	   A     z=(1x101) array      df=(1, 16)   h0reject=True
+	   B     z=(1x101) array      df=(1, 16)   h0reject=False
+	   AB    z=(1x101) array      df=(1, 16)   h0reject=False
+
+The main effects A and B and the interaction effect AB are listed along with the degrees of freedom and the null hypothesis rejection decision.
+
+The specific effects can be accessed using either integers:
+
+>>>  FAi  = FFi[0]   #main effect of A
+>>>  FBi  = FFi[1]   #main effect of B
+>>>  FABi = FFi[2]   #interaction effect
+
+or the new more intuitive interface:
+
+>>>  FAi  = FFi['A']
+>>>  FBi  = FFi['B']
+>>>  FABi = FFi['AB']
+
+Each effect itself contains detailed information:
+
+>>>  print( FAi )
+
+.. code-block:: html
+
+	SPM{F} inference field
+	   SPM.effect    :   Main A                        #effect name
+	   SPM.z         :  (1x101) raw test stat field    #test statistic field
+	   SPM.df        :  (1, 16)                        #degrees of freedom
+	   SPM.fwhm      :  14.28048                       #field smoothness
+	   SPM.resels    :  (1, 7.00257)                   #resolution element counts
+	Inference:
+	   SPM.alpha     :  0.050                          #user-selected Type I error rate
+	   SPM.zstar     :  12.52450                       #critical test statistic value
+	   SPM.h0reject  :  True                           #null hypothesis rejection decision
+	   SPM.p_set     :  0.008                          #set-level probability
+	   SPM.p_cluster :  (0.008)                        #cluster-level probabilities
+
+
+Last, the results can plotted much more easily than before, now with a single command:
+
+>>>  pyplot.close('all')
+>>>  FFi.plot(plot_threshold_label=True, plot_p_values=True, autoset_ylim=True)
+>>>  pyplot.show()
+
+.. plot::
+   
+   import numpy as np
+   from matplotlib import pyplot
+   import spm1d
+   
+   dataset      = spm1d.data.uv1d.anova2.SPM1D_ANOVA2_2x2()
+   Y,A,B        = dataset.get_data()
+
+   FF           = spm1d.stats.anova2(Y, A, B, equal_var=True)
+   FFi          = FF.inference(0.05)
+
+   FFi.plot(plot_threshold_label=True, plot_p_values=True, autoset_ylim=True)
+
+
+
+
+
+
+
+
+
 New Features (version 0.3.2)
 =====================================
 
@@ -116,7 +369,7 @@ All **spm1d.stats** functions now support both 0D and 1D data data analysis.
 Example (0D):
 
 >>> yA = [1, 2, 2, 1, 3]
->>> yB = [1, 2, 2, 1, 3]
+>>> yB = [3, 1, 2, 3, 4]
 >>> t = spm1d.stats.ttest2(yA, yB)
 >>> ti = t.inference(0.05)
 >>> print ti  #display inference results

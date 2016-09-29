@@ -1,7 +1,6 @@
 import spm1d
-dataset  = spm1d.data.uv1d.anova1.Weather()
-Y,A      = dataset.get_data()
-Y0,Y1    = Y[A==0], Y[A==2]  #Atlantic and Contintental regions
-t        = spm1d.stats.ttest2(Y0, Y1)
-ti       = t.inference(0.05, circular=True)
+YA,YB = spm1d.data.uv1d.t2.SimulatedTwoLocalMax().get_data()
+t = spm1d.stats.ttest2(YB, YA)
+ti = t.inference(0.05)
 ti.plot()
+ti.plot_p_values()

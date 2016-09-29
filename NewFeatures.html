@@ -8,18 +8,18 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>New Features (version 0.3.2) &mdash; spm1d 0.3 documentation</title>
+    <title>New Features (version 0.4) &mdash; spm1d 0.4 documentation</title>
     
     <link rel="stylesheet" href="_static/basic.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="_static/bootstrap-3.3.4/css/bootstrap.min.css" type="text/css" />
-    <link rel="stylesheet" href="_static/bootstrap-3.3.4/css/bootstrap-theme.min.css" type="text/css" />
+    <link rel="stylesheet" href="_static/bootstrap-3.2.0/css/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="_static/bootstrap-3.2.0/css/bootstrap-theme.min.css" type="text/css" />
     <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
     
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
-        VERSION:     '0.3',
+        VERSION:     '0.4',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -30,9 +30,9 @@
     <script type="text/javascript" src="_static/doctools.js"></script>
     <script type="text/javascript" src="_static/js/jquery-1.11.0.min.js"></script>
     <script type="text/javascript" src="_static/js/jquery-fix.js"></script>
-    <script type="text/javascript" src="_static/bootstrap-3.3.4/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="_static/bootstrap-3.2.0/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
-    <link rel="top" title="spm1d 0.3 documentation" href="index.html" />
+    <link rel="top" title="spm1d 0.4 documentation" href="index.html" />
     <link rel="next" title="Downloads" href="Downloads.html" />
     <link rel="prev" title="Introduction" href="index.html" />
 <meta charset='utf-8'>
@@ -60,7 +60,7 @@
         </button>
         <a class="navbar-brand" href="index.html">
               </a>
-        <span class="navbar-text navbar-version pull-left"><b>0.3</b></span>
+        <span class="navbar-text navbar-version pull-left"><b>0.4</b></span>
       </div>
 
         <div class="collapse navbar-collapse nav-collapse">
@@ -82,7 +82,8 @@
   <ul class="dropdown-menu globaltoc"
       role="menu"
       aria-labelledby="dLabelGlobalToc"><ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="#">New Features (version 0.3.2)</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">New Features (version 0.4)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#new-features-version-0-3-2">New Features (version 0.3.2)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="#new-features-version-0-3-1">New Features (version 0.3.1)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="#new-features-version-0-3">New Features (version 0.3)</a></li>
 </ul>
@@ -113,7 +114,16 @@
   <ul class="dropdown-menu localtoc"
       role="menu"
       aria-labelledby="dLabelLocalToc"><ul>
-<li><a class="reference internal" href="#">New Features (version 0.3.2)</a></li>
+<li><a class="reference internal" href="#">New Features (version 0.4)</a><ul>
+<li><a class="reference internal" href="#non-parametric-inference">Non-parametric inference</a></li>
+<li><a class="reference internal" href="#confidence-intervals">Confidence intervals</a></li>
+<li><a class="reference internal" href="#normality-tests">Normality tests</a></li>
+<li><a class="reference internal" href="#python-3-compatibility">Python 3 compatibility</a></li>
+<li><a class="reference internal" href="#rft1d-in-spm1d">rft1d in spm1d</a></li>
+<li><a class="reference internal" href="#improved-anova-interface">Improved ANOVA interface</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#new-features-version-0-3-2">New Features (version 0.3.2)</a></li>
 <li><a class="reference internal" href="#new-features-version-0-3-1">New Features (version 0.3.1)</a></li>
 <li><a class="reference internal" href="#new-features-version-0-3">New Features (version 0.3)</a><ul>
 <li><a class="reference internal" href="#m-way-repeated-measures-anova">M-way repeated measures ANOVA</a></li>
@@ -161,7 +171,16 @@
   <div class="row">
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper"><ul>
-<li><a class="reference internal" href="#">New Features (version 0.3.2)</a></li>
+<li><a class="reference internal" href="#">New Features (version 0.4)</a><ul>
+<li><a class="reference internal" href="#non-parametric-inference">Non-parametric inference</a></li>
+<li><a class="reference internal" href="#confidence-intervals">Confidence intervals</a></li>
+<li><a class="reference internal" href="#normality-tests">Normality tests</a></li>
+<li><a class="reference internal" href="#python-3-compatibility">Python 3 compatibility</a></li>
+<li><a class="reference internal" href="#rft1d-in-spm1d">rft1d in spm1d</a></li>
+<li><a class="reference internal" href="#improved-anova-interface">Improved ANOVA interface</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#new-features-version-0-3-2">New Features (version 0.3.2)</a></li>
 <li><a class="reference internal" href="#new-features-version-0-3-1">New Features (version 0.3.1)</a></li>
 <li><a class="reference internal" href="#new-features-version-0-3">New Features (version 0.3)</a><ul>
 <li><a class="reference internal" href="#m-way-repeated-measures-anova">M-way repeated measures ANOVA</a></li>
@@ -181,11 +200,11 @@
 </ul>
 
   <li>
-    <a href="index.html" title="Previous Chapter: Introduction"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; Introduction</span>
+    <a href="index.html" title="Previous Chapter: Introduction"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm">&laquo; Introduction</span>
     </a>
   </li>
   <li>
-    <a href="Downloads.html" title="Next Chapter: Downloads"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">Downloads &raquo;</span>
+    <a href="Downloads.html" title="Next Chapter: Downloads"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm">Downloads &raquo;</span>
     </a>
   </li>
 <form action="search.html" method="get">
@@ -197,10 +216,190 @@
 </form>
         </div>
       </div>
-    <div class="col-md-12 content">
+    <div class="col-md-12">
       
-  <div class="section" id="new-features-version-0-3-2">
-<span id="label-newfeatures"></span><h1>New Features (version 0.3.2)<a class="headerlink" href="#new-features-version-0-3-2" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="new-features-version-0-4">
+<span id="label-newfeatures"></span><h1>New Features (version 0.4)<a class="headerlink" href="#new-features-version-0-4" title="Permalink to this headline">¶</a></h1>
+<p>The main new features in <strong>spm1d</strong> version 0.4 are listed below.</p>
+<ul class="simple">
+<li><a class="reference internal" href="#label-nonparametricinference"><span class="std std-ref">Non-parametric inference</span></a></li>
+<li><a class="reference internal" href="#label-nonparametricinference"><span class="std std-ref">Confidence intervals</span></a></li>
+<li><a class="reference internal" href="#label-nonparametricinference"><span class="std std-ref">Normality tests</span></a></li>
+<li><a class="reference internal" href="#label-nonparametricinference"><span class="std std-ref">Python 3 compatibility</span></a></li>
+<li><a class="reference internal" href="#label-nonparametricinference"><span class="std std-ref">Python: rft1d inside spm1d</span></a></li>
+<li><a class="reference internal" href="#label-nonparametricinference"><span class="std std-ref">Improved ANOVA interface</span></a></li>
+</ul>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Additional documentation will be added following peer review.</p>
+</div>
+<div class="section" id="non-parametric-inference">
+<span id="label-nonparametricinference"></span><h2>Non-parametric inference<a class="headerlink" href="#non-parametric-inference" title="Permalink to this headline">¶</a></h2>
+<p>All statistical tests can now be conducted non-parametrically through the new <strong>spm1d.stats.nonparam</strong> interface.</p>
+<p>Example (0D parametric):</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">spm1d</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">yA</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">yB</span> <span class="o">=</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">t</span> <span class="o">=</span> <span class="n">spm1d</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">ttest2</span><span class="p">(</span><span class="n">yA</span><span class="p">,</span> <span class="n">yB</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ti</span> <span class="o">=</span> <span class="n">t</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="mf">0.05</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">ti</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Example (0D non-parametric):</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">tn</span> <span class="o">=</span> <span class="n">spm1d</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">nonparam</span><span class="o">.</span><span class="n">ttest2</span><span class="p">(</span><span class="n">yA</span><span class="p">,</span> <span class="n">yB</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">tni</span> <span class="o">=</span> <span class="n">tn</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="mf">0.05</span><span class="p">,</span> <span class="n">iterations</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">tni</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The key difference is the &#8220;iterations&#8221; keyword for non-parametric inference. This sets the number of random data permutations used. Setting iterations to &#8220;-1&#8221; performs all possible permutations.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p><strong>spm1d</strong>&#8216;s non-parametric procedures follow <strong>Nichols &amp; Holmes (2002)</strong>.  Please consider citing:</p>
+<p class="last">Nichols TE, Holmes AP (2002). <a class="reference external" href="https://www.researchgate.net/publication/11610090_Nonparametric_permutation_tests_for_functional_neuroimaging_A_primer_with_examples">Nonparametric permutation tests for functional neuroimaging: a primer with examples.</a> <em>Human Brain Mapping</em> <strong>15(1)</strong>, 1–25.</p>
+</div>
+</div>
+<div class="section" id="confidence-intervals">
+<span id="label-confidenceintervals"></span><h2>Confidence intervals<a class="headerlink" href="#confidence-intervals" title="Permalink to this headline">¶</a></h2>
+<p>Parametric and non-parametric confidence intervals (CIs) can be constructed using the following functions:</p>
+<p>Parametric:</p>
+<ul class="simple">
+<li><strong>spm1d.stats.ci_onesample</strong></li>
+<li><strong>spm1d.stats.ci_pairedsample</strong></li>
+<li><strong>spm1d.stats.ci_twosample</strong></li>
+</ul>
+<p>Non-parametric:</p>
+<ul class="simple">
+<li>spm1d.stats.nonparam.ci_onesample</li>
+<li>spm1d.stats.nonparam.ci_pairedsample</li>
+<li>spm1d.stats.nonparam.ci_twosample</li>
+</ul>
+<p>For more details refer the example scripts listed below. The standalone scripts construct CIs outside of <strong>spm1d</strong> and show all computational details.</p>
+<ul class="simple">
+<li>./spm1d/examples/stats0d/<ul>
+<li>ex_ci_onesample_standalone.py</li>
+<li>ex_ci_onesample.py</li>
+<li>ex_ci_pairedsample.py</li>
+<li>ex_ci_twosample.py</li>
+</ul>
+</li>
+<li>./spm1d/examples/stats1d/<ul>
+<li>ex_ci_onesample_standalone.py</li>
+<li>ex_ci_onesample.py</li>
+<li>ex_ci_pairedsample.py</li>
+<li>ex_ci_twosample.py</li>
+</ul>
+</li>
+<li>./spm1d/examples/nonparam/0d/<ul>
+<li>ex_ci_onesample.py</li>
+<li>ex_ci_pairedsample.py</li>
+<li>ex_ci_twosample.py</li>
+</ul>
+</li>
+<li>./spm1d/examples/nonparam/1d/<ul>
+<li>ex_ci_onesample.py</li>
+<li>ex_ci_pairedsample.py</li>
+<li>ex_ci_twosample.py</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="normality-tests">
+<span id="label-normalitytests"></span><h2>Normality tests<a class="headerlink" href="#normality-tests" title="Permalink to this headline">¶</a></h2>
+<p>Normality tests can be conducted using the new <strong>spm1d.stats.normality</strong> interface.</p>
+<p>The normality assessments currently available include:</p>
+<ol class="arabic simple">
+<li>D&#8217;Agostino-Pearson K2 test  (<strong>spm1d.stats.normality.k2</strong>)</li>
+<li>Shapiro-Wilk statistic     (<strong>spm1d.stats.normality.sw</strong>)</li>
+</ol>
+<p><strong>spm1d</strong> provides convenience functions for all statistical procedures, making it easy to assess normality for arbitrary designs.</p>
+<p>For example:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">t</span>  <span class="o">=</span> <span class="n">spm1d</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">regress</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>                <span class="c1">#linear regression test statistic (t value)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ti</span> <span class="o">=</span> <span class="n">t</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="mf">0.05</span><span class="p">)</span>                        <span class="c1">#assess whether the observed linear correlation is significant</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">n</span>  <span class="o">=</span> <span class="n">spm1d</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">normality</span><span class="o">.</span><span class="n">k2</span><span class="o">.</span><span class="n">regress</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>   <span class="c1">#normality test statistic (K2)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ni</span> <span class="o">=</span> <span class="n">spm</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="mf">0.05</span><span class="p">)</span>                      <span class="c1">#assesses whether the observed non-normality is significant</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="python-3-compatibility">
+<span id="label-python3compatibility"></span><h2>Python 3 compatibility<a class="headerlink" href="#python-3-compatibility" title="Permalink to this headline">¶</a></h2>
+<p>FINALLY!</p>
+<p><strong>spm1d</strong> is now compatible with both Python 2.7 and Python 3.5</p>
+<p>Python 2.7 and Python 3.X will both be supported for the forseeable future.</p>
+</div>
+<div class="section" id="rft1d-in-spm1d">
+<span id="label-rft1dinspm1d"></span><h2>rft1d in spm1d<a class="headerlink" href="#rft1d-in-spm1d" title="Permalink to this headline">¶</a></h2>
+<p>The <strong>rft1d</strong> package, which <strong>spm1d</strong> uses to compute probabilities, is now packaged inside <strong>spm1d</strong>.</p>
+<p>All <strong>rft1d</strong> updates will be pushed to <strong>spm1d</strong>, so now you only need to keep <strong>spm1d</strong> up-to-date.</p>
+</div>
+<div class="section" id="improved-anova-interface">
+<span id="label-improvedanovainferface"></span><h2>Improved ANOVA interface<a class="headerlink" href="#improved-anova-interface" title="Permalink to this headline">¶</a></h2>
+<p>Results from two- and three-way ANOVA are now much easier to summarize, visualize and navigate.</p>
+<p>Example (two-way ANOVA for 1D data):</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">dataset</span>      <span class="o">=</span> <span class="n">spm1d</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">uv1d</span><span class="o">.</span><span class="n">anova2</span><span class="o">.</span><span class="n">SPM1D_ANOVA2_2x2</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">Y</span><span class="p">,</span><span class="n">A</span><span class="p">,</span><span class="n">B</span>        <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">get_data</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Here Y is the data array, and A and B are vectors containing experimental condition labels as integers, one integer label for each row of Y.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">FF</span>           <span class="o">=</span> <span class="n">spm1d</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">anova2</span><span class="p">(</span><span class="n">Y</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">,</span> <span class="n">equal_var</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">FFi</span>          <span class="o">=</span> <span class="n">FF</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="mf">0.05</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span> <span class="n">FFi</span> <span class="p">)</span>
+</pre></div>
+</div>
+<p>The &#8220;print&#8221; statement prints the following ANOVA summary to the screen:</p>
+<div class="highlight-html"><div class="highlight"><pre><span></span>SPM{F} inference list
+   design    :  ANOVA2
+   nEffects  :  3
+Effects:
+   A     z=(1x101) array      df=(1, 16)   h0reject=True
+   B     z=(1x101) array      df=(1, 16)   h0reject=False
+   AB    z=(1x101) array      df=(1, 16)   h0reject=False
+</pre></div>
+</div>
+<p>The main effects A and B and the interaction effect AB are listed along with the degrees of freedom and the null hypothesis rejection decision.</p>
+<p>The specific effects can be accessed using either integers:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span> <span class="n">FAi</span>  <span class="o">=</span> <span class="n">FFi</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>   <span class="c1">#main effect of A</span>
+<span class="gp">&gt;&gt;&gt; </span> <span class="n">FBi</span>  <span class="o">=</span> <span class="n">FFi</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>   <span class="c1">#main effect of B</span>
+<span class="gp">&gt;&gt;&gt; </span> <span class="n">FABi</span> <span class="o">=</span> <span class="n">FFi</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>   <span class="c1">#interaction effect</span>
+</pre></div>
+</div>
+<p>or the new more intuitive interface:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span> <span class="n">FAi</span>  <span class="o">=</span> <span class="n">FFi</span><span class="p">[</span><span class="s1">&#39;A&#39;</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span> <span class="n">FBi</span>  <span class="o">=</span> <span class="n">FFi</span><span class="p">[</span><span class="s1">&#39;B&#39;</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span> <span class="n">FABi</span> <span class="o">=</span> <span class="n">FFi</span><span class="p">[</span><span class="s1">&#39;AB&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>Each effect itself contains detailed information:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span> <span class="nb">print</span><span class="p">(</span> <span class="n">FAi</span> <span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-html"><div class="highlight"><pre><span></span>SPM{F} inference field
+   SPM.effect    :   Main A                        #effect name
+   SPM.z         :  (1x101) raw test stat field    #test statistic field
+   SPM.df        :  (1, 16)                        #degrees of freedom
+   SPM.fwhm      :  14.28048                       #field smoothness
+   SPM.resels    :  (1, 7.00257)                   #resolution element counts
+Inference:
+   SPM.alpha     :  0.050                          #user-selected Type I error rate
+   SPM.zstar     :  12.52450                       #critical test statistic value
+   SPM.h0reject  :  True                           #null hypothesis rejection decision
+   SPM.p_set     :  0.008                          #set-level probability
+   SPM.p_cluster :  (0.008)                        #cluster-level probabilities
+</pre></div>
+</div>
+<p>Last, the results can plotted much more easily than before, now with a single command:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span> <span class="n">pyplot</span><span class="o">.</span><span class="n">close</span><span class="p">(</span><span class="s1">&#39;all&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span> <span class="n">FFi</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">plot_threshold_label</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">plot_p_values</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">autoset_ylim</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span> <span class="n">pyplot</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>(<a class="reference external" href=".//NewFeatures-1.py">Source code</a>, <a class="reference external" href=".//NewFeatures-1.png">png</a>, <a class="reference external" href=".//NewFeatures-1.hires.png">hires.png</a>, <a class="reference external" href=".//NewFeatures-1.pdf">pdf</a>)</p>
+<div class="figure">
+<img alt="_images/NewFeatures-1.png" src="_images/NewFeatures-1.png" />
+</div>
+</div>
+</div>
+<div class="section" id="new-features-version-0-3-2">
+<h1>New Features (version 0.3.2)<a class="headerlink" href="#new-features-version-0-3-2" title="Permalink to this headline">¶</a></h1>
 <p>Region-of-Interest (ROI) analysis.</p>
 <p>All statistical routines in <strong>spm1d.stats</strong> now accept a keyword &#8220;roi&#8221; for conducting ROI analysis.</p>
 <p>More details will be released after peer review.</p>
@@ -316,7 +515,7 @@
 <p>All <strong>spm1d.stats</strong> functions now support both 0D and 1D data data analysis.</p>
 <p>Example (0D):</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">yA</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">yB</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">yB</span> <span class="o">=</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">t</span> <span class="o">=</span> <span class="n">spm1d</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">ttest2</span><span class="p">(</span><span class="n">yA</span><span class="p">,</span> <span class="n">yB</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">ti</span> <span class="o">=</span> <span class="n">t</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="mf">0.05</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span> <span class="n">ti</span>  <span class="c1">#display inference results</span>
@@ -386,9 +585,9 @@
 <span class="n">ti</span><span class="o">.</span><span class="n">plot_p_values</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>(<a class="reference external" href=".//NewFeatures-1.py">Source code</a>, <a class="reference external" href=".//NewFeatures-1.png">png</a>, <a class="reference external" href=".//NewFeatures-1.hires.png">hires.png</a>, <a class="reference external" href=".//NewFeatures-1.pdf">pdf</a>)</p>
+<p>(<a class="reference external" href=".//NewFeatures-2.py">Source code</a>, <a class="reference external" href=".//NewFeatures-2.png">png</a>, <a class="reference external" href=".//NewFeatures-2.hires.png">hires.png</a>, <a class="reference external" href=".//NewFeatures-2.pdf">pdf</a>)</p>
 <div class="figure">
-<img alt="_images/NewFeatures-1.png" src="_images/NewFeatures-1.png" />
+<img alt="_images/NewFeatures-2.png" src="_images/NewFeatures-2.png" />
 </div>
 <p>This yields the following results:</p>
 <div class="code highlight-default"><div class="highlight"><pre><span></span><span class="n">SPM</span><span class="p">{</span><span class="n">T</span><span class="p">}</span> <span class="n">inference</span> <span class="n">field</span>
@@ -427,9 +626,9 @@
 <span class="n">ti</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>(<a class="reference external" href=".//NewFeatures-2.py">Source code</a>, <a class="reference external" href=".//NewFeatures-2.png">png</a>, <a class="reference external" href=".//NewFeatures-2.hires.png">hires.png</a>, <a class="reference external" href=".//NewFeatures-2.pdf">pdf</a>)</p>
+<p>(<a class="reference external" href=".//NewFeatures-3.py">Source code</a>, <a class="reference external" href=".//NewFeatures-3.png">png</a>, <a class="reference external" href=".//NewFeatures-3.hires.png">hires.png</a>, <a class="reference external" href=".//NewFeatures-3.pdf">pdf</a>)</p>
 <div class="figure">
-<img alt="_images/NewFeatures-2.png" src="_images/NewFeatures-2.png" />
+<img alt="_images/NewFeatures-3.png" src="_images/NewFeatures-3.png" />
 </div>
 <p>There appear to be two suprathreshold clusters, but Day 0 is homologous with Day 365, so in fact there is just one suprathreshold cluster.</p>
 <p>If the example above is regarded as circular, we get a single cluster-level p value of approximately 0.000003.</p>
@@ -485,7 +684,7 @@
     </p>
     <p>
         &copy; Copyright 2016, Todd Pataky.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.1.<br/>
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.4.1.<br/>
     </p>
   </div>
 </footer>

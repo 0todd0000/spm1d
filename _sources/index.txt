@@ -48,6 +48,8 @@ Submit bug reports and questions by creating a "New Issue" at the **spm1d** `Pyt
 Contents
 =====================================
 
+Current version: **0.4**  (released October 1, 2016)
+
 .. toctree::
 	:maxdepth: 3
 

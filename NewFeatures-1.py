@@ -1,6 +1,11 @@
+import numpy as np
+from matplotlib import pyplot
 import spm1d
-YA,YB = spm1d.data.uv1d.t2.SimulatedTwoLocalMax().get_data()
-t = spm1d.stats.ttest2(YB, YA)
-ti = t.inference(0.05)
-ti.plot()
-ti.plot_p_values()
+
+dataset      = spm1d.data.uv1d.anova2.SPM1D_ANOVA2_2x2()
+Y,A,B        = dataset.get_data()
+
+FF           = spm1d.stats.anova2(Y, A, B, equal_var=True)
+FFi          = FF.inference(0.05)
+
+FFi.plot(plot_threshold_label=True, plot_p_values=True, autoset_ylim=True)
