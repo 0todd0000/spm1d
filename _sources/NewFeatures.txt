@@ -7,11 +7,11 @@ New Features (version 0.4)
 The main new features in **spm1d** version 0.4 are listed below.
 
 * :ref:`Non-parametric inference <label-NonParametricInference>`
-* :ref:`Confidence intervals <label-NonParametricInference>`
-* :ref:`Normality tests <label-NonParametricInference>`
-* :ref:`Python 3 compatibility <label-NonParametricInference>`
-* :ref:`Python: rft1d inside spm1d <label-NonParametricInference>`
-* :ref:`Improved ANOVA interface <label-NonParametricInference>`
+* :ref:`Confidence intervals <label-ConfidenceIntervals>`
+* :ref:`Normality tests <label-NormalityTests>`
+* :ref:`Python 3 compatibility <label-Python3compatibility>`
+* :ref:`rft1d in spm1d <label-rft1dINspm1d>`
+* :ref:`Improved ANOVA interface <label-improvedANOVAinferface>`
 
 
 .. note:: Additional documentation will be added following peer review.

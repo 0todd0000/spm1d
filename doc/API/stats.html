@@ -83,7 +83,8 @@
   <ul class="dropdown-menu globaltoc"
       role="menu"
       aria-labelledby="dLabelGlobalToc"><ul>
-<li class="toctree-l1"><a class="reference internal" href="../../NewFeatures.html">New Features (version 0.3.2)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../NewFeatures.html">New Features (version 0.4)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../NewFeatures.html#new-features-version-0-3-2">New Features (version 0.3.2)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../NewFeatures.html#new-features-version-0-3-1">New Features (version 0.3.1)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../NewFeatures.html#new-features-version-0-3">New Features (version 0.3)</a></li>
 </ul>
@@ -277,7 +278,7 @@
 <h2>anova1rm<a class="headerlink" href="#anova1rm" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="spm1d.stats.anova1rm">
-<code class="descclassname">spm1d.stats.</code><code class="descname">anova1rm</code><span class="sig-paren">(</span><em>Y</em>, <em>A</em>, <em>SUBJ</em>, <em>equal_var=True</em>, <em>roi=None</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/spm1d/stats/anova/ui.html#anova1rm"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#spm1d.stats.anova1rm" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">spm1d.stats.</code><code class="descname">anova1rm</code><span class="sig-paren">(</span><em>Y</em>, <em>A</em>, <em>SUBJ</em>, <em>equal_var=True</em>, <em>roi=None</em>, <em>_force_approx0D=False</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/spm1d/stats/anova/ui.html#anova1rm"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#spm1d.stats.anova1rm" title="Permalink to this definition">¶</a></dt>
 <dd><p>One-way repeated-measures ANOVA.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -396,7 +397,7 @@
 <h2>anova2rm<a class="headerlink" href="#anova2rm" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="spm1d.stats.anova2rm">
-<code class="descclassname">spm1d.stats.</code><code class="descname">anova2rm</code><span class="sig-paren">(</span><em>Y</em>, <em>A</em>, <em>B</em>, <em>SUBJ</em>, <em>equal_var=True</em>, <em>roi=None</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/spm1d/stats/anova/ui.html#anova2rm"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#spm1d.stats.anova2rm" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">spm1d.stats.</code><code class="descname">anova2rm</code><span class="sig-paren">(</span><em>Y</em>, <em>A</em>, <em>B</em>, <em>SUBJ</em>, <em>equal_var=True</em>, <em>roi=None</em>, <em>_force_approx0D=False</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/spm1d/stats/anova/ui.html#anova2rm"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#spm1d.stats.anova2rm" title="Permalink to this definition">¶</a></dt>
 <dd><p>Two-way repeated-measures ANOVA.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -440,7 +441,7 @@
 <h2>anova2onerm<a class="headerlink" href="#anova2onerm" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="spm1d.stats.anova2onerm">
-<code class="descclassname">spm1d.stats.</code><code class="descname">anova2onerm</code><span class="sig-paren">(</span><em>Y</em>, <em>A</em>, <em>B</em>, <em>SUBJ</em>, <em>equal_var=True</em>, <em>roi=None</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/spm1d/stats/anova/ui.html#anova2onerm"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#spm1d.stats.anova2onerm" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">spm1d.stats.</code><code class="descname">anova2onerm</code><span class="sig-paren">(</span><em>Y</em>, <em>A</em>, <em>B</em>, <em>SUBJ</em>, <em>equal_var=True</em>, <em>roi=None</em>, <em>_force_approx0D=False</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/spm1d/stats/anova/ui.html#anova2onerm"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#spm1d.stats.anova2onerm" title="Permalink to this definition">¶</a></dt>
 <dd><p>Two-way ANOVA with repeated-measures on one factor.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -571,7 +572,7 @@
 <h2>anova3tworm<a class="headerlink" href="#anova3tworm" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="spm1d.stats.anova3tworm">
-<code class="descclassname">spm1d.stats.</code><code class="descname">anova3tworm</code><span class="sig-paren">(</span><em>Y</em>, <em>A</em>, <em>B</em>, <em>C</em>, <em>SUBJ</em>, <em>equal_var=True</em>, <em>roi=None</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/spm1d/stats/anova/ui.html#anova3tworm"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#spm1d.stats.anova3tworm" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">spm1d.stats.</code><code class="descname">anova3tworm</code><span class="sig-paren">(</span><em>Y</em>, <em>A</em>, <em>B</em>, <em>C</em>, <em>SUBJ</em>, <em>equal_var=True</em>, <em>roi=None</em>, <em>_force_approx0D=False</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/spm1d/stats/anova/ui.html#anova3tworm"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#spm1d.stats.anova3tworm" title="Permalink to this definition">¶</a></dt>
 <dd><p>Three-way ANOVA with repeated-measures on two factors.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -620,7 +621,7 @@
 <h2>anova3onerm<a class="headerlink" href="#anova3onerm" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="spm1d.stats.anova3onerm">
-<code class="descclassname">spm1d.stats.</code><code class="descname">anova3onerm</code><span class="sig-paren">(</span><em>Y</em>, <em>A</em>, <em>B</em>, <em>C</em>, <em>SUBJ</em>, <em>equal_var=True</em>, <em>roi=None</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/spm1d/stats/anova/ui.html#anova3onerm"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#spm1d.stats.anova3onerm" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">spm1d.stats.</code><code class="descname">anova3onerm</code><span class="sig-paren">(</span><em>Y</em>, <em>A</em>, <em>B</em>, <em>C</em>, <em>SUBJ</em>, <em>equal_var=True</em>, <em>roi=None</em>, <em>_force_approx0D=False</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/spm1d/stats/anova/ui.html#anova3onerm"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#spm1d.stats.anova3onerm" title="Permalink to this definition">¶</a></dt>
 <dd><p>Three-way ANOVA with repeated-measures on one factor.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />

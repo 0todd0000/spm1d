@@ -83,7 +83,8 @@
   <ul class="dropdown-menu globaltoc"
       role="menu"
       aria-labelledby="dLabelGlobalToc"><ul>
-<li class="toctree-l1"><a class="reference internal" href="../../NewFeatures.html">New Features (version 0.3.2)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../NewFeatures.html">New Features (version 0.4)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../NewFeatures.html#new-features-version-0-3-2">New Features (version 0.3.2)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../NewFeatures.html#new-features-version-0-3-1">New Features (version 0.3.1)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../NewFeatures.html#new-features-version-0-3">New Features (version 0.3)</a></li>
 </ul>
@@ -191,12 +192,12 @@
   <div class="section" id="module-spm1d.io">
 <span id="spm1d-io"></span><span id="label-api-io"></span><h1>spm1d.io<a class="headerlink" href="#module-spm1d.io" title="Permalink to this headline">¶</a></h1>
 <p>Input/Output module</p>
-<p>This module contains functions for loading and saving data, including
-SPMs.</p>
 <div class="admonition warning">
 <p class="first admonition-title">Warning</p>
-<p>most functions in <strong>spm1d.io</strong> are deprecated.</p>
-<p>Please use the following well-supported functions:</p>
+<p>This module has been deprecated and will be removed in the future.</p>
+<p>All spm1d procedures accept NumPy arrays directly, and NumPy load/save
+functionality has greatly improved in the last few years, so spm1d-specific
+data IO has been made redundant. Consider using the following functions:</p>
 <ul class="last simple">
 <li>numpy.loadtxt</li>
 <li>numpy.savetxt</li>
@@ -211,9 +212,8 @@ SPMs.</p>
 <h2>load<a class="headerlink" href="#load" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="spm1d.io.load">
-<code class="descclassname">spm1d.io.</code><code class="descname">load</code><span class="sig-paren">(</span><em>fname</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/spm1d/io.html#load"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#spm1d.io.load" title="Permalink to this definition">¶</a></dt>
-<dd><p>WARNING:  &#8220;spm1d.io.load&#8221; is deprecated and will be removed from future versions of spm1d.</p>
-</dd></dl>
+<code class="descclassname">spm1d.io.</code><code class="descname">load</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/spm1d/io.html#load"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#spm1d.io.load" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
 
 </div>
 <hr class="docutils" />
@@ -221,9 +221,8 @@ SPMs.</p>
 <h2>loadmat<a class="headerlink" href="#loadmat" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="spm1d.io.loadmat">
-<code class="descclassname">spm1d.io.</code><code class="descname">loadmat</code><span class="sig-paren">(</span><em>fname</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/spm1d/io.html#loadmat"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#spm1d.io.loadmat" title="Permalink to this definition">¶</a></dt>
-<dd><p>WARNING:  &#8220;spm1d.io.loadmat&#8221; is deprecated.  Use &#8220;scipy.io.loadmat&#8221; instead.</p>
-</dd></dl>
+<code class="descclassname">spm1d.io.</code><code class="descname">loadmat</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/spm1d/io.html#loadmat"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#spm1d.io.loadmat" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
 
 </div>
 <hr class="docutils" />
@@ -231,9 +230,8 @@ SPMs.</p>
 <h2>loadtxt<a class="headerlink" href="#loadtxt" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="spm1d.io.loadtxt">
-<code class="descclassname">spm1d.io.</code><code class="descname">loadtxt</code><span class="sig-paren">(</span><em>fname</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/spm1d/io.html#loadtxt"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#spm1d.io.loadtxt" title="Permalink to this definition">¶</a></dt>
-<dd><p>WARNING:  &#8220;spm1d.io.loadtxt&#8221; is deprecated.  Use &#8220;numpy.loadtxt&#8221; instead.</p>
-</dd></dl>
+<code class="descclassname">spm1d.io.</code><code class="descname">loadtxt</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/spm1d/io.html#loadtxt"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#spm1d.io.loadtxt" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
 
 </div>
 <hr class="docutils" />
@@ -241,28 +239,8 @@ SPMs.</p>
 <h2>loadspm<a class="headerlink" href="#loadspm" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="spm1d.io.loadspm">
-<code class="descclassname">spm1d.io.</code><code class="descname">loadspm</code><span class="sig-paren">(</span><em>fname</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/spm1d/io.html#loadspm"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#spm1d.io.loadspm" title="Permalink to this definition">¶</a></dt>
-<dd><p>Load an SPM object from disk.
-The SPM file should have been saved in zipped NumPy (NPZ) format using <strong>spm1d.io.savespm</strong>.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"></td>
-</tr>
-</tbody>
-</table>
-<p>fname : a string specifying the file name</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"></td>
-</tr>
-</tbody>
-</table>
-<p>An <strong>spm1d</strong> SPM object.</p>
-</dd></dl>
+<code class="descclassname">spm1d.io.</code><code class="descname">loadspm</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/spm1d/io.html#loadspm"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#spm1d.io.loadspm" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
 
 </div>
 <hr class="docutils" />
@@ -270,9 +248,8 @@ The SPM file should have been saved in zipped NumPy (NPZ) format using <strong>s
 <h2>save<a class="headerlink" href="#save" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="spm1d.io.save">
-<code class="descclassname">spm1d.io.</code><code class="descname">save</code><span class="sig-paren">(</span><em>fname</em>, <em>Y</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/spm1d/io.html#save"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#spm1d.io.save" title="Permalink to this definition">¶</a></dt>
-<dd><p>WARNING:  &#8220;spm1d.io.save&#8221; is deprecated and will be removed from future versions of spm1d.</p>
-</dd></dl>
+<code class="descclassname">spm1d.io.</code><code class="descname">save</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/spm1d/io.html#save"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#spm1d.io.save" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
 
 </div>
 <hr class="docutils" />
@@ -280,9 +257,8 @@ The SPM file should have been saved in zipped NumPy (NPZ) format using <strong>s
 <h2>savemat<a class="headerlink" href="#savemat" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="spm1d.io.savemat">
-<code class="descclassname">spm1d.io.</code><code class="descname">savemat</code><span class="sig-paren">(</span><em>fname</em>, <em>Y</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/spm1d/io.html#savemat"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#spm1d.io.savemat" title="Permalink to this definition">¶</a></dt>
-<dd><p>WARNING:  &#8220;spm1d.io.savemat&#8221; is deprecated.  Use &#8220;scipy.io.savemat&#8221; instead.</p>
-</dd></dl>
+<code class="descclassname">spm1d.io.</code><code class="descname">savemat</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/spm1d/io.html#savemat"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#spm1d.io.savemat" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
 
 </div>
 <hr class="docutils" />
@@ -290,9 +266,8 @@ The SPM file should have been saved in zipped NumPy (NPZ) format using <strong>s
 <h2>savetxt<a class="headerlink" href="#savetxt" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="spm1d.io.savetxt">
-<code class="descclassname">spm1d.io.</code><code class="descname">savetxt</code><span class="sig-paren">(</span><em>fname</em>, <em>Y</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/spm1d/io.html#savetxt"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#spm1d.io.savetxt" title="Permalink to this definition">¶</a></dt>
-<dd><p>WARNING:  &#8220;spm1d.io.savetxt&#8221; is deprecated.  Use &#8220;numpy.savetxt&#8221; instead.</p>
-</dd></dl>
+<code class="descclassname">spm1d.io.</code><code class="descname">savetxt</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/spm1d/io.html#savetxt"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#spm1d.io.savetxt" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
 
 </div>
 <hr class="docutils" />
@@ -300,19 +275,8 @@ The SPM file should have been saved in zipped NumPy (NPZ) format using <strong>s
 <h2>savespm<a class="headerlink" href="#savespm" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="spm1d.io.savespm">
-<code class="descclassname">spm1d.io.</code><code class="descname">savespm</code><span class="sig-paren">(</span><em>fname</em>, <em>spm</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/spm1d/io.html#savespm"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#spm1d.io.savespm" title="Permalink to this definition">¶</a></dt>
-<dd><p>Save an SPM object in zipped NumPy (NPZ) format. Once saved an SPM can be re-loaded using <strong>spm1d.io.loadspm</strong></p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"></td>
-</tr>
-</tbody>
-</table>
-<p>fname : a string specifying the file name (with extension .npz)</p>
-<p>spm   : an SPM object, as returned from a statistical test in <strong>spm1d.stats</strong></p>
-</dd></dl>
+<code class="descclassname">spm1d.io.</code><code class="descname">savespm</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/spm1d/io.html#savespm"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#spm1d.io.savespm" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
 
 </div>
 </div>

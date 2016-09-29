@@ -155,19 +155,19 @@
       
   <h1>Source code for spm1d.stats.t</h1><div class="highlight"><pre>
 <span></span><span class="sd">&#39;&#39;&#39;</span>
-<span class="sd">One-sample statistical tests.</span>
+<span class="sd">One- and two sample tests.</span>
 <span class="sd">&#39;&#39;&#39;</span>
 
 <span class="c1"># Copyright (C) 2016  Todd Pataky</span>
-<span class="c1"># t.py version: 0.3.2 (2016/01/03)</span>
+
 
 
 
 
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
 <span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span><span class="p">,</span> <span class="n">cm</span> <span class="k">as</span> <span class="n">colormaps</span>
-<span class="kn">import</span> <span class="nn">_datachecks</span><span class="o">,</span> <span class="nn">_reml</span><span class="o">,</span> <span class="nn">_spm</span>
-<span class="kn">import</span> <span class="nn">rft1d</span>
+<span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">_datachecks</span><span class="p">,</span> <span class="n">_reml</span><span class="p">,</span> <span class="n">_spm</span>
+<span class="kn">from</span> <span class="nn">..</span> <span class="kn">import</span> <span class="n">rft1d</span>
 
 
 <span class="n">rank</span>   <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">matrix_rank</span>
@@ -212,7 +212,7 @@
 	<span class="c1">### compute t statistic</span>
 	<span class="n">t</span>      <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">c</span><span class="o">.</span><span class="n">T</span><span class="o">*</span><span class="n">b</span><span class="p">)</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span>  <span class="o">/</span>   <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">sigma2</span><span class="o">*</span><span class="nb">float</span><span class="p">(</span><span class="n">c</span><span class="o">.</span><span class="n">T</span><span class="o">*</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">inv</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">T</span><span class="o">*</span><span class="n">X</span><span class="p">))</span><span class="o">*</span><span class="n">c</span><span class="p">))</span> <span class="o">+</span> <span class="n">eps</span><span class="p">)</span>
 	<span class="c1">### estimate df due to non-sphericity:</span>
-	<span class="k">if</span> <span class="n">Q</span><span class="o">!=</span><span class="bp">None</span><span class="p">:</span>
+	<span class="k">if</span> <span class="n">Q</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
 		<span class="n">df</span> <span class="o">=</span> <span class="n">_reml</span><span class="o">.</span><span class="n">estimate_df_T</span><span class="p">(</span><span class="n">Y</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">eij</span><span class="p">,</span> <span class="n">Q</span><span class="p">)</span>
 	<span class="n">eij</span>    <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">eij</span><span class="p">)</span>
 	<span class="k">if</span> <span class="n">Y</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
@@ -228,9 +228,11 @@
 			<span class="n">resels</span> <span class="o">=</span> <span class="n">rft1d</span><span class="o">.</span><span class="n">geom</span><span class="o">.</span><span class="n">resel_counts</span><span class="p">(</span><span class="n">mask</span><span class="p">,</span> <span class="n">fwhm</span><span class="p">,</span> <span class="n">element_based</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
 			<span class="n">t</span>      <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ma</span><span class="o">.</span><span class="n">masked_array</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">logical_not</span><span class="p">(</span><span class="n">roi</span><span class="p">))</span>
 		<span class="c1">### assemble SPM{t} object</span>
-		<span class="n">t</span>      <span class="o">=</span> <span class="n">_spm</span><span class="o">.</span><span class="n">SPM_T</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">df</span><span class="p">),</span> <span class="n">fwhm</span><span class="p">,</span> <span class="n">resels</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">X</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">b</span><span class="p">),</span> <span class="n">eij</span><span class="p">,</span> <span class="n">roi</span><span class="o">=</span><span class="n">roi</span><span class="p">)</span>
+		<span class="n">s</span>      <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">sigma2</span><span class="p">)</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span>
+		<span class="n">t</span>      <span class="o">=</span> <span class="n">_spm</span><span class="o">.</span><span class="n">SPM_T</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">df</span><span class="p">),</span> <span class="n">fwhm</span><span class="p">,</span> <span class="n">resels</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">X</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">b</span><span class="p">),</span> <span class="n">eij</span><span class="p">,</span> <span class="n">sigma2</span><span class="o">=</span><span class="n">s</span><span class="p">,</span> <span class="n">roi</span><span class="o">=</span><span class="n">roi</span><span class="p">)</span>
 	<span class="k">else</span><span class="p">:</span>
-		<span class="n">t</span>      <span class="o">=</span> <span class="n">_spm</span><span class="o">.</span><span class="n">SPM0D_T</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">df</span><span class="p">))</span>
+		<span class="n">b</span><span class="p">,</span><span class="n">r</span><span class="p">,</span><span class="n">s2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">b</span><span class="p">)</span><span class="o">.</span><span class="n">flatten</span><span class="p">(),</span> <span class="n">eij</span><span class="o">.</span><span class="n">flatten</span><span class="p">(),</span> <span class="nb">float</span><span class="p">(</span><span class="n">sigma2</span><span class="p">)</span>
+		<span class="n">t</span>      <span class="o">=</span> <span class="n">_spm</span><span class="o">.</span><span class="n">SPM0D_T</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">df</span><span class="p">),</span> <span class="n">beta</span><span class="o">=</span><span class="n">b</span><span class="p">,</span> <span class="n">residuals</span><span class="o">=</span><span class="n">r</span><span class="p">,</span> <span class="n">sigma2</span><span class="o">=</span><span class="n">s2</span><span class="p">)</span>
 	<span class="k">return</span> <span class="n">t</span></div>
 
 
@@ -263,7 +265,7 @@
 <span class="sd">		- the correlation coefficient is retrievable as &quot;t.r&quot; where &quot;t&quot; is the output from **spm1d.stats.regress**</span>
 <span class="sd">		- statistical inferences are based on *t*, not on *r*</span>
 <span class="sd">	&#39;&#39;&#39;</span>
-	<span class="n">Y</span>              <span class="o">=</span> <span class="n">_datachecks</span><span class="o">.</span><span class="n">asmatrix</span><span class="p">(</span><span class="n">Y</span><span class="p">)</span>
+	<span class="n">Y</span>              <span class="o">=</span> <span class="n">_datachecks</span><span class="o">.</span><span class="n">asmatrix</span><span class="p">(</span><span class="n">Y</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
 	<span class="n">_datachecks</span><span class="o">.</span><span class="n">check</span><span class="p">(</span><span class="s1">&#39;regress&#39;</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
 	<span class="n">J</span>              <span class="o">=</span> <span class="n">Y</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 	<span class="n">X</span>              <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="n">J</span><span class="p">,</span><span class="mi">2</span><span class="p">))</span>
@@ -300,11 +302,11 @@
 <span class="sd">	&gt;&gt;&gt; ti = t.inference(alpha=0.05, two_tailed=True)</span>
 <span class="sd">	&gt;&gt;&gt; ti.plot()</span>
 <span class="sd">	&#39;&#39;&#39;</span>
-	<span class="n">Y</span>       <span class="o">=</span> <span class="n">_datachecks</span><span class="o">.</span><span class="n">asmatrix</span><span class="p">(</span><span class="n">Y</span><span class="p">)</span>
+	<span class="n">Y</span>       <span class="o">=</span> <span class="n">_datachecks</span><span class="o">.</span><span class="n">asmatrix</span><span class="p">(</span><span class="n">Y</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
 	<span class="n">_datachecks</span><span class="o">.</span><span class="n">check</span><span class="p">(</span><span class="s1">&#39;ttest&#39;</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">y0</span><span class="p">)</span>
 	<span class="n">J</span>       <span class="o">=</span> <span class="n">Y</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 	<span class="n">Ytemp</span>   <span class="o">=</span> <span class="n">Y</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
-	<span class="k">if</span> <span class="n">y0</span><span class="o">!=</span><span class="bp">None</span><span class="p">:</span>
+	<span class="k">if</span> <span class="n">y0</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
 		<span class="n">Ytemp</span> <span class="o">-=</span> <span class="n">y0</span>
 	<span class="n">X</span>       <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="n">J</span><span class="p">,</span><span class="mi">1</span><span class="p">))</span>
 	<span class="n">c</span>       <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">)</span>
@@ -335,7 +337,7 @@
 <span class="sd">	&gt;&gt;&gt; ti = t.inference(alpha=0.05)</span>
 <span class="sd">	&gt;&gt;&gt; ti.plot()</span>
 <span class="sd">	&#39;&#39;&#39;</span>
-	<span class="n">YA</span><span class="p">,</span><span class="n">YB</span>    <span class="o">=</span> <span class="n">_datachecks</span><span class="o">.</span><span class="n">asmatrix</span><span class="p">(</span><span class="n">YA</span><span class="p">),</span> <span class="n">_datachecks</span><span class="o">.</span><span class="n">asmatrix</span><span class="p">(</span><span class="n">YB</span><span class="p">)</span>
+	<span class="n">YA</span><span class="p">,</span><span class="n">YB</span>    <span class="o">=</span> <span class="n">_datachecks</span><span class="o">.</span><span class="n">asmatrix</span><span class="p">(</span><span class="n">YA</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">),</span> <span class="n">_datachecks</span><span class="o">.</span><span class="n">asmatrix</span><span class="p">(</span><span class="n">YB</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
 	<span class="n">_datachecks</span><span class="o">.</span><span class="n">check</span><span class="p">(</span><span class="s1">&#39;ttest_paired&#39;</span><span class="p">,</span> <span class="n">YA</span><span class="p">,</span> <span class="n">YB</span><span class="p">)</span>
 	<span class="k">return</span> <span class="n">ttest</span><span class="p">(</span><span class="n">YA</span><span class="o">-</span><span class="n">YB</span><span class="p">,</span> <span class="n">roi</span><span class="o">=</span><span class="n">roi</span><span class="p">)</span></div>
 
@@ -365,7 +367,7 @@
 <span class="sd">	&gt;&gt;&gt; ti.plot()</span>
 <span class="sd">	&#39;&#39;&#39;</span>
 	<span class="c1">### check data:</span>
-	<span class="n">YA</span><span class="p">,</span><span class="n">YB</span>    <span class="o">=</span> <span class="n">_datachecks</span><span class="o">.</span><span class="n">asmatrix</span><span class="p">(</span><span class="n">YA</span><span class="p">),</span> <span class="n">_datachecks</span><span class="o">.</span><span class="n">asmatrix</span><span class="p">(</span><span class="n">YB</span><span class="p">)</span>
+	<span class="n">YA</span><span class="p">,</span><span class="n">YB</span>    <span class="o">=</span> <span class="n">_datachecks</span><span class="o">.</span><span class="n">asmatrix</span><span class="p">(</span><span class="n">YA</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">),</span> <span class="n">_datachecks</span><span class="o">.</span><span class="n">asmatrix</span><span class="p">(</span><span class="n">YB</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
 	<span class="n">_datachecks</span><span class="o">.</span><span class="n">check</span><span class="p">(</span><span class="s1">&#39;ttest2&#39;</span><span class="p">,</span> <span class="n">YA</span><span class="p">,</span> <span class="n">YB</span><span class="p">)</span>
 	<span class="c1">### assemble data</span>
 	<span class="n">JA</span><span class="p">,</span><span class="n">JB</span>    <span class="o">=</span> <span class="n">YA</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">YB</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
