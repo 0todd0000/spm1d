@@ -12,8 +12,8 @@
     
     <link rel="stylesheet" href="../_static/basic.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/bootstrap-3.2.0/css/bootstrap.min.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/bootstrap-3.2.0/css/bootstrap-theme.min.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/bootstrap-3.3.4/css/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/bootstrap-3.3.4/css/bootstrap-theme.min.css" type="text/css" />
     <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
     
     <script type="text/javascript">
@@ -30,7 +30,7 @@
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <script type="text/javascript" src="../_static/js/jquery-1.11.0.min.js"></script>
     <script type="text/javascript" src="../_static/js/jquery-fix.js"></script>
-    <script type="text/javascript" src="../_static/bootstrap-3.2.0/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-3.3.4/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="../_static/bootstrap-sphinx.js"></script>
     <link rel="top" title="spm1d 0.4 documentation" href="../index.html" />
     <link rel="up" title="Downloads" href="../Downloads.html" />
@@ -83,7 +83,8 @@
   <ul class="dropdown-menu globaltoc"
       role="menu"
       aria-labelledby="dLabelGlobalToc"><ul>
-<li class="toctree-l1"><a class="reference internal" href="../NewFeatures.html">New Features (version 0.3.2)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../NewFeatures.html">New Features (version 0.4)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../NewFeatures.html#new-features-version-0-3-2">New Features (version 0.3.2)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../NewFeatures.html#new-features-version-0-3-1">New Features (version 0.3.1)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../NewFeatures.html#new-features-version-0-3">New Features (version 0.3)</a></li>
 </ul>
@@ -97,7 +98,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../DocumentationMatlab.html">Documentation (Matlab)</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../References.html">References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../References.html">ReferencesA</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../Workshops.html">Workshops</a></li>
@@ -160,11 +161,11 @@
 </ul>
 
   <li>
-    <a href="../Downloads.html" title="Previous Chapter: Downloads"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm">&laquo; Downloads</span>
+    <a href="../Downloads.html" title="Previous Chapter: Downloads"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; Downloads</span>
     </a>
   </li>
   <li>
-    <a href="InstallationMatlab.html" title="Next Chapter: Detailed installation (MATLAB)"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm">Detailed inst... &raquo;</span>
+    <a href="InstallationMatlab.html" title="Next Chapter: Detailed installation (MATLAB)"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">Detailed inst... &raquo;</span>
     </a>
   </li>
 <form action="../search.html" method="get">
@@ -176,7 +177,7 @@
 </form>
         </div>
       </div>
-    <div class="col-md-12">
+    <div class="col-md-12 content">
       
   <div class="section" id="detailed-installation-python">
 <span id="label-installationpython"></span><h1>Detailed installation (Python)<a class="headerlink" href="#detailed-installation-python" title="Permalink to this headline">¶</a></h1>
@@ -188,21 +189,15 @@
 <li><a class="reference external" href="http://numpy.org">NumPy 1.9</a></li>
 <li><a class="reference external" href="http://scipy.org">SciPy 0.15</a></li>
 <li><a class="reference external" href="http://matplotlib.org">Matplotlib 1.4</a></li>
-<li><a class="reference external" href="http://www.spm1d.org/rft1d/">rftd1d 0.1</a></li>
 </ul>
 <p>Newer or older versions may work but have not been tested.</p>
 <p>Once those packages are installed, open a Terminal (Linux, Mac) or a Command Prompt (Windows) and enter:</p>
 <div class="code highlight-default"><div class="highlight"><pre><span></span><span class="n">easy_install</span> <span class="n">spm1d</span>
+
+<span class="n">To</span> <span class="n">check</span> <span class="n">installation</span><span class="p">:</span>
+
+<span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">spm1d</span>
 </pre></div>
-</div>
-<div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p>Both <strong>spm1d</strong> and <a class="reference external" href="http://www.spm1d.org/rft1d">rft1d</a> will be installed.</p>
-<p>To check installation:</p>
-<div class="last highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">spm1d</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">rft1d</span>
-</pre></div>
-</div>
 </div>
 </div>
 <div class="section" id="new-to-python">
@@ -219,9 +214,8 @@
 <div class="code highlight-default"><div class="highlight"><pre><span></span><span class="n">ipython</span>
 </pre></div>
 </div>
-<p>To check installation enter the following commands at the Python command prompt:</p>
+<p>To check installation enter the following command at the Python command prompt:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">spm1d</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">rft1d</span>
 </pre></div>
 </div>
 <p>If there are no error messages generated then congratulations, you&#8217;re ready to go!</p>
@@ -266,7 +260,7 @@ If you are new to Python the best place to start might be the main Python docume
     </p>
     <p>
         &copy; Copyright 2016, Todd Pataky.<br/>
-      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.4.1.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.1.<br/>
     </p>
   </div>
 </footer>

@@ -17,6 +17,8 @@ References
 1D SPM literature
 -----------------------------
 
+* Pataky TC, Vanrenterghem J, Robinson MA (2016). `Region-of-interest analyses of one-dimensional biomechanical trajectories: bridging 0D and 1D methods, augmenting statistical power <https://www.researchgate.net/publication/309630403_Region-of-interest_analyses_of_one-dimensional_biomechanical_trajectories_bridging_0D_and_1D_theory_augmenting_statistical_power>`_. PeerJ 4: e2652, doi.org/10.7717/peerj.2652.
+
 * Pataky TC, Vanrenterghem J, Robinson MA (2016). `The probability of false positives in zero-dimensional analyses of one-dimensional kinematic, force and EMG trajectories <https://www.researchgate.net/publication/299433470_The_probability_of_false_positives_in_zero-dimensional_analyses_of_one-dimensional_kinematic_force_and_EMG_trajectories>`_. *Journal of Biomechanics* **49(9)**: 1468-1476.
 
 * Pataky TC (2016). `rft1d: Smooth one-dimensional random field upcrossing probabilities in Python <http://dx.doi.org/10.18637/jss.v071.i07>`_, *Journal of Statistical Software*, **71(7)**: i07.

@@ -15,7 +15,6 @@ ________________
 * `NumPy 1.9 <http://numpy.org>`_
 * `SciPy 0.15 <http://scipy.org>`_
 * `Matplotlib 1.4 <http://matplotlib.org>`_
-* `rftd1d 0.1 <http://www.spm1d.org/rft1d/>`_
 
 Newer or older versions may work but have not been tested.
 
@@ -25,12 +24,9 @@ Once those packages are installed, open a Terminal (Linux, Mac) or a Command Pro
 
 	easy_install spm1d
 
-.. note::  Both **spm1d** and `rft1d <http://www.spm1d.org/rft1d>`_ will be installed.
-
 	To check installation:
 
 	>>> import spm1d
-	>>> import rft1d
 
 
 
@@ -61,10 +57,10 @@ After that command finishes running, launch an interactive Python session by ent
 
 	ipython
 
-To check installation enter the following commands at the Python command prompt:
+To check installation enter the following command at the Python command prompt:
 
 	>>> import spm1d
-	>>> import rft1d
+
 
 If there are no error messages generated then congratulations, you're ready to go!
 

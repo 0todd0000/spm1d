@@ -261,7 +261,12 @@ Region-of-Interest (ROI) analysis.
 
 All statistical routines in **spm1d.stats** now accept a keyword "roi" for conducting ROI analysis.
 
-More details will be released after peer review.
+.. note::
+	Update!  (2016.11.02)  ROI analysis details are available in:
+	
+	Pataky TC, Vanrenterghem J, Robinson MA (2016). `Region-of-interest analyses of one-dimensional biomechanical trajectories: bridging 0D and 1D methods, augmenting statistical power <https://www.researchgate.net/publication/309630403_Region-of-interest_analyses_of_one-dimensional_biomechanical_trajectories_bridging_0D_and_1D_theory_augmenting_statistical_power>`_. PeerJ 4: e2652, doi.org/10.7717/peerj.2652.
+	
+	See the Appendix for a description of **spm1d**'s interface for ROI analysis. 
 
 
 

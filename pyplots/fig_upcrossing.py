@@ -3,7 +3,7 @@ import numpy as np
 from matplotlib import pyplot
 from matplotlib.patches import Polygon
 from matplotlib.collections import PatchCollection
-import rft1d
+from spm1d import rft1d
 
 
 
