@@ -21,7 +21,7 @@ Version: 0.4.0 (2016/10/01)
 '''
 
 
-__version__ = '0.4.0 (2016/10/01)'  #pre-release 2016.09.29
+__version__ = '0.4.1 (2016/12/09)'
 
 
 __all__ = ['data', 'io', 'plot', 'rft1d', 'stats', 'util']

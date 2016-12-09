@@ -595,8 +595,9 @@ class _SPMinference(_SPM):
 			self.set_effect_label( spm.effect )
 
 	def __repr__(self):
+		stat     = 't' if self.STAT == 'T' else self.STAT
 		s        = ''
-		s       += 'SPM{%s} inference field\n' %self.STAT
+		s       += 'SPM{%s} inference field\n' %stat
 		if self.isanova:
 			s   += '   SPM.effect    :   %s\n' %self.effect
 		s       += '   SPM.z         :  (1x%d) raw test stat field\n' %self.Q
@@ -627,7 +628,7 @@ class _SPMinference(_SPM):
 
 
 class SPMi_T(_SPMinference):
-	'''An SPM{T} inference continuum.'''
+	'''An SPM{t} inference continuum.'''
 	pass
 class SPMi_F(_SPMF, _SPMinference):
 	'''An SPM{F} inference continuum.'''
