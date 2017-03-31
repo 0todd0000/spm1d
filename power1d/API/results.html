@@ -1,0 +1,488 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>power1d.results &#8212; power1d 0.1 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/pyramid.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="power1d.roi" href="roi.html" />
+    <link rel="prev" title="power1d.random" href="random.html" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Neuton&amp;subset=latin" type="text/css" media="screen" charset="utf-8" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nobile:regular,italic,bold,bolditalic&amp;subset=latin" type="text/css" media="screen" charset="utf-8" />
+<!--[if lte IE 6]>
+<link rel="stylesheet" href="../_static/ie6.css" type="text/css" media="screen" charset="utf-8" />
+<![endif]-->
+
+  </head>
+  <body role="document">
+<div class="header" role="banner">
+  <div class="logo">
+    <a href="../index.html">
+      <img class="logo" src="../_static/logo.png" border="0" alt="Logo"/>
+    </a>
+  </div>
+</div>
+
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="roi.html" title="power1d.roi"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="random.html" title="power1d.random"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">power1d 0.1 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../API.html" accesskey="U">API</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="module-power1d.results">
+<span id="power1d-results"></span><span id="label-api-results"></span><h1>power1d.results<a class="headerlink" href="#module-power1d.results" title="Permalink to this headline">¶</a></h1>
+<p>A module for probing, displaying and plotting <strong>power1d</strong>
+simulation results.</p>
+<p>This module contains the <strong>SimulationResults</strong> class which
+is meant to be instantiated only by <strong>power1d</strong> and not by
+the user. However, once instantiated the user can run
+a variety of analyses using the methods described below.</p>
+<p>Importantly, since simualations can take a long time to run
+users are encouraged to save <strong>SimulationResults</strong> objects
+using the &#8220;save&#8221; method and re-loaded using the
+<strong>load_simulation_results</strong> method of an
+<strong>ExperimentSimulator</strong> object.</p>
+<p>Example:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span>
+<span class="kn">import</span> <span class="nn">power1d</span>
+
+<span class="n">J</span>        <span class="o">=</span> <span class="mi">8</span>
+<span class="n">Q</span>        <span class="o">=</span> <span class="mi">101</span>
+<span class="n">baseline</span> <span class="o">=</span> <span class="n">power1d</span><span class="o">.</span><span class="n">geom</span><span class="o">.</span><span class="n">Null</span><span class="p">(</span> <span class="n">Q</span><span class="o">=</span><span class="n">Q</span> <span class="p">)</span>
+<span class="n">signal0</span>  <span class="o">=</span> <span class="n">power1d</span><span class="o">.</span><span class="n">geom</span><span class="o">.</span><span class="n">Null</span><span class="p">(</span> <span class="n">Q</span><span class="o">=</span><span class="n">Q</span> <span class="p">)</span>
+<span class="n">signal1</span>  <span class="o">=</span> <span class="n">power1d</span><span class="o">.</span><span class="n">geom</span><span class="o">.</span><span class="n">GaussianPulse</span><span class="p">(</span> <span class="n">Q</span><span class="o">=</span><span class="n">Q</span><span class="p">,</span> <span class="n">q</span><span class="o">=</span><span class="mi">40</span><span class="p">,</span> <span class="n">fwhm</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span> <span class="n">amp</span><span class="o">=</span><span class="mf">1.0</span> <span class="p">)</span>
+<span class="n">noise</span>    <span class="o">=</span> <span class="n">power1d</span><span class="o">.</span><span class="n">noise</span><span class="o">.</span><span class="n">Gaussian</span><span class="p">(</span> <span class="n">J</span><span class="o">=</span><span class="n">J</span><span class="p">,</span> <span class="n">Q</span><span class="o">=</span><span class="n">Q</span><span class="p">,</span> <span class="n">mu</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">sigma</span><span class="o">=</span><span class="mf">0.3</span> <span class="p">)</span>
+<span class="n">model0</span>   <span class="o">=</span> <span class="n">power1d</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">DataSample</span><span class="p">(</span><span class="n">baseline</span><span class="p">,</span> <span class="n">signal0</span><span class="p">,</span> <span class="n">noise</span><span class="p">,</span> <span class="n">J</span><span class="o">=</span><span class="n">J</span><span class="p">)</span>
+<span class="n">model1</span>   <span class="o">=</span> <span class="n">power1d</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">DataSample</span><span class="p">(</span><span class="n">baseline</span><span class="p">,</span> <span class="n">signal1</span><span class="p">,</span> <span class="n">noise</span><span class="p">,</span> <span class="n">J</span><span class="o">=</span><span class="n">J</span><span class="p">)</span>
+
+<span class="n">emodel0</span>  <span class="o">=</span> <span class="n">power1d</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">Experiment</span><span class="p">(</span> <span class="p">[</span><span class="n">model0</span><span class="p">,</span> <span class="n">model0</span><span class="p">],</span> <span class="n">fn</span><span class="o">=</span><span class="n">power1d</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">t_2sample</span> <span class="p">)</span>
+<span class="n">emodel1</span>  <span class="o">=</span> <span class="n">power1d</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">Experiment</span><span class="p">(</span> <span class="p">[</span><span class="n">model0</span><span class="p">,</span> <span class="n">model1</span><span class="p">],</span> <span class="n">fn</span><span class="o">=</span><span class="n">power1d</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">t_2sample</span> <span class="p">)</span>
+
+<span class="n">sim</span>      <span class="o">=</span> <span class="n">power1d</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">ExperimentSimulator</span><span class="p">(</span><span class="n">emodel0</span><span class="p">,</span> <span class="n">emodel1</span><span class="p">)</span>
+<span class="n">results</span>  <span class="o">=</span> <span class="n">sim</span><span class="o">.</span><span class="n">simulate</span><span class="p">(</span><span class="n">iterations</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span> <span class="n">progress_bar</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+
+<span class="n">pyplot</span><span class="o">.</span><span class="n">close</span><span class="p">(</span><span class="s1">&#39;all&#39;</span><span class="p">)</span>
+<span class="n">results</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>(<a class="reference external" href="../API/results-1.py">Source code</a>, <a class="reference external" href="../API/results-1.png">png</a>, <a class="reference external" href="../API/results-1.hires.png">hires.png</a>, <a class="reference external" href="../API/results-1.pdf">pdf</a>)</p>
+<div class="figure">
+<img alt="../_images/results-1.png" src="../_images/results-1.png" />
+</div>
+<p>Below attributes and methods can be distinguished as follows:</p>
+<ul class="simple">
+<li>attribute names are followed by &#8220;= None&#8221;</li>
+<li>method names are followed by &#8220;( )&#8221; with arguments inside the parentheses, and all methods also have code snippets attached.</li>
+</ul>
+<div class="section" id="simulationresults">
+<h2>SimulationResults<a class="headerlink" href="#simulationresults" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="power1d.results.SimulationResults">
+<em class="property">class </em><code class="descclassname">power1d.results.</code><code class="descname">SimulationResults</code><span class="sig-paren">(</span><em>model0</em>, <em>model1</em>, <em>Z0</em>, <em>Z1</em>, <em>dt</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/power1d/results.html#SimulationResults"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#power1d.results.SimulationResults" title="Permalink to this definition">¶</a></dt>
+<dd><p>A class containing <strong>power1d</strong> simulation results
+including distributions and derived probabilities.</p>
+<dl class="attribute">
+<dt id="power1d.results.SimulationResults.Q">
+<code class="descname">Q</code><em class="property"> = None</em><a class="headerlink" href="#power1d.results.SimulationResults.Q" title="Permalink to this definition">¶</a></dt>
+<dd><p>continuum size</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="power1d.results.SimulationResults.Z0">
+<code class="descname">Z0</code><em class="property"> = None</em><a class="headerlink" href="#power1d.results.SimulationResults.Z0" title="Permalink to this definition">¶</a></dt>
+<dd><p>test statistic continua (&#8220;null&#8221; experiment)</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="power1d.results.SimulationResults.Z1">
+<code class="descname">Z1</code><em class="property"> = None</em><a class="headerlink" href="#power1d.results.SimulationResults.Z1" title="Permalink to this definition">¶</a></dt>
+<dd><p>test statistic continua (&#8220;alternative&#8221; experiment)</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="power1d.results.SimulationResults.alpha">
+<code class="descname">alpha</code><em class="property"> = None</em><a class="headerlink" href="#power1d.results.SimulationResults.alpha" title="Permalink to this definition">¶</a></dt>
+<dd><p>Type I error rate (default 0.05)</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="power1d.results.SimulationResults.coi">
+<code class="descname">coi</code><em class="property"> = None</em><a class="headerlink" href="#power1d.results.SimulationResults.coi" title="Permalink to this definition">¶</a></dt>
+<dd><p>continuum centers-of-interest (if any) for which summary powers will be displayed when printing results</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="power1d.results.SimulationResults.coir">
+<code class="descname">coir</code><em class="property"> = None</em><a class="headerlink" href="#power1d.results.SimulationResults.coir" title="Permalink to this definition">¶</a></dt>
+<dd><p>center-of-interest radius (for coi continuum, default 3)</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="power1d.results.SimulationResults.dt">
+<code class="descname">dt</code><em class="property"> = None</em><a class="headerlink" href="#power1d.results.SimulationResults.dt" title="Permalink to this definition">¶</a></dt>
+<dd><p>total simulation duration (s)</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="power1d.results.SimulationResults.k">
+<code class="descname">k</code><em class="property"> = None</em><a class="headerlink" href="#power1d.results.SimulationResults.k" title="Permalink to this definition">¶</a></dt>
+<dd><p>cluster extent (default 1);  clusters in the excursion set with smaller extents will be ignored when computing probabilities</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="power1d.results.SimulationResults.model0">
+<code class="descname">model0</code><em class="property"> = None</em><a class="headerlink" href="#power1d.results.SimulationResults.model0" title="Permalink to this definition">¶</a></dt>
+<dd><p>the &#8220;null&#8221; experiment model  (an instance of <strong>power1d.models.Experiment</strong>)</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="power1d.results.SimulationResults.model1">
+<code class="descname">model1</code><em class="property"> = None</em><a class="headerlink" href="#power1d.results.SimulationResults.model1" title="Permalink to this definition">¶</a></dt>
+<dd><p>the &#8220;alternative&#8221; experiment model   (an instance of <strong>power1d.models.Experiment</strong>)</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="power1d.results.SimulationResults.niters">
+<code class="descname">niters</code><em class="property"> = None</em><a class="headerlink" href="#power1d.results.SimulationResults.niters" title="Permalink to this definition">¶</a></dt>
+<dd><p>number of simulation iterations</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="power1d.results.SimulationResults.p1d_coi0">
+<code class="descname">p1d_coi0</code><em class="property"> = None</em><a class="headerlink" href="#power1d.results.SimulationResults.p1d_coi0" title="Permalink to this definition">¶</a></dt>
+<dd><p>COI probability continuum for the &#8220;null&#8221; experiment</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="power1d.results.SimulationResults.p1d_coi1">
+<code class="descname">p1d_coi1</code><em class="property"> = None</em><a class="headerlink" href="#power1d.results.SimulationResults.p1d_coi1" title="Permalink to this definition">¶</a></dt>
+<dd><p>COI probability continuum for the &#8220;alternative&#8221; experiment</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="power1d.results.SimulationResults.p1d_poi0">
+<code class="descname">p1d_poi0</code><em class="property"> = None</em><a class="headerlink" href="#power1d.results.SimulationResults.p1d_poi0" title="Permalink to this definition">¶</a></dt>
+<dd><p>POI probability continuum for the &#8220;null&#8221; experiment</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="power1d.results.SimulationResults.p1d_poi1">
+<code class="descname">p1d_poi1</code><em class="property"> = None</em><a class="headerlink" href="#power1d.results.SimulationResults.p1d_poi1" title="Permalink to this definition">¶</a></dt>
+<dd><p>POI probability continuum for the &#8220;alternative&#8221; experiment</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="power1d.results.SimulationResults.p_reject0">
+<code class="descname">p_reject0</code><em class="property"> = None</em><a class="headerlink" href="#power1d.results.SimulationResults.p_reject0" title="Permalink to this definition">¶</a></dt>
+<dd><p>omnibus null rejection probability for the &#8220;null&#8221; experiment (alpha by defintion)</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="power1d.results.SimulationResults.p_reject1">
+<code class="descname">p_reject1</code><em class="property"> = None</em><a class="headerlink" href="#power1d.results.SimulationResults.p_reject1" title="Permalink to this definition">¶</a></dt>
+<dd><p>omnibus null rejection probability for the &#8220;alternative&#8221; experiment (power by defintion)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="power1d.results.SimulationResults.plot">
+<code class="descname">plot</code><span class="sig-paren">(</span><em>q=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/power1d/results.html#SimulationResults.plot"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#power1d.results.SimulationResults.plot" title="Permalink to this definition">¶</a></dt>
+<dd><p>Plot simulation results.</p>
+<p>This will plot the &#8220;null&#8221; and &#8220;effect&#8221; experiment models along
+with their omnibus powers and their power continua.</p>
+<p>By defintion the &#8220;null&#8221; experiment model will have an omnibus power
+of <em>alpha</em> and its power continua will be considerably smaller than
+<em>alpha</em>, with power decreasing as a function of continuum size.</p>
+<p>The &#8220;effect&#8221; experiment model will have an omnibus power that
+depends on the signal and noise models contained in its DataSample
+models.</p>
+<p>Keyword arguments:</p>
+<p>q &#8212;&#8212; an optional array specifying continuum points (default None)</p>
+<p>Example:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span> <span class="n">Q</span> <span class="o">=</span> <span class="n">results</span><span class="o">.</span><span class="n">Q</span>  <span class="c1">#continuum size</span>
+<span class="gp">&gt;&gt;&gt; </span> <span class="n">results</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span> <span class="n">q</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">Q</span><span class="p">)</span> <span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="power1d.results.SimulationResults.poi">
+<code class="descname">poi</code><em class="property"> = None</em><a class="headerlink" href="#power1d.results.SimulationResults.poi" title="Permalink to this definition">¶</a></dt>
+<dd><p>continuum points-of-interest (if any) for which summary powers will be displayed when printing results</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="power1d.results.SimulationResults.roi">
+<code class="descname">roi</code><em class="property"> = None</em><a class="headerlink" href="#power1d.results.SimulationResults.roi" title="Permalink to this definition">¶</a></dt>
+<dd><p>region(s) of interest (default: whole continuum)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="power1d.results.SimulationResults.save">
+<code class="descname">save</code><span class="sig-paren">(</span><em>filename</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/power1d/results.html#SimulationResults.save"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#power1d.results.SimulationResults.save" title="Permalink to this definition">¶</a></dt>
+<dd><p>Save simulation results.</p>
+<p>Arguments:</p>
+<p>filename &#8212;&#8212; full path to a file. Should have a &#8221;.npz&#8221; extension (numpy compressed format).  It must follow the rules of <strong>np.savez</strong>.</p>
+<p>Example:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span> <span class="n">results</span><span class="o">.</span><span class="n">save</span><span class="p">(</span> <span class="s2">&quot;/Users/username/Desktop/my_results.npz&quot;</span> <span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="power1d.results.SimulationResults.set_alpha">
+<code class="descname">set_alpha</code><span class="sig-paren">(</span><em>alpha</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/power1d/results.html#SimulationResults.set_alpha"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#power1d.results.SimulationResults.set_alpha" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the Type I error rate.</p>
+<p>After calling this method all probabilities will be re-computed automatically.</p>
+<p>Arguments:</p>
+<p>alpha &#8212;&#8212; Type I error rate (float between 0 and 1)</p>
+<p>Example:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span> <span class="n">results</span><span class="o">.</span><span class="n">set_alpha</span><span class="p">(</span> <span class="mf">0.01</span> <span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="power1d.results.SimulationResults.set_cluster_size_threshold">
+<code class="descname">set_cluster_size_threshold</code><span class="sig-paren">(</span><em>k</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/power1d/results.html#SimulationResults.set_cluster_size_threshold"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#power1d.results.SimulationResults.set_cluster_size_threshold" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set a cluster size threshold (<em>k</em>) for null hypothesis (H0) rejection.</p>
+<p>By default <em>k*=1 is used, in which case only the distribution of the
+continuum maximum is used as the H0 rejection criterion. For *k</em>
+larger than one, the H0 rejection criterion becomes defined by the
+distribution of excursion set (supra-threshold cluster) geometry.
+In particular, all excursion set clusters with extents less than <em>k</em>
+are ignored both in critical threshold computations and in power
+computations.</p>
+<p>After calling this method all probabilities will be re-computed automatically.</p>
+<p>Arguments:</p>
+<p>k &#8212;&#8212; Type I error rate (integer greater than 0)</p>
+<p>Example:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span> <span class="n">results</span><span class="o">.</span><span class="n">set_cluster_size_threshold</span><span class="p">(</span> <span class="n">w</span> <span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="power1d.results.SimulationResults.set_coi">
+<code class="descname">set_coi</code><span class="sig-paren">(</span><em>*coi</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/power1d/results.html#SimulationResults.set_coi"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#power1d.results.SimulationResults.set_coi" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set centers-of-interest (COIs) to be displayed when printing.</p>
+<p>An arbibtrary number of (location, radius) pairs specifying
+locations of empirical interest. These COI results will be
+displayed when using the &#8220;print&#8221; command as indicated in the
+example below.</p>
+<p>After calling this method all relevant probabilities will be re-computed automatically.</p>
+<p>Arguments:</p>
+<p>coi &#8212;&#8212; A sequence of integer pairs (location, radius)</p>
+<p>Example:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span> <span class="n">results</span><span class="o">.</span><span class="n">set_coi</span><span class="p">(</span> <span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span> <span class="p">(</span><span class="mi">50</span><span class="p">,</span><span class="mi">8</span><span class="p">),</span> <span class="p">(</span><span class="mi">85</span><span class="p">,</span><span class="mi">4</span><span class="p">)</span> <span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span> <span class="nb">print</span><span class="p">(</span><span class="n">results</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="power1d.results.SimulationResults.set_coi_radius">
+<code class="descname">set_coi_radius</code><span class="sig-paren">(</span><em>r</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/power1d/results.html#SimulationResults.set_coi_radius"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#power1d.results.SimulationResults.set_coi_radius" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set centers-of-interest (COI) radius for the COI continuum results.</p>
+<p>When using the &#8220;plot&#8221; method COI continuum results will be displayed
+by default. These indicate power associated with small regions
+surrounding the particular continuum point.</p>
+<p>If the continuum radius is small the COI power will generally be
+smaller than the omnibus power. As the COI radius increases the COI
+power will plateau at the omnibus power.</p>
+<p>If the continuum radius is one then the COI power continuum is
+equivalent to the point-of-interest (POI) power continuum.</p>
+<p>After calling this method all relevant probabilities will be re-computed automatically.</p>
+<p>Arguments:</p>
+<p>r &#8212;&#8212; COI radius (int)</p>
+<p>Example:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span> <span class="n">results</span><span class="o">.</span><span class="n">set_coi_radius</span><span class="p">(</span> <span class="mi">5</span> <span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span> <span class="n">results</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="power1d.results.SimulationResults.set_poi">
+<code class="descname">set_poi</code><span class="sig-paren">(</span><em>*poi</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/power1d/results.html#SimulationResults.set_poi"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#power1d.results.SimulationResults.set_poi" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set points-of-interest (POIs) to be displayed when printing.</p>
+<p>The power associated with an arbibtrary number of continuum POIs 
+will be displayed when using the &#8220;print&#8221; command as indicated
+in the example below.</p>
+<p>After calling this method all relevant probabilities will be re-computed automatically.</p>
+<p>Arguments:</p>
+<p>poi &#8212;&#8212; A sequence of integers</p>
+<p>Example:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span> <span class="n">results</span><span class="o">.</span><span class="n">set_coi</span><span class="p">(</span> <span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span> <span class="p">(</span><span class="mi">50</span><span class="p">,</span><span class="mi">8</span><span class="p">),</span> <span class="p">(</span><span class="mi">85</span><span class="p">,</span><span class="mi">4</span><span class="p">)</span> <span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span> <span class="nb">print</span><span class="p">(</span><span class="n">results</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="power1d.results.SimulationResults.set_roi">
+<code class="descname">set_roi</code><span class="sig-paren">(</span><em>roi</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/power1d/results.html#SimulationResults.set_roi"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#power1d.results.SimulationResults.set_roi" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set region of interest (ROI).</p>
+<p>An ROI constrains the continuum extent of the null hypothesis (H0).
+By default the entire continuum is considered to be the ROI of
+interest. Single or multiple ROIs can be specified as indicated
+below, and this will cause all data outside the ROIs to be
+ignored.</p>
+<p>Setting the ROI to a single point will yield results associated
+with typical power calculations. That is, a single continuum point
+behaves the same as a single scalar dependent variable.</p>
+<p>After calling this method all probabilities will be re-computed automatically.</p>
+<p>Arguments:</p>
+<p>roi &#8212;&#8212; a boolean array or a <strong>power1d.continua.RegionOfInterest</strong> object</p>
+<p>Example:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span> <span class="n">Q</span> <span class="o">=</span> <span class="n">results</span><span class="o">.</span><span class="n">Q</span>  <span class="c1">#continuum size</span>
+<span class="gp">&gt;&gt;&gt; </span> <span class="n">roi</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span> <span class="p">[</span><span class="kc">False</span><span class="p">]</span><span class="o">*</span><span class="n">Q</span> <span class="p">)</span>  <span class="c1">#boolean array</span>
+<span class="gp">&gt;&gt;&gt; </span> <span class="n">roi</span><span class="p">[</span><span class="mi">50</span><span class="p">:</span><span class="mi">80</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="gp">&gt;&gt;&gt; </span> <span class="n">results</span><span class="o">.</span><span class="n">set_roi</span><span class="p">(</span> <span class="n">roi</span> <span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span> <span class="nb">print</span><span class="p">(</span><span class="n">results</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span> <span class="n">results</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="power1d.results.SimulationResults.sf">
+<code class="descname">sf</code><span class="sig-paren">(</span><em>u</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/power1d/results.html#SimulationResults.sf"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#power1d.results.SimulationResults.sf" title="Permalink to this definition">¶</a></dt>
+<dd><p>Survival function.</p>
+<p>The probability that the &#8220;effect&#8221; distribution exceeds an arbitrary
+threshold <em>u</em>.</p>
+<p>Arguments:</p>
+<p>u &#8212;&#8212; threshold (float)</p>
+<p>Example:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span> <span class="nb">print</span><span class="p">(</span>  <span class="n">results</span><span class="o">.</span><span class="n">sf</span><span class="p">(</span> <span class="mf">3.0</span> <span class="p">)</span>  <span class="p">)</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span> <span class="n">u</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span> <span class="n">p</span> <span class="o">=</span> <span class="p">[</span><span class="n">results</span><span class="o">.</span><span class="n">sf</span><span class="p">(</span><span class="n">uu</span><span class="p">)</span> <span class="k">for</span> <span class="n">uu</span> <span class="ow">in</span> <span class="n">u</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span> <span class="nb">print</span><span class="p">(</span> <span class="n">p</span> <span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="power1d.results.SimulationResults.z0">
+<code class="descname">z0</code><em class="property"> = None</em><a class="headerlink" href="#power1d.results.SimulationResults.z0" title="Permalink to this definition">¶</a></dt>
+<dd><p>distribution upon which omnibus H0 rejection decision is based (&#8220;null&#8221; model)</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="power1d.results.SimulationResults.z1">
+<code class="descname">z1</code><em class="property"> = None</em><a class="headerlink" href="#power1d.results.SimulationResults.z1" title="Permalink to this definition">¶</a></dt>
+<dd><p>distribution upon which omnibus H0 rejection decision is based (&#8220;alternative&#8221; model)</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="power1d.results.SimulationResults.zstar">
+<code class="descname">zstar</code><em class="property"> = None</em><a class="headerlink" href="#power1d.results.SimulationResults.zstar" title="Permalink to this definition">¶</a></dt>
+<dd><p>critical threshold for omnibus null (based on Z0max)</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">power1d.results</a><ul>
+<li><a class="reference internal" href="#simulationresults">SimulationResults</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="random.html"
+                        title="previous chapter">power1d.random</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="roi.html"
+                        title="next chapter">power1d.roi</a></p>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="roi.html" title="power1d.roi"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="random.html" title="power1d.random"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">power1d 0.1 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../API.html" >API</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2017, Todd Pataky.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.5.1.
+    </div>
+  </body>
+</html>

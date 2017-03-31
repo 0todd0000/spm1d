@@ -1,0 +1,218 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>power1d.roi &#8212; power1d 0.1 documentation</title>
+    
+    <link rel="stylesheet" href="../../_static/pyramid.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Neuton&amp;subset=latin" type="text/css" media="screen" charset="utf-8" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nobile:regular,italic,bold,bolditalic&amp;subset=latin" type="text/css" media="screen" charset="utf-8" />
+<!--[if lte IE 6]>
+<link rel="stylesheet" href="../../_static/ie6.css" type="text/css" media="screen" charset="utf-8" />
+<![endif]-->
+
+  </head>
+  <body role="document">
+<div class="header" role="banner">
+  <div class="logo">
+    <a href="../../index.html">
+      <img class="logo" src="../../_static/logo.png" border="0" alt="Logo"/>
+    </a>
+  </div>
+</div>
+
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">power1d 0.1 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../index.html" accesskey="U">Module code</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <h1>Source code for power1d.roi</h1><div class="highlight"><pre>
+<span></span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">Regions of interest (ROIs)</span>
+
+<span class="sd">ROIs define the continuum scope of the null hypothesis.</span>
+
+<span class="sd">Example:</span>
+
+<span class="sd">.. plot::</span>
+<span class="sd">	:include-source:</span>
+
+<span class="sd">	import numpy as np</span>
+<span class="sd">	from matplotlib import pyplot</span>
+<span class="sd">	import power1d</span>
+
+<span class="sd">	</span>
+<span class="sd">	# create data sample models:</span>
+<span class="sd">	J        = 8</span>
+<span class="sd">	Q        = 101</span>
+<span class="sd">	baseline = power1d.geom.Null( Q=Q )</span>
+<span class="sd">	signal0  = power1d.geom.Null( Q=Q )</span>
+<span class="sd">	signal1  = power1d.geom.GaussianPulse( Q=Q, q=40, fwhm=15, amp=3.5 )</span>
+<span class="sd">	noise    = power1d.noise.Gaussian( J=J, Q=Q, mu=0, sigma=0.3 )</span>
+<span class="sd">	model0   = power1d.models.DataSample(baseline, signal0, noise, J=J)</span>
+<span class="sd">	model1   = power1d.models.DataSample(baseline, signal1, noise, J=J)</span>
+
+
+<span class="sd">	# assemble into experiment models:</span>
+<span class="sd">	emodel0  = power1d.models.Experiment( [model0, model0], fn=power1d.stats.t_2sample )</span>
+<span class="sd">	emodel1  = power1d.models.Experiment( [model0, model1], fn=power1d.stats.t_2sample )</span>
+
+
+<span class="sd">	# simulate the experiments</span>
+<span class="sd">	sim      = power1d.models.ExperimentSimulator(emodel0, emodel1)</span>
+<span class="sd">	results  = sim.simulate(iterations=1000, progress_bar=True)</span>
+
+
+<span class="sd">	# create ROI object and apply to the results:</span>
+<span class="sd">	Q        = 101</span>
+<span class="sd">	x        = np.array( [False] * Q )</span>
+<span class="sd">	x[60:80] = True</span>
+<span class="sd">	roi      = power1d.roi.RegionOfInterest(x)</span>
+<span class="sd">	results.set_roi( roi )</span>
+
+
+<span class="sd">	# plot:</span>
+<span class="sd">	pyplot.close(&#39;all&#39;)</span>
+<span class="sd">	results.plot()</span>
+
+
+<span class="sd">.. note:: Since the ROI object limits the scope of the null hypothesis, \</span>
+<span class="sd">power results pertain only to the continuum region(s) inside the ROI. \</span>
+<span class="sd">In this example we see that the omnibus power is close to alpha because \</span>
+<span class="sd">the ROI contains no signal. Simulating for a larger number of iterations \</span>
+<span class="sd">will yield more precise convergence to alpha.</span>
+<span class="sd">&#39;&#39;&#39;</span>
+
+<span class="c1"># Copyright (C) 2017  Todd Pataky</span>
+<span class="c1"># version: 0.1 (2017/03/21)</span>
+
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">scipy.ndimage</span> <span class="k">import</span> <span class="n">label</span> <span class="k">as</span> <span class="n">scipy_label</span>
+<span class="kn">from</span> <span class="nn">.</span> <span class="n">_base</span> <span class="kn">import</span> <span class="nn">_Continuum1D</span>
+<span class="kn">from</span> <span class="nn">.</span> <span class="n">_plot</span> <span class="kn">import</span> <span class="nn">DataPlotter</span>
+
+
+
+
+<div class="viewcode-block" id="RegionOfInterest"><a class="viewcode-back" href="../../API/roi.html#power1d.roi.RegionOfInterest">[docs]</a><span class="k">class</span> <span class="nc">RegionOfInterest</span><span class="p">(</span><span class="n">_Continuum1D</span><span class="p">):</span>
+	<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">	Region of interest (ROI).</span>
+<span class="sd">	</span>
+<span class="sd">	Example:</span>
+<span class="sd">	</span>
+<span class="sd">	.. plot::</span>
+<span class="sd">		:include-source:</span>
+<span class="sd">	</span>
+<span class="sd">		import numpy as np</span>
+<span class="sd">		from matplotlib import pyplot</span>
+<span class="sd">		import power1d</span>
+<span class="sd">		</span>
+<span class="sd">		Q        = 101</span>
+<span class="sd">		x        = np.array( [False] * Q )</span>
+<span class="sd">		x[40:60] = True</span>
+<span class="sd">		roi      = power1d.roi.RegionOfInterest(x)</span>
+
+<span class="sd">		pyplot.close(&#39;all&#39;)</span>
+<span class="sd">		roi.plot()</span>
+<span class="sd">	&#39;&#39;&#39;</span>
+	
+	<span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+		<span class="k">try</span><span class="p">:</span>
+			<span class="n">x</span>       <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+		<span class="k">except</span><span class="p">:</span>
+			<span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Input to RegionOfInterest must be a list or a NumPy array&#39;</span><span class="p">)</span>
+		<span class="k">assert</span> <span class="n">x</span><span class="o">.</span><span class="n">ndim</span><span class="o">==</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;Input to RegionOfInterest must be a one-dimensional array&#39;</span>
+		<span class="k">assert</span> <span class="nb">issubclass</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">dtype</span><span class="o">.</span><span class="n">type</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">bool_</span><span class="p">),</span> <span class="s1">&#39;Input to RegionOfInterest must only True and False values&#39;</span>
+		<span class="k">assert</span> <span class="n">x</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;Input to RegionOfInterest must contain at least one True value&#39;</span>
+		<span class="n">Q</span>       <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">size</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">params</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">x</span><span class="p">)</span>
+		<span class="nb">super</span><span class="p">(</span><span class="n">RegionOfInterest</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="n">Q</span><span class="p">)</span>
+
+	<span class="k">def</span> <span class="nf">_build</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">value</span>  <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;x&#39;</span><span class="p">]</span>
+		
+	<span class="k">def</span> <span class="nf">_get_labels</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="k">return</span> <span class="n">scipy_label</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">value</span><span class="p">)</span>
+
+	<span class="k">def</span> <span class="nf">plot</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.25</span><span class="p">,</span> <span class="n">q</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+		<span class="n">plotter</span> <span class="o">=</span> <span class="n">DataPlotter</span><span class="p">(</span><span class="n">ax</span><span class="p">)</span>
+		<span class="n">plotter</span><span class="o">.</span><span class="n">plot_roi</span><span class="p">(</span> <span class="n">q</span><span class="p">,</span> <span class="bp">self</span><span class="p">,</span> <span class="n">facecolor</span><span class="p">,</span> <span class="n">edgecolor</span><span class="p">,</span> <span class="n">alpha</span> <span class="p">)</span></div>
+
+
+
+</pre></div>
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../../search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">power1d 0.1 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../index.html" >Module code</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2017, Todd Pataky.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.5.1.
+    </div>
+  </body>
+</html>

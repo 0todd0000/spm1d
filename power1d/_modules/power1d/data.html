@@ -1,0 +1,167 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>power1d.data &#8212; power1d 0.1 documentation</title>
+    
+    <link rel="stylesheet" href="../../_static/pyramid.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Neuton&amp;subset=latin" type="text/css" media="screen" charset="utf-8" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nobile:regular,italic,bold,bolditalic&amp;subset=latin" type="text/css" media="screen" charset="utf-8" />
+<!--[if lte IE 6]>
+<link rel="stylesheet" href="../../_static/ie6.css" type="text/css" media="screen" charset="utf-8" />
+<![endif]-->
+
+  </head>
+  <body role="document">
+<div class="header" role="banner">
+  <div class="logo">
+    <a href="../../index.html">
+      <img class="logo" src="../../_static/logo.png" border="0" alt="Logo"/>
+    </a>
+  </div>
+</div>
+
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">power1d 0.1 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../index.html" accesskey="U">Module code</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <h1>Source code for power1d.data</h1><div class="highlight"><pre>
+<span></span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">Datasets.</span>
+
+<span class="sd">Currently only one dataset is available:</span>
+
+<span class="sd">&quot;weather&quot;</span>
+<span class="sd">&#39;&#39;&#39;</span>
+
+<span class="c1"># Copyright (C) 2017  Todd Pataky</span>
+<span class="c1"># version: 0.1 (2017/03/21)</span>
+
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+
+<div class="viewcode-block" id="weather"><a class="viewcode-back" href="../../API/data.html#power1d.data.weather">[docs]</a><span class="k">def</span> <span class="nf">weather</span><span class="p">():</span>
+	<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">	| This dataset was made available by Prof. James O. Ramsay</span>
+<span class="sd">	  of McGill University. The dataset was download from:</span>
+<span class="sd">	| http://www.psych.mcgill.ca/misc/fda/downloads/FDAfuns/Matlab</span>
+<span class="sd">	| on 28 March 2017 (see the ./examples/weather directory).</span>
+
+<span class="sd">	The data have been converted from the original form in</span>
+<span class="sd">	the &quot;daily.mat&quot; file to NumPy format and saved in</span>
+<span class="sd">	./power1d/data/weather/daily.npz</span>
+<span class="sd">	</span>
+<span class="sd">	This is a convenience function for loading those data.</span>
+<span class="sd">	</span>
+<span class="sd">	Arguments:</span>
+<span class="sd">	</span>
+<span class="sd">	(None)</span>
+<span class="sd">	</span>
+<span class="sd">	Outputs:</span>
+<span class="sd">	</span>
+<span class="sd">	A dictionary containing the following keys:</span>
+<span class="sd">	</span>
+<span class="sd">	- &quot;Atlantic&quot;</span>
+<span class="sd">	- &quot;Pacific&quot;</span>
+<span class="sd">	- &quot;Continental&quot;</span>
+<span class="sd">	- &quot;Arctic&quot;</span>
+<span class="sd">	</span>
+<span class="sd">	Each item is a (J x 365) array where J is the number of</span>
+<span class="sd">	stations per region.</span>
+<span class="sd">	</span>
+<span class="sd">	Example:</span>
+<span class="sd">	</span>
+<span class="sd">	.. plot::</span>
+<span class="sd">		:include-source:</span>
+
+<span class="sd">		from matplotlib import pyplot</span>
+<span class="sd">		import power1d</span>
+
+<span class="sd">		data = power1d.data.weather()   #load data dictionary</span>
+<span class="sd">		y    = data[&#39;Continental&#39;]   #extract one region</span>
+<span class="sd">		pyplot.plot(y.T, color=&quot;k&quot;)</span>
+<span class="sd">	&#39;&#39;&#39;</span>
+	<span class="n">dir0</span>     <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">__file__</span><span class="p">)</span>
+	<span class="n">fname</span>    <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">dir0</span><span class="p">,</span> <span class="s1">&#39;data&#39;</span><span class="p">,</span> <span class="s1">&#39;weather&#39;</span><span class="p">,</span> <span class="s1">&#39;daily.npz&#39;</span><span class="p">)</span>
+	<span class="k">with</span> <span class="n">np</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">fname</span><span class="p">)</span> <span class="k">as</span> <span class="n">D</span><span class="p">:</span>
+		<span class="n">z</span>    <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span> <span class="o">**</span><span class="n">D</span> <span class="p">)</span>
+	<span class="k">return</span> <span class="n">z</span></div>
+
+</pre></div>
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../../search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">power1d 0.1 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../index.html" >Module code</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2017, Todd Pataky.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.5.1.
+    </div>
+  </body>
+</html>

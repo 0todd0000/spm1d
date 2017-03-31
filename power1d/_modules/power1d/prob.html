@@ -1,0 +1,558 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>power1d.prob &#8212; power1d 0.1 documentation</title>
+    
+    <link rel="stylesheet" href="../../_static/pyramid.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Neuton&amp;subset=latin" type="text/css" media="screen" charset="utf-8" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nobile:regular,italic,bold,bolditalic&amp;subset=latin" type="text/css" media="screen" charset="utf-8" />
+<!--[if lte IE 6]>
+<link rel="stylesheet" href="../../_static/ie6.css" type="text/css" media="screen" charset="utf-8" />
+<![endif]-->
+
+  </head>
+  <body role="document">
+<div class="header" role="banner">
+  <div class="logo">
+    <a href="../../index.html">
+      <img class="logo" src="../../_static/logo.png" border="0" alt="Logo"/>
+    </a>
+  </div>
+</div>
+
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">power1d 0.1 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../index.html" accesskey="U">Module code</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <h1>Source code for power1d.prob</h1><div class="highlight"><pre>
+<span></span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">Theoretical continuum-level probabilities for central t fields</span>
+<span class="sd">and for noncentral t and F fields.</span>
+
+<span class="sd">These calculations come from the random field theory (RFT)</span>
+<span class="sd">literature and in particular from the three references listed</span>
+<span class="sd">below. The main RFT calculations come from Hasofer (1978) and</span>
+<span class="sd">Friston et al. (1994) and the non-central distribution</span>
+<span class="sd">calculations come from Hayasaka et al. (2007) and</span>
+<span class="sd">Joyce &amp; Hayasaka (2012).</span>
+
+<span class="sd">REFERENCES</span>
+
+<span class="sd">| Friston KJ, Holmes A, Poline JB, Price CJ, Frith CD (1996).</span>
+<span class="sd">  Detecting Activations in PET and fMRI: Levels of Inference</span>
+<span class="sd">  and Power. NeuroImage 4(3): 223-235.</span>
+<span class="sd">| http://dx.doi.org/10.1006/nimg.1996.0074</span>
+
+
+<span class="sd">| Friston KJ, Worsley KJ, Frackowiak RSJ, Mazziotta JC, Evans AC</span>
+<span class="sd">  (1994). Assessing the significance of focal activations using</span>
+<span class="sd">  their spatial extent. **Human Brain Mapp** 1: 210-220.</span>
+<span class="sd">| http://onlinelibrary.wiley.com/doi/10.1002/hbm.460010306/full</span>
+<span class="sd">| SPM12 software:</span>
+<span class="sd">| http://www.fil.ion.ucl.ac.uk/spm/software/spm12/</span>
+
+<span class="sd">| Hasofer AM (1978) Upcrossings of random fields.</span>
+<span class="sd">  **Suppl Adv Appl Prob** 10:14-21.</span>
+<span class="sd">| http://www.jstor.org/stable/1427002</span>
+
+<span class="sd">| Hayasaka S, Peiffer AM, Hugenschmidt CE, Laurienti PJ (2007).</span>
+<span class="sd">  Power and sample size calculation for neuroimaging studies by</span>
+<span class="sd">  non-central random field theory. **NeuroImage** 37(3), 721-730.</span>
+<span class="sd">| http://dx.doi.org/10.1016/j.neuroimage.2007.06.009</span>
+
+<span class="sd">| Joyce KE, Hayasaka S (2012). Development of PowerMap: a Software Package for</span>
+<span class="sd">  Statistical Power Calculation in Neuroimaging Studies **Neuroinform** 10: 351.</span>
+<span class="sd">| http://dx.doi:10.1007/s12021-012-9152-3</span>
+<span class="sd">| PowerMap software:</span>
+<span class="sd">| https://sourceforge.net/projects/powermap/</span>
+<span class="sd">&#39;&#39;&#39;</span>
+
+
+<span class="c1"># Copyright (C) 2017  Todd Pataky</span>
+<span class="c1"># version: 0.1 (2017/03/21)</span>
+
+
+<span class="kn">from</span> <span class="nn">math</span> <span class="k">import</span> <span class="n">pi</span><span class="p">,</span><span class="n">log</span><span class="p">,</span><span class="n">sqrt</span><span class="p">,</span><span class="n">exp</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">scipy</span> <span class="k">import</span> <span class="n">stats</span><span class="p">,</span><span class="n">optimize</span>
+<span class="kn">from</span> <span class="nn">scipy.special</span> <span class="k">import</span> <span class="n">gammaln</span><span class="p">,</span><span class="n">gamma</span>
+<span class="kn">from</span> <span class="nn">.</span> <span class="k">import</span> <span class="n">geom</span>
+
+<span class="c1"># CONSTANTS:</span>
+<span class="n">FOUR_LOG2</span>   <span class="o">=</span> <span class="mi">4</span><span class="o">*</span><span class="n">log</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">SQRT_4LOG2</span>  <span class="o">=</span> <span class="n">sqrt</span><span class="p">(</span><span class="mi">4</span><span class="o">*</span><span class="n">log</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span>
+<span class="n">SQRT_2</span>      <span class="o">=</span> <span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">TWO_PI</span>      <span class="o">=</span> <span class="mi">2</span><span class="o">*</span><span class="n">pi</span>
+<span class="n">eps</span>         <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">finfo</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float</span><span class="p">)</span><span class="o">.</span><span class="n">eps</span>
+
+
+
+
+
+<div class="viewcode-block" id="exp_ncx"><a class="viewcode-back" href="../../API/prob.html#power1d.prob.exp_ncx">[docs]</a><span class="k">def</span> <span class="nf">exp_ncx</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">delta</span><span class="p">,</span> <span class="n">r</span><span class="p">):</span>
+	<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">	Non-central chi-square moments around zero</span>
+
+<span class="sd">	Adapted from &quot;pm_Exp_ncX.m&quot; in &quot;PowerMap&quot; (Joyce &amp; Hayasaka 2012)</span>
+
+<span class="sd">	Arguments:</span>
+
+<span class="sd">	*df* ---- degrees of freedom (float)</span>
+
+<span class="sd">	*delta* ---- non-centrality parameter (float)</span>
+
+<span class="sd">	*r* ---- power (positive float)</span>
+<span class="sd">	&#39;&#39;&#39;</span>
+	<span class="n">tol</span>     <span class="o">=</span> <span class="n">eps</span><span class="o">**</span><span class="mf">7.0</span><span class="o">/</span><span class="mi">8</span>
+	<span class="n">isum</span>    <span class="o">=</span> <span class="mi">0</span>
+	<span class="n">iisum</span>   <span class="o">=</span> <span class="mi">1</span>
+	<span class="n">j</span>       <span class="o">=</span> <span class="mi">0</span>
+	<span class="k">while</span> <span class="nb">abs</span><span class="p">(</span><span class="n">iisum</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">tol</span><span class="p">:</span>
+		<span class="n">gam</span>    <span class="o">=</span> <span class="mi">1</span> <span class="o">/</span> <span class="n">gamma</span><span class="p">(</span><span class="n">j</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+		<span class="n">d</span>      <span class="o">=</span> <span class="n">exp</span><span class="p">(</span> <span class="n">gammaln</span><span class="p">(</span><span class="n">r</span><span class="o">+</span><span class="n">j</span><span class="o">+</span><span class="mf">0.5</span><span class="o">*</span><span class="n">df</span><span class="p">)</span>  <span class="o">-</span> <span class="n">gammaln</span><span class="p">(</span><span class="n">j</span> <span class="o">+</span> <span class="mf">0.5</span><span class="o">*</span><span class="n">df</span><span class="p">)</span>  <span class="p">)</span>  <span class="o">*</span> <span class="p">(</span><span class="mf">0.5</span><span class="o">*</span><span class="n">delta</span><span class="p">)</span><span class="o">**</span><span class="n">j</span>
+		<span class="n">iisum</span>  <span class="o">=</span> <span class="n">gam</span> <span class="o">*</span> <span class="n">d</span>
+		<span class="n">isum</span>  <span class="o">+=</span> <span class="n">iisum</span>
+		<span class="n">j</span>     <span class="o">+=</span> <span class="mi">1</span>
+	<span class="n">mr</span>      <span class="o">=</span> <span class="mi">2</span><span class="o">**</span><span class="n">r</span>  <span class="o">*</span> <span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="mf">0.5</span><span class="o">*</span><span class="n">delta</span><span class="p">)</span> <span class="o">*</span> <span class="n">isum</span>
+	<span class="k">return</span> <span class="n">mr</span></div>
+
+
+
+<div class="viewcode-block" id="ec_density_ncf"><a class="viewcode-back" href="../../API/prob.html#power1d.prob.ec_density_ncf">[docs]</a><span class="k">def</span> <span class="nf">ec_density_ncf</span><span class="p">(</span><span class="n">z</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">delta</span><span class="p">):</span>
+	<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">	Euler characteristic density for non-central F fields.</span>
+
+<span class="sd">	Adapted from &quot;pm_ECncF.m&quot; in &quot;PowerMap&quot; (Joyce &amp; Hayasaka 2012)</span>
+
+<span class="sd">	Arguments:</span>
+
+<span class="sd">	*z* ---- height (float)</span>
+
+<span class="sd">	*v* ---- degrees of freedom (float)</span>
+
+<span class="sd">	*delta* ---- non-centrality parameter (float)</span>
+<span class="sd">	&#39;&#39;&#39;</span>
+	<span class="n">v0</span><span class="p">,</span><span class="n">v1</span>    <span class="o">=</span> <span class="n">v</span>
+	<span class="n">a</span>        <span class="o">=</span> <span class="n">FOUR_LOG2</span>
+	<span class="n">b</span>        <span class="o">=</span> <span class="n">TWO_PI</span>
+	<span class="n">c</span>        <span class="o">=</span> <span class="n">v0</span> <span class="o">*</span> <span class="n">z</span> <span class="o">/</span> <span class="n">v1</span>
+	<span class="n">d</span>        <span class="o">=</span> <span class="mi">1</span> <span class="o">+</span> <span class="n">c</span>
+	<span class="n">ec0</span>      <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">ncf</span><span class="o">.</span><span class="n">sf</span><span class="p">(</span><span class="n">z</span><span class="p">,</span> <span class="n">v0</span><span class="p">,</span> <span class="n">v1</span><span class="p">,</span> <span class="n">delta</span><span class="p">)</span>
+	<span class="n">ec1</span>      <span class="o">=</span> <span class="n">a</span><span class="o">**</span><span class="mf">0.5</span> <span class="o">*</span> <span class="n">b</span><span class="o">**-</span><span class="mf">0.5</span> <span class="o">*</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">d</span> <span class="o">*</span> <span class="n">c</span><span class="o">**</span><span class="mf">0.5</span> <span class="o">*</span> <span class="n">exp_ncx</span><span class="p">(</span><span class="n">v0</span><span class="o">+</span><span class="n">v1</span><span class="p">,</span> <span class="n">delta</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.5</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">v1</span><span class="o">/</span><span class="n">v0</span><span class="p">)</span> <span class="o">*</span> <span class="n">stats</span><span class="o">.</span><span class="n">ncf</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="n">z</span><span class="p">,</span><span class="n">v0</span><span class="p">,</span><span class="n">v1</span><span class="p">,</span><span class="n">delta</span><span class="p">)</span>
+	<span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">maximum</span><span class="p">([</span><span class="n">ec0</span><span class="p">,</span> <span class="n">ec1</span><span class="p">],</span> <span class="n">eps</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="ec_density_nct"><a class="viewcode-back" href="../../API/prob.html#power1d.prob.ec_density_nct">[docs]</a><span class="k">def</span> <span class="nf">ec_density_nct</span><span class="p">(</span><span class="n">z</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">delta</span><span class="p">):</span>
+	<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">	Euler characteristic density for non-central t fields.</span>
+
+<span class="sd">	Adapted from &quot;pm_ECncT.m&quot; in &quot;PowerMap&quot; (Joyce &amp; Hayasaka 2012)</span>
+
+<span class="sd">	Arguments:</span>
+
+<span class="sd">	*z* ---- height (float)</span>
+
+<span class="sd">	*v* ---- degrees of freedom (float)</span>
+
+<span class="sd">	*delta* ---- non-centrality parameter (float)</span>
+<span class="sd">	&#39;&#39;&#39;</span>
+	<span class="n">a</span>    <span class="o">=</span> <span class="n">FOUR_LOG2</span>
+	<span class="n">b</span>    <span class="o">=</span> <span class="n">TWO_PI</span>
+	<span class="n">c</span>    <span class="o">=</span> <span class="n">z</span><span class="o">**</span><span class="mi">2</span> <span class="o">/</span> <span class="n">v</span>
+	<span class="n">d</span>    <span class="o">=</span> <span class="mi">1</span> <span class="o">+</span> <span class="n">c</span>
+	<span class="n">ec0</span>  <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">nct</span><span class="o">.</span><span class="n">sf</span><span class="p">(</span><span class="n">z</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">delta</span><span class="p">)</span>
+	<span class="n">ec1</span>  <span class="o">=</span> <span class="n">a</span><span class="o">**</span><span class="mf">0.5</span> <span class="o">*</span> <span class="n">b</span><span class="o">**-</span><span class="mf">0.5</span> <span class="o">*</span> <span class="n">v</span><span class="o">**</span><span class="mf">0.5</span> <span class="o">*</span> <span class="n">d</span> <span class="o">*</span> <span class="n">exp_ncx</span><span class="p">(</span><span class="n">v</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">delta</span><span class="o">**</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.5</span><span class="p">)</span>  <span class="o">*</span> <span class="n">stats</span><span class="o">.</span><span class="n">nct</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="n">z</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">delta</span><span class="p">)</span>
+	<span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">maximum</span><span class="p">([</span><span class="n">ec0</span><span class="p">,</span> <span class="n">ec1</span><span class="p">],</span> <span class="n">eps</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="ec_density_f"><a class="viewcode-back" href="../../API/prob.html#power1d.prob.ec_density_f">[docs]</a><span class="k">def</span> <span class="nf">ec_density_f</span><span class="p">(</span><span class="n">z</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">delta</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+	<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">	Euler characteristic density for central F fields.</span>
+
+<span class="sd">	Adapted from &quot;spm_ECdensity.m&quot; in &quot;SPM12&quot; (Friston et al. 1994)</span>
+
+<span class="sd">	Arguments:</span>
+
+<span class="sd">	*z* ---- height (float)</span>
+
+<span class="sd">	*v* ---- degrees of freedom (float, float)</span>
+
+<span class="sd">	*delta* ---- (not used by this function)</span>
+<span class="sd">	</span>
+<span class="sd">	Reference:  Worsley KJ et al. (1996) Hum Brain Mapp 4:58-73</span>
+<span class="sd">	Reference:  Worsley KJ et al. (2004) [Eqn.2 and Table 2]</span>
+<span class="sd">	&#39;&#39;&#39;</span>
+	<span class="n">k</span><span class="p">,</span><span class="n">v</span>  <span class="o">=</span> <span class="nb">map</span><span class="p">(</span><span class="nb">float</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span>
+	<span class="n">k</span>    <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">)</span>        <span class="c1">#stats.f.cdf will return nan if k is less than 1</span>
+	<span class="n">a</span>    <span class="o">=</span> <span class="n">FOUR_LOG2</span><span class="o">/</span><span class="n">TWO_PI</span>
+	<span class="n">b</span>    <span class="o">=</span> <span class="n">gammaln</span><span class="p">(</span><span class="n">v</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span> <span class="o">+</span> <span class="n">gammaln</span><span class="p">(</span><span class="n">k</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span>
+	<span class="n">ec0</span>  <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">f</span><span class="o">.</span><span class="n">sf</span><span class="p">(</span><span class="n">z</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span>
+	<span class="n">ec1</span>  <span class="o">=</span> <span class="n">a</span><span class="o">**</span><span class="mf">0.5</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">gammaln</span><span class="p">((</span><span class="n">v</span><span class="o">+</span><span class="n">k</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span><span class="o">-</span><span class="n">b</span><span class="p">)</span><span class="o">*</span><span class="mi">2</span><span class="o">**</span><span class="mf">0.5</span> <span class="o">*</span><span class="p">(</span><span class="n">k</span><span class="o">*</span><span class="n">z</span><span class="o">/</span><span class="n">v</span><span class="p">)</span><span class="o">**</span><span class="p">(</span><span class="mf">0.5</span><span class="o">*</span><span class="p">(</span><span class="n">k</span><span class="o">-</span><span class="mi">1</span><span class="p">))</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span><span class="o">+</span><span class="n">k</span><span class="o">*</span><span class="n">z</span><span class="o">/</span><span class="n">v</span><span class="p">)</span><span class="o">**</span><span class="p">(</span><span class="o">-</span><span class="mf">0.5</span><span class="o">*</span><span class="p">(</span><span class="n">v</span><span class="o">+</span><span class="n">k</span><span class="o">-</span><span class="mi">2</span><span class="p">))</span>
+	<span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">maximum</span><span class="p">([</span><span class="n">ec0</span><span class="p">,</span> <span class="n">ec1</span><span class="p">],</span> <span class="n">eps</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="ec_density_t"><a class="viewcode-back" href="../../API/prob.html#power1d.prob.ec_density_t">[docs]</a><span class="k">def</span> <span class="nf">ec_density_t</span><span class="p">(</span><span class="n">z</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">delta</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+	<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">	Euler characteristic density for central t fields.</span>
+
+<span class="sd">	Adapted from &quot;spm_ECdensity.m&quot; in &quot;SPM12&quot; (Friston et al. 1994)</span>
+
+<span class="sd">	Arguments:</span>
+
+<span class="sd">	*z* ---- height (float)</span>
+
+<span class="sd">	*v* ---- degrees of freedom (float)</span>
+
+<span class="sd">	*delta* ---- (not used by this function)</span>
+<span class="sd">	</span>
+<span class="sd">	Reference:  Worsley KJ et al. (1996) Hum Brain Mapp 4:58-73</span>
+<span class="sd">	Reference:  Worsley KJ et al. (2004) [Eqn.2 and Table 2]</span>
+<span class="sd">	&#39;&#39;&#39;</span>
+	<span class="n">v</span>    <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
+	<span class="n">a</span>    <span class="o">=</span> <span class="n">FOUR_LOG2</span>
+	<span class="n">b</span>    <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span>  <span class="p">(</span><span class="n">gammaln</span><span class="p">((</span><span class="n">v</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span> <span class="o">-</span> <span class="n">gammaln</span><span class="p">(</span><span class="n">v</span><span class="o">/</span><span class="mi">2</span><span class="p">))</span>  <span class="p">)</span>
+	<span class="n">c</span>    <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="o">+</span><span class="n">z</span><span class="o">**</span><span class="mi">2</span><span class="o">/</span><span class="n">v</span><span class="p">)</span><span class="o">**</span><span class="p">((</span><span class="mi">1</span><span class="o">-</span><span class="n">v</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span>
+	<span class="n">ec0</span>  <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">t</span><span class="o">.</span><span class="n">sf</span><span class="p">(</span><span class="n">z</span><span class="p">,</span><span class="n">v</span><span class="p">)</span>
+	<span class="n">ec1</span>  <span class="o">=</span> <span class="n">a</span><span class="o">**</span><span class="mf">0.5</span> <span class="o">/</span> <span class="n">TWO_PI</span> <span class="o">*</span> <span class="n">c</span>
+	<span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">maximum</span><span class="p">([</span><span class="n">ec0</span><span class="p">,</span> <span class="n">ec1</span><span class="p">],</span> <span class="n">eps</span><span class="p">)</span></div>
+
+
+<span class="n">ec_fn_dict</span> <span class="o">=</span> <span class="p">{</span>
+	<span class="s1">&#39;NCF&#39;</span> <span class="p">:</span> <span class="n">ec_density_ncf</span><span class="p">,</span>
+	<span class="s1">&#39;NCT&#39;</span> <span class="p">:</span> <span class="n">ec_density_nct</span><span class="p">,</span>
+	<span class="s1">&#39;F&#39;</span>   <span class="p">:</span> <span class="n">ec_density_f</span><span class="p">,</span>
+	<span class="s1">&#39;T&#39;</span>   <span class="p">:</span> <span class="n">ec_density_t</span>
+<span class="p">}</span>
+
+
+
+<span class="k">def</span> <span class="nf">_rft_sf</span><span class="p">(</span><span class="n">STAT</span><span class="p">,</span> <span class="n">u</span><span class="p">,</span> <span class="n">df</span><span class="p">,</span> <span class="n">Q</span><span class="p">,</span> <span class="n">fwhm</span><span class="p">,</span> <span class="n">delta</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+	<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">	Random field theory (RFT) survival function</span>
+<span class="sd">	</span>
+<span class="sd">	References:</span>
+<span class="sd">	Hasofer (1978) and Friston et al. (1994)</span>
+<span class="sd">	</span>
+<span class="sd">	Also:</span>
+<span class="sd">	Worsley KJ et al. (1996) Hum Brain Mapp 4:58-73</span>
+<span class="sd">	Worsley KJ et al. (2004) [Eqn.2 and Table 2]</span>
+<span class="sd">	&#39;&#39;&#39;</span>
+	<span class="n">_stats</span>   <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;F&#39;</span><span class="p">,</span><span class="s1">&#39;T&#39;</span><span class="p">,</span><span class="s1">&#39;NCT&#39;</span><span class="p">,</span><span class="s1">&#39;NCF&#39;</span><span class="p">]</span>
+	<span class="k">assert</span> <span class="n">STAT</span> <span class="ow">in</span> <span class="n">_stats</span><span class="p">,</span> <span class="s1">&#39;STAT must be one of: </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span><span class="n">_stats</span>
+	<span class="n">df</span>       <span class="o">=</span> <span class="nb">map</span><span class="p">(</span><span class="nb">float</span><span class="p">,</span> <span class="n">df</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="s1">&#39;F&#39;</span> <span class="ow">in</span> <span class="n">STAT</span><span class="p">)</span> <span class="k">else</span> <span class="nb">float</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+	<span class="n">resels</span>   <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span> <span class="p">[</span><span class="mf">1.0</span><span class="p">,</span> <span class="nb">float</span><span class="p">(</span><span class="n">Q</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">/</span><span class="n">fwhm</span><span class="p">]</span> <span class="p">)</span>   <span class="c1">#resel counts</span>
+	<span class="n">ec_fn</span>    <span class="o">=</span> <span class="n">ec_fn_dict</span><span class="p">[</span><span class="n">STAT</span><span class="p">]</span>                       <span class="c1">#Euler characteristic density function</span>
+	<span class="n">EC</span>       <span class="o">=</span> <span class="n">ec_fn</span><span class="p">(</span> <span class="nb">float</span><span class="p">(</span><span class="n">u</span><span class="p">),</span> <span class="n">df</span><span class="p">,</span> <span class="n">delta</span><span class="p">)</span>            <span class="c1">#Euler characteristic</span>
+	<span class="n">Ec</span>       <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span> <span class="n">resels</span> <span class="o">*</span> <span class="n">EC</span> <span class="p">)</span>                     <span class="c1">#expected number of maxima</span>
+	<span class="n">p</span>        <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">poisson</span><span class="o">.</span><span class="n">sf</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">Ec</span> <span class="o">+</span> <span class="n">eps</span><span class="p">)</span>          <span class="c1">#Poisson clumping heuristic</span>
+	<span class="k">return</span> <span class="n">p</span>	
+
+
+
+
+<div class="viewcode-block" id="ncf_sf"><a class="viewcode-back" href="../../API/prob.html#power1d.prob.ncf_sf">[docs]</a><span class="k">def</span> <span class="nf">ncf_sf</span><span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">df</span><span class="p">,</span> <span class="n">Q</span><span class="p">,</span> <span class="n">fwhm</span><span class="p">,</span> <span class="n">delta</span><span class="p">):</span>
+	<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">	Survival function for noncentral f fields.</span>
+
+<span class="sd">	Adapted from &quot;pm_P_ncT.m&quot; in &quot;PowerMap&quot; (Joyce &amp; Hayasaka 2012)</span>
+
+<span class="sd">	Arguments:</span>
+
+<span class="sd">	*u* ---- height (float)</span>
+
+<span class="sd">	*df* ---- degrees of freedom (float)</span>
+<span class="sd">	</span>
+<span class="sd">	*Q* ---- continuum size (integer)</span>
+<span class="sd">	</span>
+<span class="sd">	*fwhm* ---- continuum smoothness (positive float);  full-width-at-half-maximum</span>
+
+<span class="sd">	*delta* ---- noncentrality parameter</span>
+<span class="sd">	&#39;&#39;&#39;</span>
+	<span class="k">return</span> <span class="n">_rft_sf</span><span class="p">(</span><span class="s1">&#39;NCF&#39;</span><span class="p">,</span> <span class="n">u</span><span class="p">,</span> <span class="n">df</span><span class="p">,</span> <span class="n">Q</span><span class="p">,</span> <span class="n">fwhm</span><span class="p">,</span> <span class="n">delta</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="nct_sf"><a class="viewcode-back" href="../../API/prob.html#power1d.prob.nct_sf">[docs]</a><span class="k">def</span> <span class="nf">nct_sf</span><span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">df</span><span class="p">,</span> <span class="n">Q</span><span class="p">,</span> <span class="n">fwhm</span><span class="p">,</span> <span class="n">delta</span><span class="p">):</span>
+	<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">	Survival function for noncentral t fields.</span>
+
+<span class="sd">	Adapted from &quot;pm_P_ncT.m&quot; in &quot;PowerMap&quot; (Joyce &amp; Hayasaka 2012)</span>
+
+<span class="sd">	Arguments:</span>
+
+<span class="sd">	*u* ---- height (float)</span>
+
+<span class="sd">	*df* ---- degrees of freedom (float)</span>
+<span class="sd">	</span>
+<span class="sd">	*Q* ---- continuum size (integer)</span>
+<span class="sd">	</span>
+<span class="sd">	*fwhm* ---- continuum smoothness (positive float);  full-width-at-half-maximum</span>
+
+<span class="sd">	*delta* ---- noncentrality parameter</span>
+<span class="sd">	&#39;&#39;&#39;</span>
+	<span class="k">return</span> <span class="n">_rft_sf</span><span class="p">(</span><span class="s1">&#39;NCT&#39;</span><span class="p">,</span> <span class="n">u</span><span class="p">,</span> <span class="n">df</span><span class="p">,</span> <span class="n">Q</span><span class="p">,</span> <span class="n">fwhm</span><span class="p">,</span> <span class="n">delta</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="f_sf"><a class="viewcode-back" href="../../API/prob.html#power1d.prob.f_sf">[docs]</a><span class="k">def</span> <span class="nf">f_sf</span><span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">df</span><span class="p">,</span> <span class="n">Q</span><span class="p">,</span> <span class="n">fwhm</span><span class="p">):</span>
+	<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">	Survival function for central F fields.</span>
+
+<span class="sd">	Arguments:</span>
+
+<span class="sd">	*u* ---- height (float)</span>
+
+<span class="sd">	*df* ---- degrees of freedom (float)</span>
+<span class="sd">	</span>
+<span class="sd">	*Q* ---- continuum size (integer)</span>
+<span class="sd">	</span>
+<span class="sd">	*fwhm* ---- continuum smoothness (positive float);  full-width-at-half-maximum</span>
+<span class="sd">	&#39;&#39;&#39;</span>
+	<span class="k">return</span> <span class="n">_rft_sf</span><span class="p">(</span><span class="s1">&#39;F&#39;</span><span class="p">,</span> <span class="n">u</span><span class="p">,</span> <span class="n">df</span><span class="p">,</span> <span class="n">Q</span><span class="p">,</span> <span class="n">fwhm</span><span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="t_sf"><a class="viewcode-back" href="../../API/prob.html#power1d.prob.t_sf">[docs]</a><span class="k">def</span> <span class="nf">t_sf</span><span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">df</span><span class="p">,</span> <span class="n">Q</span><span class="p">,</span> <span class="n">fwhm</span><span class="p">):</span>
+	<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">	Survival function for central t fields.</span>
+
+<span class="sd">	Arguments:</span>
+
+<span class="sd">	*u* ---- height (float)</span>
+
+<span class="sd">	*df* ---- degrees of freedom (float)</span>
+<span class="sd">	</span>
+<span class="sd">	*Q* ---- continuum size (integer)</span>
+<span class="sd">	</span>
+<span class="sd">	*fwhm* ---- continuum smoothness (positive float);  full-width-at-half-maximum</span>
+<span class="sd">	&#39;&#39;&#39;</span>
+	<span class="k">return</span> <span class="n">_rft_sf</span><span class="p">(</span><span class="s1">&#39;T&#39;</span><span class="p">,</span> <span class="n">u</span><span class="p">,</span> <span class="n">df</span><span class="p">,</span> <span class="n">Q</span><span class="p">,</span> <span class="n">fwhm</span><span class="p">)</span></div>
+	
+	
+
+<div class="viewcode-block" id="f_isf"><a class="viewcode-back" href="../../API/prob.html#power1d.prob.f_isf">[docs]</a><span class="k">def</span> <span class="nf">f_isf</span><span class="p">(</span><span class="n">alpha</span><span class="p">,</span> <span class="n">df</span><span class="p">,</span> <span class="n">Q</span><span class="p">,</span> <span class="n">fwhm</span><span class="p">):</span>
+	<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">	Inverse survival function for central f fields</span>
+<span class="sd">	</span>
+<span class="sd">	Arguments:</span>
+
+<span class="sd">	*alpha* ---- Type I error rate (float between 0 and 1)</span>
+
+<span class="sd">	*df* ---- degrees of freedom (float, float)</span>
+<span class="sd">	</span>
+<span class="sd">	*Q* ---- continuum size (integer)</span>
+<span class="sd">	</span>
+<span class="sd">	*fwhm* ---- continuum smoothness (positive float);  full-width-at-half-maximum</span>
+<span class="sd">	&#39;&#39;&#39;</span>
+	<span class="n">z0</span>    <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">f</span><span class="o">.</span><span class="n">isf</span><span class="p">(</span><span class="n">alpha</span><span class="p">,</span> <span class="n">df</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">df</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>  <span class="c1">#approximate threshold</span>
+	<span class="n">fn</span>    <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span> <span class="p">:</span> <span class="p">(</span><span class="n">f_sf</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">df</span><span class="p">,</span> <span class="n">Q</span><span class="p">,</span> <span class="n">fwhm</span><span class="p">)</span> <span class="o">-</span> <span class="n">alpha</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span>
+	<span class="n">zstar</span> <span class="o">=</span> <span class="n">optimize</span><span class="o">.</span><span class="n">fmin</span><span class="p">(</span><span class="n">fn</span><span class="p">,</span> <span class="n">z0</span><span class="p">,</span> <span class="n">xtol</span><span class="o">=</span><span class="mi">1</span><span class="n">e</span><span class="o">-</span><span class="mi">9</span><span class="p">,</span> <span class="n">disp</span><span class="o">=</span><span class="mi">0</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+	<span class="k">return</span> <span class="n">zstar</span></div>
+
+
+<div class="viewcode-block" id="t_isf"><a class="viewcode-back" href="../../API/prob.html#power1d.prob.t_isf">[docs]</a><span class="k">def</span> <span class="nf">t_isf</span><span class="p">(</span><span class="n">alpha</span><span class="p">,</span> <span class="n">df</span><span class="p">,</span> <span class="n">Q</span><span class="p">,</span> <span class="n">fwhm</span><span class="p">):</span>
+	<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">	Inverse survival function for central t fields</span>
+<span class="sd">	</span>
+<span class="sd">	Arguments:</span>
+
+<span class="sd">	*alpha* ---- Type I error rate (float between 0 and 1)</span>
+
+<span class="sd">	*df* ---- degrees of freedom (float)</span>
+<span class="sd">	</span>
+<span class="sd">	*Q* ---- continuum size (integer)</span>
+<span class="sd">	</span>
+<span class="sd">	*fwhm* ---- continuum smoothness (positive float);  full-width-at-half-maximum</span>
+<span class="sd">	&#39;&#39;&#39;</span>
+	<span class="n">z0</span>    <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">t</span><span class="o">.</span><span class="n">isf</span><span class="p">(</span><span class="n">alpha</span><span class="p">,</span> <span class="n">df</span><span class="p">)</span>  <span class="c1">#approximate threshold</span>
+	<span class="n">fn</span>    <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span> <span class="p">:</span> <span class="p">(</span><span class="n">t_sf</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">df</span><span class="p">,</span> <span class="n">Q</span><span class="p">,</span> <span class="n">fwhm</span><span class="p">)</span> <span class="o">-</span> <span class="n">alpha</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span>
+	<span class="n">zstar</span> <span class="o">=</span> <span class="n">optimize</span><span class="o">.</span><span class="n">fmin</span><span class="p">(</span><span class="n">fn</span><span class="p">,</span> <span class="n">z0</span><span class="p">,</span> <span class="n">xtol</span><span class="o">=</span><span class="mi">1</span><span class="n">e</span><span class="o">-</span><span class="mi">9</span><span class="p">,</span> <span class="n">disp</span><span class="o">=</span><span class="mi">0</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+	<span class="k">return</span> <span class="n">zstar</span></div>
+	
+	
+
+<div class="viewcode-block" id="power_Friston1994"><a class="viewcode-back" href="../../API/prob.html#power1d.prob.power_Friston1994">[docs]</a><span class="k">def</span> <span class="nf">power_Friston1994</span><span class="p">(</span><span class="n">alpha</span><span class="p">,</span> <span class="n">df</span><span class="p">,</span> <span class="n">Q</span><span class="p">,</span> <span class="n">W0</span><span class="p">,</span> <span class="n">W1</span><span class="p">,</span> <span class="n">sigma</span><span class="p">):</span>
+	<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">	Continuum-level power calculation using the inflated variance method</span>
+<span class="sd">	(Friston et al. 1994)</span>
+
+<span class="sd">	Arguments:</span>
+
+<span class="sd">	*alpha* ------ Type I error rate  (float)</span>
+<span class="sd">	</span>
+<span class="sd">	*df* ------ degrees of freedom  (float)</span>
+<span class="sd">	</span>
+<span class="sd">	*Q* ------ continuum size  (int)</span>
+<span class="sd">	</span>
+<span class="sd">	*W0* ------ continuum smoothness under the null hypothesis  (positive float)</span>
+<span class="sd">	</span>
+<span class="sd">	*W1* ------ continuum smoothness under the alternative hypothesis  (float)</span>
+<span class="sd">	</span>
+<span class="sd">	*sigma* ------ effect size  (noise amplitude under the alternative hypothesis)  (positive float)</span>
+<span class="sd">	</span>
+<span class="sd">	Reference:</span>
+<span class="sd">	</span>
+<span class="sd">	| Friston KJ, Worsley KJ, Frackowiak RSJ, Mazziotta JC, Evans AC</span>
+<span class="sd">	  (1994). Assessing the significance of focal activations using</span>
+<span class="sd">	  their spatial extent. **Human Brain Mapp** 1: 210-220.</span>
+<span class="sd">	| http://onlinelibrary.wiley.com/doi/10.1002/hbm.460010306/full</span>
+<span class="sd">	&#39;&#39;&#39;</span>
+	<span class="n">f</span>      <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">W1</span><span class="p">)</span> <span class="o">/</span> <span class="n">W0</span>                  <span class="c1">#ratio of signal-to-noise smoothness</span>
+	<span class="n">s2</span>     <span class="o">=</span> <span class="n">sigma</span><span class="o">**</span><span class="mi">2</span>                        <span class="c1">#variance</span>
+	<span class="n">u</span>      <span class="o">=</span> <span class="n">t_isf</span><span class="p">(</span><span class="n">alpha</span><span class="p">,</span> <span class="n">df</span><span class="p">,</span> <span class="n">Q</span><span class="p">,</span> <span class="n">W0</span><span class="p">)</span>         <span class="c1">#critical threshold</span>
+	<span class="n">ustar</span>  <span class="o">=</span> <span class="n">u</span> <span class="o">*</span> <span class="p">(</span> <span class="mi">1</span> <span class="o">+</span> <span class="n">s2</span> <span class="p">)</span><span class="o">**</span><span class="p">(</span><span class="o">-</span><span class="mf">0.5</span><span class="p">)</span>          <span class="c1">#threshold for the alternative hypothesis</span>
+	<span class="n">Wstar</span>  <span class="o">=</span> <span class="n">W0</span> <span class="o">*</span> <span class="p">(</span> <span class="p">(</span><span class="mi">1</span><span class="o">+</span><span class="n">s2</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span> <span class="mi">1</span> <span class="o">+</span> <span class="n">s2</span><span class="o">/</span><span class="p">(</span><span class="mi">1</span><span class="o">+</span><span class="n">f</span><span class="o">**</span><span class="mi">2</span><span class="p">))</span> <span class="p">)</span><span class="o">**</span><span class="mf">0.5</span>  <span class="c1">#smoothness for the alternative</span>
+	<span class="n">p</span>      <span class="o">=</span> <span class="n">t_sf</span><span class="p">(</span><span class="n">ustar</span><span class="p">,</span> <span class="n">df</span><span class="p">,</span> <span class="n">Q</span><span class="p">,</span> <span class="n">Wstar</span><span class="p">)</span>       <span class="c1">#power</span>
+	<span class="k">return</span> <span class="n">p</span></div>
+
+
+<div class="viewcode-block" id="power_Hayasaka2007"><a class="viewcode-back" href="../../API/prob.html#power1d.prob.power_Hayasaka2007">[docs]</a><span class="k">def</span> <span class="nf">power_Hayasaka2007</span><span class="p">(</span><span class="n">alpha</span><span class="p">,</span> <span class="n">df</span><span class="p">,</span> <span class="n">Q</span><span class="p">,</span> <span class="n">fwhm</span><span class="p">,</span> <span class="n">effect</span><span class="p">):</span>
+	<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">	Continuum-level power calculation using the non-central t method</span>
+<span class="sd">	(Hayasaka et al. 2007)</span>
+<span class="sd">	</span>
+<span class="sd">	Arguments:</span>
+<span class="sd">	</span>
+<span class="sd">	*alpha* ------ Type I error rate  (float)</span>
+<span class="sd">	</span>
+<span class="sd">	*df* ------ degrees of freedom  (float)</span>
+<span class="sd">	</span>
+<span class="sd">	*Q* ------ continuum size  (int)</span>
+<span class="sd">	</span>
+<span class="sd">	*fwhm* ------ continuum smoothness  (positive float)</span>
+<span class="sd">	</span>
+<span class="sd">	*effect* ------ effect size  (random field shift as: mu/sigma) (float)</span>
+<span class="sd">	</span>
+<span class="sd">	Reference:</span>
+<span class="sd">	</span>
+<span class="sd">	| Hayasaka S, Peiffer AM, Hugenschmidt CE, Laurienti PJ (2007).</span>
+<span class="sd">	  Power and sample size calculation for neuroimaging studies by</span>
+<span class="sd">	  non-central random field theory. **NeuroImage** 37(3), 721-730.</span>
+<span class="sd">	| http://dx.doi.org/10.1016/j.neuroimage.2007.06.009</span>
+<span class="sd">	&#39;&#39;&#39;</span>
+	<span class="n">delta</span>  <span class="o">=</span> <span class="n">effect</span> <span class="o">*</span> <span class="p">(</span><span class="n">df</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">**</span><span class="mf">0.5</span>   <span class="c1">#non-centrality parameter</span>
+	<span class="n">u</span>      <span class="o">=</span> <span class="n">t_isf</span><span class="p">(</span><span class="n">alpha</span><span class="p">,</span> <span class="n">df</span><span class="p">,</span> <span class="n">Q</span><span class="p">,</span> <span class="n">fwhm</span><span class="p">)</span>
+	<span class="n">p</span>      <span class="o">=</span> <span class="n">nct_sf</span><span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">df</span><span class="p">,</span> <span class="n">Q</span><span class="p">,</span> <span class="n">fwhm</span><span class="p">,</span> <span class="n">delta</span><span class="p">)</span>
+	<span class="k">return</span> <span class="n">p</span></div>
+
+
+
+
+<div class="viewcode-block" id="power"><a class="viewcode-back" href="../../API/prob.html#power1d.prob.power">[docs]</a><span class="k">def</span> <span class="nf">power</span><span class="p">(</span><span class="n">alpha</span><span class="p">,</span> <span class="n">df</span><span class="p">,</span> <span class="n">Q</span><span class="p">,</span> <span class="n">fwhm</span><span class="p">,</span> <span class="n">effect</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s1">&#39;nct&#39;</span><span class="p">):</span>
+	<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">	Continuum-level theoretical power calculations for one-sample t tests.</span>
+<span class="sd">	</span>
+<span class="sd">	This is a convenience function for generating comparable results for</span>
+<span class="sd">	the &quot;iv&quot; and &quot;nct&quot; methods (see below). That is, the two methods define</span>
+<span class="sd">	effects slightly differently, but this function ensures that the effect</span>
+<span class="sd">	is defined approximately the same for both methods, thus making the</span>
+<span class="sd">	two methods directly comparable.</span>
+<span class="sd">	</span>
+<span class="sd">	</span>
+<span class="sd">	*alpha* ------ Type I error rate  (float)</span>
+<span class="sd">	</span>
+<span class="sd">	*df* ------ degrees of freedom  (float)</span>
+<span class="sd">	</span>
+<span class="sd">	*Q* ------ continuum size  (int)</span>
+<span class="sd">	</span>
+<span class="sd">	*fwhm* ------ continuum smoothness  (positive float)</span>
+<span class="sd">	</span>
+<span class="sd">	*effect* ------ effect size  (float)</span>
+<span class="sd">	</span>
+<span class="sd">	*methods* ------ one of &quot;iv&quot; or &quot;nct&quot;</span>
+<span class="sd">	</span>
+<span class="sd">	Methods:</span>
+<span class="sd">	</span>
+<span class="sd">	*iv* ------ inflated variance method (Friston et al. 1994)</span>
+<span class="sd">	</span>
+<span class="sd">	*nct* ------ noncentral t method (Hayasaka et al. 2007)</span>
+<span class="sd">	&#39;&#39;&#39;</span>
+	<span class="n">_methods</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;iv&#39;</span><span class="p">,</span> <span class="s1">&#39;nct&#39;</span><span class="p">]</span>
+	<span class="k">assert</span> <span class="n">method</span> <span class="ow">in</span> <span class="n">_methods</span><span class="p">,</span> <span class="s1">&#39;&quot;method&quot; must be one of: </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span><span class="n">_methods</span>
+	<span class="k">if</span> <span class="n">method</span> <span class="o">==</span> <span class="s1">&#39;iv&#39;</span><span class="p">:</span>
+		<span class="n">d</span>    <span class="o">=</span> <span class="n">effect</span> <span class="o">*</span> <span class="p">(</span><span class="n">df</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">**</span><span class="mf">0.5</span>
+		<span class="n">p</span>    <span class="o">=</span> <span class="n">power_Friston1994</span><span class="p">(</span><span class="n">alpha</span><span class="p">,</span> <span class="n">df</span><span class="p">,</span> <span class="n">Q</span><span class="p">,</span> <span class="n">fwhm</span><span class="p">,</span> <span class="n">fwhm</span><span class="p">,</span> <span class="n">d</span><span class="p">)</span>
+	<span class="k">if</span> <span class="n">method</span> <span class="o">==</span> <span class="s1">&#39;nct&#39;</span><span class="p">:</span>
+		<span class="n">p</span>    <span class="o">=</span> <span class="n">power_Hayasaka2007</span><span class="p">(</span><span class="n">alpha</span><span class="p">,</span> <span class="n">df</span><span class="p">,</span> <span class="n">Q</span><span class="p">,</span> <span class="n">fwhm</span><span class="p">,</span> <span class="n">effect</span><span class="p">)</span>
+	<span class="k">return</span> <span class="n">p</span>
+	<span class="c1"># method=&#39;iv&#39;  #inflated_variance</span>
+	<span class="c1"># method=&#39;ncrft&#39;  #noncentral_rft</span>
+	<span class="k">pass</span></div>
+
+
+</pre></div>
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../../search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">power1d 0.1 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../index.html" >Module code</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2017, Todd Pataky.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.5.1.
+    </div>
+  </body>
+</html>

@@ -1,0 +1,613 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>power1d.models &#8212; power1d 0.1 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/pyramid.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="power1d.noise" href="noise.html" />
+    <link rel="prev" title="power1d.prob" href="prob.html" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Neuton&amp;subset=latin" type="text/css" media="screen" charset="utf-8" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nobile:regular,italic,bold,bolditalic&amp;subset=latin" type="text/css" media="screen" charset="utf-8" />
+<!--[if lte IE 6]>
+<link rel="stylesheet" href="../_static/ie6.css" type="text/css" media="screen" charset="utf-8" />
+<![endif]-->
+
+  </head>
+  <body role="document">
+<div class="header" role="banner">
+  <div class="logo">
+    <a href="../index.html">
+      <img class="logo" src="../_static/logo.png" border="0" alt="Logo"/>
+    </a>
+  </div>
+</div>
+
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="noise.html" title="power1d.noise"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="prob.html" title="power1d.prob"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">power1d 0.1 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../API.html" accesskey="U">API</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="module-power1d.models">
+<span id="power1d-models"></span><span id="label-api-models"></span><h1>power1d.models<a class="headerlink" href="#module-power1d.models" title="Permalink to this headline">¶</a></h1>
+<p>High-level classes for assembling data models and simulating experiments.</p>
+<p>Below attributes and methods can be distinguished as follows:</p>
+<ul class="simple">
+<li>attribute names are followed by &#8220;= None&#8221;</li>
+<li>method names are followed by &#8220;( )&#8221; with arguments inside the parentheses, and all methods also have code snippets attached.</li>
+</ul>
+<div class="section" id="datasample">
+<h2>DataSample<a class="headerlink" href="#datasample" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="power1d.models.DataSample">
+<em class="property">class </em><code class="descclassname">power1d.models.</code><code class="descname">DataSample</code><span class="sig-paren">(</span><em>baseline</em>, <em>signal</em>, <em>noise</em>, <em>J=8</em>, <em>regressor=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/power1d/models.html#DataSample"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#power1d.models.DataSample" title="Permalink to this definition">¶</a></dt>
+<dd><p>Data Sample model.</p>
+<p>Arguments:</p>
+<p><em>baseline</em> &#8212;- a power1d.geom object representing the sample datum</p>
+<p><em>noise</em> &#8212;- a power1d.geom object representing the sample signal</p>
+<p><em>noise</em> &#8212;- a power1d.noise object representing the sample noise</p>
+<p><em>J</em> &#8212;- sample size (int, default 8)</p>
+<p><em>regressor</em> &#8212;- an optional regressor that will scale the signal across the <em>J</em> observations (length-J numpy array)</p>
+<p>Example:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span>
+<span class="kn">import</span> <span class="nn">power1d</span>
+
+<span class="n">J</span>        <span class="o">=</span> <span class="mi">20</span>
+<span class="n">Q</span>        <span class="o">=</span> <span class="mi">101</span>
+<span class="n">baseline</span> <span class="o">=</span> <span class="n">power1d</span><span class="o">.</span><span class="n">geom</span><span class="o">.</span><span class="n">Null</span><span class="p">(</span> <span class="n">Q</span><span class="o">=</span><span class="n">Q</span> <span class="p">)</span>
+<span class="n">signal</span>   <span class="o">=</span> <span class="n">power1d</span><span class="o">.</span><span class="n">geom</span><span class="o">.</span><span class="n">GaussianPulse</span><span class="p">(</span> <span class="n">Q</span><span class="o">=</span><span class="n">Q</span><span class="p">,</span> <span class="n">q</span><span class="o">=</span><span class="mi">40</span><span class="p">,</span> <span class="n">fwhm</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span> <span class="n">amp</span><span class="o">=</span><span class="mf">3.5</span> <span class="p">)</span>
+<span class="n">noise</span>    <span class="o">=</span> <span class="n">power1d</span><span class="o">.</span><span class="n">noise</span><span class="o">.</span><span class="n">SmoothGaussian</span><span class="p">(</span> <span class="n">J</span><span class="o">=</span><span class="n">J</span><span class="p">,</span> <span class="n">Q</span><span class="o">=</span><span class="n">Q</span><span class="p">,</span> <span class="n">mu</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">sigma</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">fwhm</span><span class="o">=</span><span class="mi">20</span> <span class="p">)</span>
+<span class="n">model</span>    <span class="o">=</span> <span class="n">power1d</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">DataSample</span><span class="p">(</span><span class="n">baseline</span><span class="p">,</span> <span class="n">signal</span><span class="p">,</span> <span class="n">noise</span><span class="p">,</span> <span class="n">J</span><span class="o">=</span><span class="n">J</span><span class="p">)</span>
+<span class="n">pyplot</span><span class="o">.</span><span class="n">close</span><span class="p">(</span><span class="s1">&#39;all&#39;</span><span class="p">)</span>
+<span class="n">model</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s2">&quot;g&quot;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>(<a class="reference external" href="../API/models-1.py">Source code</a>, <a class="reference external" href="../API/models-1.png">png</a>, <a class="reference external" href="../API/models-1.hires.png">hires.png</a>, <a class="reference external" href="../API/models-1.pdf">pdf</a>)</p>
+<div class="figure">
+<img alt="../_images/models-1.png" src="../_images/models-1.png" />
+</div>
+<dl class="attribute">
+<dt id="power1d.models.DataSample.J">
+<code class="descname">J</code><em class="property"> = None</em><a class="headerlink" href="#power1d.models.DataSample.J" title="Permalink to this definition">¶</a></dt>
+<dd><p>sample size</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="power1d.models.DataSample.Q">
+<code class="descname">Q</code><em class="property"> = None</em><a class="headerlink" href="#power1d.models.DataSample.Q" title="Permalink to this definition">¶</a></dt>
+<dd><p>continuum size</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="power1d.models.DataSample.baseline">
+<code class="descname">baseline</code><em class="property"> = None</em><a class="headerlink" href="#power1d.models.DataSample.baseline" title="Permalink to this definition">¶</a></dt>
+<dd><p>baseline model</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="power1d.models.DataSample.get_baseline">
+<code class="descname">get_baseline</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/power1d/models.html#DataSample.get_baseline"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#power1d.models.DataSample.get_baseline" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the DataSample&#8217;s baseline object</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="power1d.models.DataSample.get_noise">
+<code class="descname">get_noise</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/power1d/models.html#DataSample.get_noise"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#power1d.models.DataSample.get_noise" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the DataSample&#8217;s noise object</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="power1d.models.DataSample.get_signal">
+<code class="descname">get_signal</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/power1d/models.html#DataSample.get_signal"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#power1d.models.DataSample.get_signal" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the DataSample&#8217;s signal object</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="power1d.models.DataSample.hasregressor">
+<code class="descname">hasregressor</code><em class="property"> = None</em><a class="headerlink" href="#power1d.models.DataSample.hasregressor" title="Permalink to this definition">¶</a></dt>
+<dd><p>whether or not a regressor has been associated with the data sample</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="power1d.models.DataSample.link">
+<code class="descname">link</code><span class="sig-paren">(</span><em>other</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/power1d/models.html#DataSample.link"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#power1d.models.DataSample.link" title="Permalink to this definition">¶</a></dt>
+<dd><p>Link noise to another DataSample object so that the linked object&#8217;s
+noise is equivalent to master object&#8217;s noise.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="power1d.models.DataSample.noise">
+<code class="descname">noise</code><em class="property"> = None</em><a class="headerlink" href="#power1d.models.DataSample.noise" title="Permalink to this definition">¶</a></dt>
+<dd><p>noise model</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="power1d.models.DataSample.plot">
+<code class="descname">plot</code><span class="sig-paren">(</span><em>ax=None</em>, <em>with_noise=True</em>, <em>color='k'</em>, <em>lw=3</em>, <em>q=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/power1d/models.html#DataSample.plot"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#power1d.models.DataSample.plot" title="Permalink to this definition">¶</a></dt>
+<dd><p>Plot an instantaneous representation of the DataSample</p>
+<p>Arguments:</p>
+<p><em>ax</em> &#8212;- pyplot axes object (default None)</p>
+<p><em>with_noise</em> &#8212;- whether or not to plot the noise (bool, default True)</p>
+<p><em>color</em> &#8212;- a matplotlib color for all lines (baseline, signal and noise) (default &#8220;k&#8221; &#8211; black)</p>
+<p><em>lw</em> &#8212;- linewidth for the signal (int, default 3)</p>
+<p><em>q</em> &#8212;- optional continuum position values (length-Q array of monotonically increasing values) (default None)</p>
+<p>Example:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span>
+<span class="kn">import</span> <span class="nn">power1d</span>
+
+<span class="n">J</span>        <span class="o">=</span> <span class="mi">8</span>
+<span class="n">Q</span>        <span class="o">=</span> <span class="mi">101</span>
+<span class="n">baseline</span> <span class="o">=</span> <span class="n">power1d</span><span class="o">.</span><span class="n">geom</span><span class="o">.</span><span class="n">Null</span><span class="p">(</span> <span class="n">Q</span><span class="o">=</span><span class="n">Q</span> <span class="p">)</span>
+<span class="n">signal</span>   <span class="o">=</span> <span class="n">power1d</span><span class="o">.</span><span class="n">geom</span><span class="o">.</span><span class="n">GaussianPulse</span><span class="p">(</span> <span class="n">Q</span><span class="o">=</span><span class="n">Q</span><span class="p">,</span> <span class="n">q</span><span class="o">=</span><span class="mi">75</span><span class="p">,</span> <span class="n">fwhm</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span> <span class="n">amp</span><span class="o">=</span><span class="mf">5.0</span> <span class="p">)</span>
+<span class="n">noise</span>    <span class="o">=</span> <span class="n">power1d</span><span class="o">.</span><span class="n">noise</span><span class="o">.</span><span class="n">Gaussian</span><span class="p">(</span> <span class="n">J</span><span class="o">=</span><span class="n">J</span><span class="p">,</span> <span class="n">Q</span><span class="o">=</span><span class="n">Q</span><span class="p">,</span> <span class="n">mu</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">sigma</span><span class="o">=</span><span class="mf">1.0</span> <span class="p">)</span>
+<span class="n">model</span>    <span class="o">=</span> <span class="n">power1d</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">DataSample</span><span class="p">(</span><span class="n">baseline</span><span class="p">,</span> <span class="n">signal</span><span class="p">,</span> <span class="n">noise</span><span class="p">,</span> <span class="n">J</span><span class="o">=</span><span class="n">J</span><span class="p">)</span>
+<span class="n">pyplot</span><span class="o">.</span><span class="n">close</span><span class="p">(</span><span class="s1">&#39;all&#39;</span><span class="p">)</span>
+<span class="n">model</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s2">&quot;b&quot;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>(<a class="reference external" href="../API/models-2.py">Source code</a>, <a class="reference external" href="../API/models-2.png">png</a>, <a class="reference external" href="../API/models-2.hires.png">hires.png</a>, <a class="reference external" href="../API/models-2.pdf">pdf</a>)</p>
+<div class="figure">
+<img alt="../_images/models-2.png" src="../_images/models-2.png" />
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="power1d.models.DataSample.random">
+<code class="descname">random</code><span class="sig-paren">(</span><em>subtract_baseline=False</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/power1d/models.html#DataSample.random"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#power1d.models.DataSample.random" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generate a random data sample based on the baseline, signal and noise models.
+The value will be stored in the &#8220;value&#8221; attribute.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="power1d.models.DataSample.regressor">
+<code class="descname">regressor</code><em class="property"> = None</em><a class="headerlink" href="#power1d.models.DataSample.regressor" title="Permalink to this definition">¶</a></dt>
+<dd><p>(J,) numpy array representing regressor</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="power1d.models.DataSample.set_baseline">
+<code class="descname">set_baseline</code><span class="sig-paren">(</span><em>baseline</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/power1d/models.html#DataSample.set_baseline"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#power1d.models.DataSample.set_baseline" title="Permalink to this definition">¶</a></dt>
+<dd><p>Change the DataSample&#8217;s baseline object</p>
+<p>Arguments:</p>
+<p><em>baseline</em> &#8212;- a power1d.geom object representing the sample datum</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="power1d.models.DataSample.set_noise">
+<code class="descname">set_noise</code><span class="sig-paren">(</span><em>noise</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/power1d/models.html#DataSample.set_noise"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#power1d.models.DataSample.set_noise" title="Permalink to this definition">¶</a></dt>
+<dd><p>Change the DataSample&#8217;s baseline object</p>
+<p>Arguments:</p>
+<p><em>baseline</em> &#8212;- a power1d.noise object representing the sample datum</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="power1d.models.DataSample.set_regressor">
+<code class="descname">set_regressor</code><span class="sig-paren">(</span><em>x</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/power1d/models.html#DataSample.set_regressor"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#power1d.models.DataSample.set_regressor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set or change the DataSample&#8217;s regressor</p>
+<p>Arguments:</p>
+<p><em>x</em> &#8212;- a length-J numpy array (float)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="power1d.models.DataSample.set_sample_size">
+<code class="descname">set_sample_size</code><span class="sig-paren">(</span><em>J</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/power1d/models.html#DataSample.set_sample_size"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#power1d.models.DataSample.set_sample_size" title="Permalink to this definition">¶</a></dt>
+<dd><p>Change the sample size</p>
+<p>Arguments:</p>
+<p><em>J</em> &#8212;- sample size (positive int)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="power1d.models.DataSample.set_signal">
+<code class="descname">set_signal</code><span class="sig-paren">(</span><em>signal</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/power1d/models.html#DataSample.set_signal"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#power1d.models.DataSample.set_signal" title="Permalink to this definition">¶</a></dt>
+<dd><p>Change the DataSample&#8217;s signal object</p>
+<p>Arguments:</p>
+<p><em>signal</em> &#8212;- a power1d.geom object representing the sample signal</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="power1d.models.DataSample.signal">
+<code class="descname">signal</code><em class="property"> = None</em><a class="headerlink" href="#power1d.models.DataSample.signal" title="Permalink to this definition">¶</a></dt>
+<dd><p>signal model</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="power1d.models.DataSample.value0">
+<code class="descname">value0</code><em class="property"> = None</em><a class="headerlink" href="#power1d.models.DataSample.value0" title="Permalink to this definition">¶</a></dt>
+<dd><p>value in the absence of noise (baseline + signal)</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="experiment">
+<h2>Experiment<a class="headerlink" href="#experiment" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="power1d.models.Experiment">
+<em class="property">class </em><code class="descclassname">power1d.models.</code><code class="descname">Experiment</code><span class="sig-paren">(</span><em>data_sample_models</em>, <em>fn</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/power1d/models.html#Experiment"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#power1d.models.Experiment" title="Permalink to this definition">¶</a></dt>
+<dd><p>Experiment model.</p>
+<p>Arguments:</p>
+<p><em>data_sample_models</em> &#8212;- a list of DataSample objects</p>
+<p><em>fn</em> &#8212;- a function for computing the test statistic (must accept a sequence of (J,Q)
+arrays and return a length-Q array representing the test statistic continuum). Standard
+test statistic functions are available in <strong>power1d.stats</strong></p>
+<p>Example:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span>
+<span class="kn">import</span> <span class="nn">power1d</span>
+
+<span class="n">J</span>        <span class="o">=</span> <span class="mi">10</span>
+<span class="n">Q</span>        <span class="o">=</span> <span class="mi">101</span>
+<span class="n">baseline</span> <span class="o">=</span> <span class="n">power1d</span><span class="o">.</span><span class="n">geom</span><span class="o">.</span><span class="n">Null</span><span class="p">(</span> <span class="n">Q</span><span class="o">=</span><span class="n">Q</span> <span class="p">)</span>
+<span class="n">signal0</span>  <span class="o">=</span> <span class="n">power1d</span><span class="o">.</span><span class="n">geom</span><span class="o">.</span><span class="n">Null</span><span class="p">(</span> <span class="n">Q</span><span class="o">=</span><span class="n">Q</span> <span class="p">)</span>
+<span class="n">signal1</span>  <span class="o">=</span> <span class="n">power1d</span><span class="o">.</span><span class="n">geom</span><span class="o">.</span><span class="n">GaussianPulse</span><span class="p">(</span> <span class="n">Q</span><span class="o">=</span><span class="n">Q</span><span class="p">,</span> <span class="n">q</span><span class="o">=</span><span class="mi">40</span><span class="p">,</span> <span class="n">fwhm</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span> <span class="n">amp</span><span class="o">=</span><span class="mf">3.5</span> <span class="p">)</span>
+<span class="n">noise</span>    <span class="o">=</span> <span class="n">power1d</span><span class="o">.</span><span class="n">noise</span><span class="o">.</span><span class="n">Gaussian</span><span class="p">(</span> <span class="n">J</span><span class="o">=</span><span class="n">J</span><span class="p">,</span> <span class="n">Q</span><span class="o">=</span><span class="n">Q</span><span class="p">,</span> <span class="n">mu</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">sigma</span><span class="o">=</span><span class="mf">1.0</span> <span class="p">)</span>
+<span class="n">model0</span>   <span class="o">=</span> <span class="n">power1d</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">DataSample</span><span class="p">(</span><span class="n">baseline</span><span class="p">,</span> <span class="n">signal0</span><span class="p">,</span> <span class="n">noise</span><span class="p">,</span> <span class="n">J</span><span class="o">=</span><span class="n">J</span><span class="p">)</span>
+<span class="n">model1</span>   <span class="o">=</span> <span class="n">power1d</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">DataSample</span><span class="p">(</span><span class="n">baseline</span><span class="p">,</span> <span class="n">signal1</span><span class="p">,</span> <span class="n">noise</span><span class="p">,</span> <span class="n">J</span><span class="o">=</span><span class="n">J</span><span class="p">)</span>
+<span class="n">emodel</span>   <span class="o">=</span> <span class="n">power1d</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">Experiment</span><span class="p">(</span> <span class="p">[</span><span class="n">model0</span><span class="p">,</span> <span class="n">model1</span><span class="p">],</span> <span class="n">fn</span><span class="o">=</span><span class="n">power1d</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">t_2sample</span> <span class="p">)</span>
+<span class="n">pyplot</span><span class="o">.</span><span class="n">close</span><span class="p">(</span><span class="s1">&#39;all&#39;</span><span class="p">)</span>
+<span class="n">emodel</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>(<a class="reference external" href="../API/models-3.py">Source code</a>, <a class="reference external" href="../API/models-3.png">png</a>, <a class="reference external" href="../API/models-3.hires.png">hires.png</a>, <a class="reference external" href="../API/models-3.pdf">pdf</a>)</p>
+<div class="figure">
+<img alt="../_images/models-3.png" src="../_images/models-3.png" />
+</div>
+<dl class="attribute">
+<dt id="power1d.models.Experiment.Q">
+<code class="descname">Q</code><em class="property"> = None</em><a class="headerlink" href="#power1d.models.Experiment.Q" title="Permalink to this definition">¶</a></dt>
+<dd><p>continuum length</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="power1d.models.Experiment.Z">
+<code class="descname">Z</code><em class="property"> = None</em><a class="headerlink" href="#power1d.models.Experiment.Z" title="Permalink to this definition">¶</a></dt>
+<dd><p>output test statistic continua</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="power1d.models.Experiment.data_models">
+<code class="descname">data_models</code><em class="property"> = None</em><a class="headerlink" href="#power1d.models.Experiment.data_models" title="Permalink to this definition">¶</a></dt>
+<dd><p>data models</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="power1d.models.Experiment.fn">
+<code class="descname">fn</code><em class="property"> = None</em><a class="headerlink" href="#power1d.models.Experiment.fn" title="Permalink to this definition">¶</a></dt>
+<dd><p>test statistic function</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="power1d.models.Experiment.nmodels">
+<code class="descname">nmodels</code><em class="property"> = None</em><a class="headerlink" href="#power1d.models.Experiment.nmodels" title="Permalink to this definition">¶</a></dt>
+<dd><p>number of data models</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="power1d.models.Experiment.plot">
+<code class="descname">plot</code><span class="sig-paren">(</span><em>ax=None</em>, <em>with_noise=True</em>, <em>colors=None</em>, <em>q=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/power1d/models.html#Experiment.plot"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#power1d.models.Experiment.plot" title="Permalink to this definition">¶</a></dt>
+<dd><p>Plot an instantaneous representation of the Experiment model.</p>
+<p>Arguments:</p>
+<p><em>ax</em> &#8212;- pyplot axes object (default None)</p>
+<p><em>with_noise</em> &#8212;- whether or not to plot the noise (bool, default True)</p>
+<p><em>colors</em> &#8212;- an optional sequence of matplotlib colors, one for each DataSample (default None)</p>
+<p><em>q</em> &#8212;- optional continuum position values (length-Q array of monotonically increasing values) (default None)</p>
+<p>Example:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span>
+<span class="kn">import</span> <span class="nn">power1d</span>
+
+<span class="n">J</span>        <span class="o">=</span> <span class="mi">8</span>
+<span class="n">Q</span>        <span class="o">=</span> <span class="mi">101</span>
+<span class="n">baseline</span> <span class="o">=</span> <span class="n">power1d</span><span class="o">.</span><span class="n">geom</span><span class="o">.</span><span class="n">Null</span><span class="p">(</span> <span class="n">Q</span><span class="o">=</span><span class="n">Q</span> <span class="p">)</span>
+<span class="n">signal0</span>  <span class="o">=</span> <span class="n">power1d</span><span class="o">.</span><span class="n">geom</span><span class="o">.</span><span class="n">Null</span><span class="p">(</span> <span class="n">Q</span><span class="o">=</span><span class="n">Q</span> <span class="p">)</span>
+<span class="n">signal1</span>  <span class="o">=</span> <span class="n">power1d</span><span class="o">.</span><span class="n">geom</span><span class="o">.</span><span class="n">GaussianPulse</span><span class="p">(</span> <span class="n">Q</span><span class="o">=</span><span class="n">Q</span><span class="p">,</span> <span class="n">q</span><span class="o">=</span><span class="mi">40</span><span class="p">,</span> <span class="n">fwhm</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span> <span class="n">amp</span><span class="o">=</span><span class="mf">3.5</span> <span class="p">)</span>
+<span class="n">noise</span>    <span class="o">=</span> <span class="n">power1d</span><span class="o">.</span><span class="n">noise</span><span class="o">.</span><span class="n">Gaussian</span><span class="p">(</span> <span class="n">J</span><span class="o">=</span><span class="n">J</span><span class="p">,</span> <span class="n">Q</span><span class="o">=</span><span class="n">Q</span><span class="p">,</span> <span class="n">mu</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">sigma</span><span class="o">=</span><span class="mf">1.0</span> <span class="p">)</span>
+<span class="n">model0</span>   <span class="o">=</span> <span class="n">power1d</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">DataSample</span><span class="p">(</span><span class="n">baseline</span><span class="p">,</span> <span class="n">signal0</span><span class="p">,</span> <span class="n">noise</span><span class="p">,</span> <span class="n">J</span><span class="o">=</span><span class="n">J</span><span class="p">)</span>
+<span class="n">model1</span>   <span class="o">=</span> <span class="n">power1d</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">DataSample</span><span class="p">(</span><span class="n">baseline</span><span class="p">,</span> <span class="n">signal1</span><span class="p">,</span> <span class="n">noise</span><span class="p">,</span> <span class="n">J</span><span class="o">=</span><span class="n">J</span><span class="p">)</span>
+<span class="n">emodel</span>   <span class="o">=</span> <span class="n">power1d</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">Experiment</span><span class="p">(</span> <span class="p">[</span><span class="n">model0</span><span class="p">,</span> <span class="n">model1</span><span class="p">],</span> <span class="n">fn</span><span class="o">=</span><span class="n">power1d</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">t_2sample</span> <span class="p">)</span>
+<span class="n">pyplot</span><span class="o">.</span><span class="n">close</span><span class="p">(</span><span class="s1">&#39;all&#39;</span><span class="p">)</span>
+<span class="n">emodel</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span> <span class="n">colors</span><span class="o">=</span><span class="p">(</span><span class="s2">&quot;k&quot;</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">),</span> <span class="n">q</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">Q</span><span class="p">)</span> <span class="p">)</span>
+</pre></div>
+</div>
+<p>(<a class="reference external" href="../API/models-4.py">Source code</a>, <a class="reference external" href="../API/models-4.png">png</a>, <a class="reference external" href="../API/models-4.hires.png">hires.png</a>, <a class="reference external" href="../API/models-4.pdf">pdf</a>)</p>
+<div class="figure">
+<img alt="../_images/models-4.png" src="../_images/models-4.png" />
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="power1d.models.Experiment.set_sample_size">
+<code class="descname">set_sample_size</code><span class="sig-paren">(</span><em>JJ</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/power1d/models.html#Experiment.set_sample_size"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#power1d.models.Experiment.set_sample_size" title="Permalink to this definition">¶</a></dt>
+<dd><p>Change the sample sizes of the models</p>
+<p>Arguments:</p>
+<p><em>J</em> &#8212;- sample size (positive int or list of positive int)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="power1d.models.Experiment.simulate">
+<code class="descname">simulate</code><span class="sig-paren">(</span><em>iterations=1000</em>, <em>progress_bar=True</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/power1d/models.html#Experiment.simulate"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#power1d.models.Experiment.simulate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Iteratively simulate a number of experiments.</p>
+<p>Calling this method will repeatedly call <strong>simulate_single_iteration</strong> and
+will store the resulting continua in the <strong>Z</strong> attribute;  if 1000 iterations
+are executed then <strong>Z</strong> will be a (1000,Q) array when simulation is complete.</p>
+<p>Arguments:</p>
+<p><em>iterations</em> &#8212;- number of iterations to perform (positive int, default 1000)</p>
+<p><em>progress_bar</em> &#8212;- whether or not to display a progress bar in the terminal (bool, default True)</p>
+<p>Example:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span>
+<span class="kn">import</span> <span class="nn">power1d</span>
+
+<span class="n">J</span>        <span class="o">=</span> <span class="mi">8</span>
+<span class="n">Q</span>        <span class="o">=</span> <span class="mi">101</span>
+<span class="n">baseline</span> <span class="o">=</span> <span class="n">power1d</span><span class="o">.</span><span class="n">geom</span><span class="o">.</span><span class="n">Null</span><span class="p">(</span> <span class="n">Q</span><span class="o">=</span><span class="n">Q</span> <span class="p">)</span>
+<span class="n">signal0</span>  <span class="o">=</span> <span class="n">power1d</span><span class="o">.</span><span class="n">geom</span><span class="o">.</span><span class="n">Null</span><span class="p">(</span> <span class="n">Q</span><span class="o">=</span><span class="n">Q</span> <span class="p">)</span>
+<span class="n">signal1</span>  <span class="o">=</span> <span class="n">power1d</span><span class="o">.</span><span class="n">geom</span><span class="o">.</span><span class="n">GaussianPulse</span><span class="p">(</span> <span class="n">Q</span><span class="o">=</span><span class="n">Q</span><span class="p">,</span> <span class="n">q</span><span class="o">=</span><span class="mi">40</span><span class="p">,</span> <span class="n">fwhm</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span> <span class="n">amp</span><span class="o">=</span><span class="mf">3.5</span> <span class="p">)</span>
+<span class="n">noise</span>    <span class="o">=</span> <span class="n">power1d</span><span class="o">.</span><span class="n">noise</span><span class="o">.</span><span class="n">Gaussian</span><span class="p">(</span> <span class="n">J</span><span class="o">=</span><span class="n">J</span><span class="p">,</span> <span class="n">Q</span><span class="o">=</span><span class="n">Q</span><span class="p">,</span> <span class="n">mu</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">sigma</span><span class="o">=</span><span class="mf">1.0</span> <span class="p">)</span>
+<span class="n">model0</span>   <span class="o">=</span> <span class="n">power1d</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">DataSample</span><span class="p">(</span><span class="n">baseline</span><span class="p">,</span> <span class="n">signal0</span><span class="p">,</span> <span class="n">noise</span><span class="p">,</span> <span class="n">J</span><span class="o">=</span><span class="n">J</span><span class="p">)</span>
+<span class="n">model1</span>   <span class="o">=</span> <span class="n">power1d</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">DataSample</span><span class="p">(</span><span class="n">baseline</span><span class="p">,</span> <span class="n">signal1</span><span class="p">,</span> <span class="n">noise</span><span class="p">,</span> <span class="n">J</span><span class="o">=</span><span class="n">J</span><span class="p">)</span>
+<span class="n">emodel</span>   <span class="o">=</span> <span class="n">power1d</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">Experiment</span><span class="p">(</span> <span class="p">[</span><span class="n">model0</span><span class="p">,</span> <span class="n">model1</span><span class="p">],</span> <span class="n">fn</span><span class="o">=</span><span class="n">power1d</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">t_2sample</span> <span class="p">)</span>
+
+<span class="n">emodel</span><span class="o">.</span><span class="n">simulate</span><span class="p">(</span><span class="n">iterations</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">progress_bar</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<span class="n">pyplot</span><span class="o">.</span><span class="n">close</span><span class="p">(</span><span class="s1">&#39;all&#39;</span><span class="p">)</span>
+<span class="n">pyplot</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span> <span class="n">emodel</span><span class="o">.</span><span class="n">Z</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mf">0.5</span> <span class="p">)</span>
+<span class="n">pyplot</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Test statistic continua&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>(<a class="reference external" href="../API/models-5.py">Source code</a>, <a class="reference external" href="../API/models-5.png">png</a>, <a class="reference external" href="../API/models-5.hires.png">hires.png</a>, <a class="reference external" href="../API/models-5.pdf">pdf</a>)</p>
+<div class="figure">
+<img alt="../_images/models-5.png" src="../_images/models-5.png" />
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="power1d.models.Experiment.simulate_single_iteration">
+<code class="descname">simulate_single_iteration</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/power1d/models.html#Experiment.simulate_single_iteration"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#power1d.models.Experiment.simulate_single_iteration" title="Permalink to this definition">¶</a></dt>
+<dd><p>Simulate a single experiment.</p>
+<p>Calling this method will generate new data samples, one for each DataSample model,
+and will then compute and return the test statistic continuum associated with
+the new data samples.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="experimentsimulator">
+<h2>ExperimentSimulator<a class="headerlink" href="#experimentsimulator" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="power1d.models.ExperimentSimulator">
+<em class="property">class </em><code class="descclassname">power1d.models.</code><code class="descname">ExperimentSimulator</code><span class="sig-paren">(</span><em>model0</em>, <em>model1</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/power1d/models.html#ExperimentSimulator"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#power1d.models.ExperimentSimulator" title="Permalink to this definition">¶</a></dt>
+<dd><p>Two-experiment simulator.</p>
+<p>This is a convenience class for simulating two experiments:</p>
+<ul class="simple">
+<li>&#8220;null&#8221; experiment:  represents the null hypothesis</li>
+<li>&#8220;effect&#8221; experiment:  represents the alternative hypothesis</li>
+</ul>
+<p>Simulation results will all share the following characteristics:</p>
+<ul class="simple">
+<li>Alpha-based critical thresholds are be computed for the &#8220;null&#8221; experiment</li>
+<li>Power calculations use those thresholds to conducted power analysis on the &#8220;effect&#8221; experiment.</li>
+</ul>
+<p>Arguments:</p>
+<p><em>model0</em> &#8212;- the &#8220;null&#8221; experiment model (power1d.models.Experiment)
+<em>model1</em> &#8212;- the &#8220;effect&#8221; experiment model (power1d.models.Experiment)</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">If the &#8220;null&#8221; and &#8220;effect&#8221; models are identical then power will be alpha (or numerically close to it) by definition.</p>
+</div>
+<dl class="attribute">
+<dt id="power1d.models.ExperimentSimulator.Q">
+<code class="descname">Q</code><em class="property"> = None</em><a class="headerlink" href="#power1d.models.ExperimentSimulator.Q" title="Permalink to this definition">¶</a></dt>
+<dd><p>continuum size</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="power1d.models.ExperimentSimulator.load_simulation_results">
+<code class="descname">load_simulation_results</code><span class="sig-paren">(</span><em>filename</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/power1d/models.html#ExperimentSimulator.load_simulation_results"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#power1d.models.ExperimentSimulator.load_simulation_results" title="Permalink to this definition">¶</a></dt>
+<dd><p>Load saved simulation results.</p>
+<p>Arguments:</p>
+<p><em>filename</em> &#8212;- full path to saved results file</p>
+<p>Outputs:</p>
+<p><em>results</em> &#8212;- a results object (power1d.results.SimulationResults)</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Simulating experiments with large sample sizes, complex               DataSample models and/or a large number of simulation iterations can            be computationally demanding. The <strong>load_simulation_results</strong> method            allows you to probe simulation results efficiently, by saving the               results to disk following simulation, then subsequently skipping the            &#8220;simulate&#8221; command. In the example below the commands between the               &#8220;###&#8221; flags should be commented after executing &#8220;simulate&#8221; once.</p>
+</div>
+<p>Example:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span>
+<span class="kn">import</span> <span class="nn">power1d</span>
+
+<span class="n">J</span>        <span class="o">=</span> <span class="mi">8</span>
+<span class="n">Q</span>        <span class="o">=</span> <span class="mi">101</span>
+<span class="n">baseline</span> <span class="o">=</span> <span class="n">power1d</span><span class="o">.</span><span class="n">geom</span><span class="o">.</span><span class="n">Null</span><span class="p">(</span> <span class="n">Q</span><span class="o">=</span><span class="n">Q</span> <span class="p">)</span>
+<span class="n">signal0</span>  <span class="o">=</span> <span class="n">power1d</span><span class="o">.</span><span class="n">geom</span><span class="o">.</span><span class="n">Null</span><span class="p">(</span> <span class="n">Q</span><span class="o">=</span><span class="n">Q</span> <span class="p">)</span>
+<span class="n">signal1</span>  <span class="o">=</span> <span class="n">power1d</span><span class="o">.</span><span class="n">geom</span><span class="o">.</span><span class="n">GaussianPulse</span><span class="p">(</span> <span class="n">Q</span><span class="o">=</span><span class="n">Q</span><span class="p">,</span> <span class="n">q</span><span class="o">=</span><span class="mi">40</span><span class="p">,</span> <span class="n">fwhm</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span> <span class="n">amp</span><span class="o">=</span><span class="mf">1.2</span> <span class="p">)</span>
+<span class="n">noise</span>    <span class="o">=</span> <span class="n">power1d</span><span class="o">.</span><span class="n">noise</span><span class="o">.</span><span class="n">Gaussian</span><span class="p">(</span> <span class="n">J</span><span class="o">=</span><span class="n">J</span><span class="p">,</span> <span class="n">Q</span><span class="o">=</span><span class="n">Q</span><span class="p">,</span> <span class="n">mu</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">sigma</span><span class="o">=</span><span class="mf">1.0</span> <span class="p">)</span>
+<span class="n">model0</span>   <span class="o">=</span> <span class="n">power1d</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">DataSample</span><span class="p">(</span><span class="n">baseline</span><span class="p">,</span> <span class="n">signal0</span><span class="p">,</span> <span class="n">noise</span><span class="p">,</span> <span class="n">J</span><span class="o">=</span><span class="n">J</span><span class="p">)</span>
+<span class="n">model1</span>   <span class="o">=</span> <span class="n">power1d</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">DataSample</span><span class="p">(</span><span class="n">baseline</span><span class="p">,</span> <span class="n">signal1</span><span class="p">,</span> <span class="n">noise</span><span class="p">,</span> <span class="n">J</span><span class="o">=</span><span class="n">J</span><span class="p">)</span>
+
+<span class="n">emodel0</span>  <span class="o">=</span> <span class="n">power1d</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">Experiment</span><span class="p">(</span> <span class="p">[</span><span class="n">model0</span><span class="p">,</span> <span class="n">model0</span><span class="p">],</span> <span class="n">fn</span><span class="o">=</span><span class="n">power1d</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">t_2sample</span> <span class="p">)</span>
+<span class="n">emodel1</span>  <span class="o">=</span> <span class="n">power1d</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">Experiment</span><span class="p">(</span> <span class="p">[</span><span class="n">model0</span><span class="p">,</span> <span class="n">model1</span><span class="p">],</span> <span class="n">fn</span><span class="o">=</span><span class="n">power1d</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">t_2sample</span> <span class="p">)</span>
+
+
+<span class="c1">###  COMMANDS BELOW SHOULD BE COMMENTED AFTER EXECUTING ONCE</span>
+<span class="n">sim</span>      <span class="o">=</span> <span class="n">power1d</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">ExperimentSimulator</span><span class="p">(</span><span class="n">emodel0</span><span class="p">,</span> <span class="n">emodel1</span><span class="p">)</span>
+<span class="n">results</span>  <span class="o">=</span> <span class="n">sim</span><span class="o">.</span><span class="n">simulate</span><span class="p">(</span><span class="n">iterations</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span> <span class="n">progress_bar</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<span class="n">fname</span>    <span class="o">=</span> <span class="s2">&quot;/tmp/results.npz&quot;</span>
+<span class="n">results</span><span class="o">.</span><span class="n">save</span><span class="p">(</span> <span class="n">fname</span> <span class="p">)</span>
+<span class="c1">###  COMMENTS ABOVE SHOULD BE COMMENTED AFTER EXECUTING ONCE</span>
+
+<span class="c1">#Then the results can be re-loaded:</span>
+<span class="n">fname</span>         <span class="o">=</span> <span class="s2">&quot;/tmp/results.npz&quot;</span>
+<span class="n">saved_results</span> <span class="o">=</span> <span class="n">sim</span><span class="o">.</span><span class="n">load_simulation_results</span><span class="p">(</span> <span class="n">fname</span> <span class="p">)</span>
+<span class="n">pyplot</span><span class="o">.</span><span class="n">close</span><span class="p">(</span><span class="s1">&#39;all&#39;</span><span class="p">)</span>
+<span class="n">saved_results</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>(<a class="reference external" href="../API/models-6.py">Source code</a>, <a class="reference external" href="../API/models-6.png">png</a>, <a class="reference external" href="../API/models-6.hires.png">hires.png</a>, <a class="reference external" href="../API/models-6.pdf">pdf</a>)</p>
+<div class="figure">
+<img alt="../_images/models-6.png" src="../_images/models-6.png" />
+</div>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="power1d.models.ExperimentSimulator.model0">
+<code class="descname">model0</code><em class="property"> = None</em><a class="headerlink" href="#power1d.models.ExperimentSimulator.model0" title="Permalink to this definition">¶</a></dt>
+<dd><p>&#8220;null&#8221; experiment model</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="power1d.models.ExperimentSimulator.model1">
+<code class="descname">model1</code><em class="property"> = None</em><a class="headerlink" href="#power1d.models.ExperimentSimulator.model1" title="Permalink to this definition">¶</a></dt>
+<dd><p>&#8220;effect&#8221; experiment model</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="power1d.models.ExperimentSimulator.simulate">
+<code class="descname">simulate</code><span class="sig-paren">(</span><em>iterations=50</em>, <em>progress_bar=True</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/power1d/models.html#ExperimentSimulator.simulate"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#power1d.models.ExperimentSimulator.simulate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Iteratively simulate a number of experiments.</p>
+<p>Calling this method will repeatedly call <strong>simulate_single_iteration</strong> for
+both the &#8220;null&#8221; model and the &#8220;effect&#8221; model.</p>
+<p>Arguments:</p>
+<p><em>iterations</em> &#8212;- number of iterations to perform (positive int, default 1000)</p>
+<p><em>progress_bar</em> &#8212;- whether or not to display a progress bar in the terminal (bool, default True)</p>
+<p>Outputs:</p>
+<p><em>results</em> &#8212;- a results object (power1d.results.SimulationResults)</p>
+<p>Example:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span>
+<span class="kn">import</span> <span class="nn">power1d</span>
+
+<span class="n">J</span>        <span class="o">=</span> <span class="mi">8</span>
+<span class="n">Q</span>        <span class="o">=</span> <span class="mi">101</span>
+<span class="n">baseline</span> <span class="o">=</span> <span class="n">power1d</span><span class="o">.</span><span class="n">geom</span><span class="o">.</span><span class="n">Null</span><span class="p">(</span> <span class="n">Q</span><span class="o">=</span><span class="n">Q</span> <span class="p">)</span>
+<span class="n">signal0</span>  <span class="o">=</span> <span class="n">power1d</span><span class="o">.</span><span class="n">geom</span><span class="o">.</span><span class="n">Null</span><span class="p">(</span> <span class="n">Q</span><span class="o">=</span><span class="n">Q</span> <span class="p">)</span>
+<span class="n">signal1</span>  <span class="o">=</span> <span class="n">power1d</span><span class="o">.</span><span class="n">geom</span><span class="o">.</span><span class="n">GaussianPulse</span><span class="p">(</span> <span class="n">Q</span><span class="o">=</span><span class="n">Q</span><span class="p">,</span> <span class="n">q</span><span class="o">=</span><span class="mi">40</span><span class="p">,</span> <span class="n">fwhm</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span> <span class="n">amp</span><span class="o">=</span><span class="mf">1.0</span> <span class="p">)</span>
+<span class="n">noise</span>    <span class="o">=</span> <span class="n">power1d</span><span class="o">.</span><span class="n">noise</span><span class="o">.</span><span class="n">Gaussian</span><span class="p">(</span> <span class="n">J</span><span class="o">=</span><span class="n">J</span><span class="p">,</span> <span class="n">Q</span><span class="o">=</span><span class="n">Q</span><span class="p">,</span> <span class="n">mu</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">sigma</span><span class="o">=</span><span class="mf">0.3</span> <span class="p">)</span>
+<span class="n">model0</span>   <span class="o">=</span> <span class="n">power1d</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">DataSample</span><span class="p">(</span><span class="n">baseline</span><span class="p">,</span> <span class="n">signal0</span><span class="p">,</span> <span class="n">noise</span><span class="p">,</span> <span class="n">J</span><span class="o">=</span><span class="n">J</span><span class="p">)</span>
+<span class="n">model1</span>   <span class="o">=</span> <span class="n">power1d</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">DataSample</span><span class="p">(</span><span class="n">baseline</span><span class="p">,</span> <span class="n">signal1</span><span class="p">,</span> <span class="n">noise</span><span class="p">,</span> <span class="n">J</span><span class="o">=</span><span class="n">J</span><span class="p">)</span>
+
+<span class="n">emodel0</span>  <span class="o">=</span> <span class="n">power1d</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">Experiment</span><span class="p">(</span> <span class="p">[</span><span class="n">model0</span><span class="p">,</span> <span class="n">model0</span><span class="p">],</span> <span class="n">fn</span><span class="o">=</span><span class="n">power1d</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">t_2sample</span> <span class="p">)</span>
+<span class="n">emodel1</span>  <span class="o">=</span> <span class="n">power1d</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">Experiment</span><span class="p">(</span> <span class="p">[</span><span class="n">model0</span><span class="p">,</span> <span class="n">model1</span><span class="p">],</span> <span class="n">fn</span><span class="o">=</span><span class="n">power1d</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">t_2sample</span> <span class="p">)</span>
+
+<span class="n">sim</span>      <span class="o">=</span> <span class="n">power1d</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">ExperimentSimulator</span><span class="p">(</span><span class="n">emodel0</span><span class="p">,</span> <span class="n">emodel1</span><span class="p">)</span>
+<span class="n">results</span>  <span class="o">=</span> <span class="n">sim</span><span class="o">.</span><span class="n">simulate</span><span class="p">(</span><span class="n">iterations</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span> <span class="n">progress_bar</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+
+<span class="n">pyplot</span><span class="o">.</span><span class="n">close</span><span class="p">(</span><span class="s1">&#39;all&#39;</span><span class="p">)</span>
+<span class="n">results</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>(<a class="reference external" href="../API/models-7.py">Source code</a>, <a class="reference external" href="../API/models-7.png">png</a>, <a class="reference external" href="../API/models-7.hires.png">hires.png</a>, <a class="reference external" href="../API/models-7.pdf">pdf</a>)</p>
+<div class="figure">
+<img alt="../_images/models-7.png" src="../_images/models-7.png" />
+</div>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">power1d.models</a><ul>
+<li><a class="reference internal" href="#datasample">DataSample</a></li>
+<li><a class="reference internal" href="#experiment">Experiment</a></li>
+<li><a class="reference internal" href="#experimentsimulator">ExperimentSimulator</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="prob.html"
+                        title="previous chapter">power1d.prob</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="noise.html"
+                        title="next chapter">power1d.noise</a></p>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="noise.html" title="power1d.noise"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="prob.html" title="power1d.prob"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">power1d 0.1 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../API.html" >API</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2017, Todd Pataky.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.5.1.
+    </div>
+  </body>
+</html>

@@ -1,0 +1,49 @@
+
+Introduction
+=====================================
+
+**power1d** is a software package for numerically estimating statistical
+power in experiments involving one-dimensional continua.
+
+Please consider citing:
+
+| Pataky TC (in review).
+| power1d: Numerical Power Estimates for One-Dimensional Continua in Python upcrossing probabilities in Python.
+| **Journal of Statistical Software**.
+
+
+
+.. toctree::
+   :maxdepth: 2
+   :caption: Contents:
+
+
+------------------------
+
+**Download**
+
+(coming soon)
+
+
+------------------------
+
+Contents
+=====================================
+
+
+.. toctree::
+	:maxdepth: 2
+
+	License.rst
+	Examples.rst
+	API.rst
+	References.rst
+
+
+
+Indices and tables
+==================
+
+* :ref:`genindex`
+* :ref:`modindex`
+* :ref:`search`

@@ -1,0 +1,901 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>power1d.geom &#8212; power1d 0.1 documentation</title>
+    
+    <link rel="stylesheet" href="../../_static/pyramid.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Neuton&amp;subset=latin" type="text/css" media="screen" charset="utf-8" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nobile:regular,italic,bold,bolditalic&amp;subset=latin" type="text/css" media="screen" charset="utf-8" />
+<!--[if lte IE 6]>
+<link rel="stylesheet" href="../../_static/ie6.css" type="text/css" media="screen" charset="utf-8" />
+<![endif]-->
+
+  </head>
+  <body role="document">
+<div class="header" role="banner">
+  <div class="logo">
+    <a href="../../index.html">
+      <img class="logo" src="../../_static/logo.png" border="0" alt="Logo"/>
+    </a>
+  </div>
+</div>
+
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">power1d 0.1 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../index.html" accesskey="U">Module code</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <h1>Source code for power1d.geom</h1><div class="highlight"><pre>
+<span></span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">One-dimensional (1D) continuum geometry primitives.</span>
+
+<span class="sd">The classes in this module represent a set of building blocks</span>
+<span class="sd">for constructing 1D baselines and signals.</span>
+
+<span class="sd">More complex 1D geometries can be constructed by combining multiple</span>
+<span class="sd">primitives through the standard operators: + - * / **</span>
+<span class="sd">&#39;&#39;&#39;</span>
+
+<span class="c1"># Copyright (C) 2017  Todd Pataky</span>
+<span class="c1"># version: 0.1 (2017/03/21)</span>
+
+<span class="kn">from</span> <span class="nn">copy</span> <span class="k">import</span> <span class="n">deepcopy</span>
+<span class="kn">from</span> <span class="nn">math</span> <span class="k">import</span> <span class="n">sqrt</span><span class="p">,</span><span class="n">pi</span><span class="p">,</span><span class="n">log</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">.</span> <span class="n">_base</span> <span class="kn">import</span> <span class="nn">_Continuum1D</span>
+
+
+
+
+<span class="k">def</span> <span class="nf">gaussian_kernel</span><span class="p">(</span><span class="n">sd</span><span class="p">):</span>
+	<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">	Create a Gaussian kernel with the specified standard deviation (sd).</span>
+<span class="sd">	(This function is modified from **scipy.ndimage.filters.gaussian_filter1d**)</span>
+
+
+<span class="sd">	Arguments:</span>
+
+<span class="sd">	*sd* ---- standard deviation of the Gaussian kernel</span>
+
+<span class="sd">	Output:</span>
+
+<span class="sd">	An array with a length of approximately  ( 4*sd )</span>
+<span class="sd">	&#39;&#39;&#39;</span>
+	<span class="n">kw</span>          <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="mf">4.0</span> <span class="o">*</span> <span class="n">sd</span> <span class="o">+</span> <span class="mf">0.5</span><span class="p">)</span>   <span class="c1">#kernel width</span>
+	<span class="n">weights</span>     <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">([</span><span class="mf">0.0</span><span class="p">]</span> <span class="o">*</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">kw</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))</span>
+	<span class="n">weights</span><span class="p">[</span><span class="n">kw</span><span class="p">]</span> <span class="o">=</span> <span class="mf">1.0</span>
+	<span class="nb">sum</span>         <span class="o">=</span> <span class="mf">1.0</span>
+	<span class="n">sd</span>          <span class="o">=</span> <span class="n">sd</span> <span class="o">*</span> <span class="n">sd</span>
+	<span class="c1"># calculate the kernel:</span>
+	<span class="k">for</span> <span class="n">ii</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">kw</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
+		<span class="n">tmp</span>     <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="mf">0.5</span> <span class="o">*</span> <span class="nb">float</span><span class="p">(</span><span class="n">ii</span> <span class="o">*</span> <span class="n">ii</span><span class="p">)</span> <span class="o">/</span> <span class="n">sd</span><span class="p">)</span>
+		<span class="n">weights</span><span class="p">[</span><span class="n">kw</span> <span class="o">+</span> <span class="n">ii</span><span class="p">]</span> <span class="o">=</span> <span class="n">tmp</span>
+		<span class="n">weights</span><span class="p">[</span><span class="n">kw</span> <span class="o">-</span> <span class="n">ii</span><span class="p">]</span> <span class="o">=</span> <span class="n">tmp</span>
+		<span class="nb">sum</span>    <span class="o">+=</span> <span class="mf">2.0</span> <span class="o">*</span> <span class="n">tmp</span>
+	<span class="k">for</span> <span class="n">ii</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">kw</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
+		<span class="n">weights</span><span class="p">[</span><span class="n">ii</span><span class="p">]</span> <span class="o">/=</span> <span class="nb">sum</span>
+	<span class="k">return</span> <span class="n">weights</span>
+
+
+
+
+
+<span class="c1">#</span>
+<span class="c1"># #</span>
+<span class="c1"># # class _GeometryBuilder(_Continuum1D):</span>
+<span class="c1"># # 	&#39;&#39;&#39;</span>
+<span class="c1"># # 	Abstract primitive class</span>
+<span class="c1"># # 	&#39;&#39;&#39;</span>
+<span class="c1"># # 	def _check_other(self, other):</span>
+<span class="c1"># # 		assert isinstance(other, _Continuum1D), &#39;input argument must be an instance of a class from power1d.primitives&#39;</span>
+<span class="c1"># # 		assert self.Q==other.Q, &#39;Continuum lengths must be the same length (base primitive: Q=%d, input primitive: Q=%d).&#39; %(self.Q, other.Q)</span>
+<span class="c1"># #</span>
+<span class="c1"># # 	def __add__(self, other):</span>
+<span class="c1"># # 		new       = self._init_new(other)</span>
+<span class="c1"># # 		new.value = self.value + other.value</span>
+<span class="c1"># # 		return new</span>
+<span class="c1"># # 	def __div__(self, other):</span>
+<span class="c1"># # 		new       = self._init_new(other)</span>
+<span class="c1"># # 		x         = other.value</span>
+<span class="c1"># # 		x[x==0]   = eps</span>
+<span class="c1"># # 		new.value = self.value / x</span>
+<span class="c1"># # 		return new</span>
+<span class="c1"># # 	def __mul__(self, other):</span>
+<span class="c1"># # 		new       = self._init_new(other)</span>
+<span class="c1"># # 		new.value = self.value * other.value</span>
+<span class="c1"># # 		return new</span>
+<span class="c1"># # 	def __pow__(self, other):</span>
+<span class="c1"># # 		new       = self._init_new(other)</span>
+<span class="c1"># # 		new.value = self.value ** other.value</span>
+<span class="c1"># # 		return new</span>
+<span class="c1"># # 	def __sub__(self, other):</span>
+<span class="c1"># # 		new       = self._init_new(other)</span>
+<span class="c1"># # 		new.value = self.value - other.value</span>
+<span class="c1"># # 		return new</span>
+<span class="c1"># #</span>
+<span class="c1"># # 	def _init_new(self, other):</span>
+<span class="c1"># # 		self._check_other(other)</span>
+<span class="c1"># # 		return Primitive( np.zeros(self.Q) )</span>
+<span class="c1"># #</span>
+<span class="c1"># # 	def copy(self):</span>
+<span class="c1"># # 		return deepcopy(self)</span>
+<span class="c1"># # 	def fliplr(self):</span>
+<span class="c1"># # 		self.value = self.value[-1::-1]</span>
+<span class="c1"># # 	def flipud(self, datum=0):</span>
+<span class="c1"># # 		self.value = -(self.value-datum) + datum</span>
+<span class="c1">#</span>
+<span class="c1">#</span>
+<span class="c1">#</span>
+
+
+<div class="viewcode-block" id="Continuum1D"><a class="viewcode-back" href="../../API/geom.html#power1d.geom.Continuum1D">[docs]</a><span class="k">class</span> <span class="nc">Continuum1D</span><span class="p">(</span><span class="n">_Continuum1D</span><span class="p">):</span>
+	<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">	Manually defined one-dimensional continuum geometry.</span>
+
+<span class="sd">	Arguments:</span>
+
+<span class="sd">	*value* ---- one-dimensional NumPy array</span>
+
+
+<span class="sd">	Example:</span>
+
+<span class="sd">	.. plot::</span>
+<span class="sd">		:include-source:</span>
+
+<span class="sd">		import numpy as np</span>
+<span class="sd">		import power1d</span>
+
+<span class="sd">		value = np.random.rand( 101 )</span>
+<span class="sd">		obj   = power1d.geom.Continuum1D( value )</span>
+<span class="sd">		obj.plot()</span>
+<span class="sd">	&#39;&#39;&#39;</span>
+	<span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_assert_array1d</span><span class="p">(</span> <span class="nb">dict</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="n">value</span><span class="p">)</span> <span class="p">)</span>
+		<span class="nb">super</span><span class="p">(</span><span class="n">Continuum1D</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="n">value</span><span class="o">.</span><span class="n">size</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="n">value</span></div>
+
+
+
+
+
+<div class="viewcode-block" id="Constant"><a class="viewcode-back" href="../../API/geom.html#power1d.geom.Constant">[docs]</a><span class="k">class</span> <span class="nc">Constant</span><span class="p">(</span><span class="n">_Continuum1D</span><span class="p">):</span>
+	<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">	Constant value continuum with amplitude *amp*.</span>
+
+<span class="sd">	Keyword arguments:</span>
+
+<span class="sd">	*Q* ---- continuum size (int) (default: 101)</span>
+
+<span class="sd">	*amp* ---- continuum value (float or int) (default 0)</span>
+
+
+<span class="sd">	Example:</span>
+
+<span class="sd">	.. plot::</span>
+<span class="sd">		:include-source:</span>
+
+<span class="sd">		import power1d</span>
+
+<span class="sd">		obj = power1d.geom.Constant(Q=101, amp=1.3)</span>
+<span class="sd">		obj.plot()</span>
+<span class="sd">	&#39;&#39;&#39;</span>
+	<span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">Q</span><span class="o">=</span><span class="mi">101</span><span class="p">,</span> <span class="n">amp</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_assert_scalar</span><span class="p">(</span>  <span class="nb">dict</span><span class="p">(</span><span class="n">amp</span><span class="o">=</span><span class="n">amp</span><span class="p">)</span>  <span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">amp</span>    <span class="o">=</span> <span class="n">amp</span>
+		<span class="nb">super</span><span class="p">(</span><span class="n">Constant</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="n">Q</span><span class="p">)</span>
+
+	<span class="k">def</span> <span class="nf">_build</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">value</span>      <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">amp</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">Q</span><span class="p">)</span></div>
+
+
+
+
+
+
+<div class="viewcode-block" id="Exponential"><a class="viewcode-back" href="../../API/geom.html#power1d.geom.Exponential">[docs]</a><span class="k">class</span> <span class="nc">Exponential</span><span class="p">(</span><span class="n">_Continuum1D</span><span class="p">):</span>
+	<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">	Exponentially increasing (or decreasing) continuum</span>
+
+<span class="sd">	Keyword arguments:</span>
+
+<span class="sd">	*Q* ---- continuum size (int) (default: 101)</span>
+
+<span class="sd">	*x0* ---- value at starting continuum point (float or int) (default 0)</span>
+
+<span class="sd">	*x1* ---- value at ending continuum point (float or int) (default 1)</span>
+
+<span class="sd">	*rate* ---- rate of exponential increase (float or int) (default 1)</span>
+
+
+<span class="sd">	Example:</span>
+
+<span class="sd">	.. plot::</span>
+<span class="sd">		:include-source:</span>
+
+<span class="sd">		import power1d</span>
+
+<span class="sd">		obj = power1d.geom.Exponential(Q=101, x0=0.3, x1=3.6, rate=2.8)</span>
+<span class="sd">		obj.plot()</span>
+<span class="sd">	&#39;&#39;&#39;</span>
+	<span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">Q</span><span class="o">=</span><span class="mi">101</span><span class="p">,</span> <span class="n">x0</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">x1</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">rate</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_assert_scalar</span><span class="p">(</span>  <span class="nb">dict</span><span class="p">(</span><span class="n">x0</span><span class="o">=</span><span class="n">x0</span><span class="p">,</span> <span class="n">x1</span><span class="o">=</span><span class="n">x1</span><span class="p">,</span> <span class="n">rate</span><span class="o">=</span><span class="n">rate</span><span class="p">)</span>  <span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_assert_greater</span><span class="p">(</span> <span class="nb">dict</span><span class="p">(</span><span class="n">rate</span><span class="o">=</span><span class="n">rate</span><span class="p">),</span> <span class="mi">0</span>  <span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">x0</span>     <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">x0</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">x1</span>     <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">x1</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">rate</span>   <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">rate</span><span class="p">)</span>
+		<span class="nb">super</span><span class="p">(</span><span class="n">Exponential</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="n">Q</span><span class="p">)</span>
+
+	<span class="k">def</span> <span class="nf">_build</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="n">y</span>               <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">rate</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">Q</span><span class="p">)</span> <span class="p">)</span>
+		<span class="n">y</span>               <span class="o">=</span> <span class="p">(</span><span class="n">y</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">y</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">value</span>      <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">x0</span> <span class="o">+</span> <span class="p">(</span><span class="n">y</span> <span class="o">*</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">x1</span><span class="o">-</span><span class="bp">self</span><span class="o">.</span><span class="n">x0</span><span class="p">))</span></div>
+
+
+
+
+
+<div class="viewcode-block" id="ExponentialSaw"><a class="viewcode-back" href="../../API/geom.html#power1d.geom.ExponentialSaw">[docs]</a><span class="k">class</span> <span class="nc">ExponentialSaw</span><span class="p">(</span><span class="n">Exponential</span><span class="p">):</span>
+	<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">	Exponentially increasing (or decreasing) continuum with a saw cutoff</span>
+
+<span class="sd">	Keyword arguments:</span>
+
+<span class="sd">	*Q* ---- continuum size (int) (default: 101)</span>
+
+<span class="sd">	*x0* ---- value at starting continuum point (float or int) (default 0)</span>
+
+<span class="sd">	*x1* ---- value at ending continuum point (float or int) (default 1)</span>
+
+<span class="sd">	*rate* ---- rate of exponential increase (float or int) (default 1)</span>
+
+<span class="sd">	*cutoff* ---- continuum point at which the continuum returns to *x0* (int) (default 70)</span>
+
+
+<span class="sd">	Example:</span>
+
+<span class="sd">	.. plot::</span>
+<span class="sd">		:include-source:</span>
+
+<span class="sd">		import power1d</span>
+
+<span class="sd">		obj = power1d.geom.ExponentialSaw(Q=101, x0=0.3, x1=3.6, rate=2.8, cutoff=85)</span>
+<span class="sd">		obj.plot()</span>
+<span class="sd">	&#39;&#39;&#39;</span>
+	<span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">Q</span><span class="o">=</span><span class="mi">101</span><span class="p">,</span> <span class="n">x0</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">x1</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">rate</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">cutoff</span><span class="o">=</span><span class="mi">70</span><span class="p">):</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_assert_Q</span><span class="p">(</span><span class="n">Q</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_assert_integer</span><span class="p">(</span>  <span class="nb">dict</span><span class="p">(</span><span class="n">cutoff</span><span class="o">=</span><span class="n">cutoff</span><span class="p">)</span>  <span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_assert_bounds</span><span class="p">(</span>  <span class="nb">dict</span><span class="p">(</span><span class="n">cutoff</span><span class="o">=</span><span class="n">cutoff</span><span class="p">),</span> <span class="mi">0</span><span class="p">,</span> <span class="n">Q</span>  <span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">cutoff</span> <span class="o">=</span> <span class="n">cutoff</span>
+		<span class="nb">super</span><span class="p">(</span><span class="n">ExponentialSaw</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="n">Q</span><span class="p">,</span> <span class="n">x0</span><span class="p">,</span> <span class="n">x1</span><span class="p">,</span> <span class="n">rate</span><span class="p">)</span>
+
+	<span class="k">def</span> <span class="nf">_build</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="nb">super</span><span class="p">(</span><span class="n">ExponentialSaw</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">_build</span><span class="p">()</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">value</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">cutoff</span><span class="p">:]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">x0</span></div>
+
+
+
+
+<div class="viewcode-block" id="GaussianPulse"><a class="viewcode-back" href="../../API/geom.html#power1d.geom.GaussianPulse">[docs]</a><span class="k">class</span> <span class="nc">GaussianPulse</span><span class="p">(</span><span class="n">_Continuum1D</span><span class="p">):</span>
+	<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">	A Gaussian pulse at a particular continuum location.</span>
+
+<span class="sd">	NOTE: one of *fwhm* and *sigma* must be specified, and the other must be None.</span>
+
+
+<span class="sd">	Keyword arguments:</span>
+
+<span class="sd">	*Q* ---- continuum size (int) (default: 101)</span>
+
+<span class="sd">	*q* ---- pulse center (int) (default 50)</span>
+
+<span class="sd">	*fwhm* ---- pulse&#39;s full-width-at-half-maximum (float or int) (default None)</span>
+
+<span class="sd">	*sigma* ---- pulse&#39;s standard deviation (float or int) (default None)</span>
+
+<span class="sd">	*amp* ---- pulse amplitude</span>
+
+
+<span class="sd">	Example:</span>
+
+<span class="sd">	.. plot::</span>
+<span class="sd">		:include-source:</span>
+
+<span class="sd">		import power1d</span>
+
+<span class="sd">		obj = power1d.geom.GaussianPulse( Q=101, q=35, fwhm=10, amp=5 )</span>
+<span class="sd">		obj.plot()</span>
+<span class="sd">	&#39;&#39;&#39;</span>
+
+	<span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">Q</span><span class="o">=</span><span class="mi">101</span><span class="p">,</span> <span class="n">q</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">fwhm</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">sigma</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">amp</span><span class="o">=</span><span class="mi">5</span><span class="p">):</span>
+		<span class="c1">### field size parameters:</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_assert_Q</span><span class="p">(</span><span class="n">Q</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_assert_integer</span><span class="p">(</span>  <span class="nb">dict</span><span class="p">(</span><span class="n">q</span><span class="o">=</span><span class="n">q</span><span class="p">)</span>  <span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_assert_bounds</span><span class="p">(</span>  <span class="nb">dict</span><span class="p">(</span><span class="n">q</span><span class="o">=</span><span class="n">q</span><span class="p">),</span> <span class="o">-</span><span class="n">Q</span><span class="p">,</span> <span class="mi">2</span><span class="o">*</span><span class="n">Q</span>  <span class="p">)</span>
+		<span class="c1">### kernel parameters:</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_assert_one_of_two_none</span><span class="p">(</span> <span class="nb">dict</span><span class="p">(</span><span class="n">sigma</span><span class="o">=</span><span class="n">sigma</span><span class="p">,</span> <span class="n">fwhm</span><span class="o">=</span><span class="n">fwhm</span><span class="p">)</span> <span class="p">)</span>
+		<span class="k">if</span> <span class="n">sigma</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_assert_scalar</span><span class="p">(</span>  <span class="nb">dict</span><span class="p">(</span><span class="n">fwhm</span><span class="o">=</span><span class="n">fwhm</span><span class="p">)</span>  <span class="p">)</span>
+		<span class="k">else</span><span class="p">:</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_assert_scalar</span><span class="p">(</span>  <span class="nb">dict</span><span class="p">(</span><span class="n">sigma</span><span class="o">=</span><span class="n">sigma</span><span class="p">)</span>  <span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_assert_scalar</span><span class="p">(</span>  <span class="nb">dict</span><span class="p">(</span><span class="n">amp</span><span class="o">=</span><span class="n">amp</span><span class="p">)</span>  <span class="p">)</span>
+		<span class="c1">### set attributes</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">q</span>     <span class="o">=</span> <span class="n">q</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">fwhm</span>  <span class="o">=</span> <span class="kc">None</span> <span class="k">if</span> <span class="n">fwhm</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="nb">float</span><span class="p">(</span><span class="n">fwhm</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">sigma</span> <span class="o">=</span> <span class="kc">None</span> <span class="k">if</span> <span class="n">sigma</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="nb">float</span><span class="p">(</span><span class="n">sigma</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">amp</span>   <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">amp</span><span class="p">)</span>
+		<span class="nb">super</span><span class="p">(</span><span class="n">GaussianPulse</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="n">Q</span><span class="p">)</span>
+
+
+	<span class="k">def</span> <span class="nf">_build</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="c1">### initialize signal:</span>
+		<span class="n">y</span>               <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">Q</span><span class="p">)</span>
+		<span class="n">sigma</span>           <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">fwhm</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">log</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span><span class="o">**</span><span class="mf">0.5</span> <span class="p">)</span>  <span class="k">if</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">sigma</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">)</span> <span class="k">else</span> <span class="bp">self</span><span class="o">.</span><span class="n">sigma</span>
+		<span class="n">signal</span>          <span class="o">=</span> <span class="n">gaussian_kernel</span><span class="p">(</span><span class="n">sigma</span><span class="p">)</span>
+		<span class="n">signal_max</span>      <span class="o">=</span> <span class="n">signal</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
+		<span class="c1">### move the signal to the appropriate continuum location:</span>
+		<span class="n">n</span>               <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">signal</span><span class="p">)</span>
+		<span class="n">q0</span>              <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">q</span> <span class="o">-</span> <span class="n">n</span><span class="o">/</span><span class="mi">2</span>
+		<span class="n">q1</span>              <span class="o">=</span> <span class="n">q0</span> <span class="o">+</span> <span class="n">n</span>
+		<span class="k">if</span> <span class="n">q0</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+			<span class="n">signal</span>      <span class="o">=</span> <span class="n">signal</span><span class="p">[</span><span class="o">-</span><span class="n">q0</span><span class="p">:]</span>
+			<span class="n">q0</span>          <span class="o">=</span> <span class="mi">0</span>
+		<span class="k">if</span> <span class="n">q1</span> <span class="o">&gt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">Q</span><span class="p">:</span>
+			<span class="n">nextra</span>      <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">Q</span> <span class="o">-</span> <span class="n">q1</span>
+			<span class="n">signal</span>      <span class="o">=</span> <span class="n">signal</span><span class="p">[:</span><span class="n">nextra</span><span class="p">]</span>
+			<span class="n">q1</span>          <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">Q</span>
+		<span class="n">y</span><span class="p">[</span><span class="n">q0</span><span class="p">:</span><span class="n">q1</span><span class="p">]</span>        <span class="o">=</span> <span class="n">signal</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">value</span>      <span class="o">=</span> <span class="n">y</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">amp</span> <span class="o">/</span> <span class="n">signal_max</span></div>
+
+
+
+
+<div class="viewcode-block" id="Linear"><a class="viewcode-back" href="../../API/geom.html#power1d.geom.Linear">[docs]</a><span class="k">class</span> <span class="nc">Linear</span><span class="p">(</span><span class="n">_Continuum1D</span><span class="p">):</span>
+	<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">	Linearly increasing (or decreasing) continuum</span>
+
+<span class="sd">	NOTE: one of *x1* and *slope* must be specified, and the other must be None.</span>
+
+
+<span class="sd">	Keyword arguments:</span>
+
+<span class="sd">	*Q* ---- continuum size (int) (default: 101)</span>
+
+<span class="sd">	*x0* ---- value at starting continuum point (float or int) (default 0)</span>
+
+<span class="sd">	*x1* ---- value at ending continuum point (float or int) (default None)</span>
+
+<span class="sd">	*slope* ---- rate of linear increase (float or int) (default None)</span>
+
+<span class="sd">	Example:</span>
+
+<span class="sd">	.. plot::</span>
+<span class="sd">		:include-source:</span>
+
+<span class="sd">		import power1d</span>
+
+<span class="sd">		obj = power1d.geom.Linear( Q=101, x0=1.2, x1=-4.5 )</span>
+<span class="sd">		obj.plot()</span>
+<span class="sd">	&#39;&#39;&#39;</span>
+	<span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">Q</span><span class="o">=</span><span class="mi">101</span><span class="p">,</span> <span class="n">x0</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">x1</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">slope</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_assert_scalar</span><span class="p">(</span>  <span class="nb">dict</span><span class="p">(</span><span class="n">x0</span><span class="o">=</span><span class="n">x0</span><span class="p">)</span>  <span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_assert_one_of_two_none</span><span class="p">(</span> <span class="nb">dict</span><span class="p">(</span><span class="n">x1</span><span class="o">=</span><span class="n">x1</span><span class="p">,</span> <span class="n">slope</span><span class="o">=</span><span class="n">slope</span><span class="p">)</span> <span class="p">)</span>
+		<span class="k">if</span> <span class="n">x1</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_assert_scalar</span><span class="p">(</span>  <span class="nb">dict</span><span class="p">(</span><span class="n">slope</span><span class="o">=</span><span class="n">slope</span><span class="p">)</span>  <span class="p">)</span>
+		<span class="k">else</span><span class="p">:</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_assert_scalar</span><span class="p">(</span>  <span class="nb">dict</span><span class="p">(</span><span class="n">x1</span><span class="o">=</span><span class="n">x1</span><span class="p">)</span>  <span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">x0</span>         <span class="o">=</span> <span class="n">x0</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">x1</span>         <span class="o">=</span> <span class="n">x1</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">slope</span>      <span class="o">=</span> <span class="n">slope</span>
+		<span class="nb">super</span><span class="p">(</span><span class="n">Linear</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="n">Q</span><span class="p">)</span>
+
+	<span class="k">def</span> <span class="nf">_build</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="n">x1</span>              <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">x0</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">slope</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">Q</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">x1</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="bp">self</span><span class="o">.</span><span class="n">x1</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">value</span>      <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">x0</span><span class="p">,</span> <span class="n">x1</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">Q</span><span class="p">)</span></div>
+
+
+
+
+
+
+<div class="viewcode-block" id="Null"><a class="viewcode-back" href="../../API/geom.html#power1d.geom.Null">[docs]</a><span class="k">class</span> <span class="nc">Null</span><span class="p">(</span><span class="n">_Continuum1D</span><span class="p">):</span>
+	<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">	Null continuum.  This is equivalent to a constant continuum with amp=0</span>
+<span class="sd">	</span>
+<span class="sd">	Keyword arguments:</span>
+<span class="sd">	</span>
+<span class="sd">	*Q* ---- continuum size (int) (default: 101)</span>
+
+<span class="sd">	Example:</span>
+<span class="sd">	</span>
+<span class="sd">	.. plot::</span>
+<span class="sd">		:include-source:</span>
+<span class="sd">	</span>
+<span class="sd">		import power1d</span>
+<span class="sd">	</span>
+<span class="sd">		obj = power1d.geom.Null( Q=101 )</span>
+<span class="sd">		obj.plot()</span>
+<span class="sd">	&#39;&#39;&#39;</span>
+	<span class="k">pass</span></div>
+
+
+
+
+<div class="viewcode-block" id="SawPulse"><a class="viewcode-back" href="../../API/geom.html#power1d.geom.SawPulse">[docs]</a><span class="k">class</span> <span class="nc">SawPulse</span><span class="p">(</span><span class="n">_Continuum1D</span><span class="p">):</span>
+	<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">	Linearly increasing (or decreasing) continuum, cut-off at a particular point</span>
+
+
+<span class="sd">	Keyword arguments:</span>
+
+<span class="sd">	*Q* ---- continuum size (int) (default: 101)</span>
+
+<span class="sd">	*q0* ---- continuum point at which the saw starts (int) (default 50)</span>
+
+<span class="sd">	*q1* ---- continuum point at which the saw end (int) (default 75)</span>
+
+<span class="sd">	*x0* ---- value at start point (float or int) (default 0)</span>
+
+<span class="sd">	*x1* ---- value at end point (float or int) (default 1)</span>
+
+
+<span class="sd">	Example:</span>
+
+<span class="sd">	.. plot::</span>
+<span class="sd">		:include-source:</span>
+
+<span class="sd">		import power1d</span>
+
+<span class="sd">		obj = power1d.geom.SawPulse( Q=101, q0=30, q1=80, x0=-1.2, x1=4.5 )</span>
+<span class="sd">		obj.plot()</span>
+<span class="sd">	&#39;&#39;&#39;</span>
+	<span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">Q</span><span class="o">=</span><span class="mi">101</span><span class="p">,</span> <span class="n">q0</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">q1</span><span class="o">=</span><span class="mi">75</span><span class="p">,</span> <span class="n">x0</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">x1</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_assert_Q</span><span class="p">(</span><span class="n">Q</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_assert_window</span><span class="p">(</span> <span class="nb">dict</span><span class="p">(</span><span class="n">q0</span><span class="o">=</span><span class="n">q0</span><span class="p">),</span> <span class="nb">dict</span><span class="p">(</span><span class="n">q1</span><span class="o">=</span><span class="n">q1</span><span class="p">),</span> <span class="mi">0</span><span class="p">,</span> <span class="n">Q</span><span class="p">,</span> <span class="n">asint</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">ge</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">le</span><span class="o">=</span><span class="kc">True</span> <span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_assert_scalar</span><span class="p">(</span>  <span class="nb">dict</span><span class="p">(</span><span class="n">x0</span><span class="o">=</span><span class="n">x0</span><span class="p">,</span> <span class="n">x1</span><span class="o">=</span><span class="n">x1</span><span class="p">)</span>  <span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">q0</span>         <span class="o">=</span> <span class="n">q0</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">q1</span>         <span class="o">=</span> <span class="n">q1</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">x0</span>         <span class="o">=</span> <span class="n">x0</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">x1</span>         <span class="o">=</span> <span class="n">x1</span>
+		<span class="nb">super</span><span class="p">(</span><span class="n">SawPulse</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="n">Q</span><span class="p">)</span>
+
+	<span class="k">def</span> <span class="nf">_build</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="n">q0</span><span class="p">,</span><span class="n">q1</span>           <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">q0</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">q1</span>
+		<span class="n">y</span>               <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">x0</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">Q</span><span class="p">)</span>
+		<span class="n">y</span><span class="p">[</span><span class="n">q0</span><span class="p">:</span><span class="n">q1</span><span class="p">]</span>        <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">x0</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">x1</span><span class="p">,</span> <span class="n">q1</span><span class="o">-</span><span class="n">q0</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">value</span>      <span class="o">=</span> <span class="n">y</span></div>
+
+
+
+<div class="viewcode-block" id="SawTooth"><a class="viewcode-back" href="../../API/geom.html#power1d.geom.SawTooth">[docs]</a><span class="k">class</span> <span class="nc">SawTooth</span><span class="p">(</span><span class="n">_Continuum1D</span><span class="p">):</span>
+	<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">	Repeating saw pattern.</span>
+
+
+<span class="sd">	Keyword arguments:</span>
+
+<span class="sd">	*Q* ---- continuum size (int) (default: 101)</span>
+
+<span class="sd">	*q0* ---- continuum point at which the saw starts (int) (default 50)</span>
+
+<span class="sd">	*q1* ---- continuum point at which the saw ends (int) (default 75)</span>
+
+<span class="sd">	*x0* ---- value at start point (float or int) (default 0)</span>
+
+<span class="sd">	*x1* ---- value at end point (float or int) (default 1)</span>
+
+<span class="sd">	*dq* ---- inter-tooth distance (int) (default 0)</span>
+
+
+<span class="sd">	Example:</span>
+
+<span class="sd">	.. plot::</span>
+<span class="sd">		:include-source:</span>
+
+<span class="sd">		import power1d</span>
+
+<span class="sd">		obj = power1d.geom.SawTooth( Q=101, q0=20, q1=35, x0=0.1, x1=0.9, dq=5 )</span>
+<span class="sd">		obj.plot()</span>
+<span class="sd">	&#39;&#39;&#39;</span>
+	<span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">Q</span><span class="o">=</span><span class="mi">101</span><span class="p">,</span> <span class="n">q0</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">q1</span><span class="o">=</span><span class="mi">75</span><span class="p">,</span> <span class="n">x0</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">x1</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">dq</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_assert_Q</span><span class="p">(</span><span class="n">Q</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_assert_window</span><span class="p">(</span> <span class="nb">dict</span><span class="p">(</span><span class="n">q0</span><span class="o">=</span><span class="n">q0</span><span class="p">),</span> <span class="nb">dict</span><span class="p">(</span><span class="n">q1</span><span class="o">=</span><span class="n">q1</span><span class="p">),</span> <span class="mi">0</span><span class="p">,</span> <span class="n">Q</span><span class="p">,</span> <span class="n">asint</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">ge</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">le</span><span class="o">=</span><span class="kc">True</span> <span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_assert_bounds</span><span class="p">(</span>  <span class="nb">dict</span><span class="p">(</span><span class="n">dq</span><span class="o">=</span><span class="n">dq</span><span class="p">),</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">Q</span> <span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_assert_scalar</span><span class="p">(</span>  <span class="nb">dict</span><span class="p">(</span><span class="n">x0</span><span class="o">=</span><span class="n">x0</span><span class="p">,</span> <span class="n">x1</span><span class="o">=</span><span class="n">x1</span><span class="p">)</span>  <span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">q0</span>         <span class="o">=</span> <span class="n">q0</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">q1</span>         <span class="o">=</span> <span class="n">q1</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">x0</span>         <span class="o">=</span> <span class="n">x0</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">x1</span>         <span class="o">=</span> <span class="n">x1</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">dq</span>         <span class="o">=</span> <span class="n">dq</span>
+		<span class="nb">super</span><span class="p">(</span><span class="n">SawTooth</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="n">Q</span><span class="p">)</span>
+
+	<span class="k">def</span> <span class="nf">_build</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="n">q0</span><span class="p">,</span><span class="n">q1</span><span class="p">,</span><span class="n">dq</span>        <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">q0</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">q1</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">dq</span>
+		<span class="n">y</span>               <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">x0</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">Q</span><span class="p">)</span>
+		<span class="n">i</span><span class="p">,</span><span class="n">w</span>             <span class="o">=</span> <span class="n">q0</span><span class="p">,</span> <span class="n">q1</span><span class="o">-</span><span class="n">q0</span>
+		<span class="k">while</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">Q</span><span class="p">:</span>
+			<span class="n">y</span><span class="p">[</span><span class="n">i</span><span class="p">:</span><span class="n">i</span><span class="o">+</span><span class="n">w</span><span class="p">]</span>    <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">x0</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">x1</span><span class="p">,</span> <span class="n">w</span><span class="p">)</span>
+			<span class="n">i</span>          <span class="o">+=</span> <span class="n">w</span> <span class="o">+</span> <span class="n">dq</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">value</span>      <span class="o">=</span> <span class="n">y</span><span class="p">[:</span><span class="bp">self</span><span class="o">.</span><span class="n">Q</span><span class="p">]</span></div>
+
+
+
+<div class="viewcode-block" id="Sigmoid"><a class="viewcode-back" href="../../API/geom.html#power1d.geom.Sigmoid">[docs]</a><span class="k">class</span> <span class="nc">Sigmoid</span><span class="p">(</span><span class="n">_Continuum1D</span><span class="p">):</span>
+	<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">	Sigmoidal step pulse</span>
+
+
+<span class="sd">	Keyword arguments:</span>
+
+<span class="sd">	*Q* ---- continuum size (int) (default: 101)</span>
+
+<span class="sd">	*q0* ---- continuum point at which the step starts (int) (default 50)</span>
+
+<span class="sd">	*q1* ---- continuum point at which the step ends (int) (default 75)</span>
+
+<span class="sd">	*x0* ---- value at start point (float or int) (default 0)</span>
+
+<span class="sd">	*x1* ---- value at end point (float or int) (default 1)</span>
+
+
+<span class="sd">	Example:</span>
+
+<span class="sd">	.. plot::</span>
+<span class="sd">		:include-source:</span>
+
+<span class="sd">		import power1d</span>
+
+<span class="sd">		obj = power1d.geom.Sigmoid( Q=101, q0=20, q1=55, x0=0.1, x1=0.9 )</span>
+<span class="sd">		obj.plot()</span>
+<span class="sd">	&#39;&#39;&#39;</span>
+	<span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">Q</span><span class="o">=</span><span class="mi">101</span><span class="p">,</span> <span class="n">q0</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">q1</span><span class="o">=</span><span class="mi">75</span><span class="p">,</span> <span class="n">x0</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">x1</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_assert_Q</span><span class="p">(</span><span class="n">Q</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_assert_window</span><span class="p">(</span> <span class="nb">dict</span><span class="p">(</span><span class="n">q0</span><span class="o">=</span><span class="n">q0</span><span class="p">),</span> <span class="nb">dict</span><span class="p">(</span><span class="n">q1</span><span class="o">=</span><span class="n">q1</span><span class="p">),</span> <span class="mi">0</span><span class="p">,</span> <span class="n">Q</span><span class="p">,</span> <span class="n">asint</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">ge</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">le</span><span class="o">=</span><span class="kc">True</span> <span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_assert_scalar</span><span class="p">(</span>  <span class="nb">dict</span><span class="p">(</span><span class="n">x0</span><span class="o">=</span><span class="n">x0</span><span class="p">,</span> <span class="n">x1</span><span class="o">=</span><span class="n">x1</span><span class="p">)</span>  <span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">q0</span>         <span class="o">=</span> <span class="n">q0</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">q1</span>         <span class="o">=</span> <span class="n">q1</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">x0</span>         <span class="o">=</span> <span class="n">x0</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">x1</span>         <span class="o">=</span> <span class="n">x1</span>
+		<span class="nb">super</span><span class="p">(</span><span class="n">Sigmoid</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="n">Q</span><span class="p">)</span>
+
+	<span class="k">def</span> <span class="nf">_build</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="n">q0</span><span class="p">,</span><span class="n">q1</span>      <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">q0</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">q1</span>
+		<span class="n">z</span>          <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">Q</span><span class="p">)</span>
+		<span class="n">zz</span>         <span class="o">=</span> <span class="mi">6</span>
+		<span class="n">z</span><span class="p">[:</span><span class="n">q0</span><span class="p">]</span>     <span class="o">=</span> <span class="o">-</span><span class="n">zz</span>
+		<span class="n">z</span><span class="p">[</span><span class="n">q1</span><span class="p">:]</span>     <span class="o">=</span> <span class="o">+</span><span class="n">zz</span>
+		<span class="n">z</span><span class="p">[</span><span class="n">q0</span><span class="p">:</span><span class="n">q1</span><span class="p">]</span>   <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="n">zz</span><span class="p">,</span> <span class="n">zz</span><span class="p">,</span> <span class="n">q1</span><span class="o">-</span><span class="n">q0</span><span class="p">)</span>
+		<span class="n">y</span>          <span class="o">=</span> <span class="mf">1.0</span> <span class="o">/</span> <span class="p">(</span><span class="mf">1.0</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="mf">1.0</span> <span class="o">*</span> <span class="n">z</span><span class="p">))</span>
+		<span class="n">y</span>          <span class="o">=</span> <span class="p">(</span><span class="n">y</span> <span class="o">-</span> <span class="n">y</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">/</span> <span class="p">(</span><span class="n">y</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">-</span><span class="n">y</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+		<span class="n">y</span>          <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">x0</span> <span class="o">+</span> <span class="p">(</span><span class="n">y</span> <span class="o">*</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">x1</span><span class="o">-</span><span class="bp">self</span><span class="o">.</span><span class="n">x0</span><span class="p">))</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="n">y</span></div>
+
+
+
+
+<div class="viewcode-block" id="Sinusoid"><a class="viewcode-back" href="../../API/geom.html#power1d.geom.Sinusoid">[docs]</a><span class="k">class</span> <span class="nc">Sinusoid</span><span class="p">(</span><span class="n">_Continuum1D</span><span class="p">):</span>
+	<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">	Repeating sinusoidal wave</span>
+
+
+<span class="sd">	Keyword arguments:</span>
+
+<span class="sd">	*Q* ---- continuum size (int) (default: 101)</span>
+
+<span class="sd">	*q0* ---- continuum point at which phase is zero (int) (default 0)</span>
+
+<span class="sd">	*amp* ---- amplitude (float or int) (default 1)</span>
+
+<span class="sd">	*hz* ---- frequency relative to continuum size (float or int) (default 1)</span>
+
+
+<span class="sd">	Example:</span>
+
+<span class="sd">	.. plot::</span>
+<span class="sd">		:include-source:</span>
+
+<span class="sd">		import power1d</span>
+
+<span class="sd">		obj = power1d.geom.Sinusoid( Q=101, q0=0, amp=1.3, hz=2 )</span>
+<span class="sd">		obj.plot()</span>
+<span class="sd">	&#39;&#39;&#39;</span>
+	<span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">Q</span><span class="o">=</span><span class="mi">101</span><span class="p">,</span> <span class="n">q0</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">amp</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">hz</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_assert_Q</span><span class="p">(</span><span class="n">Q</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_assert_integer</span><span class="p">(</span>  <span class="nb">dict</span><span class="p">(</span><span class="n">q0</span><span class="o">=</span><span class="n">q0</span><span class="p">)</span>  <span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_assert_bounds</span><span class="p">(</span>  <span class="nb">dict</span><span class="p">(</span><span class="n">q0</span><span class="o">=</span><span class="n">q0</span><span class="p">),</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">Q</span> <span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_assert_scalar</span><span class="p">(</span>  <span class="nb">dict</span><span class="p">(</span><span class="n">amp</span><span class="o">=</span><span class="n">amp</span><span class="p">,</span> <span class="n">hz</span><span class="o">=</span><span class="n">hz</span><span class="p">)</span>  <span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_assert_greater</span><span class="p">(</span>  <span class="nb">dict</span><span class="p">(</span><span class="n">amp</span><span class="o">=</span><span class="n">amp</span><span class="p">,</span> <span class="n">hz</span><span class="o">=</span><span class="n">hz</span><span class="p">),</span> <span class="mi">0</span>  <span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">q0</span>         <span class="o">=</span> <span class="n">q0</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">amp</span>        <span class="o">=</span> <span class="n">amp</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">hz</span>         <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">hz</span><span class="p">)</span>
+		<span class="nb">super</span><span class="p">(</span><span class="n">Sinusoid</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="n">Q</span><span class="p">)</span>
+
+	<span class="k">def</span> <span class="nf">_build</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="n">t0</span>         <span class="o">=</span> <span class="mi">2</span><span class="o">*</span><span class="n">pi</span><span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">q0</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">hz</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">Q</span><span class="p">)</span>
+		<span class="n">t1</span>         <span class="o">=</span> <span class="n">t0</span> <span class="o">+</span> <span class="mi">2</span><span class="o">*</span><span class="n">pi</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">hz</span>
+		<span class="n">q</span>          <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">t0</span><span class="p">,</span> <span class="n">t1</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">Q</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span>  <span class="bp">self</span><span class="o">.</span><span class="n">amp</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">q</span><span class="p">)</span></div>
+
+
+
+
+
+
+<div class="viewcode-block" id="SquarePulse"><a class="viewcode-back" href="../../API/geom.html#power1d.geom.SquarePulse">[docs]</a><span class="k">class</span> <span class="nc">SquarePulse</span><span class="p">(</span><span class="n">_Continuum1D</span><span class="p">):</span>
+	<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">	Square pulse</span>
+
+
+<span class="sd">	Keyword arguments:</span>
+
+<span class="sd">	*Q* ---- continuum size (int) (default: 101)</span>
+
+<span class="sd">	*q0* ---- continuum point at which pulse starts (int) (default 50)</span>
+
+<span class="sd">	*q1* ---- continuum point at which pulse ends (int) (default 75)</span>
+
+<span class="sd">	*x0* ---- starting value (int or float) (default 0)</span>
+
+<span class="sd">	*x1* ---- pulse height (int or float) (default 1)</span>
+
+
+<span class="sd">	Example:</span>
+
+<span class="sd">	.. plot::</span>
+<span class="sd">		:include-source:</span>
+
+<span class="sd">		import power1d</span>
+
+<span class="sd">		obj = power1d.geom.SquarePulse( Q=101, q0=50, q1=70, x0=1.3, x1=2.5 )</span>
+<span class="sd">		obj.plot()</span>
+<span class="sd">	&#39;&#39;&#39;</span>
+	<span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">Q</span><span class="o">=</span><span class="mi">101</span><span class="p">,</span> <span class="n">q0</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">q1</span><span class="o">=</span><span class="mi">75</span><span class="p">,</span> <span class="n">x0</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">x1</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_assert_Q</span><span class="p">(</span><span class="n">Q</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_assert_window</span><span class="p">(</span> <span class="nb">dict</span><span class="p">(</span><span class="n">q0</span><span class="o">=</span><span class="n">q0</span><span class="p">),</span> <span class="nb">dict</span><span class="p">(</span><span class="n">q1</span><span class="o">=</span><span class="n">q1</span><span class="p">),</span> <span class="mi">0</span><span class="p">,</span> <span class="n">Q</span><span class="p">,</span> <span class="n">asint</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">ge</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">le</span><span class="o">=</span><span class="kc">True</span> <span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_assert_scalar</span><span class="p">(</span>  <span class="nb">dict</span><span class="p">(</span><span class="n">x0</span><span class="o">=</span><span class="n">x0</span><span class="p">,</span> <span class="n">x1</span><span class="o">=</span><span class="n">x1</span><span class="p">)</span>  <span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">q0</span>         <span class="o">=</span> <span class="n">q0</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">q1</span>         <span class="o">=</span> <span class="n">q1</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">x0</span>         <span class="o">=</span> <span class="n">x0</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">x1</span>         <span class="o">=</span> <span class="n">x1</span>
+		<span class="nb">super</span><span class="p">(</span><span class="n">SquarePulse</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="n">Q</span><span class="p">)</span>
+
+	<span class="k">def</span> <span class="nf">_build</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="n">q0</span><span class="p">,</span><span class="n">q1</span>           <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">q0</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">q1</span>
+		<span class="n">y</span>               <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">x0</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">Q</span><span class="p">)</span>
+		<span class="n">y</span><span class="p">[</span><span class="n">q0</span><span class="p">:</span><span class="n">q1</span><span class="p">]</span>        <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">x1</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">value</span>      <span class="o">=</span> <span class="n">y</span></div>
+
+
+
+<div class="viewcode-block" id="SquareTooth"><a class="viewcode-back" href="../../API/geom.html#power1d.geom.SquareTooth">[docs]</a><span class="k">class</span> <span class="nc">SquareTooth</span><span class="p">(</span><span class="n">_Continuum1D</span><span class="p">):</span>
+	<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">	Repeating square pulses</span>
+
+
+<span class="sd">	Keyword arguments:</span>
+
+<span class="sd">	*Q* ---- continuum size (int) (default: 101)</span>
+
+<span class="sd">	*q0* ---- continuum point at which pulse starts (int) (default 10)</span>
+
+<span class="sd">	*q1* ---- continuum point at which pulse ends (int) (default 25)</span>
+
+<span class="sd">	*x0* ---- starting value (int or float) (default 0)</span>
+
+<span class="sd">	*x1* ---- pulse height (int or float) (default 1)</span>
+
+<span class="sd">	*dq* ---- inter-tooth distance (int) (default 5)</span>
+
+
+<span class="sd">	Example:</span>
+
+<span class="sd">	.. plot::</span>
+<span class="sd">		:include-source:</span>
+
+<span class="sd">		import power1d</span>
+
+<span class="sd">		obj = power1d.geom.SquareTooth( Q=101, q0=30, q1=40, x0=1.3, x1=2.5, dq=15 )</span>
+<span class="sd">		obj.plot()</span>
+<span class="sd">	&#39;&#39;&#39;</span>
+	<span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">Q</span><span class="o">=</span><span class="mi">101</span><span class="p">,</span> <span class="n">q0</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">q1</span><span class="o">=</span><span class="mi">25</span><span class="p">,</span> <span class="n">x0</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">x1</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">dq</span><span class="o">=</span><span class="mi">5</span><span class="p">):</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_assert_Q</span><span class="p">(</span><span class="n">Q</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_assert_window</span><span class="p">(</span> <span class="nb">dict</span><span class="p">(</span><span class="n">q0</span><span class="o">=</span><span class="n">q0</span><span class="p">),</span> <span class="nb">dict</span><span class="p">(</span><span class="n">q1</span><span class="o">=</span><span class="n">q1</span><span class="p">),</span> <span class="mi">0</span><span class="p">,</span> <span class="n">Q</span><span class="p">,</span> <span class="n">asint</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">ge</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">le</span><span class="o">=</span><span class="kc">True</span> <span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_assert_scalar</span><span class="p">(</span>  <span class="nb">dict</span><span class="p">(</span><span class="n">x0</span><span class="o">=</span><span class="n">x0</span><span class="p">,</span> <span class="n">x1</span><span class="o">=</span><span class="n">x1</span><span class="p">)</span>  <span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">q0</span>         <span class="o">=</span> <span class="n">q0</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">q1</span>         <span class="o">=</span> <span class="n">q1</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">x0</span>         <span class="o">=</span> <span class="n">x0</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">x1</span>         <span class="o">=</span> <span class="n">x1</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">dq</span>         <span class="o">=</span> <span class="n">dq</span>
+		<span class="nb">super</span><span class="p">(</span><span class="n">SquareTooth</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="n">Q</span><span class="p">)</span>
+
+	<span class="k">def</span> <span class="nf">_build</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="n">q0</span><span class="p">,</span><span class="n">q1</span>           <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">q0</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">q1</span>
+		<span class="n">y</span>               <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">x0</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">Q</span><span class="p">)</span>
+		<span class="n">i</span><span class="p">,</span><span class="n">w</span>             <span class="o">=</span> <span class="n">q0</span><span class="p">,</span> <span class="n">q1</span><span class="o">-</span><span class="n">q0</span>
+		<span class="k">while</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">Q</span><span class="p">:</span>
+			<span class="n">i1</span>          <span class="o">=</span> <span class="n">i</span> <span class="o">+</span> <span class="n">w</span>
+			<span class="n">y</span><span class="p">[</span><span class="n">i</span><span class="p">:</span><span class="n">i1</span><span class="p">]</span>     <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">x1</span>
+			<span class="n">i</span>          <span class="o">+=</span> <span class="n">w</span><span class="o">+</span><span class="bp">self</span><span class="o">.</span><span class="n">dq</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">value</span>      <span class="o">=</span> <span class="n">y</span><span class="p">[:</span><span class="bp">self</span><span class="o">.</span><span class="n">Q</span><span class="p">]</span></div>
+
+
+<div class="viewcode-block" id="TrianglePulse"><a class="viewcode-back" href="../../API/geom.html#power1d.geom.TrianglePulse">[docs]</a><span class="k">class</span> <span class="nc">TrianglePulse</span><span class="p">(</span><span class="n">_Continuum1D</span><span class="p">):</span>
+	<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">	Triangular pulse</span>
+
+
+<span class="sd">	Keyword arguments:</span>
+
+<span class="sd">	*Q* ---- continuum size (int) (default: 101)</span>
+
+<span class="sd">	*q0* ---- continuum point at which pulse starts (int) (default 50)</span>
+
+<span class="sd">	*q1* ---- continuum point at which pulse ends (int) (default 75)</span>
+
+<span class="sd">	*x0* ---- starting value (int or float) (default 0)</span>
+
+<span class="sd">	*x1* ---- pulse height (int or float) (default 1)</span>
+
+
+<span class="sd">	Example:</span>
+
+<span class="sd">	.. plot::</span>
+<span class="sd">		:include-source:</span>
+
+<span class="sd">		import power1d</span>
+
+<span class="sd">		obj = power1d.geom.TrianglePulse( Q=101, q0=50, q1=70, x0=1.3, x1=2.5 )</span>
+<span class="sd">		obj.plot()</span>
+<span class="sd">	&#39;&#39;&#39;</span>
+	<span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">Q</span><span class="o">=</span><span class="mi">101</span><span class="p">,</span> <span class="n">q0</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">q1</span><span class="o">=</span><span class="mi">75</span><span class="p">,</span> <span class="n">x0</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">x1</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_assert_Q</span><span class="p">(</span><span class="n">Q</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_assert_window</span><span class="p">(</span> <span class="nb">dict</span><span class="p">(</span><span class="n">q0</span><span class="o">=</span><span class="n">q0</span><span class="p">),</span> <span class="nb">dict</span><span class="p">(</span><span class="n">q1</span><span class="o">=</span><span class="n">q1</span><span class="p">),</span> <span class="mi">0</span><span class="p">,</span> <span class="n">Q</span><span class="p">,</span> <span class="n">asint</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">ge</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">le</span><span class="o">=</span><span class="kc">True</span> <span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_assert_scalar</span><span class="p">(</span>  <span class="nb">dict</span><span class="p">(</span><span class="n">x0</span><span class="o">=</span><span class="n">x0</span><span class="p">,</span> <span class="n">x1</span><span class="o">=</span><span class="n">x1</span><span class="p">)</span>  <span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">q0</span>         <span class="o">=</span> <span class="n">q0</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">q1</span>         <span class="o">=</span> <span class="n">q1</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">x0</span>         <span class="o">=</span> <span class="n">x0</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">x1</span>         <span class="o">=</span> <span class="n">x1</span>
+		<span class="nb">super</span><span class="p">(</span><span class="n">TrianglePulse</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="n">Q</span><span class="p">)</span>
+
+	<span class="k">def</span> <span class="nf">_build</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="n">q0</span><span class="p">,</span><span class="n">q1</span>           <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">q0</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">q1</span>
+		<span class="n">y</span>               <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">x0</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">Q</span><span class="p">)</span>
+		<span class="n">dq0</span>             <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span> <span class="mf">0.5</span><span class="o">*</span><span class="p">(</span><span class="n">q1</span><span class="o">-</span><span class="n">q0</span><span class="p">)</span> <span class="p">))</span>
+		<span class="n">dq1</span>             <span class="o">=</span> <span class="n">q1</span> <span class="o">-</span> <span class="n">q0</span> <span class="o">-</span> <span class="n">dq0</span>
+		<span class="n">qq</span>              <span class="o">=</span> <span class="n">q0</span> <span class="o">+</span> <span class="n">dq0</span>
+		<span class="n">y</span><span class="p">[</span><span class="n">q0</span><span class="p">:</span><span class="n">qq</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span>      <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">x0</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">x1</span><span class="p">,</span> <span class="n">dq0</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+		<span class="n">y</span><span class="p">[</span><span class="n">qq</span><span class="p">:</span><span class="n">q1</span><span class="p">]</span>        <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">x1</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">x0</span><span class="p">,</span> <span class="n">dq1</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">value</span>      <span class="o">=</span> <span class="n">y</span></div>
+
+
+<div class="viewcode-block" id="TriangleTooth"><a class="viewcode-back" href="../../API/geom.html#power1d.geom.TriangleTooth">[docs]</a><span class="k">class</span> <span class="nc">TriangleTooth</span><span class="p">(</span><span class="n">_Continuum1D</span><span class="p">):</span>
+	<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">	Repeating triangular pulses</span>
+
+
+<span class="sd">	Keyword arguments:</span>
+
+<span class="sd">	*Q* ---- continuum size (int) (default: 101)</span>
+
+<span class="sd">	*q0* ---- continuum point at which pulse starts (int) (default 10)</span>
+
+<span class="sd">	*q1* ---- continuum point at which pulse ends (int) (default 25)</span>
+
+<span class="sd">	*x0* ---- starting value (int or float) (default 0)</span>
+
+<span class="sd">	*x1* ---- pulse height (int or float) (default 1)</span>
+
+<span class="sd">	*dq* ---- inter-tooth distance (int) (default 5)</span>
+
+
+<span class="sd">	Example:</span>
+
+<span class="sd">	.. plot::</span>
+<span class="sd">		:include-source:</span>
+
+<span class="sd">		import power1d</span>
+
+<span class="sd">		obj = power1d.geom.TriangleTooth( Q=101, q0=30, q1=40, x0=1.3, x1=2.5, dq=15 )</span>
+<span class="sd">		obj.plot()</span>
+<span class="sd">	&#39;&#39;&#39;</span>
+	<span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">Q</span><span class="o">=</span><span class="mi">101</span><span class="p">,</span> <span class="n">q0</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">q1</span><span class="o">=</span><span class="mi">75</span><span class="p">,</span> <span class="n">x0</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">x1</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">dq</span><span class="o">=</span><span class="mi">20</span><span class="p">):</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_assert_Q</span><span class="p">(</span><span class="n">Q</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_assert_window</span><span class="p">(</span> <span class="nb">dict</span><span class="p">(</span><span class="n">q0</span><span class="o">=</span><span class="n">q0</span><span class="p">),</span> <span class="nb">dict</span><span class="p">(</span><span class="n">q1</span><span class="o">=</span><span class="n">q1</span><span class="p">),</span> <span class="mi">0</span><span class="p">,</span> <span class="n">Q</span><span class="p">,</span> <span class="n">asint</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">ge</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">le</span><span class="o">=</span><span class="kc">True</span> <span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_assert_bounds</span><span class="p">(</span>  <span class="nb">dict</span><span class="p">(</span><span class="n">dq</span><span class="o">=</span><span class="n">dq</span><span class="p">),</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">Q</span> <span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_assert_scalar</span><span class="p">(</span>  <span class="nb">dict</span><span class="p">(</span><span class="n">x0</span><span class="o">=</span><span class="n">x0</span><span class="p">,</span> <span class="n">x1</span><span class="o">=</span><span class="n">x1</span><span class="p">)</span>  <span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">q0</span>         <span class="o">=</span> <span class="n">q0</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">q1</span>         <span class="o">=</span> <span class="n">q1</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">x0</span>         <span class="o">=</span> <span class="n">x0</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">x1</span>         <span class="o">=</span> <span class="n">x1</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">dq</span>         <span class="o">=</span> <span class="n">dq</span>
+		<span class="nb">super</span><span class="p">(</span><span class="n">TriangleTooth</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="n">Q</span><span class="p">)</span>
+
+	<span class="k">def</span> <span class="nf">_build</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="n">q0</span><span class="p">,</span><span class="n">q1</span>           <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">q0</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">q1</span>
+		<span class="n">y</span>               <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">x0</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">Q</span><span class="p">)</span>
+		<span class="n">i</span><span class="p">,</span><span class="n">w</span>             <span class="o">=</span> <span class="n">q0</span><span class="p">,</span> <span class="n">q1</span><span class="o">-</span><span class="n">q0</span>
+		<span class="k">while</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">Q</span><span class="p">:</span>
+			<span class="n">i1</span>          <span class="o">=</span> <span class="n">i</span> <span class="o">+</span> <span class="n">w</span><span class="o">/</span><span class="mi">2</span>
+			<span class="n">i2</span>          <span class="o">=</span> <span class="n">i1</span> <span class="o">+</span> <span class="n">w</span><span class="o">/</span><span class="mi">2</span>
+			<span class="n">y</span><span class="p">[</span><span class="n">i</span><span class="p">:</span><span class="n">i1</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span>   <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">x0</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">x1</span><span class="p">,</span> <span class="n">w</span><span class="o">/</span><span class="mi">2</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+			<span class="n">y</span><span class="p">[</span><span class="n">i1</span><span class="p">:</span><span class="n">i2</span><span class="p">]</span>    <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">x1</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">x0</span><span class="p">,</span> <span class="n">w</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span>
+			<span class="n">i</span>           <span class="o">=</span> <span class="n">i2</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">dq</span> <span class="o">-</span> <span class="mi">1</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">value</span>      <span class="o">=</span> <span class="n">y</span><span class="p">[:</span><span class="bp">self</span><span class="o">.</span><span class="n">Q</span><span class="p">]</span></div>
+
+
+</pre></div>
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../../search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">power1d 0.1 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../index.html" >Module code</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2017, Todd Pataky.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.5.1.
+    </div>
+  </body>
+</html>
