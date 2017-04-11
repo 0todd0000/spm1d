@@ -23,7 +23,8 @@ Please consider citing:
 
 **Download**
 
-(coming soon)
+:download:`Source code <./_static/power1d-0.1.tar.gz>`
+
 
 
 ------------------------
