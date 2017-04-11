@@ -45,9 +45,9 @@ Literature
   <http://dx.doi.org/10.18637/jss.v071.i07>`_
   **Journal of Statistical Software** 71(7): i07.
 
-* Pataky TC (in review). power1d: Numerical Power Estimates for
-  One-Dimensional Continua in Python upcrossing probabilities in Python.
-  **Journal of Statistical Software** 71(7): i07.
+* Pataky TC (in review). Power1D: A Python toolbox for numerical power
+  estimates in experiments involving one-dimensional continua.
+  **PeerJ Computer Science**.
 
 * Ramsay JO, Silverman BW (2005). `Functional Data Analysis
   <http://www.springer.com/us/book/9780387400808>`_

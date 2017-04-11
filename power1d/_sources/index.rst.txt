@@ -8,8 +8,9 @@ power in experiments involving one-dimensional continua.
 Please consider citing:
 
 | Pataky TC (in review).
-| power1d: Numerical Power Estimates for One-Dimensional Continua in Python upcrossing probabilities in Python.
-| **Journal of Statistical Software**.
+| Power1D: A Python toolbox for numerical power estimates in experiments
+  involving one-dimensional continua.
+| **PeerJ Computer Science**.
 
 
 
