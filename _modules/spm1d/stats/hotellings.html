@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>spm1d.stats.hotellings &mdash; spm1d 0.4 documentation</title>
+    <title>spm1d.stats.hotellings &#8212; spm1d 0.4 documentation</title>
     
     <link rel="stylesheet" href="../../../_static/basic.css" type="text/css" />
     <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
@@ -22,7 +22,8 @@
         VERSION:     '0.4',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
       };
     </script>
     <script type="text/javascript" src="../../../_static/jquery.js"></script>
@@ -32,8 +33,8 @@
     <script type="text/javascript" src="../../../_static/js/jquery-fix.js"></script>
     <script type="text/javascript" src="../../../_static/bootstrap-3.2.0/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="../../../_static/bootstrap-sphinx.js"></script>
-    <link rel="top" title="spm1d 0.4 documentation" href="../../../index.html" />
-    <link rel="up" title="Module code" href="../../index.html" />
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
 <meta charset='utf-8'>
 <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
 <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
@@ -159,8 +160,8 @@
 <span class="c1"># Copyright (C) 2016  Todd Pataky</span>
 
 
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
-<span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">_mvbase</span><span class="p">,</span> <span class="n">_spm</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">.</span> <span class="k">import</span> <span class="n">_mvbase</span><span class="p">,</span> <span class="n">_spm</span>
 
 
 
@@ -186,7 +187,7 @@
 
 
 
-<div class="viewcode-block" id="hotellings"><a class="viewcode-back" href="../../../doc/API/stats.html#spm1d.stats.hotellings">[docs]</a><span class="k">def</span> <span class="nf">hotellings</span><span class="p">(</span><span class="n">Y</span><span class="p">,</span> <span class="n">mu</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">roi</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+<div class="viewcode-block" id="hotellings"><a class="viewcode-back" href="../../../doc/API/stats.html#spm1d.stats.hotellings">[docs]</a><span class="k">def</span> <span class="nf">hotellings</span><span class="p">(</span><span class="n">Y</span><span class="p">,</span> <span class="n">mu</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">roi</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
 	<span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">	One-sample Hotelling&#39;s T2 test.</span>
 <span class="sd">	</span>
@@ -200,7 +201,7 @@
 <span class="sd">	&#39;&#39;&#39;</span>
 	
 	<span class="k">if</span> <span class="n">Y</span><span class="o">.</span><span class="n">ndim</span><span class="o">==</span><span class="mi">2</span><span class="p">:</span>
-		<span class="k">if</span> <span class="n">mu</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+		<span class="k">if</span> <span class="n">mu</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
 			<span class="n">Y</span>         <span class="o">=</span> <span class="n">Y</span> <span class="o">-</span> <span class="n">mu</span>
 		<span class="n">T2</span>            <span class="o">=</span> <span class="n">_T2_onesample_singlenode</span><span class="p">(</span><span class="n">Y</span><span class="p">)</span>
 		<span class="n">J</span><span class="p">,</span><span class="n">I</span>           <span class="o">=</span> <span class="n">Y</span><span class="o">.</span><span class="n">shape</span>
@@ -208,21 +209,21 @@
 		<span class="n">v1</span><span class="p">,</span><span class="n">v2</span>         <span class="o">=</span> <span class="n">p</span><span class="p">,</span> <span class="n">m</span>
 		<span class="k">return</span> <span class="n">_spm</span><span class="o">.</span><span class="n">SPM0D_T2</span><span class="p">(</span><span class="n">T2</span><span class="p">,</span> <span class="p">(</span><span class="n">v1</span><span class="p">,</span> <span class="n">v2</span><span class="p">))</span>
 	<span class="k">else</span><span class="p">:</span>
-		<span class="k">if</span> <span class="n">mu</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+		<span class="k">if</span> <span class="n">mu</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
 			<span class="n">Y</span>         <span class="o">=</span> <span class="n">Y</span> <span class="o">-</span> <span class="n">mu</span>
 		<span class="n">nResponses</span><span class="p">,</span><span class="n">nNodes</span><span class="p">,</span><span class="n">nVectDim</span>  <span class="o">=</span> <span class="n">Y</span><span class="o">.</span><span class="n">shape</span>
 		<span class="n">T2</span>            <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">_T2_onesample_singlenode</span><span class="p">(</span><span class="n">Y</span><span class="p">[:,</span><span class="n">i</span><span class="p">,:])</span>   <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">nNodes</span><span class="p">)])</span>
-		<span class="n">T2</span>            <span class="o">=</span> <span class="n">T2</span> <span class="k">if</span> <span class="n">roi</span> <span class="ow">is</span> <span class="bp">None</span> <span class="k">else</span> <span class="n">np</span><span class="o">.</span><span class="n">ma</span><span class="o">.</span><span class="n">masked_array</span><span class="p">(</span><span class="n">T2</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">logical_not</span><span class="p">(</span><span class="n">roi</span><span class="p">))</span>
+		<span class="n">T2</span>            <span class="o">=</span> <span class="n">T2</span> <span class="k">if</span> <span class="n">roi</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">np</span><span class="o">.</span><span class="n">ma</span><span class="o">.</span><span class="n">masked_array</span><span class="p">(</span><span class="n">T2</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">logical_not</span><span class="p">(</span><span class="n">roi</span><span class="p">))</span>
 		<span class="n">R</span>             <span class="o">=</span> <span class="n">_mvbase</span><span class="o">.</span><span class="n">_get_residuals_onesample</span><span class="p">(</span><span class="n">Y</span><span class="p">)</span>
 		<span class="n">W</span>             <span class="o">=</span> <span class="n">_mvbase</span><span class="o">.</span><span class="n">_fwhm</span><span class="p">(</span><span class="n">R</span><span class="p">)</span>
 		<span class="n">rCounts</span>       <span class="o">=</span> <span class="n">_mvbase</span><span class="o">.</span><span class="n">_resel_counts</span><span class="p">(</span><span class="n">R</span><span class="p">,</span> <span class="n">W</span><span class="p">,</span> <span class="n">roi</span><span class="o">=</span><span class="n">roi</span><span class="p">)</span>
 		<span class="n">m</span><span class="p">,</span><span class="n">p</span>           <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">nResponses</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="nb">float</span><span class="p">(</span><span class="n">nVectDim</span><span class="p">)</span>
 		<span class="n">v1</span><span class="p">,</span><span class="n">v2</span>         <span class="o">=</span> <span class="n">p</span><span class="p">,</span> <span class="n">m</span>
-		<span class="k">return</span> <span class="n">_spm</span><span class="o">.</span><span class="n">SPM_T2</span><span class="p">(</span><span class="n">T2</span><span class="p">,</span> <span class="p">(</span><span class="n">v1</span><span class="p">,</span> <span class="n">v2</span><span class="p">),</span> <span class="n">W</span><span class="p">,</span> <span class="n">rCounts</span><span class="p">,</span> <span class="bp">None</span><span class="p">,</span> <span class="bp">None</span><span class="p">,</span> <span class="n">R</span><span class="p">,</span> <span class="n">roi</span><span class="o">=</span><span class="n">roi</span><span class="p">)</span></div>
+		<span class="k">return</span> <span class="n">_spm</span><span class="o">.</span><span class="n">SPM_T2</span><span class="p">(</span><span class="n">T2</span><span class="p">,</span> <span class="p">(</span><span class="n">v1</span><span class="p">,</span> <span class="n">v2</span><span class="p">),</span> <span class="n">W</span><span class="p">,</span> <span class="n">rCounts</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="n">R</span><span class="p">,</span> <span class="n">roi</span><span class="o">=</span><span class="n">roi</span><span class="p">)</span></div>
 	
 
 
-<div class="viewcode-block" id="hotellings_paired"><a class="viewcode-back" href="../../../doc/API/stats.html#spm1d.stats.hotellings_paired">[docs]</a><span class="k">def</span> <span class="nf">hotellings_paired</span><span class="p">(</span><span class="n">YA</span><span class="p">,</span> <span class="n">YB</span><span class="p">,</span> <span class="n">roi</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+<div class="viewcode-block" id="hotellings_paired"><a class="viewcode-back" href="../../../doc/API/stats.html#spm1d.stats.hotellings_paired">[docs]</a><span class="k">def</span> <span class="nf">hotellings_paired</span><span class="p">(</span><span class="n">YA</span><span class="p">,</span> <span class="n">YB</span><span class="p">,</span> <span class="n">roi</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
 	<span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">	Paired Hotelling&#39;s T2 test.</span>
 <span class="sd">	</span>
@@ -242,7 +243,7 @@
 
 
 
-<div class="viewcode-block" id="hotellings2"><a class="viewcode-back" href="../../../doc/API/stats.html#spm1d.stats.hotellings2">[docs]</a><span class="k">def</span> <span class="nf">hotellings2</span><span class="p">(</span><span class="n">YA</span><span class="p">,</span> <span class="n">YB</span><span class="p">,</span> <span class="n">equal_var</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">roi</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+<div class="viewcode-block" id="hotellings2"><a class="viewcode-back" href="../../../doc/API/stats.html#spm1d.stats.hotellings2">[docs]</a><span class="k">def</span> <span class="nf">hotellings2</span><span class="p">(</span><span class="n">YA</span><span class="p">,</span> <span class="n">YB</span><span class="p">,</span> <span class="n">equal_var</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">roi</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
 	<span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">	Two-sample Hotelling&#39;s T2 test.</span>
 <span class="sd">	</span>
@@ -257,7 +258,7 @@
 <span class="sd">	:Note:</span>
 <span class="sd">		- Non-sphericity correction not implemented. Equal variance must be assumed by setting &quot;equal_var=True&quot;.</span>
 <span class="sd">	&#39;&#39;&#39;</span>
-	<span class="k">if</span> <span class="n">equal_var</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">True</span><span class="p">:</span>
+	<span class="k">if</span> <span class="n">equal_var</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">True</span><span class="p">:</span>
 		<span class="k">raise</span><span class="p">(</span> <span class="ne">UserWarning</span><span class="p">(</span><span class="s1">&#39;Non-sphericity correction not implemented. To continue you must assume equal variance and set &quot;equal_var=True&quot;.&#39;</span><span class="p">)</span> <span class="p">)</span>
 	<span class="k">if</span> <span class="n">YA</span><span class="o">.</span><span class="n">ndim</span><span class="o">==</span><span class="mi">2</span><span class="p">:</span>
 		<span class="n">T2</span>            <span class="o">=</span> <span class="n">_T2_twosample_singlenode</span><span class="p">(</span><span class="n">YA</span><span class="p">,</span> <span class="n">YB</span><span class="p">)</span>
@@ -270,13 +271,13 @@
 		<span class="n">JA</span><span class="p">,</span><span class="n">QA</span><span class="p">,</span><span class="n">IA</span>      <span class="o">=</span> <span class="n">YA</span><span class="o">.</span><span class="n">shape</span>
 		<span class="n">JB</span><span class="p">,</span><span class="n">QB</span><span class="p">,</span><span class="n">IB</span>      <span class="o">=</span> <span class="n">YB</span><span class="o">.</span><span class="n">shape</span>
 		<span class="n">T2</span>            <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">_T2_twosample_singlenode</span><span class="p">(</span><span class="n">YA</span><span class="p">[:,</span><span class="n">i</span><span class="p">,:],</span> <span class="n">YB</span><span class="p">[:,</span><span class="n">i</span><span class="p">,:])</span>   <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">QA</span><span class="p">)])</span>
-		<span class="n">T2</span>            <span class="o">=</span> <span class="n">T2</span> <span class="k">if</span> <span class="n">roi</span> <span class="ow">is</span> <span class="bp">None</span> <span class="k">else</span> <span class="n">np</span><span class="o">.</span><span class="n">ma</span><span class="o">.</span><span class="n">masked_array</span><span class="p">(</span><span class="n">T2</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">logical_not</span><span class="p">(</span><span class="n">roi</span><span class="p">))</span>
+		<span class="n">T2</span>            <span class="o">=</span> <span class="n">T2</span> <span class="k">if</span> <span class="n">roi</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">np</span><span class="o">.</span><span class="n">ma</span><span class="o">.</span><span class="n">masked_array</span><span class="p">(</span><span class="n">T2</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">logical_not</span><span class="p">(</span><span class="n">roi</span><span class="p">))</span>
 		<span class="n">R</span>             <span class="o">=</span> <span class="n">_mvbase</span><span class="o">.</span><span class="n">_get_residuals_twosample</span><span class="p">(</span><span class="n">YA</span><span class="p">,</span> <span class="n">YB</span><span class="p">)</span>
 		<span class="n">W</span>             <span class="o">=</span> <span class="n">_mvbase</span><span class="o">.</span><span class="n">_fwhm</span><span class="p">(</span><span class="n">R</span><span class="p">)</span>
 		<span class="n">rCounts</span>       <span class="o">=</span> <span class="n">_mvbase</span><span class="o">.</span><span class="n">_resel_counts</span><span class="p">(</span><span class="n">R</span><span class="p">,</span> <span class="n">W</span><span class="p">,</span> <span class="n">roi</span><span class="o">=</span><span class="n">roi</span><span class="p">)</span>
 		<span class="c1"># v1,v2         = float(IA), float(JA+JB-IA-1)  ###incorrect;  these are F df, not T2 df</span>
 		<span class="n">v1</span><span class="p">,</span><span class="n">v2</span>         <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">IA</span><span class="p">),</span> <span class="nb">float</span><span class="p">(</span><span class="n">JA</span><span class="o">+</span><span class="n">JB</span><span class="o">-</span><span class="mi">2</span><span class="p">)</span>
-		<span class="k">return</span> <span class="n">_spm</span><span class="o">.</span><span class="n">SPM_T2</span><span class="p">(</span><span class="n">T2</span><span class="p">,</span> <span class="p">(</span><span class="n">v1</span><span class="p">,</span> <span class="n">v2</span><span class="p">),</span> <span class="n">W</span><span class="p">,</span> <span class="n">rCounts</span><span class="p">,</span> <span class="bp">None</span><span class="p">,</span> <span class="bp">None</span><span class="p">,</span> <span class="n">R</span><span class="p">,</span> <span class="n">roi</span><span class="o">=</span><span class="n">roi</span><span class="p">)</span></div>
+		<span class="k">return</span> <span class="n">_spm</span><span class="o">.</span><span class="n">SPM_T2</span><span class="p">(</span><span class="n">T2</span><span class="p">,</span> <span class="p">(</span><span class="n">v1</span><span class="p">,</span> <span class="n">v2</span><span class="p">),</span> <span class="n">W</span><span class="p">,</span> <span class="n">rCounts</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="n">R</span><span class="p">,</span> <span class="n">roi</span><span class="o">=</span><span class="n">roi</span><span class="p">)</span></div>
 
 
 </pre></div>
@@ -293,7 +294,7 @@
     </p>
     <p>
         &copy; Copyright 2016, Todd Pataky.<br/>
-      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.4.1.<br/>
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.5.1.<br/>
     </p>
   </div>
 </footer>
