@@ -24,7 +24,7 @@
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
-    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Power analysis" href="PowerAnalysis.html" />
@@ -72,31 +72,29 @@
             
   <div class="section" id="data-sample-modeling">
 <span id="label-examples-datasample"></span><h1>Data sample modeling<a class="headerlink" href="#data-sample-modeling" title="Permalink to this headline">¶</a></h1>
-<p>Consider the Canadian temperature dataset in the figure below; these data are from
-<a class="reference internal" href="../References.html#label-literature"><span class="std std-ref">Ramsay &amp; Silverman (2005)</span></a>.
+<p>Consider the Canadian temperature dataset in the figure below.  These data are from
+<a class="reference internal" href="../References.html#label-literature"><span class="std std-ref">Ramsay &amp; Silverman (2005)</span></a>
 and are available for download here:</p>
 <div class="line-block">
 <div class="line"><a class="reference external" href="http://www.psych.mcgill.ca/misc/fda/downloads/FDAfuns/Matlab/">http://www.psych.mcgill.ca/misc/fda/downloads/FDAfuns/Matlab/</a></div>
-<div class="line">In the <strong>fdaMatlab.zip</strong> file and in its <strong>/examples/weather</strong> folder.</div>
+<div class="line">The data are in <strong>fdaMatlab.zip</strong> in the <strong>/examples/weather</strong> folder.</div>
 </div>
 <p id="label-weatherdata">(<a class="reference external" href="../Examples/DataSample-1.py">Source code</a>, <a class="reference external" href="../Examples/DataSample-1.png">png</a>, <a class="reference external" href="../Examples/DataSample-1.hires.png">hires.png</a>, <a class="reference external" href="../Examples/DataSample-1.pdf">pdf</a>)</p>
 <div class="figure">
 <img alt="../_images/DataSample-1.png" src="../_images/DataSample-1.png" />
 </div>
-<p>The goal here is to create a model of these data that we can use to generate random
-data samples. Those random samples will then be generated iteratively over a large number
-of numerical experiments in order to build up probability distributions regarding our model.
-Those probability distributions will ultimately be used to make probabilistic inferences
-regarding our model.</p>
-<p>There are four steps to creating a model:</p>
+<p>The first step of power analysis is to create a model the data that can be used to generate real
+numerical data samples. Later those data samples will be iteratively generated over a large number
+of iterations in order to numerically accumulate probability distributions associated with the model.</p>
+<p>In <strong>power1d</strong> there are four steps to creating a data sample model:</p>
 <ol class="arabic simple">
 <li>Create baseline geometry.</li>
 <li>Create signal geometry.</li>
 <li>Create a noise model.</li>
 <li>Combine 1&#8211;3 in a DataSample model.</li>
 </ol>
-<p>The first step in data-sample modeling in <strong>power1d</strong> is to create &#8220;baseline&#8221;
-one-dimensional (1D) geometry. If one has experimental data like those depicted above,
+<p>The first step is to create &#8220;baseline&#8221; one-dimensional (1D) geometry.
+If one has experimental data like those depicted above,
 it is easy to generate that baseline as a <strong>power1d.geom.Continuum1D</strong> as follows:</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">power1d</span>
 
@@ -363,7 +361,7 @@ we will be able to detect that signal given our noise model.</p>
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2017, Todd Pataky.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.5.1.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.5.6.
     </div>
   </body>
 </html>

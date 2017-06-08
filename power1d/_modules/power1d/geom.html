@@ -24,7 +24,7 @@
     <script type="text/javascript" src="../../_static/jquery.js"></script>
     <script type="text/javascript" src="../../_static/underscore.js"></script>
     <script type="text/javascript" src="../../_static/doctools.js"></script>
-    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Neuton&amp;subset=latin" type="text/css" media="screen" charset="utf-8" />
@@ -188,7 +188,7 @@
 <span class="sd">	&#39;&#39;&#39;</span>
 	<span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
 		<span class="bp">self</span><span class="o">.</span><span class="n">_assert_array1d</span><span class="p">(</span> <span class="nb">dict</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="n">value</span><span class="p">)</span> <span class="p">)</span>
-		<span class="nb">super</span><span class="p">(</span><span class="n">Continuum1D</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="n">value</span><span class="o">.</span><span class="n">size</span><span class="p">)</span>
+		<span class="nb">super</span><span class="p">(</span><span class="n">Continuum1D</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">value</span><span class="o">.</span><span class="n">size</span><span class="p">)</span>
 		<span class="bp">self</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="n">value</span></div>
 
 
@@ -219,7 +219,7 @@
 	<span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">Q</span><span class="o">=</span><span class="mi">101</span><span class="p">,</span> <span class="n">amp</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
 		<span class="bp">self</span><span class="o">.</span><span class="n">_assert_scalar</span><span class="p">(</span>  <span class="nb">dict</span><span class="p">(</span><span class="n">amp</span><span class="o">=</span><span class="n">amp</span><span class="p">)</span>  <span class="p">)</span>
 		<span class="bp">self</span><span class="o">.</span><span class="n">amp</span>    <span class="o">=</span> <span class="n">amp</span>
-		<span class="nb">super</span><span class="p">(</span><span class="n">Constant</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="n">Q</span><span class="p">)</span>
+		<span class="nb">super</span><span class="p">(</span><span class="n">Constant</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">Q</span><span class="p">)</span>
 
 	<span class="k">def</span> <span class="nf">_build</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 		<span class="bp">self</span><span class="o">.</span><span class="n">value</span>      <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">amp</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">Q</span><span class="p">)</span></div>
@@ -260,7 +260,7 @@
 		<span class="bp">self</span><span class="o">.</span><span class="n">x0</span>     <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">x0</span><span class="p">)</span>
 		<span class="bp">self</span><span class="o">.</span><span class="n">x1</span>     <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">x1</span><span class="p">)</span>
 		<span class="bp">self</span><span class="o">.</span><span class="n">rate</span>   <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">rate</span><span class="p">)</span>
-		<span class="nb">super</span><span class="p">(</span><span class="n">Exponential</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="n">Q</span><span class="p">)</span>
+		<span class="nb">super</span><span class="p">(</span><span class="n">Exponential</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">Q</span><span class="p">)</span>
 
 	<span class="k">def</span> <span class="nf">_build</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 		<span class="n">y</span>               <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">rate</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">Q</span><span class="p">)</span> <span class="p">)</span>
@@ -303,7 +303,7 @@
 		<span class="bp">self</span><span class="o">.</span><span class="n">_assert_integer</span><span class="p">(</span>  <span class="nb">dict</span><span class="p">(</span><span class="n">cutoff</span><span class="o">=</span><span class="n">cutoff</span><span class="p">)</span>  <span class="p">)</span>
 		<span class="bp">self</span><span class="o">.</span><span class="n">_assert_bounds</span><span class="p">(</span>  <span class="nb">dict</span><span class="p">(</span><span class="n">cutoff</span><span class="o">=</span><span class="n">cutoff</span><span class="p">),</span> <span class="mi">0</span><span class="p">,</span> <span class="n">Q</span>  <span class="p">)</span>
 		<span class="bp">self</span><span class="o">.</span><span class="n">cutoff</span> <span class="o">=</span> <span class="n">cutoff</span>
-		<span class="nb">super</span><span class="p">(</span><span class="n">ExponentialSaw</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="n">Q</span><span class="p">,</span> <span class="n">x0</span><span class="p">,</span> <span class="n">x1</span><span class="p">,</span> <span class="n">rate</span><span class="p">)</span>
+		<span class="nb">super</span><span class="p">(</span><span class="n">ExponentialSaw</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">Q</span><span class="p">,</span> <span class="n">x0</span><span class="p">,</span> <span class="n">x1</span><span class="p">,</span> <span class="n">rate</span><span class="p">)</span>
 
 	<span class="k">def</span> <span class="nf">_build</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 		<span class="nb">super</span><span class="p">(</span><span class="n">ExponentialSaw</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">_build</span><span class="p">()</span>
@@ -360,7 +360,7 @@
 		<span class="bp">self</span><span class="o">.</span><span class="n">fwhm</span>  <span class="o">=</span> <span class="kc">None</span> <span class="k">if</span> <span class="n">fwhm</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="nb">float</span><span class="p">(</span><span class="n">fwhm</span><span class="p">)</span>
 		<span class="bp">self</span><span class="o">.</span><span class="n">sigma</span> <span class="o">=</span> <span class="kc">None</span> <span class="k">if</span> <span class="n">sigma</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="nb">float</span><span class="p">(</span><span class="n">sigma</span><span class="p">)</span>
 		<span class="bp">self</span><span class="o">.</span><span class="n">amp</span>   <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">amp</span><span class="p">)</span>
-		<span class="nb">super</span><span class="p">(</span><span class="n">GaussianPulse</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="n">Q</span><span class="p">)</span>
+		<span class="nb">super</span><span class="p">(</span><span class="n">GaussianPulse</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">Q</span><span class="p">)</span>
 
 
 	<span class="k">def</span> <span class="nf">_build</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -424,7 +424,7 @@
 		<span class="bp">self</span><span class="o">.</span><span class="n">x0</span>         <span class="o">=</span> <span class="n">x0</span>
 		<span class="bp">self</span><span class="o">.</span><span class="n">x1</span>         <span class="o">=</span> <span class="n">x1</span>
 		<span class="bp">self</span><span class="o">.</span><span class="n">slope</span>      <span class="o">=</span> <span class="n">slope</span>
-		<span class="nb">super</span><span class="p">(</span><span class="n">Linear</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="n">Q</span><span class="p">)</span>
+		<span class="nb">super</span><span class="p">(</span><span class="n">Linear</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">Q</span><span class="p">)</span>
 
 	<span class="k">def</span> <span class="nf">_build</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 		<span class="n">x1</span>              <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">x0</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">slope</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">Q</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">x1</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="bp">self</span><span class="o">.</span><span class="n">x1</span>
@@ -494,7 +494,7 @@
 		<span class="bp">self</span><span class="o">.</span><span class="n">q1</span>         <span class="o">=</span> <span class="n">q1</span>
 		<span class="bp">self</span><span class="o">.</span><span class="n">x0</span>         <span class="o">=</span> <span class="n">x0</span>
 		<span class="bp">self</span><span class="o">.</span><span class="n">x1</span>         <span class="o">=</span> <span class="n">x1</span>
-		<span class="nb">super</span><span class="p">(</span><span class="n">SawPulse</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="n">Q</span><span class="p">)</span>
+		<span class="nb">super</span><span class="p">(</span><span class="n">SawPulse</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">Q</span><span class="p">)</span>
 
 	<span class="k">def</span> <span class="nf">_build</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 		<span class="n">q0</span><span class="p">,</span><span class="n">q1</span>           <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">q0</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">q1</span>
@@ -544,7 +544,7 @@
 		<span class="bp">self</span><span class="o">.</span><span class="n">x0</span>         <span class="o">=</span> <span class="n">x0</span>
 		<span class="bp">self</span><span class="o">.</span><span class="n">x1</span>         <span class="o">=</span> <span class="n">x1</span>
 		<span class="bp">self</span><span class="o">.</span><span class="n">dq</span>         <span class="o">=</span> <span class="n">dq</span>
-		<span class="nb">super</span><span class="p">(</span><span class="n">SawTooth</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="n">Q</span><span class="p">)</span>
+		<span class="nb">super</span><span class="p">(</span><span class="n">SawTooth</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">Q</span><span class="p">)</span>
 
 	<span class="k">def</span> <span class="nf">_build</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 		<span class="n">q0</span><span class="p">,</span><span class="n">q1</span><span class="p">,</span><span class="n">dq</span>        <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">q0</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">q1</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">dq</span>
@@ -593,7 +593,7 @@
 		<span class="bp">self</span><span class="o">.</span><span class="n">q1</span>         <span class="o">=</span> <span class="n">q1</span>
 		<span class="bp">self</span><span class="o">.</span><span class="n">x0</span>         <span class="o">=</span> <span class="n">x0</span>
 		<span class="bp">self</span><span class="o">.</span><span class="n">x1</span>         <span class="o">=</span> <span class="n">x1</span>
-		<span class="nb">super</span><span class="p">(</span><span class="n">Sigmoid</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="n">Q</span><span class="p">)</span>
+		<span class="nb">super</span><span class="p">(</span><span class="n">Sigmoid</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">Q</span><span class="p">)</span>
 
 	<span class="k">def</span> <span class="nf">_build</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 		<span class="n">q0</span><span class="p">,</span><span class="n">q1</span>      <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">q0</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">q1</span>
@@ -645,7 +645,7 @@
 		<span class="bp">self</span><span class="o">.</span><span class="n">q0</span>         <span class="o">=</span> <span class="n">q0</span>
 		<span class="bp">self</span><span class="o">.</span><span class="n">amp</span>        <span class="o">=</span> <span class="n">amp</span>
 		<span class="bp">self</span><span class="o">.</span><span class="n">hz</span>         <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">hz</span><span class="p">)</span>
-		<span class="nb">super</span><span class="p">(</span><span class="n">Sinusoid</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="n">Q</span><span class="p">)</span>
+		<span class="nb">super</span><span class="p">(</span><span class="n">Sinusoid</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">Q</span><span class="p">)</span>
 
 	<span class="k">def</span> <span class="nf">_build</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 		<span class="n">t0</span>         <span class="o">=</span> <span class="mi">2</span><span class="o">*</span><span class="n">pi</span><span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">q0</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">hz</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">Q</span><span class="p">)</span>
@@ -694,7 +694,7 @@
 		<span class="bp">self</span><span class="o">.</span><span class="n">q1</span>         <span class="o">=</span> <span class="n">q1</span>
 		<span class="bp">self</span><span class="o">.</span><span class="n">x0</span>         <span class="o">=</span> <span class="n">x0</span>
 		<span class="bp">self</span><span class="o">.</span><span class="n">x1</span>         <span class="o">=</span> <span class="n">x1</span>
-		<span class="nb">super</span><span class="p">(</span><span class="n">SquarePulse</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="n">Q</span><span class="p">)</span>
+		<span class="nb">super</span><span class="p">(</span><span class="n">SquarePulse</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">Q</span><span class="p">)</span>
 
 	<span class="k">def</span> <span class="nf">_build</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 		<span class="n">q0</span><span class="p">,</span><span class="n">q1</span>           <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">q0</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">q1</span>
@@ -743,7 +743,7 @@
 		<span class="bp">self</span><span class="o">.</span><span class="n">x0</span>         <span class="o">=</span> <span class="n">x0</span>
 		<span class="bp">self</span><span class="o">.</span><span class="n">x1</span>         <span class="o">=</span> <span class="n">x1</span>
 		<span class="bp">self</span><span class="o">.</span><span class="n">dq</span>         <span class="o">=</span> <span class="n">dq</span>
-		<span class="nb">super</span><span class="p">(</span><span class="n">SquareTooth</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="n">Q</span><span class="p">)</span>
+		<span class="nb">super</span><span class="p">(</span><span class="n">SquareTooth</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">Q</span><span class="p">)</span>
 
 	<span class="k">def</span> <span class="nf">_build</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 		<span class="n">q0</span><span class="p">,</span><span class="n">q1</span>           <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">q0</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">q1</span>
@@ -792,7 +792,7 @@
 		<span class="bp">self</span><span class="o">.</span><span class="n">q1</span>         <span class="o">=</span> <span class="n">q1</span>
 		<span class="bp">self</span><span class="o">.</span><span class="n">x0</span>         <span class="o">=</span> <span class="n">x0</span>
 		<span class="bp">self</span><span class="o">.</span><span class="n">x1</span>         <span class="o">=</span> <span class="n">x1</span>
-		<span class="nb">super</span><span class="p">(</span><span class="n">TrianglePulse</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="n">Q</span><span class="p">)</span>
+		<span class="nb">super</span><span class="p">(</span><span class="n">TrianglePulse</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">Q</span><span class="p">)</span>
 
 	<span class="k">def</span> <span class="nf">_build</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 		<span class="n">q0</span><span class="p">,</span><span class="n">q1</span>           <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">q0</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">q1</span>
@@ -845,7 +845,7 @@
 		<span class="bp">self</span><span class="o">.</span><span class="n">x0</span>         <span class="o">=</span> <span class="n">x0</span>
 		<span class="bp">self</span><span class="o">.</span><span class="n">x1</span>         <span class="o">=</span> <span class="n">x1</span>
 		<span class="bp">self</span><span class="o">.</span><span class="n">dq</span>         <span class="o">=</span> <span class="n">dq</span>
-		<span class="nb">super</span><span class="p">(</span><span class="n">TriangleTooth</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="n">Q</span><span class="p">)</span>
+		<span class="nb">super</span><span class="p">(</span><span class="n">TriangleTooth</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">Q</span><span class="p">)</span>
 
 	<span class="k">def</span> <span class="nf">_build</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 		<span class="n">q0</span><span class="p">,</span><span class="n">q1</span>           <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">q0</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">q1</span>
@@ -898,7 +898,7 @@
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2017, Todd Pataky.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.5.1.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.5.6.
     </div>
   </body>
 </html>

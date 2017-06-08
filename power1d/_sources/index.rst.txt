@@ -5,6 +5,14 @@ Introduction
 **power1d** is a software package for numerically estimating statistical
 power in experiments involving one-dimensional continua.
 
+Dependencies:
+
+* Python 3
+* NumPy
+* SciPy
+* Matplotlib 
+
+
 Please consider citing:
 
 | Pataky TC (in review).
@@ -23,8 +31,7 @@ Please consider citing:
 
 **Download**
 
-:download:`Source code <./_static/power1d-0.1.tar.gz>`
-
+`Python source code <https://github.com/0todd0000/power1d/archive/master.zip>`_
 
 
 ------------------------

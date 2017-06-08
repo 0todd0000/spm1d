@@ -5,12 +5,12 @@
 Data sample modeling
 =====================================
 
-Consider the Canadian temperature dataset in the figure below; these data are from
-:ref:`Ramsay & Silverman (2005) <label-literature>`.
+Consider the Canadian temperature dataset in the figure below.  These data are from
+:ref:`Ramsay & Silverman (2005) <label-literature>`
 and are available for download here:
 
 | http://www.psych.mcgill.ca/misc/fda/downloads/FDAfuns/Matlab/ 
-| In the **fdaMatlab.zip** file and in its **/examples/weather** folder.
+| The data are in **fdaMatlab.zip** in the **/examples/weather** folder.
 
 
 
@@ -57,13 +57,12 @@ and are available for download here:
 	
 
 
-The goal here is to create a model of these data that we can use to generate random
-data samples. Those random samples will then be generated iteratively over a large number
-of numerical experiments in order to build up probability distributions regarding our model.
-Those probability distributions will ultimately be used to make probabilistic inferences
-regarding our model.
+The first step of power analysis is to create a model the data that can be used to generate real
+numerical data samples. Later those data samples will be iteratively generated over a large number
+of iterations in order to numerically accumulate probability distributions associated with the model.
 
-There are four steps to creating a model:
+
+In **power1d** there are four steps to creating a data sample model:
 
 1. Create baseline geometry.
 2. Create signal geometry.
@@ -71,8 +70,8 @@ There are four steps to creating a model:
 4. Combine 1--3 in a DataSample model.
 
 
-The first step in data-sample modeling in **power1d** is to create "baseline"
-one-dimensional (1D) geometry. If one has experimental data like those depicted above,
+The first step is to create "baseline" one-dimensional (1D) geometry.
+If one has experimental data like those depicted above,
 it is easy to generate that baseline as a **power1d.geom.Continuum1D** as follows:
 
 .. plot::

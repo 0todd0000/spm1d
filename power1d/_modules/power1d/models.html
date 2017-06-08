@@ -24,7 +24,7 @@
     <script type="text/javascript" src="../../_static/jquery.js"></script>
     <script type="text/javascript" src="../../_static/underscore.js"></script>
     <script type="text/javascript" src="../../_static/doctools.js"></script>
-    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Neuton&amp;subset=latin" type="text/css" media="screen" charset="utf-8" />
@@ -163,7 +163,7 @@
 		<span class="bp">self</span><span class="o">.</span><span class="n">set_noise</span><span class="p">(</span><span class="n">noise</span><span class="p">)</span>
 		<span class="bp">self</span><span class="o">.</span><span class="n">set_sample_size</span><span class="p">(</span><span class="n">J</span><span class="p">)</span>
 		<span class="bp">self</span><span class="o">.</span><span class="n">set_regressor</span><span class="p">(</span><span class="n">regressor</span><span class="p">)</span>
-		<span class="nb">super</span><span class="p">(</span><span class="n">DataSample</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="n">J</span><span class="p">,</span> <span class="n">baseline</span><span class="o">.</span><span class="n">Q</span><span class="p">)</span>
+		<span class="nb">super</span><span class="p">(</span><span class="n">DataSample</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">J</span><span class="p">,</span> <span class="n">baseline</span><span class="o">.</span><span class="n">Q</span><span class="p">)</span>
 		<span class="bp">self</span><span class="o">.</span><span class="n">random</span><span class="p">()</span>
 
 
@@ -514,7 +514,7 @@
 <span class="sd">		&#39;&#39;&#39;</span>
 		<span class="n">_msg</span>             <span class="o">=</span> <span class="s1">&#39;iterations must be an integer between 10 and 100,000&#39;</span>
 		<span class="k">assert</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">iterations</span><span class="p">,</span> <span class="nb">int</span><span class="p">),</span> <span class="n">_msg</span>
-		<span class="k">assert</span> <span class="p">(</span><span class="n">iterations</span><span class="o">&gt;=</span><span class="mi">10</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="n">iterations</span><span class="o">&lt;=</span><span class="mi">1</span><span class="n">e5</span><span class="p">),</span> <span class="n">_msg</span>
+		<span class="k">assert</span> <span class="p">(</span><span class="n">iterations</span><span class="o">&gt;=</span><span class="mi">10</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="n">iterations</span><span class="o">&lt;=</span><span class="mf">1e5</span><span class="p">),</span> <span class="n">_msg</span>
 		<span class="c1">### initialize progress bar</span>
 		<span class="c1"># print &#39;Simulating...&#39;</span>
 		<span class="k">if</span> <span class="n">progress_bar</span><span class="p">:</span>
@@ -743,7 +743,7 @@
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2017, Todd Pataky.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.5.1.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.5.6.
     </div>
   </body>
 </html>

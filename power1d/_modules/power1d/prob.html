@@ -24,7 +24,7 @@
     <script type="text/javascript" src="../../_static/jquery.js"></script>
     <script type="text/javascript" src="../../_static/underscore.js"></script>
     <script type="text/javascript" src="../../_static/doctools.js"></script>
-    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Neuton&amp;subset=latin" type="text/css" media="screen" charset="utf-8" />
@@ -382,7 +382,7 @@
 <span class="sd">	&#39;&#39;&#39;</span>
 	<span class="n">z0</span>    <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">f</span><span class="o">.</span><span class="n">isf</span><span class="p">(</span><span class="n">alpha</span><span class="p">,</span> <span class="n">df</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">df</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>  <span class="c1">#approximate threshold</span>
 	<span class="n">fn</span>    <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span> <span class="p">:</span> <span class="p">(</span><span class="n">f_sf</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">df</span><span class="p">,</span> <span class="n">Q</span><span class="p">,</span> <span class="n">fwhm</span><span class="p">)</span> <span class="o">-</span> <span class="n">alpha</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span>
-	<span class="n">zstar</span> <span class="o">=</span> <span class="n">optimize</span><span class="o">.</span><span class="n">fmin</span><span class="p">(</span><span class="n">fn</span><span class="p">,</span> <span class="n">z0</span><span class="p">,</span> <span class="n">xtol</span><span class="o">=</span><span class="mi">1</span><span class="n">e</span><span class="o">-</span><span class="mi">9</span><span class="p">,</span> <span class="n">disp</span><span class="o">=</span><span class="mi">0</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+	<span class="n">zstar</span> <span class="o">=</span> <span class="n">optimize</span><span class="o">.</span><span class="n">fmin</span><span class="p">(</span><span class="n">fn</span><span class="p">,</span> <span class="n">z0</span><span class="p">,</span> <span class="n">xtol</span><span class="o">=</span><span class="mf">1e-9</span><span class="p">,</span> <span class="n">disp</span><span class="o">=</span><span class="mi">0</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
 	<span class="k">return</span> <span class="n">zstar</span></div>
 
 
@@ -402,7 +402,7 @@
 <span class="sd">	&#39;&#39;&#39;</span>
 	<span class="n">z0</span>    <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">t</span><span class="o">.</span><span class="n">isf</span><span class="p">(</span><span class="n">alpha</span><span class="p">,</span> <span class="n">df</span><span class="p">)</span>  <span class="c1">#approximate threshold</span>
 	<span class="n">fn</span>    <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span> <span class="p">:</span> <span class="p">(</span><span class="n">t_sf</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">df</span><span class="p">,</span> <span class="n">Q</span><span class="p">,</span> <span class="n">fwhm</span><span class="p">)</span> <span class="o">-</span> <span class="n">alpha</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span>
-	<span class="n">zstar</span> <span class="o">=</span> <span class="n">optimize</span><span class="o">.</span><span class="n">fmin</span><span class="p">(</span><span class="n">fn</span><span class="p">,</span> <span class="n">z0</span><span class="p">,</span> <span class="n">xtol</span><span class="o">=</span><span class="mi">1</span><span class="n">e</span><span class="o">-</span><span class="mi">9</span><span class="p">,</span> <span class="n">disp</span><span class="o">=</span><span class="mi">0</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+	<span class="n">zstar</span> <span class="o">=</span> <span class="n">optimize</span><span class="o">.</span><span class="n">fmin</span><span class="p">(</span><span class="n">fn</span><span class="p">,</span> <span class="n">z0</span><span class="p">,</span> <span class="n">xtol</span><span class="o">=</span><span class="mf">1e-9</span><span class="p">,</span> <span class="n">disp</span><span class="o">=</span><span class="mi">0</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
 	<span class="k">return</span> <span class="n">zstar</span></div>
 	
 	
@@ -495,7 +495,7 @@
 <span class="sd">	</span>
 <span class="sd">	*effect* ------ effect size  (float)</span>
 <span class="sd">	</span>
-<span class="sd">	*methods* ------ one of &quot;iv&quot; or &quot;nct&quot;</span>
+<span class="sd">	*method* ------ one of &quot;iv&quot; or &quot;nct&quot;</span>
 <span class="sd">	</span>
 <span class="sd">	Methods:</span>
 <span class="sd">	</span>
@@ -552,7 +552,7 @@
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2017, Todd Pataky.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.5.1.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.5.6.
     </div>
   </body>
 </html>

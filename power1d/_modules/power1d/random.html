@@ -24,7 +24,7 @@
     <script type="text/javascript" src="../../_static/jquery.js"></script>
     <script type="text/javascript" src="../../_static/underscore.js"></script>
     <script type="text/javascript" src="../../_static/doctools.js"></script>
-    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Neuton&amp;subset=latin" type="text/css" media="screen" charset="utf-8" />
@@ -127,7 +127,7 @@
 <span class="sd">	&#39;&#39;&#39;</span>
 	
 	<span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nResponses</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">nodes</span><span class="o">=</span><span class="mi">101</span><span class="p">,</span> <span class="n">FWHM</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">pad</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
-		<span class="nb">super</span><span class="p">(</span><span class="n">Generator1D</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">()</span>
+		<span class="nb">super</span><span class="p">(</span><span class="n">Generator1D</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
 		<span class="bp">self</span><span class="o">.</span><span class="n">FWHM</span>          <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">FWHM</span><span class="p">)</span>
 		<span class="bp">self</span><span class="o">.</span><span class="n">SCALE</span>         <span class="o">=</span> <span class="kc">None</span>    <span class="c1">#scale factor to return smoothed data to unit variance</span>
 		<span class="bp">self</span><span class="o">.</span><span class="n">SD</span>            <span class="o">=</span> <span class="kc">None</span>    <span class="c1">#standard deviation of the Gaussian kernel</span>
@@ -194,7 +194,7 @@
 			<span class="k">if</span> <span class="n">w</span><span class="o">&gt;</span><span class="mi">50</span><span class="p">:</span>
 				<span class="n">q</span>  <span class="o">+=</span> <span class="n">n</span><span class="o">*</span><span class="p">(</span><span class="n">w</span><span class="o">-</span><span class="mi">50</span><span class="p">)</span>
 			<span class="bp">self</span><span class="o">.</span><span class="n">q</span>  <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">q</span><span class="p">)</span>
-			<span class="bp">self</span><span class="o">.</span><span class="n">i0</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">q</span><span class="o">/</span><span class="mi">2</span> <span class="o">-</span> <span class="n">n</span><span class="o">/</span><span class="mi">2</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">i0</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">q</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span> <span class="o">-</span> <span class="nb">int</span><span class="p">(</span><span class="n">n</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span>
 			<span class="bp">self</span><span class="o">.</span><span class="n">i1</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">i0</span> <span class="o">+</span> <span class="n">n</span>
 		<span class="k">else</span><span class="p">:</span>
 			<span class="bp">self</span><span class="o">.</span><span class="n">q</span>  <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">nNodes</span>
@@ -260,7 +260,7 @@
 <span class="sd">	&#39;&#39;&#39;</span>
 	
 	<span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nResponses</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">nodes</span><span class="o">=</span><span class="mi">101</span><span class="p">,</span> <span class="n">nComponents</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">FWHM</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">W</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">pad</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
-		<span class="nb">super</span><span class="p">(</span><span class="n">GeneratorMulti1D</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="n">nResponses</span><span class="p">,</span> <span class="n">nodes</span><span class="p">,</span> <span class="n">FWHM</span><span class="p">,</span> <span class="n">pad</span><span class="p">)</span>
+		<span class="nb">super</span><span class="p">(</span><span class="n">GeneratorMulti1D</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">nResponses</span><span class="p">,</span> <span class="n">nodes</span><span class="p">,</span> <span class="n">FWHM</span><span class="p">,</span> <span class="n">pad</span><span class="p">)</span>
 		<span class="bp">self</span><span class="o">.</span><span class="n">nComponents</span>   <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">nComponents</span><span class="p">)</span>
 		<span class="k">if</span> <span class="n">W</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
 			<span class="bp">self</span><span class="o">.</span><span class="n">W</span>         <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">nComponents</span><span class="p">)</span>
@@ -358,7 +358,7 @@
 <span class="sd">		&gt;&gt;&gt; y = power1d.random.randn1d(8, 101, 15.0)</span>
 <span class="sd">		&gt;&gt;&gt; y = power1d.random.randn1d(1000, 101, 75.0, pad=True)</span>
 <span class="sd">		</span>
-<span class="sd">	.. warning:: Padding is slow but necessary when 2 *FWHM* &gt; *nodes*</span>
+<span class="sd">	.. warning:: Padding is slow but necessary when (2 x *FWHM*) is greater than the number of nodes</span>
 <span class="sd">	&#39;&#39;&#39;</span>
 	<span class="n">g</span>     <span class="o">=</span> <span class="n">Generator1D</span><span class="p">(</span><span class="n">nResponses</span><span class="p">,</span> <span class="n">nodes</span><span class="p">,</span> <span class="n">FWHM</span><span class="p">,</span> <span class="n">pad</span><span class="p">)</span>
 	<span class="n">y</span>     <span class="o">=</span> <span class="n">g</span><span class="o">.</span><span class="n">generate_sample</span><span class="p">()</span>
@@ -407,7 +407,7 @@
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2017, Todd Pataky.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.5.1.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.5.6.
     </div>
   </body>
 </html>
