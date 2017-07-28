@@ -10,11 +10,8 @@
     
     <title>New Features (version 0.4) &#8212; spm1d 0.4 documentation</title>
     
-    <link rel="stylesheet" href="_static/basic.css" type="text/css" />
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="_static/bootstrap-3.2.0/css/bootstrap.min.css" type="text/css" />
-    <link rel="stylesheet" href="_static/bootstrap-3.2.0/css/bootstrap-theme.min.css" type="text/css" />
     <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
@@ -31,12 +28,12 @@
     <script type="text/javascript" src="_static/doctools.js"></script>
     <script type="text/javascript" src="_static/js/jquery-1.11.0.min.js"></script>
     <script type="text/javascript" src="_static/js/jquery-fix.js"></script>
-    <script type="text/javascript" src="_static/bootstrap-3.2.0/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="_static/bootstrap-3.3.7/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Downloads" href="Downloads.html" />
-    <link rel="prev" title="Introduction" href="index.html" />
+    <link rel="prev" title="Introductiona" href="index.html" />
 <meta charset='utf-8'>
 <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
 <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
@@ -203,11 +200,11 @@
 </ul>
 
   <li>
-    <a href="index.html" title="Previous Chapter: Introduction"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm">&laquo; Introduction</span>
+    <a href="index.html" title="Previous Chapter: Introductiona"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; Introductiona</span>
     </a>
   </li>
   <li>
-    <a href="Downloads.html" title="Next Chapter: Downloads"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm">Downloads &raquo;</span>
+    <a href="Downloads.html" title="Next Chapter: Downloads"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">Downloads &raquo;</span>
     </a>
   </li>
 <form action="search.html" method="get">
@@ -219,7 +216,7 @@
 </form>
         </div>
       </div>
-    <div class="col-md-12">
+    <div class="col-md-12 content">
       
   <div class="section" id="new-features-version-0-4">
 <span id="label-newfeatures"></span><h1>New Features (version 0.4)<a class="headerlink" href="#new-features-version-0-4" title="Permalink to this headline">¶</a></h1>
@@ -454,10 +451,10 @@ Inference:
 <div class="section" id="m-way-repeated-measures-anova">
 <span id="label-featuremwayanova"></span><h2>M-way repeated measures ANOVA<a class="headerlink" href="#m-way-repeated-measures-anova" title="Permalink to this headline">¶</a></h2>
 <p><strong>spm1d</strong> now supports a variety of M-way repeated measures and nested ANOVA designs:</p>
-<ul>
+<ul class="simple">
 <li><dl class="first docutils">
 <dt>One-way</dt>
-<dd><ul class="first last simple">
+<dd><ul class="first last">
 <li>spm1d.stats.<strong>anova1</strong>  &#8212;  one-way ANOVA</li>
 <li>spm1d.stats.<strong>anova1rm</strong> &#8212;  one-way repeated-measures ANOVA</li>
 </ul>
@@ -466,7 +463,7 @@ Inference:
 </li>
 <li><dl class="first docutils">
 <dt>Two-way</dt>
-<dd><ul class="first last simple">
+<dd><ul class="first last">
 <li>spm1d.stats.<strong>anova2</strong>   &#8212;  two-way ANOVA</li>
 <li>spm1d.stats.<strong>anova2nested</strong>   &#8212;  two-way nested ANOVA</li>
 <li>spm1d.stats.<strong>anova2rm</strong>   &#8212;  two-way repeated-measures ANOVA</li>
@@ -477,7 +474,7 @@ Inference:
 </li>
 <li><dl class="first docutils">
 <dt>Three-way</dt>
-<dd><ul class="first last simple">
+<dd><ul class="first last">
 <li>spm1d.stats.<strong>anova3</strong>   &#8212;  three-way ANOVA</li>
 <li>spm1d.stats.<strong>anova3nested</strong>   &#8212;  three-way fully nested ANOVA</li>
 <li>spm1d.stats.<strong>anova3onerm</strong>   &#8212;  three-way ANOVA with repeated measures on one factor</li>
@@ -526,7 +523,7 @@ Inference:
 <span class="gp">&gt;&gt;&gt; </span><span class="n">yB</span> <span class="o">=</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">t</span> <span class="o">=</span> <span class="n">spm1d</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">ttest2</span><span class="p">(</span><span class="n">yA</span><span class="p">,</span> <span class="n">yB</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">ti</span> <span class="o">=</span> <span class="n">t</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="mf">0.05</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span> <span class="n">ti</span>  <span class="c1">#display inference results</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span> <span class="n">ti</span> <span class="p">)</span>  <span class="c1">#display inference results</span>
 </pre></div>
 </div>
 <p>Example (1D):</p>
@@ -659,10 +656,7 @@ Inference:
 <span class="gp">&gt;&gt;&gt; </span> <span class="n">ti</span> <span class="o">=</span> <span class="n">t</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="mf">0.05</span><span class="p">,</span> <span class="n">interp</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>(<a class="reference external" href="./pyplots/fig_upcrossing.py">Source code</a>, <a class="reference external" href="./pyplots/fig_upcrossing.png">png</a>, <a class="reference external" href="./pyplots/fig_upcrossing.hires.png">hires.png</a>, <a class="reference external" href="./pyplots/fig_upcrossing.pdf">pdf</a>)</p>
-<div class="figure">
-<img alt="_images/fig_upcrossing.png" src="_images/fig_upcrossing.png" />
-</div>
+<p>(<a class="reference external" href="./pyplots/fig_upcrossing.py">Source code</a>)</p>
 </div>
 </div>
 <div class="section" id="installation-updating">
@@ -691,8 +685,8 @@ Inference:
       
     </p>
     <p>
-        &copy; Copyright 2016, Todd Pataky.<br/>
-      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.5.1.<br/>
+        &copy; Copyright 2017, Todd Pataky.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.5.1.<br/>
     </p>
   </div>
 </footer>

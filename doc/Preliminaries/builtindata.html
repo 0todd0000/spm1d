@@ -10,11 +10,8 @@
     
     <title>Built-in datasets &#8212; spm1d 0.4 documentation</title>
     
-    <link rel="stylesheet" href="../../_static/basic.css" type="text/css" />
-    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../../_static/bootstrap-3.2.0/css/bootstrap.min.css" type="text/css" />
-    <link rel="stylesheet" href="../../_static/bootstrap-3.2.0/css/bootstrap-theme.min.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
     
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
@@ -31,7 +28,7 @@
     <script type="text/javascript" src="../../_static/doctools.js"></script>
     <script type="text/javascript" src="../../_static/js/jquery-1.11.0.min.js"></script>
     <script type="text/javascript" src="../../_static/js/jquery-fix.js"></script>
-    <script type="text/javascript" src="../../_static/bootstrap-3.2.0/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../../_static/bootstrap-3.3.7/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="../../_static/bootstrap-sphinx.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
@@ -165,11 +162,11 @@
 </ul>
 
   <li>
-    <a href="importing.html" title="Previous Chapter: Importing data"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm">&laquo; Importing data</span>
+    <a href="importing.html" title="Previous Chapter: Importing data"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; Importing data</span>
     </a>
   </li>
   <li>
-    <a href="processing.html" title="Next Chapter: Data processing basics"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm">Data processi... &raquo;</span>
+    <a href="processing.html" title="Next Chapter: Data processing basics"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">Data processi... &raquo;</span>
     </a>
   </li>
 <form action="../../search.html" method="get">
@@ -181,7 +178,7 @@
 </form>
         </div>
       </div>
-    <div class="col-md-12">
+    <div class="col-md-12 content">
       
   <div class="section" id="built-in-datasets">
 <span id="label-builtindata"></span><h1>Built-in datasets<a class="headerlink" href="#built-in-datasets" title="Permalink to this headline">¶</a></h1>
@@ -214,7 +211,7 @@
 <p><strong>spm1d</strong> no longer provides detailed dataset descriptions.</p>
 <p>Instead users should consult the references and web links provided with each dataset as follows:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">dataset</span> <span class="o">=</span> <span class="n">spm1d</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">uv0d</span><span class="o">.</span><span class="n">anova1</span><span class="o">.</span><span class="n">Cars</span><span class="p">()</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span> <span class="n">dataset</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span> <span class="n">dataset</span> <span class="p">)</span>
 </pre></div>
 </div>
 <p>The result will look something like this:</p>
@@ -237,7 +234,7 @@
 <span class="gp">&gt;&gt;&gt; </span><span class="n">Y</span><span class="p">,</span><span class="n">A</span>     <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">get_data</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">F</span>       <span class="o">=</span> <span class="n">spm1d</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">anova1</span><span class="p">(</span><span class="n">Y</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="n">equal_var</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">Fi</span>      <span class="o">=</span> <span class="n">F</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="mf">0.05</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span> <span class="n">Fi</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span> <span class="n">Fi</span> <span class="p">)</span>
 </pre></div>
 </div>
 <p>Here <em>Y</em> and <em>A</em> are both 9-component vectors, where <em>Y</em> represents the observations and where <em>A</em> continains integers which indicate groups.</p>
@@ -264,7 +261,7 @@
 <p>For example:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span> <span class="n">dataset</span>      <span class="o">=</span> <span class="n">spm1d</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">uv1d</span><span class="o">.</span><span class="n">anova2</span><span class="o">.</span><span class="n">Besier2009kneeflexion</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span> <span class="n">Y</span><span class="p">,</span><span class="n">A</span><span class="p">,</span><span class="n">B</span>        <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">get_data</span><span class="p">()</span>  <span class="c1">#A:foot, B:speed</span>
-<span class="gp">&gt;&gt;&gt; </span> <span class="nb">print</span> <span class="n">dataset</span>
+<span class="gp">&gt;&gt;&gt; </span> <span class="nb">print</span><span class="p">(</span> <span class="n">dataset</span> <span class="p">)</span>
 </pre></div>
 </div>
 <p>This will yield:</p>
@@ -298,8 +295,8 @@
       
     </p>
     <p>
-        &copy; Copyright 2016, Todd Pataky.<br/>
-      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.5.1.<br/>
+        &copy; Copyright 2017, Todd Pataky.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.5.1.<br/>
     </p>
   </div>
 </footer>

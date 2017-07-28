@@ -10,11 +10,8 @@
     
     <title>Test outputs &#8212; spm1d 0.4 documentation</title>
     
-    <link rel="stylesheet" href="../../_static/basic.css" type="text/css" />
-    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../../_static/bootstrap-3.2.0/css/bootstrap.min.css" type="text/css" />
-    <link rel="stylesheet" href="../../_static/bootstrap-3.2.0/css/bootstrap-theme.min.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
     
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
@@ -31,7 +28,7 @@
     <script type="text/javascript" src="../../_static/doctools.js"></script>
     <script type="text/javascript" src="../../_static/js/jquery-1.11.0.min.js"></script>
     <script type="text/javascript" src="../../_static/js/jquery-fix.js"></script>
-    <script type="text/javascript" src="../../_static/bootstrap-3.2.0/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../../_static/bootstrap-3.3.7/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="../../_static/bootstrap-sphinx.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
@@ -163,11 +160,11 @@
 </ul>
 
   <li>
-    <a href="multivariate.html" title="Previous Chapter: Multivariate tests"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm">&laquo; Multivariate tests</span>
+    <a href="multivariate.html" title="Previous Chapter: Multivariate tests"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; Multivariate tests</span>
     </a>
   </li>
   <li>
-    <a href="../PostHoc/anova.html" title="Next Chapter: ANOVA post hoc analysis"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm">ANOVA post ho... &raquo;</span>
+    <a href="../PostHoc/anova.html" title="Next Chapter: ANOVA post hoc analysis"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">ANOVA post ho... &raquo;</span>
     </a>
   </li>
 <form action="../../search.html" method="get">
@@ -179,7 +176,7 @@
 </form>
         </div>
       </div>
-    <div class="col-md-12">
+    <div class="col-md-12 content">
       
   <div class="section" id="test-outputs">
 <span id="label-examples-statsoutputs"></span><h1>Test outputs<a class="headerlink" href="#test-outputs" title="Permalink to this headline">¶</a></h1>
@@ -197,7 +194,7 @@
 <h2>Raw SPMs<a class="headerlink" href="#raw-spms" title="Permalink to this headline">¶</a></h2>
 <p>The single output of all statistical tests in <strong>spm1d.stats</strong> is a test statistic continuum (or SPM) object, which can be explored interactively using the <em>print</em> command:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">t</span>  <span class="o">=</span> <span class="n">spm1d</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">ttest</span><span class="p">(</span><span class="n">Y</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span> <span class="n">t</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span> <span class="n">t</span> <span class="p">)</span>
 </pre></div>
 </div>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">SPM</span><span class="p">{</span><span class="n">t</span><span class="p">}</span>
@@ -230,7 +227,7 @@
 </ul>
 <p>Each <strong>SPM{t}</strong> attribute can also be accessed programmatically, like this:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">t</span><span class="o">.</span><span class="n">fwhm</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span> <span class="n">x</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span> <span class="n">x</span> <span class="p">)</span>
 </pre></div>
 </div>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="mf">11.219185575045229</span>
@@ -242,7 +239,7 @@
 <p>The output of the <strong>inference</strong> method is an inference continuum (or inference SPM) object:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">t</span>  <span class="o">=</span> <span class="n">spm1d</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">ttest</span><span class="p">(</span><span class="n">Y</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">ti</span> <span class="o">=</span> <span class="n">t</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.05</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span> <span class="n">ti</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span> <span class="n">ti</span> <span class="p">)</span>
 </pre></div>
 </div>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">SPM</span><span class="p">{</span><span class="n">t</span><span class="p">}</span>
@@ -290,7 +287,7 @@
 <p>All inference SPM objects have an attribute called &#8220;clusters&#8221; which contains a list of <strong>cluster</strong> objects.</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">t</span>  <span class="o">=</span> <span class="n">spm1d</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">ttest</span><span class="p">(</span><span class="n">Y</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">ti</span> <span class="o">=</span> <span class="n">t</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.05</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span> <span class="n">ti</span><span class="o">.</span><span class="n">clusters</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span> <span class="n">ti</span><span class="o">.</span><span class="n">clusters</span> <span class="p">)</span>
 </pre></div>
 </div>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">Cluster</span> <span class="n">at</span> <span class="n">location</span><span class="p">:</span> <span class="p">(</span><span class="mf">17.000</span><span class="p">,</span> <span class="mf">3.870</span><span class="p">)</span>
@@ -311,7 +308,7 @@
 </div>
 <p>You can access specific clusters using list indexing:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">cluster0</span> <span class="o">=</span> <span class="n">ti</span><span class="o">.</span><span class="n">clusters</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span> <span class="n">cluster0</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span> <span class="n">cluster0</span> <span class="p">)</span>
 </pre></div>
 </div>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">Cluster</span> <span class="n">at</span> <span class="n">location</span><span class="p">:</span> <span class="p">(</span><span class="mf">17.000</span><span class="p">,</span> <span class="mf">3.870</span><span class="p">)</span>
@@ -344,8 +341,8 @@
       
     </p>
     <p>
-        &copy; Copyright 2016, Todd Pataky.<br/>
-      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.5.1.<br/>
+        &copy; Copyright 2017, Todd Pataky.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.5.1.<br/>
     </p>
   </div>
 </footer>

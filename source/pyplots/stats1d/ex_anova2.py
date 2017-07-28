@@ -8,7 +8,7 @@ import spm1d
 #(0) Load data:
 dataset      = spm1d.data.uv1d.anova2.Besier2009kneeflexion()
 Y,A,B        = dataset.get_data()  #A:foot, B:speed
-print dataset
+print( dataset )
 
 
 

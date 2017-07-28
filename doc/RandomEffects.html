@@ -10,11 +10,8 @@
     
     <title>Overview of random effects analysis &#8212; spm1d 0.4 documentation</title>
     
-    <link rel="stylesheet" href="../_static/basic.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/bootstrap-3.2.0/css/bootstrap.min.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/bootstrap-3.2.0/css/bootstrap-theme.min.css" type="text/css" />
     <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
@@ -31,7 +28,7 @@
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <script type="text/javascript" src="../_static/js/jquery-1.11.0.min.js"></script>
     <script type="text/javascript" src="../_static/js/jquery-fix.js"></script>
-    <script type="text/javascript" src="../_static/bootstrap-3.2.0/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-3.3.7/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="../_static/bootstrap-sphinx.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -165,11 +162,11 @@
 </ul>
 
   <li>
-    <a href="PostHoc/multivariate.html" title="Previous Chapter: Multivariate post hoc analysis"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm">&laquo; Multivariate ...</span>
+    <a href="PostHoc/multivariate.html" title="Previous Chapter: Multivariate post hoc analysis"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; Multivariate ...</span>
     </a>
   </li>
   <li>
-    <a href="Theory/rft.html" title="Next Chapter: Random field theory"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm">Random field theory &raquo;</span>
+    <a href="Theory/rft.html" title="Next Chapter: Random field theory"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">Random field theory &raquo;</span>
     </a>
   </li>
 <form action="../search.html" method="get">
@@ -181,7 +178,7 @@
 </form>
         </div>
       </div>
-    <div class="col-md-12">
+    <div class="col-md-12 content">
       
   <div class="section" id="overview-of-random-effects-analysis">
 <span id="label-examples-statsadvanced"></span><h1>Overview of random effects analysis<a class="headerlink" href="#overview-of-random-effects-analysis" title="Permalink to this headline">¶</a></h1>
@@ -255,7 +252,7 @@
 </pre></div>
 </div>
 <p>Note the shape of the β parameter array:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span> <span class="nb">print</span> <span class="n">beta</span><span class="o">.</span><span class="n">shape</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span> <span class="nb">print</span><span class="p">(</span> <span class="n">beta</span><span class="o">.</span><span class="n">shape</span> <span class="p">)</span>
 </pre></div>
 </div>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">101</span><span class="p">)</span>
@@ -280,7 +277,7 @@
 </div>
 <p>To appreciate the meaning of the β parameters, consider the simple regression model:</p>
 <div class="math">
-<p><span class="math">y = \beta_0 x + \beta_1 + \varepsilon</span></p>
+<p><img src="../_images/math/a05c63893a89dc43e10227febaf9847743bc541a.png" alt="y = \beta_0 x + \beta_1 + \varepsilon"/></p>
 </div><p>The first and second β parameters are clearly the slope and intercept. In <strong>spm1d</strong> arbitrary models like this are fit to the data at each continuum node, to generate one-dimensional β parameter continua.</p>
 </div>
 <div class="section" id="level-2-analysis">
@@ -332,8 +329,8 @@
       
     </p>
     <p>
-        &copy; Copyright 2016, Todd Pataky.<br/>
-      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.5.1.<br/>
+        &copy; Copyright 2017, Todd Pataky.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.5.1.<br/>
     </p>
   </div>
 </footer>

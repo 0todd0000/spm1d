@@ -24,7 +24,7 @@ Raw SPMs
 The single output of all statistical tests in **spm1d.stats** is a test statistic continuum (or SPM) object, which can be explored interactively using the *print* command:
 
 	>>> t  = spm1d.stats.ttest(Y)
-	>>> print t
+	>>> print( t )
 
 .. code-block:: python
 
@@ -54,7 +54,7 @@ The attributes of the SPM object include:
 Each **SPM{t}** attribute can also be accessed programmatically, like this:
 
    >>> x = t.fwhm
-   >>> print x
+   >>> print( x )
 
 .. code-block:: python
 
@@ -76,7 +76,7 @@ The output of the **inference** method is an inference continuum (or inference S
 
 	>>> t  = spm1d.stats.ttest(Y)
 	>>> ti = t.inference(alpha=0.05)
-	>>> print ti
+	>>> print( ti )
 
 .. code-block:: python
 
@@ -133,7 +133,7 @@ All inference SPM objects have an attribute called "clusters" which contains a l
 
 	>>> t  = spm1d.stats.ttest(Y)
 	>>> ti = t.inference(alpha=0.05)
-	>>> print ti.clusters
+	>>> print( ti.clusters )
 
 
 .. code-block:: python
@@ -154,7 +154,7 @@ All inference SPM objects have an attribute called "clusters" which contains a l
 You can access specific clusters using list indexing:
 
 	>>> cluster0 = ti.clusters[0]
-	>>> print cluster0
+	>>> print( cluster0 )
 
 .. code-block:: python
 

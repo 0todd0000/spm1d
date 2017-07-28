@@ -41,7 +41,7 @@ Dataset details
 Instead users should consult the references and web links provided with each dataset as follows:
 
 	>>> dataset = spm1d.data.uv0d.anova1.Cars()
-	>>> print dataset
+	>>> print( dataset )
 	
 The result will look something like this:
 
@@ -67,7 +67,7 @@ The expected results shown in the example above can be corroborated against **sp
 	>>> Y,A     = dataset.get_data()
 	>>> F       = spm1d.stats.anova1(Y, A, equal_var=True)
 	>>> Fi      = F.inference(0.05)
-	>>> print Fi
+	>>> print( Fi )
 	
 Here *Y* and *A* are both 9-component vectors, where *Y* represents the observations and where *A* continains integers which indicate groups.
 
@@ -102,7 +102,7 @@ Notes on 1D datasets
 
 	>>>  dataset      = spm1d.data.uv1d.anova2.Besier2009kneeflexion()
 	>>>  Y,A,B        = dataset.get_data()  #A:foot, B:speed
-	>>>  print dataset
+	>>>  print( dataset )
 	
 	This will yield:
 	

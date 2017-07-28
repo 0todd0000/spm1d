@@ -377,7 +377,7 @@ Example (0D):
 >>> yB = [3, 1, 2, 3, 4]
 >>> t = spm1d.stats.ttest2(yA, yB)
 >>> ti = t.inference(0.05)
->>> print ti  #display inference results
+>>> print( ti )  #display inference results
 
 Example (1D):
 

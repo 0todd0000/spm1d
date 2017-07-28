@@ -86,7 +86,7 @@ After conducting within-subject regression, each subject's regression parameters
 
 Note the shape of the |bgr| parameter array:
 
-    >>>  print beta.shape
+    >>>  print( beta.shape )
 
 .. code-block:: python
 

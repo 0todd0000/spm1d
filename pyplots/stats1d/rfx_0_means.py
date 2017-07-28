@@ -3,9 +3,6 @@ import numpy as np
 from matplotlib import pyplot
 import spm1d
 
-print '\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n'
-print spm1d
-print '\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n'
 
 
 # compute within-speed means for each subject:

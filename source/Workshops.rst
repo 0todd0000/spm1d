@@ -20,48 +20,28 @@ Workshop Slides
 
 (free PDF download)
 
-:download:`Slides_Booklet.pdf (free direct download) <./_static/Slides_Booklet.pdf>`  
+:download:`Slides_Booklet.pdf (free direct download) <./_static/Slides_Booklet.pdf>`
+
+:download:`Slides-ISB2017.pdf (free direct download) <./_static/Slides-ISB2017.pdf>`
 
 
 
 Future Workshops
 ---------------------------
 
-
-June 2017 Workshop
-____________________
-
-**Date:**  2017 June 14
-
-**Time:**  08:30 – 16:00
-
-**Title:**   One-dimensional Statistical Parametric Mapping: getting your stats right for curve analyses!
-
-**Venue**:  German Sporthohschule Cologen.
-
-**Room:**  (to be confirmed)
-
-**Overview:**  Biomechanical research often involves the population-based testing of hypotheses based on observations over the course of a discrete time (stance duration, gait cycle). Typically mean and variance curves are then presented, but until recently hypothesis testing had to be done on summary metrics that are supposed to represent key features of the temporal profile. With the creation of SPM1D, hypothesis testing tools such as t-tests, ANOVA or regression have now been extended to the analysis of curves, i.e. one-dimensional data, for example testing force traces or movement patterns over time. What is more, SPM1D tools are considered very accessible for non-statisticians and people without programming experience, requiring minimal effort to learn how to use them in simple experimental paradigms. This one-day workshop will therefore provide an elaborate introduction of key principles and use of the open source package SPM1D, including a hands-on session, helping delegates to overcome their fears associated with the use of this advanced statistical tool in the field of sports biomechanics.
-
-**Cost:**  EUR 99
-
-**Registration:**   email Jos Vanrenterghem ( jos.vanrenterghem@kuleuven.be )
-
-
-July 2017 Workshop
-____________________
-
-A short two-hour SPM workshop will be held at ISB-2017 in Brisbane called:
-
-**Statistical Parametric Mapping: theory, software and future directions**
-
-More details to come.
+(pending)
 
 
 
 
 Previous Workshops
 ---------------------------
+
+2017 July 26 (**Brisbane, Australia**)
+
+2017 June 14 (**German Sporthohschule Cologen**)
+
+2017 January 25--27 (**Department for Health, University of Bath**)
 
 2016 October 11--12 (**Dept. Rehabilitation Sciences, KU Leuven**)
 
@@ -94,17 +74,6 @@ All of the following can be adjusted upon consultation according to your needs:
 - Beginning to advanced SPM concepts
 - SPM's computational details and programming interface
 - SPM customization and interfacing with other software
-
-
-Future Sponsored Courses
----------------------------
-
-==========================================================================================================================================================  ==========================================================================================================================================================  ==========================================================================================================================================================   ==========================================================================================================================================================   ==========================================================================================================================================================
-Dates                                                                                                                                                       Location                                                                                                                                                    Flyer                                                                                                                                                        Instructors                                                                                                                                                  Registration
-==========================================================================================================================================================  ==========================================================================================================================================================  ==========================================================================================================================================================   ==========================================================================================================================================================   ==========================================================================================================================================================
-2017 January 25--27                                                                                                                                         `Deptartment for Health, University of Bath <http://www.bath.ac.uk/health/>`_  , UK                                                                         (in preparation)                                                                                                                                             Todd Pataky, Mark Robinson                                                                                                                                   (in preparation)
-==========================================================================================================================================================  ==========================================================================================================================================================  ==========================================================================================================================================================   ==========================================================================================================================================================   ==========================================================================================================================================================
-
 
 
 
