@@ -3,16 +3,12 @@
 
 <!DOCTYPE html>
 
-
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    
     <title>Test outputs &#8212; spm1d 0.4 documentation</title>
-    
     <link rel="stylesheet" href="../../_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-    
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
@@ -40,7 +36,7 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 
   </head>
-  <body role="document">
+  <body>
 
 <div style="background-color: white; text-align: left; padding: 10px 10px 15px 15px">
 <a href="../../index.html"><img src="../../logo.png" border="0" alt="spm1d"/></a>
@@ -206,23 +202,23 @@
 </div>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">If you are in an interactive Python session, simply typing &#8220;t&#8221; and then ENTER should produce the same output.</p>
+<p class="last">If you are in an interactive Python session, simply typing “t” and then ENTER should produce the same output.</p>
 </div>
 <p>The attributes of the SPM object include:</p>
 <ul>
-<li><p class="first"><strong>SPM{t}</strong> &#8212; a label indicating that this variable is a statistical parametric map, and that the test statistic is the <em>t</em> statistic. If we had conducted ANOVA, for example, then the variable would be labeled as &#8220;SPM{F}&#8221;.</p>
+<li><p class="first"><strong>SPM{t}</strong> — a label indicating that this variable is a statistical parametric map, and that the test statistic is the <em>t</em> statistic. If we had conducted ANOVA, for example, then the variable would be labeled as “SPM{F}”.</p>
 </li>
-<li><p class="first"><strong>SPM.z</strong> &#8212; the 1D test statistic continuum (or &#8220;test statistic field&#8221; or &#8220;test statistic trajectory&#8221;)</p>
+<li><p class="first"><strong>SPM.z</strong> — the 1D test statistic continuum (or “test statistic field” or “test statistic trajectory”)</p>
 </li>
-<li><p class="first"><strong>SPM.df</strong> &#8212; degrees of freedom</p>
+<li><p class="first"><strong>SPM.df</strong> — degrees of freedom</p>
 </li>
-<li><p class="first"><strong>SPM.fwhm</strong> &#8212; the estimated full-width at half-maximum (FWHM) of a 1D Gaussian kernel which, when convolved with (random) 1D Gaussian continua, would yield the same smoothness as the observed residuals. The &#8220;residuals&#8221; are 1D continua embodying the variable that is not accounted for by the experimental design. In a one sample t test, for example, the residual for the <em>j</em> -th continuum is simply the difference between that continuum and the mean continuum:</p>
+<li><p class="first"><strong>SPM.fwhm</strong> — the estimated full-width at half-maximum (FWHM) of a 1D Gaussian kernel which, when convolved with (random) 1D Gaussian continua, would yield the same smoothness as the observed residuals. The “residuals” are 1D continua embodying the variable that is not accounted for by the experimental design. In a one sample t test, for example, the residual for the <em>j</em> -th continuum is simply the difference between that continuum and the mean continuum:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span> <span class="n">j</span> <span class="o">=</span> <span class="mi">0</span>
 <span class="gp">&gt;&gt;&gt; </span> <span class="n">residual_j</span> <span class="o">=</span> <span class="n">Y</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">-</span> <span class="n">Y</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 </pre></div>
 </div>
 </li>
-<li><p class="first"><strong>SPM.resels</strong> &#8212; the resolution element counts, where &#8220;resolution element&#8221; refers to the geometric properties of the continuum. The first resel count is the Euler characteristic (<em>EC</em>), where <em>EC</em> is equal to one plus the number of &#8220;holes&#8221; in the continuum. The second resel count is (<em>Q</em> - <em>EC</em>) / FWHM, where <em>Q</em> is the number of continuum nodes. Thus the first resel count represents the number of separate &#8220;sections&#8221; in the continuum, and the second resel count represents the total number of independent &#8220;processes&#8221; in the continuum.</p>
+<li><p class="first"><strong>SPM.resels</strong> — the resolution element counts, where “resolution element” refers to the geometric properties of the continuum. The first resel count is the Euler characteristic (<em>EC</em>), where <em>EC</em> is equal to one plus the number of “holes” in the continuum. The second resel count is (<em>Q</em> - <em>EC</em>) / FWHM, where <em>Q</em> is the number of continuum nodes. Thus the first resel count represents the number of separate “sections” in the continuum, and the second resel count represents the total number of independent “processes” in the continuum.</p>
 </li>
 </ul>
 <p>Each <strong>SPM{t}</strong> attribute can also be accessed programmatically, like this:</p>
@@ -257,14 +253,14 @@
 </div>
 <p>The first four attributes are the same as in the raw SPM above. The final four attributes are introduced at the statistical inference stage.</p>
 <ul class="simple">
-<li><strong>SPM.alpha</strong> &#8212; the user-specified Type I error rate (default: 0.05)</li>
-<li><strong>SPM.zstar</strong> &#8212; the critical Random Field Theory threshold</li>
-<li><strong>h0reject</strong> &#8212; the null hypothesis rejection decision (i.e. does the test statistic continuum exceed zstar?)</li>
-<li><strong>SPM.p</strong> &#8212; a list of probability values, one for each threshold-surviving cluster. By definition each cluster&#8217;s probability value is equal to or less than <em>alpha</em>.</li>
+<li><strong>SPM.alpha</strong> — the user-specified Type I error rate (default: 0.05)</li>
+<li><strong>SPM.zstar</strong> — the critical Random Field Theory threshold</li>
+<li><strong>h0reject</strong> — the null hypothesis rejection decision (i.e. does the test statistic continuum exceed zstar?)</li>
+<li><strong>SPM.p</strong> — a list of probability values, one for each threshold-surviving cluster. By definition each cluster’s probability value is equal to or less than <em>alpha</em>.</li>
 </ul>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">In this example the <em>p</em> value is 0.031. This could be interpreted as follows: &#8220;the probability that smooth random 1D continua would produce a suprathreshold cluster as broad or broader than the observed cluster is 0.031&#8221;.</p>
+<p class="last">In this example the <em>p</em> value is 0.031. This could be interpreted as follows: “the probability that smooth random 1D continua would produce a suprathreshold cluster as broad or broader than the observed cluster is 0.031”.</p>
 </div>
 <div class="admonition danger">
 <p class="first admonition-title">Danger</p>
@@ -277,14 +273,14 @@
 <li>Type of test statistic</li>
 <li>Sample size (i.e. degrees of freedom)</li>
 <li>Resel counts (i.e. continuum size relative to its smoothness)</li>
-<li>The cluster&#8217;s minimum suprathreshold height</li>
-<li>The cluster&#8217;s breadth relative to the continuum size.</li>
+<li>The cluster’s minimum suprathreshold height</li>
+<li>The cluster’s breadth relative to the continuum size.</li>
 </ol>
 </div></blockquote>
 </div>
 <div class="section" id="suprathreshold-clusters">
 <h2>Suprathreshold clusters<a class="headerlink" href="#suprathreshold-clusters" title="Permalink to this headline">¶</a></h2>
-<p>All inference SPM objects have an attribute called &#8220;clusters&#8221; which contains a list of <strong>cluster</strong> objects.</p>
+<p>All inference SPM objects have an attribute called “clusters” which contains a list of <strong>cluster</strong> objects.</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">t</span>  <span class="o">=</span> <span class="n">spm1d</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">ttest</span><span class="p">(</span><span class="n">Y</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">ti</span> <span class="o">=</span> <span class="n">t</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.05</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span> <span class="n">ti</span><span class="o">.</span><span class="n">clusters</span> <span class="p">)</span>
@@ -304,7 +300,7 @@
 </div>
 <div class="admonition warning">
 <p class="first admonition-title">Warning</p>
-<p class="last">If the test fails to reach the critical threshold, <strong>clusters</strong> will be an empty list: &#8220;[ ]&#8221;.</p>
+<p class="last">If the test fails to reach the critical threshold, <strong>clusters</strong> will be an empty list: “[ ]”.</p>
 </div>
 <p>You can access specific clusters using list indexing:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">cluster0</span> <span class="o">=</span> <span class="n">ti</span><span class="o">.</span><span class="n">clusters</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
@@ -320,11 +316,11 @@
 </div>
 <p>Cluster attributes include:</p>
 <ul class="simple">
-<li><strong>cluster.xy</strong> &#8212; the cluster centroid coordinates. Here the centroid is located at (17.000, 3.870).</li>
-<li><strong>cluster.extent</strong> &#8212; the number of continuum nodes in this cluster which exceed the threshold.</li>
-<li><strong>cluster.extentR</strong> &#8212; the same as <strong>cluster.extent</strong>, but expressed in resel units.</li>
-<li><strong>cluster.h</strong> &#8212; the minimum height of all cluster nodes.</li>
-<li><strong>cluster.P</strong> &#8212; the probability that smooth, random 1D continua would produce a suprathreshold cluster with the observed breadth</li>
+<li><strong>cluster.xy</strong> — the cluster centroid coordinates. Here the centroid is located at (17.000, 3.870).</li>
+<li><strong>cluster.extent</strong> — the number of continuum nodes in this cluster which exceed the threshold.</li>
+<li><strong>cluster.extentR</strong> — the same as <strong>cluster.extent</strong>, but expressed in resel units.</li>
+<li><strong>cluster.h</strong> — the minimum height of all cluster nodes.</li>
+<li><strong>cluster.P</strong> — the probability that smooth, random 1D continua would produce a suprathreshold cluster with the observed breadth</li>
 </ul>
 </div>
 </div>
@@ -342,7 +338,7 @@
     </p>
     <p>
         &copy; Copyright 2017, Todd Pataky.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.5.1.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.3.<br/>
     </p>
   </div>
 </footer>

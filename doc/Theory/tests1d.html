@@ -3,16 +3,12 @@
 
 <!DOCTYPE html>
 
-
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    
     <title>Statistical testing of 1D continua &#8212; spm1d 0.4 documentation</title>
-    
     <link rel="stylesheet" href="../../_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-    
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
@@ -40,7 +36,7 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 
   </head>
-  <body role="document">
+  <body>
 
 <div style="background-color: white; text-align: left; padding: 10px 10px 15px 15px">
 <a href="../../index.html"><img src="../../logo.png" border="0" alt="spm1d"/></a>
@@ -182,7 +178,7 @@
       
   <div class="section" id="statistical-testing-of-1d-continua">
 <span id="label-theory-statisticaltest"></span><h1>Statistical testing of 1D continua<a class="headerlink" href="#statistical-testing-of-1d-continua" title="Permalink to this headline">¶</a></h1>
-<p>If your experimental data can be described as &#8220;1D continua&#8221; (or &#8220;1D fields&#8221; or &#8220;1D trajectories&#8221;) then Statistical Parametric Mapping (<strong>SPM</strong>) may be an appropriate statistical methodology for you to consider.</p>
+<p>If your experimental data can be described as “1D continua” (or “1D fields” or “1D trajectories”) then Statistical Parametric Mapping (<strong>SPM</strong>) may be an appropriate statistical methodology for you to consider.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">SPM conducts statistical testing <strong>at the continuum level</strong>, in a conceptually simple manner. For 0D (univariate) datasets, which are the focus of most basic statistics textbooks, statistical inference stems from a model of randomness, usually the Gaussian distribution. The goal is to quantify the probability that random data would exceed a particular test statistic value (like <em>t</em> = 2.5 or <em>F</em> = 10.1). For 1D datasets, <strong>SPM</strong>-based statistical testing is conceptually identical: the goal is to quantify the probability that smooth, random 1D continua would produce a test statistic continuum whose maximum exceeds a particular test statistic value.</p>
@@ -216,9 +212,9 @@
 </div>
 <p>The results are depicted in the figure below.</p>
 <ul class="simple">
-<li>The thick black line depicts the test statistic continuum, which in this case is a <em>t</em> continuum, or &#8220;SPM{t}&#8221;.</li>
+<li>The thick black line depicts the test statistic continuum, which in this case is a <em>t</em> continuum, or “SPM{t}”.</li>
 <li>The red hashed line depicts the critical threshold at <em>alpha</em> = 5%. From a classical hypothesis testing perspective, the null hypothesis is rejected at <em>alpha</em> if the SPM{t} exceeds this threshold.</li>
-<li>The probability (<em>p</em>) value indicates the probability that smooth, random continua would produce a supra-threshold cluster as broad as the observed cluster. Here &#8220;smooth&#8221; means <strong>the same smoothness as the residual continua</strong>, and &#8220;broad&#8221; means <strong>the proportion of the continuum spanned by a suprathreshold cluster</strong>.</li>
+<li>The probability (<em>p</em>) value indicates the probability that smooth, random continua would produce a supra-threshold cluster as broad as the observed cluster. Here “smooth” means <strong>the same smoothness as the residual continua</strong>, and “broad” means <strong>the proportion of the continuum spanned by a suprathreshold cluster</strong>.</li>
 </ul>
 <p>This example is considered in extended detail below.</p>
 <p>(<a class="reference external" href="../../doc/Theory/tests1d-1.py">Source code</a>, <a class="reference external" href="../../doc/Theory/tests1d-1.png">png</a>, <a class="reference external" href="../../doc/Theory/tests1d-1.hires.png">hires.png</a>, <a class="reference external" href="../../doc/Theory/tests1d-1.pdf">pdf</a>)</p>
@@ -266,7 +262,7 @@
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">t</span>  <span class="o">=</span> <span class="n">spm1d</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">ttest</span><span class="p">(</span><span class="n">Y</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>The result <em>t</em> is a 1D test statistic continuum, or equivalently a &#8220;Statistical Parametric Map&#8221; (SPM), denoted &#8220;<strong>SPM{t}</strong>&#8221;.
+<p>The result <em>t</em> is a 1D test statistic continuum, or equivalently a “Statistical Parametric Map” (SPM), denoted “<strong>SPM{t}</strong>”.
 It can be visualized as follows:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">t</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
 </pre></div>
@@ -316,7 +312,7 @@ It can be visualized as follows:</p>
 </div>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">The probability that smooth random continua will produce an SPM{t} that reaches <em>t*</em> is precisely <em>alpha</em>. If the test statistic continuum just touches the critical threshold, then by definition the <em>p</em> value is <em>alpha</em>. As the test statistic continuum traverses beyond the critical threshold, as in the example above, the <em>p</em> value gets progressively smaller. The <em>p</em> value specifies the probability that smooth random fields would produce a suprathreshold cluster as broad or broader than the observed cluster, where &#8220;broad&#8221; refers to the width of the cluster relative to the width of the whole continuum.</p>
+<p class="last">The probability that smooth random continua will produce an SPM{t} that reaches <em>t*</em> is precisely <em>alpha</em>. If the test statistic continuum just touches the critical threshold, then by definition the <em>p</em> value is <em>alpha</em>. As the test statistic continuum traverses beyond the critical threshold, as in the example above, the <em>p</em> value gets progressively smaller. The <em>p</em> value specifies the probability that smooth random fields would produce a suprathreshold cluster as broad or broader than the observed cluster, where “broad” refers to the width of the cluster relative to the width of the whole continuum.</p>
 </div>
 <div class="admonition danger">
 <p class="first admonition-title">Danger</p>
@@ -338,7 +334,7 @@ It can be visualized as follows:</p>
     </p>
     <p>
         &copy; Copyright 2017, Todd Pataky.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.5.1.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.3.<br/>
     </p>
   </div>
 </footer>

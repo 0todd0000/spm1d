@@ -3,16 +3,12 @@
 
 <!DOCTYPE html>
 
-
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    
     <title>ANOVA post hoc analysis &#8212; spm1d 0.4 documentation</title>
-    
     <link rel="stylesheet" href="../../_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-    
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
@@ -40,7 +36,7 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 
   </head>
-  <body role="document">
+  <body>
 
 <div style="background-color: white; text-align: left; padding: 10px 10px 15px 15px">
 <a href="../../index.html"><img src="../../logo.png" border="0" alt="spm1d"/></a>
@@ -234,7 +230,7 @@
 <p>If desired, you may report exact <em>p</em> values for each suprathreshold cluster, but in this case the p values must be adjusted for multiple comparisons.</p>
 <p class="last">To compute appropriate <em>p</em> values, use the inverse to the Bonferroni correction through <strong>spm1d.util.p_corrected_bonf</strong>, as described below.</p>
 </div>
-<p>Let&#8217;s consider the following result from one of the <em>post hoc</em> tests conducted above:</p>
+<p>Let’s consider the following result from one of the <em>post hoc</em> tests conducted above:</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">SPM</span><span class="p">{</span><span class="n">T</span><span class="p">}</span> <span class="n">inference</span> <span class="n">field</span>
    <span class="n">SPM</span><span class="o">.</span><span class="n">z</span>      <span class="p">:</span>  <span class="p">(</span><span class="mi">1</span><span class="n">x101</span><span class="p">)</span> <span class="n">raw</span> <span class="n">test</span> <span class="n">stat</span> <span class="n">field</span>
    <span class="n">SPM</span><span class="o">.</span><span class="n">df</span>     <span class="p">:</span>  <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mf">33.641</span><span class="p">)</span>
@@ -248,9 +244,9 @@
 </div>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">When multiple <em>p</em> values exist, they are listed in the following order: (1) upper threshold left-to-right, (2) lower threshold left-to-right. In the &#8220;t23i&#8221; case above (rightmost panel of the figure) there are five <em>p</em> values. The first corresponds to the single upper-threshold cluster. The next four correspond to the four lower-threshold clusters.</p>
+<p class="last">When multiple <em>p</em> values exist, they are listed in the following order: (1) upper threshold left-to-right, (2) lower threshold left-to-right. In the “t23i” case above (rightmost panel of the figure) there are five <em>p</em> values. The first corresponds to the single upper-threshold cluster. The next four correspond to the four lower-threshold clusters.</p>
 </div>
-<p>The five <em>p</em> values listed in the results above correspond to this test&#8217;s five supra-threshold clusters.</p>
+<p>The five <em>p</em> values listed in the results above correspond to this test’s five supra-threshold clusters.</p>
 <p>Corrected <em>p</em> values may be computed as follows:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">p_value</span> <span class="o">=</span> <span class="mf">0.008</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">nTests</span>  <span class="o">=</span> <span class="mi">3</span>
@@ -274,7 +270,7 @@
     </p>
     <p>
         &copy; Copyright 2017, Todd Pataky.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.5.1.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.3.<br/>
     </p>
   </div>
 </footer>

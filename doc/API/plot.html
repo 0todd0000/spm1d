@@ -3,16 +3,12 @@
 
 <!DOCTYPE html>
 
-
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    
     <title>spm1d.plot &#8212; spm1d 0.4 documentation</title>
-    
     <link rel="stylesheet" href="../../_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-    
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
@@ -40,7 +36,7 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 
   </head>
-  <body role="document">
+  <body>
 
 <div style="background-color: white; text-align: left; padding: 10px 10px 15px 15px">
 <a href="../../index.html"><img src="../../logo.png" border="0" alt="spm1d"/></a>
@@ -203,22 +199,22 @@
 <tbody valign="top">
 <tr class="row-even"><td>plot_spm</td>
 <td>plot</td>
-<td>&nbsp;</td>
+<td>&#160;</td>
 </tr>
 <tr class="row-odd"><td>plot_spm_design</td>
 <td>plot_design</td>
 <td>plot_design</td>
 </tr>
 <tr class="row-even"><td>plot_spmi</td>
-<td>&nbsp;</td>
+<td>&#160;</td>
 <td>plot</td>
 </tr>
 <tr class="row-odd"><td>plot_spmi_p_values</td>
-<td>&nbsp;</td>
+<td>&#160;</td>
 <td>plot_p_values</td>
 </tr>
 <tr class="row-even"><td>plot_spmi_threshold_label</td>
-<td>&nbsp;</td>
+<td>&#160;</td>
 <td>plot_threshold_label</td>
 </tr>
 </tbody>
@@ -246,14 +242,14 @@ These include:</p>
 </tbody>
 </table>
 <ul class="simple">
-<li><em>datum</em> &#8212; a 1D list or numpy array</li>
-<li><em>sd</em> &#8212; a 1D list or numpy array</li>
-<li><em>ax</em> &#8212; optional matplotlib.axes object</li>
-<li><em>x</em> &#8212; optional vector of x positions  [default: np.arange(datum.size)]</li>
-<li><em>facecolor</em> &#8212; optional face color (for the SD cloud)</li>
-<li><em>edgecolor</em> &#8212; optional edge color (for the SD cloud)</li>
-<li><em>alpha</em> &#8212; optional face alpha value (for the SD cloud)</li>
-<li><em>autoset_ylim</em> &#8212; if True (default), will set the y axis limits so that all text, line and patch objects are visible inside the axes</li>
+<li><em>datum</em> — a 1D list or numpy array</li>
+<li><em>sd</em> — a 1D list or numpy array</li>
+<li><em>ax</em> — optional matplotlib.axes object</li>
+<li><em>x</em> — optional vector of x positions  [default: np.arange(datum.size)]</li>
+<li><em>facecolor</em> — optional face color (for the SD cloud)</li>
+<li><em>edgecolor</em> — optional edge color (for the SD cloud)</li>
+<li><em>alpha</em> — optional face alpha value (for the SD cloud)</li>
+<li><em>autoset_ylim</em> — if True (default), will set the y axis limits so that all text, line and patch objects are visible inside the axes</li>
 </ul>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -303,18 +299,18 @@ These include:</p>
 </tbody>
 </table>
 <ul class="simple">
-<li><em>Y</em> &#8212; a (J x Q) numpy array</li>
-<li><em>ax</em> &#8212; optional matplotlib.axes object  [default: matplotlib.pyplot.gca()]</li>
-<li><em>x</em> &#8212; optional vector of x positions  [default: np.arange(Y.shape[1])]</li>
-<li><em>lw</em> &#8212; optional integer specify line width</li>
-<li><em>linecolor</em> &#8212; optional line color specifier (for the mean continuum)</li>
-<li><em>linestyle</em> &#8212; optional line style specifier (for the mean continuum)</li>
-<li><em>facecolor</em> &#8212; optional face color (for the SD cloud)</li>
-<li><em>edgecolor</em> &#8212; optional edge color (for the SD cloud)</li>
-<li><em>alpha</em> &#8212; optional face alpha value (for the SD cloud)</li>
-<li><em>label</em> &#8212; optional string to label the mean continuum (for use with matplotlib.pyplot.legend())</li>
-<li><em>autoset_ylim</em> &#8212; if True (default), will set the y axis limits so that all text, line and patch objects are visible inside the axes</li>
-<li><em>roi</em> &#8212; optional region-of-interest vector (either boolean OR vector of (-1, 0, +1))</li>
+<li><em>Y</em> — a (J x Q) numpy array</li>
+<li><em>ax</em> — optional matplotlib.axes object  [default: matplotlib.pyplot.gca()]</li>
+<li><em>x</em> — optional vector of x positions  [default: np.arange(Y.shape[1])]</li>
+<li><em>lw</em> — optional integer specify line width</li>
+<li><em>linecolor</em> — optional line color specifier (for the mean continuum)</li>
+<li><em>linestyle</em> — optional line style specifier (for the mean continuum)</li>
+<li><em>facecolor</em> — optional face color (for the SD cloud)</li>
+<li><em>edgecolor</em> — optional edge color (for the SD cloud)</li>
+<li><em>alpha</em> — optional face alpha value (for the SD cloud)</li>
+<li><em>label</em> — optional string to label the mean continuum (for use with matplotlib.pyplot.legend())</li>
+<li><em>autoset_ylim</em> — if True (default), will set the y axis limits so that all text, line and patch objects are visible inside the axes</li>
+<li><em>roi</em> — optional region-of-interest vector (either boolean OR vector of (-1, 0, +1))</li>
 </ul>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -358,11 +354,11 @@ These include:</p>
 </tbody>
 </table>
 <ul class="simple">
-<li><em>spm</em> &#8212; an <strong>spm1d</strong> SPM object (not needed if using the SPM.plot method)</li>
-<li><em>ax</em> &#8212; optional matplotlib.axes object  [default: matplotlib.pyplot.gca()]</li>
-<li><em>plot_ylabel</em> &#8212; if <em>True</em>, then an &#8220;SPM{t}&#8221; or &#8220;SPM{F}&#8221; label will automatically be added to the y axis</li>
-<li><em>autoset_ylim</em> &#8212; if True (default), will set the y axis limits so that all text, line and patch objects are visible inside the axes</li>
-<li><em>kwdards</em> &#8212; any keyword argument accepted by <strong>matplotlib.pyplot.plot</strong></li>
+<li><em>spm</em> — an <strong>spm1d</strong> SPM object (not needed if using the SPM.plot method)</li>
+<li><em>ax</em> — optional matplotlib.axes object  [default: matplotlib.pyplot.gca()]</li>
+<li><em>plot_ylabel</em> — if <em>True</em>, then an “SPM{t}” or “SPM{F}” label will automatically be added to the y axis</li>
+<li><em>autoset_ylim</em> — if True (default), will set the y axis limits so that all text, line and patch objects are visible inside the axes</li>
+<li><em>kwdards</em> — any keyword argument accepted by <strong>matplotlib.pyplot.plot</strong></li>
 </ul>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -373,7 +369,7 @@ These include:</p>
 </tbody>
 </table>
 <ul class="simple">
-<li><em>h</em> &#8212; a <strong>matplotlib.lines.Line2D</strong> object</li>
+<li><em>h</em> — a <strong>matplotlib.lines.Line2D</strong> object</li>
 </ul>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -407,13 +403,13 @@ These include:</p>
 </tbody>
 </table>
 <ul class="simple">
-<li><em>spmi</em> &#8212; an <strong>spm1d</strong> SPM object</li>
-<li><em>ax</em> &#8212; optional matplotlib.axes object  [default: matplotlib.pyplot.gca()]</li>
-<li><em>color</em> &#8212; optional line color specifier (for the raw SPM)</li>
-<li><em>facecolor</em> &#8212; optional face color (for suprathreshold clusters)</li>
-<li><em>plot_thresh</em> &#8212; if <em>True</em>, one or two horizontal threshold lines will be plotted (for one- or two-tailed inference)</li>
-<li><em>plot_ylabel</em> &#8212; if <em>True</em>, an &#8220;SPM{t}&#8221; or &#8220;SPM{F}&#8221; label will automatically be added to the y axis</li>
-<li><em>autoset_ylim</em> &#8212; if True (default), will set the y axis limits so that all text, line and patch objects are visible inside the axes</li>
+<li><em>spmi</em> — an <strong>spm1d</strong> SPM object</li>
+<li><em>ax</em> — optional matplotlib.axes object  [default: matplotlib.pyplot.gca()]</li>
+<li><em>color</em> — optional line color specifier (for the raw SPM)</li>
+<li><em>facecolor</em> — optional face color (for suprathreshold clusters)</li>
+<li><em>plot_thresh</em> — if <em>True</em>, one or two horizontal threshold lines will be plotted (for one- or two-tailed inference)</li>
+<li><em>plot_ylabel</em> — if <em>True</em>, an “SPM{t}” or “SPM{F}” label will automatically be added to the y axis</li>
+<li><em>autoset_ylim</em> — if True (default), will set the y axis limits so that all text, line and patch objects are visible inside the axes</li>
 </ul>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -448,7 +444,7 @@ These include:</p>
 <dl class="function">
 <dt id="spm1d.plot.plot_spmi_p_values">
 <code class="descclassname">spm1d.plot.</code><code class="descname">plot_spmi_p_values</code><span class="sig-paren">(</span><em>spmi</em>, <em>ax=None</em>, <em>size=8</em>, <em>offsets=None</em>, <em>offset_all_clusters=None</em>, <em>autoset_ylim=True</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/spm1d/plot.html#plot_spmi_p_values"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#spm1d.plot.plot_spmi_p_values" title="Permalink to this definition">¶</a></dt>
-<dd><p>Plot an <strong>spm1d</strong> SPM inference object&#8217;s p values as text (if they exist).</p>
+<dd><p>Plot an <strong>spm1d</strong> SPM inference object’s p values as text (if they exist).</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -458,12 +454,12 @@ These include:</p>
 </tbody>
 </table>
 <ul class="simple">
-<li><em>spmi</em> &#8212; an <strong>spm1d</strong> SPM inference object</li>
-<li><em>ax</em> &#8212; optional matplotlib.axes object  [default: matplotlib.pyplot.gca()]</li>
-<li><em>size</em> &#8212; optional integer specifying font size</li>
-<li><em>offsets</em> &#8212; optional list of 2-tuples specifying (x,y) offsets with respect to cluster centroids</li>
-<li><em>offset_all_clusters</em> &#8212; optional 2-tuple specifying the (x,y) offset for all clusters, with respect to cluster centroids</li>
-<li><em>autoset_ylim</em> &#8212; if True (default), will set the y axis limits so that all text, line and patch objects are visible inside the axes</li>
+<li><em>spmi</em> — an <strong>spm1d</strong> SPM inference object</li>
+<li><em>ax</em> — optional matplotlib.axes object  [default: matplotlib.pyplot.gca()]</li>
+<li><em>size</em> — optional integer specifying font size</li>
+<li><em>offsets</em> — optional list of 2-tuples specifying (x,y) offsets with respect to cluster centroids</li>
+<li><em>offset_all_clusters</em> — optional 2-tuple specifying the (x,y) offset for all clusters, with respect to cluster centroids</li>
+<li><em>autoset_ylim</em> — if True (default), will set the y axis limits so that all text, line and patch objects are visible inside the axes</li>
 </ul>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -510,12 +506,12 @@ These include:</p>
 </tbody>
 </table>
 <ul class="simple">
-<li><em>spmi</em> &#8212; an <strong>spm1d</strong> SPM inference object</li>
-<li><em>ax</em> &#8212; optional matplotlib.axes object  [default: matplotlib.pyplot.gca()]</li>
-<li><em>lower</em> &#8212; if True, will plot the label on the lower threshold (if two-tailed inference has been conducted)</li>
-<li><em>pos</em> &#8212; optional 2-tuple specifying text object location; setting &#8220;pos&#8221; over-rides &#8220;lower&#8221;</li>
-<li><em>autoset_ylim</em> &#8212; if True (default), will set the y axis limits so that all text, line and patch objects are visible inside the axes</li>
-<li><em>kwdards</em> &#8212; any keyword argument accepted by <strong>matplotlib.pyplot.text</strong></li>
+<li><em>spmi</em> — an <strong>spm1d</strong> SPM inference object</li>
+<li><em>ax</em> — optional matplotlib.axes object  [default: matplotlib.pyplot.gca()]</li>
+<li><em>lower</em> — if True, will plot the label on the lower threshold (if two-tailed inference has been conducted)</li>
+<li><em>pos</em> — optional 2-tuple specifying text object location; setting “pos” over-rides “lower”</li>
+<li><em>autoset_ylim</em> — if True (default), will set the y axis limits so that all text, line and patch objects are visible inside the axes</li>
+<li><em>kwdards</em> — any keyword argument accepted by <strong>matplotlib.pyplot.text</strong></li>
 </ul>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -559,7 +555,7 @@ These include:</p>
     </p>
     <p>
         &copy; Copyright 2017, Todd Pataky.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.5.1.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.3.<br/>
     </p>
   </div>
 </footer>

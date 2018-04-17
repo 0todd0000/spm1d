@@ -3,16 +3,12 @@
 
 <!DOCTYPE html>
 
-
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    
     <title>spm1d.io &#8212; spm1d 0.4 documentation</title>
-    
     <link rel="stylesheet" href="../../_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-    
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
@@ -38,7 +34,7 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 
   </head>
-  <body role="document">
+  <body>
 
 <div style="background-color: white; text-align: left; padding: 10px 10px 15px 15px">
 <a href="../../index.html"><img src="../../logo.png" border="0" alt="spm1d"/></a>
@@ -179,38 +175,38 @@
 
 <span class="k">class</span> <span class="nc">Deprecated</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
 	<span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">f</span><span class="p">):</span>
-		<span class="n">fnname</span>     <span class="o">=</span> <span class="s1">&#39;spm1d.io.&#39;</span> <span class="o">+</span> <span class="n">f</span><span class="o">.</span><span class="n">__name__</span>
+		<span class="n">fnname</span>     <span class="o">=</span> <span class="s1">&#39;spm1d.io.&#39;</span> <span class="o">+</span> <span class="n">f</span><span class="o">.</span><span class="vm">__name__</span>
 		<span class="bp">self</span><span class="o">.</span><span class="n">msg</span>   <span class="o">=</span> <span class="s1">&#39;&quot;</span><span class="si">%s</span><span class="s1">&quot; has been deprecated.  The &quot;spm1d.io&quot; module will be removed in the future.&#39;</span> <span class="o">%</span><span class="n">fnname</span>
 	<span class="k">def</span> <span class="nf">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">):</span>
 		<span class="k">raise</span><span class="p">(</span> <span class="ne">DeprecationWarning</span><span class="p">(</span> <span class="bp">self</span><span class="o">.</span><span class="n">msg</span> <span class="p">)</span> <span class="p">)</span>
 
 
 
-<span class="nd">@Deprecated</span>
-<div class="viewcode-block" id="load"><a class="viewcode-back" href="../../doc/API/io.html#spm1d.io.load">[docs]</a><span class="k">def</span> <span class="nf">load</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">):</span>
+<div class="viewcode-block" id="load"><a class="viewcode-back" href="../../doc/API/io.html#spm1d.io.load">[docs]</a><span class="nd">@Deprecated</span>
+<span class="k">def</span> <span class="nf">load</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">):</span>
 	<span class="k">pass</span></div>
-<span class="nd">@Deprecated</span>
-<div class="viewcode-block" id="loadmat"><a class="viewcode-back" href="../../doc/API/io.html#spm1d.io.loadmat">[docs]</a><span class="k">def</span> <span class="nf">loadmat</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">):</span>
+<div class="viewcode-block" id="loadmat"><a class="viewcode-back" href="../../doc/API/io.html#spm1d.io.loadmat">[docs]</a><span class="nd">@Deprecated</span>
+<span class="k">def</span> <span class="nf">loadmat</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">):</span>
 	<span class="k">pass</span></div>
-<span class="nd">@Deprecated</span>
-<div class="viewcode-block" id="loadspm"><a class="viewcode-back" href="../../doc/API/io.html#spm1d.io.loadspm">[docs]</a><span class="k">def</span> <span class="nf">loadspm</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">):</span>
+<div class="viewcode-block" id="loadspm"><a class="viewcode-back" href="../../doc/API/io.html#spm1d.io.loadspm">[docs]</a><span class="nd">@Deprecated</span>
+<span class="k">def</span> <span class="nf">loadspm</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">):</span>
 	<span class="k">pass</span></div>
-<span class="nd">@Deprecated</span>
-<div class="viewcode-block" id="loadtxt"><a class="viewcode-back" href="../../doc/API/io.html#spm1d.io.loadtxt">[docs]</a><span class="k">def</span> <span class="nf">loadtxt</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">):</span>
+<div class="viewcode-block" id="loadtxt"><a class="viewcode-back" href="../../doc/API/io.html#spm1d.io.loadtxt">[docs]</a><span class="nd">@Deprecated</span>
+<span class="k">def</span> <span class="nf">loadtxt</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">):</span>
 	<span class="k">pass</span></div>
 
 
-<span class="nd">@Deprecated</span>
-<div class="viewcode-block" id="save"><a class="viewcode-back" href="../../doc/API/io.html#spm1d.io.save">[docs]</a><span class="k">def</span> <span class="nf">save</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">):</span>
+<div class="viewcode-block" id="save"><a class="viewcode-back" href="../../doc/API/io.html#spm1d.io.save">[docs]</a><span class="nd">@Deprecated</span>
+<span class="k">def</span> <span class="nf">save</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">):</span>
 	<span class="k">pass</span></div>
-<span class="nd">@Deprecated</span>
-<div class="viewcode-block" id="savemat"><a class="viewcode-back" href="../../doc/API/io.html#spm1d.io.savemat">[docs]</a><span class="k">def</span> <span class="nf">savemat</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">):</span>
+<div class="viewcode-block" id="savemat"><a class="viewcode-back" href="../../doc/API/io.html#spm1d.io.savemat">[docs]</a><span class="nd">@Deprecated</span>
+<span class="k">def</span> <span class="nf">savemat</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">):</span>
 	<span class="k">pass</span></div>
-<span class="nd">@Deprecated</span>
-<div class="viewcode-block" id="savespm"><a class="viewcode-back" href="../../doc/API/io.html#spm1d.io.savespm">[docs]</a><span class="k">def</span> <span class="nf">savespm</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">):</span>
+<div class="viewcode-block" id="savespm"><a class="viewcode-back" href="../../doc/API/io.html#spm1d.io.savespm">[docs]</a><span class="nd">@Deprecated</span>
+<span class="k">def</span> <span class="nf">savespm</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">):</span>
 	<span class="k">pass</span></div>
-<span class="nd">@Deprecated</span>
-<div class="viewcode-block" id="savetxt"><a class="viewcode-back" href="../../doc/API/io.html#spm1d.io.savetxt">[docs]</a><span class="k">def</span> <span class="nf">savetxt</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">):</span>
+<div class="viewcode-block" id="savetxt"><a class="viewcode-back" href="../../doc/API/io.html#spm1d.io.savetxt">[docs]</a><span class="nd">@Deprecated</span>
+<span class="k">def</span> <span class="nf">savetxt</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">):</span>
 	<span class="k">pass</span></div>
 
 
@@ -228,7 +224,7 @@
     </p>
     <p>
         &copy; Copyright 2017, Todd Pataky.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.5.1.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.3.<br/>
     </p>
   </div>
 </footer>

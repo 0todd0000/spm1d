@@ -3,16 +3,12 @@
 
 <!DOCTYPE html>
 
-
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    
     <title>spm1d.stats.anova.ui &#8212; spm1d 0.4 documentation</title>
-    
     <link rel="stylesheet" href="../../../../_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
-    
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../../../',
@@ -38,7 +34,7 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 
   </head>
-  <body role="document">
+  <body>
 
 <div style="background-color: white; text-align: left; padding: 10px 10px 15px 15px">
 <a href="../../../../index.html"><img src="../../../../logo.png" border="0" alt="spm1d"/></a>
@@ -285,7 +281,7 @@
 <span class="c1">### TWO-WAY DESIGNS ##############</span>
 
 <span class="k">def</span> <span class="nf">_set_labels</span><span class="p">(</span><span class="n">FF</span><span class="p">,</span> <span class="n">design</span><span class="p">):</span>
-	<span class="n">FF</span><span class="o">.</span><span class="n">set_design_label</span><span class="p">(</span> <span class="n">design</span><span class="o">.</span><span class="n">__class__</span><span class="o">.</span><span class="n">__name__</span> <span class="p">)</span>
+	<span class="n">FF</span><span class="o">.</span><span class="n">set_design_label</span><span class="p">(</span> <span class="n">design</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span> <span class="p">)</span>
 	<span class="n">FF</span><span class="o">.</span><span class="n">set_effect_labels</span><span class="p">(</span> <span class="n">design</span><span class="o">.</span><span class="n">effect_labels</span> <span class="p">)</span>
 	<span class="c1"># [F.set_effect_label(label)  for F,label in zip(FF, design.effect_labels)]</span>
 
@@ -626,7 +622,7 @@
     </p>
     <p>
         &copy; Copyright 2017, Todd Pataky.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.5.1.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.3.<br/>
     </p>
   </div>
 </footer>

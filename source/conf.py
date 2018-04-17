@@ -46,7 +46,6 @@ extensions = [
 	'sphinx.ext.viewcode',
 	'matplotlib.sphinxext.only_directives',
 	'matplotlib.sphinxext.plot_directive',
-	'sphinxcontrib.youtube',
 ]
 
 	# 'matplotlib.sphinxext.mathmpl',

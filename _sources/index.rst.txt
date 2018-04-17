@@ -38,8 +38,11 @@ It uses `random field theory <http://www.spm1d.org/rft1d>`_ to make statistical 
 
 **Support**
 
+.. warning::
 
-Submit bug reports and questions by creating a "New Issue" at the **spm1d** `Python issues <https://github.com/0todd0000/spm1d/issues/>`_ or `MATLAB issues <https://github.com/0todd0000/spm1dmatlab/issues/>`_ GitHub sites.
+	Email support is unavailable. Please submit all bug reports and questions to **spm1d**'s forums at github.com.
+	
+	To request support, create a "New Issue" in the **spm1d** `Python forum <https://github.com/0todd0000/spm1d/issues/>`_ or in the `MATLAB forum <https://github.com/0todd0000/spm1dmatlab/issues/>`_
 
 
 

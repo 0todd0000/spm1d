@@ -3,16 +3,12 @@
 
 <!DOCTYPE html>
 
-
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    
     <title>ANOVA &#8212; spm1d 0.4 documentation</title>
-    
     <link rel="stylesheet" href="../../_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-    
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
@@ -40,7 +36,7 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 
   </head>
-  <body role="document">
+  <body>
 
 <div style="background-color: white; text-align: left; padding: 10px 10px 15px 15px">
 <a href="../../index.html"><img src="../../logo.png" border="0" alt="spm1d"/></a>
@@ -217,12 +213,15 @@
 <span class="gp">&gt;&gt;&gt; </span><span class="n">Fi</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>(<a class="reference external" href="../../pyplots/stats1d/ex_anova1.py">Source code</a>)</p>
+<p>(<a class="reference external" href="../../pyplots/stats1d/ex_anova1.py">Source code</a>, <a class="reference external" href="../../pyplots/stats1d/ex_anova1.png">png</a>, <a class="reference external" href="../../pyplots/stats1d/ex_anova1.hires.png">hires.png</a>, <a class="reference external" href="../../pyplots/stats1d/ex_anova1.pdf">pdf</a>)</p>
+<div class="figure">
+<img alt="../../_images/ex_anova1.png" src="../../_images/ex_anova1.png" />
+</div>
 </div>
 <div class="section" id="one-way-repeated-measures-anova">
 <span id="label-stats-anova1rm"></span><h2>One-way repeated-measures ANOVA<a class="headerlink" href="#one-way-repeated-measures-anova" title="Permalink to this headline">¶</a></h2>
 <p><code class="docutils literal"><span class="pre">./spm1d/examples/stats1d/ex_anova1rm.py</span></code></p>
-<p>Repeated-measures ANOVA, also called &#8220;Within-subjects ANOVA&#8221;, can be conducted using <a class="reference internal" href="#label-stats-anova"><span class="std std-ref">Method 1 above</span></a> and an additional (Jx1) vector of integers which specifies subjects.</p>
+<p>Repeated-measures ANOVA, also called “Within-subjects ANOVA”, can be conducted using <a class="reference internal" href="#label-stats-anova"><span class="std std-ref">Method 1 above</span></a> and an additional (Jx1) vector of integers which specifies subjects.</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">F</span>  <span class="o">=</span> <span class="n">spm1d</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">anova1rm</span><span class="p">(</span> <span class="n">Y</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="n">SUBJ</span><span class="p">,</span> <span class="n">equal_var</span><span class="o">=</span><span class="kc">False</span> <span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">Fi</span> <span class="o">=</span> <span class="n">F</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.05</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">Fi</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
@@ -375,7 +374,7 @@
     </p>
     <p>
         &copy; Copyright 2017, Todd Pataky.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.5.1.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.3.<br/>
     </p>
   </div>
 </footer>

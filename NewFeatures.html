@@ -3,16 +3,12 @@
 
 <!DOCTYPE html>
 
-
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    
     <title>New Features (version 0.4) &#8212; spm1d 0.4 documentation</title>
-    
     <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
@@ -33,14 +29,14 @@
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Downloads" href="Downloads.html" />
-    <link rel="prev" title="Introductiona" href="index.html" />
+    <link rel="prev" title="Introduction" href="index.html" />
 <meta charset='utf-8'>
 <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
 <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
 <meta name="apple-mobile-web-app-capable" content="yes">
 
   </head>
-  <body role="document">
+  <body>
 
 <div style="background-color: white; text-align: left; padding: 10px 10px 15px 15px">
 <a href="index.html"><img src="logo.png" border="0" alt="spm1d"/></a>
@@ -200,7 +196,7 @@
 </ul>
 
   <li>
-    <a href="index.html" title="Previous Chapter: Introductiona"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; Introductiona</span>
+    <a href="index.html" title="Previous Chapter: Introduction"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; Introduction</span>
     </a>
   </li>
   <li>
@@ -251,10 +247,10 @@
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">tni</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>The key difference is the &#8220;iterations&#8221; keyword for non-parametric inference. This sets the number of random data permutations used. Setting iterations to &#8220;-1&#8221; performs all possible permutations.</p>
+<p>The key difference is the “iterations” keyword for non-parametric inference. This sets the number of random data permutations used. Setting iterations to “-1” performs all possible permutations.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p><strong>spm1d</strong>&#8216;s non-parametric procedures follow <strong>Nichols &amp; Holmes (2002)</strong>.  Please consider citing:</p>
+<p><strong>spm1d</strong>’s non-parametric procedures follow <strong>Nichols &amp; Holmes (2002)</strong>.  Please consider citing:</p>
 <p class="last">Nichols TE, Holmes AP (2002). <a class="reference external" href="https://www.researchgate.net/publication/11610090_Nonparametric_permutation_tests_for_functional_neuroimaging_A_primer_with_examples">Nonparametric permutation tests for functional neuroimaging: a primer with examples.</a> <em>Human Brain Mapping</em> <strong>15(1)</strong>, 1–25.</p>
 </div>
 </div>
@@ -308,7 +304,7 @@
 <p>Normality tests can be conducted using the new <strong>spm1d.stats.normality</strong> interface.</p>
 <p>The normality assessments currently available include:</p>
 <ol class="arabic simple">
-<li>D&#8217;Agostino-Pearson K2 test  (<strong>spm1d.stats.normality.k2</strong>)</li>
+<li>D’Agostino-Pearson K2 test  (<strong>spm1d.stats.normality.k2</strong>)</li>
 <li>Shapiro-Wilk statistic     (<strong>spm1d.stats.normality.sw</strong>)</li>
 </ol>
 <p><strong>spm1d</strong> provides convenience functions for all statistical procedures, making it easy to assess normality for arbitrary designs.</p>
@@ -345,7 +341,7 @@
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span> <span class="n">FFi</span> <span class="p">)</span>
 </pre></div>
 </div>
-<p>The &#8220;print&#8221; statement prints the following ANOVA summary to the screen:</p>
+<p>The “print” statement prints the following ANOVA summary to the screen:</p>
 <div class="highlight-html"><div class="highlight"><pre><span></span>SPM{F} inference list
    design    :  ANOVA2
    nEffects  :  3
@@ -401,12 +397,12 @@ Inference:
 <div class="section" id="new-features-version-0-3-2">
 <h1>New Features (version 0.3.2)<a class="headerlink" href="#new-features-version-0-3-2" title="Permalink to this headline">¶</a></h1>
 <p>Region-of-Interest (ROI) analysis.</p>
-<p>All statistical routines in <strong>spm1d.stats</strong> now accept a keyword &#8220;roi&#8221; for conducting ROI analysis.</p>
+<p>All statistical routines in <strong>spm1d.stats</strong> now accept a keyword “roi” for conducting ROI analysis.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p>Update!  (2016.11.02)  ROI analysis details are available in:</p>
 <p>Pataky TC, Vanrenterghem J, Robinson MA (2016). <a class="reference external" href="https://www.researchgate.net/publication/309630403_Region-of-interest_analyses_of_one-dimensional_biomechanical_trajectories_bridging_0D_and_1D_theory_augmenting_statistical_power">Region-of-interest analyses of one-dimensional biomechanical trajectories: bridging 0D and 1D methods, augmenting statistical power</a>. PeerJ 4: e2652, doi.org/10.7717/peerj.2652.</p>
-<p class="last">See the Appendix for a description of <strong>spm1d</strong>&#8216;s interface for ROI analysis.</p>
+<p class="last">See the Appendix for a description of <strong>spm1d</strong>’s interface for ROI analysis.</p>
 </div>
 </div>
 <div class="section" id="new-features-version-0-3-1">
@@ -423,7 +419,7 @@ Inference:
 <li>WARNING:  Repeated-measures ANOVA</li>
 </ol>
 <ul class="simple">
-<li>IF (a) the data are 1D and (b) there is only one observation per subject and per condition...</li>
+<li>IF (a) the data are 1D and (b) there is only one observation per subject and per condition…</li>
 <li>THEN inference is approximate, based on approximated residuals.</li>
 <li>TO AVOID THIS PROBLEM:  use multiple observations per subject per condition, and the same number of observations across all subjects and conditions.</li>
 </ul>
@@ -455,8 +451,8 @@ Inference:
 <li><dl class="first docutils">
 <dt>One-way</dt>
 <dd><ul class="first last">
-<li>spm1d.stats.<strong>anova1</strong>  &#8212;  one-way ANOVA</li>
-<li>spm1d.stats.<strong>anova1rm</strong> &#8212;  one-way repeated-measures ANOVA</li>
+<li>spm1d.stats.<strong>anova1</strong>  —  one-way ANOVA</li>
+<li>spm1d.stats.<strong>anova1rm</strong> —  one-way repeated-measures ANOVA</li>
 </ul>
 </dd>
 </dl>
@@ -464,10 +460,10 @@ Inference:
 <li><dl class="first docutils">
 <dt>Two-way</dt>
 <dd><ul class="first last">
-<li>spm1d.stats.<strong>anova2</strong>   &#8212;  two-way ANOVA</li>
-<li>spm1d.stats.<strong>anova2nested</strong>   &#8212;  two-way nested ANOVA</li>
-<li>spm1d.stats.<strong>anova2rm</strong>   &#8212;  two-way repeated-measures ANOVA</li>
-<li>spm1d.stats.<strong>anova2onerm</strong>   &#8212;  two-way ANOVA with repeated measures on one factor</li>
+<li>spm1d.stats.<strong>anova2</strong>   —  two-way ANOVA</li>
+<li>spm1d.stats.<strong>anova2nested</strong>   —  two-way nested ANOVA</li>
+<li>spm1d.stats.<strong>anova2rm</strong>   —  two-way repeated-measures ANOVA</li>
+<li>spm1d.stats.<strong>anova2onerm</strong>   —  two-way ANOVA with repeated measures on one factor</li>
 </ul>
 </dd>
 </dl>
@@ -475,10 +471,10 @@ Inference:
 <li><dl class="first docutils">
 <dt>Three-way</dt>
 <dd><ul class="first last">
-<li>spm1d.stats.<strong>anova3</strong>   &#8212;  three-way ANOVA</li>
-<li>spm1d.stats.<strong>anova3nested</strong>   &#8212;  three-way fully nested ANOVA</li>
-<li>spm1d.stats.<strong>anova3onerm</strong>   &#8212;  three-way ANOVA with repeated measures on one factor</li>
-<li>spm1d.stats.<strong>anova3tworm</strong>   &#8212;  three-way ANOVA with repeated measures on two factors</li>
+<li>spm1d.stats.<strong>anova3</strong>   —  three-way ANOVA</li>
+<li>spm1d.stats.<strong>anova3nested</strong>   —  three-way fully nested ANOVA</li>
+<li>spm1d.stats.<strong>anova3onerm</strong>   —  three-way ANOVA with repeated measures on one factor</li>
+<li>spm1d.stats.<strong>anova3tworm</strong>   —  three-way ANOVA with repeated measures on two factors</li>
 </ul>
 </dd>
 </dl>
@@ -500,17 +496,17 @@ Inference:
 <span id="label-featuremvanalysis"></span><h2>Multivariate analysis<a class="headerlink" href="#multivariate-analysis" title="Permalink to this headline">¶</a></h2>
 <p><strong>spm1d</strong> now supports basic analyses of multivariate 1D continua:</p>
 <ul class="simple">
-<li>spm1d.stats.<strong>hotellings</strong> &#8212; one-sample Hotelling&#8217;s T<sup>2</sup> test</li>
-<li>spm1d.stats.<strong>hotellings_paired</strong> &#8212; paired Hotelling&#8217;s T<sup>2</sup> test</li>
-<li>spm1d.stats.<strong>hotellings2</strong> &#8212; two-sample Hotelling&#8217;s T<sup>2</sup> test</li>
-<li>spm1d.stats.<strong>cca</strong> &#8212; canonical correlation analysis (univariate 0D independent variable and multivariate 1D dependent variable)</li>
-<li>spm1d.stats.<strong>manova1</strong> &#8212; one-way multivariate analysis of variance.</li>
+<li>spm1d.stats.<strong>hotellings</strong> — one-sample Hotelling’s T<sup>2</sup> test</li>
+<li>spm1d.stats.<strong>hotellings_paired</strong> — paired Hotelling’s T<sup>2</sup> test</li>
+<li>spm1d.stats.<strong>hotellings2</strong> — two-sample Hotelling’s T<sup>2</sup> test</li>
+<li>spm1d.stats.<strong>cca</strong> — canonical correlation analysis (univariate 0D independent variable and multivariate 1D dependent variable)</li>
+<li>spm1d.stats.<strong>manova1</strong> — one-way multivariate analysis of variance.</li>
 </ul>
 <div class="admonition warning">
 <p class="first admonition-title">Warning</p>
 <p>Non-sphericity corrections are not yet implemented for relevant multivariate procedures including:</p>
 <ul class="last simple">
-<li>Hotelling&#8217;s two-sample T<sup>2</sup></li>
+<li>Hotelling’s two-sample T<sup>2</sup></li>
 <li>MANOVA</li>
 </ul>
 </div>
@@ -539,7 +535,7 @@ Inference:
 </div>
 <div class="section" id="matlab-syntax-python-syntax">
 <span id="label-featurematlabsyntax"></span><h2>MATLAB syntax == Python syntax<a class="headerlink" href="#matlab-syntax-python-syntax" title="Permalink to this headline">¶</a></h2>
-<p><strong>spm1d</strong>&#8216;s MATLAB and Python syntaxes are now nearly identical.</p>
+<p><strong>spm1d</strong>’s MATLAB and Python syntaxes are now nearly identical.</p>
 <p>Example two-sample t test (Python):</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">yA</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">101</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">yB</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">101</span><span class="p">)</span>
@@ -560,10 +556,10 @@ Inference:
 <span id="label-featuredatasets"></span><h2>Datasets<a class="headerlink" href="#datasets" title="Permalink to this headline">¶</a></h2>
 <p>A variety of 0D and 1D datasets are now available:</p>
 <ul class="simple">
-<li>spm1d.data.<strong>uv0d</strong> &#8212; univariate 0D datasets</li>
-<li>spm1d.data.<strong>uv1d</strong> &#8212; univariate 1D datasets</li>
-<li>spm1d.data.<strong>mv0d</strong> &#8212; multivariate 0D datasets</li>
-<li>spm1d.data.<strong>mv1d</strong> &#8212; multivariate 1D datasets</li>
+<li>spm1d.data.<strong>uv0d</strong> — univariate 0D datasets</li>
+<li>spm1d.data.<strong>uv1d</strong> — univariate 1D datasets</li>
+<li>spm1d.data.<strong>mv0d</strong> — multivariate 0D datasets</li>
+<li>spm1d.data.<strong>mv1d</strong> — multivariate 1D datasets</li>
 </ul>
 </div>
 <div class="section" id="inference">
@@ -612,14 +608,14 @@ Inference:
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p>Interpreting probabilities</p>
-<p><strong>Cluster-level p value</strong> : the probability that 1D Gaussian random fields with the observed smoothness would produce a suprathreshold cluster with an extent as large as the observed cluster&#8217;s extent.</p>
+<p><strong>Cluster-level p value</strong> : the probability that 1D Gaussian random fields with the observed smoothness would produce a suprathreshold cluster with an extent as large as the observed cluster’s extent.</p>
 <p class="last"><strong>Set-level p value</strong> : the probability that 1D Gaussian random fields with the observed smoothness would produce C suprathreshold clusters, all with extents larger than the minimum observed extent.</p>
 </div>
 <p>Set- and cluster-level probabilities are identical when there is just one suprathreshold cluster.</p>
 </div>
 <div class="section" id="circular-fields">
 <h3>Circular fields<a class="headerlink" href="#circular-fields" title="Permalink to this headline">¶</a></h3>
-<p>If the first point in the 1D field is homologous with the last point, like in calendar years or gait strides, then the field is &#8216;circular&#8217;.</p>
+<p>If the first point in the 1D field is homologous with the last point, like in calendar years or gait strides, then the field is ‘circular’.</p>
 <p>Consider the following example from Ramsay JO, Silverman BW (2005). Functional Data Analysis (Second Edition), Springer, New York.</p>
 <p><a class="reference external" href="http://www.psych.mcgill.ca/misc/fda/ex-weather-a1.html">Click here for a description of this dataset</a></p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">spm1d</span>
@@ -656,7 +652,10 @@ Inference:
 <span class="gp">&gt;&gt;&gt; </span> <span class="n">ti</span> <span class="o">=</span> <span class="n">t</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="mf">0.05</span><span class="p">,</span> <span class="n">interp</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>(<a class="reference external" href="./pyplots/fig_upcrossing.py">Source code</a>)</p>
+<p>(<a class="reference external" href="./pyplots/fig_upcrossing.py">Source code</a>, <a class="reference external" href="./pyplots/fig_upcrossing.png">png</a>, <a class="reference external" href="./pyplots/fig_upcrossing.hires.png">hires.png</a>, <a class="reference external" href="./pyplots/fig_upcrossing.pdf">pdf</a>)</p>
+<div class="figure">
+<img alt="_images/fig_upcrossing.png" src="_images/fig_upcrossing.png" />
+</div>
 </div>
 </div>
 <div class="section" id="installation-updating">
@@ -686,7 +685,7 @@ Inference:
     </p>
     <p>
         &copy; Copyright 2017, Todd Pataky.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.5.1.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.3.<br/>
     </p>
   </div>
 </footer>

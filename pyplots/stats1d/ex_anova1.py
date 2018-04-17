@@ -18,7 +18,7 @@ Y,A          = dataset.get_data()
 alpha        = 0.05
 F            = spm1d.stats.anova1(Y, A, equal_var=False)
 Fi           = F.inference(alpha, interp=False)
-print Fi
+print( Fi )
 
 
 

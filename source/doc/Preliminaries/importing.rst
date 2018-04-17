@@ -63,14 +63,7 @@ Example script:
 Importing HDF5 data (deprecated)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-``./spm1d/examples/io/ex_import_h5.py``
-
-The HDF5 file should contain a node "**/Y**",  where **Y** contains a (*J* x *Q*) numerical array.
-
-.. warning:: You must have **PyTables** installed to use **spm1d.io.load**.
-
-.. plot:: pyplots/ex_import_h5.py
-   :include-source:
+(HDF5 is no longer supported)
 
 
 

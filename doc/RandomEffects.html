@@ -3,16 +3,12 @@
 
 <!DOCTYPE html>
 
-
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    
     <title>Overview of random effects analysis &#8212; spm1d 0.4 documentation</title>
-    
     <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
@@ -40,7 +36,7 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 
   </head>
-  <body role="document">
+  <body>
 
 <div style="background-color: white; text-align: left; padding: 10px 10px 15px 15px">
 <a href="../index.html"><img src="../logo.png" border="0" alt="spm1d"/></a>
@@ -182,10 +178,10 @@
       
   <div class="section" id="overview-of-random-effects-analysis">
 <span id="label-examples-statsadvanced"></span><h1>Overview of random effects analysis<a class="headerlink" href="#overview-of-random-effects-analysis" title="Permalink to this headline">¶</a></h1>
-<p>If one&#8217;s hypothesis pertains to a population of subjects, or multiple populations of subjects, then <strong>spm1d</strong> can be used to conduct <strong>random effects analysis</strong> (RFX) using a hierarchical (two-level) random effects model:</p>
+<p>If one’s hypothesis pertains to a population of subjects, or multiple populations of subjects, then <strong>spm1d</strong> can be used to conduct <strong>random effects analysis</strong> (RFX) using a hierarchical (two-level) random effects model:</p>
 <ul class="simple">
-<li><strong>Level 1</strong> &#8212; estimate within-subject effect(s) (&#8221; β &#8221;) using one experimental model (e.g. regression, t test, etc.) for each subject.</li>
-<li><strong>Level 2</strong> &#8212; test estimated effects (&#8221; β &#8221;) using a separate population-level model.</li>
+<li><strong>Level 1</strong> — estimate within-subject effect(s) (” β “) using one experimental model (e.g. regression, t test, etc.) for each subject.</li>
+<li><strong>Level 2</strong> — test estimated effects (” β “) using a separate population-level model.</li>
 </ul>
 <p>The RFX approach is described in detail in <a class="reference internal" href="../References.html#label-spmliterature"><span class="std std-ref">References [4] and [6]</span></a></p>
 </div>
@@ -193,11 +189,11 @@
 <h1>Hypothetical experiment<a class="headerlink" href="#hypothetical-experiment" title="Permalink to this headline">¶</a></h1>
 <p>Consider a simple experiment:</p>
 <ul class="simple">
-<li><strong>Subjects</strong> &#8212;   Group A (8 subjects), Group B (8 subjects)</li>
-<li><strong>Task</strong> &#8212; One experimental task (&#8220;Task T&#8221;)</li>
-<li><strong>Repetitions</strong> &#8212; Five per subject  (TOTAL = 80 measurements)</li>
-<li><strong>Dependent variable</strong> &#8212; One scalar <em>y</em></li>
-<li><strong>Null hypothesis</strong> &#8212; No difference in the Group A mean <em>y</em> and the Group B mean <em>y</em> when performing Task T.</li>
+<li><strong>Subjects</strong> —   Group A (8 subjects), Group B (8 subjects)</li>
+<li><strong>Task</strong> — One experimental task (“Task T”)</li>
+<li><strong>Repetitions</strong> — Five per subject  (TOTAL = 80 measurements)</li>
+<li><strong>Dependent variable</strong> — One scalar <em>y</em></li>
+<li><strong>Null hypothesis</strong> — No difference in the Group A mean <em>y</em> and the Group B mean <em>y</em> when performing Task T.</li>
 </ul>
 <p>Hierarchical RFX analyses would proceed as follows:</p>
 <ul class="simple">
@@ -206,9 +202,9 @@
 </ul>
 <p>Explanation:</p>
 <ul class="simple">
-<li>This hierarchical RFX approach regards each β as a random variable. In other words, each subect&#8217;s β is considered to have been sampled randomly from a larger population.</li>
+<li>This hierarchical RFX approach regards each β as a random variable. In other words, each subect’s β is considered to have been sampled randomly from a larger population.</li>
 <li>This approach is especially useful when <em>within</em>-subject variability is small relative to <em>between</em>-subject variability. Consider a case where within-subject variability is ten times smaller than between-subject variability. In such an experiment, we could measure each subject just once (instead of five times) without greatly affecting the results.</li>
-<li>Repeated measurements on each subject leads to more accurate measurements of each subject&#8217;s  β, implying that between-subject differences generally become more stable as one performs more measurements on each subject.</li>
+<li>Repeated measurements on each subject leads to more accurate measurements of each subject’s  β, implying that between-subject differences generally become more stable as one performs more measurements on each subject.</li>
 </ul>
 <p>We shall see that these basic RFX concepts apply equivalently to 1D continuum analysis.</p>
 </div>
@@ -240,13 +236,13 @@
 </div>
 <div class="admonition danger">
 <p class="first admonition-title">Danger</p>
-<p class="last">Our null hypothesis does not pertain to within-subject effects. We therefore mustn&#8217;t conduct inference on within-subject effects, like we did elsewhere in <a class="reference internal" href="Stats1D/onetwosample.html#label-stats-regression"><span class="std std-ref">a single-subject experiment</span></a>.</p>
+<p class="last">Our null hypothesis does not pertain to within-subject effects. We therefore mustn’t conduct inference on within-subject effects, like we did elsewhere in <a class="reference internal" href="Stats1D/onetwosample.html#label-stats-regression"><span class="std std-ref">a single-subject experiment</span></a>.</p>
 </div>
 <div class="admonition warning">
 <p class="first admonition-title">Warning</p>
-<p class="last">Do not misinterpret β parameter computation as equivalent to statistical testing. Similar to <a class="reference internal" href="Theory/tests1d.html#label-theory-statisticaltest-teststat"><span class="std std-ref">basic test statistic continuum computation</span></a>, statistical &#8220;testing&#8221; only occurs when one conducts statistical inference &#8212; i.e. critical threshold and/or probability value computation.</p>
+<p class="last">Do not misinterpret β parameter computation as equivalent to statistical testing. Similar to <a class="reference internal" href="Theory/tests1d.html#label-theory-statisticaltest-teststat"><span class="std std-ref">basic test statistic continuum computation</span></a>, statistical “testing” only occurs when one conducts statistical inference — i.e. critical threshold and/or probability value computation.</p>
 </div>
-<p>After conducting within-subject regression, each subject&#8217;s regression parameters β may be extracted using the SPM object&#8217;s <em>beta</em> attribute:</p>
+<p>After conducting within-subject regression, each subject’s regression parameters β may be extracted using the SPM object’s <em>beta</em> attribute:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span> <span class="n">t</span>    <span class="o">=</span> <span class="n">spm1d</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">regress</span><span class="p">(</span><span class="n">Y</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span> <span class="n">beta</span> <span class="o">=</span> <span class="n">t</span><span class="o">.</span><span class="n">beta</span>
 </pre></div>
@@ -266,10 +262,10 @@
 </pre></div>
 </div>
 </div>
-<p>The figure below depicts all β continua &#8212; one for each of the ten subjects. Positive and negative β imply positive and negative correlation, respectively, between SPEED and GRF. We can see that all subjects appear to have exhibited similar β continua, and that the mean β continuum is qualitatively different from the null continuum (which is depicted as a dotted line).</p>
+<p>The figure below depicts all β continua — one for each of the ten subjects. Positive and negative β imply positive and negative correlation, respectively, between SPEED and GRF. We can see that all subjects appear to have exhibited similar β continua, and that the mean β continuum is qualitatively different from the null continuum (which is depicted as a dotted line).</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">If our null hypothesis were true, and there were truly no effect of SPEED on GRF, we would expect each subject&#8217;s β continuum to be quite different. In particular, we would expect the mean between-subject β continuum to converge to the null continuum as the number of subjects increases. The goal of Level 2 analysis is to quantify the likelihood that smooth, random continua would yield a set of β continua that similarly diverge from the null continuum.</p>
+<p class="last">If our null hypothesis were true, and there were truly no effect of SPEED on GRF, we would expect each subject’s β continuum to be quite different. In particular, we would expect the mean between-subject β continuum to converge to the null continuum as the number of subjects increases. The goal of Level 2 analysis is to quantify the likelihood that smooth, random continua would yield a set of β continua that similarly diverge from the null continuum.</p>
 </div>
 <p>(<a class="reference external" href="../pyplots/stats1d/rfx_1_level1.py">Source code</a>, <a class="reference external" href="../pyplots/stats1d/rfx_1_level1.png">png</a>, <a class="reference external" href="../pyplots/stats1d/rfx_1_level1.hires.png">hires.png</a>, <a class="reference external" href="../pyplots/stats1d/rfx_1_level1.pdf">pdf</a>)</p>
 <div class="figure">
@@ -301,7 +297,7 @@
 </pre></div>
 </div>
 <p>The figure below depcits the resulting <strong>SPM{t}</strong>, which exceeds the critical threshold at various points in the continuum. From a classical hypothesis testing perspective we can therefore reject the null hypothesis of no between-subject effect of SPEED on GRF at a Type I error rate of α.</p>
-<p>A verbose interpretation of &#8220;p &lt; 0.001&#8221; is:  &#8220;Gaussian random fields of the identical smoothness as the observed residuals, and as long as the observed continua, would produce a suprathreshold cluster as large as the observed cluster in fewer than 0.1% of many repeated experiments.&#8221;</p>
+<p>A verbose interpretation of “p &lt; 0.001” is:  “Gaussian random fields of the identical smoothness as the observed residuals, and as long as the observed continua, would produce a suprathreshold cluster as large as the observed cluster in fewer than 0.1% of many repeated experiments.”</p>
 <p>(<a class="reference external" href="../pyplots/stats1d/rfx_2_level2.py">Source code</a>, <a class="reference external" href="../pyplots/stats1d/rfx_2_level2.png">png</a>, <a class="reference external" href="../pyplots/stats1d/rfx_2_level2.hires.png">hires.png</a>, <a class="reference external" href="../pyplots/stats1d/rfx_2_level2.pdf">pdf</a>)</p>
 <div class="figure">
 <img alt="../_images/rfx_2_level2.png" src="../_images/rfx_2_level2.png" />
@@ -330,7 +326,7 @@
     </p>
     <p>
         &copy; Copyright 2017, Todd Pataky.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.5.1.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.3.<br/>
     </p>
   </div>
 </footer>
