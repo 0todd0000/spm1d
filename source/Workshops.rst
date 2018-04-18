@@ -29,7 +29,9 @@ Workshop Slides
 Future Workshops
 ---------------------------
 
-(pending)
+2019 July 31 (**Calgary, Canada**)  Tutorial: "Statistics in biomechanics" (details available Spring 2019)
+
+2018 July 7 (**Dublin, Ireland**)  Seminar: "Advanced statistical analysis of biomechanical time series: PCA, FDA, SPM" (details coming soon)
 
 
 
