@@ -31,20 +31,12 @@ Future Workshops
 
 2019 July 31 (**Calgary, Canada**)  Tutorial: "Statistics in biomechanics" (details available Spring 2019)
 
-2018 July 7 (**Dublin, Ireland**)  Seminar: `Advanced statistical analysis of biomechanical time series: PCA, FDA, SPM <https://www.eventbrite.co.uk/e/advanced-statistical-analysis-of-biomechanical-time-series-pca-fda-spm-tickets-45253262727>`_
-
-.. note:: Dublin seminar: **free registration**!
-
-	Seminar details and online registration available at `[eventbrite.co.uk] <https://www.eventbrite.co.uk/e/advanced-statistical-analysis-of-biomechanical-time-series-pca-fda-spm-tickets-45253262727>`_
-
-
-
-
-
 
 
 Previous Workshops
 ---------------------------
+
+2018 July 7 (**Dublin, Ireland**)  Seminar: `Advanced statistical analysis of biomechanical time series: PCA, FDA, SPM <https://www.eventbrite.co.uk/e/advanced-statistical-analysis-of-biomechanical-time-series-pca-fda-spm-tickets-45253262727>`_
 
 2017 July 26 (**Brisbane, Australia**)
 
@@ -93,7 +85,7 @@ All of the following can be adjusted upon consultation according to your needs:
 
 	Contact:
 	
-	* Todd : tpataky@shinshu-u.ac.jp
-	* Mark : M.A.Robinson@ljmu.ac.uk
-	* Jos : jos.vanrenterghem@kuleuven.be
+	* Todd : pataky.todd.2m kyoto-u.ac.jp
+	* Mark : M.A.Robinson ljmu.ac.uk
+	* Jos : jos.vanrenterghem kuleuven.be
 
