@@ -5,20 +5,12 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>Overview of random effects analysis &#8212; spm1d 0.4 documentation</title>
     <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <script type="text/javascript">
-      var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    '../',
-        VERSION:     '0.4',
-        COLLAPSE_INDEX: false,
-        FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true,
-        SOURCELINK_SUFFIX: '.txt'
-      };
-    </script>
+    <script type="text/javascript" src="../_static/documentation_options.js"></script>
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
@@ -35,8 +27,7 @@
 <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
 <meta name="apple-mobile-web-app-capable" content="yes">
 
-  </head>
-  <body>
+  </head><body>
 
 <div style="background-color: white; text-align: left; padding: 10px 10px 15px 15px">
 <a href="../index.html"><img src="../logo.png" border="0" alt="spm1d"/></a>
@@ -174,7 +165,7 @@
 </form>
         </div>
       </div>
-    <div class="col-md-12 content">
+    <div class="col-md-9 content">
       
   <div class="section" id="overview-of-random-effects-analysis">
 <span id="label-examples-statsadvanced"></span><h1>Overview of random effects analysis<a class="headerlink" href="#overview-of-random-effects-analysis" title="Permalink to this headline">¶</a></h1>
@@ -210,7 +201,7 @@
 </div>
 <div class="section" id="example-analysis">
 <h1>Example analysis<a class="headerlink" href="#example-analysis" title="Permalink to this headline">¶</a></h1>
-<p><code class="docutils literal"><span class="pre">./spm1d/examples/stats1d/rfx_0_means.py</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">./spm1d/examples/stats1d/rfx_0_means.py</span></code></p>
 <p>This dataset examines the effects of walking speed on vertical ground reaction forces (GRF) in ten subjects. Each performed 20 trials of each of Slow, Normal, and Fast walking and all GRF trajectories were normalized in time by stance phase (% stance) and in magnitude by body weight (BW). Since we are interested in whether measured SPEED-GRF effects extrapolate to the broader population of subjects from which these ten were drawn, our null hypothesis is: <strong>no between-subject effect of SPEED on GRF</strong>. In other words, we are not interested in an <em>a priori</em> sense whether or not particular subjects exhibit SPEED-GRF effects.  We are only interested in whether SPEED-GRF effects are systematic across subjects.</p>
 <p>The figure below depicts within-subject mean GRF continua for each of the three SPEED conditions. Despite rather large between-subject variability there appear to be various systematic effects of walking speed on the GRF trajectory. For example, there appears to be a postive correlation between SPED and GRF in early stance (before 20%).</p>
 <div class="admonition note">
@@ -223,12 +214,12 @@
 </div>
 <div class="section" id="level-1-analysis">
 <h2>Level 1 Analysis<a class="headerlink" href="#level-1-analysis" title="Permalink to this headline">¶</a></h2>
-<p><code class="docutils literal"><span class="pre">./spm1d/examples/stats1d/rfx_1_level1.py</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">./spm1d/examples/stats1d/rfx_1_level1.py</span></code></p>
 <p>To model the effect of SPEED on GRF within each subject, we can use a linear regression model, just like in the <a class="reference internal" href="Stats1D/onetwosample.html#label-stats-regression"><span class="std std-ref">the main regression example</span></a>:</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p>Although the figure above depicts the data categorically (in three different speed categories), the independent variable (SPEED) is actually a continuous variable, which was measured experimentally. Thus regression is a more appropriate within-subject model than is one-way ANOVA.</p>
-<div class="last highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span> <span class="n">subj</span> <span class="o">=</span> <span class="mi">0</span>
+<div class="last highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span> <span class="n">subj</span> <span class="o">=</span> <span class="mi">0</span>
 <span class="gp">&gt;&gt;&gt; </span> <span class="n">Y</span><span class="p">,</span><span class="n">x</span>  <span class="o">=</span> <span class="n">spm1d</span><span class="o">.</span><span class="n">util</span><span class="o">.</span><span class="n">get_dataset</span><span class="p">(</span><span class="s1">&#39;speed-grf&#39;</span><span class="p">,</span> <span class="n">subj</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span> <span class="n">t</span>    <span class="o">=</span> <span class="n">spm1d</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">regress</span><span class="p">(</span><span class="n">Y</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
 </pre></div>
@@ -243,22 +234,22 @@
 <p class="last">Do not misinterpret β parameter computation as equivalent to statistical testing. Similar to <a class="reference internal" href="Theory/tests1d.html#label-theory-statisticaltest-teststat"><span class="std std-ref">basic test statistic continuum computation</span></a>, statistical “testing” only occurs when one conducts statistical inference — i.e. critical threshold and/or probability value computation.</p>
 </div>
 <p>After conducting within-subject regression, each subject’s regression parameters β may be extracted using the SPM object’s <em>beta</em> attribute:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span> <span class="n">t</span>    <span class="o">=</span> <span class="n">spm1d</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">regress</span><span class="p">(</span><span class="n">Y</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span> <span class="n">t</span>    <span class="o">=</span> <span class="n">spm1d</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">regress</span><span class="p">(</span><span class="n">Y</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span> <span class="n">beta</span> <span class="o">=</span> <span class="n">t</span><span class="o">.</span><span class="n">beta</span>
 </pre></div>
 </div>
 <p>Note the shape of the β parameter array:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span> <span class="nb">print</span><span class="p">(</span> <span class="n">beta</span><span class="o">.</span><span class="n">shape</span> <span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span> <span class="nb">print</span><span class="p">(</span> <span class="n">beta</span><span class="o">.</span><span class="n">shape</span> <span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">101</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">101</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>There are two β parameter continua, each sampled at 101 nodes (like the original data). The two β parameters correspond to the linear regression slope and intercept, respectively.  We may retrieve the first β parameter using simple array indexing:</p>
 <div class="admonition warning">
 <p class="first admonition-title">Warning</p>
 <p>Our hypothesis pertains only to regression slope (the first β parameter), which embodies the effect of SPEED on GRF.</p>
-<div class="last highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span> <span class="n">beta0</span> <span class="o">=</span> <span class="n">t</span><span class="o">.</span><span class="n">beta</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<div class="last highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span> <span class="n">beta0</span> <span class="o">=</span> <span class="n">t</span><span class="o">.</span><span class="n">beta</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -278,9 +269,9 @@
 </div>
 <div class="section" id="level-2-analysis">
 <h2>Level 2 Analysis<a class="headerlink" href="#level-2-analysis" title="Permalink to this headline">¶</a></h2>
-<p><code class="docutils literal"><span class="pre">./spm1d/examples/stats1d/rfx_2_level2.py</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">./spm1d/examples/stats1d/rfx_2_level2.py</span></code></p>
 <p>If our null hypothesis were true we would expect no systematic difference between a group of β continua and the null continua. We can therefore submit the β continua to a one-sample t test, where the datum is the null continuum. First we assemble the BETA parameters for each subject as follows:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">nSubj</span>    <span class="o">=</span> <span class="mi">10</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">nSubj</span>    <span class="o">=</span> <span class="mi">10</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">BETA</span>     <span class="o">=</span> <span class="p">[]</span>  <span class="c1">#regression slopes</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">subj</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">nSubj</span><span class="p">):</span>
 <span class="gp">&gt;&gt;&gt; </span>    <span class="n">Y</span><span class="p">,</span><span class="n">x</span>  <span class="o">=</span> <span class="n">spm1d</span><span class="o">.</span><span class="n">util</span><span class="o">.</span><span class="n">get_dataset</span><span class="p">(</span><span class="s1">&#39;speed-grf&#39;</span><span class="p">,</span> <span class="n">subj</span><span class="p">)</span>  <span class="c1">#load data</span>
@@ -290,7 +281,7 @@
 </pre></div>
 </div>
 <p>Now BETA is a (10 x 101) array contining our β continuum estimates, one continuum per subject. These β continua become the dependent variable for Level 2 analysis, as follows:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.05</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.05</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">t</span>     <span class="o">=</span> <span class="n">spm1d</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">ttest</span><span class="p">(</span><span class="n">BETA</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">ti</span>    <span class="o">=</span> <span class="n">t</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="n">alpha</span><span class="p">,</span> <span class="n">two_tailed</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">ti</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
@@ -326,7 +317,7 @@
     </p>
     <p>
         &copy; Copyright 2018, Todd Pataky.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.3.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.7.1.<br/>
     </p>
   </div>
 </footer>

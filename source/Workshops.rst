@@ -29,6 +29,8 @@ Workshop Slides
 Future Workshops
 ---------------------------
 
+2018 November 28-29 (**Leuven, Belgium**) `Registration available here <https://faber.kuleuven.be/nl/pv/kalender/spm1d>`_
+
 2019 July 31 (**Calgary, Canada**)  Tutorial: "Statistics in biomechanics" (details available Spring 2019)
 
 

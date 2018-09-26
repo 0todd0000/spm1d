@@ -5,20 +5,12 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>Multivariate tests &#8212; spm1d 0.4 documentation</title>
     <link rel="stylesheet" href="../../_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-    <script type="text/javascript">
-      var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    '../../',
-        VERSION:     '0.4',
-        COLLAPSE_INDEX: false,
-        FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true,
-        SOURCELINK_SUFFIX: '.txt'
-      };
-    </script>
+    <script type="text/javascript" src="../../_static/documentation_options.js"></script>
     <script type="text/javascript" src="../../_static/jquery.js"></script>
     <script type="text/javascript" src="../../_static/underscore.js"></script>
     <script type="text/javascript" src="../../_static/doctools.js"></script>
@@ -35,8 +27,7 @@
 <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
 <meta name="apple-mobile-web-app-capable" content="yes">
 
-  </head>
-  <body>
+  </head><body>
 
 <div style="background-color: white; text-align: left; padding: 10px 10px 15px 15px">
 <a href="../../index.html"><img src="../../logo.png" border="0" alt="spm1d"/></a>
@@ -176,7 +167,7 @@
 </form>
         </div>
       </div>
-    <div class="col-md-12 content">
+    <div class="col-md-9 content">
       
   <div class="section" id="multivariate-tests">
 <span id="label-stats1dmultivariate"></span><h1>Multivariate tests<a class="headerlink" href="#multivariate-tests" title="Permalink to this headline">¶</a></h1>
@@ -197,7 +188,7 @@
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p>We do not yet have any real data examples to show.</p>
-<div class="last highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">T2</span>    <span class="o">=</span> <span class="n">spm1d</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">hotellings</span><span class="p">(</span><span class="n">Y</span><span class="p">,</span> <span class="n">mu</span><span class="p">)</span>
+<div class="last highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">T2</span>    <span class="o">=</span> <span class="n">spm1d</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">hotellings</span><span class="p">(</span><span class="n">Y</span><span class="p">,</span> <span class="n">mu</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">T2i</span>   <span class="o">=</span> <span class="n">T2</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="mf">0.05</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">T2i</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
 </pre></div>
@@ -206,8 +197,8 @@
 </div>
 <div class="section" id="paired-hotelling-s-t2-test">
 <span id="label-stats1d-hotellingspaired"></span><h2>Paired Hotelling’s T<sup>2</sup> test<a class="headerlink" href="#paired-hotelling-s-t2-test" title="Permalink to this headline">¶</a></h2>
-<p><code class="docutils literal"><span class="pre">./spm1d/examples/stats1d/ex_hotellings_paired_Pataky2014.py</span></code></p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">T2</span>    <span class="o">=</span> <span class="n">spm1d</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">hotellings_paired</span><span class="p">(</span><span class="n">YA</span><span class="p">,</span> <span class="n">YB</span><span class="p">)</span>
+<p><code class="docutils literal notranslate"><span class="pre">./spm1d/examples/stats1d/ex_hotellings_paired_Pataky2014.py</span></code></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">T2</span>    <span class="o">=</span> <span class="n">spm1d</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">hotellings_paired</span><span class="p">(</span><span class="n">YA</span><span class="p">,</span> <span class="n">YB</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">T2i</span>   <span class="o">=</span> <span class="n">T2</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="mf">0.05</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">T2i</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
 </pre></div>
@@ -221,8 +212,8 @@
 </div>
 <div class="section" id="two-sample-hotelling-s-t2-test">
 <span id="label-stats1d-hotellings2"></span><h2>Two-sample Hotelling’s T<sup>2</sup> test<a class="headerlink" href="#two-sample-hotelling-s-t2-test" title="Permalink to this headline">¶</a></h2>
-<p><code class="docutils literal"><span class="pre">./spm1d/examples/stats1d/ex_hotellings2_Besier2009muscleforces.py</span></code></p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">T2</span>    <span class="o">=</span> <span class="n">spm1d</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">hotellings2</span><span class="p">(</span><span class="n">YA</span><span class="p">,</span> <span class="n">YB</span><span class="p">)</span>
+<p><code class="docutils literal notranslate"><span class="pre">./spm1d/examples/stats1d/ex_hotellings2_Besier2009muscleforces.py</span></code></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">T2</span>    <span class="o">=</span> <span class="n">spm1d</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">hotellings2</span><span class="p">(</span><span class="n">YA</span><span class="p">,</span> <span class="n">YB</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">T2i</span>   <span class="o">=</span> <span class="n">T2</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="mf">0.05</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">T2i</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
 </pre></div>
@@ -238,10 +229,10 @@
 </div>
 <div class="section" id="canonical-correlation-analysis">
 <span id="label-stats1d-cca"></span><h2>Canonical correlation analysis<a class="headerlink" href="#canonical-correlation-analysis" title="Permalink to this headline">¶</a></h2>
-<p><code class="docutils literal"><span class="pre">./spm1d/examples/stats1d/ex_cca_Dorn2012.py</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">./spm1d/examples/stats1d/ex_cca_Dorn2012.py</span></code></p>
 <p>The second input <strong>x</strong> must be a Jx1 vector of scalars.</p>
 <p><strong>spm1d</strong> currently does not support multivariate regressors.</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">X2</span>   <span class="o">=</span> <span class="n">spm1d</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">cca</span><span class="p">(</span><span class="n">Y</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">X2</span>   <span class="o">=</span> <span class="n">spm1d</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">cca</span><span class="p">(</span><span class="n">Y</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">X2i</span>  <span class="o">=</span> <span class="n">X2</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="mf">0.05</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">X2i</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
 </pre></div>
@@ -257,10 +248,10 @@
 </div>
 <div class="section" id="one-way-manova">
 <span id="label-stats1d-manova1"></span><h2>One-way MANOVA<a class="headerlink" href="#one-way-manova" title="Permalink to this headline">¶</a></h2>
-<p><code class="docutils literal"><span class="pre">./spm1d/examples/stats1d/ex_manova1_Dorn2012.py</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">./spm1d/examples/stats1d/ex_manova1_Dorn2012.py</span></code></p>
 <p>This example is the same as the CCA example immediately above, but treats the independent variable (running speed) as categorical instead of continuous.</p>
 <p>Here the variable <strong>A</strong> is a (J x 1) vector of integers specifying the group to which each observation belongs.</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">X2</span>   <span class="o">=</span> <span class="n">spm1d</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">manova1</span><span class="p">(</span><span class="n">Y</span><span class="p">,</span> <span class="n">A</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">X2</span>   <span class="o">=</span> <span class="n">spm1d</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">manova1</span><span class="p">(</span><span class="n">Y</span><span class="p">,</span> <span class="n">A</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">X2i</span>  <span class="o">=</span> <span class="n">X2</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="mf">0.05</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">X2i</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
 </pre></div>
@@ -287,7 +278,7 @@
     </p>
     <p>
         &copy; Copyright 2018, Todd Pataky.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.3.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.7.1.<br/>
     </p>
   </div>
 </footer>
