@@ -10,7 +10,7 @@
     <title>spm1d.stats.manova &#8212; spm1d 0.4 documentation</title>
     <link rel="stylesheet" href="../../../_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
-    <script type="text/javascript" src="../../../_static/documentation_options.js"></script>
+    <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
     <script type="text/javascript" src="../../../_static/jquery.js"></script>
     <script type="text/javascript" src="../../../_static/underscore.js"></script>
     <script type="text/javascript" src="../../../_static/doctools.js"></script>
@@ -137,7 +137,7 @@
 </form>
         </div>
       </div>
-    <div class="col-md-9 content">
+    <div class="col-md-12 content">
       
   <h1>Source code for spm1d.stats.manova</h1><div class="highlight"><pre>
 <span></span><span class="sd">&#39;&#39;&#39;</span>
@@ -267,8 +267,8 @@
 		<span class="n">R</span>           <span class="o">=</span> <span class="n">_mvbase</span><span class="o">.</span><span class="n">_get_residuals_manova1</span><span class="p">(</span><span class="n">Y</span><span class="p">,</span> <span class="n">A</span><span class="p">)</span>
 		<span class="n">fwhm</span>        <span class="o">=</span> <span class="n">_mvbase</span><span class="o">.</span><span class="n">_fwhm</span><span class="p">(</span><span class="n">R</span><span class="p">)</span>
 		<span class="n">resels</span>      <span class="o">=</span> <span class="n">_mvbase</span><span class="o">.</span><span class="n">_resel_counts</span><span class="p">(</span><span class="n">R</span><span class="p">,</span> <span class="n">fwhm</span><span class="p">,</span> <span class="n">roi</span><span class="o">=</span><span class="n">roi</span><span class="p">)</span>
-		<span class="n">df</span>          <span class="o">=</span> <span class="n">nComponents</span><span class="o">*</span><span class="p">(</span> <span class="n">nGroups</span><span class="o">-</span><span class="mi">1</span> <span class="p">)</span></div>
-		<span class="k">return</span> <span class="n">_spm</span><span class="o">.</span><span class="n">SPM_X2</span><span class="p">(</span><span class="n">X2</span><span class="p">,</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">df</span><span class="p">),</span> <span class="n">fwhm</span><span class="p">,</span> <span class="n">resels</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="n">R</span><span class="p">,</span> <span class="n">roi</span><span class="o">=</span><span class="n">roi</span><span class="p">)</span>
+		<span class="n">df</span>          <span class="o">=</span> <span class="n">nComponents</span><span class="o">*</span><span class="p">(</span> <span class="n">nGroups</span><span class="o">-</span><span class="mi">1</span> <span class="p">)</span>
+		<span class="k">return</span> <span class="n">_spm</span><span class="o">.</span><span class="n">SPM_X2</span><span class="p">(</span><span class="n">X2</span><span class="p">,</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">df</span><span class="p">),</span> <span class="n">fwhm</span><span class="p">,</span> <span class="n">resels</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="n">R</span><span class="p">,</span> <span class="n">roi</span><span class="o">=</span><span class="n">roi</span><span class="p">)</span></div>
 
 
 
@@ -291,7 +291,7 @@
     </p>
     <p>
         &copy; Copyright 2018, Todd Pataky.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.7.1.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.7.9.<br/>
     </p>
   </div>
 </footer>

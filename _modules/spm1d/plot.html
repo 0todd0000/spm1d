@@ -10,7 +10,7 @@
     <title>spm1d.plot &#8212; spm1d 0.4 documentation</title>
     <link rel="stylesheet" href="../../_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-    <script type="text/javascript" src="../../_static/documentation_options.js"></script>
+    <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
     <script type="text/javascript" src="../../_static/jquery.js"></script>
     <script type="text/javascript" src="../../_static/underscore.js"></script>
     <script type="text/javascript" src="../../_static/doctools.js"></script>
@@ -137,7 +137,7 @@
 </form>
         </div>
       </div>
-    <div class="col-md-9 content">
+    <div class="col-md-12 content">
       
   <h1>Source code for spm1d.plot</h1><div class="highlight"><pre>
 <span></span>
@@ -311,8 +311,8 @@
 	<span class="n">Y</span>        <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">y</span><span class="o">+</span><span class="n">s</span><span class="p">,</span> <span class="n">y</span><span class="o">-</span><span class="n">s</span><span class="p">])</span>
 	<span class="n">h</span>        <span class="o">=</span> <span class="n">plotter</span><span class="o">.</span><span class="n">plot_cloud</span><span class="p">(</span><span class="n">Y</span><span class="p">,</span> <span class="n">facecolor</span><span class="p">,</span> <span class="n">edgecolor</span><span class="p">,</span> <span class="n">alpha</span><span class="p">)</span>
 	<span class="k">if</span> <span class="n">autoset_ylim</span><span class="p">:</span>
-		<span class="n">plotter</span><span class="o">.</span><span class="n">_set_ylim</span><span class="p">(</span><span class="n">ax</span><span class="p">)</span></div>
-	<span class="k">return</span> <span class="n">h</span>
+		<span class="n">plotter</span><span class="o">.</span><span class="n">_set_ylim</span><span class="p">(</span><span class="n">ax</span><span class="p">)</span>
+	<span class="k">return</span> <span class="n">h</span></div>
 
 
 
@@ -359,8 +359,8 @@
 	<span class="n">Y</span>        <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">m</span><span class="o">+</span><span class="n">s</span><span class="p">,</span> <span class="n">m</span><span class="o">-</span><span class="n">s</span><span class="p">])</span>
 	<span class="n">hc</span>       <span class="o">=</span> <span class="n">plotter</span><span class="o">.</span><span class="n">plot_cloud</span><span class="p">(</span><span class="n">Y</span><span class="p">,</span> <span class="n">facecolor</span><span class="p">,</span> <span class="n">edgecolor</span><span class="p">,</span> <span class="n">alpha</span><span class="p">)</span>
 	<span class="k">if</span> <span class="n">autoset_ylim</span><span class="p">:</span>
-		<span class="n">plotter</span><span class="o">.</span><span class="n">_set_axlim</span><span class="p">()</span></div>
-	<span class="k">return</span> <span class="n">h</span><span class="p">,</span><span class="n">hc</span>
+		<span class="n">plotter</span><span class="o">.</span><span class="n">_set_axlim</span><span class="p">()</span>
+	<span class="k">return</span> <span class="n">h</span><span class="p">,</span><span class="n">hc</span></div>
 
 
 
@@ -400,8 +400,8 @@
 		<span class="n">plotter</span><span class="o">.</span><span class="n">plot_ylabel</span><span class="p">()</span>
 	<span class="k">if</span> <span class="n">autoset_xlim</span><span class="p">:</span>
 		<span class="n">plotter</span><span class="o">.</span><span class="n">_set_xlim</span><span class="p">()</span>
-	<span class="k">if</span> <span class="n">autoset_ylim</span><span class="p">:</span></div>
-		<span class="n">plotter</span><span class="o">.</span><span class="n">_set_ylim</span><span class="p">()</span>
+	<span class="k">if</span> <span class="n">autoset_ylim</span><span class="p">:</span>
+		<span class="n">plotter</span><span class="o">.</span><span class="n">_set_ylim</span><span class="p">()</span></div>
 	
 
 
@@ -454,8 +454,8 @@
 		<span class="n">plotter</span><span class="o">.</span><span class="n">plot_ylabel</span><span class="p">()</span>
 	<span class="k">if</span> <span class="n">autoset_xlim</span><span class="p">:</span>
 		<span class="n">plotter</span><span class="o">.</span><span class="n">_set_xlim</span><span class="p">()</span>
-	<span class="k">if</span> <span class="n">autoset_ylim</span><span class="p">:</span></div>
-		<span class="n">plotter</span><span class="o">.</span><span class="n">_set_ylim</span><span class="p">()</span>
+	<span class="k">if</span> <span class="n">autoset_ylim</span><span class="p">:</span>
+		<span class="n">plotter</span><span class="o">.</span><span class="n">_set_ylim</span><span class="p">()</span></div>
 
 
 
@@ -489,8 +489,8 @@
 	<span class="n">plotter</span> <span class="o">=</span> <span class="n">SPMiPlotter</span><span class="p">(</span><span class="n">spmi</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">)</span>
 	<span class="n">h</span>       <span class="o">=</span> <span class="n">plotter</span><span class="o">.</span><span class="n">plot_p_values</span><span class="p">(</span><span class="n">size</span><span class="p">,</span> <span class="n">offsets</span><span class="p">,</span> <span class="n">offset_all_clusters</span><span class="p">)</span>
 	<span class="k">if</span> <span class="n">autoset_ylim</span><span class="p">:</span>
-		<span class="n">plotter</span><span class="o">.</span><span class="n">_set_ylim</span><span class="p">(</span><span class="n">ax</span><span class="p">)</span></div>
-	<span class="k">return</span> <span class="n">h</span>
+		<span class="n">plotter</span><span class="o">.</span><span class="n">_set_ylim</span><span class="p">(</span><span class="n">ax</span><span class="p">)</span>
+	<span class="k">return</span> <span class="n">h</span></div>
 
 
 
@@ -524,8 +524,8 @@
 	<span class="n">plotter</span> <span class="o">=</span> <span class="n">SPMiPlotter</span><span class="p">(</span><span class="n">spmi</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">)</span>
 	<span class="n">h</span>       <span class="o">=</span> <span class="n">plotter</span><span class="o">.</span><span class="n">plot_threshold_label</span><span class="p">(</span><span class="n">lower</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">pos</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwdargs</span><span class="p">)</span>
 	<span class="k">if</span> <span class="n">autoset_ylim</span><span class="p">:</span>
-		<span class="n">plotter</span><span class="o">.</span><span class="n">_set_ylim</span><span class="p">(</span><span class="n">ax</span><span class="p">)</span></div>
-	<span class="k">return</span> <span class="n">h</span>
+		<span class="n">plotter</span><span class="o">.</span><span class="n">_set_ylim</span><span class="p">(</span><span class="n">ax</span><span class="p">)</span>
+	<span class="k">return</span> <span class="n">h</span></div>
 
 </pre></div>
 
@@ -541,7 +541,7 @@
     </p>
     <p>
         &copy; Copyright 2018, Todd Pataky.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.7.1.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.7.9.<br/>
     </p>
   </div>
 </footer>
