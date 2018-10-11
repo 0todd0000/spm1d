@@ -49,7 +49,7 @@ class CalculatorHotellings1D(_CalculatorOneSample):
 			y    = np.matrix(y)
 			n    = y.shape[0]      #nResponses
 			m    = y.mean(axis=0)  #mean vector
-			W    = np.cov(y.T)     #covariance
+			W    = np.cov(y.T) + eps  #covariance
 			T2   = n * m * np.linalg.inv(W) * m.T
 		return float(T2)
 	
@@ -93,7 +93,7 @@ class CalculatorHotellings20D( _CalculatorTwoSample ):
 		yA,yB     = np.matrix(yA), np.matrix(yB)
 		mA,mB     = yA.mean(axis=0), yB.mean(axis=0)
 		WA,WB     = np.cov(yA.T), np.cov(yB.T)
-		W         = (self.nA1*WA + self.nB1*WB) / self.df
+		W         = (self.nA1*WA + self.nB1*WB) / self.df + eps
 		T2        = self.nABAB  * (mB-mA) * np.linalg.inv(W) * (mB-mA).T
 		return float(T2)
 
@@ -109,7 +109,7 @@ class CalculatorHotellings21D( _CalculatorTwoSample ):
 			yA,yB    = np.matrix(yA), np.matrix(yB)
 			mA,mB    = yA.mean(axis=0), yB.mean(axis=0)  #means
 			WA,WB    = np.cov(yA.T), np.cov(yB.T)
-			W        = (self.nA1*WA + self.nB1*WB) / self.df
+			W        = (self.nA1*WA + self.nB1*WB) / self.df + eps
 			T2       = self.nABAB  * (mB-mA) * np.linalg.inv(W) * (mB-mA).T
 		return float(T2)
 

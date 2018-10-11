@@ -1,11 +1,11 @@
 
-# Copyright (C) 2016  Todd Pataky
+# Copyright (C) 2018  Todd Pataky
 
 
 import numpy as np
 from . import _mvbase, _spm
 
-
+eps        = np.finfo(float).eps   #smallest float, used to avoid divide-by-zero errors
 
 
 
@@ -13,7 +13,7 @@ def _T2_onesample_singlenode(y):  #at a single node:
 	y        = np.matrix(y)
 	n        = y.shape[0]      #nResponses
 	m        = y.mean(axis=0)  #mean vector
-	W        = np.cov(y.T)     #covariance
+	W        = np.cov(y.T) + eps    #covariance
 	T2       = n * m * np.linalg.inv(W) * m.T
 	return float(T2)
 
@@ -22,7 +22,7 @@ def _T2_twosample_singlenode(yA, yB):  #at a single node:
 	yA,yB    = np.matrix(yA), np.matrix(yB)
 	mA,mB    = yA.mean(axis=0), yB.mean(axis=0)  #means
 	WA,WB    = np.cov(yA.T), np.cov(yB.T)
-	W        = ((JA-1)*WA + (JB-1)*WB) / (JA+JB-2)
+	W        = ((JA-1)*WA + (JB-1)*WB) / (JA+JB-2) + eps
 	T2       = (JA*JB)/float(JA+JB)  * (mB-mA) * np.linalg.inv(W) * (mB-mA).T
 	return float(T2)
 
