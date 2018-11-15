@@ -10,7 +10,7 @@
     <title>spm1d.stats.anova.ui &#8212; spm1d 0.4 documentation</title>
     <link rel="stylesheet" href="../../../../_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
-    <script type="text/javascript" id="documentation_options" data-url_root="../../../../" src="../../../../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../../../../_static/documentation_options.js"></script>
     <script type="text/javascript" src="../../../../_static/jquery.js"></script>
     <script type="text/javascript" src="../../../../_static/underscore.js"></script>
     <script type="text/javascript" src="../../../../_static/doctools.js"></script>
@@ -137,7 +137,7 @@
 </form>
         </div>
       </div>
-    <div class="col-md-12 content">
+    <div class="col-md-9 content">
       
   <h1>Source code for spm1d.stats.anova.ui</h1><div class="highlight"><pre>
 <span></span><span class="sd">&#39;&#39;&#39;</span>
@@ -225,8 +225,8 @@
 		<span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">WARNING:  Non-sphericity corrections for one-way ANOVA are currently approximate and have not been verified.</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span> <span class="ne">UserWarning</span><span class="p">,</span> <span class="n">stacklevel</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
 		<span class="n">Y</span><span class="p">,</span><span class="n">X</span><span class="p">,</span><span class="n">r</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">Y</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">X</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">eij</span>
 		<span class="n">Q</span><span class="p">,</span><span class="n">C</span>   <span class="o">=</span> <span class="n">design</span><span class="o">.</span><span class="n">A</span><span class="o">.</span><span class="n">get_Q</span><span class="p">(),</span> <span class="n">design</span><span class="o">.</span><span class="n">contrasts</span><span class="o">.</span><span class="n">C</span><span class="o">.</span><span class="n">T</span>
-		<span class="n">F</span><span class="o">.</span><span class="n">df</span>  <span class="o">=</span> <span class="n">_reml</span><span class="o">.</span><span class="n">estimate_df_anova1</span><span class="p">(</span><span class="n">Y</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="n">Q</span><span class="p">,</span> <span class="n">C</span><span class="p">)</span>
-	<span class="k">return</span> <span class="n">F</span></div>
+		<span class="n">F</span><span class="o">.</span><span class="n">df</span>  <span class="o">=</span> <span class="n">_reml</span><span class="o">.</span><span class="n">estimate_df_anova1</span><span class="p">(</span><span class="n">Y</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="n">Q</span><span class="p">,</span> <span class="n">C</span><span class="p">)</span></div>
+	<span class="k">return</span> <span class="n">F</span>
 
 
 
@@ -261,8 +261,8 @@
 		<span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span> <span class="n">approx_residuals</span><span class="o">=</span><span class="n">design</span><span class="o">.</span><span class="n">contrasts</span><span class="o">.</span><span class="n">C</span><span class="p">[:</span><span class="mi">3</span><span class="p">]</span> <span class="p">)</span>
 	<span class="k">else</span><span class="p">:</span>
 		<span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span> <span class="p">)</span>
-	<span class="n">F</span>       <span class="o">=</span> <span class="n">aov</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">design</span><span class="o">.</span><span class="n">contrasts</span><span class="p">,</span> <span class="n">design</span><span class="o">.</span><span class="n">f_terms</span><span class="p">,</span> <span class="n">nFactors</span><span class="o">=</span><span class="mi">1</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
-	<span class="k">return</span> <span class="n">F</span></div>
+	<span class="n">F</span>       <span class="o">=</span> <span class="n">aov</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">design</span><span class="o">.</span><span class="n">contrasts</span><span class="p">,</span> <span class="n">design</span><span class="o">.</span><span class="n">f_terms</span><span class="p">,</span> <span class="n">nFactors</span><span class="o">=</span><span class="mi">1</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span></div>
+	<span class="k">return</span> <span class="n">F</span>
 
 
 
@@ -308,8 +308,8 @@
 		<span class="c1"># Q       = QA + QB</span>
 		<span class="c1"># u1,u2   = _reml.estimate_df_anova2(Y, X, r, Q, C)</span>
 		<span class="c1"># for ff,u in zip(f,u1):</span>
-		<span class="c1"># 	ff.df = u,u2</span>
-	<span class="k">return</span> <span class="n">F</span></div>
+		<span class="c1"># 	ff.df = u,u2</span></div>
+	<span class="k">return</span> <span class="n">F</span>
 
 
 <div class="viewcode-block" id="anova2nested"><a class="viewcode-back" href="../../../../doc/API/stats.html#spm1d.stats.anova2nested">[docs]</a><span class="k">def</span> <span class="nf">anova2nested</span><span class="p">(</span><span class="n">Y</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">,</span> <span class="n">equal_var</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">roi</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
@@ -336,8 +336,8 @@
 	<span class="n">model</span>   <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">LinearModel</span><span class="p">(</span><span class="n">Y</span><span class="p">,</span> <span class="n">design</span><span class="o">.</span><span class="n">X</span><span class="p">,</span> <span class="n">roi</span><span class="o">=</span><span class="n">roi</span><span class="p">)</span>
 	<span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
 	<span class="n">F</span>       <span class="o">=</span> <span class="n">aov</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">design</span><span class="o">.</span><span class="n">contrasts</span><span class="p">,</span> <span class="n">design</span><span class="o">.</span><span class="n">f_terms</span><span class="p">,</span> <span class="n">nFactors</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
-	<span class="n">_set_labels</span><span class="p">(</span> <span class="n">F</span><span class="p">,</span> <span class="n">design</span> <span class="p">)</span>
-	<span class="k">return</span> <span class="n">F</span></div>
+	<span class="n">_set_labels</span><span class="p">(</span> <span class="n">F</span><span class="p">,</span> <span class="n">design</span> <span class="p">)</span></div>
+	<span class="k">return</span> <span class="n">F</span>
 
 
 
@@ -377,8 +377,8 @@
 	<span class="c1"># 	Q       = QA + QB</span>
 	<span class="c1"># 	u1,u2   = _reml.estimate_df_anova2(Y, X, r, Q, C)</span>
 	<span class="c1"># 	for ff,u in zip(f,u1):</span>
-	<span class="c1"># 		ff.df = u,u2</span>
-	<span class="k">return</span> <span class="n">F</span></div>
+	<span class="c1"># 		ff.df = u,u2</span></div>
+	<span class="k">return</span> <span class="n">F</span>
 
 
 <div class="viewcode-block" id="anova2onerm"><a class="viewcode-back" href="../../../../doc/API/stats.html#spm1d.stats.anova2onerm">[docs]</a><span class="k">def</span> <span class="nf">anova2onerm</span><span class="p">(</span><span class="n">Y</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">,</span> <span class="n">SUBJ</span><span class="p">,</span> <span class="n">equal_var</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">roi</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">_force_approx0D</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
@@ -410,8 +410,8 @@
 	<span class="k">else</span><span class="p">:</span>
 		<span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span> <span class="p">)</span>
 	<span class="n">F</span>       <span class="o">=</span> <span class="n">aov</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">design</span><span class="o">.</span><span class="n">contrasts</span><span class="p">,</span> <span class="n">design</span><span class="o">.</span><span class="n">f_terms</span><span class="p">,</span> <span class="n">nFactors</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
-	<span class="n">_set_labels</span><span class="p">(</span> <span class="n">F</span><span class="p">,</span> <span class="n">design</span> <span class="p">)</span>
-	<span class="k">return</span> <span class="n">F</span></div>
+	<span class="n">_set_labels</span><span class="p">(</span> <span class="n">F</span><span class="p">,</span> <span class="n">design</span> <span class="p">)</span></div>
+	<span class="k">return</span> <span class="n">F</span>
 
 
 
@@ -446,8 +446,8 @@
 	<span class="n">model</span>   <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">LinearModel</span><span class="p">(</span><span class="n">Y</span><span class="p">,</span> <span class="n">design</span><span class="o">.</span><span class="n">X</span><span class="p">,</span> <span class="n">roi</span><span class="o">=</span><span class="n">roi</span><span class="p">)</span>
 	<span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
 	<span class="n">F</span>       <span class="o">=</span> <span class="n">aov</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">design</span><span class="o">.</span><span class="n">contrasts</span><span class="p">,</span> <span class="n">design</span><span class="o">.</span><span class="n">f_terms</span><span class="p">,</span> <span class="n">nFactors</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
-	<span class="n">_set_labels</span><span class="p">(</span> <span class="n">F</span><span class="p">,</span> <span class="n">design</span> <span class="p">)</span>
-	<span class="k">return</span> <span class="n">F</span></div>
+	<span class="n">_set_labels</span><span class="p">(</span> <span class="n">F</span><span class="p">,</span> <span class="n">design</span> <span class="p">)</span></div>
+	<span class="k">return</span> <span class="n">F</span>
 	<span class="c1"># if not equal_var:</span>
 	<span class="c1"># 	Y,X,r   = solver.Y, solver.X, solver.eij</span>
 	<span class="c1"># 	QA,QB,QC,C = design.A.get_Q(), design.B.get_Q(), design.C.get_Q(), [c.C.T for c in design.contrasts]</span>
@@ -483,8 +483,8 @@
 	<span class="n">model</span>   <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">LinearModel</span><span class="p">(</span><span class="n">Y</span><span class="p">,</span> <span class="n">design</span><span class="o">.</span><span class="n">X</span><span class="p">,</span> <span class="n">roi</span><span class="o">=</span><span class="n">roi</span><span class="p">)</span>
 	<span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
 	<span class="n">F</span>       <span class="o">=</span> <span class="n">aov</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">design</span><span class="o">.</span><span class="n">contrasts</span><span class="p">,</span> <span class="n">design</span><span class="o">.</span><span class="n">f_terms</span><span class="p">,</span> <span class="n">nFactors</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
-	<span class="n">_set_labels</span><span class="p">(</span> <span class="n">F</span><span class="p">,</span> <span class="n">design</span> <span class="p">)</span>
-	<span class="k">return</span> <span class="n">F</span></div>
+	<span class="n">_set_labels</span><span class="p">(</span> <span class="n">F</span><span class="p">,</span> <span class="n">design</span> <span class="p">)</span></div>
+	<span class="k">return</span> <span class="n">F</span>
 
 
 <span class="k">def</span> <span class="nf">anova3rm</span><span class="p">(</span><span class="n">Y</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">,</span> <span class="n">C</span><span class="p">,</span> <span class="n">SUBJ</span><span class="p">,</span> <span class="n">equal_var</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">roi</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">_force_approx0D</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
@@ -556,8 +556,8 @@
 	<span class="k">else</span><span class="p">:</span>
 		<span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span> <span class="p">)</span>
 	<span class="n">F</span>       <span class="o">=</span> <span class="n">aov</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">design</span><span class="o">.</span><span class="n">contrasts</span><span class="p">,</span> <span class="n">design</span><span class="o">.</span><span class="n">f_terms</span><span class="p">,</span> <span class="n">nFactors</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
-	<span class="n">_set_labels</span><span class="p">(</span> <span class="n">F</span><span class="p">,</span> <span class="n">design</span>  <span class="p">)</span>
-	<span class="k">return</span> <span class="n">F</span></div>
+	<span class="n">_set_labels</span><span class="p">(</span> <span class="n">F</span><span class="p">,</span> <span class="n">design</span>  <span class="p">)</span></div>
+	<span class="k">return</span> <span class="n">F</span>
 
 
 
@@ -595,8 +595,8 @@
 	<span class="k">else</span><span class="p">:</span>
 		<span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span> <span class="p">)</span>
 	<span class="n">F</span>       <span class="o">=</span> <span class="n">aov</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">design</span><span class="o">.</span><span class="n">contrasts</span><span class="p">,</span> <span class="n">design</span><span class="o">.</span><span class="n">f_terms</span><span class="p">,</span> <span class="n">nFactors</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
-	<span class="n">_set_labels</span><span class="p">(</span> <span class="n">F</span><span class="p">,</span> <span class="n">design</span> <span class="p">)</span>
-	<span class="k">return</span> <span class="n">F</span></div>
+	<span class="n">_set_labels</span><span class="p">(</span> <span class="n">F</span><span class="p">,</span> <span class="n">design</span> <span class="p">)</span></div>
+	<span class="k">return</span> <span class="n">F</span>
 
 
 </pre></div>
@@ -613,7 +613,7 @@
     </p>
     <p>
         &copy; Copyright 2018, Todd Pataky.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.7.9.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.7.1.<br/>
     </p>
   </div>
 </footer>

@@ -10,7 +10,7 @@
     <title>spm1d.stats.hotellings &#8212; spm1d 0.4 documentation</title>
     <link rel="stylesheet" href="../../../_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
-    <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../../../_static/documentation_options.js"></script>
     <script type="text/javascript" src="../../../_static/jquery.js"></script>
     <script type="text/javascript" src="../../../_static/underscore.js"></script>
     <script type="text/javascript" src="../../../_static/doctools.js"></script>
@@ -137,7 +137,7 @@
 </form>
         </div>
       </div>
-    <div class="col-md-12 content">
+    <div class="col-md-9 content">
       
   <h1>Source code for spm1d.stats.hotellings</h1><div class="highlight"><pre>
 <span></span>
@@ -202,8 +202,8 @@
 		<span class="n">W</span>             <span class="o">=</span> <span class="n">_mvbase</span><span class="o">.</span><span class="n">_fwhm</span><span class="p">(</span><span class="n">R</span><span class="p">)</span>
 		<span class="n">rCounts</span>       <span class="o">=</span> <span class="n">_mvbase</span><span class="o">.</span><span class="n">_resel_counts</span><span class="p">(</span><span class="n">R</span><span class="p">,</span> <span class="n">W</span><span class="p">,</span> <span class="n">roi</span><span class="o">=</span><span class="n">roi</span><span class="p">)</span>
 		<span class="n">m</span><span class="p">,</span><span class="n">p</span>           <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">nResponses</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="nb">float</span><span class="p">(</span><span class="n">nVectDim</span><span class="p">)</span>
-		<span class="n">v1</span><span class="p">,</span><span class="n">v2</span>         <span class="o">=</span> <span class="n">p</span><span class="p">,</span> <span class="n">m</span>
-		<span class="k">return</span> <span class="n">_spm</span><span class="o">.</span><span class="n">SPM_T2</span><span class="p">(</span><span class="n">T2</span><span class="p">,</span> <span class="p">(</span><span class="n">v1</span><span class="p">,</span> <span class="n">v2</span><span class="p">),</span> <span class="n">W</span><span class="p">,</span> <span class="n">rCounts</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="n">R</span><span class="p">,</span> <span class="n">roi</span><span class="o">=</span><span class="n">roi</span><span class="p">)</span></div>
+		<span class="n">v1</span><span class="p">,</span><span class="n">v2</span>         <span class="o">=</span> <span class="n">p</span><span class="p">,</span> <span class="n">m</span></div>
+		<span class="k">return</span> <span class="n">_spm</span><span class="o">.</span><span class="n">SPM_T2</span><span class="p">(</span><span class="n">T2</span><span class="p">,</span> <span class="p">(</span><span class="n">v1</span><span class="p">,</span> <span class="n">v2</span><span class="p">),</span> <span class="n">W</span><span class="p">,</span> <span class="n">rCounts</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="n">R</span><span class="p">,</span> <span class="n">roi</span><span class="o">=</span><span class="n">roi</span><span class="p">)</span>
 	
 
 
@@ -222,8 +222,8 @@
 <span class="sd">	:Note:</span>
 <span class="sd">		- A paired Hotelling&#39;s test on (YA,YB) is equivalent to a one-sample Hotelling&#39;s test on (YB-YA)</span>
 <span class="sd">	&#39;&#39;&#39;</span>
-	
-	<span class="k">return</span> <span class="n">hotellings</span><span class="p">(</span> <span class="n">YB</span> <span class="o">-</span> <span class="n">YA</span><span class="p">,</span> <span class="n">roi</span><span class="o">=</span><span class="n">roi</span> <span class="p">)</span></div>
+	</div>
+	<span class="k">return</span> <span class="n">hotellings</span><span class="p">(</span> <span class="n">YB</span> <span class="o">-</span> <span class="n">YA</span><span class="p">,</span> <span class="n">roi</span><span class="o">=</span><span class="n">roi</span> <span class="p">)</span>
 
 
 
@@ -260,8 +260,8 @@
 		<span class="n">W</span>             <span class="o">=</span> <span class="n">_mvbase</span><span class="o">.</span><span class="n">_fwhm</span><span class="p">(</span><span class="n">R</span><span class="p">)</span>
 		<span class="n">rCounts</span>       <span class="o">=</span> <span class="n">_mvbase</span><span class="o">.</span><span class="n">_resel_counts</span><span class="p">(</span><span class="n">R</span><span class="p">,</span> <span class="n">W</span><span class="p">,</span> <span class="n">roi</span><span class="o">=</span><span class="n">roi</span><span class="p">)</span>
 		<span class="c1"># v1,v2         = float(IA), float(JA+JB-IA-1)  ###incorrect;  these are F df, not T2 df</span>
-		<span class="n">v1</span><span class="p">,</span><span class="n">v2</span>         <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">IA</span><span class="p">),</span> <span class="nb">float</span><span class="p">(</span><span class="n">JA</span><span class="o">+</span><span class="n">JB</span><span class="o">-</span><span class="mi">2</span><span class="p">)</span>
-		<span class="k">return</span> <span class="n">_spm</span><span class="o">.</span><span class="n">SPM_T2</span><span class="p">(</span><span class="n">T2</span><span class="p">,</span> <span class="p">(</span><span class="n">v1</span><span class="p">,</span> <span class="n">v2</span><span class="p">),</span> <span class="n">W</span><span class="p">,</span> <span class="n">rCounts</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="n">R</span><span class="p">,</span> <span class="n">roi</span><span class="o">=</span><span class="n">roi</span><span class="p">)</span></div>
+		<span class="n">v1</span><span class="p">,</span><span class="n">v2</span>         <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">IA</span><span class="p">),</span> <span class="nb">float</span><span class="p">(</span><span class="n">JA</span><span class="o">+</span><span class="n">JB</span><span class="o">-</span><span class="mi">2</span><span class="p">)</span></div>
+		<span class="k">return</span> <span class="n">_spm</span><span class="o">.</span><span class="n">SPM_T2</span><span class="p">(</span><span class="n">T2</span><span class="p">,</span> <span class="p">(</span><span class="n">v1</span><span class="p">,</span> <span class="n">v2</span><span class="p">),</span> <span class="n">W</span><span class="p">,</span> <span class="n">rCounts</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="n">R</span><span class="p">,</span> <span class="n">roi</span><span class="o">=</span><span class="n">roi</span><span class="p">)</span>
 
 
 </pre></div>
@@ -278,7 +278,7 @@
     </p>
     <p>
         &copy; Copyright 2018, Todd Pataky.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.7.9.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.7.1.<br/>
     </p>
   </div>
 </footer>

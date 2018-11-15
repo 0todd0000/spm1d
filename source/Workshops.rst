@@ -29,9 +29,9 @@ Workshop Slides
 Future Workshops
 ---------------------------
 
-2018 November 28-29 (**Leuven, Belgium**) `Registration available here <https://faber.kuleuven.be/nl/pv/kalender/spm1d>`_
+2018 November 28-29 (**Leuven, Belgium**) `Registration link <https://faber.kuleuven.be/nl/pv/kalender/spm1d>`_
 
-2019 July 29-30 (**Calgary, Canada**)  Workshop: `Statistical Parametric Mapping Fundamentals and Applications <https://www.noraxon.com/spm1d_july2019/>`_ (Hosted by Noraxon) `Registration available here <https://www.noraxon.com/spm1d_july2019/>`_
+2019 July 29-30 (**Calgary, Canada**)  Workshop: `Statistical Parametric Mapping Fundamentals and Applications <https://www.noraxon.com/course/spm1d_july2019/>`_ (Hosted by Noraxon) `Click here to register at noraxon.com <https://www.noraxon.com/course/spm1d_july2019/>`_
 
 2019 July 31 (**Calgary, Canada**)  Tutorial: "Statistics in biomechanics" (details available Spring 2019)
 
