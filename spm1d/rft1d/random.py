@@ -122,6 +122,8 @@ class Generator1D(object):
 			self.q  = self.nNodes
 			self.i0 = 0
 			self.i1 = self.nNodes
+		self.i0     = int(self.i0)
+		self.i1     = int(self.i1)
 
 	def _smooth(self, y):
 		return self.SCALE*gaussian_filter1d(y, self.SD, axis=1, mode='wrap')
