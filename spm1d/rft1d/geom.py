@@ -225,6 +225,63 @@ class ClusterMetricCalculator(object):
 				m.append(mm)
 		return m
 	
+
+	def cluster_extents_locations(self, y, u, interp=True, wrap=False):
+		'''
+		Compute both:
+		-- Upcrossing extents (units: nodes)
+		-- Upcrossing locations (units: continuum position units)
+		
+		
+		:Parameters:
+
+			*y* --- a 1D field
+		
+			*u* --- threshold height
+			
+			*interp* --- interpolate to threshold *u*
+			
+			*wrap* --- wrap upcrossings from the end to the start of the field
+
+		:Returns:
+
+			*k* --- list of upcrossing extents, or [np.nan] if no upcrossings
+			*q* --- list of upcrossing locations, or [np.nan] if no upcrossings
+
+		:Example:
+	
+			>>> k,q = calc.cluster_extents_locations_lo(y, 0.0) #cluster extents and locations when thresholded at 0.0
+			
+		.. danger:: Setting *interp* to False is faster, but it will cause disagreements between node-based and element-based sampling. If the upcrossing is large this difference is negligible, but for small upcrossing there may be strange results (e.g. upcrossing with an extent of zero). Recommendation: **always interpolate**.
+		'''
+		# L,n = bwlabel(y >= u, merge_wrapped=wrap)
+		L,n = bwlabel(np.array(y >= u), merge_wrapped=wrap)
+		if n==0:
+			x = [np.nan]
+			m = [np.nan]
+		else:
+			m,x           = [],[]
+			for i in range(n):
+				b         = L==(i+1)
+				if np.all(b):
+					mm    = y.size - 1
+					xx    = 0.5 * y.size
+				elif interp:
+					up    = Upcrossing(y, b, interp, wrap)
+					yi    = up.isolate()	
+					x0,x1 = up.endpoints(yi, u)
+					mm    = x1 - x0
+					xx    = 0.5 * (x0 + x1)
+					xx   += np.argwhere(b)[0,0]
+					
+				else:
+					mm    = b.sum() - 1
+					xx    = np.argwhere(b).mean()
+				m.append(mm)
+				x.append(xx)
+		return m,x
+
+
 	def cluster_minima(self, y, u, interp=True):
 		'''
 		Minimum field height inside each upcrossing.
