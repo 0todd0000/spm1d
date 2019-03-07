@@ -101,7 +101,7 @@ for ax in [ax0,ax1]:
 	ax.hlines(0, 0, 100, color='k', linestyle='-', lw=0.5)
 	ax.hlines(h, 0, 100, color=color0, linestyle='--')
 ### plot nNodes:
-ind   = range(25,38)
+ind   = range(26,39)
 ax1.plot(ind, y[ind], 'o', markersize=6, markerfacecolor=color1, markeredgecolor=color0)
 ax1.plot(ind, [h]*len(ind), 'o', markersize=6, markerfacecolor=color1, markeredgecolor=color0)
 for i in ind:
@@ -113,21 +113,21 @@ ax0.text(72, 0.4, 'threshold  $u$', color=color0, size=12)
 ax0.plot(y.argmax(), y.max(), 'o', markersize=5, markerfacecolor='w', markeredgecolor=color0)
 ax1.plot(y.argmax(), y.max(), 'o', markersize=12, markerfacecolor='w', markeredgecolor=color0)
 ax0.plot([48]*2, [0,y.max()], '-', lw=3, marker='<', color=color0)
-# ax0.text(52, y.max(), 'maximum height  $z_{\mathrm{max}}$', color=color0, size=12)
+ax0.text(52, y.max(), 'maximum height  $z_{\mathrm{max}}$', color=color0, size=12)
 ### plot extent:
 ax1.hlines(h, 0, 100, color=color0, linestyle='-', lw=3)
-ax1.plot([24.1,37.9], [0.519]*2, '^-', lw=3, color=color0)
+ax1.plot([25.1,38.9], [0.519]*2, '^-', lw=3, color=color0)
 ax1.text(31, 0.49, 'extent (interpolated)', color=color0, ha='center', size=14)
 ### axes labels:
 [ax.set_xlabel('Field position  (%)')   for ax in AX]
 ax0.text(-0.15, 0.5, '$z$', size=24, transform=ax0.transAxes, rotation=90, va='center')
 ### annotate:
 pyplot.setp(ax0, xlim=(0,100), ylim=(-1.2,1.2))
-pyplot.setp(ax1, xlim=(23,39), ylim=(0.47,0.92))
+pyplot.setp(ax1, xlim=(24,40), ylim=(0.47,0.92))
 ### panel labels:
 ax0.text(0.04, 0.91, '(a) Upcrossing', transform=ax0.transAxes)
 ax1.text(0.04, 0.91, '(b) Upcrossing  (zoomed)', transform=ax1.transAxes)
-# pyplot.show()
+pyplot.show()
 
 
-# pyplot.savefig('/Users/todd/Documents/Projects/projects/rft1d/ms/figs/fig_upcrossing.pdf')
+

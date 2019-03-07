@@ -20,16 +20,15 @@ import sphinx_bootstrap_theme
 # documentation root, use os.path.abspath to make it absolute, like shown here.
 #sys.path.insert(0, os.path.abspath('.'))
 
-# # sys.path.append('/Users/todd/WorkingCopies/spm1d(github)/trunk/')
-# # sys.path.append('/Users/todd/WorkingCopies/rft1d(github)/trunk/')
-# import spm1d
-# import rft1d
-
-
-sys.path.append('/Users/todd/WorkingCopies/spm1d(github)/branches/nonparam')
-sys.path.append('/Users/todd/WorkingCopies/spm1d/branches/nonparam')
+sys.path.append('/Users/todd/WorkingCopies/spm1d/trunk/')
 import spm1d
 from spm1d import rft1d
+
+
+# sys.path.append('/Users/todd/WorkingCopies/spm1d(github)/branches/nonparam')
+# sys.path.append('/Users/todd/WorkingCopies/spm1d/branches/nonparam')
+# import spm1d
+# from spm1d import rft1d
 
 
 # -- General configuration ------------------------------------------------
@@ -40,11 +39,17 @@ from spm1d import rft1d
 # Add any Sphinx extension module names here, as strings. They can be
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
+# extensions = [
+#     'sphinx.ext.autodoc',
+#     'sphinx.ext.imgmath',
+#     'sphinx.ext.viewcode',
+#     'matplotlib.sphinxext.only_directives',
+#     'matplotlib.sphinxext.plot_directive',
+# ]
 extensions = [
 	'sphinx.ext.autodoc',
 	'sphinx.ext.imgmath',
 	'sphinx.ext.viewcode',
-	'matplotlib.sphinxext.only_directives',
 	'matplotlib.sphinxext.plot_directive',
 ]
 
@@ -143,7 +148,7 @@ html_theme_options = {'navbar_title': "    ",
                       'navbar_fixed_top': "true",
                       'bootswatch_theme': "",
                       'navbar_sidebarrel': False,
-                      'navbar_links': [("Home", "index"), ("Downloads", "Downloads"), ("Documentation", "Documentation"), ("References", "References"), ("Workshops", "Workshops")]
+                      'navbar_links': [("Home", "index"), ("Downloads", "Downloads"), ("Documentation", "Documentation"), ("References", "References"), ("Workshops", "Workshops"), ("Support", "Support")]
 }
 
 

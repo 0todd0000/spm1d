@@ -10,7 +10,7 @@
     <title>spm1d.util &#8212; spm1d 0.4 documentation</title>
     <link rel="stylesheet" href="../../_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-    <script type="text/javascript" src="../../_static/documentation_options.js"></script>
+    <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
     <script type="text/javascript" src="../../_static/jquery.js"></script>
     <script type="text/javascript" src="../../_static/underscore.js"></script>
     <script type="text/javascript" src="../../_static/doctools.js"></script>
@@ -55,6 +55,7 @@
                 <li><a href="../../Documentation.html">Documentation</a></li>
                 <li><a href="../../References.html">References</a></li>
                 <li><a href="../../Workshops.html">Workshops</a></li>
+                <li><a href="../../Support.html">Support</a></li>
             
             
               <li class="dropdown globaltoc-container">
@@ -86,6 +87,9 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../Workshops.html">Workshops</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../Workshops.html#sponsored-courses">Sponsored Courses</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Support.html">Support</a></li>
 </ul>
 </ul>
 </li>
@@ -137,7 +141,7 @@
 </form>
         </div>
       </div>
-    <div class="col-md-9 content">
+    <div class="col-md-12 content">
       
   <h1>Source code for spm1d.util</h1><div class="highlight"><pre>
 <span></span>
@@ -185,8 +189,8 @@
 <span class="sd">	.. warning:: Deprecated</span>
 <span class="sd">		</span>
 <span class="sd">		**get_dataset** is deprecated and will be removed from future versions of **spm1d**.  Please access datasets using the &quot;spm1d.data&quot; interface.</span>
-<span class="sd">	&#39;&#39;&#39;</span></div>
-	<span class="k">raise</span><span class="p">(</span> <span class="ne">IOError</span><span class="p">(</span><span class="s1">&#39;&quot;get_dataset&quot; is deprecated.  Please access datasets using &quot;spm1d.data&quot;.&#39;</span><span class="p">)</span> <span class="p">)</span>
+<span class="sd">	&#39;&#39;&#39;</span>
+	<span class="k">raise</span><span class="p">(</span> <span class="ne">IOError</span><span class="p">(</span><span class="s1">&#39;&quot;get_dataset&quot; is deprecated.  Please access datasets using &quot;spm1d.data&quot;.&#39;</span><span class="p">)</span> <span class="p">)</span></div>
 
 
 
@@ -217,8 +221,8 @@
 		<span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span> <span class="p">[</span><span class="n">interp</span><span class="p">(</span><span class="n">yy</span><span class="p">,</span> <span class="n">Q</span><span class="p">)</span>   <span class="k">for</span> <span class="n">yy</span> <span class="ow">in</span> <span class="n">y</span><span class="p">]</span> <span class="p">)</span>
 	<span class="k">else</span><span class="p">:</span>
 		<span class="n">x0</span>     <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="n">y</span><span class="o">.</span><span class="n">size</span><span class="p">)</span>
-		<span class="n">x1</span>     <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">y</span><span class="o">.</span><span class="n">size</span><span class="p">,</span> <span class="n">Q</span><span class="p">)</span></div>
-		<span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">interp</span><span class="p">(</span><span class="n">x1</span><span class="p">,</span> <span class="n">x0</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">left</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">right</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+		<span class="n">x1</span>     <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">y</span><span class="o">.</span><span class="n">size</span><span class="p">,</span> <span class="n">Q</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">interp</span><span class="p">(</span><span class="n">x1</span><span class="p">,</span> <span class="n">x0</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">left</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">right</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></div>
 
 
 
@@ -250,8 +254,8 @@
 		<span class="k">return</span> <span class="mi">1</span>
 	<span class="k">else</span><span class="p">:</span>
 		<span class="n">pBonf</span>  <span class="o">=</span> <span class="mi">1</span> <span class="o">-</span> <span class="p">(</span><span class="mf">1.0</span><span class="o">-</span><span class="n">p</span><span class="p">)</span><span class="o">**</span><span class="n">n</span>
-		<span class="n">pBonf</span>  <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">min</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">pBonf</span><span class="p">))</span></div>
-		<span class="k">return</span> <span class="n">pBonf</span>
+		<span class="n">pBonf</span>  <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">min</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">pBonf</span><span class="p">))</span>
+		<span class="k">return</span> <span class="n">pBonf</span></div>
 
 
 
@@ -278,8 +282,8 @@
 		<span class="k">return</span> <span class="mi">0</span>
 	<span class="k">elif</span> <span class="n">alpha</span><span class="o">&gt;=</span><span class="mi">1</span><span class="p">:</span>
 		<span class="k">return</span> <span class="mi">1</span>
-	<span class="k">else</span><span class="p">:</span></div>
-		<span class="k">return</span> <span class="mi">1</span> <span class="o">-</span> <span class="p">(</span><span class="mf">1.0</span><span class="o">-</span><span class="n">alpha</span><span class="p">)</span><span class="o">**</span><span class="p">(</span><span class="mf">1.0</span><span class="o">/</span><span class="n">n</span><span class="p">)</span>
+	<span class="k">else</span><span class="p">:</span>
+		<span class="k">return</span> <span class="mi">1</span> <span class="o">-</span> <span class="p">(</span><span class="mf">1.0</span><span class="o">-</span><span class="n">alpha</span><span class="p">)</span><span class="o">**</span><span class="p">(</span><span class="mf">1.0</span><span class="o">/</span><span class="n">n</span><span class="p">)</span></div>
 
 
 
@@ -308,8 +312,8 @@
 <span class="sd">	</span>
 <span class="sd">	&gt;&gt;&gt; fwhm = sd * sqrt(8*log(2))</span>
 <span class="sd">	&#39;&#39;&#39;</span>
-	<span class="n">sd</span>    <span class="o">=</span> <span class="n">fwhm</span> <span class="o">/</span> <span class="n">sqrt</span><span class="p">(</span><span class="mi">8</span><span class="o">*</span><span class="n">log</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span></div>
-	<span class="k">return</span> <span class="n">gaussian_filter1d</span><span class="p">(</span><span class="n">Y</span><span class="p">,</span> <span class="n">sd</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;wrap&#39;</span><span class="p">)</span>
+	<span class="n">sd</span>    <span class="o">=</span> <span class="n">fwhm</span> <span class="o">/</span> <span class="n">sqrt</span><span class="p">(</span><span class="mi">8</span><span class="o">*</span><span class="n">log</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span>
+	<span class="k">return</span> <span class="n">gaussian_filter1d</span><span class="p">(</span><span class="n">Y</span><span class="p">,</span> <span class="n">sd</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;wrap&#39;</span><span class="p">)</span></div>
 </pre></div>
 
     </div>
@@ -324,7 +328,7 @@
     </p>
     <p>
         &copy; Copyright 2018, Todd Pataky.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.7.1.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.2.<br/>
     </p>
   </div>
 </footer>

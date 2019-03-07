@@ -87,9 +87,6 @@ All of the following can be adjusted upon consultation according to your needs:
 
 .. note:: Interested in hosting or attending a workshop or a sponsored course?
 
-	Contact:
+	Please contact:  workshops@spm1d.org
 	
-	* Todd : pataky.todd.2m kyoto-u.ac.jp
-	* Mark : M.A.Robinson ljmu.ac.uk
-	* Jos : jos.vanrenterghem kuleuven.be
 

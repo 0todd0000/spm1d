@@ -36,18 +36,6 @@ It uses `random field theory <http://www.spm1d.org/rft1d>`_ to make statistical 
 
 ------------------------
 
-**Support**
-
-.. warning::
-
-	Email support is unavailable. Please submit all bug reports and questions to **spm1d**'s forums at github.com.
-	
-	To request support, create a "New Issue" in the **spm1d** `Python forum <https://github.com/0todd0000/spm1d/issues/>`_ or in the `MATLAB forum <https://github.com/0todd0000/spm1dmatlab/issues/>`_
-
-
-
-------------------------
-
 Contents
 =====================================
 
@@ -88,3 +76,7 @@ Current version: **0.4**  (released October 1, 2016)
 
 	Workshops.rst
 
+.. toctree::
+	:maxdepth: 2
+
+	Support.rst
