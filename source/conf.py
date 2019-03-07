@@ -72,7 +72,7 @@ master_doc = 'index'
 
 # General information about the project.
 project = u'spm1d'
-copyright = u'2018, Todd Pataky'
+copyright = u'2019, Todd Pataky'
 author = u'Todd Pataky'
 
 # The version info for the project you're documenting, acts as replacement for
