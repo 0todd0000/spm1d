@@ -29,7 +29,7 @@ Workshop Slides
 Future Workshops
 ---------------------------
 
-2019 July 31 (**Calgary, Canada**)  Tutorial: "Statistics in biomechanics" (details available Spring 2019)
+2019 July 31 (**Calgary, Canada**)  Tutorial: "Statistics in biomechanics" `(Registration) <https://isb2019.com/en/buy-tickets>`_      `(PDF) <https://dryfta-assets.s3-accelerate.amazonaws.com/assets/isb2019/filemanager/1541631332Calgary2019-ISB-ASB-TutorialDescriptions.pdf>`_
 
 2019 July 29-30 (**Calgary, Canada**)  Workshop: `Statistical Parametric Mapping Fundamentals and Applications <https://www.noraxon.com/course/spm1d_july2019/>`_ (Hosted by Noraxon) `Click here to register at noraxon.com <https://www.noraxon.com/course/spm1d_july2019/>`_
 
