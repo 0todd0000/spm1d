@@ -51,6 +51,7 @@ extensions = [
 	'sphinx.ext.imgmath',
 	'sphinx.ext.viewcode',
 	'matplotlib.sphinxext.plot_directive',
+	'nbsphinx',
 ]
 
 	# 'matplotlib.sphinxext.mathmpl',

@@ -29,9 +29,8 @@ Workshop Slides
 Future Workshops
 ---------------------------
 
-2019 July 31 (**Calgary, Canada**)  Tutorial: "Statistics in biomechanics" `(Registration) <https://isb2019.com/en/buy-tickets>`_      `(PDF) <https://dryfta-assets.s3-accelerate.amazonaws.com/assets/isb2019/filemanager/1541631332Calgary2019-ISB-ASB-TutorialDescriptions.pdf>`_
+(Pending)
 
-2019 July 29-30 (**Calgary, Canada**)  Workshop: `Statistical Parametric Mapping Fundamentals and Applications <https://www.noraxon.com/course/spm1d_july2019/>`_ (Hosted by Noraxon) `Click here to register at noraxon.com <https://www.noraxon.com/course/spm1d_july2019/>`_
 
 
 
@@ -40,9 +39,13 @@ Future Workshops
 Previous Workshops
 ---------------------------
 
+2019 July 31 (**Calgary, Canada**)  Tutorial: "Statistics in biomechanics"
+
+2019 July 29-30 (**Calgary, Canada**)  Course: Statistical Parametric Mapping Fundamentals and Applications (Hosted by Noraxon) 
+
 2018 November 28-29 (**Leuven, Belgium**)
 
-2018 July 7 (**Dublin, Ireland**)  Seminar: `Advanced statistical analysis of biomechanical time series: PCA, FDA, SPM <https://www.eventbrite.co.uk/e/advanced-statistical-analysis-of-biomechanical-time-series-pca-fda-spm-tickets-45253262727>`_
+2018 July 7 (**Dublin, Ireland**)  Seminar: Advanced statistical analysis of biomechanical time series: PCA, FDA, SPM
 
 2017 July 26 (**Brisbane, Australia**)
 

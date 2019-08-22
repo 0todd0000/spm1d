@@ -1,6 +1,19 @@
 .. _label-NewFeatures:
 
 
+New Features (version 0.4.2)
+=====================================
+
+Analysis of 2D data using **spm1d**:
+
+.. toctree::
+	:maxdepth: 1
+
+	doc/Stats2D/ex2d.ipynb
+	doc/Stats2D/ex2d_matlab.ipynb
+
+
+
 New Features (version 0.4)
 =====================================
 
@@ -468,9 +481,7 @@ Consider the following example:
 	ti.plot()
 	ti.plot_p_values()
 
-This yields the following results:
-
-.. code::
+This yields the following results::
 
 	SPM{T} inference field
 		SPM.z         :  (1x101) raw test stat field
@@ -558,9 +569,7 @@ Interpolation is conducted by deault, but can be toggled using the **interp** ke
 Installation & Updating
 ________________________________
 
-The Python version of **spm1d** can be now installed and updated from the command line:
-
-.. code::
+The Python version of **spm1d** can be now installed and updated from the command line::
 
 	easy_install spm1d
 

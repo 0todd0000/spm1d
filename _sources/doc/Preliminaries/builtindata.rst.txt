@@ -43,9 +43,7 @@ Instead users should consult the references and web links provided with each dat
 	>>> dataset = spm1d.data.uv0d.anova1.Cars()
 	>>> print( dataset )
 	
-The result will look something like this:
-
-.. code::
+The result will look something like this::
 
 	Dataset
 		Name      : "Cars"
@@ -72,9 +70,7 @@ The expected results shown in the example above can be corroborated against **sp
 Here *Y* and *A* are both 9-component vectors, where *Y* represents the observations and where *A* continains integers which indicate groups.
 
 
-The **spm1d** result is:
-
-.. code::
+The **spm1d** result is::
 
 	SPM{F} (0D) inference
 		SPM.z        :  25.17541
@@ -104,9 +100,8 @@ Notes on 1D datasets
 	>>>  Y,A,B        = dataset.get_data()  #A:foot, B:speed
 	>>>  print( dataset )
 	
-	This will yield:
-	
-	.. code::
+	This will yield::
+
 	
 		Dataset
 			Name      : "Besier2009kneeflexion"

@@ -7,7 +7,7 @@
   <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>New Features (version 0.4) &#8212; spm1d 0.4 documentation</title>
+    <title>New Features (version 0.4.2) &#8212; spm1d 0.4 documentation</title>
     <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
@@ -21,7 +21,7 @@
     <script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Downloads" href="Downloads.html" />
+    <link rel="next" title="Analysis of 2D data (Python)" href="doc/Stats2D/ex2d.html" />
     <link rel="prev" title="Introduction" href="index.html" />
 <meta charset='utf-8'>
 <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
@@ -70,7 +70,8 @@
   <ul class="dropdown-menu globaltoc"
       role="menu"
       aria-labelledby="dLabelGlobalToc"><ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="#">New Features (version 0.4)</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">New Features (version 0.4.2)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#new-features-version-0-4">New Features (version 0.4)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="#new-features-version-0-3-2">New Features (version 0.3.2)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="#new-features-version-0-3-1">New Features (version 0.3.1)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="#new-features-version-0-3">New Features (version 0.3)</a></li>
@@ -106,7 +107,8 @@
   <ul class="dropdown-menu localtoc"
       role="menu"
       aria-labelledby="dLabelLocalToc"><ul>
-<li><a class="reference internal" href="#">New Features (version 0.4)</a><ul>
+<li><a class="reference internal" href="#">New Features (version 0.4.2)</a></li>
+<li><a class="reference internal" href="#new-features-version-0-4">New Features (version 0.4)</a><ul>
 <li><a class="reference internal" href="#non-parametric-inference">Non-parametric inference</a></li>
 <li><a class="reference internal" href="#confidence-intervals">Confidence intervals</a></li>
 <li><a class="reference internal" href="#normality-tests">Normality tests</a></li>
@@ -163,7 +165,8 @@
   <div class="row">
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper"><ul>
-<li><a class="reference internal" href="#">New Features (version 0.4)</a><ul>
+<li><a class="reference internal" href="#">New Features (version 0.4.2)</a></li>
+<li><a class="reference internal" href="#new-features-version-0-4">New Features (version 0.4)</a><ul>
 <li><a class="reference internal" href="#non-parametric-inference">Non-parametric inference</a></li>
 <li><a class="reference internal" href="#confidence-intervals">Confidence intervals</a></li>
 <li><a class="reference internal" href="#normality-tests">Normality tests</a></li>
@@ -196,7 +199,7 @@
     </a>
   </li>
   <li>
-    <a href="Downloads.html" title="Next Chapter: Downloads"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">Downloads &raquo;</span>
+    <a href="doc/Stats2D/ex2d.html" title="Next Chapter: Analysis of 2D data (Python)"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">Analysis of 2... &raquo;</span>
     </a>
   </li>
 <form action="search.html" method="get">
@@ -210,8 +213,18 @@
       </div>
     <div class="col-md-12 content">
       
-  <div class="section" id="new-features-version-0-4">
-<span id="label-newfeatures"></span><h1>New Features (version 0.4)<a class="headerlink" href="#new-features-version-0-4" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="new-features-version-0-4-2">
+<span id="label-newfeatures"></span><h1>New Features (version 0.4.2)<a class="headerlink" href="#new-features-version-0-4-2" title="Permalink to this headline">¶</a></h1>
+<p>Analysis of 2D data using <strong>spm1d</strong>:</p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="doc/Stats2D/ex2d.html">Analysis of 2D data (Python)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="doc/Stats2D/ex2d_matlab.html">Analysis of 2D data (MATLAB)</a></li>
+</ul>
+</div>
+</div>
+<div class="section" id="new-features-version-0-4">
+<h1>New Features (version 0.4)<a class="headerlink" href="#new-features-version-0-4" title="Permalink to this headline">¶</a></h1>
 <p>The main new features in <strong>spm1d</strong> version 0.4 are listed below.</p>
 <ul class="simple">
 <li><a class="reference internal" href="#label-nonparametricinference"><span class="std std-ref">Non-parametric inference</span></a></li>
@@ -587,7 +600,7 @@ Inference:
 <img alt="_images/NewFeatures-2.png" src="_images/NewFeatures-2.png" />
 </div>
 <p>This yields the following results:</p>
-<div class="code highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SPM</span><span class="p">{</span><span class="n">T</span><span class="p">}</span> <span class="n">inference</span> <span class="n">field</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SPM</span><span class="p">{</span><span class="n">T</span><span class="p">}</span> <span class="n">inference</span> <span class="n">field</span>
         <span class="n">SPM</span><span class="o">.</span><span class="n">z</span>         <span class="p">:</span>  <span class="p">(</span><span class="mi">1</span><span class="n">x101</span><span class="p">)</span> <span class="n">raw</span> <span class="n">test</span> <span class="n">stat</span> <span class="n">field</span>
         <span class="n">SPM</span><span class="o">.</span><span class="n">df</span>        <span class="p">:</span>  <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mf">9.894</span><span class="p">)</span>
         <span class="n">SPM</span><span class="o">.</span><span class="n">fwhm</span>      <span class="p">:</span>  <span class="mf">13.63026</span>
@@ -648,7 +661,7 @@ Inference:
 <span class="gp">&gt;&gt;&gt; </span> <span class="n">ti</span> <span class="o">=</span> <span class="n">t</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="mf">0.05</span><span class="p">,</span> <span class="n">interp</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>(<a class="reference external" href="./pyplots/fig_upcrossing.py">Source code</a>, <a class="reference external" href="./pyplots/fig_upcrossing.png">png</a>, <a class="reference external" href="./pyplots/fig_upcrossing.hires.png">hires.png</a>, <a class="reference external" href="./pyplots/fig_upcrossing.pdf">pdf</a>)</p>
+<p>(<a class="reference external" href="./pyplots/fig_upcrossing.py">Source code</a>)</p>
 <div class="figure">
 <img alt="_images/fig_upcrossing.png" src="_images/fig_upcrossing.png" />
 </div>
@@ -657,7 +670,7 @@ Inference:
 <div class="section" id="installation-updating">
 <span id="label-featureinstallation"></span><h2>Installation &amp; Updating<a class="headerlink" href="#installation-updating" title="Permalink to this headline">¶</a></h2>
 <p>The Python version of <strong>spm1d</strong> can be now installed and updated from the command line:</p>
-<div class="code highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">easy_install</span> <span class="n">spm1d</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">easy_install</span> <span class="n">spm1d</span>
 </pre></div>
 </div>
 <p>Source code for both Python and MATLAB can be cloned and updated from <a class="reference external" href="https://github.com/0todd0000/spm1d/">github.com</a>.</p>

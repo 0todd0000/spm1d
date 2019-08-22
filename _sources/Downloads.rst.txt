@@ -29,9 +29,7 @@ Downloads
 Quick Installation (Python)
 ----------------------------
 
-In a Terminal (Linux, Mac) or a Command Prompt (Windows):
-
-.. code::
+In a Terminal (Linux, Mac) or a Command Prompt (Windows)::
 
 	easy_install spm1d
 

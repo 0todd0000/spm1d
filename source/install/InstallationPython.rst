@@ -18,13 +18,11 @@ ________________
 
 Newer or older versions may work but have not been tested.
 
-Once those packages are installed, open a Terminal (Linux, Mac) or a Command Prompt (Windows) and enter:
-
-.. code::
+Once those packages are installed, open a Terminal (Linux, Mac) or a Command Prompt (Windows) and enter::
 
 	easy_install spm1d
 
-	To check installation:
+To check installation:
 
 	>>> import spm1d
 
@@ -45,15 +43,11 @@ The free (as in beer) **Canopy Express** installation contains all of the librar
 
 Enthought also offers a free (as in beer) academic license for users who may want additional functionality.
 
-After Canopy is installed, open a Terminal (Linux, Mac) or a Command Prompt (Windows) and enter:
-
-.. code::
+After Canopy is installed, open a Terminal (Linux, Mac) or a Command Prompt (Windows) and enter::
 
 	easy_install spm1d
 
-After that command finishes running, launch an interactive Python session by entering:
-
-.. code::
+After that command finishes running, launch an interactive Python session by entering::
 
 	ipython
 

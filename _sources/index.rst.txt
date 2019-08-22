@@ -39,10 +39,10 @@ It uses `random field theory <http://www.spm1d.org/rft1d>`_ to make statistical 
 Contents
 =====================================
 
-Current version: **0.4**  (released October 1, 2016)
+Current version: **0.4.2**  (released 22 August 2019)
 
 .. toctree::
-	:maxdepth: 3
+	:maxdepth: 2
 
 	NewFeatures.rst
 
