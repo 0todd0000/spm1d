@@ -15,18 +15,6 @@ Link to **mwarp1d** in the `Anaconda Cloud <https://anaconda.org/toddp/mwarp1d>`
 
 
 
-PIP
----------------------
-
-.. code::
-
-	pip install spm1d
-
-Link to **mwarp1d** at `pypi.org <https://pypi.org/project//mwarp1d>`_
-
-
-
-
 New to Python?
 ---------------------
 
