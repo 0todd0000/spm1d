@@ -3,28 +3,23 @@ Command line UI launching
 ===================================
 
 The function **mwarp1d.launch_gui** can be used to launch the GUI from the command line.
-Nine argument patterns are supported:
+Five argument patterns are supported:
 
 1. launch_gui( )
-2. launch_gui( data )
-3. launch_gui( data )
-4. launch_gui( data, mode )
-5. launch_gui( data, mode, fnameNPZ )
-6. launch_gui( fnameCSV )
-7. launch_gui( fnameCSV, mode )
-8. launch_gui( fnameCSV, mode, fnameNPZ )
-9. launch_gui( fnameNPZ )
+2. launch_gui( fnameCSV )
+3. launch_gui( fnameNPZ )
+4. launch_gui( fnameCSV, mode )
+5. launch_gui( fnameCSV, mode, fnameNPZ )
+
 
 The arguments include:
 
 +----------+--------------------------------------------------------------------------+
 | **Arg**  | **Description**                                                          |
 +==========+==========================================================================+
-| data     |  a 2D NumPy array (rows = observations, columns = domain nodes)          |
+| fnameCSV |  CSV file name (rows = observations, columns = domain nodes)             |
 +----------+--------------------------------------------------------------------------+
-| fnameCSV |  CSV file name, formatted as “data” above                                |
-+----------+--------------------------------------------------------------------------+
-| fnameNPZ |  NumPy Zipped file name into which results will be saved                 |
+| fnameNPZ |  numpy zipped file name into which results will be saved                 |
 +----------+--------------------------------------------------------------------------+
 | mode     |  “landmark” or “manual”                                                  |
 +----------+--------------------------------------------------------------------------+
@@ -34,11 +29,9 @@ The arguments include:
 
 .. code-block::
 
-	import numpy as np
 	import mwarp1d
 	
-	a        = np.random.randn(10, 101)
+	fnameCSV = "/Users/username/Desktop/mydata.csv"
 	mode     = "manual"
-	fnameNPZ = "/Users/username/Desktop/results.npz"
 	
-	mwarp1d.launch_gui( a, mode, fnameNPZ )
+	mwarp1d.launch_gui( fnameCSV, mode )

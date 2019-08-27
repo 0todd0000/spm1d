@@ -91,17 +91,13 @@
   <div class="section" id="command-line-ui-launching">
 <h1>Command line UI launching<a class="headerlink" href="#command-line-ui-launching" title="Permalink to this headline">¶</a></h1>
 <p>The function <strong>mwarp1d.launch_gui</strong> can be used to launch the GUI from the command line.
-Nine argument patterns are supported:</p>
+Five argument patterns are supported:</p>
 <ol class="arabic simple">
 <li><p>launch_gui( )</p></li>
-<li><p>launch_gui( data )</p></li>
-<li><p>launch_gui( data )</p></li>
-<li><p>launch_gui( data, mode )</p></li>
-<li><p>launch_gui( data, mode, fnameNPZ )</p></li>
 <li><p>launch_gui( fnameCSV )</p></li>
+<li><p>launch_gui( fnameNPZ )</p></li>
 <li><p>launch_gui( fnameCSV, mode )</p></li>
 <li><p>launch_gui( fnameCSV, mode, fnameNPZ )</p></li>
-<li><p>launch_gui( fnameNPZ )</p></li>
 </ol>
 <p>The arguments include:</p>
 <table class="docutils align-default">
@@ -115,16 +111,13 @@ Nine argument patterns are supported:</p>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p>data</p></td>
-<td><p>a 2D NumPy array (rows = observations, columns = domain nodes)</p></td>
+<tr class="row-even"><td><p>fnameCSV</p></td>
+<td><p>CSV file name (rows = observations, columns = domain nodes)</p></td>
 </tr>
-<tr class="row-odd"><td><p>fnameCSV</p></td>
-<td><p>CSV file name, formatted as “data” above</p></td>
+<tr class="row-odd"><td><p>fnameNPZ</p></td>
+<td><p>numpy zipped file name into which results will be saved</p></td>
 </tr>
-<tr class="row-even"><td><p>fnameNPZ</p></td>
-<td><p>NumPy Zipped file name into which results will be saved</p></td>
-</tr>
-<tr class="row-odd"><td><p>mode</p></td>
+<tr class="row-even"><td><p>mode</p></td>
 <td><p>“landmark” or “manual”</p></td>
 </tr>
 </tbody>
@@ -133,14 +126,12 @@ Nine argument patterns are supported:</p>
 <dt class="field-odd">Example</dt>
 <dd class="field-odd"><p></p></dd>
 </dl>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">mwarp1d</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">mwarp1d</span>
 
-<span class="n">a</span>        <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">101</span><span class="p">)</span>
+<span class="n">fnameCSV</span> <span class="o">=</span> <span class="s2">&quot;/Users/username/Desktop/mydata.csv&quot;</span>
 <span class="n">mode</span>     <span class="o">=</span> <span class="s2">&quot;manual&quot;</span>
-<span class="n">fnameNPZ</span> <span class="o">=</span> <span class="s2">&quot;/Users/username/Desktop/results.npz&quot;</span>
 
-<span class="n">mwarp1d</span><span class="o">.</span><span class="n">launch_gui</span><span class="p">(</span> <span class="n">a</span><span class="p">,</span> <span class="n">mode</span><span class="p">,</span> <span class="n">fnameNPZ</span> <span class="p">)</span>
+<span class="n">mwarp1d</span><span class="o">.</span><span class="n">launch_gui</span><span class="p">(</span> <span class="n">fnameCSV</span><span class="p">,</span> <span class="n">mode</span> <span class="p">)</span>
 </pre></div>
 </div>
 </div>
