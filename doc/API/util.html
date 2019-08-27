@@ -5,8 +5,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
     <title>spm1d.util &#8212; spm1d 0.4 documentation</title>
     <link rel="stylesheet" href="../../_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -70,7 +69,9 @@
   <ul class="dropdown-menu globaltoc"
       role="menu"
       aria-labelledby="dLabelGlobalToc"><ul>
-<li class="toctree-l1"><a class="reference internal" href="../../NewFeatures.html">New Features (version 0.4)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../NewFeatures.html">New Features (version 0.4.3)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../NewFeatures.html#new-features-version-0-4-2">New Features (version 0.4.2)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../NewFeatures.html#new-features-version-0-4">New Features (version 0.4)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../NewFeatures.html#new-features-version-0-3-2">New Features (version 0.3.2)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../NewFeatures.html#new-features-version-0-3-1">New Features (version 0.3.1)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../NewFeatures.html#new-features-version-0-3">New Features (version 0.3)</a></li>
@@ -179,22 +180,22 @@
 <p>Utility module</p>
 <p>This module contains a variety of convenience functions, including:</p>
 <ul class="simple">
-<li>get_dataset</li>
-<li>interp</li>
-<li>p_corrected_bonf</li>
-<li>p_critical_bonf</li>
-<li>smooth</li>
+<li><p>get_dataset</p></li>
+<li><p>interp</p></li>
+<li><p>p_corrected_bonf</p></li>
+<li><p>p_critical_bonf</p></li>
+<li><p>smooth</p></li>
 </ul>
 <hr class="docutils" />
 <div class="section" id="get-dataset">
 <h2>get_dataset<a class="headerlink" href="#get-dataset" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="spm1d.util.get_dataset">
-<code class="descclassname">spm1d.util.</code><code class="descname">get_dataset</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/spm1d/util.html#get_dataset"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#spm1d.util.get_dataset" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">spm1d.util.</code><code class="sig-name descname">get_dataset</code><span class="sig-paren">(</span><em class="sig-param">*args</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/spm1d/util.html#get_dataset"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#spm1d.util.get_dataset" title="Permalink to this definition">¶</a></dt>
 <dd><div class="admonition warning">
-<p class="first admonition-title">Warning</p>
+<p class="admonition-title">Warning</p>
 <p>Deprecated</p>
-<p class="last"><strong>get_dataset</strong> is deprecated and will be removed from future versions of <strong>spm1d</strong>.  Please access datasets using the “spm1d.data” interface.</p>
+<p><strong>get_dataset</strong> is deprecated and will be removed from future versions of <strong>spm1d</strong>.  Please access datasets using the “spm1d.data” interface.</p>
 </div>
 </dd></dl>
 
@@ -204,39 +205,27 @@
 <h2>interp<a class="headerlink" href="#interp" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="spm1d.util.interp">
-<code class="descclassname">spm1d.util.</code><code class="descname">interp</code><span class="sig-paren">(</span><em>y</em>, <em>Q=101</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/spm1d/util.html#interp"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#spm1d.util.interp" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">spm1d.util.</code><code class="sig-name descname">interp</code><span class="sig-paren">(</span><em class="sig-param">y</em>, <em class="sig-param">Q=101</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/spm1d/util.html#interp"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#spm1d.util.interp" title="Permalink to this definition">¶</a></dt>
 <dd><p>Simple linear interpolation to <em>n</em> values.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"></td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p></p></dd>
+</dl>
 <ul class="simple">
-<li><em>y</em> — a 1D array or list of J separate 1D arrays</li>
-<li><em>Q</em> — number of nodes in the interpolated continuum</li>
+<li><p><em>y</em> — a 1D array or list of J separate 1D arrays</p></li>
+<li><p><em>Q</em> — number of nodes in the interpolated continuum</p></li>
 </ul>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"></td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p></p></dd>
+</dl>
 <ul class="simple">
-<li>Q-component 1D array or a (J x Q) array</li>
+<li><p>Q-component 1D array or a (J x Q) array</p></li>
 </ul>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Example:</th><td class="field-body"></td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Example</dt>
+<dd class="field-odd"><p></p></dd>
+</dl>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">y0</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">51</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">y1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">87</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">y2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">68</span><span class="p">)</span>
@@ -254,43 +243,31 @@
 <h2>p_corrected_bonf<a class="headerlink" href="#p-corrected-bonf" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="spm1d.util.p_corrected_bonf">
-<code class="descclassname">spm1d.util.</code><code class="descname">p_corrected_bonf</code><span class="sig-paren">(</span><em>p</em>, <em>n</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/spm1d/util.html#p_corrected_bonf"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#spm1d.util.p_corrected_bonf" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">spm1d.util.</code><code class="sig-name descname">p_corrected_bonf</code><span class="sig-paren">(</span><em class="sig-param">p</em>, <em class="sig-param">n</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/spm1d/util.html#p_corrected_bonf"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#spm1d.util.p_corrected_bonf" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bonferroni-corrected <em>p</em> value.</p>
 <div class="admonition warning">
-<p class="first admonition-title">Warning</p>
-<p class="last">This correction assumes independence amongst multiple tests.</p>
+<p class="admonition-title">Warning</p>
+<p>This correction assumes independence amongst multiple tests.</p>
 </div>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"></td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p></p></dd>
+</dl>
 <ul class="simple">
-<li><em>p</em> — probability value computed from one of multiple tests</li>
-<li><em>n</em> — number of tests</li>
+<li><p><em>p</em> — probability value computed from one of multiple tests</p></li>
+<li><p><em>n</em> — number of tests</p></li>
 </ul>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"></td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p></p></dd>
+</dl>
 <ul class="simple">
-<li>Bonferroni-corrected <em>p</em> value.</li>
+<li><p>Bonferroni-corrected <em>p</em> value.</p></li>
 </ul>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Example:</th><td class="field-body"></td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Example</dt>
+<dd class="field-odd"><p></p></dd>
+</dl>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">p</span> <span class="o">=</span> <span class="n">spm1d</span><span class="o">.</span><span class="n">util</span><span class="o">.</span><span class="n">p_corrected_bonf</span><span class="p">(</span><span class="mf">0.03</span><span class="p">,</span> <span class="mi">8</span><span class="p">)</span>    <span class="c1"># yields p = 0.216</span>
 </pre></div>
 </div>
@@ -302,43 +279,31 @@
 <h2>p_critical_bonf<a class="headerlink" href="#p-critical-bonf" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="spm1d.util.p_critical_bonf">
-<code class="descclassname">spm1d.util.</code><code class="descname">p_critical_bonf</code><span class="sig-paren">(</span><em>alpha</em>, <em>n</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/spm1d/util.html#p_critical_bonf"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#spm1d.util.p_critical_bonf" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">spm1d.util.</code><code class="sig-name descname">p_critical_bonf</code><span class="sig-paren">(</span><em class="sig-param">alpha</em>, <em class="sig-param">n</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/spm1d/util.html#p_critical_bonf"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#spm1d.util.p_critical_bonf" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bonferroni-corrected critical Type I error rate.</p>
 <div class="admonition warning">
-<p class="first admonition-title">Warning</p>
-<p class="last">This crticial threshold assumes independence amongst multiple tests.</p>
+<p class="admonition-title">Warning</p>
+<p>This crticial threshold assumes independence amongst multiple tests.</p>
 </div>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"></td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p></p></dd>
+</dl>
 <ul class="simple">
-<li><em>alpha</em> — original Type I error rate (usually 0.05)</li>
-<li><em>n</em> — number of tests</li>
+<li><p><em>alpha</em> — original Type I error rate (usually 0.05)</p></li>
+<li><p><em>n</em> — number of tests</p></li>
 </ul>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"></td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p></p></dd>
+</dl>
 <ul class="simple">
-<li>Bonferroni-corrected critical <em>p</em> value; retains <em>alpha</em> across all tests.</li>
+<li><p>Bonferroni-corrected critical <em>p</em> value; retains <em>alpha</em> across all tests.</p></li>
 </ul>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Example:</th><td class="field-body"></td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Example</dt>
+<dd class="field-odd"><p></p></dd>
+</dl>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">p</span> <span class="o">=</span> <span class="n">spm1d</span><span class="o">.</span><span class="n">util</span><span class="o">.</span><span class="n">p_critical_bonf</span><span class="p">(</span><span class="mf">0.05</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>    <span class="c1"># yields p = 0.00256</span>
 </pre></div>
 </div>
@@ -350,48 +315,36 @@
 <h2>smooth<a class="headerlink" href="#smooth" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="spm1d.util.smooth">
-<code class="descclassname">spm1d.util.</code><code class="descname">smooth</code><span class="sig-paren">(</span><em>Y</em>, <em>fwhm=5.0</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/spm1d/util.html#smooth"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#spm1d.util.smooth" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">spm1d.util.</code><code class="sig-name descname">smooth</code><span class="sig-paren">(</span><em class="sig-param">Y</em>, <em class="sig-param">fwhm=5.0</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/spm1d/util.html#smooth"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#spm1d.util.smooth" title="Permalink to this definition">¶</a></dt>
 <dd><p>Smooth a set of 1D continua.
 This method uses <strong>scipy.ndimage.filters.gaussian_filter1d</strong> but uses the <em>fwhm</em>
 instead of the standard deviation.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"></td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p></p></dd>
+</dl>
 <ul class="simple">
-<li><em>Y</em> — a (J x Q) numpy array</li>
-<li><em>fwhm</em> —  Full-width at half-maximum of a Gaussian kernel used for smoothing.</li>
+<li><p><em>Y</em> — a (J x Q) numpy array</p></li>
+<li><p><em>fwhm</em> —  Full-width at half-maximum of a Gaussian kernel used for smoothing.</p></li>
 </ul>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"></td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p></p></dd>
+</dl>
 <ul class="simple">
-<li>(J x Q) numpy array</li>
+<li><p>(J x Q) numpy array</p></li>
 </ul>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Example:</th><td class="field-body"></td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Example</dt>
+<dd class="field-odd"><p></p></dd>
+</dl>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">Y0</span>  <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">101</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">Y</span>   <span class="o">=</span> <span class="n">spm1d</span><span class="o">.</span><span class="n">util</span><span class="o">.</span><span class="n">smooth</span><span class="p">(</span><span class="n">Y0</span><span class="p">,</span> <span class="n">fwhm</span><span class="o">=</span><span class="mf">10.0</span><span class="p">)</span>
 </pre></div>
 </div>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">A Gaussian kernel’s <em>fwhm</em> is related to its standard deviation (<em>sd</em>) as follows:</p>
+<p class="admonition-title">Note</p>
+<p>A Gaussian kernel’s <em>fwhm</em> is related to its standard deviation (<em>sd</em>) as follows:</p>
 </div>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">fwhm</span> <span class="o">=</span> <span class="n">sd</span> <span class="o">*</span> <span class="n">sqrt</span><span class="p">(</span><span class="mi">8</span><span class="o">*</span><span class="n">log</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span>
 </pre></div>
@@ -414,7 +367,7 @@ instead of the standard deviation.</p>
     </p>
     <p>
         &copy; Copyright 2019, Todd Pataky.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.5.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.1.2.<br/>
     </p>
   </div>
 </footer>

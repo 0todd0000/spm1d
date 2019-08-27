@@ -1,0 +1,189 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Warping &#8212; mwarp1d 0.1 documentation</title>
+    <link rel="stylesheet" href="../_static/bootstrap-astropy.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/language_data.js"></script>
+    <script type="text/javascript" src="../_static/sidebar.js"></script>
+    <script type="text/javascript" src="../_static/copybutton.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Exporting" href="exporting.html" />
+    <link rel="prev" title="Preliminaries" href="preliminaries.html" />
+    <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,600' rel='stylesheet' type='text/css'/>
+
+  </head><body>
+<div class="topbar">
+  <a class="brand" title="Documentation Home" href="../index.html"><span id="logotext1">mwarp</span><span id="logotext2">1d</span><span id="logotext3"></span></a>
+  <ul>
+    
+    <!-- <li><a class="homelink" title="Astropy Homepage" href="http://www.astropy.org"></a></li> -->
+    <li><a title="Home" href="../index.html">Home</a></li>
+    <li><a title="" href=""></a></li>
+    <li><a title="" href=""></a></li>
+    <li><a title="" href=""></a></li>
+    <li><a title="Installation" href="../Installation.html">Installation</a></li>
+    <li><a title="Quick start" href="../Quickstart.html">Quick start</a></li>
+    <li><a title="User manual" href="../Usermanual.html">User manual</a></li>
+    <li><a title="Examples" href="../Examples.html">Examples</a></li>
+    <li><a title="API" href="../API.html">API</a></li>
+    <li><a title="" href=""></a></li>
+    <li><a title="" href=""></a></li>
+    <li><a title="" href=""></a></li>
+	<li><a title="Support" href="../Support.html">Support</a></li>
+    <li><a title="" href=""></a></li>
+    <li><a title="" href=""></a></li>
+    <li><a title="" href=""></a></li>
+    <li><a title="General Index" href="../genindex.html">Index</a></li>
+    <li><a title="Module Index" href="../py-modindex.html">Modules</a></li>
+    <li>
+      
+      
+<form action="../search.html" method="get">
+  <input type="text" name="q" placeholder="Search" />
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+      
+    </li>
+  </ul>
+</div>
+
+<div class="related">
+    <h3>Navigation</h3>
+    <ul>
+      <li class="right">
+	<a href="exporting.html" title="Exporting">
+	  next &raquo;
+	</a>
+      </li>
+      <li class="right">
+	<a href="preliminaries.html" title="Preliminaries">
+	  &laquo; previous
+	</a>
+	 |
+      </li>
+      <li>
+	<a href="../index.html">mwarp1d 0.1 documentation</a>
+	 &#187;
+      </li>
+      <li><a href="../usermanual.html" accesskey="U">User manual</a> &#187;</li>
+      
+      <li>Warping</li> 
+    </ul>
+</div>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="warping">
+<h1>Warping<a class="headerlink" href="#warping" title="Permalink to this headline">¶</a></h1>
+<p>aaa</p>
+<div class="section" id="landmark-warping">
+<h2>Landmark warping<a class="headerlink" href="#landmark-warping" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="step-1-define-template-landmarks">
+<h3>Step 1:  Define template landmarks<a class="headerlink" href="#step-1-define-template-landmarks" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>Add landmark:   Left-click outside template</p></li>
+<li><p>Delete landmark:  Right-click on a landmark</p></li>
+<li><p>Move landmark:  Left-click and drag landmark</p></li>
+<li><p>Finish:  L to lock template (Points cannot be added after locking template!)</p></li>
+</ul>
+</div>
+<div class="section" id="step-2-adjust-source-templates">
+<h3>Step 2:  Adjust source templates<a class="headerlink" href="#step-2-adjust-source-templates" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>Move landmarks to homologous locations on each source</p></li>
+<li><p>Select source:  left-click on line  OR use arrow keys to cycle through sources OR click on relevant row from the table</p></li>
+<li><p>Move landmark:  Left-click and drag landmark</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="manual-warping">
+<h2>Manual warping<a class="headerlink" href="#manual-warping" title="Permalink to this headline">¶</a></h2>
+<p>Manual (Gaussian-kernel-based) warps are defined using four parameters:</p>
+<ul class="simple">
+<li><p><strong>y</strong> — original 1D data</p></li>
+<li><p><strong>center</strong> — warp kernel center, relative to its feasible range (between 0 and 1)</p></li>
+<li><p><strong>amp</strong> — warp kernel amplitude, relative to its feasible range (between -1 and 1)</p></li>
+<li><p><strong>head</strong> — warp kernel head width, relative to its feasible range (between 0 and 1)</p></li>
+<li><p><strong>tail</strong> — warp kernel tail width, relative to its feasible range (between 0 and 1)</p></li>
+</ul>
+<p>The meaning of these four parameters is depicted in the figure below.</p>
+<p>(<a class="reference external" href="../manual/warping-1.py">Source code</a>, <a class="reference external" href="../manual/warping-1.png">png</a>, <a class="reference external" href="../manual/warping-1.hires.png">hires.png</a>, <a class="reference external" href="../manual/warping-1.pdf">pdf</a>)</p>
+<div class="figure align-default">
+<img alt="../_images/warping-1.png" src="../_images/warping-1.png" />
+</div>
+</div>
+<div class="section" id="restoring-previous-sessions">
+<h2>Restoring previous sessions<a class="headerlink" href="#restoring-previous-sessions" title="Permalink to this headline">¶</a></h2>
+<p>aaa</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper"><h3>Page Contents</h3>
+<ul>
+<li><a class="reference internal" href="#">Warping</a><ul>
+<li><a class="reference internal" href="#landmark-warping">Landmark warping</a><ul>
+<li><a class="reference internal" href="#step-1-define-template-landmarks">Step 1:  Define template landmarks</a></li>
+<li><a class="reference internal" href="#step-2-adjust-source-templates">Step 2:  Adjust source templates</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#manual-warping">Manual warping</a></li>
+<li><a class="reference internal" href="#restoring-previous-sessions">Restoring previous sessions</a></li>
+</ul>
+</li>
+</ul>
+
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="preliminaries.html"
+                        title="previous chapter">Preliminaries</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="exporting.html"
+                        title="next chapter">Exporting</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/manual/warping.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<form action="../search.html" method="get">
+  <input type="text" name="q" placeholder="Search" />
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+<footer class="footer">
+  <p class="pull-right">
+    <a href="../_sources/manual/warping.rst.txt"
+       rel="nofollow">Page Source</a> &nbsp;
+    <a href="#">Back to Top</a></p>
+  <p>
+    &copy; Copyright 2019, Todd Pataky.<br/>
+    Created using <a href="http://www.sphinx-doc.org/en/stable/">Sphinx</a> 2.1.2. &nbsp;
+  </p>
+</footer>
+  </body>
+</html>

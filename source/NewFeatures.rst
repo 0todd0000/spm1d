@@ -1,6 +1,20 @@
 .. _label-NewFeatures:
 
 
+New Features (version 0.4.3)
+=====================================
+
+Manual nonlinear warping (Python only)
+-------------------------------------------------
+
+* Nonlinearly warp 1D data to improve alignment of homologous events.
+
+* Warp data using "landmark" and "manual" modes.
+
+* Full documentation:  `mwarp1d <http://www.spm1d.org/mwarp1d/index.html>`_
+
+
+
 New Features (version 0.4.2)
 =====================================
 

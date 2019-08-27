@@ -5,8 +5,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
     <title>ANOVA post hoc analysis &#8212; spm1d 0.4 documentation</title>
     <link rel="stylesheet" href="../../_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -70,7 +69,9 @@
   <ul class="dropdown-menu globaltoc"
       role="menu"
       aria-labelledby="dLabelGlobalToc"><ul>
-<li class="toctree-l1"><a class="reference internal" href="../../NewFeatures.html">New Features (version 0.4)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../NewFeatures.html">New Features (version 0.4.3)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../NewFeatures.html#new-features-version-0-4-2">New Features (version 0.4.2)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../NewFeatures.html#new-features-version-0-4">New Features (version 0.4)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../NewFeatures.html#new-features-version-0-3-2">New Features (version 0.3.2)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../NewFeatures.html#new-features-version-0-3-1">New Features (version 0.3.1)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../NewFeatures.html#new-features-version-0-3">New Features (version 0.3)</a></li>
@@ -173,16 +174,16 @@
 <p>As a rule-of-thumb, <strong>NEVER</strong> report <em>post hoc</em> results which disagree with the main test results.  If the results disagree, the <em>post hoc</em> procedures are too simple.</p>
 <p>If you report <em>post hoc</em> results for <strong>spm1d</strong> analyses please explicitly highlight the limitations described in this document.</p>
 <div class="admonition warning">
-<p class="first admonition-title">Warning</p>
+<p class="admonition-title">Warning</p>
 <p>Current <em>post hoc</em> procedures in <strong>spm1d</strong> are likely too simple.</p>
-<p class="last">The example belowe uses a simple Bonferroni correction, but this assumes that the <em>post hoc</em> tests are independent, which is usually not the case.</p>
+<p>The example belowe uses a simple Bonferroni correction, but this assumes that the <em>post hoc</em> tests are independent, which is usually not the case.</p>
 </div>
 <div class="admonition danger">
-<p class="first admonition-title">Danger</p>
+<p class="admonition-title">Danger</p>
 <p>Current <em>post hoc</em> procedures in <strong>spm1d</strong> are generally not valid.</p>
 <p>They are not valid because they involve separate smoothness assessments for each <em>post hoc</em> test.</p>
 <p>Although the resulting errors are expected to be small, we cannot guarantee validity.</p>
-<p class="last">Users are encouraged to explore other <em>post hoc</em> correction methods.</p>
+<p>Users are encouraged to explore other <em>post hoc</em> correction methods.</p>
 </div>
 <div class="section" id="one-way-anova">
 <span id="label-stats-anova-post-hoc"></span><h2>One-way ANOVA<a class="headerlink" href="#one-way-anova" title="Permalink to this headline">¶</a></h2>
@@ -200,9 +201,9 @@
 <p><em>Post hoc</em> tests will be deemed significant if they reach the critical <em>t</em> value implied by the p = 0.016952.</p>
 <p>Test statistics may be computed for the three group pairs as follows:</p>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
+<p class="admonition-title">Note</p>
 <p>The <em>equal_var</em> option should be the same as was selected for ANOVA.</p>
-<div class="last highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">t12</span>   <span class="o">=</span> <span class="n">spm1d</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">ttest2</span><span class="p">(</span><span class="n">Y1</span><span class="p">,</span> <span class="n">Y2</span><span class="p">,</span> <span class="n">equal_var</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">t12</span>   <span class="o">=</span> <span class="n">spm1d</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">ttest2</span><span class="p">(</span><span class="n">Y1</span><span class="p">,</span> <span class="n">Y2</span><span class="p">,</span> <span class="n">equal_var</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">t13</span>   <span class="o">=</span> <span class="n">spm1d</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">ttest2</span><span class="p">(</span><span class="n">Y1</span><span class="p">,</span> <span class="n">Y3</span><span class="p">,</span> <span class="n">equal_var</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">t23</span>   <span class="o">=</span> <span class="n">spm1d</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">ttest2</span><span class="p">(</span><span class="n">Y2</span><span class="p">,</span> <span class="n">Y3</span><span class="p">,</span> <span class="n">equal_var</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 </pre></div>
@@ -210,9 +211,9 @@
 </div>
 <p>After computing the test statistics we can conduct inference using the corrected critical <em>p</em> value:</p>
 <div class="admonition warning">
-<p class="first admonition-title">Warning</p>
+<p class="admonition-title">Warning</p>
 <p>The <em>two_tailed</em> option must always be <em>True</em> in <em>post hoc</em> analyses; one-tailed inference is inconsistent with the null-hypothesis implied by ANOVA.</p>
-<div class="last highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">t12i</span>  <span class="o">=</span> <span class="n">t12</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="n">p_critical</span><span class="p">,</span> <span class="n">two_tailed</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">t12i</span>  <span class="o">=</span> <span class="n">t12</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="n">p_critical</span><span class="p">,</span> <span class="n">two_tailed</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">t13i</span>  <span class="o">=</span> <span class="n">t13</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="n">p_critical</span><span class="p">,</span> <span class="n">two_tailed</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">t23i</span>  <span class="o">=</span> <span class="n">t23</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="n">p_critical</span><span class="p">,</span> <span class="n">two_tailed</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
@@ -221,10 +222,10 @@
 <p>In this case all tests reach significance.</p>
 <p>These results may be interpreted exactly as in the case of a single t test: if there were truly no group differences, then smooth, random 1D continua would produce SPM{t}s that reaches the critical <em>t</em> threshold in fewer than <em>alpha</em> = 5% of many repeated experiments.</p>
 <div class="admonition warning" id="label-stats-multipletests-pvalues">
-<p class="first admonition-title">Warning</p>
+<p class="admonition-title">Warning</p>
 <p>p values for <em>post hoc</em> tests.</p>
 <p>If desired, you may report exact <em>p</em> values for each suprathreshold cluster, but in this case the p values must be adjusted for multiple comparisons.</p>
-<p class="last">To compute appropriate <em>p</em> values, use the inverse to the Bonferroni correction through <strong>spm1d.util.p_corrected_bonf</strong>, as described below.</p>
+<p>To compute appropriate <em>p</em> values, use the inverse to the Bonferroni correction through <strong>spm1d.util.p_corrected_bonf</strong>, as described below.</p>
 </div>
 <p>Let’s consider the following result from one of the <em>post hoc</em> tests conducted above:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">SPM</span><span class="p">{</span><span class="n">T</span><span class="p">}</span> <span class="n">inference</span> <span class="n">field</span>
@@ -239,8 +240,8 @@
 </pre></div>
 </div>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">When multiple <em>p</em> values exist, they are listed in the following order: (1) upper threshold left-to-right, (2) lower threshold left-to-right. In the “t23i” case above (rightmost panel of the figure) there are five <em>p</em> values. The first corresponds to the single upper-threshold cluster. The next four correspond to the four lower-threshold clusters.</p>
+<p class="admonition-title">Note</p>
+<p>When multiple <em>p</em> values exist, they are listed in the following order: (1) upper threshold left-to-right, (2) lower threshold left-to-right. In the “t23i” case above (rightmost panel of the figure) there are five <em>p</em> values. The first corresponds to the single upper-threshold cluster. The next four correspond to the four lower-threshold clusters.</p>
 </div>
 <p>The five <em>p</em> values listed in the results above correspond to this test’s five supra-threshold clusters.</p>
 <p>Corrected <em>p</em> values may be computed as follows:</p>
@@ -266,7 +267,7 @@
     </p>
     <p>
         &copy; Copyright 2019, Todd Pataky.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.5.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.1.2.<br/>
     </p>
   </div>
 </footer>

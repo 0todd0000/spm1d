@@ -5,8 +5,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
     <title>spm1d.io &#8212; spm1d 0.4 documentation</title>
     <link rel="stylesheet" href="../../_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -70,7 +69,9 @@
   <ul class="dropdown-menu globaltoc"
       role="menu"
       aria-labelledby="dLabelGlobalToc"><ul>
-<li class="toctree-l1"><a class="reference internal" href="../../NewFeatures.html">New Features (version 0.4)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../NewFeatures.html">New Features (version 0.4.3)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../NewFeatures.html#new-features-version-0-4-2">New Features (version 0.4.2)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../NewFeatures.html#new-features-version-0-4">New Features (version 0.4)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../NewFeatures.html#new-features-version-0-3-2">New Features (version 0.3.2)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../NewFeatures.html#new-features-version-0-3-1">New Features (version 0.3.1)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../NewFeatures.html#new-features-version-0-3">New Features (version 0.3)</a></li>
@@ -184,18 +185,18 @@
 <span id="spm1d-io"></span><span id="label-api-io"></span><h1>spm1d.io<a class="headerlink" href="#module-spm1d.io" title="Permalink to this headline">¶</a></h1>
 <p>Input/Output module</p>
 <div class="admonition warning">
-<p class="first admonition-title">Warning</p>
+<p class="admonition-title">Warning</p>
 <p>This module has been deprecated and will be removed in the future.</p>
 <p>All spm1d procedures accept NumPy arrays directly, and NumPy load/save
 functionality has greatly improved in the last few years, so spm1d-specific
 data IO has been made redundant. Consider using the following functions:</p>
-<ul class="last simple">
-<li>numpy.loadtxt</li>
-<li>numpy.savetxt</li>
-<li>numpy.load</li>
-<li>numpy.save</li>
-<li>scipy.io.loadmat</li>
-<li>scipy.io.savemat</li>
+<ul class="simple">
+<li><p>numpy.loadtxt</p></li>
+<li><p>numpy.savetxt</p></li>
+<li><p>numpy.load</p></li>
+<li><p>numpy.save</p></li>
+<li><p>scipy.io.loadmat</p></li>
+<li><p>scipy.io.savemat</p></li>
 </ul>
 </div>
 <hr class="docutils" />
@@ -203,7 +204,7 @@ data IO has been made redundant. Consider using the following functions:</p>
 <h2>load<a class="headerlink" href="#load" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="spm1d.io.load">
-<code class="descclassname">spm1d.io.</code><code class="descname">load</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/spm1d/io.html#load"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#spm1d.io.load" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">spm1d.io.</code><code class="sig-name descname">load</code><span class="sig-paren">(</span><em class="sig-param">*args</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/spm1d/io.html#load"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#spm1d.io.load" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </div>
@@ -212,7 +213,7 @@ data IO has been made redundant. Consider using the following functions:</p>
 <h2>loadmat<a class="headerlink" href="#loadmat" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="spm1d.io.loadmat">
-<code class="descclassname">spm1d.io.</code><code class="descname">loadmat</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/spm1d/io.html#loadmat"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#spm1d.io.loadmat" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">spm1d.io.</code><code class="sig-name descname">loadmat</code><span class="sig-paren">(</span><em class="sig-param">*args</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/spm1d/io.html#loadmat"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#spm1d.io.loadmat" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </div>
@@ -221,7 +222,7 @@ data IO has been made redundant. Consider using the following functions:</p>
 <h2>loadtxt<a class="headerlink" href="#loadtxt" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="spm1d.io.loadtxt">
-<code class="descclassname">spm1d.io.</code><code class="descname">loadtxt</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/spm1d/io.html#loadtxt"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#spm1d.io.loadtxt" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">spm1d.io.</code><code class="sig-name descname">loadtxt</code><span class="sig-paren">(</span><em class="sig-param">*args</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/spm1d/io.html#loadtxt"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#spm1d.io.loadtxt" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </div>
@@ -230,7 +231,7 @@ data IO has been made redundant. Consider using the following functions:</p>
 <h2>loadspm<a class="headerlink" href="#loadspm" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="spm1d.io.loadspm">
-<code class="descclassname">spm1d.io.</code><code class="descname">loadspm</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/spm1d/io.html#loadspm"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#spm1d.io.loadspm" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">spm1d.io.</code><code class="sig-name descname">loadspm</code><span class="sig-paren">(</span><em class="sig-param">*args</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/spm1d/io.html#loadspm"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#spm1d.io.loadspm" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </div>
@@ -239,7 +240,7 @@ data IO has been made redundant. Consider using the following functions:</p>
 <h2>save<a class="headerlink" href="#save" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="spm1d.io.save">
-<code class="descclassname">spm1d.io.</code><code class="descname">save</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/spm1d/io.html#save"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#spm1d.io.save" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">spm1d.io.</code><code class="sig-name descname">save</code><span class="sig-paren">(</span><em class="sig-param">*args</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/spm1d/io.html#save"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#spm1d.io.save" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </div>
@@ -248,7 +249,7 @@ data IO has been made redundant. Consider using the following functions:</p>
 <h2>savemat<a class="headerlink" href="#savemat" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="spm1d.io.savemat">
-<code class="descclassname">spm1d.io.</code><code class="descname">savemat</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/spm1d/io.html#savemat"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#spm1d.io.savemat" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">spm1d.io.</code><code class="sig-name descname">savemat</code><span class="sig-paren">(</span><em class="sig-param">*args</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/spm1d/io.html#savemat"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#spm1d.io.savemat" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </div>
@@ -257,7 +258,7 @@ data IO has been made redundant. Consider using the following functions:</p>
 <h2>savetxt<a class="headerlink" href="#savetxt" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="spm1d.io.savetxt">
-<code class="descclassname">spm1d.io.</code><code class="descname">savetxt</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/spm1d/io.html#savetxt"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#spm1d.io.savetxt" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">spm1d.io.</code><code class="sig-name descname">savetxt</code><span class="sig-paren">(</span><em class="sig-param">*args</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/spm1d/io.html#savetxt"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#spm1d.io.savetxt" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </div>
@@ -266,7 +267,7 @@ data IO has been made redundant. Consider using the following functions:</p>
 <h2>savespm<a class="headerlink" href="#savespm" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="spm1d.io.savespm">
-<code class="descclassname">spm1d.io.</code><code class="descname">savespm</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/spm1d/io.html#savespm"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#spm1d.io.savespm" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">spm1d.io.</code><code class="sig-name descname">savespm</code><span class="sig-paren">(</span><em class="sig-param">*args</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/spm1d/io.html#savespm"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#spm1d.io.savespm" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </div>
@@ -285,7 +286,7 @@ data IO has been made redundant. Consider using the following functions:</p>
     </p>
     <p>
         &copy; Copyright 2019, Todd Pataky.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.5.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.1.2.<br/>
     </p>
   </div>
 </footer>

@@ -1,0 +1,44 @@
+
+Command line UI launching
+===================================
+
+The function **mwarp1d.launch_gui** can be used to launch the GUI from the command line.
+Nine argument patterns are supported:
+
+1. launch_gui( )
+2. launch_gui( data )
+3. launch_gui( data )
+4. launch_gui( data, mode )
+5. launch_gui( data, mode, fnameNPZ )
+6. launch_gui( fnameCSV )
+7. launch_gui( fnameCSV, mode )
+8. launch_gui( fnameCSV, mode, fnameNPZ )
+9. launch_gui( fnameNPZ )
+
+The arguments include:
+
++----------+--------------------------------------------------------------------------+
+| **Arg**  | **Description**                                                          |
++==========+==========================================================================+
+| data     |  a 2D NumPy array (rows = observations, columns = domain nodes)          |
++----------+--------------------------------------------------------------------------+
+| fnameCSV |  CSV file name, formatted as “data” above                                |
++----------+--------------------------------------------------------------------------+
+| fnameNPZ |  NumPy Zipped file name into which results will be saved                 |
++----------+--------------------------------------------------------------------------+
+| mode     |  “landmark” or “manual”                                                  |
++----------+--------------------------------------------------------------------------+
+
+
+:Example:
+
+.. code-block::
+
+	import numpy as np
+	import mwarp1d
+	
+	a        = np.random.randn(10, 101)
+	mode     = "manual"
+	fnameNPZ = "/Users/username/Desktop/results.npz"
+	
+	mwarp1d.launch_gui( a, mode, fnameNPZ )

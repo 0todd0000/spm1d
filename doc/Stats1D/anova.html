@@ -5,8 +5,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
     <title>ANOVA &#8212; spm1d 0.4 documentation</title>
     <link rel="stylesheet" href="../../_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -70,7 +69,9 @@
   <ul class="dropdown-menu globaltoc"
       role="menu"
       aria-labelledby="dLabelGlobalToc"><ul>
-<li class="toctree-l1"><a class="reference internal" href="../../NewFeatures.html">New Features (version 0.4)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../NewFeatures.html">New Features (version 0.4.3)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../NewFeatures.html#new-features-version-0-4-2">New Features (version 0.4.2)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../NewFeatures.html#new-features-version-0-4">New Features (version 0.4)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../NewFeatures.html#new-features-version-0-3-2">New Features (version 0.3.2)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../NewFeatures.html#new-features-version-0-3-1">New Features (version 0.3.1)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../NewFeatures.html#new-features-version-0-3">New Features (version 0.3)</a></li>
@@ -187,10 +188,10 @@
   <div class="section" id="anova">
 <span id="label-stats1danova"></span><h1>ANOVA<a class="headerlink" href="#anova" title="Permalink to this headline">¶</a></h1>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
+<p class="admonition-title">Note</p>
 <p><strong>p-values for ANOVA</strong></p>
 <p>In previous versions of <strong>spm1d</strong> no p values were generated for ANOVA because they had not yet been validated.</p>
-<p class="last">They have now been validated <a class="reference internal" href="../../References.html#label-references"><span class="std std-ref">(Pataky, 2015)</span></a> so now appear in results.</p>
+<p>They have now been validated <a class="reference internal" href="../../References.html#label-references"><span class="std std-ref">(Pataky, 2015)</span></a> so now appear in results.</p>
 </div>
 <div class="section" id="one-way-anova">
 <span id="label-stats-anova"></span><h2>One-way ANOVA<a class="headerlink" href="#one-way-anova" title="Permalink to this headline">¶</a></h2>
@@ -209,8 +210,8 @@
 <span class="gp">&gt;&gt;&gt; </span><span class="n">Fi</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>(<a class="reference external" href="../../pyplots/stats1d/ex_anova1.py">Source code</a>)</p>
-<div class="figure">
+<p>(<a class="reference external" href="../../pyplots/stats1d/ex_anova1.py">Source code</a>, <a class="reference external" href="../../pyplots/stats1d/ex_anova1.png">png</a>, <a class="reference external" href="../../pyplots/stats1d/ex_anova1.hires.png">hires.png</a>, <a class="reference external" href="../../pyplots/stats1d/ex_anova1.pdf">pdf</a>)</p>
+<div class="figure align-default">
 <img alt="../../_images/ex_anova1.png" src="../../_images/ex_anova1.png" />
 </div>
 </div>
@@ -223,8 +224,8 @@
 <span class="gp">&gt;&gt;&gt; </span><span class="n">Fi</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>(<a class="reference external" href="../../pyplots/stats1d/ex_anova1rm.py">Source code</a>)</p>
-<div class="figure">
+<p>(<a class="reference external" href="../../pyplots/stats1d/ex_anova1rm.py">Source code</a>, <a class="reference external" href="../../pyplots/stats1d/ex_anova1rm.png">png</a>, <a class="reference external" href="../../pyplots/stats1d/ex_anova1rm.hires.png">hires.png</a>, <a class="reference external" href="../../pyplots/stats1d/ex_anova1rm.pdf">pdf</a>)</p>
+<div class="figure align-default">
 <img alt="../../_images/ex_anova1rm.png" src="../../_images/ex_anova1rm.png" />
 </div>
 </div>
@@ -242,12 +243,12 @@
 <div class="section" id="two-way-nested-anova">
 <span id="label-stats-anova2nested"></span><h2>Two-way nested ANOVA<a class="headerlink" href="#two-way-nested-anova" title="Permalink to this headline">¶</a></h2>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<dl class="docutils">
-<dt>We do not yet have any real data examples to show.</dt>
-<dd>The factor B is nested inside factor A.</dd>
+<p class="admonition-title">Note</p>
+<dl class="simple">
+<dt>We do not yet have any real data examples to show.</dt><dd><p>The factor B is nested inside factor A.</p>
+</dd>
 </dl>
-<div class="last highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">F</span>  <span class="o">=</span> <span class="n">spm1d</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">anova2nested</span><span class="p">(</span> <span class="n">Y</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">,</span> <span class="n">equal_var</span><span class="o">=</span><span class="kc">False</span> <span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">F</span>  <span class="o">=</span> <span class="n">spm1d</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">anova2nested</span><span class="p">(</span> <span class="n">Y</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">,</span> <span class="n">equal_var</span><span class="o">=</span><span class="kc">False</span> <span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -255,47 +256,46 @@
 <div class="section" id="two-way-repeated-measures-anova">
 <span id="label-stats-anova2rm"></span><h2>Two-way repeated-measures ANOVA<a class="headerlink" href="#two-way-repeated-measures-anova" title="Permalink to this headline">¶</a></h2>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<dl class="docutils">
-<dt>We do not yet have any real data examples to show.</dt>
-<dd>Implementing two-way repeated measures ANOVA requires a SUBJ vector:</dd>
+<p class="admonition-title">Note</p>
+<dl class="simple">
+<dt>We do not yet have any real data examples to show.</dt><dd><p>Implementing two-way repeated measures ANOVA requires a SUBJ vector:</p>
+</dd>
 </dl>
-<div class="last highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">F</span>  <span class="o">=</span> <span class="n">spm1d</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">anova2rm</span><span class="p">(</span> <span class="n">Y</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">,</span> <span class="n">SUBJ</span> <span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">F</span>  <span class="o">=</span> <span class="n">spm1d</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">anova2rm</span><span class="p">(</span> <span class="n">Y</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">,</span> <span class="n">SUBJ</span> <span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="admonition danger">
-<p class="first admonition-title">Danger</p>
+<p class="admonition-title">Danger</p>
 <p>Non-sphericity corrections are not yet implemented for this design.</p>
-<p class="last">Since non-sphericity corrections weaken results with respect to assumed sphericity, interpret results cautiously, especially when close to alpha.</p>
+<p>Since non-sphericity corrections weaken results with respect to assumed sphericity, interpret results cautiously, especially when close to alpha.</p>
 </div>
 </div>
 <div class="section" id="two-way-anova-with-repeated-measures-on-one-factor">
 <span id="label-stats-anova2onerm"></span><h2>Two-way ANOVA with repeated-measures on one factor<a class="headerlink" href="#two-way-anova-with-repeated-measures-on-one-factor" title="Permalink to this headline">¶</a></h2>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<dl class="docutils">
-<dt>We do not yet have any real data examples to show.</dt>
-<dd><p class="first">Implementing two-way repeated measures ANOVA requires a SUBJ vector.</p>
-<p class="last"><strong>B</strong> must be the repeated-measures factor.</p>
+<p class="admonition-title">Note</p>
+<dl>
+<dt>We do not yet have any real data examples to show.</dt><dd><p>Implementing two-way repeated measures ANOVA requires a SUBJ vector.</p>
+<p><strong>B</strong> must be the repeated-measures factor.</p>
 </dd>
 </dl>
-<div class="last highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">F</span>  <span class="o">=</span> <span class="n">spm1d</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">anova2onerm</span><span class="p">(</span> <span class="n">Y</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">,</span> <span class="n">SUBJ</span> <span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">F</span>  <span class="o">=</span> <span class="n">spm1d</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">anova2onerm</span><span class="p">(</span> <span class="n">Y</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">,</span> <span class="n">SUBJ</span> <span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="admonition danger">
-<p class="first admonition-title">Danger</p>
+<p class="admonition-title">Danger</p>
 <p>Non-sphericity corrections are not yet implemented for this design.</p>
-<p class="last">Since non-sphericity corrections weaken results with respect to assumed sphericity, interpret results cautiously, especially when close to alpha.</p>
+<p>Since non-sphericity corrections weaken results with respect to assumed sphericity, interpret results cautiously, especially when close to alpha.</p>
 </div>
 </div>
 <div class="section" id="three-way-anova">
 <span id="label-stats-anova3"></span><h2>Three-way ANOVA<a class="headerlink" href="#three-way-anova" title="Permalink to this headline">¶</a></h2>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
+<p class="admonition-title">Note</p>
 <p>We do not yet have any real data examples to show.</p>
-<div class="last highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">F</span>  <span class="o">=</span> <span class="n">spm1d</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">anova3</span><span class="p">(</span> <span class="n">Y</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">,</span> <span class="n">C</span><span class="p">,</span> <span class="n">equal_var</span><span class="o">=</span><span class="kc">False</span> <span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">F</span>  <span class="o">=</span> <span class="n">spm1d</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">anova3</span><span class="p">(</span> <span class="n">Y</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">,</span> <span class="n">C</span><span class="p">,</span> <span class="n">equal_var</span><span class="o">=</span><span class="kc">False</span> <span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -303,14 +303,13 @@
 <div class="section" id="three-way-nested-anova">
 <span id="label-stats-anova3nested"></span><h2>Three-way nested ANOVA<a class="headerlink" href="#three-way-nested-anova" title="Permalink to this headline">¶</a></h2>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<dl class="docutils">
-<dt>We do not yet have any real data examples to show.</dt>
-<dd><p class="first">This is a completely nested design:  the factor C is nested inside factor B, which is in turn nested inside factor A.</p>
-<p class="last"><strong>spm1d</strong> currently does not support partial nesting.</p>
+<p class="admonition-title">Note</p>
+<dl>
+<dt>We do not yet have any real data examples to show.</dt><dd><p>This is a completely nested design:  the factor C is nested inside factor B, which is in turn nested inside factor A.</p>
+<p><strong>spm1d</strong> currently does not support partial nesting.</p>
 </dd>
 </dl>
-<div class="last highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">F</span>  <span class="o">=</span> <span class="n">spm1d</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">anova3nested</span><span class="p">(</span> <span class="n">Y</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">,</span> <span class="n">C</span><span class="p">,</span> <span class="n">equal_var</span><span class="o">=</span><span class="kc">False</span> <span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">F</span>  <span class="o">=</span> <span class="n">spm1d</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">anova3nested</span><span class="p">(</span> <span class="n">Y</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">,</span> <span class="n">C</span><span class="p">,</span> <span class="n">equal_var</span><span class="o">=</span><span class="kc">False</span> <span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -318,41 +317,39 @@
 <div class="section" id="three-way-anova-with-repeated-measures-on-two-factors">
 <span id="label-stats-anova3tworm"></span><h2>Three-way ANOVA with repeated-measures on two factors<a class="headerlink" href="#three-way-anova-with-repeated-measures-on-two-factors" title="Permalink to this headline">¶</a></h2>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<dl class="docutils">
-<dt>We do not yet have any real data examples to show.</dt>
-<dd><p class="first">Implementing three-way repeated measures ANOVA requires a SUBJ vector.</p>
-<p class="last"><strong>B</strong> and <strong>C</strong> must be the repeated-measures factor.</p>
+<p class="admonition-title">Note</p>
+<dl>
+<dt>We do not yet have any real data examples to show.</dt><dd><p>Implementing three-way repeated measures ANOVA requires a SUBJ vector.</p>
+<p><strong>B</strong> and <strong>C</strong> must be the repeated-measures factor.</p>
 </dd>
 </dl>
-<div class="last highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">F</span>  <span class="o">=</span> <span class="n">spm1d</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">anova3tworm</span><span class="p">(</span> <span class="n">Y</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">,</span> <span class="n">C</span><span class="p">,</span> <span class="n">SUBJ</span> <span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">F</span>  <span class="o">=</span> <span class="n">spm1d</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">anova3tworm</span><span class="p">(</span> <span class="n">Y</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">,</span> <span class="n">C</span><span class="p">,</span> <span class="n">SUBJ</span> <span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="admonition danger">
-<p class="first admonition-title">Danger</p>
+<p class="admonition-title">Danger</p>
 <p>Non-sphericity corrections are not yet implemented for this design.</p>
-<p class="last">Since non-sphericity corrections weaken results with respect to assumed sphericity, interpret results cautiously, especially when close to alpha.</p>
+<p>Since non-sphericity corrections weaken results with respect to assumed sphericity, interpret results cautiously, especially when close to alpha.</p>
 </div>
 </div>
 <div class="section" id="three-way-anova-with-repeated-measures-on-one-factor">
 <span id="label-stats-anova3onerm"></span><h2>Three-way ANOVA with repeated-measures on one factor<a class="headerlink" href="#three-way-anova-with-repeated-measures-on-one-factor" title="Permalink to this headline">¶</a></h2>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<dl class="docutils">
-<dt>We do not yet have any real data examples to show.</dt>
-<dd><p class="first">Implementing three-way repeated measures ANOVA requires a SUBJ vector.</p>
-<p class="last"><strong>B</strong> and <strong>C</strong> must be the repeated-measures factor.</p>
+<p class="admonition-title">Note</p>
+<dl>
+<dt>We do not yet have any real data examples to show.</dt><dd><p>Implementing three-way repeated measures ANOVA requires a SUBJ vector.</p>
+<p><strong>B</strong> and <strong>C</strong> must be the repeated-measures factor.</p>
 </dd>
 </dl>
-<div class="last highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">F</span>  <span class="o">=</span> <span class="n">spm1d</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">anova3onerm</span><span class="p">(</span> <span class="n">Y</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">,</span> <span class="n">C</span><span class="p">,</span> <span class="n">SUBJ</span> <span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">F</span>  <span class="o">=</span> <span class="n">spm1d</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">anova3onerm</span><span class="p">(</span> <span class="n">Y</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">,</span> <span class="n">C</span><span class="p">,</span> <span class="n">SUBJ</span> <span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="admonition danger">
-<p class="first admonition-title">Danger</p>
+<p class="admonition-title">Danger</p>
 <p>Non-sphericity corrections are not yet implemented for this design.</p>
-<p class="last">Since non-sphericity corrections weaken results with respect to assumed sphericity, interpret results cautiously, especially when close to alpha.</p>
+<p>Since non-sphericity corrections weaken results with respect to assumed sphericity, interpret results cautiously, especially when close to alpha.</p>
 </div>
 </div>
 </div>
@@ -370,7 +367,7 @@
     </p>
     <p>
         &copy; Copyright 2019, Todd Pataky.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.5.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.1.2.<br/>
     </p>
   </div>
 </footer>

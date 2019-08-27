@@ -5,8 +5,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
     <title>Data processing basics &#8212; spm1d 0.4 documentation</title>
     <link rel="stylesheet" href="../../_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -70,7 +69,9 @@
   <ul class="dropdown-menu globaltoc"
       role="menu"
       aria-labelledby="dLabelGlobalToc"><ul>
-<li class="toctree-l1"><a class="reference internal" href="../../NewFeatures.html">New Features (version 0.4)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../NewFeatures.html">New Features (version 0.4.3)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../NewFeatures.html#new-features-version-0-4-2">New Features (version 0.4.2)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../NewFeatures.html#new-features-version-0-4">New Features (version 0.4)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../NewFeatures.html#new-features-version-0-3-2">New Features (version 0.3.2)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../NewFeatures.html#new-features-version-0-3-1">New Features (version 0.3.1)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../NewFeatures.html#new-features-version-0-3">New Features (version 0.3)</a></li>
@@ -172,10 +173,10 @@
 <span id="label-examples-processing"></span><h1>Data processing basics<a class="headerlink" href="#data-processing-basics" title="Permalink to this headline">¶</a></h1>
 <p>The examples below detail pre-processing functionality in <strong>spm1d.util</strong>.</p>
 <div class="admonition warning">
-<p class="first admonition-title">Warning</p>
+<p class="admonition-title">Warning</p>
 <p><strong>spm1d</strong> currently offers only very basic data processing functions.</p>
-<ul class="last simple">
-<li>Please consider using other software tools like <strong>SciPy</strong> and <strong>Visual3D</strong> for data processing.</li>
+<ul class="simple">
+<li><p>Please consider using other software tools like <strong>SciPy</strong> and <strong>Visual3D</strong> for data processing.</p></li>
 </ul>
 </div>
 <div class="section" id="interpolation">
@@ -200,8 +201,8 @@
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">Y_smoothed</span> <span class="o">=</span> <span class="n">spm1d</span><span class="o">.</span><span class="n">util</span><span class="o">.</span><span class="n">smooth</span><span class="p">(</span><span class="n">Y0</span><span class="p">,</span> <span class="n">fwhm</span><span class="o">=</span><span class="mf">5.0</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>(<a class="reference external" href="../../pyplots/processing/ex_smooth.py">Source code</a>)</p>
-<div class="figure">
+<p>(<a class="reference external" href="../../pyplots/processing/ex_smooth.py">Source code</a>, <a class="reference external" href="../../pyplots/processing/ex_smooth.png">png</a>, <a class="reference external" href="../../pyplots/processing/ex_smooth.hires.png">hires.png</a>, <a class="reference external" href="../../pyplots/processing/ex_smooth.pdf">pdf</a>)</p>
+<div class="figure align-default">
 <img alt="../../_images/ex_smooth.png" src="../../_images/ex_smooth.png" />
 </div>
 </div>
@@ -220,7 +221,7 @@
     </p>
     <p>
         &copy; Copyright 2019, Todd Pataky.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.5.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.1.2.<br/>
     </p>
   </div>
 </footer>

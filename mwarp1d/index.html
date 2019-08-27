@@ -1,0 +1,201 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>mwarp1d &#8212; mwarp1d 0.1 documentation</title>
+    <link rel="stylesheet" href="_static/bootstrap-astropy.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/language_data.js"></script>
+    <script type="text/javascript" src="_static/sidebar.js"></script>
+    <script type="text/javascript" src="_static/copybutton.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Installation" href="installation.html" />
+    <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,600' rel='stylesheet' type='text/css'/>
+
+  </head><body>
+<div class="topbar">
+  <a class="brand" title="Documentation Home" href="#"><span id="logotext1">mwarp</span><span id="logotext2">1d</span><span id="logotext3"></span></a>
+  <ul>
+    
+    <!-- <li><a class="homelink" title="Astropy Homepage" href="http://www.astropy.org"></a></li> -->
+    <li><a title="Home" href="#">Home</a></li>
+    <li><a title="" href=""></a></li>
+    <li><a title="" href=""></a></li>
+    <li><a title="" href=""></a></li>
+    <li><a title="Installation" href="Installation.html">Installation</a></li>
+    <li><a title="Quick start" href="Quickstart.html">Quick start</a></li>
+    <li><a title="User manual" href="Usermanual.html">User manual</a></li>
+    <li><a title="Examples" href="Examples.html">Examples</a></li>
+    <li><a title="API" href="API.html">API</a></li>
+    <li><a title="" href=""></a></li>
+    <li><a title="" href=""></a></li>
+    <li><a title="" href=""></a></li>
+	<li><a title="Support" href="Support.html">Support</a></li>
+    <li><a title="" href=""></a></li>
+    <li><a title="" href=""></a></li>
+    <li><a title="" href=""></a></li>
+    <li><a title="General Index" href="genindex.html">Index</a></li>
+    <li><a title="Module Index" href="py-modindex.html">Modules</a></li>
+    <li>
+      
+      
+<form action="search.html" method="get">
+  <input type="text" name="q" placeholder="Search" />
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+      
+    </li>
+  </ul>
+</div>
+
+<div class="related">
+    <h3>Navigation</h3>
+    <ul>
+      <li class="right">
+	<a href="installation.html" title="Installation">
+	  next &raquo;
+	</a>
+      </li>
+      <li>
+	<a href="#">mwarp1d 0.1 documentation</a>
+	 &#187;
+      </li>
+      
+       
+    </ul>
+</div>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="mwarp1d">
+<h1>mwarp1d<a class="headerlink" href="#mwarp1d" title="Permalink to this headline">¶</a></h1>
+<p>Manual one-dimensional data warping and nonlinear registration in <a class="reference external" href="https://www.python.org">Python</a> and <a class="reference external" href="https://www.riverbankcomputing.com/software/pyqt/intro">PyQt</a>.</p>
+<a class="reference internal image-reference" href="_images/ss0.png"><img alt="screenshot" class="align-center" src="_images/ss0.png" style="width: 388.0px; height: 271.6px;" /></a>
+<p><strong>mwarp1d</strong> provides a collection of GUI and scripting tool for manually warping 1D data,
+mainly for the purpose of nonlinear registration. As alternatives, a variety of algorithmic
+approaches to nonlinear 1D registration are available including:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="http://www.psych.mcgill.ca/misc/fda/">Minimium eigenvalue</a> (Ramsay &amp; Silverman 2005)</p></li>
+<li><p><a class="reference external" href="http://ssamg.stat.fsu.edu/software">Fisher-Rao square root velocity transform</a> (Srivastava, Jermyn, &amp; Joshi 2007)</p></li>
+<li><p><a class="reference external" href="https://cran.r-project.org/web/packages/fdakma/index.html">K-mean alignment</a> (Parodi et al. 2014)</p></li>
+<li><p><a class="reference external" href="https://github.com/julia-wrobel/registr">Multi-level clusters</a> (Wrobelm 2018)</p></li>
+</ul>
+<p><strong>Please cite</strong>:</p>
+<p>Pataky TC, Naouma H, Donnelly CJ (in review). Constrained manual warping of one-dimensional data in Python and PyQt for interactive nonlinear registration. <a class="reference external" href="https://www.jstatsoft.org">Journal of Statistical Software</a>.</p>
+<div class="section" id="contents">
+<h2>Contents<a class="headerlink" href="#contents" title="Permalink to this headline">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="installation.html#anaconda">Anaconda</a></li>
+<li class="toctree-l2"><a class="reference internal" href="installation.html#pip">PIP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="installation.html#new-to-python">New to Python?</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="quickstart.html">Quick start</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="quickstart.html#installation-screencast">Installation (screencast)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quickstart.html#launching-mwarp1d-screencast">Launching mwarp1d (screencast)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quickstart.html#example-data-screencast">Example data (screencast)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quickstart.html#landmark-warping-screencast">Landmark warping (screencast)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quickstart.html#manual-warping-screencast">Manual warping (screencast)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quickstart.html#restarting-warping-sessions-screencast">Restarting warping sessions (screencast)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quickstart.html#exporting-data-screencast">Exporting data (screencast)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quickstart.html#applying-warps-to-other-data-screencast">Applying warps to other data (screencast)</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="usermanual.html">User manual</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="manual/preliminaries.html">Preliminaries</a></li>
+<li class="toctree-l2"><a class="reference internal" href="manual/warping.html">Warping</a></li>
+<li class="toctree-l2"><a class="reference internal" href="manual/exporting.html">Exporting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="manual/shortcuts.html">Keyboard shortcuts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="manual/commandline.html">Command line UI launching</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="examples.html">Scripting examples</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="notebooks/landmark.html">Scripting landmark warps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="notebooks/manual.html">Scripting manual warps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="notebooks/sequential.html">Scripting sequential manual warps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="notebooks/parse.html">Parsing GUI results</a></li>
+<li class="toctree-l2"><a class="reference internal" href="notebooks/apply.html">Applying GUI warps to other data</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="api.html#manualwarp1d">ManualWarp1D</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api.html#sequentialmanualwarp">SequentialManualWarp</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api.html#gaussian-half-kernel">gaussian_half_kernel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api.html#interp1d">interp1d</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api.html#launch-gui">launch_gui</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api.html#loadnpz">loadnpz</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api.html#warp-landmark">warp_landmark</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api.html#warp-manual">warp_manual</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="support.html">Support</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="support.html#email">Email</a></li>
+<li class="toctree-l2"><a class="reference internal" href="support.html#online-forum">Online forum</a></li>
+<li class="toctree-l2"><a class="reference internal" href="support.html#consultancy">Consultancy</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper"><h3>Page Contents</h3>
+<ul>
+<li><a class="reference internal" href="#">mwarp1d</a><ul>
+<li><a class="reference internal" href="#contents">Contents</a></li>
+</ul>
+</li>
+</ul>
+
+
+  <h4>Next topic</h4>
+  <p class="topless"><a href="installation.html"
+                        title="next chapter">Installation</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/index.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<form action="search.html" method="get">
+  <input type="text" name="q" placeholder="Search" />
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+<footer class="footer">
+  <p class="pull-right">
+    <a href="_sources/index.rst.txt"
+       rel="nofollow">Page Source</a> &nbsp;
+    <a href="#">Back to Top</a></p>
+  <p>
+    &copy; Copyright 2019, Todd Pataky.<br/>
+    Created using <a href="http://www.sphinx-doc.org/en/stable/">Sphinx</a> 2.1.2. &nbsp;
+  </p>
+</footer>
+  </body>
+</html>

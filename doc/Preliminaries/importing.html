@@ -5,8 +5,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
     <title>Importing data &#8212; spm1d 0.4 documentation</title>
     <link rel="stylesheet" href="../../_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -70,7 +69,9 @@
   <ul class="dropdown-menu globaltoc"
       role="menu"
       aria-labelledby="dLabelGlobalToc"><ul>
-<li class="toctree-l1"><a class="reference internal" href="../../NewFeatures.html">New Features (version 0.4)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../NewFeatures.html">New Features (version 0.4.3)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../NewFeatures.html#new-features-version-0-4-2">New Features (version 0.4.2)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../NewFeatures.html#new-features-version-0-4">New Features (version 0.4)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../NewFeatures.html#new-features-version-0-3-2">New Features (version 0.3.2)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../NewFeatures.html#new-features-version-0-3-1">New Features (version 0.3.1)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../NewFeatures.html#new-features-version-0-3">New Features (version 0.3)</a></li>
@@ -175,22 +176,22 @@
 <p>To conduct univariate <strong>spm1d</strong> analysis the data should be arranged as a (J x Q) array, where J is the number of 1D responses (i.e. trials or subjects) and Q is the number of nodes in the 1D continuum.</p>
 <p>To conduct multivariate <strong>spm1d</strong> analysis the data should be arranged as a (J x Q X I) array, where I is the number of vector components in the 1D continuum.</p>
 <div class="admonition danger">
-<p class="first admonition-title">Danger</p>
+<p class="admonition-title">Danger</p>
 <p><strong>spm1d</strong> no longer directly supports data importing.</p>
 <p>Users are instead encouraged to use the following data importing tools (see examples below):</p>
-<ul class="last simple">
-<li><strong>numpy.load</strong></li>
-<li><strong>numpy.loadtxt</strong></li>
-<li><strong>scipy.io.loadmat</strong></li>
+<ul class="simple">
+<li><p><strong>numpy.load</strong></p></li>
+<li><p><strong>numpy.loadtxt</strong></p></li>
+<li><p><strong>scipy.io.loadmat</strong></p></li>
 </ul>
 </div>
 <div class="admonition warning">
-<p class="first admonition-title">Warning</p>
+<p class="admonition-title">Warning</p>
 <p><strong>WINDOWS USERS</strong> — File names in Python should be constructed using one of the following forms:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">fname</span> <span class="o">=</span> <span class="s1">&#39;C:</span><span class="se">\\</span><span class="s1">Temp</span><span class="se">\\</span><span class="s1">MyData</span><span class="se">\\</span><span class="s1">ex_kinematics.txt&#39;</span>
 </pre></div>
 </div>
-<div class="last highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">os</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">os</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">fname</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s1">&#39;C:\Temp&#39;</span><span class="p">,</span> <span class="s1">&#39;MyData&#39;</span><span class="p">,</span> <span class="s1">&#39;ex_kinematics.txt&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -217,8 +218,8 @@
 <span class="c1"># pyplot.show()</span>
 </pre></div>
 </div>
-<p>(<a class="reference external" href="../../pyplots/ex_import_txt.py">Source code</a>)</p>
-<div class="figure">
+<p>(<a class="reference external" href="../../pyplots/ex_import_txt.py">Source code</a>, <a class="reference external" href="../../pyplots/ex_import_txt.png">png</a>, <a class="reference external" href="../../pyplots/ex_import_txt.hires.png">hires.png</a>, <a class="reference external" href="../../pyplots/ex_import_txt.pdf">pdf</a>)</p>
+<div class="figure align-default">
 <img alt="../../_images/ex_import_txt.png" src="../../_images/ex_import_txt.png" />
 </div>
 </div>
@@ -253,8 +254,8 @@
 <span class="c1"># pyplot.show()</span>
 </pre></div>
 </div>
-<p>(<a class="reference external" href="../../pyplots/ex_import_mat.py">Source code</a>)</p>
-<div class="figure">
+<p>(<a class="reference external" href="../../pyplots/ex_import_mat.py">Source code</a>, <a class="reference external" href="../../pyplots/ex_import_mat.png">png</a>, <a class="reference external" href="../../pyplots/ex_import_mat.hires.png">hires.png</a>, <a class="reference external" href="../../pyplots/ex_import_mat.pdf">pdf</a>)</p>
+<div class="figure align-default">
 <img alt="../../_images/ex_import_mat.png" src="../../_images/ex_import_mat.png" />
 </div>
 </div>
@@ -277,7 +278,7 @@
     </p>
     <p>
         &copy; Copyright 2019, Todd Pataky.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.5.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.1.2.<br/>
     </p>
   </div>
 </footer>

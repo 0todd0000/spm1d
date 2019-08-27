@@ -5,8 +5,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
     <title>Multivariate post hoc analysis &#8212; spm1d 0.4 documentation</title>
     <link rel="stylesheet" href="../../_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -70,7 +69,9 @@
   <ul class="dropdown-menu globaltoc"
       role="menu"
       aria-labelledby="dLabelGlobalToc"><ul>
-<li class="toctree-l1"><a class="reference internal" href="../../NewFeatures.html">New Features (version 0.4)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../NewFeatures.html">New Features (version 0.4.3)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../NewFeatures.html#new-features-version-0-4-2">New Features (version 0.4.2)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../NewFeatures.html#new-features-version-0-4">New Features (version 0.4)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../NewFeatures.html#new-features-version-0-3-2">New Features (version 0.3.2)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../NewFeatures.html#new-features-version-0-3-1">New Features (version 0.3.1)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../NewFeatures.html#new-features-version-0-3">New Features (version 0.3)</a></li>
@@ -166,22 +167,22 @@
 <p>As a rule-of-thumb, <strong>NEVER</strong> report <em>post hoc</em> results which disagree with the main test results.  If the results disagree, the <em>post hoc</em> procedures are too simple.</p>
 <p>If you report <em>post hoc</em> results for <strong>spm1d</strong> analyses please explicitly highlight the limitations described in this document.</p>
 <div class="admonition warning">
-<p class="first admonition-title">Warning</p>
+<p class="admonition-title">Warning</p>
 <p>Current <em>post hoc</em> procedures in <strong>spm1d</strong> are likely too simple.</p>
-<p class="last">The example belowe uses a simple Bonferroni correction, but this assumes that the <em>post hoc</em> tests are independent, which is usually not the case, especially for multivariate data.</p>
+<p>The example belowe uses a simple Bonferroni correction, but this assumes that the <em>post hoc</em> tests are independent, which is usually not the case, especially for multivariate data.</p>
 </div>
 <div class="admonition danger">
-<p class="first admonition-title">Danger</p>
+<p class="admonition-title">Danger</p>
 <p>Current <em>post hoc</em> procedures in <strong>spm1d</strong> are generally not valid.</p>
 <p>They are not valid because they involve separate smoothness assessments for each <em>post hoc</em> test.</p>
-<p class="last">Although the resulting errors are expected to be small, we cannot guarantee validity.</p>
+<p>Although the resulting errors are expected to be small, we cannot guarantee validity.</p>
 </div>
 <p>Suggestions for conducting <em>post hoc</em> analyses for multivariate tests:</p>
 <ul class="simple">
-<li>For each <em>post hoc</em> test use a Bonferroni correction.</li>
-<li>For Hotelling’s T<sup>2</sup> tests conduct separate t tests on each vector component, but acknowledge that this neglects vector component covariance.</li>
-<li>For CCA conduct separate regression tests on each vector component, but acknowledge that this neglects vector component covariance.</li>
-<li>For MANOVA conduct separate Hotelling’s T<sup>2</sup> tests on each pair of groups, and if those tests reach significance then conduct additional <em>post hoc</em> t tests on each vector component, but acknowledge that this neglects vector component covariance.</li>
+<li><p>For each <em>post hoc</em> test use a Bonferroni correction.</p></li>
+<li><p>For Hotelling’s T<sup>2</sup> tests conduct separate t tests on each vector component, but acknowledge that this neglects vector component covariance.</p></li>
+<li><p>For CCA conduct separate regression tests on each vector component, but acknowledge that this neglects vector component covariance.</p></li>
+<li><p>For MANOVA conduct separate Hotelling’s T<sup>2</sup> tests on each pair of groups, and if those tests reach significance then conduct additional <em>post hoc</em> t tests on each vector component, but acknowledge that this neglects vector component covariance.</p></li>
 </ul>
 </div>
 
@@ -198,7 +199,7 @@
     </p>
     <p>
         &copy; Copyright 2019, Todd Pataky.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.5.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.1.2.<br/>
     </p>
   </div>
 </footer>
