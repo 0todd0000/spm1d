@@ -12,7 +12,7 @@ Manual one-dimensional data warping and nonlinear registration in `Python <https
    :alt: screenshot
    :align: center
 
-**mwarp1d** provides a collection of GUI and scripting tool for manually warping 1D data,
+**mwarp1d** provides a collection of GUI and scripting tools for manually warping 1D data,
 mainly for the purpose of nonlinear registration. As alternatives, a variety of algorithmic
 approaches to nonlinear 1D registration are available including:
 

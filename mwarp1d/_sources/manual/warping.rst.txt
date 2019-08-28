@@ -2,8 +2,6 @@
 Warping
 ===================================
 
-aaa
-
 Landmark warping
 ----------------------------
 
@@ -85,8 +83,64 @@ The meaning of these four parameters is depicted in the figure below.
 	plt.show()
 
 
+In order to conduct manual warping, follow the steps below.
+
+See also the :ref:`manual warping <Manual warping (screencast)>` screencast.
+
+
+Step 1:  Position the mouse 
+_____________________________________
+
+* Move the mouse on the axes to the position at which you wish to initiate the warp. This will set the ``center`` parameter.
+
+
+
+Step 2:  Initiate the warp
+_____________________________________
+
+* Press the "W" key to initiate a manual warp.
+
+
+Step 3:  Adjust the warp
+_____________________________________
+
+* Drag the mouse left-and-right to adjust the ``amp`` parameter.
+
+* Drag the mouse up-and-down to adjust the ``head`` and ``tail`` parameters.
+
+
+Step 4:  Finalize the warp
+_____________________________________
+
+* Press "Enter" to apply the warp.  Alternatively press "ESC" to cancel the warp.
+
+
+Step 5:  Restore to original data
+_____________________________________
+
+* If you are unhappy with the warp results, press "R" to restore the original data.
+
+* This will delete all existing warps for the currently selected curve.
+
+
+
+
+
 
 Restoring previous sessions
 ----------------------------
 
-aaa
+If something went wrong during warping (e.g. a software crash), or if you would like to revisit previous warping sessions, then:
+
+1. Launch **mwarp1d**
+
+2. Drag a previous session's :ref:`output (NPZ) <Specifying output directory>` file on to the main window's :ref:`Drop Data box <Importing data>`. 
+
+
+This will restore the previous session, allowing you to adjust and/or reset the previously saved warps.
+
+
+
+
+
+

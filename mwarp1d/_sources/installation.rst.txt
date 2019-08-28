@@ -18,6 +18,9 @@ Link to **mwarp1d** in the `Anaconda Cloud <https://anaconda.org/toddp/mwarp1d>`
 New to Python?
 ---------------------
 
+Refer to the instructions below and also the :ref:`Installation <Installation (screencast)>` and :ref:`Launching <Launching mwarp1d (screencast)>` screencasts.
+
+
 The easiest way to use **mwarp1d** is to:
 
 1. Install `Anaconda <https://anaconda.org>`_  (detailed instructions `here <https://docs.anaconda.com/anaconda/install/>`_)
@@ -36,4 +39,4 @@ The easiest way to use **mwarp1d** is to:
 	>>> import mwarp1d
 	>>> mwarp1d.launch_gui()
 	
-If the **mwarp1d** GUI launches without errors, proceed to :ref:`Quick start`
+If the **mwarp1d** GUI launches without errors, proceed to the :ref:`Example data <Example data (screencast)>` screencast.
