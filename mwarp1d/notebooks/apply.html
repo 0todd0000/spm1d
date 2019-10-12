@@ -143,18 +143,18 @@ div.nblast {
 
 /* input prompt */
 div.nbinput div.prompt pre {
-    color: #307FC1;
+    color: #303F9F;
 }
 
 /* output prompt */
 div.nboutput div.prompt pre {
-    color: #BF5B3D;
+    color: #D84315;
 }
 
 /* all prompts */
 div.nbinput div.prompt,
 div.nboutput div.prompt {
-    min-width: 7ex;
+    min-width: 9ex;
     padding-top: 0.4em;
     padding-right: 0.4em;
     text-align: right;
@@ -194,9 +194,9 @@ div.nboutput div.output_area {
 
 /* input area */
 div.nbinput div.input_area {
-    border: 1px solid #e0e0e0;
+    border: 1px solid #cfcfcf;
     border-radius: 2px;
-    background: #f5f5f5;
+    background: #f7f7f7;
 }
 
 /* override MathJax center alignment in output cells */
@@ -204,7 +204,7 @@ div.nboutput div[class*=MathJax] {
     text-align: left !important;
 }
 
-/* override sphinx.ext.imgmath center alignment in output cells */
+/* override sphinx.ext.pngmath center alignment in output cells */
 div.nboutput div.math p {
     text-align: left;
 }
@@ -253,47 +253,21 @@ div.nboutput div.output_area.stderr {
 
 .ansi-bold { font-weight: bold; }
 .ansi-underline { text-decoration: underline; }
-
-/* Some additional styling taken form the Jupyter notebook CSS */
-div.rendered_html table {
-  border: none;
-  border-collapse: collapse;
-  border-spacing: 0;
-  color: black;
-  font-size: 12px;
-  table-layout: fixed;
-}
-div.rendered_html thead {
-  border-bottom: 1px solid black;
-  vertical-align: bottom;
-}
-div.rendered_html tr,
-div.rendered_html th,
-div.rendered_html td {
-  text-align: right;
-  vertical-align: middle;
-  padding: 0.5em 0.5em;
-  line-height: normal;
-  white-space: normal;
-  max-width: none;
-  border: none;
-}
-div.rendered_html th {
-  font-weight: bold;
-}
-div.rendered_html tbody tr:nth-child(odd) {
-  background: #f5f5f5;
-}
-div.rendered_html tbody tr:hover {
-  background: rgba(66, 165, 245, 0.2);
-}
 </style>
 <div class="section" id="Applying-GUI-warps-to-other-data">
 <h1>Applying GUI warps to other data<a class="headerlink" href="#Applying-GUI-warps-to-other-data" title="Permalink to this headline">¶</a></h1>
-<p>The <a class="reference internal" href="parse.html"><span class="doc">Parsing GUI results</span></a> notebook demonstrated how <strong>mwarp1d.loadnpz</strong> can be used to load warping results, and in particular to apply the saved warps to arbitrary data. This can be useful when dealing with multivariate 1D data, as demonstrated below.</p>
-<p>The example dataset (in ./mwarp1d/examples/data) consists of 8 observations of a three-component vector that is measured over time at 100 equally spaced nodes. Let’s refer to these counts as J=8, I=3, and Q=100, respectively, and let’s call the three vector components “X”, “Y” and “Z”. All three components are saved in the example NPY file:</p>
+<p>The <a class="reference internal" href="parse.html"><span class="doc">Parsing GUI results</span></a> notebook demonstrated how
+<strong>mwarp1d.loadnpz</strong> can be used to load warping results, and in
+particular to apply the saved warps to arbitrary data. This can be
+useful when dealing with multivariate 1D data, as demonstrated below.</p>
+<p>The example dataset (in ./mwarp1d/examples/data) consists of 8
+observations of a three-component vector that is measured over time at
+100 equally spaced nodes. Let’s refer to these counts as J=8, I=3, and
+Q=100, respectively, and let’s call the three vector components “X”, “Y”
+and “Z”. All three components are saved in the example NPY file:</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>In [1]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -302,7 +276,8 @@ div.rendered_html tbody tr:hover {
 </div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>In [2]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -330,7 +305,8 @@ div.rendered_html tbody tr:hover {
 <p>Note that the array shape is (J, Q, I).</p>
 <p>The three vector components can be visualized like this:</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>In [3]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -359,9 +335,12 @@ div.rendered_html tbody tr:hover {
 <img alt="../_images/notebooks_apply_4_0.png" src="../_images/notebooks_apply_4_0.png" />
 </div>
 </div>
-<p>The <strong>mwarp1d</strong> GUI was used to define warps for each of the 7 sources, but only for the X component, as can be seen by loading the NPZ results file:</p>
+<p>The <strong>mwarp1d</strong> GUI was used to define warps for each of the 7 sources,
+but only for the X component, as can be seen by loading the NPZ results
+file:</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>In [4]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -384,9 +363,11 @@ div.rendered_html tbody tr:hover {
 <img alt="../_images/notebooks_apply_6_0.png" src="../_images/notebooks_apply_6_0.png" />
 </div>
 </div>
-<p>To apply the saved warps to the other vector components, use the <strong>apply_warps</strong> method like this:</p>
+<p>To apply the saved warps to the other vector components, use the
+<strong>apply_warps</strong> method like this:</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>In [5]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -398,7 +379,8 @@ div.rendered_html tbody tr:hover {
 </div>
 <p>The results can be visualized as above:</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>In [6]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -427,9 +409,11 @@ div.rendered_html tbody tr:hover {
 <img alt="../_images/notebooks_apply_10_0.png" src="../_images/notebooks_apply_10_0.png" />
 </div>
 </div>
-<p>If the X, Y and Z data are saved as separate 2D arrays (e.g. in separate CSV files), first load them as 2D NumPy arrays like this:</p>
+<p>If the X, Y and Z data are saved as separate 2D arrays (e.g. in separate
+CSV files), first load them as 2D NumPy arrays like this:</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>In [7]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -459,7 +443,8 @@ div.rendered_html tbody tr:hover {
 </div>
 <p>Then apply the warps as above:</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>In [8]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>

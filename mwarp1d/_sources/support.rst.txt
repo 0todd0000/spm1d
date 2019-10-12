@@ -3,6 +3,18 @@ Support
 ===================================
 
 
+Uses
+----------------------------
+
+1. **Contributing to software development**: access this project's `GitHub repository <https://github.com/0todd0000/mwarp1d>`_ and contribute as described in `GitHub documentation <https://github.com/MarcDiethelm/contributing/>`_.
+
+2. **Reporting issues or problems with the software**:  Please use the :ref:`online forum` (details below)
+
+3. **Seeking support**: Please use the :ref:`online forum` (details below)
+
+
+
+
 
 Email
 ----------------------------

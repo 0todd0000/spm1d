@@ -5,6 +5,8 @@ mwarp1d
 
 Manual one-dimensional data warping and nonlinear registration in `Python <https://www.python.org>`_ and `PyQt <https://www.riverbankcomputing.com/software/pyqt/intro>`_.
 
+Source code is available in this project's `GitHub repository <https://github.com/0todd0000/mwarp1d>`_
+
 .. image:: _static/ss0.png
    :height: 679 px
    :width: 970 px
@@ -23,7 +25,7 @@ approaches to nonlinear 1D registration are available including:
 
 **Please cite**:
 
-Pataky TC, Naouma H, Donnelly CJ (in review). Constrained manual warping of one-dimensional data in Python and PyQt for interactive nonlinear registration. `Journal of Statistical Software <https://www.jstatsoft.org>`_.
+Pataky TC, Naouma H, Donnelly CJ (in review). mwarp1d: Manual one-dimensional data warping in Python and PyQt. Journal of Open Source Software. `Journal of Open Source Software <https://joss.theoj.org>`_.
 
 
 

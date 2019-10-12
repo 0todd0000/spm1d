@@ -143,18 +143,18 @@ div.nblast {
 
 /* input prompt */
 div.nbinput div.prompt pre {
-    color: #307FC1;
+    color: #303F9F;
 }
 
 /* output prompt */
 div.nboutput div.prompt pre {
-    color: #BF5B3D;
+    color: #D84315;
 }
 
 /* all prompts */
 div.nbinput div.prompt,
 div.nboutput div.prompt {
-    min-width: 7ex;
+    min-width: 9ex;
     padding-top: 0.4em;
     padding-right: 0.4em;
     text-align: right;
@@ -194,9 +194,9 @@ div.nboutput div.output_area {
 
 /* input area */
 div.nbinput div.input_area {
-    border: 1px solid #e0e0e0;
+    border: 1px solid #cfcfcf;
     border-radius: 2px;
-    background: #f5f5f5;
+    background: #f7f7f7;
 }
 
 /* override MathJax center alignment in output cells */
@@ -204,7 +204,7 @@ div.nboutput div[class*=MathJax] {
     text-align: left !important;
 }
 
-/* override sphinx.ext.imgmath center alignment in output cells */
+/* override sphinx.ext.pngmath center alignment in output cells */
 div.nboutput div.math p {
     text-align: left;
 }
@@ -253,53 +253,25 @@ div.nboutput div.output_area.stderr {
 
 .ansi-bold { font-weight: bold; }
 .ansi-underline { text-decoration: underline; }
-
-/* Some additional styling taken form the Jupyter notebook CSS */
-div.rendered_html table {
-  border: none;
-  border-collapse: collapse;
-  border-spacing: 0;
-  color: black;
-  font-size: 12px;
-  table-layout: fixed;
-}
-div.rendered_html thead {
-  border-bottom: 1px solid black;
-  vertical-align: bottom;
-}
-div.rendered_html tr,
-div.rendered_html th,
-div.rendered_html td {
-  text-align: right;
-  vertical-align: middle;
-  padding: 0.5em 0.5em;
-  line-height: normal;
-  white-space: normal;
-  max-width: none;
-  border: none;
-}
-div.rendered_html th {
-  font-weight: bold;
-}
-div.rendered_html tbody tr:nth-child(odd) {
-  background: #f5f5f5;
-}
-div.rendered_html tbody tr:hover {
-  background: rgba(66, 165, 245, 0.2);
-}
 </style>
 <div class="section" id="Scripting-manual-warps">
 <h1>Scripting manual warps<a class="headerlink" href="#Scripting-manual-warps" title="Permalink to this headline">¶</a></h1>
-<p>Manual (Gaussian-kernel-based) warps can be scripted using the <strong>warp_manual</strong> function, which accepts four parameters:</p>
+<p>Manual (Gaussian-kernel-based) warps can be scripted using the
+<strong>warp_manual</strong> function, which accepts four parameters:</p>
 <ul class="simple">
 <li><p><strong>y</strong> — original 1D data</p></li>
-<li><p><strong>center</strong> — warp kernel center, relative to its feasible range (between 0 and 1)</p></li>
-<li><p><strong>amp</strong> — warp kernel amplitude, relative to its feasible range (between -1 and 1)</p></li>
-<li><p><strong>head</strong> — warp kernel head width, relative to its feasible range (between 0 and 1)</p></li>
-<li><p><strong>tail</strong> — warp kernel tail width, relative to its feasible range (between 0 and 1)</p></li>
+<li><p><strong>center</strong> — warp kernel center, relative to its feasible range
+(between 0 and 1)</p></li>
+<li><p><strong>amp</strong> — warp kernel amplitude, relative to its feasible range
+(between -1 and 1)</p></li>
+<li><p><strong>head</strong> — warp kernel head width, relative to its feasible range
+(between 0 and 1)</p></li>
+<li><p><strong>tail</strong> — warp kernel tail width, relative to its feasible range
+(between 0 and 1)</p></li>
 </ul>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>In [1]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -308,7 +280,8 @@ div.rendered_html tbody tr:hover {
 </div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>In [2]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -346,9 +319,11 @@ div.rendered_html tbody tr:hover {
 <img alt="../_images/notebooks_manual_2_0.png" src="../_images/notebooks_manual_2_0.png" />
 </div>
 </div>
-<p>The same can be achieved somewhat more verbosely using the <strong>ManualWarp1D</strong> class:</p>
+<p>The same can be achieved somewhat more verbosely using the
+<strong>ManualWarp1D</strong> class:</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>In [3]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -383,9 +358,11 @@ div.rendered_html tbody tr:hover {
 <img alt="../_images/notebooks_manual_4_0.png" src="../_images/notebooks_manual_4_0.png" />
 </div>
 </div>
-<p>One advantage of using the <strong>ManualWarp1D</strong> class is that it can be used to access details like the displacement field:</p>
+<p>One advantage of using the <strong>ManualWarp1D</strong> class is that it can be used
+to access details like the displacement field:</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>In [4]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -431,9 +408,11 @@ div.rendered_html tbody tr:hover {
 <li><p><strong>amp</strong> indicates the kernel amplitude</p></li>
 <li><p><strong>head</strong> and <strong>tail</strong> indicate the kernel width</p></li>
 </ul>
-<p>Changing head and tail to zero, for example, yields the following result:</p>
+<p>Changing head and tail to zero, for example, yields the following
+result:</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>In [5]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -458,9 +437,12 @@ div.rendered_html tbody tr:hover {
 <img alt="../_images/notebooks_manual_8_0.png" src="../_images/notebooks_manual_8_0.png" />
 </div>
 </div>
-<p>Note that these values of <em>head</em> and <em>tail</em> represent the minimum possible values for these parameters that maintain a monotonically increasing warped domain, which can be visualized as indicated below.</p>
+<p>Note that these values of <em>head</em> and <em>tail</em> represent the minimum
+possible values for these parameters that maintain a monotonically
+increasing warped domain, which can be visualized as indicated below.</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>In [6]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -485,7 +467,12 @@ div.rendered_html tbody tr:hover {
 <img alt="../_images/notebooks_manual_10_0.png" src="../_images/notebooks_manual_10_0.png" />
 </div>
 </div>
-<p>Attempting to set smaller <em>absolute</em> values for <em>head</em> and <em>tail</em> would result in a non-monotonically increasing warping field. If the domain is time, it would imply that warped time does not flow forward across the whole domain, and thus that temporal events can be re-ordered in time. The <strong>ManualWarp1D</strong> class ensures that this does not happen, and that all warped domains remain monotonically increasing.</p>
+<p>Attempting to set smaller <em>absolute</em> values for <em>head</em> and <em>tail</em> would
+result in a non-monotonically increasing warping field. If the domain is
+time, it would imply that warped time does not flow forward across the
+whole domain, and thus that temporal events can be re-ordered in time.
+The <strong>ManualWarp1D</strong> class ensures that this does not happen, and that
+all warped domains remain monotonically increasing.</p>
 </div>
 
 

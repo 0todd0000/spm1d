@@ -143,18 +143,18 @@ div.nblast {
 
 /* input prompt */
 div.nbinput div.prompt pre {
-    color: #307FC1;
+    color: #303F9F;
 }
 
 /* output prompt */
 div.nboutput div.prompt pre {
-    color: #BF5B3D;
+    color: #D84315;
 }
 
 /* all prompts */
 div.nbinput div.prompt,
 div.nboutput div.prompt {
-    min-width: 7ex;
+    min-width: 9ex;
     padding-top: 0.4em;
     padding-right: 0.4em;
     text-align: right;
@@ -194,9 +194,9 @@ div.nboutput div.output_area {
 
 /* input area */
 div.nbinput div.input_area {
-    border: 1px solid #e0e0e0;
+    border: 1px solid #cfcfcf;
     border-radius: 2px;
-    background: #f5f5f5;
+    background: #f7f7f7;
 }
 
 /* override MathJax center alignment in output cells */
@@ -204,7 +204,7 @@ div.nboutput div[class*=MathJax] {
     text-align: left !important;
 }
 
-/* override sphinx.ext.imgmath center alignment in output cells */
+/* override sphinx.ext.pngmath center alignment in output cells */
 div.nboutput div.math p {
     text-align: left;
 }
@@ -253,44 +253,14 @@ div.nboutput div.output_area.stderr {
 
 .ansi-bold { font-weight: bold; }
 .ansi-underline { text-decoration: underline; }
-
-/* Some additional styling taken form the Jupyter notebook CSS */
-div.rendered_html table {
-  border: none;
-  border-collapse: collapse;
-  border-spacing: 0;
-  color: black;
-  font-size: 12px;
-  table-layout: fixed;
-}
-div.rendered_html thead {
-  border-bottom: 1px solid black;
-  vertical-align: bottom;
-}
-div.rendered_html tr,
-div.rendered_html th,
-div.rendered_html td {
-  text-align: right;
-  vertical-align: middle;
-  padding: 0.5em 0.5em;
-  line-height: normal;
-  white-space: normal;
-  max-width: none;
-  border: none;
-}
-div.rendered_html th {
-  font-weight: bold;
-}
-div.rendered_html tbody tr:nth-child(odd) {
-  background: #f5f5f5;
-}
-div.rendered_html tbody tr:hover {
-  background: rgba(66, 165, 245, 0.2);
-}
 </style>
 <div class="section" id="Parsing-GUI-results">
 <h1>Parsing GUI results<a class="headerlink" href="#Parsing-GUI-results" title="Permalink to this headline">¶</a></h1>
-<p>The <strong>mwarp1d</strong> GUI saves all results in <a class="reference external" href="https://docs.scipy.org/doc/numpy-1.15.1/reference/generated/numpy.savez_compressed.html">compressed NPZ format</a>. This results file contains the original data, the warping parameters, and the warped data. Results are automatically saved every time the user updates a warp.</p>
+<p>The <strong>mwarp1d</strong> GUI saves all results in <a class="reference external" href="https://docs.scipy.org/doc/numpy-1.15.1/reference/generated/numpy.savez_compressed.html">compressed NPZ
+format</a>.
+This results file contains the original data, the warping parameters,
+and the warped data. Results are automatically saved every time the user
+updates a warp.</p>
 <p>The results file can be parsed in one of two ways:</p>
 <ol class="arabic simple">
 <li><p>Using <strong>numpy.load</strong></p></li>
@@ -304,9 +274,11 @@ div.rendered_html tbody tr:hover {
 <hr class="docutils" />
 <div class="section" id="Using-numpy.load-(landmark-mode)">
 <h2>Using numpy.load (landmark mode)<a class="headerlink" href="#Using-numpy.load-(landmark-mode)" title="Permalink to this headline">¶</a></h2>
-<p>The results file can be loaded using the usual NumPy approach. Let’s first check the variable names that are stored in landmark mode results.</p>
+<p>The results file can be loaded using the usual NumPy approach. Let’s
+first check the variable names that are stored in landmark mode results.</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>In [1]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -344,18 +316,25 @@ landmark_labels
 <p>These variables are:</p>
 <ul class="simple">
 <li><p><strong>mode</strong> — warping mode (“landmark” or “manual”)</p></li>
-<li><p><strong>filename0</strong> — the name of the CSV data file (if any) imported into the GUI</p></li>
-<li><p><strong>filename1</strong> — the name of the NPZ data file (originally specified in the GUI; this is not updated if the NPZ file is relocated)</p></li>
-<li><p><strong>ydata_template</strong> — template; a (Q,) array, where Q is the number of domain nodes</p></li>
-<li><p><strong>ydata_sources</strong> — original sources; a (J,Q) array, where J is the number of sources</p></li>
+<li><p><strong>filename0</strong> — the name of the CSV data file (if any) imported into
+the GUI</p></li>
+<li><p><strong>filename1</strong> — the name of the NPZ data file (originally specified
+in the GUI; this is not updated if the NPZ file is relocated)</p></li>
+<li><p><strong>ydata_template</strong> — template; a (Q,) array, where Q is the number of
+domain nodes</p></li>
+<li><p><strong>ydata_sources</strong> — original sources; a (J,Q) array, where J is the
+number of sources</p></li>
 <li><p><strong>ydata_sources_warped</strong> — warped sources; a (J,Q) array</p></li>
-<li><p><strong>landmarks_template</strong> — template landmarks, an (n,) array of integers, where n is the number of landmarks</p></li>
+<li><p><strong>landmarks_template</strong> — template landmarks, an (n,) array of
+integers, where n is the number of landmarks</p></li>
 <li><p><strong>landmarks_sources</strong> — source landmarks, a (J,n) array of integers</p></li>
-<li><p><strong>landmark_labels</strong> — landmark, an (n,) array of string labels, one per landmark</p></li>
+<li><p><strong>landmark_labels</strong> — landmark, an (n,) array of string labels, one
+per landmark</p></li>
 </ul>
 <p>Let’s first check the mode and data array shapes:</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>In [2]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -378,10 +357,12 @@ landmark
 (7, 100)
 </pre></div></div>
 </div>
-<p>This implies that the data were warped in “landmark” mode, that there were 7 sources, each represented using 100 domain nodes.</p>
+<p>This implies that the data were warped in “landmark” mode, that there
+were 7 sources, each represented using 100 domain nodes.</p>
 <p>Let’s next check the landmark array shapes:</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>In [3]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -405,7 +386,8 @@ landmark
 <p>This implies that 4 landmarks were used for each of the 7 sources.</p>
 <p>The actual landmarks are:</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>In [4]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -442,7 +424,8 @@ landmark_labels:
 </div>
 <p>The data can be visualized as follows:</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>In [5]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -483,7 +466,8 @@ landmark_labels:
 <h2>Using numpy.load (manual mode)<a class="headerlink" href="#Using-numpy.load-(manual-mode)" title="Permalink to this headline">¶</a></h2>
 <p>The variables saved for the manual warping mode are:</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>In [6]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -509,13 +493,17 @@ ydata_sources_warped
 seqwarps
 </pre></div></div>
 </div>
-<p>“seqwarps” is the only new variable; not also that the “landmarks*” variables do not appear in manual mode.</p>
+<p>“seqwarps” is the only new variable; not also that the “landmarks*”
+variables do not appear in manual mode.</p>
 <ul class="simple">
-<li><p><strong>seqwarps</strong> — a (J,) array of objects, where each object is an array of sequential manual warp parameters.</p></li>
+<li><p><strong>seqwarps</strong> — a (J,) array of objects, where each object is an array
+of sequential manual warp parameters.</p></li>
 </ul>
-<p>In order to read <strong>seqwarps</strong>, the NPZ file must be loaded in “allow_pickle” mode as follows.</p>
+<p>In order to read <strong>seqwarps</strong>, the NPZ file must be loaded in
+“allow_pickle” mode as follows.</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>In [7]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -547,10 +535,14 @@ seqwarps
        [-0.3       ,  0.        ,  0.04      ,  0.04      ]])]
 </pre></div></div>
 </div>
-<p>Note that the elements of <strong>seqwarps</strong> are either None or an (m,4) array, where m is the number of warps applied to the given source, and 4 is the number of manual warp parameters (i.e., amp, center, head, tail).</p>
-<p>For example, the sequential warp parameters for the third source can be retrieved using:</p>
+<p>Note that the elements of <strong>seqwarps</strong> are either None or an (m,4)
+array, where m is the number of warps applied to the given source, and 4
+is the number of manual warp parameters (i.e., amp, center, head, tail).</p>
+<p>For example, the sequential warp parameters for the third source can be
+retrieved using:</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>In [8]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -569,15 +561,20 @@ seqwarps
  [0.02758621 0.27142857 0.092      0.092     ]]
 </pre></div></div>
 </div>
-<p>These parameters could then be used in conjunction with the <strong>SequentialManualWarp</strong> class to reconstruct <strong>ydata_sources_warped</strong>.</p>
-<p>However, if you wish to use these saved warping results (either landmark or manual mode results) to warp data, it is much easier to use <strong>mwarp1d.loadnpz</strong> as described below.</p>
+<p>These parameters could then be used in conjunction with the
+<strong>SequentialManualWarp</strong> class to reconstruct <strong>ydata_sources_warped</strong>.</p>
+<p>However, if you wish to use these saved warping results (either landmark
+or manual mode results) to warp data, it is much easier to use
+<strong>mwarp1d.loadnpz</strong> as described below.</p>
 </div>
 <hr class="docutils" />
 <div class="section" id="Using-mwarp1d.loadnpz">
 <h2>Using mwarp1d.loadnpz<a class="headerlink" href="#Using-mwarp1d.loadnpz" title="Permalink to this headline">¶</a></h2>
-<p>The NPZ results files can alternatively be loaded using <strong>mwarp1d.loadnpz</strong>:</p>
+<p>The NPZ results files can alternatively be loaded using
+<strong>mwarp1d.loadnpz</strong>:</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>In [9]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -604,9 +601,11 @@ MWarpResults
 
 </pre></div></div>
 </div>
-<p>Summary information is displayed, and all parameters can be accessed as attributes like this:</p>
+<p>Summary information is displayed, and all parameters can be accessed as
+attributes like this:</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>In [10]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -630,7 +629,8 @@ manual
 </div>
 <p>and visualized like this:</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>In [11]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -650,9 +650,13 @@ manual
 <img alt="../_images/notebooks_parse_23_0.png" src="../_images/notebooks_parse_23_0.png" />
 </div>
 </div>
-<p>The most useful feature of this <strong>loadnpz</strong> procedure is the <strong>apply_warps</strong> method, which can be used to warp arbitrary data. For example, to reproduce the saved warped sources, simply submit the original sources to <strong>apply_warps</strong> like this:</p>
+<p>The most useful feature of this <strong>loadnpz</strong> procedure is the
+<strong>apply_warps</strong> method, which can be used to warp arbitrary data. For
+example, to reproduce the saved warped sources, simply submit the
+original sources to <strong>apply_warps</strong> like this:</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>In [12]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -666,7 +670,8 @@ manual
 </div>
 <p>Then compare the results:</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>In [13]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -701,7 +706,8 @@ manual
 </div>
 <p>This <strong>apply_warps</strong> procedure can also be applied to landmark warps:</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>In [14]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -746,7 +752,9 @@ manual
 <img alt="../_images/notebooks_parse_29_0.png" src="../_images/notebooks_parse_29_0.png" />
 </div>
 </div>
-<p>This feature is particularly useful when you want to apply warps to multivariate 1D data, as demonstrated in <a class="reference internal" href="apply.html"><span class="doc">Apply GUI warps</span></a></p>
+<p>This feature is particularly useful when you want to apply warps to
+multivariate 1D data, as demonstrated in <a class="reference internal" href="apply.html"><span class="doc">Apply GUI
+warps</span></a></p>
 </div>
 </div>
 

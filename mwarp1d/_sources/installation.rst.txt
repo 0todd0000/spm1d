@@ -14,6 +14,24 @@ Anaconda
 Link to **mwarp1d** in the `Anaconda Cloud <https://anaconda.org/toddp/mwarp1d>`_
 
 
+Dependencies
+---------------------
+
+- `NumPy 1.16 <https://numpy.org>`_
+- `SciPy 1.3 <https://www.scipy.org>`_
+- `Matplotlib 3.1 <https://matplotlib.org>`_
+
+These dependencies are included with the Anaconda distribution.
+
+If, for some reason, you have removed these dependencies from Anaconda, installing :code:`mwarp1d` using :code:`conda` (see above) will automatically handle their installation.
+
+
+Source code
+---------------------
+
+Source code is available in this project's `GitHub repository <https://github.com/0todd0000/mwarp1d>`_
+
+
 
 New to Python?
 ---------------------
