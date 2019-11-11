@@ -1,4 +1,5 @@
 
+import os
 import numpy as np
 from matplotlib import pyplot
 import spm1d
@@ -8,8 +9,8 @@ eps     = np.finfo(float).eps
 
 
 #(0) Load data:
-dir0    = '/Users/todd/Dropbox/2019Sync/Documents/Projects/projectsOngoing/spm1d/ex2d/'
-fname   = dir0 + 'data2d.npy'
+dir0    = os.path.dirname(__file__)
+fname   = os.path.join(dir0, 'data2d.npy')
 Y0      = np.load(fname)
 y0      = np.array([yy.flatten() for yy in Y0])
 J,Q     = y0.shape
