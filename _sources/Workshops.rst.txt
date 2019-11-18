@@ -29,7 +29,7 @@ Workshop Slides
 Future Workshops
 ---------------------------
 
-2019 January 23-24, KU Leuven. `(Click here to register) <https://faber.kuleuven.be/nl/pv/kalender/spm1d_2020>`_
+2020 January 23-24, KU Leuven. `(Click here to register) <https://faber.kuleuven.be/nl/pv/kalender/spm1d_2020>`_
 
 
 
