@@ -73,7 +73,11 @@ class DataPlotter(object):
 		ax.set_ylim(ymin-dy, ymax+dy)
 	
 	def plot(self, *args, **kwdargs):
-		return self.ax.plot(*args, **kwdargs)
+		if self.x is None:
+			h = self.ax.plot(*args, **kwdargs)
+		else:
+			h = self.ax.plot(self.x, *args, **kwdargs)
+		return h
 
 	# def plot(self, y, **kwdargs):
 	# 	return self.ax.plot(y, **kwdargs)
