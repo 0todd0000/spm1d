@@ -380,7 +380,7 @@ def plot_spmi_threshold_label(spmi, ax=None, lower=False, pos=None, autoset_ylim
 	>>> ti.plot_threshold_label(pos=(50,3.0))   # equivalent to "spm1d.plot.plot_spmi_threshold_label(ti, pos=(50,3.0))"
 	'''
 	plotter = SPMiPlotter(spmi, ax=ax)
-	h       = plotter.plot_threshold_label(lower=False, pos=None, **kwdargs)
+	h       = plotter.plot_threshold_label(lower=False, pos=pos, **kwdargs)
 	if autoset_ylim:
 		plotter._set_ylim(ax)
 	return h
