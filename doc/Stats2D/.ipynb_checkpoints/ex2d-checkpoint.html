@@ -9,15 +9,15 @@
     <title>Analysis of 2D data (Python) &#8212; spm1d 0.4 documentation</title>
     <link rel="stylesheet" href="../../../_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
-    <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
-    <script type="text/javascript" src="../../../_static/jquery.js"></script>
-    <script type="text/javascript" src="../../../_static/underscore.js"></script>
-    <script type="text/javascript" src="../../../_static/doctools.js"></script>
-    <script type="text/javascript" src="../../../_static/language_data.js"></script>
-    <script type="text/javascript" src="../../../_static/js/jquery-1.11.0.min.js"></script>
-    <script type="text/javascript" src="../../../_static/js/jquery-fix.js"></script>
-    <script type="text/javascript" src="../../../_static/bootstrap-3.3.7/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="../../../_static/bootstrap-sphinx.js"></script>
+    <script id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/language_data.js"></script>
+    <script src="../../../_static/js/jquery-1.11.0.min.js"></script>
+    <script src="../../../_static/js/jquery-fix.js"></script>
+    <script src="../../../_static/bootstrap-3.3.7/js/bootstrap.min.js"></script>
+    <script src="../../../_static/bootstrap-sphinx.js"></script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
 <meta charset='utf-8'>
@@ -53,6 +53,7 @@
                 <li><a href="../../../index.html">Home</a></li>
                 <li><a href="../../../Downloads.html">Downloads</a></li>
                 <li><a href="../../../Documentation.html">Documentation</a></li>
+                <li><a href="../../../Addons.html">Add-ons</a></li>
                 <li><a href="../../../References.html">References</a></li>
                 <li><a href="../../../Workshops.html">Workshops</a></li>
                 <li><a href="../../../Support.html">Support</a></li>
@@ -73,6 +74,9 @@
 <li class="toctree-l1"><a class="reference internal" href="../../../NewFeatures.html#new-features-version-0-3-2">New Features (version 0.3.2)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../NewFeatures.html#new-features-version-0-3-1">New Features (version 0.3.1)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../NewFeatures.html#new-features-version-0-3">New Features (version 0.3)</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../Addons.html">Add-ons</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../../Downloads.html">Downloads</a></li>
@@ -167,7 +171,7 @@
 </form>
         </div>
       </div>
-    <div class="col-md-9 content">
+    <div class="col-md-12 content">
       
   
 <style>
@@ -224,18 +228,18 @@ div.nblast {
 
 /* input prompt */
 div.nbinput div.prompt pre {
-    color: #303F9F;
+    color: #307FC1;
 }
 
 /* output prompt */
 div.nboutput div.prompt pre {
-    color: #D84315;
+    color: #BF5B3D;
 }
 
 /* all prompts */
 div.nbinput div.prompt,
 div.nboutput div.prompt {
-    min-width: 9ex;
+    min-width: 7ex;
     padding-top: 0.4em;
     padding-right: 0.4em;
     text-align: right;
@@ -275,9 +279,9 @@ div.nboutput div.output_area {
 
 /* input area */
 div.nbinput div.input_area {
-    border: 1px solid #cfcfcf;
+    border: 1px solid #e0e0e0;
     border-radius: 2px;
-    background: #f7f7f7;
+    background: #f5f5f5;
 }
 
 /* override MathJax center alignment in output cells */
@@ -285,7 +289,7 @@ div.nboutput div[class*=MathJax] {
     text-align: left !important;
 }
 
-/* override sphinx.ext.pngmath center alignment in output cells */
+/* override sphinx.ext.imgmath center alignment in output cells */
 div.nboutput div.math p {
     text-align: left;
 }
@@ -334,49 +338,59 @@ div.nboutput div.output_area.stderr {
 
 .ansi-bold { font-weight: bold; }
 .ansi-underline { text-decoration: underline; }
+
+/* Some additional styling taken form the Jupyter notebook CSS */
+div.rendered_html table {
+  border: none;
+  border-collapse: collapse;
+  border-spacing: 0;
+  color: black;
+  font-size: 12px;
+  table-layout: fixed;
+}
+div.rendered_html thead {
+  border-bottom: 1px solid black;
+  vertical-align: bottom;
+}
+div.rendered_html tr,
+div.rendered_html th,
+div.rendered_html td {
+  text-align: right;
+  vertical-align: middle;
+  padding: 0.5em 0.5em;
+  line-height: normal;
+  white-space: normal;
+  max-width: none;
+  border: none;
+}
+div.rendered_html th {
+  font-weight: bold;
+}
+div.rendered_html tbody tr:nth-child(odd) {
+  background: #f5f5f5;
+}
+div.rendered_html tbody tr:hover {
+  background: rgba(66, 165, 245, 0.2);
+}
 </style>
 <div class="section" id="Analysis-of-2D-data-(Python)">
 <h1>Analysis of 2D data (Python)<a class="headerlink" href="#Analysis-of-2D-data-(Python)" title="Permalink to this headline">¶</a></h1>
-<p>This Python notebook demonstrates how 2D data can be analyzed using
-<strong>spm1d</strong>.</p>
-<div class="alert alert-block alert-info"><p>Note: Currently spm1d can be used only for non-parametric analysis of 2D
-data.</p>
-</div><div class="alert alert-block alert-warning"><p>Warning: 2D data must be registered prior to analysis. spm1d does not
-support 2D registration. Algorithmic registration of 2D data can be
-achieved with third-party software like ITK. Manual registration of 2D
-data is possible with software like 3D Slicer.</p>
-</div><div class="alert alert-block alert-warning"><p>Warning: Probability values can not be calculated. Hypothesis testing is
-possible (i.e., critical test statistic calculation), but spm1d does not
-support cluster-specific probability calculations for 2D data.</p>
+<p>This Python notebook demonstrates how 2D data can be analyzed using <strong>spm1d</strong>.</p>
+<div class="alert alert-block alert-info"><p>Note: Currently spm1d can be used only for non-parametric analysis of 2D data.</p>
+</div><div class="alert alert-block alert-warning"><p>Warning: 2D data must be registered prior to analysis. spm1d does not support 2D registration. Algorithmic registration of 2D data can be achieved with third-party software like ITK. Manual registration of 2D data is possible with software like 3D Slicer.</p>
+</div><div class="alert alert-block alert-warning"><p>Warning: Probability values can not be calculated. Hypothesis testing is possible (i.e., critical test statistic calculation), but spm1d does not support cluster-specific probability calculations for 2D data.</p>
 </div><hr class="docutils" />
 <div class="section" id="Dataset">
 <h2>Dataset<a class="headerlink" href="#Dataset" title="Permalink to this headline">¶</a></h2>
-<p>The 2D data analyzed below are from <a class="reference external" href="https://www.sciencedirect.com/science/article/pii/S0021929012003193">Pataky
-(2012)</a>,
-and include 20 pressure plate measurements of quiet standing in a single
-subject. Ten measurements were made for each of two quiet standing
-tasks: backward leaning and forward leaning. For the first ten
-measurements the subject leaned backward while maintaining toe contact,
-and for the next ten measurements the subject leaned forward while
-maintaining heel contact. Pressure distributions were recorded at 50 Hz
-for 5 s with a spatial resolution of 8.5 mm.</p>
-<p>The attached dataset represents the average 2D pressure distribution
-(units: kPa) over the 5 s recorded interval. Each of the 20 observations
-is saved as a (60 x 32) array of pressure values. While the subject was
-required to step off the measurement plate between each measurement,
-thus implying non-constant foot positions with respect to the
-measurement device’s coordinate system, the attached data have been
-pre-registered following <a class="reference external" href="https://iom3.tandfonline.com/doi/abs/10.1080/10255840903573020">Oliveira et al.
+<p>The 2D data analyzed below are from <a class="reference external" href="https://www.sciencedirect.com/science/article/pii/S0021929012003193">Pataky (2012)</a>, and include 20 pressure plate measurements of quiet standing in a single subject. Ten measurements were made for each of two quiet standing tasks: backward leaning and forward leaning. For the first ten measurements the subject leaned backward while maintaining toe contact, and for the next ten measurements the subject leaned forward while maintaining heel contact.
+Pressure distributions were recorded at 50 Hz for 5 s with a spatial resolution of 8.5 mm.</p>
+<p>The attached dataset represents the average 2D pressure distribution (units: kPa) over the 5 s recorded interval. Each of the 20 observations is saved as a (60 x 32) array of pressure values. While the subject was required to step off the measurement plate between each measurement, thus implying non-constant foot positions with respect to the measurement device’s coordinate system, the attached data have been pre-registered following <a class="reference external" href="https://iom3.tandfonline.com/doi/abs/10.1080/10255840903573020">Oliveira et al.
 (2010)</a>.</p>
-<p>The goal of the analyses below is to test the null hypothes of equal
-pressure distributions in the two tasks.</p>
+<p>The goal of the analyses below is to test the null hypothes of equal pressure distributions in the two tasks.</p>
 <div class="section" id="References">
 <h3>References<a class="headerlink" href="#References" title="Permalink to this headline">¶</a></h3>
-<p>Oliveira FP, Pataky TC, Tavares JM (2010). Registration of
-pedobarographic image data in the frequency domain. <em>Computer Methods in
-Biomechanics and Biomedical Engineering</em> 13(6): 731-40.</p>
-<p>Pataky TC (2012). Spatial resolution in plantar pressure measurement
-revisited. <em>Journal of Biomechanics</em> 45(12): 2116-24.</p>
+<p>Oliveira FP, Pataky TC, Tavares JM (2010). Registration of pedobarographic image data in the frequency domain. <em>Computer Methods in Biomechanics and Biomedical Engineering</em> 13(6): 731-40.</p>
+<p>Pataky TC (2012). Spatial resolution in plantar pressure measurement revisited. <em>Journal of Biomechanics</em> 45(12): 2116-24.</p>
 </div>
 </div>
 <hr class="docutils" />
@@ -384,13 +398,12 @@ revisited. <em>Journal of Biomechanics</em> 45(12): 2116-24.</p>
 <h2>Importing and visualizing the data<a class="headerlink" href="#Importing-and-visualizing-the-data" title="Permalink to this headline">¶</a></h2>
 <p>The data are saved the “data2d” file and can be imported as follows:</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [1]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="k">import</span> <span class="n">pyplot</span>
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span>
 
 <span class="n">fname</span> <span class="o">=</span> <span class="s1">&#39;data2d.npy&#39;</span>
 <span class="n">Y</span>     <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">fname</span><span class="p">)</span>
@@ -407,12 +420,9 @@ revisited. <em>Journal of Biomechanics</em> 45(12): 2116-24.</p>
 (20, 60, 32)
 </pre></div></div>
 </div>
-<p>Note that the data are saved in a single 3D array with dimensions (20,
-60, 32), implying 20 measurements of (60 x 32) pressure distributions.
-Individual observations can be visualized like this:</p>
+<p>Note that the data are saved in a single 3D array with dimensions (20, 60, 32), implying 20 measurements of (60 x 32) pressure distributions. Individual observations can be visualized like this:</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [2]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -432,11 +442,9 @@ Individual observations can be visualized like this:</p>
 <img alt="../../../_images/doc_Stats2D_.ipynb_checkpoints_ex2d-checkpoint_5_0.png" src="../../../_images/doc_Stats2D_.ipynb_checkpoints_ex2d-checkpoint_5_0.png" />
 </div>
 </div>
-<p>This represents a single observation of backward leaning. All
-observations can be visualized as follows.</p>
+<p>This represents a single observation of backward leaning. All observations can be visualized as follows.</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [3]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -460,13 +468,10 @@ observations can be visualized as follows.</p>
 <img alt="../../../_images/doc_Stats2D_.ipynb_checkpoints_ex2d-checkpoint_7_0.png" src="../../../_images/doc_Stats2D_.ipynb_checkpoints_ex2d-checkpoint_7_0.png" />
 </div>
 </div>
-<p>The backward and forward leaning trials are depicted in the top and
-bottom rows, respectively.</p>
-<p>The mean distributions for the two tasks can be computed and visualized
-as follows:</p>
+<p>The backward and forward leaning trials are depicted in the top and bottom rows, respectively.</p>
+<p>The mean distributions for the two tasks can be computed and visualized as follows:</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [4]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -497,12 +502,10 @@ as follows:</p>
 <hr class="docutils" />
 <div class="section" id="Statistical-analysis">
 <h2>Statistical analysis<a class="headerlink" href="#Statistical-analysis" title="Permalink to this headline">¶</a></h2>
-<p>A two-sample t test can be conducted on these data using <strong>spm1d</strong> as
-follows.</p>
+<p>A two-sample t test can be conducted on these data using <strong>spm1d</strong> as follows.</p>
 <p>The data must be flattened so that each observation is a 1D array.</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [5]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -521,16 +524,10 @@ follows.</p>
 20 1920
 </pre></div></div>
 </div>
-<p>Here J is the number of observations and Q is the number of nodes in the
-flattened 1D array.</p>
-<p>For some types of 2D data, including the pressure distributions above,
-some nodes can contain zeros for all observations, implying zero
-variance and thus that test statistic values cannot be computed for
-these nodes. To avoid this problem it is desireable to remove
-zero-variance nodes like this:</p>
+<p>Here J is the number of observations and Q is the number of nodes in the flattened 1D array.</p>
+<p>For some types of 2D data, including the pressure distributions above, some nodes can contain zeros for all observations, implying zero variance and thus that test statistic values cannot be computed for these nodes. To avoid this problem it is desireable to remove zero-variance nodes like this:</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [6]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -550,11 +547,9 @@ zero-variance nodes like this:</p>
 </pre></div>
 </div>
 </div>
-<p>Here a two-sample t test will be used. Note that the same procedure can
-be used for any test in <strong>spm1d.stats.nonparam</strong>.</p>
+<p>Here a two-sample t test will be used. Note that the same procedure can be used for any test in <strong>spm1d.stats.nonparam</strong>.</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [7]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -566,23 +561,12 @@ be used for any test in <strong>spm1d.stats.nonparam</strong>.</p>
 </div>
 </div>
 <p>That’s it!</p>
-<p>Here <code class="docutils literal notranslate"><span class="pre">alpha=0.05</span></code> is the Type I error rate, and <code class="docutils literal notranslate"><span class="pre">iterations=10000</span></code>
-is the number of iterartions used to build the nonparametric
-distribution for the test statistic. The number of iterations should be
-as large as is necessary to achieve numerical stability in the critical
-threshold, which is indicated below. Here “numerical stability” implies
-that quantitative changes in the critical test statistic value do not
-produce qualitative changes in the statistical results. Quantitative
-changes in the critical test statistic arise due changes in the number
-of iterations and/or in the randomization state.</p>
-<p>As a rule-of-thumb, at least 1000 iterations are needed, with 10,000
-preferred. Also as a rule-of-thumb, run an re-run analyses a number of
-times to ensure numerical stability.</p>
-<p>The <strong>spm1d</strong> results need to be reverted to the original 2D state for
-visualization. This can be achieved as follows.</p>
+<p>Here <code class="docutils literal notranslate"><span class="pre">alpha=0.05</span></code> is the Type I error rate, and <code class="docutils literal notranslate"><span class="pre">iterations=10000</span></code> is the number of iterartions used to build the nonparametric distribution for the test statistic. The number of iterations should be as large as is necessary to achieve numerical stability in the critical threshold, which is indicated below. Here “numerical stability” implies that quantitative changes in the critical test statistic value do not produce qualitative changes in the statistical results. Quantitative changes in
+the critical test statistic arise due changes in the number of iterations and/or in the randomization state.</p>
+<p>As a rule-of-thumb, at least 1000 iterations are needed, with 10,000 preferred. Also as a rule-of-thumb, run an re-run analyses a number of times to ensure numerical stability.</p>
+<p>The <strong>spm1d</strong> results need to be reverted to the original 2D state for visualization. This can be achieved as follows.</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [8]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -619,22 +603,12 @@ visualization. This can be achieved as follows.</p>
 <img alt="../../../_images/doc_Stats2D_.ipynb_checkpoints_ex2d-checkpoint_20_0.png" src="../../../_images/doc_Stats2D_.ipynb_checkpoints_ex2d-checkpoint_20_0.png" />
 </div>
 </div>
-<p>The “Raw SPM” image depicts the t values for all non-zero-variance
-nodes. The “Inference” image is the same, but is thresholded using the
-critical test statistic. In this case there are nodes whose t values
-exceed the critical t value, implying that the null hypothesis is
-rejected.</p>
+<p>The “Raw SPM” image depicts the t values for all non-zero-variance nodes. The “Inference” image is the same, but is thresholded using the critical test statistic. In this case there are nodes whose t values exceed the critical t value, implying that the null hypothesis is rejected.</p>
 </div>
 <hr class="docutils" />
 <div class="section" id="Summary">
 <h2>Summary<a class="headerlink" href="#Summary" title="Permalink to this headline">¶</a></h2>
-<p><strong>spm1d</strong> can be used to conduct nonparametric statistical inference on
-2D data, but currently only supports hypothesis testing (i.e., critical
-test statistic calculation) and does not provide cluster-specific p
-values. Users requiring cluster-specific values can use another SPM
-packages like
-<a class="reference external" href="https://www.fil.ion.ucl.ac.uk/spm/software/spm12/">SPM12</a> or
-<a class="reference external" href="https://nipy.org">nipy</a>.</p>
+<p><strong>spm1d</strong> can be used to conduct nonparametric statistical inference on 2D data, but currently only supports hypothesis testing (i.e., critical test statistic calculation) and does not provide cluster-specific p values. Users requiring cluster-specific values can use another SPM packages like <a class="reference external" href="https://www.fil.ion.ucl.ac.uk/spm/software/spm12/">SPM12</a> or <a class="reference external" href="https://nipy.org">nipy</a>.</p>
 </div>
 </div>
 
@@ -650,8 +624,8 @@ packages like
       
     </p>
     <p>
-        &copy; Copyright 2019, Todd Pataky.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.2.0.<br/>
+        &copy; Copyright 2020, Todd Pataky.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.4.0.<br/>
     </p>
   </div>
 </footer>

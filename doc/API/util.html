@@ -9,15 +9,15 @@
     <title>spm1d.util &#8212; spm1d 0.4 documentation</title>
     <link rel="stylesheet" href="../../_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-    <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
-    <script type="text/javascript" src="../../_static/jquery.js"></script>
-    <script type="text/javascript" src="../../_static/underscore.js"></script>
-    <script type="text/javascript" src="../../_static/doctools.js"></script>
-    <script type="text/javascript" src="../../_static/language_data.js"></script>
-    <script type="text/javascript" src="../../_static/js/jquery-1.11.0.min.js"></script>
-    <script type="text/javascript" src="../../_static/js/jquery-fix.js"></script>
-    <script type="text/javascript" src="../../_static/bootstrap-3.3.7/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="../../_static/bootstrap-sphinx.js"></script>
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/language_data.js"></script>
+    <script src="../../_static/js/jquery-1.11.0.min.js"></script>
+    <script src="../../_static/js/jquery-fix.js"></script>
+    <script src="../../_static/bootstrap-3.3.7/js/bootstrap.min.js"></script>
+    <script src="../../_static/bootstrap-sphinx.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Documentation (Matlab)" href="../../DocumentationMatlab.html" />
@@ -55,6 +55,7 @@
                 <li><a href="../../index.html">Home</a></li>
                 <li><a href="../../Downloads.html">Downloads</a></li>
                 <li><a href="../../Documentation.html">Documentation</a></li>
+                <li><a href="../../Addons.html">Add-ons</a></li>
                 <li><a href="../../References.html">References</a></li>
                 <li><a href="../../Workshops.html">Workshops</a></li>
                 <li><a href="../../Support.html">Support</a></li>
@@ -75,6 +76,9 @@
 <li class="toctree-l1"><a class="reference internal" href="../../NewFeatures.html#new-features-version-0-3-2">New Features (version 0.3.2)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../NewFeatures.html#new-features-version-0-3-1">New Features (version 0.3.1)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../NewFeatures.html#new-features-version-0-3">New Features (version 0.3)</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Addons.html">Add-ons</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../Downloads.html">Downloads</a></li>
@@ -173,7 +177,7 @@
 </form>
         </div>
       </div>
-    <div class="col-md-9 content">
+    <div class="col-md-12 content">
       
   <div class="section" id="module-spm1d.util">
 <span id="spm1d-util"></span><span id="label-api-util"></span><h1>spm1d.util<a class="headerlink" href="#module-spm1d.util" title="Permalink to this headline">¶</a></h1>
@@ -226,13 +230,13 @@
 <dt class="field-odd">Example</dt>
 <dd class="field-odd"><p></p></dd>
 </dl>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">y0</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">51</span><span class="p">)</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">y0</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">51</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">y1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">87</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">y2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">68</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">Y</span>  <span class="o">=</span> <span class="p">[</span><span class="n">y0</span><span class="p">,</span> <span class="n">y1</span><span class="p">,</span> <span class="n">y2</span><span class="p">]</span>
 </pre></div>
 </div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">Y</span>  <span class="o">=</span> <span class="n">spm1d</span><span class="o">.</span><span class="n">util</span><span class="o">.</span><span class="n">interp</span><span class="p">(</span><span class="n">Y</span><span class="p">,</span> <span class="n">Q</span><span class="o">=</span><span class="mi">101</span><span class="p">)</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">Y</span>  <span class="o">=</span> <span class="n">spm1d</span><span class="o">.</span><span class="n">util</span><span class="o">.</span><span class="n">interp</span><span class="p">(</span><span class="n">Y</span><span class="p">,</span> <span class="n">Q</span><span class="o">=</span><span class="mi">101</span><span class="p">)</span>
 </pre></div>
 </div>
 </dd></dl>
@@ -268,7 +272,7 @@
 <dt class="field-odd">Example</dt>
 <dd class="field-odd"><p></p></dd>
 </dl>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">p</span> <span class="o">=</span> <span class="n">spm1d</span><span class="o">.</span><span class="n">util</span><span class="o">.</span><span class="n">p_corrected_bonf</span><span class="p">(</span><span class="mf">0.03</span><span class="p">,</span> <span class="mi">8</span><span class="p">)</span>    <span class="c1"># yields p = 0.216</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">p</span> <span class="o">=</span> <span class="n">spm1d</span><span class="o">.</span><span class="n">util</span><span class="o">.</span><span class="n">p_corrected_bonf</span><span class="p">(</span><span class="mf">0.03</span><span class="p">,</span> <span class="mi">8</span><span class="p">)</span>    <span class="c1"># yields p = 0.216</span>
 </pre></div>
 </div>
 </dd></dl>
@@ -304,7 +308,7 @@
 <dt class="field-odd">Example</dt>
 <dd class="field-odd"><p></p></dd>
 </dl>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">p</span> <span class="o">=</span> <span class="n">spm1d</span><span class="o">.</span><span class="n">util</span><span class="o">.</span><span class="n">p_critical_bonf</span><span class="p">(</span><span class="mf">0.05</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>    <span class="c1"># yields p = 0.00256</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">p</span> <span class="o">=</span> <span class="n">spm1d</span><span class="o">.</span><span class="n">util</span><span class="o">.</span><span class="n">p_critical_bonf</span><span class="p">(</span><span class="mf">0.05</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>    <span class="c1"># yields p = 0.00256</span>
 </pre></div>
 </div>
 </dd></dl>
@@ -338,7 +342,7 @@ instead of the standard deviation.</p>
 <dt class="field-odd">Example</dt>
 <dd class="field-odd"><p></p></dd>
 </dl>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">Y0</span>  <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">101</span><span class="p">)</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">Y0</span>  <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">101</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">Y</span>   <span class="o">=</span> <span class="n">spm1d</span><span class="o">.</span><span class="n">util</span><span class="o">.</span><span class="n">smooth</span><span class="p">(</span><span class="n">Y0</span><span class="p">,</span> <span class="n">fwhm</span><span class="o">=</span><span class="mf">10.0</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -346,7 +350,7 @@ instead of the standard deviation.</p>
 <p class="admonition-title">Note</p>
 <p>A Gaussian kernel’s <em>fwhm</em> is related to its standard deviation (<em>sd</em>) as follows:</p>
 </div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">fwhm</span> <span class="o">=</span> <span class="n">sd</span> <span class="o">*</span> <span class="n">sqrt</span><span class="p">(</span><span class="mi">8</span><span class="o">*</span><span class="n">log</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">fwhm</span> <span class="o">=</span> <span class="n">sd</span> <span class="o">*</span> <span class="n">sqrt</span><span class="p">(</span><span class="mi">8</span><span class="o">*</span><span class="n">log</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span>
 </pre></div>
 </div>
 </dd></dl>
@@ -366,8 +370,8 @@ instead of the standard deviation.</p>
       
     </p>
     <p>
-        &copy; Copyright 2019, Todd Pataky.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.2.0.<br/>
+        &copy; Copyright 2020, Todd Pataky.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.4.0.<br/>
     </p>
   </div>
 </footer>

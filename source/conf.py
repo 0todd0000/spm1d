@@ -73,7 +73,7 @@ master_doc = 'index'
 
 # General information about the project.
 project = u'spm1d'
-copyright = u'2019, Todd Pataky'
+copyright = u'2020, Todd Pataky'
 author = u'Todd Pataky'
 
 # The version info for the project you're documenting, acts as replacement for
@@ -100,7 +100,7 @@ language = None
 
 # List of patterns, relative to source directory, that match files and
 # directories to ignore when looking for source files.
-exclude_patterns = []
+exclude_patterns = ['**.ipynb_checkpoints']
 
 # The reST default role (used for this markup: `text`) to use for all
 # documents.
@@ -149,7 +149,7 @@ html_theme_options = {'navbar_title': "    ",
                       'navbar_fixed_top': "true",
                       'bootswatch_theme': "",
                       'navbar_sidebarrel': False,
-                      'navbar_links': [("Home", "index"), ("Downloads", "Downloads"), ("Documentation", "Documentation"), ("References", "References"), ("Workshops", "Workshops"), ("Support", "Support")]
+                      'navbar_links': [("Home", "index"), ("Downloads", "Downloads"), ("Documentation", "Documentation"), ("Add-ons", "Addons"), ("References", "References"), ("Workshops", "Workshops"), ("Support", "Support")]
 }
 
 
@@ -175,7 +175,8 @@ html_theme_options = {'navbar_title': "    ",
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,
 # so a file named "default.css" will overwrite the builtin "default.css".
-html_static_path = ['_static']
+# html_static_path = ['_static']
+html_static_path = []
 
 # Add any extra paths that contain custom files (such as robots.txt or
 # .htaccess) here, relative to this directory. These files are copied

@@ -9,15 +9,15 @@
     <title>Data processing basics &#8212; spm1d 0.4 documentation</title>
     <link rel="stylesheet" href="../../_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-    <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
-    <script type="text/javascript" src="../../_static/jquery.js"></script>
-    <script type="text/javascript" src="../../_static/underscore.js"></script>
-    <script type="text/javascript" src="../../_static/doctools.js"></script>
-    <script type="text/javascript" src="../../_static/language_data.js"></script>
-    <script type="text/javascript" src="../../_static/js/jquery-1.11.0.min.js"></script>
-    <script type="text/javascript" src="../../_static/js/jquery-fix.js"></script>
-    <script type="text/javascript" src="../../_static/bootstrap-3.3.7/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="../../_static/bootstrap-sphinx.js"></script>
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/language_data.js"></script>
+    <script src="../../_static/js/jquery-1.11.0.min.js"></script>
+    <script src="../../_static/js/jquery-fix.js"></script>
+    <script src="../../_static/bootstrap-3.3.7/js/bootstrap.min.js"></script>
+    <script src="../../_static/bootstrap-sphinx.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Summary statistics" href="summarystats.html" />
@@ -55,6 +55,7 @@
                 <li><a href="../../index.html">Home</a></li>
                 <li><a href="../../Downloads.html">Downloads</a></li>
                 <li><a href="../../Documentation.html">Documentation</a></li>
+                <li><a href="../../Addons.html">Add-ons</a></li>
                 <li><a href="../../References.html">References</a></li>
                 <li><a href="../../Workshops.html">Workshops</a></li>
                 <li><a href="../../Support.html">Support</a></li>
@@ -75,6 +76,9 @@
 <li class="toctree-l1"><a class="reference internal" href="../../NewFeatures.html#new-features-version-0-3-2">New Features (version 0.3.2)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../NewFeatures.html#new-features-version-0-3-1">New Features (version 0.3.1)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../NewFeatures.html#new-features-version-0-3">New Features (version 0.3)</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Addons.html">Add-ons</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../Downloads.html">Downloads</a></li>
@@ -167,7 +171,7 @@
 </form>
         </div>
       </div>
-    <div class="col-md-9 content">
+    <div class="col-md-12 content">
       
   <div class="section" id="data-processing-basics">
 <span id="label-examples-processing"></span><h1>Data processing basics<a class="headerlink" href="#data-processing-basics" title="Permalink to this headline">¶</a></h1>
@@ -183,22 +187,25 @@
 <h2>Interpolation<a class="headerlink" href="#interpolation" title="Permalink to this headline">¶</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">./spm1d/examples/processing/ex_interpolate.py</span></code></p>
 <p>Linear interpolation to <em>n</em> points:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">y0</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">51</span><span class="p">)</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">y0</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">51</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">y1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">87</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">y2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">68</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">Y</span>  <span class="o">=</span> <span class="p">[</span><span class="n">y0</span><span class="p">,</span> <span class="n">y1</span><span class="p">,</span> <span class="n">y2</span><span class="p">]</span>
 </pre></div>
 </div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">Y</span>  <span class="o">=</span> <span class="n">spm1d</span><span class="o">.</span><span class="n">util</span><span class="o">.</span><span class="n">interp</span><span class="p">(</span><span class="n">Y</span><span class="p">,</span> <span class="n">Q</span><span class="o">=</span><span class="mi">101</span><span class="p">)</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">Y</span>  <span class="o">=</span> <span class="n">spm1d</span><span class="o">.</span><span class="n">util</span><span class="o">.</span><span class="n">interp</span><span class="p">(</span><span class="n">Y</span><span class="p">,</span> <span class="n">Q</span><span class="o">=</span><span class="mi">101</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>(<a class="reference external" href="../../pyplots/processing/ex_interpolate.py">Source code</a>)</p>
+<p>(<a class="reference external" href="../../pyplots/processing/ex_interpolate.py">Source code</a>, <a class="reference external" href="../../pyplots/processing/ex_interpolate.png">png</a>, <a class="reference external" href="../../pyplots/processing/ex_interpolate.hires.png">hires.png</a>, <a class="reference external" href="../../pyplots/processing/ex_interpolate.pdf">pdf</a>)</p>
+<div class="figure align-default">
+<img alt="../../_images/ex_interpolate.png" src="../../_images/ex_interpolate.png" />
+</div>
 </div>
 <div class="section" id="smoothing">
 <h2>Smoothing<a class="headerlink" href="#smoothing" title="Permalink to this headline">¶</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">./spm1d/examples/processing/ex_smooth.py</span></code></p>
 <p>Convolution with a Gaussian kernel having a given FWHM (full-width at half-maximum):</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">Y_smoothed</span> <span class="o">=</span> <span class="n">spm1d</span><span class="o">.</span><span class="n">util</span><span class="o">.</span><span class="n">smooth</span><span class="p">(</span><span class="n">Y0</span><span class="p">,</span> <span class="n">fwhm</span><span class="o">=</span><span class="mf">5.0</span><span class="p">)</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">Y_smoothed</span> <span class="o">=</span> <span class="n">spm1d</span><span class="o">.</span><span class="n">util</span><span class="o">.</span><span class="n">smooth</span><span class="p">(</span><span class="n">Y0</span><span class="p">,</span> <span class="n">fwhm</span><span class="o">=</span><span class="mf">5.0</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>(<a class="reference external" href="../../pyplots/processing/ex_smooth.py">Source code</a>, <a class="reference external" href="../../pyplots/processing/ex_smooth.png">png</a>, <a class="reference external" href="../../pyplots/processing/ex_smooth.hires.png">hires.png</a>, <a class="reference external" href="../../pyplots/processing/ex_smooth.pdf">pdf</a>)</p>
@@ -220,8 +227,8 @@
       
     </p>
     <p>
-        &copy; Copyright 2019, Todd Pataky.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.2.0.<br/>
+        &copy; Copyright 2020, Todd Pataky.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.4.0.<br/>
     </p>
   </div>
 </footer>

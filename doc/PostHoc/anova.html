@@ -9,15 +9,15 @@
     <title>ANOVA post hoc analysis &#8212; spm1d 0.4 documentation</title>
     <link rel="stylesheet" href="../../_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-    <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
-    <script type="text/javascript" src="../../_static/jquery.js"></script>
-    <script type="text/javascript" src="../../_static/underscore.js"></script>
-    <script type="text/javascript" src="../../_static/doctools.js"></script>
-    <script type="text/javascript" src="../../_static/language_data.js"></script>
-    <script type="text/javascript" src="../../_static/js/jquery-1.11.0.min.js"></script>
-    <script type="text/javascript" src="../../_static/js/jquery-fix.js"></script>
-    <script type="text/javascript" src="../../_static/bootstrap-3.3.7/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="../../_static/bootstrap-sphinx.js"></script>
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/language_data.js"></script>
+    <script src="../../_static/js/jquery-1.11.0.min.js"></script>
+    <script src="../../_static/js/jquery-fix.js"></script>
+    <script src="../../_static/bootstrap-3.3.7/js/bootstrap.min.js"></script>
+    <script src="../../_static/bootstrap-sphinx.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Multivariate post hoc analysis" href="multivariate.html" />
@@ -55,6 +55,7 @@
                 <li><a href="../../index.html">Home</a></li>
                 <li><a href="../../Downloads.html">Downloads</a></li>
                 <li><a href="../../Documentation.html">Documentation</a></li>
+                <li><a href="../../Addons.html">Add-ons</a></li>
                 <li><a href="../../References.html">References</a></li>
                 <li><a href="../../Workshops.html">Workshops</a></li>
                 <li><a href="../../Support.html">Support</a></li>
@@ -75,6 +76,9 @@
 <li class="toctree-l1"><a class="reference internal" href="../../NewFeatures.html#new-features-version-0-3-2">New Features (version 0.3.2)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../NewFeatures.html#new-features-version-0-3-1">New Features (version 0.3.1)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../NewFeatures.html#new-features-version-0-3">New Features (version 0.3)</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Addons.html">Add-ons</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../Downloads.html">Downloads</a></li>
@@ -165,7 +169,7 @@
 </form>
         </div>
       </div>
-    <div class="col-md-9 content">
+    <div class="col-md-12 content">
       
   <div class="section" id="anova-post-hoc-analysis">
 <span id="label-examples-statsposthoc"></span><h1>ANOVA <em>post hoc</em> analysis<a class="headerlink" href="#anova-post-hoc-analysis" title="Permalink to this headline">¶</a></h1>
@@ -192,7 +196,7 @@
 <p>For one-way ANOVA, <em>post hoc</em> analyses consist of two-sample t tests conducted on all group pairs.</p>
 <p>Since there are three groups in our one-way ANOVA example, there are three pairs to test (1v2, 1v3, and 2v3).</p>
 <p>A simple way to correct for multiple tests across these three group pairs is to use the Bonferroni correction:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.05</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.05</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">nTests</span> <span class="o">=</span> <span class="mi">3</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">p_critical</span> <span class="o">=</span> <span class="n">spm1d</span><span class="o">.</span><span class="n">util</span><span class="o">.</span><span class="n">p_critical_bonf</span><span class="p">(</span><span class="n">alpha</span><span class="p">,</span> <span class="n">nTests</span><span class="p">)</span>
 </pre></div>
@@ -203,7 +207,7 @@
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>The <em>equal_var</em> option should be the same as was selected for ANOVA.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">t12</span>   <span class="o">=</span> <span class="n">spm1d</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">ttest2</span><span class="p">(</span><span class="n">Y1</span><span class="p">,</span> <span class="n">Y2</span><span class="p">,</span> <span class="n">equal_var</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">t12</span>   <span class="o">=</span> <span class="n">spm1d</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">ttest2</span><span class="p">(</span><span class="n">Y1</span><span class="p">,</span> <span class="n">Y2</span><span class="p">,</span> <span class="n">equal_var</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">t13</span>   <span class="o">=</span> <span class="n">spm1d</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">ttest2</span><span class="p">(</span><span class="n">Y1</span><span class="p">,</span> <span class="n">Y3</span><span class="p">,</span> <span class="n">equal_var</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">t23</span>   <span class="o">=</span> <span class="n">spm1d</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">ttest2</span><span class="p">(</span><span class="n">Y2</span><span class="p">,</span> <span class="n">Y3</span><span class="p">,</span> <span class="n">equal_var</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 </pre></div>
@@ -213,7 +217,7 @@
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>The <em>two_tailed</em> option must always be <em>True</em> in <em>post hoc</em> analyses; one-tailed inference is inconsistent with the null-hypothesis implied by ANOVA.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">t12i</span>  <span class="o">=</span> <span class="n">t12</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="n">p_critical</span><span class="p">,</span> <span class="n">two_tailed</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">t12i</span>  <span class="o">=</span> <span class="n">t12</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="n">p_critical</span><span class="p">,</span> <span class="n">two_tailed</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">t13i</span>  <span class="o">=</span> <span class="n">t13</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="n">p_critical</span><span class="p">,</span> <span class="n">two_tailed</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">t23i</span>  <span class="o">=</span> <span class="n">t23</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="n">p_critical</span><span class="p">,</span> <span class="n">two_tailed</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
@@ -245,7 +249,7 @@
 </div>
 <p>The five <em>p</em> values listed in the results above correspond to this test’s five supra-threshold clusters.</p>
 <p>Corrected <em>p</em> values may be computed as follows:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">p_value</span> <span class="o">=</span> <span class="mf">0.008</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">p_value</span> <span class="o">=</span> <span class="mf">0.008</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">nTests</span>  <span class="o">=</span> <span class="mi">3</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">p_value_corrected</span> <span class="o">=</span> <span class="n">spm1d</span><span class="o">.</span><span class="n">util</span><span class="o">.</span><span class="n">p_corrected_bonf</span><span class="p">(</span><span class="n">p_value</span><span class="p">,</span> <span class="n">nTests</span><span class="p">)</span>
 </pre></div>
@@ -266,8 +270,8 @@
       
     </p>
     <p>
-        &copy; Copyright 2019, Todd Pataky.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.2.0.<br/>
+        &copy; Copyright 2020, Todd Pataky.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.4.0.<br/>
     </p>
   </div>
 </footer>

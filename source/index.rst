@@ -50,6 +50,11 @@ Current version: **0.4.3**  (released 27 August 2019)
 .. toctree::
 	:maxdepth: 2
 
+	Addons.rst
+
+.. toctree::
+	:maxdepth: 2
+
 	Downloads.rst
 
 

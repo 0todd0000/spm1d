@@ -29,19 +29,20 @@ Workshop Slides
 Future Workshops
 ---------------------------
 
-2020 January 23-24, KU Leuven. `(Click here to register) <https://faber.kuleuven.be/nl/pv/kalender/spm1d_2020>`_
-
+(None currently scheduled)
 
 
 
 Previous Workshops
 ---------------------------
 
+2020 January 23-24 (**Leuven, Belgium**)
+
 2019 July 31 (**Calgary, Canada**)  Tutorial: "Statistics in biomechanics"
 
 2019 July 29-30 (**Calgary, Canada**)  Course: Statistical Parametric Mapping Fundamentals and Applications (Hosted by Noraxon) 
 
-2018 November 28-29 (**Leuven, Belgium**)
+2018 November 28-29
 
 2018 July 7 (**Dublin, Ireland**)  Seminar: Advanced statistical analysis of biomechanical time series: PCA, FDA, SPM
 

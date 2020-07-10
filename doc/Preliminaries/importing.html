@@ -9,15 +9,15 @@
     <title>Importing data &#8212; spm1d 0.4 documentation</title>
     <link rel="stylesheet" href="../../_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-    <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
-    <script type="text/javascript" src="../../_static/jquery.js"></script>
-    <script type="text/javascript" src="../../_static/underscore.js"></script>
-    <script type="text/javascript" src="../../_static/doctools.js"></script>
-    <script type="text/javascript" src="../../_static/language_data.js"></script>
-    <script type="text/javascript" src="../../_static/js/jquery-1.11.0.min.js"></script>
-    <script type="text/javascript" src="../../_static/js/jquery-fix.js"></script>
-    <script type="text/javascript" src="../../_static/bootstrap-3.3.7/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="../../_static/bootstrap-sphinx.js"></script>
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/language_data.js"></script>
+    <script src="../../_static/js/jquery-1.11.0.min.js"></script>
+    <script src="../../_static/js/jquery-fix.js"></script>
+    <script src="../../_static/bootstrap-3.3.7/js/bootstrap.min.js"></script>
+    <script src="../../_static/bootstrap-sphinx.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Built-in datasets" href="builtindata.html" />
@@ -55,6 +55,7 @@
                 <li><a href="../../index.html">Home</a></li>
                 <li><a href="../../Downloads.html">Downloads</a></li>
                 <li><a href="../../Documentation.html">Documentation</a></li>
+                <li><a href="../../Addons.html">Add-ons</a></li>
                 <li><a href="../../References.html">References</a></li>
                 <li><a href="../../Workshops.html">Workshops</a></li>
                 <li><a href="../../Support.html">Support</a></li>
@@ -75,6 +76,9 @@
 <li class="toctree-l1"><a class="reference internal" href="../../NewFeatures.html#new-features-version-0-3-2">New Features (version 0.3.2)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../NewFeatures.html#new-features-version-0-3-1">New Features (version 0.3.1)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../NewFeatures.html#new-features-version-0-3">New Features (version 0.3)</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Addons.html">Add-ons</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../Downloads.html">Downloads</a></li>
@@ -169,7 +173,7 @@
 </form>
         </div>
       </div>
-    <div class="col-md-9 content">
+    <div class="col-md-12 content">
       
   <div class="section" id="importing-data">
 <span id="label-examples-io"></span><h1>Importing data<a class="headerlink" href="#importing-data" title="Permalink to this headline">¶</a></h1>
@@ -188,10 +192,10 @@
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p><strong>WINDOWS USERS</strong> — File names in Python should be constructed using one of the following forms:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">fname</span> <span class="o">=</span> <span class="s1">&#39;C:</span><span class="se">\\</span><span class="s1">Temp</span><span class="se">\\</span><span class="s1">MyData</span><span class="se">\\</span><span class="s1">ex_kinematics.txt&#39;</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">fname</span> <span class="o">=</span> <span class="s1">&#39;C:</span><span class="se">\\</span><span class="s1">Temp</span><span class="se">\\</span><span class="s1">MyData</span><span class="se">\\</span><span class="s1">ex_kinematics.txt&#39;</span>
 </pre></div>
 </div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">os</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">os</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">fname</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s1">&#39;C:\Temp&#39;</span><span class="p">,</span> <span class="s1">&#39;MyData&#39;</span><span class="p">,</span> <span class="s1">&#39;ex_kinematics.txt&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -201,7 +205,7 @@
 <p><code class="docutils literal notranslate"><span class="pre">./spm1d/examples/io/ex_import_txt.py</span></code></p>
 <p>If ASCII data are arranged in a (J x Q) tab-delimited array:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span>
 
 
@@ -227,7 +231,7 @@
 <h2>Importing MATLAB data<a class="headerlink" href="#importing-matlab-data" title="Permalink to this headline">¶</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">./spm1d/examples/io/ex_import_mat.py</span></code></p>
 <p>MATLAB data files containing arbitrary variables can be imported as follows:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">scipy.io</span> <span class="k">import</span> <span class="n">loadmat</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">scipy.io</span> <span class="kn">import</span> <span class="n">loadmat</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">M</span> <span class="o">=</span> <span class="n">loadmat</span><span class="p">(</span><span class="s1">&#39;myfile.mat&#39;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">M</span><span class="p">[</span><span class="s1">&#39;VariableA&#39;</span><span class="p">]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">b</span> <span class="o">=</span> <span class="n">M</span><span class="p">[</span><span class="s1">&#39;VariableB&#39;</span><span class="p">]</span>
@@ -277,8 +281,8 @@
       
     </p>
     <p>
-        &copy; Copyright 2019, Todd Pataky.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.2.0.<br/>
+        &copy; Copyright 2020, Todd Pataky.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.4.0.<br/>
     </p>
   </div>
 </footer>

@@ -9,15 +9,15 @@
     <title>New Features (version 0.4.3) &#8212; spm1d 0.4 documentation</title>
     <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-    <script type="text/javascript" src="_static/jquery.js"></script>
-    <script type="text/javascript" src="_static/underscore.js"></script>
-    <script type="text/javascript" src="_static/doctools.js"></script>
-    <script type="text/javascript" src="_static/language_data.js"></script>
-    <script type="text/javascript" src="_static/js/jquery-1.11.0.min.js"></script>
-    <script type="text/javascript" src="_static/js/jquery-fix.js"></script>
-    <script type="text/javascript" src="_static/bootstrap-3.3.7/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <script src="_static/js/jquery-1.11.0.min.js"></script>
+    <script src="_static/js/jquery-fix.js"></script>
+    <script src="_static/bootstrap-3.3.7/js/bootstrap.min.js"></script>
+    <script src="_static/bootstrap-sphinx.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Analysis of 2D data (Python)" href="doc/Stats2D/ex2d.html" />
@@ -55,6 +55,7 @@
                 <li><a href="index.html">Home</a></li>
                 <li><a href="Downloads.html">Downloads</a></li>
                 <li><a href="Documentation.html">Documentation</a></li>
+                <li><a href="Addons.html">Add-ons</a></li>
                 <li><a href="References.html">References</a></li>
                 <li><a href="Workshops.html">Workshops</a></li>
                 <li><a href="Support.html">Support</a></li>
@@ -75,6 +76,9 @@
 <li class="toctree-l1"><a class="reference internal" href="#new-features-version-0-3-2">New Features (version 0.3.2)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="#new-features-version-0-3-1">New Features (version 0.3.1)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="#new-features-version-0-3">New Features (version 0.3)</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Addons.html">Add-ons</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="Downloads.html">Downloads</a></li>
@@ -191,7 +195,7 @@
 </form>
         </div>
       </div>
-    <div class="col-md-9 content">
+    <div class="col-md-12 content">
       
   <div class="section" id="new-features-version-0-4-3">
 <span id="label-newfeatures"></span><h1>New Features (version 0.4.3)<a class="headerlink" href="#new-features-version-0-4-3" title="Permalink to this headline">¶</a></h1>
@@ -231,7 +235,7 @@
 </div>
 <p>All statistical tests can now be conducted non-parametrically through the new <strong>spm1d.stats.nonparam</strong> interface.</p>
 <p>Example (0D parametric):</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">spm1d</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">spm1d</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">yA</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">yB</span> <span class="o">=</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">t</span> <span class="o">=</span> <span class="n">spm1d</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">ttest2</span><span class="p">(</span><span class="n">yA</span><span class="p">,</span> <span class="n">yB</span><span class="p">)</span>
@@ -240,7 +244,7 @@
 </pre></div>
 </div>
 <p>Example (0D non-parametric):</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">tn</span> <span class="o">=</span> <span class="n">spm1d</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">nonparam</span><span class="o">.</span><span class="n">ttest2</span><span class="p">(</span><span class="n">yA</span><span class="p">,</span> <span class="n">yB</span><span class="p">)</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">tn</span> <span class="o">=</span> <span class="n">spm1d</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">nonparam</span><span class="o">.</span><span class="n">ttest2</span><span class="p">(</span><span class="n">yA</span><span class="p">,</span> <span class="n">yB</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">tni</span> <span class="o">=</span> <span class="n">tn</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="mf">0.05</span><span class="p">,</span> <span class="n">iterations</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">tni</span><span class="p">)</span>
 </pre></div>
@@ -305,7 +309,7 @@
 </ol>
 <p><strong>spm1d</strong> provides convenience functions for all statistical procedures, making it easy to assess normality for arbitrary designs.</p>
 <p>For example:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">t</span>  <span class="o">=</span> <span class="n">spm1d</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">regress</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>                <span class="c1">#linear regression test statistic (t value)</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">t</span>  <span class="o">=</span> <span class="n">spm1d</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">regress</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>                <span class="c1">#linear regression test statistic (t value)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">ti</span> <span class="o">=</span> <span class="n">t</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="mf">0.05</span><span class="p">)</span>                        <span class="c1">#assess whether the observed linear correlation is significant</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">n</span>  <span class="o">=</span> <span class="n">spm1d</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">normality</span><span class="o">.</span><span class="n">k2</span><span class="o">.</span><span class="n">regress</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>   <span class="c1">#normality test statistic (K2)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">ni</span> <span class="o">=</span> <span class="n">spm</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="mf">0.05</span><span class="p">)</span>                      <span class="c1">#assesses whether the observed non-normality is significant</span>
@@ -318,12 +322,12 @@
 <p>All <strong>rft1d</strong> updates will be pushed to <strong>spm1d</strong>, so now you only need to keep <strong>spm1d</strong> up-to-date.</p>
 <p>Results from two- and three-way ANOVA are now much easier to summarize, visualize and navigate.</p>
 <p>Example (two-way ANOVA for 1D data):</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">dataset</span>      <span class="o">=</span> <span class="n">spm1d</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">uv1d</span><span class="o">.</span><span class="n">anova2</span><span class="o">.</span><span class="n">SPM1D_ANOVA2_2x2</span><span class="p">()</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">dataset</span>      <span class="o">=</span> <span class="n">spm1d</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">uv1d</span><span class="o">.</span><span class="n">anova2</span><span class="o">.</span><span class="n">SPM1D_ANOVA2_2x2</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">Y</span><span class="p">,</span><span class="n">A</span><span class="p">,</span><span class="n">B</span>        <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">get_data</span><span class="p">()</span>
 </pre></div>
 </div>
 <p>Here Y is the data array, and A and B are vectors containing experimental condition labels as integers, one integer label for each row of Y.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">FF</span>           <span class="o">=</span> <span class="n">spm1d</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">anova2</span><span class="p">(</span><span class="n">Y</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">,</span> <span class="n">equal_var</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">FF</span>           <span class="o">=</span> <span class="n">spm1d</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">anova2</span><span class="p">(</span><span class="n">Y</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">,</span> <span class="n">equal_var</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">FFi</span>          <span class="o">=</span> <span class="n">FF</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="mf">0.05</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span> <span class="n">FFi</span> <span class="p">)</span>
 </pre></div>
@@ -340,19 +344,19 @@ Effects:
 </div>
 <p>The main effects A and B and the interaction effect AB are listed along with the degrees of freedom and the null hypothesis rejection decision.</p>
 <p>The specific effects can be accessed using either integers:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span> <span class="n">FAi</span>  <span class="o">=</span> <span class="n">FFi</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>   <span class="c1">#main effect of A</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span> <span class="n">FAi</span>  <span class="o">=</span> <span class="n">FFi</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>   <span class="c1">#main effect of A</span>
 <span class="gp">&gt;&gt;&gt; </span> <span class="n">FBi</span>  <span class="o">=</span> <span class="n">FFi</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>   <span class="c1">#main effect of B</span>
 <span class="gp">&gt;&gt;&gt; </span> <span class="n">FABi</span> <span class="o">=</span> <span class="n">FFi</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>   <span class="c1">#interaction effect</span>
 </pre></div>
 </div>
 <p>or the new more intuitive interface:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span> <span class="n">FAi</span>  <span class="o">=</span> <span class="n">FFi</span><span class="p">[</span><span class="s1">&#39;A&#39;</span><span class="p">]</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span> <span class="n">FAi</span>  <span class="o">=</span> <span class="n">FFi</span><span class="p">[</span><span class="s1">&#39;A&#39;</span><span class="p">]</span>
 <span class="gp">&gt;&gt;&gt; </span> <span class="n">FBi</span>  <span class="o">=</span> <span class="n">FFi</span><span class="p">[</span><span class="s1">&#39;B&#39;</span><span class="p">]</span>
 <span class="gp">&gt;&gt;&gt; </span> <span class="n">FABi</span> <span class="o">=</span> <span class="n">FFi</span><span class="p">[</span><span class="s1">&#39;AB&#39;</span><span class="p">]</span>
 </pre></div>
 </div>
 <p>Each effect itself contains detailed information:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span> <span class="nb">print</span><span class="p">(</span> <span class="n">FAi</span> <span class="p">)</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span> <span class="nb">print</span><span class="p">(</span> <span class="n">FAi</span> <span class="p">)</span>
 </pre></div>
 </div>
 <div class="highlight-html notranslate"><div class="highlight"><pre><span></span>SPM{F} inference field
@@ -370,7 +374,7 @@ Inference:
 </pre></div>
 </div>
 <p>Last, the results can plotted much more easily than before, now with a single command:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span> <span class="n">pyplot</span><span class="o">.</span><span class="n">close</span><span class="p">(</span><span class="s1">&#39;all&#39;</span><span class="p">)</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span> <span class="n">pyplot</span><span class="o">.</span><span class="n">close</span><span class="p">(</span><span class="s1">&#39;all&#39;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span> <span class="n">FFi</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">plot_threshold_label</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">plot_p_values</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">autoset_ylim</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span> <span class="n">pyplot</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
@@ -490,7 +494,7 @@ Inference:
 </div>
 <p>All <strong>spm1d.stats</strong> functions now support both 0D and 1D data data analysis.</p>
 <p>Example (0D):</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">yA</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">yA</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">yB</span> <span class="o">=</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">t</span> <span class="o">=</span> <span class="n">spm1d</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">ttest2</span><span class="p">(</span><span class="n">yA</span><span class="p">,</span> <span class="n">yB</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">ti</span> <span class="o">=</span> <span class="n">t</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="mf">0.05</span><span class="p">)</span>
@@ -498,7 +502,7 @@ Inference:
 </pre></div>
 </div>
 <p>Example (1D):</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">yA</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">101</span><span class="p">)</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">yA</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">101</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">yB</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">101</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">t</span> <span class="o">=</span> <span class="n">spm1d</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">ttest2</span><span class="p">(</span><span class="n">yA</span><span class="p">,</span> <span class="n">yB</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">ti</span> <span class="o">=</span> <span class="n">t</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="mf">0.05</span><span class="p">)</span>
@@ -509,14 +513,14 @@ Inference:
 <p>The scripts compare <strong>spm1d</strong> results to third-party results (from SAS, SPSS, Excel, R, etc.) for a variety of datasets available on the web.</p>
 <p><strong>spm1d</strong>’s MATLAB and Python syntaxes are now nearly identical.</p>
 <p>Example two-sample t test (Python):</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">yA</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">101</span><span class="p">)</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">yA</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">101</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">yB</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">101</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">t</span>  <span class="o">=</span> <span class="n">spm1d</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">ttest2</span><span class="p">(</span><span class="n">yA</span><span class="p">,</span> <span class="n">yB</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">ti</span> <span class="o">=</span> <span class="n">t</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="mf">0.05</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Example two-sample t test (MATLAB):</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">yA</span> <span class="o">=</span> <span class="n">randn</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">101</span><span class="p">);</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">yA</span> <span class="o">=</span> <span class="n">randn</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">101</span><span class="p">);</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">yB</span> <span class="o">=</span> <span class="n">randn</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">101</span><span class="p">);</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">t</span>  <span class="o">=</span> <span class="n">spm1d</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">ttest2</span><span class="p">(</span><span class="n">yA</span><span class="p">,</span> <span class="n">yB</span><span class="p">);</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">ti</span> <span class="o">=</span> <span class="n">t</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="mf">0.05</span><span class="p">);</span>
@@ -589,7 +593,7 @@ Inference:
 <span class="n">Y</span><span class="p">,</span><span class="n">A</span>      <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">get_data</span><span class="p">()</span>
 <span class="n">Y0</span><span class="p">,</span><span class="n">Y1</span>    <span class="o">=</span> <span class="n">Y</span><span class="p">[</span><span class="n">A</span><span class="o">==</span><span class="mi">0</span><span class="p">],</span> <span class="n">Y</span><span class="p">[</span><span class="n">A</span><span class="o">==</span><span class="mi">2</span><span class="p">]</span>  <span class="c1">#Atlantic and Contintental regions</span>
 <span class="n">t</span>        <span class="o">=</span> <span class="n">spm1d</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">ttest2</span><span class="p">(</span><span class="n">Y0</span><span class="p">,</span> <span class="n">Y1</span><span class="p">)</span>
-<span class="n">ti</span>       <span class="o">=</span> <span class="n">t</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="mf">0.05</span><span class="p">,</span> <span class="n">circular</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<span class="n">ti</span>       <span class="o">=</span> <span class="n">t</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="mf">0.05</span><span class="p">,</span> <span class="n">circular</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="n">ti</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -603,7 +607,7 @@ Inference:
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Use the keyword <strong>circular</strong> when conducting inference to specify whether or not the field is circular.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ti</span> <span class="o">=</span> <span class="n">t</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="mf">0.05</span><span class="p">,</span> <span class="n">circular</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ti</span> <span class="o">=</span> <span class="n">t</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="mf">0.05</span><span class="p">,</span> <span class="n">circular</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>By default <strong>circular</strong> is False.</p>
@@ -613,7 +617,7 @@ Inference:
 <h2>Cluster interpolation<a class="headerlink" href="#cluster-interpolation" title="Permalink to this headline">¶</a></h2>
 <p><strong>spm1d</strong> now interpolates to the critical threshold u as depicted in panel (b) of the figure below.</p>
 <p>Interpolation is conducted by deault, but can be toggled using the <strong>interp</strong> keyword for inference:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span> <span class="n">t</span> <span class="o">=</span> <span class="n">spm1d</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">ttest</span><span class="p">(</span><span class="n">YA</span><span class="p">,</span> <span class="n">YB</span><span class="p">)</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span> <span class="n">t</span> <span class="o">=</span> <span class="n">spm1d</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">ttest</span><span class="p">(</span><span class="n">YA</span><span class="p">,</span> <span class="n">YB</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span> <span class="n">ti</span> <span class="o">=</span> <span class="n">t</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="mf">0.05</span><span class="p">,</span> <span class="n">interp</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span> <span class="n">ti</span> <span class="o">=</span> <span class="n">t</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="mf">0.05</span><span class="p">,</span> <span class="n">interp</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 </pre></div>
@@ -649,8 +653,8 @@ Inference:
       
     </p>
     <p>
-        &copy; Copyright 2019, Todd Pataky.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.2.0.<br/>
+        &copy; Copyright 2020, Todd Pataky.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.4.0.<br/>
     </p>
   </div>
 </footer>

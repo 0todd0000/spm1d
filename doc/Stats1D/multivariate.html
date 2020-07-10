@@ -9,15 +9,15 @@
     <title>Multivariate tests &#8212; spm1d 0.4 documentation</title>
     <link rel="stylesheet" href="../../_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-    <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
-    <script type="text/javascript" src="../../_static/jquery.js"></script>
-    <script type="text/javascript" src="../../_static/underscore.js"></script>
-    <script type="text/javascript" src="../../_static/doctools.js"></script>
-    <script type="text/javascript" src="../../_static/language_data.js"></script>
-    <script type="text/javascript" src="../../_static/js/jquery-1.11.0.min.js"></script>
-    <script type="text/javascript" src="../../_static/js/jquery-fix.js"></script>
-    <script type="text/javascript" src="../../_static/bootstrap-3.3.7/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="../../_static/bootstrap-sphinx.js"></script>
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/language_data.js"></script>
+    <script src="../../_static/js/jquery-1.11.0.min.js"></script>
+    <script src="../../_static/js/jquery-fix.js"></script>
+    <script src="../../_static/bootstrap-3.3.7/js/bootstrap.min.js"></script>
+    <script src="../../_static/bootstrap-sphinx.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Test outputs" href="outputs.html" />
@@ -55,6 +55,7 @@
                 <li><a href="../../index.html">Home</a></li>
                 <li><a href="../../Downloads.html">Downloads</a></li>
                 <li><a href="../../Documentation.html">Documentation</a></li>
+                <li><a href="../../Addons.html">Add-ons</a></li>
                 <li><a href="../../References.html">References</a></li>
                 <li><a href="../../Workshops.html">Workshops</a></li>
                 <li><a href="../../Support.html">Support</a></li>
@@ -75,6 +76,9 @@
 <li class="toctree-l1"><a class="reference internal" href="../../NewFeatures.html#new-features-version-0-3-2">New Features (version 0.3.2)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../NewFeatures.html#new-features-version-0-3-1">New Features (version 0.3.1)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../NewFeatures.html#new-features-version-0-3">New Features (version 0.3)</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Addons.html">Add-ons</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../Downloads.html">Downloads</a></li>
@@ -173,7 +177,7 @@
 </form>
         </div>
       </div>
-    <div class="col-md-9 content">
+    <div class="col-md-12 content">
       
   <div class="section" id="multivariate-tests">
 <span id="label-stats1dmultivariate"></span><h1>Multivariate tests<a class="headerlink" href="#multivariate-tests" title="Permalink to this headline">¶</a></h1>
@@ -194,7 +198,7 @@
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>We do not yet have any real data examples to show.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">T2</span>    <span class="o">=</span> <span class="n">spm1d</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">hotellings</span><span class="p">(</span><span class="n">Y</span><span class="p">,</span> <span class="n">mu</span><span class="p">)</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">T2</span>    <span class="o">=</span> <span class="n">spm1d</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">hotellings</span><span class="p">(</span><span class="n">Y</span><span class="p">,</span> <span class="n">mu</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">T2i</span>   <span class="o">=</span> <span class="n">T2</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="mf">0.05</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">T2i</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
 </pre></div>
@@ -204,7 +208,7 @@
 <div class="section" id="paired-hotelling-s-t2-test">
 <span id="label-stats1d-hotellingspaired"></span><h2>Paired Hotelling’s T<sup>2</sup> test<a class="headerlink" href="#paired-hotelling-s-t2-test" title="Permalink to this headline">¶</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">./spm1d/examples/stats1d/ex_hotellings_paired_Pataky2014.py</span></code></p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">T2</span>    <span class="o">=</span> <span class="n">spm1d</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">hotellings_paired</span><span class="p">(</span><span class="n">YA</span><span class="p">,</span> <span class="n">YB</span><span class="p">)</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">T2</span>    <span class="o">=</span> <span class="n">spm1d</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">hotellings_paired</span><span class="p">(</span><span class="n">YA</span><span class="p">,</span> <span class="n">YB</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">T2i</span>   <span class="o">=</span> <span class="n">T2</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="mf">0.05</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">T2i</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
 </pre></div>
@@ -219,7 +223,7 @@
 <div class="section" id="two-sample-hotelling-s-t2-test">
 <span id="label-stats1d-hotellings2"></span><h2>Two-sample Hotelling’s T<sup>2</sup> test<a class="headerlink" href="#two-sample-hotelling-s-t2-test" title="Permalink to this headline">¶</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">./spm1d/examples/stats1d/ex_hotellings2_Besier2009muscleforces.py</span></code></p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">T2</span>    <span class="o">=</span> <span class="n">spm1d</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">hotellings2</span><span class="p">(</span><span class="n">YA</span><span class="p">,</span> <span class="n">YB</span><span class="p">)</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">T2</span>    <span class="o">=</span> <span class="n">spm1d</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">hotellings2</span><span class="p">(</span><span class="n">YA</span><span class="p">,</span> <span class="n">YB</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">T2i</span>   <span class="o">=</span> <span class="n">T2</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="mf">0.05</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">T2i</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
 </pre></div>
@@ -238,7 +242,7 @@
 <p><code class="docutils literal notranslate"><span class="pre">./spm1d/examples/stats1d/ex_cca_Dorn2012.py</span></code></p>
 <p>The second input <strong>x</strong> must be a Jx1 vector of scalars.</p>
 <p><strong>spm1d</strong> currently does not support multivariate regressors.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">X2</span>   <span class="o">=</span> <span class="n">spm1d</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">cca</span><span class="p">(</span><span class="n">Y</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">X2</span>   <span class="o">=</span> <span class="n">spm1d</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">cca</span><span class="p">(</span><span class="n">Y</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">X2i</span>  <span class="o">=</span> <span class="n">X2</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="mf">0.05</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">X2i</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
 </pre></div>
@@ -257,7 +261,7 @@
 <p><code class="docutils literal notranslate"><span class="pre">./spm1d/examples/stats1d/ex_manova1_Dorn2012.py</span></code></p>
 <p>This example is the same as the CCA example immediately above, but treats the independent variable (running speed) as categorical instead of continuous.</p>
 <p>Here the variable <strong>A</strong> is a (J x 1) vector of integers specifying the group to which each observation belongs.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">X2</span>   <span class="o">=</span> <span class="n">spm1d</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">manova1</span><span class="p">(</span><span class="n">Y</span><span class="p">,</span> <span class="n">A</span><span class="p">)</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">X2</span>   <span class="o">=</span> <span class="n">spm1d</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">manova1</span><span class="p">(</span><span class="n">Y</span><span class="p">,</span> <span class="n">A</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">X2i</span>  <span class="o">=</span> <span class="n">X2</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="mf">0.05</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">X2i</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
 </pre></div>
@@ -283,8 +287,8 @@
       
     </p>
     <p>
-        &copy; Copyright 2019, Todd Pataky.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.2.0.<br/>
+        &copy; Copyright 2020, Todd Pataky.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.4.0.<br/>
     </p>
   </div>
 </footer>

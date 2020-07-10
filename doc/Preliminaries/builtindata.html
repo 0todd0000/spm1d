@@ -9,15 +9,15 @@
     <title>Built-in datasets &#8212; spm1d 0.4 documentation</title>
     <link rel="stylesheet" href="../../_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-    <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
-    <script type="text/javascript" src="../../_static/jquery.js"></script>
-    <script type="text/javascript" src="../../_static/underscore.js"></script>
-    <script type="text/javascript" src="../../_static/doctools.js"></script>
-    <script type="text/javascript" src="../../_static/language_data.js"></script>
-    <script type="text/javascript" src="../../_static/js/jquery-1.11.0.min.js"></script>
-    <script type="text/javascript" src="../../_static/js/jquery-fix.js"></script>
-    <script type="text/javascript" src="../../_static/bootstrap-3.3.7/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="../../_static/bootstrap-sphinx.js"></script>
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/language_data.js"></script>
+    <script src="../../_static/js/jquery-1.11.0.min.js"></script>
+    <script src="../../_static/js/jquery-fix.js"></script>
+    <script src="../../_static/bootstrap-3.3.7/js/bootstrap.min.js"></script>
+    <script src="../../_static/bootstrap-sphinx.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Data processing basics" href="processing.html" />
@@ -55,6 +55,7 @@
                 <li><a href="../../index.html">Home</a></li>
                 <li><a href="../../Downloads.html">Downloads</a></li>
                 <li><a href="../../Documentation.html">Documentation</a></li>
+                <li><a href="../../Addons.html">Add-ons</a></li>
                 <li><a href="../../References.html">References</a></li>
                 <li><a href="../../Workshops.html">Workshops</a></li>
                 <li><a href="../../Support.html">Support</a></li>
@@ -75,6 +76,9 @@
 <li class="toctree-l1"><a class="reference internal" href="../../NewFeatures.html#new-features-version-0-3-2">New Features (version 0.3.2)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../NewFeatures.html#new-features-version-0-3-1">New Features (version 0.3.1)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../NewFeatures.html#new-features-version-0-3">New Features (version 0.3)</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Addons.html">Add-ons</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../Downloads.html">Downloads</a></li>
@@ -171,7 +175,7 @@
 </form>
         </div>
       </div>
-    <div class="col-md-9 content">
+    <div class="col-md-12 content">
       
   <div class="section" id="built-in-datasets">
 <span id="label-builtindata"></span><h1>Built-in datasets<a class="headerlink" href="#built-in-datasets" title="Permalink to this headline">¶</a></h1>
@@ -181,7 +185,7 @@
 <div class="section" id="loading-datasets">
 <h2>Loading datasets<a class="headerlink" href="#loading-datasets" title="Permalink to this headline">¶</a></h2>
 <p>All datasets can be accessed using the following syntax:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">dataset</span> <span class="o">=</span> <span class="n">spm1d</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">uv0d</span><span class="o">.</span><span class="n">anova1</span><span class="o">.</span><span class="n">Cars</span><span class="p">()</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">dataset</span> <span class="o">=</span> <span class="n">spm1d</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">uv0d</span><span class="o">.</span><span class="n">anova1</span><span class="o">.</span><span class="n">Cars</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">data</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">get_data</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -203,7 +207,7 @@
 <h2>Dataset details<a class="headerlink" href="#dataset-details" title="Permalink to this headline">¶</a></h2>
 <p><strong>spm1d</strong> no longer provides detailed dataset descriptions.</p>
 <p>Instead users should consult the references and web links provided with each dataset as follows:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">dataset</span> <span class="o">=</span> <span class="n">spm1d</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">uv0d</span><span class="o">.</span><span class="n">anova1</span><span class="o">.</span><span class="n">Cars</span><span class="p">()</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">dataset</span> <span class="o">=</span> <span class="n">spm1d</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">uv0d</span><span class="o">.</span><span class="n">anova1</span><span class="o">.</span><span class="n">Cars</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span> <span class="n">dataset</span> <span class="p">)</span>
 </pre></div>
 </div>
@@ -223,7 +227,7 @@
 <div class="section" id="checking-expected-results">
 <h2>Checking expected results<a class="headerlink" href="#checking-expected-results" title="Permalink to this headline">¶</a></h2>
 <p>The expected results shown in the example above can be corroborated against <strong>spm1d</strong>’s calculations as follows:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">dataset</span> <span class="o">=</span> <span class="n">spm1d</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">uv0d</span><span class="o">.</span><span class="n">anova1</span><span class="o">.</span><span class="n">Cars</span><span class="p">()</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">dataset</span> <span class="o">=</span> <span class="n">spm1d</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">uv0d</span><span class="o">.</span><span class="n">anova1</span><span class="o">.</span><span class="n">Cars</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">Y</span><span class="p">,</span><span class="n">A</span>     <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">get_data</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">F</span>       <span class="o">=</span> <span class="n">spm1d</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">anova1</span><span class="p">(</span><span class="n">Y</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="n">equal_var</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">Fi</span>      <span class="o">=</span> <span class="n">F</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="mf">0.05</span><span class="p">)</span>
@@ -252,7 +256,7 @@
 <p>Only 0D datasets contain expected results.</p>
 <p>For one-dimensional result verifications refer to the references provided.</p>
 <p>For example:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span> <span class="n">dataset</span>      <span class="o">=</span> <span class="n">spm1d</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">uv1d</span><span class="o">.</span><span class="n">anova2</span><span class="o">.</span><span class="n">Besier2009kneeflexion</span><span class="p">()</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span> <span class="n">dataset</span>      <span class="o">=</span> <span class="n">spm1d</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">uv1d</span><span class="o">.</span><span class="n">anova2</span><span class="o">.</span><span class="n">Besier2009kneeflexion</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span> <span class="n">Y</span><span class="p">,</span><span class="n">A</span><span class="p">,</span><span class="n">B</span>        <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">get_data</span><span class="p">()</span>  <span class="c1">#A:foot, B:speed</span>
 <span class="gp">&gt;&gt;&gt; </span> <span class="nb">print</span><span class="p">(</span> <span class="n">dataset</span> <span class="p">)</span>
 </pre></div>
@@ -288,8 +292,8 @@
       
     </p>
     <p>
-        &copy; Copyright 2019, Todd Pataky.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.2.0.<br/>
+        &copy; Copyright 2020, Todd Pataky.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.4.0.<br/>
     </p>
   </div>
 </footer>
