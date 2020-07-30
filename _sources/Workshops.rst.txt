@@ -42,7 +42,7 @@ Previous Workshops
 
 2019 July 29-30 (**Calgary, Canada**)  Course: Statistical Parametric Mapping Fundamentals and Applications (Hosted by Noraxon) 
 
-2018 November 28-29
+2018 November 28-29 (**Dept. Rehabilitation Sciences, KU Leuven**)
 
 2018 July 7 (**Dublin, Ireland**)  Seminar: Advanced statistical analysis of biomechanical time series: PCA, FDA, SPM
 
