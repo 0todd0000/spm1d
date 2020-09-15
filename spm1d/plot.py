@@ -277,12 +277,8 @@ def plot_spm_design(spm, ax=None, factor_labels=None, fontsize=10):
 	plotter.plot_design(factor_labels, fontsize)
 
 
-
-
-
-
-
-def plot_spmi(spmi, ax=None, color='k', facecolor='0.8', lw=2, plot_thresh=True, plot_ylabel=True, thresh_color='k', autoset_xlim=True, autoset_ylim=True, label=None):
+def plot_spmi(spmi, ax=None, color='k', linestyle='-', marker='', facecolor='0.8', lw=2, plot_thresh=True,
+			  plot_ylabel=True, thresh_color='k', autoset_xlim=True, autoset_ylim=True, label=None):
 	'''
 	Plot an **spm1d** SPM inference object as a line.
 	
@@ -291,6 +287,8 @@ def plot_spmi(spmi, ax=None, color='k', facecolor='0.8', lw=2, plot_thresh=True,
 	- *spmi* --- an **spm1d** SPM object
 	- *ax* --- optional matplotlib.axes object  [default: matplotlib.pyplot.gca()]
 	- *color* --- optional line color specifier (for the raw SPM)
+	- *linestyle* --- optional line style specifier (for the raw SPM)
+	- *marker* --- optional marker specifier (for the raw SPM)
 	- *facecolor* --- optional face color (for suprathreshold clusters)
 	- *plot_thresh* --- if *True*, one or two horizontal threshold lines will be plotted (for one- or two-tailed inference)
 	- *plot_ylabel* --- if *True*, an "SPM{t}" or "SPM{F}" label will automatically be added to the y axis
@@ -307,7 +305,7 @@ def plot_spmi(spmi, ax=None, color='k', facecolor='0.8', lw=2, plot_thresh=True,
 	>>> ti.plot()   # equivalent to "spm1d.plot.plot_spmi(ti)"
 	'''
 	plotter = SPMiPlotter(spmi, ax=ax)
-	plotter.plot(color=color, lw=lw, facecolor=facecolor, label=label, thresh_color=thresh_color)
+	plotter.plot(color=color, lw=lw, linestyle=linestyle, marker= marker, facecolor=facecolor, label=label, thresh_color=thresh_color)
 	if plot_ylabel:
 		plotter.plot_ylabel()
 	if autoset_xlim:
