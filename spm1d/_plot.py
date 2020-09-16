@@ -171,6 +171,10 @@ class SPMPlotter(DataPlotter):
 			kwdargs.update( dict(color='k') )
 		if ('lw' not in keys) and ('linewidth' not in keys):
 			kwdargs.update( dict(lw=2) )
+		if ('ls' not in keys) and ('linestyle' not in keys):
+			kwdargs.update( dict(ls='-') )
+		if 'marker' not in keys:
+			kwdargs.update( dict(marker=' ') )
 		ax,x    = self.ax, self.x
 		if self.ismasked:
 			ax.plot(x, self.zma, **kwdargs)
@@ -199,8 +203,8 @@ class SPMiPlotter(SPMPlotter):
 	def __init__(self, spmi, ax=None):
 		super(SPMiPlotter, self).__init__(spmi, ax)
 	
-	def plot(self, color='k', lw=3, facecolor='0.7', thresh_color='k', label=None):
-		self.plot_field(color=color, lw=lw, label=label)
+	def plot(self, color='k', lw=3, linestyle='-', marker=' ', facecolor='0.7', thresh_color='k', label=None):
+		self.plot_field(color=color, lw=lw, linestyle=linestyle, marker=marker, label=label)
 		self.plot_datum()
 		self.plot_threshold(color=thresh_color)
 		self.plot_cluster_patches(facecolor=facecolor)
