@@ -1,33 +1,21 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
+<!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
   <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    
-    <title>power1d.noise &#8212; power1d 0.1 documentation</title>
-    
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>power1d.noise &#8212; power1d 0.1.2 documentation</title>
     <link rel="stylesheet" href="../_static/pyramid.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    
-    <script type="text/javascript">
-      var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    '../',
-        VERSION:     '0.1',
-        COLLAPSE_INDEX: false,
-        FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true,
-        SOURCELINK_SUFFIX: '.txt'
-      };
-    </script>
-    <script type="text/javascript" src="../_static/jquery.js"></script>
-    <script type="text/javascript" src="../_static/underscore.js"></script>
-    <script type="text/javascript" src="../_static/doctools.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="power1d.random" href="random.html" />
+    <link rel="next" title="power1d.prob" href="prob.html" />
     <link rel="prev" title="power1d.models" href="models.html" />
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Neuton&amp;subset=latin" type="text/css" media="screen" charset="utf-8" />
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nobile:regular,italic,bold,bolditalic&amp;subset=latin" type="text/css" media="screen" charset="utf-8" />
@@ -35,8 +23,7 @@
 <link rel="stylesheet" href="../_static/ie6.css" type="text/css" media="screen" charset="utf-8" />
 <![endif]-->
 
-  </head>
-  <body role="document">
+  </head><body>
 <div class="header" role="banner">
   <div class="logo">
     <a href="../index.html">
@@ -55,13 +42,14 @@
           <a href="../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
         <li class="right" >
-          <a href="random.html" title="power1d.random"
+          <a href="prob.html" title="power1d.prob"
              accesskey="N">next</a> |</li>
         <li class="right" >
           <a href="models.html" title="power1d.models"
              accesskey="P">previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../index.html">power1d 0.1 documentation</a> &#187;</li>
-          <li class="nav-item nav-item-1"><a href="../API.html" accesskey="U">API</a> &#187;</li> 
+        <li class="nav-item nav-item-0"><a href="../index.html">power1d 0.1.2 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../API.html" accesskey="U">API</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">power1d.noise</a></li> 
       </ul>
     </div>  
 
@@ -75,19 +63,19 @@
 <p>One-dimensional noise models.</p>
 <p>The figure below provides overview of all noise types. Details regarding reach are listed below.</p>
 <p>(<a class="reference external" href="../pyplots/all_noise.py">Source code</a>, <a class="reference external" href="../pyplots/all_noise.png">png</a>, <a class="reference external" href="../pyplots/all_noise.hires.png">hires.png</a>, <a class="reference external" href="../pyplots/all_noise.pdf">pdf</a>)</p>
-<div class="figure">
+<div class="figure align-default">
 <img alt="../_images/all_noise.png" src="../_images/all_noise.png" />
 </div>
 <div class="section" id="additive">
 <h2>Additive<a class="headerlink" href="#additive" title="Permalink to this headline">¶</a></h2>
-<dl class="function">
+<dl class="py function">
 <dt id="power1d.noise.Additive">
-<code class="descclassname">power1d.noise.</code><code class="descname">Additive</code><span class="sig-paren">(</span><em>*noise_models</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/power1d/noise.html#Additive"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#power1d.noise.Additive" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">power1d.noise.</code><code class="sig-name descname">Additive</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">*</span><span class="n">noise_models</span></em><span class="sig-paren">)</span><a class="headerlink" href="#power1d.noise.Additive" title="Permalink to this definition">¶</a></dt>
 <dd><p>Additive model (sum of two or more other noise types.)</p>
 <p>Arguments:</p>
 <p>A sequence of power1d.noise models (must have the same shape:  (J,Q) )</p>
 <p>Example:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">power1d</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">power1d</span>
 
 <span class="n">noise0</span>  <span class="o">=</span> <span class="n">power1d</span><span class="o">.</span><span class="n">noise</span><span class="o">.</span><span class="n">SmoothGaussian</span><span class="p">(</span> <span class="n">J</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">Q</span><span class="o">=</span><span class="mi">501</span><span class="p">,</span> <span class="n">mu</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">sigma</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">fwhm</span><span class="o">=</span><span class="mi">100</span> <span class="p">)</span>
 <span class="n">noise1</span>  <span class="o">=</span> <span class="n">power1d</span><span class="o">.</span><span class="n">noise</span><span class="o">.</span><span class="n">Gaussian</span><span class="p">(</span> <span class="n">J</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">Q</span><span class="o">=</span><span class="mi">501</span><span class="p">,</span> <span class="n">mu</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">sigma</span><span class="o">=</span><span class="mf">0.1</span> <span class="p">)</span>
@@ -96,7 +84,7 @@
 </pre></div>
 </div>
 <p>(<a class="reference external" href="../API/noise-1.py">Source code</a>, <a class="reference external" href="../API/noise-1.png">png</a>, <a class="reference external" href="../API/noise-1.hires.png">hires.png</a>, <a class="reference external" href="../API/noise-1.pdf">pdf</a>)</p>
-<div class="figure">
+<div class="figure align-default">
 <img alt="../_images/noise-1.png" src="../_images/noise-1.png" />
 </div>
 </dd></dl>
@@ -104,26 +92,26 @@
 </div>
 <div class="section" id="constantgaussian">
 <h2>ConstantGaussian<a class="headerlink" href="#constantgaussian" title="Permalink to this headline">¶</a></h2>
-<dl class="function">
+<dl class="py function">
 <dt id="power1d.noise.ConstantGaussian">
-<code class="descclassname">power1d.noise.</code><code class="descname">ConstantGaussian</code><span class="sig-paren">(</span><em>J=1</em>, <em>Q=101</em>, <em>mu=0</em>, <em>sigma=1</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/power1d/noise.html#ConstantGaussian"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#power1d.noise.ConstantGaussian" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">power1d.noise.</code><code class="sig-name descname">ConstantGaussian</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">J</span><span class="o">=</span><span class="default_value">1</span></em>, <em class="sig-param"><span class="n">Q</span><span class="o">=</span><span class="default_value">101</span></em>, <em class="sig-param"><span class="n">mu</span><span class="o">=</span><span class="default_value">0</span></em>, <em class="sig-param"><span class="n">sigma</span><span class="o">=</span><span class="default_value">1</span></em><span class="sig-paren">)</span><a class="headerlink" href="#power1d.noise.ConstantGaussian" title="Permalink to this definition">¶</a></dt>
 <dd><p>Gaussian-distributed constant continuum noise.</p>
 <p>Each of the J continua has a constant value, and these values
 are distributed normally according to <em>mu</em> and <em>sigma</em>.</p>
 <p>Arguments:</p>
-<p><em>J</em> &#8212;- sample size (int) (default 1)</p>
-<p><em>Q</em> &#8212;- continuum size (int) (default 101)</p>
-<p><em>x0</em> &#8212;- minimum value (float or int) (default 0)</p>
-<p><em>x1</em> &#8212;- maximum value (float or int) (default 1)</p>
+<p><em>J</em> —- sample size (int) (default 1)</p>
+<p><em>Q</em> —- continuum size (int) (default 101)</p>
+<p><em>x0</em> —- minimum value (float or int) (default 0)</p>
+<p><em>x1</em> —- maximum value (float or int) (default 1)</p>
 <p>Example:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">power1d</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">power1d</span>
 
 <span class="n">noise</span>   <span class="o">=</span> <span class="n">power1d</span><span class="o">.</span><span class="n">noise</span><span class="o">.</span><span class="n">ConstantGaussian</span><span class="p">(</span> <span class="n">J</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">Q</span><span class="o">=</span><span class="mi">101</span><span class="p">,</span> <span class="n">mu</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">sigma</span><span class="o">=</span><span class="mf">1.0</span> <span class="p">)</span>
 <span class="n">noise</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
 </pre></div>
 </div>
 <p>(<a class="reference external" href="../API/noise-2.py">Source code</a>, <a class="reference external" href="../API/noise-2.png">png</a>, <a class="reference external" href="../API/noise-2.hires.png">hires.png</a>, <a class="reference external" href="../API/noise-2.pdf">pdf</a>)</p>
-<div class="figure">
+<div class="figure align-default">
 <img alt="../_images/noise-2.png" src="../_images/noise-2.png" />
 </div>
 </dd></dl>
@@ -131,26 +119,26 @@ are distributed normally according to <em>mu</em> and <em>sigma</em>.</p>
 </div>
 <div class="section" id="constantuniform">
 <h2>ConstantUniform<a class="headerlink" href="#constantuniform" title="Permalink to this headline">¶</a></h2>
-<dl class="function">
+<dl class="py function">
 <dt id="power1d.noise.ConstantUniform">
-<code class="descclassname">power1d.noise.</code><code class="descname">ConstantUniform</code><span class="sig-paren">(</span><em>J=1</em>, <em>Q=101</em>, <em>x0=0</em>, <em>x1=1</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/power1d/noise.html#ConstantUniform"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#power1d.noise.ConstantUniform" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">power1d.noise.</code><code class="sig-name descname">ConstantUniform</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">J</span><span class="o">=</span><span class="default_value">1</span></em>, <em class="sig-param"><span class="n">Q</span><span class="o">=</span><span class="default_value">101</span></em>, <em class="sig-param"><span class="n">x0</span><span class="o">=</span><span class="default_value">0</span></em>, <em class="sig-param"><span class="n">x1</span><span class="o">=</span><span class="default_value">1</span></em><span class="sig-paren">)</span><a class="headerlink" href="#power1d.noise.ConstantUniform" title="Permalink to this definition">¶</a></dt>
 <dd><p>Uniformly-distributed constant continuum noise.</p>
 <p>Each of the J continua has a constant value, and these values
 are distributed uniformly between <em>x0</em> and <em>x1</em>.</p>
 <p>Arguments:</p>
-<p><em>J</em> &#8212;- sample size (int) (default 1)</p>
-<p><em>Q</em> &#8212;- continuum size (int) (default 101)</p>
-<p><em>x0</em> &#8212;- mean (float or int) (default 0)</p>
-<p><em>x1</em> &#8212;- standard deviation (float or int) (default 1)</p>
+<p><em>J</em> —- sample size (int) (default 1)</p>
+<p><em>Q</em> —- continuum size (int) (default 101)</p>
+<p><em>x0</em> —- mean (float or int) (default 0)</p>
+<p><em>x1</em> —- standard deviation (float or int) (default 1)</p>
 <p>Example:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">power1d</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">power1d</span>
 
 <span class="n">noise</span>   <span class="o">=</span> <span class="n">power1d</span><span class="o">.</span><span class="n">noise</span><span class="o">.</span><span class="n">ConstantUniform</span><span class="p">(</span> <span class="n">J</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">Q</span><span class="o">=</span><span class="mi">101</span><span class="p">,</span> <span class="n">x0</span><span class="o">=-</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">x1</span><span class="o">=</span><span class="mf">1.3</span> <span class="p">)</span>
 <span class="n">noise</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
 </pre></div>
 </div>
 <p>(<a class="reference external" href="../API/noise-3.py">Source code</a>, <a class="reference external" href="../API/noise-3.png">png</a>, <a class="reference external" href="../API/noise-3.hires.png">hires.png</a>, <a class="reference external" href="../API/noise-3.pdf">pdf</a>)</p>
-<div class="figure">
+<div class="figure align-default">
 <img alt="../_images/noise-3.png" src="../_images/noise-3.png" />
 </div>
 </dd></dl>
@@ -158,24 +146,24 @@ are distributed uniformly between <em>x0</em> and <em>x1</em>.</p>
 </div>
 <div class="section" id="gaussian">
 <h2>Gaussian<a class="headerlink" href="#gaussian" title="Permalink to this headline">¶</a></h2>
-<dl class="function">
+<dl class="py function">
 <dt id="power1d.noise.Gaussian">
-<code class="descclassname">power1d.noise.</code><code class="descname">Gaussian</code><span class="sig-paren">(</span><em>J=1</em>, <em>Q=101</em>, <em>mu=0</em>, <em>sigma=1</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/power1d/noise.html#Gaussian"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#power1d.noise.Gaussian" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">power1d.noise.</code><code class="sig-name descname">Gaussian</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">J</span><span class="o">=</span><span class="default_value">1</span></em>, <em class="sig-param"><span class="n">Q</span><span class="o">=</span><span class="default_value">101</span></em>, <em class="sig-param"><span class="n">mu</span><span class="o">=</span><span class="default_value">0</span></em>, <em class="sig-param"><span class="n">sigma</span><span class="o">=</span><span class="default_value">1</span></em><span class="sig-paren">)</span><a class="headerlink" href="#power1d.noise.Gaussian" title="Permalink to this definition">¶</a></dt>
 <dd><p>Uncorrelated Gaussian noise.</p>
 <p>Arguments:</p>
-<p><em>J</em> &#8212;- sample size (int) (default 1)</p>
-<p><em>Q</em> &#8212;- continuum size (int) (default 101)</p>
-<p><em>mu</em> &#8212;- mean (float or int) (default 0)</p>
-<p><em>sigma</em> &#8212;- standard deviation (float or int) (default 1)</p>
+<p><em>J</em> —- sample size (int) (default 1)</p>
+<p><em>Q</em> —- continuum size (int) (default 101)</p>
+<p><em>mu</em> —- mean (float or int) (default 0)</p>
+<p><em>sigma</em> —- standard deviation (float or int) (default 1)</p>
 <p>Example:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">power1d</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">power1d</span>
 
 <span class="n">noise</span>   <span class="o">=</span> <span class="n">power1d</span><span class="o">.</span><span class="n">noise</span><span class="o">.</span><span class="n">Gaussian</span><span class="p">(</span> <span class="n">J</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">Q</span><span class="o">=</span><span class="mi">101</span><span class="p">,</span> <span class="n">mu</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">sigma</span><span class="o">=</span><span class="mf">1.0</span> <span class="p">)</span>
 <span class="n">noise</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
 </pre></div>
 </div>
 <p>(<a class="reference external" href="../API/noise-4.py">Source code</a>, <a class="reference external" href="../API/noise-4.png">png</a>, <a class="reference external" href="../API/noise-4.hires.png">hires.png</a>, <a class="reference external" href="../API/noise-4.pdf">pdf</a>)</p>
-<div class="figure">
+<div class="figure align-default">
 <img alt="../_images/noise-4.png" src="../_images/noise-4.png" />
 </div>
 </dd></dl>
@@ -183,14 +171,14 @@ are distributed uniformly between <em>x0</em> and <em>x1</em>.</p>
 </div>
 <div class="section" id="mixture">
 <h2>Mixture<a class="headerlink" href="#mixture" title="Permalink to this headline">¶</a></h2>
-<dl class="function">
+<dl class="py function">
 <dt id="power1d.noise.Mixture">
-<code class="descclassname">power1d.noise.</code><code class="descname">Mixture</code><span class="sig-paren">(</span><em>*noise_models</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/power1d/noise.html#Mixture"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#power1d.noise.Mixture" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">power1d.noise.</code><code class="sig-name descname">Mixture</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">*</span><span class="n">noise_models</span></em><span class="sig-paren">)</span><a class="headerlink" href="#power1d.noise.Mixture" title="Permalink to this definition">¶</a></dt>
 <dd><p>Noise mixture model (mixture of noise types in a fixed ratio)</p>
 <p>Arguments:</p>
 <p>A sequence of power1d.noise models  (must have the same shape:  (,Q) )</p>
 <p>Example:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">power1d</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">power1d</span>
 
 <span class="n">noise0</span>  <span class="o">=</span> <span class="n">power1d</span><span class="o">.</span><span class="n">noise</span><span class="o">.</span><span class="n">SmoothGaussian</span><span class="p">(</span> <span class="n">J</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">Q</span><span class="o">=</span><span class="mi">101</span><span class="p">,</span> <span class="n">mu</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">sigma</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">fwhm</span><span class="o">=</span><span class="mi">20</span> <span class="p">)</span>
 <span class="n">noise1</span>  <span class="o">=</span> <span class="n">power1d</span><span class="o">.</span><span class="n">noise</span><span class="o">.</span><span class="n">Gaussian</span><span class="p">(</span> <span class="n">J</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">Q</span><span class="o">=</span><span class="mi">101</span><span class="p">,</span> <span class="n">mu</span><span class="o">=-</span><span class="mi">3</span><span class="p">,</span> <span class="n">sigma</span><span class="o">=</span><span class="mf">1.0</span> <span class="p">)</span>
@@ -199,7 +187,7 @@ are distributed uniformly between <em>x0</em> and <em>x1</em>.</p>
 </pre></div>
 </div>
 <p>(<a class="reference external" href="../API/noise-5.py">Source code</a>, <a class="reference external" href="../API/noise-5.png">png</a>, <a class="reference external" href="../API/noise-5.hires.png">hires.png</a>, <a class="reference external" href="../API/noise-5.pdf">pdf</a>)</p>
-<div class="figure">
+<div class="figure align-default">
 <img alt="../_images/noise-5.png" src="../_images/noise-5.png" />
 </div>
 </dd></dl>
@@ -207,15 +195,15 @@ are distributed uniformly between <em>x0</em> and <em>x1</em>.</p>
 </div>
 <div class="section" id="scaled">
 <h2>Scaled<a class="headerlink" href="#scaled" title="Permalink to this headline">¶</a></h2>
-<dl class="function">
+<dl class="py function">
 <dt id="power1d.noise.Scaled">
-<code class="descclassname">power1d.noise.</code><code class="descname">Scaled</code><span class="sig-paren">(</span><em>noise</em>, <em>scale</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/power1d/noise.html#Scaled"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#power1d.noise.Scaled" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">power1d.noise.</code><code class="sig-name descname">Scaled</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">noise</span></em>, <em class="sig-param"><span class="n">scale</span></em><span class="sig-paren">)</span><a class="headerlink" href="#power1d.noise.Scaled" title="Permalink to this definition">¶</a></dt>
 <dd><p>Scaled noise model.</p>
 <p>Arguments:</p>
-<p><em>noise</em> &#8212;- a power1d.noise object</p>
-<p><em>scale</em> &#8212;- a numpy array or a power1d.primitive object</p>
+<p><em>noise</em> —- a power1d.noise object</p>
+<p><em>scale</em> —- a numpy array or a power1d.primitive object</p>
 <p>Example:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">power1d</span>
 
 <span class="n">Q</span>       <span class="o">=</span> <span class="mi">101</span>
@@ -226,7 +214,7 @@ are distributed uniformly between <em>x0</em> and <em>x1</em>.</p>
 </pre></div>
 </div>
 <p>(<a class="reference external" href="../API/noise-6.py">Source code</a>, <a class="reference external" href="../API/noise-6.png">png</a>, <a class="reference external" href="../API/noise-6.hires.png">hires.png</a>, <a class="reference external" href="../API/noise-6.pdf">pdf</a>)</p>
-<div class="figure">
+<div class="figure align-default">
 <img alt="../_images/noise-6.png" src="../_images/noise-6.png" />
 </div>
 </dd></dl>
@@ -234,16 +222,16 @@ are distributed uniformly between <em>x0</em> and <em>x1</em>.</p>
 </div>
 <div class="section" id="signaldependent">
 <h2>SignalDependent<a class="headerlink" href="#signaldependent" title="Permalink to this headline">¶</a></h2>
-<dl class="function">
+<dl class="py function">
 <dt id="power1d.noise.SignalDependent">
-<code class="descclassname">power1d.noise.</code><code class="descname">SignalDependent</code><span class="sig-paren">(</span><em>noise</em>, <em>signal</em>, <em>fn=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/power1d/noise.html#SignalDependent"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#power1d.noise.SignalDependent" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">power1d.noise.</code><code class="sig-name descname">SignalDependent</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">noise</span></em>, <em class="sig-param"><span class="n">signal</span></em>, <em class="sig-param"><span class="n">fn</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#power1d.noise.SignalDependent" title="Permalink to this definition">¶</a></dt>
 <dd><p>Signal-dependent noise model.</p>
 <p>Arguments:</p>
-<p><em>noise</em> &#8212;- a power1d.noise object</p>
-<p><em>signal</em> &#8212;- a numpy array or a power1d.signal object</p>
-<p><em>fn</em> &#8212;- an arbitrary function of noise and signal (default fn = lambda n,s: n + (n * s))</p>
+<p><em>noise</em> —- a power1d.noise object</p>
+<p><em>signal</em> —- a numpy array or a power1d.signal object</p>
+<p><em>fn</em> —- an arbitrary function of noise and signal (default fn = lambda n,s: n + (n * s))</p>
 <p>Example:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">power1d</span>
 
 <span class="n">Q</span>       <span class="o">=</span> <span class="mi">101</span>
@@ -255,37 +243,37 @@ are distributed uniformly between <em>x0</em> and <em>x1</em>.</p>
 </pre></div>
 </div>
 <p>(<a class="reference external" href="../API/noise-7.py">Source code</a>, <a class="reference external" href="../API/noise-7.png">png</a>, <a class="reference external" href="../API/noise-7.hires.png">hires.png</a>, <a class="reference external" href="../API/noise-7.pdf">pdf</a>)</p>
-<div class="figure">
+<div class="figure align-default">
 <img alt="../_images/noise-7.png" src="../_images/noise-7.png" />
 </div>
 </dd></dl>
 
 <hr class="docutils" />
-<dl class="function">
+<dl class="py function">
 <dt id="power1d.noise.Skewed">
-<code class="descclassname">power1d.noise.</code><code class="descname">Skewed</code><span class="sig-paren">(</span><em>J=8</em>, <em>Q=101</em>, <em>mu=0</em>, <em>sigma=1</em>, <em>alpha=0</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/power1d/noise.html#Skewed"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#power1d.noise.Skewed" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">power1d.noise.</code><code class="sig-name descname">Skewed</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">J</span><span class="o">=</span><span class="default_value">8</span></em>, <em class="sig-param"><span class="n">Q</span><span class="o">=</span><span class="default_value">101</span></em>, <em class="sig-param"><span class="n">mu</span><span class="o">=</span><span class="default_value">0</span></em>, <em class="sig-param"><span class="n">sigma</span><span class="o">=</span><span class="default_value">1</span></em>, <em class="sig-param"><span class="n">alpha</span><span class="o">=</span><span class="default_value">0</span></em><span class="sig-paren">)</span><a class="headerlink" href="#power1d.noise.Skewed" title="Permalink to this definition">¶</a></dt>
 <dd><p>Skewed noise.</p>
 <div class="admonition warning">
-<p class="first admonition-title">Warning</p>
-<p class="last">Skewed distributions are approximate and may not be consistent     with theoretical solutions. In particular the their maximum likelihoods are not <em>mu</em>.   In <strong>power1d</strong> skewed distribution are meant only to be used as tools to approximate    experimentally observed skewed noise and / or for exploratory purposes (i.e. to examine power changes associated with roughly skewed distributions).</p>
+<p class="admonition-title">Warning</p>
+<p>Skewed distributions are approximate and may not be consistent     with theoretical solutions. In particular the their maximum likelihoods are not <em>mu</em>.   In <strong>power1d</strong> skewed distribution are meant only to be used as tools to approximate    experimentally observed skewed noise and / or for exploratory purposes (i.e. to examine power changes associated with roughly skewed distributions).</p>
 </div>
 <p>Arguments:</p>
-<p><em>J</em> &#8212;- sample size (int) (default 1)</p>
-<p><em>Q</em> &#8212;- continuum size (int) (default 101)</p>
-<p><em>mu</em> &#8212;- mean (float or int) (default 0)</p>
-<p><em>sigma</em> &#8212;- standard deviation (float or int) (default 1)</p>
-<p><em>alpha</em> &#8212;- skewness (float or int) (default 0)</p>
+<p><em>J</em> —- sample size (int) (default 1)</p>
+<p><em>Q</em> —- continuum size (int) (default 101)</p>
+<p><em>mu</em> —- mean (float or int) (default 0)</p>
+<p><em>sigma</em> —- standard deviation (float or int) (default 1)</p>
+<p><em>alpha</em> —- skewness (float or int) (default 0)</p>
 <p>Modified from a StackOverflow contribution by jamesj629:</p>
 <p><a class="reference external" href="http://stackoverflow.com/questions/36200913/generate-n-random-numbers-from-a-skew-normal-distribution-using-numpy">http://stackoverflow.com/questions/36200913/generate-n-random-numbers-from-a-skew-normal-distribution-using-numpy</a></p>
 <p>Example:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">power1d</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">power1d</span>
 
 <span class="n">noise</span>   <span class="o">=</span> <span class="n">power1d</span><span class="o">.</span><span class="n">noise</span><span class="o">.</span><span class="n">Skewed</span><span class="p">(</span> <span class="n">J</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">Q</span><span class="o">=</span><span class="mi">101</span><span class="p">,</span> <span class="n">mu</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">sigma</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mi">5</span> <span class="p">)</span>
 <span class="n">noise</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
 </pre></div>
 </div>
 <p>(<a class="reference external" href="../API/noise-8.py">Source code</a>, <a class="reference external" href="../API/noise-8.png">png</a>, <a class="reference external" href="../API/noise-8.hires.png">hires.png</a>, <a class="reference external" href="../API/noise-8.pdf">pdf</a>)</p>
-<div class="figure">
+<div class="figure align-default">
 <img alt="../_images/noise-8.png" src="../_images/noise-8.png" />
 </div>
 </dd></dl>
@@ -293,26 +281,26 @@ are distributed uniformly between <em>x0</em> and <em>x1</em>.</p>
 </div>
 <div class="section" id="smoothgaussian">
 <h2>SmoothGaussian<a class="headerlink" href="#smoothgaussian" title="Permalink to this headline">¶</a></h2>
-<dl class="function">
+<dl class="py function">
 <dt id="power1d.noise.SmoothGaussian">
-<code class="descclassname">power1d.noise.</code><code class="descname">SmoothGaussian</code><span class="sig-paren">(</span><em>J=1</em>, <em>Q=101</em>, <em>mu=0</em>, <em>sigma=1</em>, <em>fwhm=20</em>, <em>pad=False</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/power1d/noise.html#SmoothGaussian"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#power1d.noise.SmoothGaussian" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">power1d.noise.</code><code class="sig-name descname">SmoothGaussian</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">J</span><span class="o">=</span><span class="default_value">1</span></em>, <em class="sig-param"><span class="n">Q</span><span class="o">=</span><span class="default_value">101</span></em>, <em class="sig-param"><span class="n">mu</span><span class="o">=</span><span class="default_value">0</span></em>, <em class="sig-param"><span class="n">sigma</span><span class="o">=</span><span class="default_value">1</span></em>, <em class="sig-param"><span class="n">fwhm</span><span class="o">=</span><span class="default_value">20</span></em>, <em class="sig-param"><span class="n">pad</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="headerlink" href="#power1d.noise.SmoothGaussian" title="Permalink to this definition">¶</a></dt>
 <dd><p>Smooth (correlated) Gaussian noise.</p>
 <p>Arguments:</p>
-<p><em>J</em> &#8212;- sample size (int) (default 1)</p>
-<p><em>Q</em> &#8212;- continuum size (int) (default 101)</p>
-<p><em>mu</em> &#8212;- mean (float or int) (default 0)</p>
-<p><em>sigma</em> &#8212;- standard deviation (float or int) (default 1)</p>
-<p><em>fwhm</em> &#8212;- smoothness (float or int) (default 20); this is the full-width-at-half-maximum of a Gaussian kernel which is convolved with uncorrelated Gaussian noise;  the resulting smooth noise is re-scaled to unit variance</p>
-<p><em>pad</em> &#8212;- whether to pad continuum when smoothing (True or False) (default False);  unpadded noise has the same value at the beginning and end of the continuum</p>
+<p><em>J</em> —- sample size (int) (default 1)</p>
+<p><em>Q</em> —- continuum size (int) (default 101)</p>
+<p><em>mu</em> —- mean (float or int) (default 0)</p>
+<p><em>sigma</em> —- standard deviation (float or int) (default 1)</p>
+<p><em>fwhm</em> —- smoothness (float or int) (default 20); this is the full-width-at-half-maximum of a Gaussian kernel which is convolved with uncorrelated Gaussian noise;  the resulting smooth noise is re-scaled to unit variance</p>
+<p><em>pad</em> —- whether to pad continuum when smoothing (True or False) (default False);  unpadded noise has the same value at the beginning and end of the continuum</p>
 <p>Example:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">power1d</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">power1d</span>
 
-<span class="n">noise</span>   <span class="o">=</span> <span class="n">power1d</span><span class="o">.</span><span class="n">noise</span><span class="o">.</span><span class="n">SmoothGaussian</span><span class="p">(</span> <span class="n">J</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">Q</span><span class="o">=</span><span class="mi">101</span><span class="p">,</span> <span class="n">mu</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">sigma</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">fwhm</span><span class="o">=</span><span class="mi">25</span><span class="p">,</span> <span class="n">pad</span><span class="o">=</span><span class="bp">False</span> <span class="p">)</span>
+<span class="n">noise</span>   <span class="o">=</span> <span class="n">power1d</span><span class="o">.</span><span class="n">noise</span><span class="o">.</span><span class="n">SmoothGaussian</span><span class="p">(</span> <span class="n">J</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">Q</span><span class="o">=</span><span class="mi">101</span><span class="p">,</span> <span class="n">mu</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">sigma</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">fwhm</span><span class="o">=</span><span class="mi">25</span><span class="p">,</span> <span class="n">pad</span><span class="o">=</span><span class="kc">False</span> <span class="p">)</span>
 <span class="n">noise</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
 </pre></div>
 </div>
 <p>(<a class="reference external" href="../API/noise-9.py">Source code</a>, <a class="reference external" href="../API/noise-9.png">png</a>, <a class="reference external" href="../API/noise-9.hires.png">hires.png</a>, <a class="reference external" href="../API/noise-9.pdf">pdf</a>)</p>
-<div class="figure">
+<div class="figure align-default">
 <img alt="../_images/noise-9.png" src="../_images/noise-9.png" />
 </div>
 </dd></dl>
@@ -320,31 +308,31 @@ are distributed uniformly between <em>x0</em> and <em>x1</em>.</p>
 </div>
 <div class="section" id="smoothskewed">
 <h2>SmoothSkewed<a class="headerlink" href="#smoothskewed" title="Permalink to this headline">¶</a></h2>
-<dl class="function">
+<dl class="py function">
 <dt id="power1d.noise.SmoothSkewed">
-<code class="descclassname">power1d.noise.</code><code class="descname">SmoothSkewed</code><span class="sig-paren">(</span><em>J=8</em>, <em>Q=101</em>, <em>mu=0</em>, <em>sigma=1</em>, <em>fwhm=20</em>, <em>pad=True</em>, <em>alpha=0</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/power1d/noise.html#SmoothSkewed"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#power1d.noise.SmoothSkewed" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">power1d.noise.</code><code class="sig-name descname">SmoothSkewed</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">J</span><span class="o">=</span><span class="default_value">8</span></em>, <em class="sig-param"><span class="n">Q</span><span class="o">=</span><span class="default_value">101</span></em>, <em class="sig-param"><span class="n">mu</span><span class="o">=</span><span class="default_value">0</span></em>, <em class="sig-param"><span class="n">sigma</span><span class="o">=</span><span class="default_value">1</span></em>, <em class="sig-param"><span class="n">fwhm</span><span class="o">=</span><span class="default_value">20</span></em>, <em class="sig-param"><span class="n">pad</span><span class="o">=</span><span class="default_value">True</span></em>, <em class="sig-param"><span class="n">alpha</span><span class="o">=</span><span class="default_value">0</span></em><span class="sig-paren">)</span><a class="headerlink" href="#power1d.noise.SmoothSkewed" title="Permalink to this definition">¶</a></dt>
 <dd><p>Smooth, skewed noise.</p>
 <div class="admonition warning">
-<p class="first admonition-title">Warning</p>
-<p class="last">This smooth skewed distribution implementation is preliminary and will     only accept skewness parameter &#8220;alpha&#8221; values in the range (1, 5). To skew in the       opposite direction use (-5, -1).  Note that skewed distributions are approximate        and may not be consistent with theoretical solutions.</p>
+<p class="admonition-title">Warning</p>
+<p>This smooth skewed distribution implementation is preliminary and will     only accept skewness parameter “alpha” values in the range (1, 5). To skew in the       opposite direction use (-5, -1).  Note that skewed distributions are approximate        and may not be consistent with theoretical solutions.</p>
 </div>
 <p>Arguments:</p>
-<p><em>J</em> &#8212;- sample size (int) (default 1)</p>
-<p><em>Q</em> &#8212;- continuum size (int) (default 101)</p>
-<p><em>mu</em> &#8212;- mean (float or int) (default 0)</p>
-<p><em>sigma</em> &#8212;- standard deviation (float or int) (default 1)</p>
-<p><em>fwhm</em> &#8212;- smoothness (float or int) (default 20); this is the full-width-at-half-maximum of a Gaussian kernel which is convolved with uncorrelated Gaussian noise;  the resulting smooth noise is re-scaled to unit variance</p>
-<p><em>pad</em> &#8212;- whether to pad continuum when smoothing (True or False) (default False);  unpadded noise has the same value at the beginning and end of the continuum</p>
-<p><em>alpha</em> &#8212;- skewness (float or int between -5 and 5) (default 0)</p>
+<p><em>J</em> —- sample size (int) (default 1)</p>
+<p><em>Q</em> —- continuum size (int) (default 101)</p>
+<p><em>mu</em> —- mean (float or int) (default 0)</p>
+<p><em>sigma</em> —- standard deviation (float or int) (default 1)</p>
+<p><em>fwhm</em> —- smoothness (float or int) (default 20); this is the full-width-at-half-maximum of a Gaussian kernel which is convolved with uncorrelated Gaussian noise;  the resulting smooth noise is re-scaled to unit variance</p>
+<p><em>pad</em> —- whether to pad continuum when smoothing (True or False) (default False);  unpadded noise has the same value at the beginning and end of the continuum</p>
+<p><em>alpha</em> —- skewness (float or int between -5 and 5) (default 0)</p>
 <p>Example:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">power1d</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">power1d</span>
 
-<span class="n">noise</span>   <span class="o">=</span> <span class="n">power1d</span><span class="o">.</span><span class="n">noise</span><span class="o">.</span><span class="n">SmoothSkewed</span><span class="p">(</span> <span class="n">J</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">Q</span><span class="o">=</span><span class="mi">101</span><span class="p">,</span> <span class="n">mu</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">sigma</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">fwhm</span><span class="o">=</span><span class="mi">25</span><span class="p">,</span> <span class="n">pad</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=-</span><span class="mi">3</span> <span class="p">)</span>
+<span class="n">noise</span>   <span class="o">=</span> <span class="n">power1d</span><span class="o">.</span><span class="n">noise</span><span class="o">.</span><span class="n">SmoothSkewed</span><span class="p">(</span> <span class="n">J</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">Q</span><span class="o">=</span><span class="mi">101</span><span class="p">,</span> <span class="n">mu</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">sigma</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">fwhm</span><span class="o">=</span><span class="mi">25</span><span class="p">,</span> <span class="n">pad</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=-</span><span class="mi">3</span> <span class="p">)</span>
 <span class="n">noise</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
 </pre></div>
 </div>
 <p>(<a class="reference external" href="../API/noise-10.py">Source code</a>, <a class="reference external" href="../API/noise-10.png">png</a>, <a class="reference external" href="../API/noise-10.hires.png">hires.png</a>, <a class="reference external" href="../API/noise-10.pdf">pdf</a>)</p>
-<div class="figure">
+<div class="figure align-default">
 <img alt="../_images/noise-10.png" src="../_images/noise-10.png" />
 </div>
 </dd></dl>
@@ -352,25 +340,25 @@ are distributed uniformly between <em>x0</em> and <em>x1</em>.</p>
 </div>
 <div class="section" id="uniform">
 <h2>Uniform<a class="headerlink" href="#uniform" title="Permalink to this headline">¶</a></h2>
-<dl class="function">
+<dl class="py function">
 <dt id="power1d.noise.Uniform">
-<code class="descclassname">power1d.noise.</code><code class="descname">Uniform</code><span class="sig-paren">(</span><em>J=1</em>, <em>Q=101</em>, <em>x0=0</em>, <em>x1=1</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/power1d/noise.html#Uniform"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#power1d.noise.Uniform" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">power1d.noise.</code><code class="sig-name descname">Uniform</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">J</span><span class="o">=</span><span class="default_value">1</span></em>, <em class="sig-param"><span class="n">Q</span><span class="o">=</span><span class="default_value">101</span></em>, <em class="sig-param"><span class="n">x0</span><span class="o">=</span><span class="default_value">0</span></em>, <em class="sig-param"><span class="n">x1</span><span class="o">=</span><span class="default_value">1</span></em><span class="sig-paren">)</span><a class="headerlink" href="#power1d.noise.Uniform" title="Permalink to this definition">¶</a></dt>
 <dd><p>Uniform noise.</p>
 <p>Arguments:</p>
-<p><em>J</em> &#8212;- sample size (int) (default 1)</p>
-<p><em>Q</em> &#8212;- continuum size (int) (default 101)</p>
-<p><em>x0</em> &#8212;- minimum value (float or int) (default 0)</p>
-<p><em>x1</em> &#8212;- maximum value (float or int) (default 1)</p>
+<p><em>J</em> —- sample size (int) (default 1)</p>
+<p><em>Q</em> —- continuum size (int) (default 101)</p>
+<p><em>x0</em> —- minimum value (float or int) (default 0)</p>
+<p><em>x1</em> —- maximum value (float or int) (default 1)</p>
 <p>Example:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">power1d</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">power1d</span>
 
 <span class="n">noise</span>   <span class="o">=</span> <span class="n">power1d</span><span class="o">.</span><span class="n">noise</span><span class="o">.</span><span class="n">Uniform</span><span class="p">(</span> <span class="n">J</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">Q</span><span class="o">=</span><span class="mi">101</span><span class="p">,</span> <span class="n">x0</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">x1</span><span class="o">=</span><span class="mf">1.0</span> <span class="p">)</span>
 <span class="n">noise</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
 </pre></div>
 </div>
 <p>(<a class="reference external" href="../API/noise-11.py">Source code</a>, <a class="reference external" href="../API/noise-11.png">png</a>, <a class="reference external" href="../API/noise-11.hires.png">hires.png</a>, <a class="reference external" href="../API/noise-11.pdf">pdf</a>)</p>
-<div class="figure">
-<img alt="../_images/noise-11.png" src="../_images/noise-11.png" />
+<div class="figure align-default">
+<img alt="../_images/noise-111.png" src="../_images/noise-111.png" />
 </div>
 </dd></dl>
 
@@ -378,12 +366,13 @@ are distributed uniformly between <em>x0</em> and <em>x1</em>.</p>
 </div>
 
 
+            <div class="clearer"></div>
           </div>
         </div>
       </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
-  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <h3><a href="../index.html">Table of Contents</a></h3>
   <ul>
 <li><a class="reference internal" href="#">power1d.noise</a><ul>
 <li><a class="reference internal" href="#additive">Additive</a></li>
@@ -404,18 +393,25 @@ are distributed uniformly between <em>x0</em> and <em>x1</em>.</p>
   <p class="topless"><a href="models.html"
                         title="previous chapter">power1d.models</a></p>
   <h4>Next topic</h4>
-  <p class="topless"><a href="random.html"
-                        title="next chapter">power1d.random</a></p>
+  <p class="topless"><a href="prob.html"
+                        title="next chapter">power1d.prob</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/API/noise.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
 <div id="searchbox" style="display: none" role="search">
-  <h3>Quick search</h3>
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
     <form class="search" action="../search.html" method="get">
-      <div><input type="text" name="q" /></div>
-      <div><input type="submit" value="Go" /></div>
-      <input type="hidden" name="check_keywords" value="yes" />
-      <input type="hidden" name="area" value="default" />
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
     </form>
+    </div>
 </div>
-<script type="text/javascript">$('#searchbox').show(0);</script>
+<script>$('#searchbox').show(0);</script>
         </div>
       </div>
       <div class="clearer"></div>
@@ -430,18 +426,19 @@ are distributed uniformly between <em>x0</em> and <em>x1</em>.</p>
           <a href="../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
         <li class="right" >
-          <a href="random.html" title="power1d.random"
+          <a href="prob.html" title="power1d.prob"
              >next</a> |</li>
         <li class="right" >
           <a href="models.html" title="power1d.models"
              >previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../index.html">power1d 0.1 documentation</a> &#187;</li>
-          <li class="nav-item nav-item-1"><a href="../API.html" >API</a> &#187;</li> 
+        <li class="nav-item nav-item-0"><a href="../index.html">power1d 0.1.2 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../API.html" >API</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">power1d.noise</a></li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2017, Todd Pataky.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.5.6.
+        &#169; Copyright 2020, Todd Pataky.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.1.2.
     </div>
   </body>
 </html>

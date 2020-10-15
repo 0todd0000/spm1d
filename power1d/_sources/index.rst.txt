@@ -13,12 +13,11 @@ Dependencies:
 * Matplotlib 
 
 
-Please consider citing:
+**Please cite**:
 
-| Pataky TC (in review).
-| Power1D: A Python toolbox for numerical power estimates in experiments
-  involving one-dimensional continua.
-| **PeerJ Computer Science**.
+Pataky TC (2017) Power1D: A Python toolbox for numerical power estimates in experiments involving one-dimensional continua. PeerJ Computer Science 3: e125. DOI: 10.7717/peerj-cs.125
+
+https://peerj.com/articles/cs-125/
 
 
 
@@ -47,6 +46,11 @@ Contents
 	Examples.rst
 	API.rst
 	References.rst
+
+.. License.rst
+.. Examples.rst
+.. API.rst
+.. References.rst
 
 
 

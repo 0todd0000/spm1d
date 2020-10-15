@@ -1,30 +1,18 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
+<!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
   <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    
-    <title>Data sample modeling &#8212; power1d 0.1 documentation</title>
-    
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data sample modeling &#8212; power1d 0.1.2 documentation</title>
     <link rel="stylesheet" href="../_static/pyramid.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    
-    <script type="text/javascript">
-      var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    '../',
-        VERSION:     '0.1',
-        COLLAPSE_INDEX: false,
-        FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true,
-        SOURCELINK_SUFFIX: '.txt'
-      };
-    </script>
-    <script type="text/javascript" src="../_static/jquery.js"></script>
-    <script type="text/javascript" src="../_static/underscore.js"></script>
-    <script type="text/javascript" src="../_static/doctools.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Power analysis" href="PowerAnalysis.html" />
@@ -35,8 +23,7 @@
 <link rel="stylesheet" href="../_static/ie6.css" type="text/css" media="screen" charset="utf-8" />
 <![endif]-->
 
-  </head>
-  <body role="document">
+  </head><body>
 <div class="header" role="banner">
   <div class="logo">
     <a href="../index.html">
@@ -60,8 +47,9 @@
         <li class="right" >
           <a href="../Examples.html" title="Examples"
              accesskey="P">previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../index.html">power1d 0.1 documentation</a> &#187;</li>
-          <li class="nav-item nav-item-1"><a href="../Examples.html" accesskey="U">Examples</a> &#187;</li> 
+        <li class="nav-item nav-item-0"><a href="../index.html">power1d 0.1.2 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../Examples.html" accesskey="U">Examples</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Data sample modeling</a></li> 
       </ul>
     </div>  
 
@@ -80,7 +68,7 @@ and are available for download here:</p>
 <div class="line">The data are in <strong>fdaMatlab.zip</strong> in the <strong>/examples/weather</strong> folder.</div>
 </div>
 <p id="label-weatherdata">(<a class="reference external" href="../Examples/DataSample-1.py">Source code</a>, <a class="reference external" href="../Examples/DataSample-1.png">png</a>, <a class="reference external" href="../Examples/DataSample-1.hires.png">hires.png</a>, <a class="reference external" href="../Examples/DataSample-1.pdf">pdf</a>)</p>
-<div class="figure">
+<div class="figure align-default">
 <img alt="../_images/DataSample-1.png" src="../_images/DataSample-1.png" />
 </div>
 <p>The first step of power analysis is to create a model the data that can be used to generate real
@@ -88,15 +76,15 @@ numerical data samples. Later those data samples will be iteratively generated o
 of iterations in order to numerically accumulate probability distributions associated with the model.</p>
 <p>In <strong>power1d</strong> there are four steps to creating a data sample model:</p>
 <ol class="arabic simple">
-<li>Create baseline geometry.</li>
-<li>Create signal geometry.</li>
-<li>Create a noise model.</li>
-<li>Combine 1&#8211;3 in a DataSample model.</li>
+<li><p>Create baseline geometry.</p></li>
+<li><p>Create signal geometry.</p></li>
+<li><p>Create a noise model.</p></li>
+<li><p>Combine 1–3 in a DataSample model.</p></li>
 </ol>
-<p>The first step is to create &#8220;baseline&#8221; one-dimensional (1D) geometry.
+<p>The first step is to create “baseline” one-dimensional (1D) geometry.
 If one has experimental data like those depicted above,
 it is easy to generate that baseline as a <strong>power1d.geom.Continuum1D</strong> as follows:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">power1d</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">power1d</span>
 
 <span class="n">data</span>     <span class="o">=</span> <span class="n">power1d</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">weather</span><span class="p">()</span>  <span class="c1"># load data</span>
 <span class="n">y</span>        <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;Continental&#39;</span><span class="p">]</span>     <span class="c1"># extract one region</span>
@@ -107,15 +95,15 @@ it is easy to generate that baseline as a <strong>power1d.geom.Continuum1D</stro
 </pre></div>
 </div>
 <p>(<a class="reference external" href="../Examples/DataSample-2.py">Source code</a>, <a class="reference external" href="../Examples/DataSample-2.png">png</a>, <a class="reference external" href="../Examples/DataSample-2.hires.png">hires.png</a>, <a class="reference external" href="../Examples/DataSample-2.pdf">pdf</a>)</p>
-<div class="figure">
+<div class="figure align-default">
 <img alt="../_images/DataSample-2.png" src="../_images/DataSample-2.png" />
 </div>
-<p>If we didn&#8217;t have experimental data we could approximate the baseline using the
+<p>If we didn’t have experimental data we could approximate the baseline using the
 geometric models in <a class="reference internal" href="../API/geom.html#label-api-geom"><span class="std std-ref">power1d.geom</span></a>. In this case one possibility for
 modeling the baseline is to subtract a Constant value from a GaussianPulse
 as indicated below.  This appears to create a reasonable approximation to
 the experimental data.</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span>
 <span class="kn">import</span> <span class="nn">power1d</span>
 
 <span class="n">data</span>     <span class="o">=</span> <span class="n">power1d</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">weather</span><span class="p">()</span>  <span class="c1"># load data</span>
@@ -135,14 +123,14 @@ the experimental data.</p>
 </pre></div>
 </div>
 <p>(<a class="reference external" href="../Examples/DataSample-3.py">Source code</a>, <a class="reference external" href="../Examples/DataSample-3.png">png</a>, <a class="reference external" href="../Examples/DataSample-3.hires.png">hires.png</a>, <a class="reference external" href="../Examples/DataSample-3.pdf">pdf</a>)</p>
-<div class="figure">
+<div class="figure align-default">
 <img alt="../_images/DataSample-3.png" src="../_images/DataSample-3.png" />
 </div>
 <p>The second step is to create a signal that we wish to detect experimentally.
-Let&#8217;s say that we hope to detect a broad increase in temperature over the
+Let’s say that we hope to detect a broad increase in temperature over the
 summer months with a maximum temperature increase of 5 deg. That could be
 modeled as a second Gaussian pulse like this:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span>
 <span class="kn">import</span> <span class="nn">power1d</span>
 
 <span class="n">data</span>     <span class="o">=</span> <span class="n">power1d</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">weather</span><span class="p">()</span>  <span class="c1"># load data</span>
@@ -166,7 +154,7 @@ modeled as a second Gaussian pulse like this:</p>
 </pre></div>
 </div>
 <p>(<a class="reference external" href="../Examples/DataSample-4.py">Source code</a>, <a class="reference external" href="../Examples/DataSample-4.png">png</a>, <a class="reference external" href="../Examples/DataSample-4.hires.png">hires.png</a>, <a class="reference external" href="../Examples/DataSample-4.pdf">pdf</a>)</p>
-<div class="figure">
+<div class="figure align-default">
 <img alt="../_images/DataSample-4.png" src="../_images/DataSample-4.png" />
 </div>
 <p>The third step is to create a model of the noise we expect to observe
@@ -174,9 +162,9 @@ experimentally.  From the <a class="reference internal" href="#label-weatherdata
 we can see at least two types of noise: a high-frequency day-to-day noise
 and lower-frequency noise across the different 1D observations. In
 <strong>power1d</strong> a variety of <a class="reference internal" href="../API/noise.html#label-api-noise"><span class="std std-ref">noise models</span></a> are available
-to model theses processes. Here let&#8217;s model the noise as a combination
+to model theses processes. Here let’s model the noise as a combination
 of uncorrelated Gaussian noise and SmoothGaussian noise:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span>
 <span class="kn">import</span> <span class="nn">power1d</span>
 
 <span class="n">J</span>        <span class="o">=</span> <span class="mi">8</span>    <span class="c1"># sample size</span>
@@ -203,15 +191,15 @@ of uncorrelated Gaussian noise and SmoothGaussian noise:</p>
 </pre></div>
 </div>
 <p>(<a class="reference external" href="../Examples/DataSample-5.py">Source code</a>, <a class="reference external" href="../Examples/DataSample-5.png">png</a>, <a class="reference external" href="../Examples/DataSample-5.hires.png">hires.png</a>, <a class="reference external" href="../Examples/DataSample-5.pdf">pdf</a>)</p>
-<div class="figure">
+<div class="figure align-default">
 <img alt="../_images/DataSample-5.png" src="../_images/DataSample-5.png" />
 </div>
-<p>Before we add that noise to our model let&#8217;s consider these noise models briefly.
+<p>Before we add that noise to our model let’s consider these noise models briefly.
 Each noise model has an attribute <em>value</em> which contains a  (J x Q) array
 representing the current state of the random noise. New random noise can
 be generated using the <em>random</em> method, and the noise values can be replicated
-using NumPy&#8217;s <strong>np.random.seed</strong> function as follows:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span>
+using NumPy’s <strong>np.random.seed</strong> function as follows:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span>
 <span class="kn">import</span> <span class="nn">power1d</span>
 
 <span class="n">J</span> <span class="o">=</span> <span class="mi">3</span>
@@ -243,14 +231,14 @@ using NumPy&#8217;s <strong>np.random.seed</strong> function as follows:</p>
 </pre></div>
 </div>
 <p>(<a class="reference external" href="../Examples/DataSample-6.py">Source code</a>, <a class="reference external" href="../Examples/DataSample-6.png">png</a>, <a class="reference external" href="../Examples/DataSample-6.hires.png">hires.png</a>, <a class="reference external" href="../Examples/DataSample-6.pdf">pdf</a>)</p>
-<div class="figure">
+<div class="figure align-default">
 <img alt="../_images/DataSample-6.png" src="../_images/DataSample-6.png" />
 </div>
 <p>This noise control is identical for all types of <a class="reference internal" href="../API/noise.html#label-api-noise"><span class="std std-ref">noise models</span></a>
 including compound types like the Additive model above.</p>
 <p>The fourth and final step is to combine our baseline, signal and noise objects
 into a DataSample object like this:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span>
 <span class="kn">import</span> <span class="nn">power1d</span>
 
 <span class="n">J</span>        <span class="o">=</span> <span class="mi">8</span>    <span class="c1"># sample size</span>
@@ -298,11 +286,11 @@ into a DataSample object like this:</p>
 </pre></div>
 </div>
 <p>(<a class="reference external" href="../Examples/DataSample-7.py">Source code</a>, <a class="reference external" href="../Examples/DataSample-7.png">png</a>, <a class="reference external" href="../Examples/DataSample-7.hires.png">hires.png</a>, <a class="reference external" href="../Examples/DataSample-7.pdf">pdf</a>)</p>
-<div class="figure">
+<div class="figure align-default">
 <img alt="../_images/DataSample-7.png" src="../_images/DataSample-7.png" />
 </div>
 <p>In the figure above we see that, like the noise models, we can generate new data sample
-models using the <em>random</em> method and we can control the model&#8217;s random state using
+models using the <em>random</em> method and we can control the model’s random state using
 <strong>np.random.seed</strong>.</p>
 <p>This instantaneous state of a DataModel represents the type of data we expect to observe
 in a single experiment <strong>if</strong> the baseline, signal and noise models are all accurate.
@@ -315,6 +303,7 @@ we will be able to detect that signal given our noise model.</p>
 </div>
 
 
+            <div class="clearer"></div>
           </div>
         </div>
       </div>
@@ -326,16 +315,23 @@ we will be able to detect that signal given our noise model.</p>
   <h4>Next topic</h4>
   <p class="topless"><a href="PowerAnalysis.html"
                         title="next chapter">Power analysis</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/Examples/DataSample.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
 <div id="searchbox" style="display: none" role="search">
-  <h3>Quick search</h3>
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
     <form class="search" action="../search.html" method="get">
-      <div><input type="text" name="q" /></div>
-      <div><input type="submit" value="Go" /></div>
-      <input type="hidden" name="check_keywords" value="yes" />
-      <input type="hidden" name="area" value="default" />
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
     </form>
+    </div>
 </div>
-<script type="text/javascript">$('#searchbox').show(0);</script>
+<script>$('#searchbox').show(0);</script>
         </div>
       </div>
       <div class="clearer"></div>
@@ -355,13 +351,14 @@ we will be able to detect that signal given our noise model.</p>
         <li class="right" >
           <a href="../Examples.html" title="Examples"
              >previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../index.html">power1d 0.1 documentation</a> &#187;</li>
-          <li class="nav-item nav-item-1"><a href="../Examples.html" >Examples</a> &#187;</li> 
+        <li class="nav-item nav-item-0"><a href="../index.html">power1d 0.1.2 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../Examples.html" >Examples</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Data sample modeling</a></li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2017, Todd Pataky.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.5.6.
+        &#169; Copyright 2020, Todd Pataky.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.1.2.
     </div>
   </body>
 </html>

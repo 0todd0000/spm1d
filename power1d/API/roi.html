@@ -1,30 +1,18 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
+<!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
   <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    
-    <title>power1d.roi &#8212; power1d 0.1 documentation</title>
-    
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>power1d.roi &#8212; power1d 0.1.2 documentation</title>
     <link rel="stylesheet" href="../_static/pyramid.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    
-    <script type="text/javascript">
-      var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    '../',
-        VERSION:     '0.1',
-        COLLAPSE_INDEX: false,
-        FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true,
-        SOURCELINK_SUFFIX: '.txt'
-      };
-    </script>
-    <script type="text/javascript" src="../_static/jquery.js"></script>
-    <script type="text/javascript" src="../_static/underscore.js"></script>
-    <script type="text/javascript" src="../_static/doctools.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="power1d.stats" href="stats.html" />
@@ -35,8 +23,7 @@
 <link rel="stylesheet" href="../_static/ie6.css" type="text/css" media="screen" charset="utf-8" />
 <![endif]-->
 
-  </head>
-  <body role="document">
+  </head><body>
 <div class="header" role="banner">
   <div class="logo">
     <a href="../index.html">
@@ -60,8 +47,9 @@
         <li class="right" >
           <a href="results.html" title="power1d.results"
              accesskey="P">previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../index.html">power1d 0.1 documentation</a> &#187;</li>
-          <li class="nav-item nav-item-1"><a href="../API.html" accesskey="U">API</a> &#187;</li> 
+        <li class="nav-item nav-item-0"><a href="../index.html">power1d 0.1.2 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../API.html" accesskey="U">API</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">power1d.roi</a></li> 
       </ul>
     </div>  
 
@@ -75,7 +63,7 @@
 <p>Regions of interest (ROIs)</p>
 <p>ROIs define the continuum scope of the null hypothesis.</p>
 <p>Example:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span>
 <span class="kn">import</span> <span class="nn">power1d</span>
 
@@ -98,13 +86,13 @@
 
 <span class="c1"># simulate the experiments</span>
 <span class="n">sim</span>      <span class="o">=</span> <span class="n">power1d</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">ExperimentSimulator</span><span class="p">(</span><span class="n">emodel0</span><span class="p">,</span> <span class="n">emodel1</span><span class="p">)</span>
-<span class="n">results</span>  <span class="o">=</span> <span class="n">sim</span><span class="o">.</span><span class="n">simulate</span><span class="p">(</span><span class="n">iterations</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">progress_bar</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<span class="n">results</span>  <span class="o">=</span> <span class="n">sim</span><span class="o">.</span><span class="n">simulate</span><span class="p">(</span><span class="n">iterations</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">progress_bar</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
 
 <span class="c1"># create ROI object and apply to the results:</span>
 <span class="n">Q</span>        <span class="o">=</span> <span class="mi">101</span>
-<span class="n">x</span>        <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span> <span class="p">[</span><span class="bp">False</span><span class="p">]</span> <span class="o">*</span> <span class="n">Q</span> <span class="p">)</span>
-<span class="n">x</span><span class="p">[</span><span class="mi">60</span><span class="p">:</span><span class="mi">80</span><span class="p">]</span> <span class="o">=</span> <span class="bp">True</span>
+<span class="n">x</span>        <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span> <span class="p">[</span><span class="kc">False</span><span class="p">]</span> <span class="o">*</span> <span class="n">Q</span> <span class="p">)</span>
+<span class="n">x</span><span class="p">[</span><span class="mi">60</span><span class="p">:</span><span class="mi">80</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span>
 <span class="n">roi</span>      <span class="o">=</span> <span class="n">power1d</span><span class="o">.</span><span class="n">roi</span><span class="o">.</span><span class="n">RegionOfInterest</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
 <span class="n">results</span><span class="o">.</span><span class="n">set_roi</span><span class="p">(</span> <span class="n">roi</span> <span class="p">)</span>
 
@@ -115,27 +103,27 @@
 </pre></div>
 </div>
 <p>(<a class="reference external" href="../API/roi-1.py">Source code</a>, <a class="reference external" href="../API/roi-1.png">png</a>, <a class="reference external" href="../API/roi-1.hires.png">hires.png</a>, <a class="reference external" href="../API/roi-1.pdf">pdf</a>)</p>
-<div class="figure">
+<div class="figure align-default">
 <img alt="../_images/roi-1.png" src="../_images/roi-1.png" />
 </div>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">Since the ROI object limits the scope of the null hypothesis, power results pertain only to the continuum region(s) inside the ROI. In this example we see that the omnibus power is close to alpha because the ROI contains no signal. Simulating for a larger number of iterations will yield more precise convergence to alpha.</p>
+<p class="admonition-title">Note</p>
+<p>Since the ROI object limits the scope of the null hypothesis, power results pertain only to the continuum region(s) inside the ROI. In this example we see that the omnibus power is close to alpha because the ROI contains no signal. Simulating for a larger number of iterations will yield more precise convergence to alpha.</p>
 </div>
 <div class="section" id="regionofinterest">
 <h2>RegionOfInterest<a class="headerlink" href="#regionofinterest" title="Permalink to this headline">¶</a></h2>
-<dl class="function">
+<dl class="py function">
 <dt id="power1d.roi.RegionOfInterest">
-<code class="descclassname">power1d.roi.</code><code class="descname">RegionOfInterest</code><span class="sig-paren">(</span><em>x</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/power1d/roi.html#RegionOfInterest"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#power1d.roi.RegionOfInterest" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">power1d.roi.</code><code class="sig-name descname">RegionOfInterest</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span></em><span class="sig-paren">)</span><a class="headerlink" href="#power1d.roi.RegionOfInterest" title="Permalink to this definition">¶</a></dt>
 <dd><p>Region of interest (ROI).</p>
 <p>Example:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span>
 <span class="kn">import</span> <span class="nn">power1d</span>
 
 <span class="n">Q</span>        <span class="o">=</span> <span class="mi">101</span>
-<span class="n">x</span>        <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span> <span class="p">[</span><span class="bp">False</span><span class="p">]</span> <span class="o">*</span> <span class="n">Q</span> <span class="p">)</span>
-<span class="n">x</span><span class="p">[</span><span class="mi">40</span><span class="p">:</span><span class="mi">60</span><span class="p">]</span> <span class="o">=</span> <span class="bp">True</span>
+<span class="n">x</span>        <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span> <span class="p">[</span><span class="kc">False</span><span class="p">]</span> <span class="o">*</span> <span class="n">Q</span> <span class="p">)</span>
+<span class="n">x</span><span class="p">[</span><span class="mi">40</span><span class="p">:</span><span class="mi">60</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span>
 <span class="n">roi</span>      <span class="o">=</span> <span class="n">power1d</span><span class="o">.</span><span class="n">roi</span><span class="o">.</span><span class="n">RegionOfInterest</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
 
 <span class="n">pyplot</span><span class="o">.</span><span class="n">close</span><span class="p">(</span><span class="s1">&#39;all&#39;</span><span class="p">)</span>
@@ -143,7 +131,7 @@
 </pre></div>
 </div>
 <p>(<a class="reference external" href="../API/roi-2.py">Source code</a>, <a class="reference external" href="../API/roi-2.png">png</a>, <a class="reference external" href="../API/roi-2.hires.png">hires.png</a>, <a class="reference external" href="../API/roi-2.pdf">pdf</a>)</p>
-<div class="figure">
+<div class="figure align-default">
 <img alt="../_images/roi-2.png" src="../_images/roi-2.png" />
 </div>
 </dd></dl>
@@ -152,12 +140,13 @@
 </div>
 
 
+            <div class="clearer"></div>
           </div>
         </div>
       </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
-  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <h3><a href="../index.html">Table of Contents</a></h3>
   <ul>
 <li><a class="reference internal" href="#">power1d.roi</a><ul>
 <li><a class="reference internal" href="#regionofinterest">RegionOfInterest</a></li>
@@ -171,16 +160,23 @@
   <h4>Next topic</h4>
   <p class="topless"><a href="stats.html"
                         title="next chapter">power1d.stats</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/API/roi.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
 <div id="searchbox" style="display: none" role="search">
-  <h3>Quick search</h3>
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
     <form class="search" action="../search.html" method="get">
-      <div><input type="text" name="q" /></div>
-      <div><input type="submit" value="Go" /></div>
-      <input type="hidden" name="check_keywords" value="yes" />
-      <input type="hidden" name="area" value="default" />
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
     </form>
+    </div>
 </div>
-<script type="text/javascript">$('#searchbox').show(0);</script>
+<script>$('#searchbox').show(0);</script>
         </div>
       </div>
       <div class="clearer"></div>
@@ -200,13 +196,14 @@
         <li class="right" >
           <a href="results.html" title="power1d.results"
              >previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../index.html">power1d 0.1 documentation</a> &#187;</li>
-          <li class="nav-item nav-item-1"><a href="../API.html" >API</a> &#187;</li> 
+        <li class="nav-item nav-item-0"><a href="../index.html">power1d 0.1.2 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../API.html" >API</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">power1d.roi</a></li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2017, Todd Pataky.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.5.6.
+        &#169; Copyright 2020, Todd Pataky.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.1.2.
     </div>
   </body>
 </html>

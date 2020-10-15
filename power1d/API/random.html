@@ -1,42 +1,29 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
+<!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
   <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    
-    <title>power1d.random &#8212; power1d 0.1 documentation</title>
-    
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>power1d.random &#8212; power1d 0.1.2 documentation</title>
     <link rel="stylesheet" href="../_static/pyramid.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    
-    <script type="text/javascript">
-      var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    '../',
-        VERSION:     '0.1',
-        COLLAPSE_INDEX: false,
-        FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true,
-        SOURCELINK_SUFFIX: '.txt'
-      };
-    </script>
-    <script type="text/javascript" src="../_static/jquery.js"></script>
-    <script type="text/javascript" src="../_static/underscore.js"></script>
-    <script type="text/javascript" src="../_static/doctools.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="power1d.results" href="results.html" />
-    <link rel="prev" title="power1d.noise" href="noise.html" />
+    <link rel="prev" title="power1d.prob" href="prob.html" />
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Neuton&amp;subset=latin" type="text/css" media="screen" charset="utf-8" />
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nobile:regular,italic,bold,bolditalic&amp;subset=latin" type="text/css" media="screen" charset="utf-8" />
 <!--[if lte IE 6]>
 <link rel="stylesheet" href="../_static/ie6.css" type="text/css" media="screen" charset="utf-8" />
 <![endif]-->
 
-  </head>
-  <body role="document">
+  </head><body>
 <div class="header" role="banner">
   <div class="logo">
     <a href="../index.html">
@@ -58,10 +45,11 @@
           <a href="results.html" title="power1d.results"
              accesskey="N">next</a> |</li>
         <li class="right" >
-          <a href="noise.html" title="power1d.noise"
+          <a href="prob.html" title="power1d.prob"
              accesskey="P">previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../index.html">power1d 0.1 documentation</a> &#187;</li>
-          <li class="nav-item nav-item-1"><a href="../API.html" accesskey="U">API</a> &#187;</li> 
+        <li class="nav-item nav-item-0"><a href="../index.html">power1d 0.1.2 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../API.html" accesskey="U">API</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">power1d.random</a></li> 
       </ul>
     </div>  
 
@@ -86,82 +74,75 @@ SEE THE ORIGINAL DOCUMENTATION FOR MORE DETAILS:</p>
 <strong>Journal of Statistical Software</strong> 71(7), 1-22. <a class="reference external" href="http://doi.org/10.18637/jss.v071.i07">http://doi.org/10.18637/jss.v071.i07</a></p>
 <div class="section" id="randn1d">
 <h2>randn1d<a class="headerlink" href="#randn1d" title="Permalink to this headline">¶</a></h2>
-<dl class="function">
+<dl class="py function">
 <dt id="power1d.random.randn1d">
-<code class="descclassname">power1d.random.</code><code class="descname">randn1d</code><span class="sig-paren">(</span><em>nResponses</em>, <em>nodes</em>, <em>FWHM=10.0</em>, <em>pad=False</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/power1d/random.html#randn1d"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#power1d.random.randn1d" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">power1d.random.</code><code class="sig-name descname">randn1d</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">nResponses</span></em>, <em class="sig-param"><span class="n">nodes</span></em>, <em class="sig-param"><span class="n">FWHM</span><span class="o">=</span><span class="default_value">10.0</span></em>, <em class="sig-param"><span class="n">pad</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="headerlink" href="#power1d.random.randn1d" title="Permalink to this definition">¶</a></dt>
 <dd><p>Generate smooth Gaussian random fields.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><em>nResponses</em> &#8211; number of fields (int)</p>
-<p><em>nodes</em> &#8211; number of field nodes (int) OR a binary field (boolean array)</p>
-<p><em>FWHM</em> &#8211; field smoothness (float)</p>
-<p><em>pad</em> &#8211; pad prior to smoothing (bool)</p>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">A 2D numpy array with shape:  (<em>nResponses</em>, <em>nodes</em>)</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Examples:</th><td class="field-body"><div class="first last highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">y</span> <span class="o">=</span> <span class="n">power1d</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn1d</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">101</span><span class="p">,</span> <span class="mf">15.0</span><span class="p">)</span>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><em>nResponses</em> – number of fields (int)</p>
+<p><em>nodes</em> – number of field nodes (int) OR a binary field (boolean array)</p>
+<p><em>FWHM</em> – field smoothness (float)</p>
+<p><em>pad</em> – pad prior to smoothing (bool)</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>A 2D numpy array with shape:  (<em>nResponses</em>, <em>nodes</em>)</p>
+</dd>
+<dt class="field-odd">Examples</dt>
+<dd class="field-odd"><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">y</span> <span class="o">=</span> <span class="n">power1d</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn1d</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">101</span><span class="p">,</span> <span class="mf">15.0</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">y</span> <span class="o">=</span> <span class="n">power1d</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn1d</span><span class="p">(</span><span class="mi">1000</span><span class="p">,</span> <span class="mi">101</span><span class="p">,</span> <span class="mf">75.0</span><span class="p">,</span> <span class="n">pad</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 <div class="admonition warning">
-<p class="first admonition-title">Warning</p>
-<p class="last">Padding is slow but necessary when (2 x <em>FWHM</em>) is greater than the number of nodes</p>
+<p class="admonition-title">Warning</p>
+<p>Padding is slow but necessary when (2 x <em>FWHM</em>) is greater than the number of nodes</p>
 </div>
 </dd></dl>
 
 </div>
 <div class="section" id="generator1d">
 <h2>Generator1D<a class="headerlink" href="#generator1d" title="Permalink to this headline">¶</a></h2>
-<dl class="class">
+<dl class="py class">
 <dt id="power1d.random.Generator1D">
-<em class="property">class </em><code class="descclassname">power1d.random.</code><code class="descname">Generator1D</code><span class="sig-paren">(</span><em>nResponses=1</em>, <em>nodes=101</em>, <em>FWHM=10</em>, <em>pad=False</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/power1d/random.html#Generator1D"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#power1d.random.Generator1D" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">power1d.random.</code><code class="sig-name descname">Generator1D</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">nResponses</span><span class="o">=</span><span class="default_value">1</span></em>, <em class="sig-param"><span class="n">nodes</span><span class="o">=</span><span class="default_value">101</span></em>, <em class="sig-param"><span class="n">FWHM</span><span class="o">=</span><span class="default_value">10</span></em>, <em class="sig-param"><span class="n">pad</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="headerlink" href="#power1d.random.Generator1D" title="Permalink to this definition">¶</a></dt>
 <dd><p>Generator of smooth Gaussian random fields.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><em>nResponses</em> &#8211; number of fields (int)</p>
-<p><em>nodes</em> &#8211; number of field nodes (int) OR a binary field (boolean array)</p>
-<p><em>FWHM</em> &#8211; field smoothness (float)</p>
-<p><em>pad</em> &#8211; pad prior to smoothing (bool)</p>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">A Generator1D object</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Notes:</th><td class="field-body"><ol class="first arabic simple">
-<li>Generator1D is faster than randn1d for iteratively generating many random samples.</li>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><em>nResponses</em> – number of fields (int)</p>
+<p><em>nodes</em> – number of field nodes (int) OR a binary field (boolean array)</p>
+<p><em>FWHM</em> – field smoothness (float)</p>
+<p><em>pad</em> – pad prior to smoothing (bool)</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>A Generator1D object</p>
+</dd>
+<dt class="field-odd">Notes</dt>
+<dd class="field-odd"><ol class="arabic simple">
+<li><p>Generator1D is faster than randn1d for iteratively generating many random samples.</p></li>
 </ol>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Examples:</th><td class="field-body"><div class="first last highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">g</span> <span class="o">=</span> <span class="n">power1d</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">Generator1D</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">101</span><span class="p">,</span> <span class="mf">15.0</span><span class="p">)</span>
+</dd>
+<dt class="field-even">Examples</dt>
+<dd class="field-even"><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">g</span> <span class="o">=</span> <span class="n">power1d</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">Generator1D</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">101</span><span class="p">,</span> <span class="mf">15.0</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">y</span> <span class="o">=</span> <span class="n">g</span><span class="o">.</span><span class="n">generate_sample</span><span class="p">()</span>
 </pre></div>
 </div>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 </dd></dl>
 
 </div>
 </div>
 
 
+            <div class="clearer"></div>
           </div>
         </div>
       </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
-  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <h3><a href="../index.html">Table of Contents</a></h3>
   <ul>
 <li><a class="reference internal" href="#">power1d.random</a><ul>
 <li><a class="reference internal" href="#randn1d">randn1d</a></li>
@@ -171,21 +152,28 @@ SEE THE ORIGINAL DOCUMENTATION FOR MORE DETAILS:</p>
 </ul>
 
   <h4>Previous topic</h4>
-  <p class="topless"><a href="noise.html"
-                        title="previous chapter">power1d.noise</a></p>
+  <p class="topless"><a href="prob.html"
+                        title="previous chapter">power1d.prob</a></p>
   <h4>Next topic</h4>
   <p class="topless"><a href="results.html"
                         title="next chapter">power1d.results</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/API/random.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
 <div id="searchbox" style="display: none" role="search">
-  <h3>Quick search</h3>
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
     <form class="search" action="../search.html" method="get">
-      <div><input type="text" name="q" /></div>
-      <div><input type="submit" value="Go" /></div>
-      <input type="hidden" name="check_keywords" value="yes" />
-      <input type="hidden" name="area" value="default" />
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
     </form>
+    </div>
 </div>
-<script type="text/javascript">$('#searchbox').show(0);</script>
+<script>$('#searchbox').show(0);</script>
         </div>
       </div>
       <div class="clearer"></div>
@@ -203,15 +191,16 @@ SEE THE ORIGINAL DOCUMENTATION FOR MORE DETAILS:</p>
           <a href="results.html" title="power1d.results"
              >next</a> |</li>
         <li class="right" >
-          <a href="noise.html" title="power1d.noise"
+          <a href="prob.html" title="power1d.prob"
              >previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../index.html">power1d 0.1 documentation</a> &#187;</li>
-          <li class="nav-item nav-item-1"><a href="../API.html" >API</a> &#187;</li> 
+        <li class="nav-item nav-item-0"><a href="../index.html">power1d 0.1.2 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../API.html" >API</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">power1d.random</a></li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2017, Todd Pataky.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.5.6.
+        &#169; Copyright 2020, Todd Pataky.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.1.2.
     </div>
   </body>
 </html>
