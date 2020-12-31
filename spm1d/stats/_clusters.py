@@ -6,7 +6,7 @@ This module contains class definitions for raw SPMs (raw test statistic continua
 and inference SPMs (thresholded test statistic).
 '''
 
-# Copyright (C) 2016  Todd Pataky
+# Copyright (C) 2020  Todd Pataky
 
 
 
@@ -188,7 +188,8 @@ class ClusterNonparam(Cluster):
 		self.metric_value  = x
 
 	def inference(self, pdf, two_tailed):
-		self.P             = (pdf >= self.metric_value).mean()
+		pdf      = np.asarray(pdf, dtype=float)  # fix for ragged nested sequences
+		self.P   = (pdf >= self.metric_value).mean()
 		# self.P             = max( self.P,  1.0/self.nPermUnique )
 
 
