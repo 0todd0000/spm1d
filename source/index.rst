@@ -41,10 +41,11 @@ Contents
 
 Current version: **0.4.3**  (released 27 August 2019)
 
-.. toctree::
-	:maxdepth: 2
 
-	NewFeatures.rst
+.. toctree::
+	:maxdepth: 5
+
+	Downloads.rst
 
 
 .. toctree::
@@ -55,7 +56,7 @@ Current version: **0.4.3**  (released 27 August 2019)
 .. toctree::
 	:maxdepth: 2
 
-	Downloads.rst
+	NewFeatures.rst
 
 
 .. toctree::

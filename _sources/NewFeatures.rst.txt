@@ -1,8 +1,32 @@
 .. _label-NewFeatures:
 
 
-New Features (version 0.4.3)
+
+Version History
 =====================================
+
+There have been four major **spm1d** releases: 0.4, 0.3, 0.2 and 0.1.
+
+The current major version is 0.4.
+
+Release notes for previous versions are available here:
+
+
+.. toctree::
+	:maxdepth: 3
+
+	install/VersionHistory.rst
+
+
+
+
+New Features
+=====================================
+
+
+Version 0.4.3
+_________________________________________
+
 
 Manual nonlinear warping (Python only)
 -------------------------------------------------
@@ -15,8 +39,8 @@ Manual nonlinear warping (Python only)
 
 
 
-New Features (version 0.4.2)
-=====================================
+Version 0.4.2
+_________________________________________
 
 Analysis of 2D data using **spm1d**:
 
@@ -28,8 +52,8 @@ Analysis of 2D data using **spm1d**:
 
 
 
-New Features (version 0.4)
-=====================================
+Version 0.4.0
+_________________________________________
 
 The main new features in **spm1d** version 0.4 are listed below.
 
@@ -47,7 +71,7 @@ The main new features in **spm1d** version 0.4 are listed below.
 .. _label-NonParametricInference:
 
 Non-parametric inference
-________________________________
+-------------------------------------------------
 
 All statistical tests can now be conducted non-parametrically through the new **spm1d.stats.nonparam** interface.
 
@@ -83,7 +107,7 @@ The key difference is the "iterations" keyword for non-parametric inference. Thi
 .. _label-ConfidenceIntervals:
 
 Confidence intervals
-________________________________
+-------------------------------------------------
 
 Parametric and non-parametric confidence intervals (CIs) can be constructed using the following functions:
 
@@ -139,7 +163,7 @@ For more details refer the example scripts listed below. The standalone scripts 
 .. _label-NormalityTests:
 
 Normality tests
-________________________________
+-------------------------------------------------
 
 Normality tests can be conducted using the new **spm1d.stats.normality** interface.
 
@@ -165,7 +189,7 @@ For example:
 .. _label-Python3compatibility:
 
 Python 3 compatibility
-________________________________
+-------------------------------------------------
 
 FINALLY!
 
@@ -180,7 +204,7 @@ Python 2.7 and Python 3.X will both be supported for the forseeable future.
 .. _label-rft1dINspm1d:
 
 rft1d in spm1d
-________________________________
+-------------------------------------------------
 
 The **rft1d** package, which **spm1d** uses to compute probabilities, is now packaged inside **spm1d**.
 
@@ -191,7 +215,7 @@ All **rft1d** updates will be pushed to **spm1d**, so now you only need to keep 
 .. _label-improvedANOVAinferface:
 
 Improved ANOVA interface
-________________________________
+-------------------------------------------------
 
 Results from two- and three-way ANOVA are now much easier to summarize, visualize and navigate.
 

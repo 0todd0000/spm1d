@@ -27,7 +27,7 @@ Downloads
 ------------------------
 
 Quick Installation (Python)
-----------------------------
+-------------------------------
 
 In a Terminal (Linux, Mac) or a Command Prompt (Windows)::
 
@@ -46,7 +46,7 @@ In a Terminal (Linux, Mac) or a Command Prompt (Windows)::
 ------------------------
 
 Quick Installation (MATLAB)
-----------------------------
+-------------------------------
 
 #. Download source code from **spm1d**'s `MATLAB github site <http://0todd0000.github.io/spm1dmatlab/>`_ and unzip.
 #. Add folder **containing** ``+spm1d`` (NOT the +spm1d folder itself) AND the ``spm8`` folder to the MATLAB path.
@@ -58,20 +58,9 @@ Quick Installation (MATLAB)
 
 
 
-------------------------
-
-Version History
-----------------------------
-
-There have been three major **spm1d** releases: 0.3, 0.2 and 0.1.
 
 
 
-
-.. toctree::
-	:maxdepth: 3
-
-	install/VersionHistory.rst
 
 
 
@@ -80,9 +69,9 @@ There have been three major **spm1d** releases: 0.3, 0.2 and 0.1.
 ------------------------
 
 Datasets
-----------------------------
+-------------------------------
 
-All datasets can be accessed in **spm1d.data**.
+All datasets can be accessed in **spm1d.data**. See the example scripts in ./spm1d/examples for details regarding how to access datasets.
 
 
 .. _label-License:
@@ -90,16 +79,16 @@ All datasets can be accessed in **spm1d.data**.
 ------------------------
 
 License information
-----------------------------
+-------------------------------
 
 **spm1d** is free but copyright software, distributed under the terms of the GNU General Public License as published by the Free Software Foundation (version 3). Further details on "copyleft" can be found at http://www.gnu.org/copyleft/. In particular, **spm1d** is supplied as is. No formal support or maintenance is provided or implied.
 
 ------------------------
 
 License agreement for spm1d
-----------------------------
+-------------------------------
 
-Copyright (C) 2020  Todd Pataky
+Copyright (C) 2021  Todd Pataky
 
 This program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
 
