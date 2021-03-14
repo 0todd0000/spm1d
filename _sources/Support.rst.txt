@@ -4,6 +4,8 @@
 Support
 =====================================
 
+We provide (i) free support in online forums and (ii) paid support via email consultancy.
+
 
 .. _label-TypesOfSupport:
 
@@ -44,7 +46,9 @@ Forum Guidelines
 Consultancy
 ----------------------------
 
-If the forums are unsuitable for your needs please contact us at consulting@spm1d.org for a consultation quote.
+We also provide **paid** consultancy services.
+
+If the free forums are unsuitable for your needs please contact the Consulting Team at consulting@spm1d.org for a consultation quote.
 
 
 

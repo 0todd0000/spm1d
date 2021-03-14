@@ -305,8 +305,8 @@ Last, the results can plotted much more easily than before, now with a single co
 
 
 
-New Features (version 0.3.2)
-=====================================
+Version 0.3.2
+_________________________________________
 
 Region-of-Interest (ROI) analysis.
 
@@ -323,8 +323,8 @@ All statistical routines in **spm1d.stats** now accept a keyword "roi" for condu
 
 
 
-New Features (version 0.3.1)
-=====================================
+Version 0.3.1
+_________________________________________
 
 This update contains major edits to the ANOVA code.
 
@@ -349,8 +349,8 @@ This update contains major edits to the ANOVA code.
 
 
 
-New Features (version 0.3)
-=====================================
+Version 0.3
+_________________________________________
 
 The main new features in **spm1d** version 0.3 are:
 
@@ -366,7 +366,7 @@ The main new features in **spm1d** version 0.3 are:
 .. _label-FeatureMwayANOVA:
 
 M-way repeated measures ANOVA
-________________________________
+-------------------------------------------------
 
 **spm1d** now supports a variety of M-way repeated measures and nested ANOVA designs:
 
@@ -399,7 +399,7 @@ ________________________________
 .. _label-FeatureMVanalysis:
 
 Multivariate analysis
-________________________________
+-------------------------------------------------
 
 **spm1d** now supports basic analyses of multivariate 1D continua:
 
@@ -418,7 +418,7 @@ ________________________________
 .. _label-Feature0Danalysis:
 
 0D analysis
-________________________________
+-------------------------------------------------
 
 All **spm1d.stats** functions now support both 0D and 1D data data analysis.
 
@@ -453,7 +453,7 @@ The scripts compare **spm1d** results to third-party results (from SAS, SPSS, Ex
 .. _label-FeatureMATLABsyntax:
 
 MATLAB syntax == Python syntax
-________________________________
+-------------------------------------------------
 
 **spm1d**'s MATLAB and Python syntaxes are now nearly identical.
 
@@ -478,7 +478,7 @@ Example two-sample t test (MATLAB):
 .. _label-FeatureDatasets:
 
 Datasets
-________________________________
+-------------------------------------------------
 
 A variety of 0D and 1D datasets are now available:
 
@@ -492,7 +492,7 @@ A variety of 0D and 1D datasets are now available:
 .. _label-FeatureInference:
 
 Inference
-________________________________
+-------------------------------------------------
 
 **spm1d** now uses the `rft1d <http://www.spm1d.org/rft1d>`_ package for conducting statistical inference.
 
@@ -605,7 +605,7 @@ Interpolation is conducted by deault, but can be toggled using the **interp** ke
 .. _label-FeatureInstallation:
 
 Installation & Updating
-________________________________
+-------------------------------------------------
 
 The Python version of **spm1d** can be now installed and updated from the command line::
 
