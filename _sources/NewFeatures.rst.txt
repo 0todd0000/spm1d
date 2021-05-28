@@ -197,6 +197,8 @@ FINALLY!
 
 Python 2.7 and Python 3.X will both be supported for the forseeable future.
 
+.. note:: As of May 2021, Python 2.X is no longer supported. Please use Python 3.8 or newer.
+
 
 
 

@@ -6,15 +6,15 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17: http://docutils.sourceforge.net/" />
+
     <title>Built-in datasets &#8212; spm1d 0.4 documentation</title>
-    <link rel="stylesheet" href="../../_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/bootstrap-sphinx.css" type="text/css" />
     <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
     <script src="../../_static/jquery.js"></script>
     <script src="../../_static/underscore.js"></script>
     <script src="../../_static/doctools.js"></script>
-    <script src="../../_static/language_data.js"></script>
     <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
@@ -175,12 +175,12 @@
       </div>
     <div class="body col-md-12 content" role="main">
       
-  <div class="section" id="built-in-datasets">
+  <section id="built-in-datasets">
 <span id="label-builtindata"></span><h1>Built-in datasets<a class="headerlink" href="#built-in-datasets" title="Permalink to this headline">¶</a></h1>
 <p><strong>spm1d</strong> comes packages with a variety of 0D and 1D datasets located in <strong>./spm1d/data</strong>.</p>
 <p>This document provides a brief overview of the built-in datasets.</p>
 <p>To explore the datasets please use the scripts in <strong>spm1d/examples</strong>.</p>
-<div class="section" id="loading-datasets">
+<section id="loading-datasets">
 <h2>Loading datasets<a class="headerlink" href="#loading-datasets" title="Permalink to this headline">¶</a></h2>
 <p>All datasets can be accessed using the following syntax:</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">dataset</span> <span class="o">=</span> <span class="n">spm1d</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">uv0d</span><span class="o">.</span><span class="n">anova1</span><span class="o">.</span><span class="n">Cars</span><span class="p">()</span>
@@ -200,8 +200,8 @@
 <li><p>For access to univariate 1D datasets, and multivariate 0D and 1D datasets, use <strong>spm1d.data.uv1d</strong>, <strong>spm1d.data.mv0d</strong> and <strong>spm1d.data.mv1d</strong>, respectively.</p></li>
 <li><p>The datasets contain a variety of other variables including web links and expected results.</p></li>
 </ul>
-</div>
-<div class="section" id="dataset-details">
+</section>
+<section id="dataset-details">
 <h2>Dataset details<a class="headerlink" href="#dataset-details" title="Permalink to this headline">¶</a></h2>
 <p><strong>spm1d</strong> no longer provides detailed dataset descriptions.</p>
 <p>Instead users should consult the references and web links provided with each dataset as follows:</p>
@@ -221,8 +221,8 @@
         <span class="n">p</span>         <span class="p">:</span>  <span class="mf">0.001207</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="checking-expected-results">
+</section>
+<section id="checking-expected-results">
 <h2>Checking expected results<a class="headerlink" href="#checking-expected-results" title="Permalink to this headline">¶</a></h2>
 <p>The expected results shown in the example above can be corroborated against <strong>spm1d</strong>’s calculations as follows:</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">dataset</span> <span class="o">=</span> <span class="n">spm1d</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">uv0d</span><span class="o">.</span><span class="n">anova1</span><span class="o">.</span><span class="n">Cars</span><span class="p">()</span>
@@ -246,8 +246,8 @@
 </div>
 <p>Note that the F statistic (SPM.z), degrees of freedom (SPM.df) and p value (SPM.p) match the expected dataset results.</p>
 <p>The critical test statistic threshold at alpha (SPM.zstar) is not typically reported, but is an essential component of 1D analyses so is also presented in 0D results for comparisons between 0D and 1D critical thresholds.</p>
-</div>
-<div class="section" id="notes-on-1d-datasets">
+</section>
+<section id="notes-on-1d-datasets">
 <h2>Notes on 1D datasets<a class="headerlink" href="#notes-on-1d-datasets" title="Permalink to this headline">¶</a></h2>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
@@ -275,8 +275,8 @@
 </pre></div>
 </div>
 </div>
-</div>
-</div>
+</section>
+</section>
 
 
     </div>
@@ -291,7 +291,7 @@
     </p>
     <p>
         &copy; Copyright 2021, Todd Pataky.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.1.2.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.5.3.<br/>
     </p>
   </div>
 </footer>

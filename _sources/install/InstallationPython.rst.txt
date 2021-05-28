@@ -11,10 +11,10 @@ ________________
 
 **spm1d** requires the following packages:
 
-* `Python 2.7 <http://www.python.org>`_
-* `NumPy 1.9 <http://numpy.org>`_
-* `SciPy 0.15 <http://scipy.org>`_
-* `Matplotlib 1.4 <http://matplotlib.org>`_
+* `Python 3.8 <http://www.python.org>`_
+* `NumPy 1.19 <http://numpy.org>`_
+* `SciPy 1.6 <http://scipy.org>`_
+* `Matplotlib 3.3 <http://matplotlib.org>`_
 
 Newer or older versions may work but have not been tested.
 

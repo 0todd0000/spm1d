@@ -6,15 +6,15 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17: http://docutils.sourceforge.net/" />
+
     <title>spm1d.stats &#8212; spm1d 0.4 documentation</title>
-    <link rel="stylesheet" href="../../_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/bootstrap-sphinx.css" type="text/css" />
     <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
     <script src="../../_static/jquery.js"></script>
     <script src="../../_static/underscore.js"></script>
     <script src="../../_static/doctools.js"></script>
-    <script src="../../_static/language_data.js"></script>
     <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
@@ -207,7 +207,7 @@
       </div>
     <div class="body col-md-12 content" role="main">
       
-  <div class="section" id="module-spm1d.stats">
+  <section id="module-spm1d.stats">
 <span id="spm1d-stats"></span><span id="label-api-stats"></span><h1>spm1d.stats<a class="headerlink" href="#module-spm1d.stats" title="Permalink to this headline">¶</a></h1>
 <p>Statistics module.</p>
 <p>This module contains functions for conducting classical hypothesis testing on a set of 1D continua.</p>
@@ -225,11 +225,11 @@
 <li><p>Multivariate 1D tests:  <strong>Y</strong> should be ( J x Q x I )</p></li>
 </ul>
 <hr class="docutils" />
-<div class="section" id="anova1">
+<section id="anova1">
 <h2>anova1<a class="headerlink" href="#anova1" title="Permalink to this headline">¶</a></h2>
 <dl class="py function">
 <dt id="spm1d.stats.anova1">
-<code class="sig-prename descclassname">spm1d.stats.</code><code class="sig-name descname">anova1</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">Y</span></em>, <em class="sig-param"><span class="n">A</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">equal_var</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">roi</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/spm1d/stats/anova/ui.html#anova1"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#spm1d.stats.anova1" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname"><span class="pre">spm1d.stats.</span></code><code class="sig-name descname"><span class="pre">anova1</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">A</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">equal_var</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">roi</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/spm1d/stats/anova/ui.html#anova1"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spm1d.stats.anova1" title="Permalink to this definition">¶</a></dt>
 <dd><p>One-way ANOVA.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters (Option 1)</dt>
@@ -260,13 +260,13 @@
 </div>
 </dd></dl>
 
-</div>
+</section>
 <hr class="docutils" />
-<div class="section" id="anova1rm">
+<section id="anova1rm">
 <h2>anova1rm<a class="headerlink" href="#anova1rm" title="Permalink to this headline">¶</a></h2>
 <dl class="py function">
 <dt id="spm1d.stats.anova1rm">
-<code class="sig-prename descclassname">spm1d.stats.</code><code class="sig-name descname">anova1rm</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">Y</span></em>, <em class="sig-param"><span class="n">A</span></em>, <em class="sig-param"><span class="n">SUBJ</span></em>, <em class="sig-param"><span class="n">equal_var</span><span class="o">=</span><span class="default_value">True</span></em>, <em class="sig-param"><span class="n">roi</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">_force_approx0D</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/spm1d/stats/anova/ui.html#anova1rm"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#spm1d.stats.anova1rm" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname"><span class="pre">spm1d.stats.</span></code><code class="sig-name descname"><span class="pre">anova1rm</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">A</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">SUBJ</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">equal_var</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">roi</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">_force_approx0D</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/spm1d/stats/anova/ui.html#anova1rm"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spm1d.stats.anova1rm" title="Permalink to this definition">¶</a></dt>
 <dd><p>One-way repeated-measures ANOVA.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -295,13 +295,13 @@
 </div>
 </dd></dl>
 
-</div>
+</section>
 <hr class="docutils" />
-<div class="section" id="anova2">
+<section id="anova2">
 <h2>anova2<a class="headerlink" href="#anova2" title="Permalink to this headline">¶</a></h2>
 <dl class="py function">
 <dt id="spm1d.stats.anova2">
-<code class="sig-prename descclassname">spm1d.stats.</code><code class="sig-name descname">anova2</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">Y</span></em>, <em class="sig-param"><span class="n">A</span></em>, <em class="sig-param"><span class="n">B</span></em>, <em class="sig-param"><span class="n">equal_var</span><span class="o">=</span><span class="default_value">True</span></em>, <em class="sig-param"><span class="n">roi</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/spm1d/stats/anova/ui.html#anova2"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#spm1d.stats.anova2" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname"><span class="pre">spm1d.stats.</span></code><code class="sig-name descname"><span class="pre">anova2</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">A</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">B</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">equal_var</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">roi</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/spm1d/stats/anova/ui.html#anova2"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spm1d.stats.anova2" title="Permalink to this definition">¶</a></dt>
 <dd><p>Two-way ANOVA.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -328,13 +328,13 @@
 </dl>
 </dd></dl>
 
-</div>
+</section>
 <hr class="docutils" />
-<div class="section" id="anova2nested">
+<section id="anova2nested">
 <h2>anova2nested<a class="headerlink" href="#anova2nested" title="Permalink to this headline">¶</a></h2>
 <dl class="py function">
 <dt id="spm1d.stats.anova2nested">
-<code class="sig-prename descclassname">spm1d.stats.</code><code class="sig-name descname">anova2nested</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">Y</span></em>, <em class="sig-param"><span class="n">A</span></em>, <em class="sig-param"><span class="n">B</span></em>, <em class="sig-param"><span class="n">equal_var</span><span class="o">=</span><span class="default_value">True</span></em>, <em class="sig-param"><span class="n">roi</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/spm1d/stats/anova/ui.html#anova2nested"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#spm1d.stats.anova2nested" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname"><span class="pre">spm1d.stats.</span></code><code class="sig-name descname"><span class="pre">anova2nested</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">A</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">B</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">equal_var</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">roi</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/spm1d/stats/anova/ui.html#anova2nested"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spm1d.stats.anova2nested" title="Permalink to this definition">¶</a></dt>
 <dd><p>Two-way nested ANOVA.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -365,13 +365,13 @@
 </dl>
 </dd></dl>
 
-</div>
+</section>
 <hr class="docutils" />
-<div class="section" id="anova2rm">
+<section id="anova2rm">
 <h2>anova2rm<a class="headerlink" href="#anova2rm" title="Permalink to this headline">¶</a></h2>
 <dl class="py function">
 <dt id="spm1d.stats.anova2rm">
-<code class="sig-prename descclassname">spm1d.stats.</code><code class="sig-name descname">anova2rm</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">Y</span></em>, <em class="sig-param"><span class="n">A</span></em>, <em class="sig-param"><span class="n">B</span></em>, <em class="sig-param"><span class="n">SUBJ</span></em>, <em class="sig-param"><span class="n">equal_var</span><span class="o">=</span><span class="default_value">True</span></em>, <em class="sig-param"><span class="n">roi</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">_force_approx0D</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/spm1d/stats/anova/ui.html#anova2rm"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#spm1d.stats.anova2rm" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname"><span class="pre">spm1d.stats.</span></code><code class="sig-name descname"><span class="pre">anova2rm</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">A</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">B</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">SUBJ</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">equal_var</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">roi</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">_force_approx0D</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/spm1d/stats/anova/ui.html#anova2rm"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spm1d.stats.anova2rm" title="Permalink to this definition">¶</a></dt>
 <dd><p>Two-way repeated-measures ANOVA.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -404,13 +404,13 @@
 </dl>
 </dd></dl>
 
-</div>
+</section>
 <hr class="docutils" />
-<div class="section" id="anova2onerm">
+<section id="anova2onerm">
 <h2>anova2onerm<a class="headerlink" href="#anova2onerm" title="Permalink to this headline">¶</a></h2>
 <dl class="py function">
 <dt id="spm1d.stats.anova2onerm">
-<code class="sig-prename descclassname">spm1d.stats.</code><code class="sig-name descname">anova2onerm</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">Y</span></em>, <em class="sig-param"><span class="n">A</span></em>, <em class="sig-param"><span class="n">B</span></em>, <em class="sig-param"><span class="n">SUBJ</span></em>, <em class="sig-param"><span class="n">equal_var</span><span class="o">=</span><span class="default_value">True</span></em>, <em class="sig-param"><span class="n">roi</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">_force_approx0D</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/spm1d/stats/anova/ui.html#anova2onerm"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#spm1d.stats.anova2onerm" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname"><span class="pre">spm1d.stats.</span></code><code class="sig-name descname"><span class="pre">anova2onerm</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">A</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">B</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">SUBJ</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">equal_var</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">roi</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">_force_approx0D</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/spm1d/stats/anova/ui.html#anova2onerm"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spm1d.stats.anova2onerm" title="Permalink to this definition">¶</a></dt>
 <dd><p>Two-way ANOVA with repeated-measures on one factor.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -443,13 +443,13 @@
 </dl>
 </dd></dl>
 
-</div>
+</section>
 <hr class="docutils" />
-<div class="section" id="anova3">
+<section id="anova3">
 <h2>anova3<a class="headerlink" href="#anova3" title="Permalink to this headline">¶</a></h2>
 <dl class="py function">
 <dt id="spm1d.stats.anova3">
-<code class="sig-prename descclassname">spm1d.stats.</code><code class="sig-name descname">anova3</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">Y</span></em>, <em class="sig-param"><span class="n">A</span></em>, <em class="sig-param"><span class="n">B</span></em>, <em class="sig-param"><span class="n">C</span></em>, <em class="sig-param"><span class="n">equal_var</span><span class="o">=</span><span class="default_value">True</span></em>, <em class="sig-param"><span class="n">roi</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/spm1d/stats/anova/ui.html#anova3"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#spm1d.stats.anova3" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname"><span class="pre">spm1d.stats.</span></code><code class="sig-name descname"><span class="pre">anova3</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">A</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">B</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">C</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">equal_var</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">roi</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/spm1d/stats/anova/ui.html#anova3"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spm1d.stats.anova3" title="Permalink to this definition">¶</a></dt>
 <dd><p>Three-way ANOVA.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -481,13 +481,13 @@
 </dl>
 </dd></dl>
 
-</div>
+</section>
 <hr class="docutils" />
-<div class="section" id="anova3nested">
+<section id="anova3nested">
 <h2>anova3nested<a class="headerlink" href="#anova3nested" title="Permalink to this headline">¶</a></h2>
 <dl class="py function">
 <dt id="spm1d.stats.anova3nested">
-<code class="sig-prename descclassname">spm1d.stats.</code><code class="sig-name descname">anova3nested</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">Y</span></em>, <em class="sig-param"><span class="n">A</span></em>, <em class="sig-param"><span class="n">B</span></em>, <em class="sig-param"><span class="n">C</span></em>, <em class="sig-param"><span class="n">equal_var</span><span class="o">=</span><span class="default_value">True</span></em>, <em class="sig-param"><span class="n">roi</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/spm1d/stats/anova/ui.html#anova3nested"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#spm1d.stats.anova3nested" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname"><span class="pre">spm1d.stats.</span></code><code class="sig-name descname"><span class="pre">anova3nested</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">A</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">B</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">C</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">equal_var</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">roi</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/spm1d/stats/anova/ui.html#anova3nested"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spm1d.stats.anova3nested" title="Permalink to this definition">¶</a></dt>
 <dd><p>Three-way fully nested ANOVA.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -520,13 +520,13 @@
 </dl>
 </dd></dl>
 
-</div>
+</section>
 <hr class="docutils" />
-<div class="section" id="anova3tworm">
+<section id="anova3tworm">
 <h2>anova3tworm<a class="headerlink" href="#anova3tworm" title="Permalink to this headline">¶</a></h2>
 <dl class="py function">
 <dt id="spm1d.stats.anova3tworm">
-<code class="sig-prename descclassname">spm1d.stats.</code><code class="sig-name descname">anova3tworm</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">Y</span></em>, <em class="sig-param"><span class="n">A</span></em>, <em class="sig-param"><span class="n">B</span></em>, <em class="sig-param"><span class="n">C</span></em>, <em class="sig-param"><span class="n">SUBJ</span></em>, <em class="sig-param"><span class="n">equal_var</span><span class="o">=</span><span class="default_value">True</span></em>, <em class="sig-param"><span class="n">roi</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">_force_approx0D</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/spm1d/stats/anova/ui.html#anova3tworm"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#spm1d.stats.anova3tworm" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname"><span class="pre">spm1d.stats.</span></code><code class="sig-name descname"><span class="pre">anova3tworm</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">A</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">B</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">C</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">SUBJ</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">equal_var</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">roi</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">_force_approx0D</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/spm1d/stats/anova/ui.html#anova3tworm"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spm1d.stats.anova3tworm" title="Permalink to this definition">¶</a></dt>
 <dd><p>Three-way ANOVA with repeated-measures on two factors.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -564,13 +564,13 @@
 </dl>
 </dd></dl>
 
-</div>
+</section>
 <hr class="docutils" />
-<div class="section" id="anova3onerm">
+<section id="anova3onerm">
 <h2>anova3onerm<a class="headerlink" href="#anova3onerm" title="Permalink to this headline">¶</a></h2>
 <dl class="py function">
 <dt id="spm1d.stats.anova3onerm">
-<code class="sig-prename descclassname">spm1d.stats.</code><code class="sig-name descname">anova3onerm</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">Y</span></em>, <em class="sig-param"><span class="n">A</span></em>, <em class="sig-param"><span class="n">B</span></em>, <em class="sig-param"><span class="n">C</span></em>, <em class="sig-param"><span class="n">SUBJ</span></em>, <em class="sig-param"><span class="n">equal_var</span><span class="o">=</span><span class="default_value">True</span></em>, <em class="sig-param"><span class="n">roi</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">_force_approx0D</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/spm1d/stats/anova/ui.html#anova3onerm"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#spm1d.stats.anova3onerm" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname"><span class="pre">spm1d.stats.</span></code><code class="sig-name descname"><span class="pre">anova3onerm</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">A</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">B</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">C</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">SUBJ</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">equal_var</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">roi</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">_force_approx0D</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/spm1d/stats/anova/ui.html#anova3onerm"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spm1d.stats.anova3onerm" title="Permalink to this definition">¶</a></dt>
 <dd><p>Three-way ANOVA with repeated-measures on one factor.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -608,13 +608,13 @@
 </dl>
 </dd></dl>
 
-</div>
+</section>
 <hr class="docutils" />
-<div class="section" id="cca">
+<section id="cca">
 <h2>cca<a class="headerlink" href="#cca" title="Permalink to this headline">¶</a></h2>
 <dl class="py function">
 <dt id="spm1d.stats.cca">
-<code class="sig-prename descclassname">spm1d.stats.</code><code class="sig-name descname">cca</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">Y</span></em>, <em class="sig-param"><span class="n">x</span></em>, <em class="sig-param"><span class="n">roi</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/spm1d/stats/cca.html#cca"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#spm1d.stats.cca" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname"><span class="pre">spm1d.stats.</span></code><code class="sig-name descname"><span class="pre">cca</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">roi</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/spm1d/stats/cca.html#cca"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spm1d.stats.cca" title="Permalink to this definition">¶</a></dt>
 <dd><p>Canonical correlation analysis (CCA).</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -636,13 +636,13 @@
 </dl>
 </dd></dl>
 
-</div>
+</section>
 <hr class="docutils" />
-<div class="section" id="hotellings">
+<section id="hotellings">
 <h2>hotellings<a class="headerlink" href="#hotellings" title="Permalink to this headline">¶</a></h2>
 <dl class="py function">
 <dt id="spm1d.stats.hotellings">
-<code class="sig-prename descclassname">spm1d.stats.</code><code class="sig-name descname">hotellings</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">Y</span></em>, <em class="sig-param"><span class="n">mu</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">roi</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/spm1d/stats/hotellings.html#hotellings"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#spm1d.stats.hotellings" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname"><span class="pre">spm1d.stats.</span></code><code class="sig-name descname"><span class="pre">hotellings</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mu</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">roi</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/spm1d/stats/hotellings.html#hotellings"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spm1d.stats.hotellings" title="Permalink to this definition">¶</a></dt>
 <dd><p>One-sample Hotelling’s T2 test.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -659,13 +659,13 @@
 </dl>
 </dd></dl>
 
-</div>
+</section>
 <hr class="docutils" />
-<div class="section" id="hotellings-paired">
+<section id="hotellings-paired">
 <h2>hotellings_paired<a class="headerlink" href="#hotellings-paired" title="Permalink to this headline">¶</a></h2>
 <dl class="py function">
 <dt id="spm1d.stats.hotellings_paired">
-<code class="sig-prename descclassname">spm1d.stats.</code><code class="sig-name descname">hotellings_paired</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">YA</span></em>, <em class="sig-param"><span class="n">YB</span></em>, <em class="sig-param"><span class="n">roi</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/spm1d/stats/hotellings.html#hotellings_paired"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#spm1d.stats.hotellings_paired" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname"><span class="pre">spm1d.stats.</span></code><code class="sig-name descname"><span class="pre">hotellings_paired</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">YA</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">YB</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">roi</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/spm1d/stats/hotellings.html#hotellings_paired"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spm1d.stats.hotellings_paired" title="Permalink to this definition">¶</a></dt>
 <dd><p>Paired Hotelling’s T2 test.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -687,13 +687,13 @@
 </dl>
 </dd></dl>
 
-</div>
+</section>
 <hr class="docutils" />
-<div class="section" id="hotellings2">
+<section id="hotellings2">
 <h2>hotellings2<a class="headerlink" href="#hotellings2" title="Permalink to this headline">¶</a></h2>
 <dl class="py function">
 <dt id="spm1d.stats.hotellings2">
-<code class="sig-prename descclassname">spm1d.stats.</code><code class="sig-name descname">hotellings2</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">YA</span></em>, <em class="sig-param"><span class="n">YB</span></em>, <em class="sig-param"><span class="n">equal_var</span><span class="o">=</span><span class="default_value">True</span></em>, <em class="sig-param"><span class="n">roi</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/spm1d/stats/hotellings.html#hotellings2"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#spm1d.stats.hotellings2" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname"><span class="pre">spm1d.stats.</span></code><code class="sig-name descname"><span class="pre">hotellings2</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">YA</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">YB</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">equal_var</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">roi</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/spm1d/stats/hotellings.html#hotellings2"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spm1d.stats.hotellings2" title="Permalink to this definition">¶</a></dt>
 <dd><p>Two-sample Hotelling’s T2 test.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -715,13 +715,13 @@
 </dl>
 </dd></dl>
 
-</div>
+</section>
 <hr class="docutils" />
-<div class="section" id="glm">
+<section id="glm">
 <h2>glm<a class="headerlink" href="#glm" title="Permalink to this headline">¶</a></h2>
 <dl class="py function">
 <dt id="spm1d.stats.glm">
-<code class="sig-prename descclassname">spm1d.stats.</code><code class="sig-name descname">glm</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">Y</span></em>, <em class="sig-param"><span class="n">X</span></em>, <em class="sig-param"><span class="n">c</span></em>, <em class="sig-param"><span class="n">Q</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">roi</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/spm1d/stats/t.html#glm"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#spm1d.stats.glm" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname"><span class="pre">spm1d.stats.</span></code><code class="sig-name descname"><span class="pre">glm</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">c</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Q</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">roi</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/spm1d/stats/t.html#glm"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spm1d.stats.glm" title="Permalink to this definition">¶</a></dt>
 <dd><p>General linear model (for t contrasts).</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -755,13 +755,13 @@
 </div>
 </dd></dl>
 
-</div>
+</section>
 <hr class="docutils" />
-<div class="section" id="manova1">
+<section id="manova1">
 <h2>manova1<a class="headerlink" href="#manova1" title="Permalink to this headline">¶</a></h2>
 <dl class="py function">
 <dt id="spm1d.stats.manova1">
-<code class="sig-prename descclassname">spm1d.stats.</code><code class="sig-name descname">manova1</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">Y</span></em>, <em class="sig-param"><span class="n">A</span></em>, <em class="sig-param"><span class="n">equal_var</span><span class="o">=</span><span class="default_value">True</span></em>, <em class="sig-param"><span class="n">roi</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/spm1d/stats/manova.html#manova1"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#spm1d.stats.manova1" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname"><span class="pre">spm1d.stats.</span></code><code class="sig-name descname"><span class="pre">manova1</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">A</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">equal_var</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">roi</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/spm1d/stats/manova.html#manova1"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spm1d.stats.manova1" title="Permalink to this definition">¶</a></dt>
 <dd><p>Two-way repeated-measures ANOVA.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -784,13 +784,13 @@
 </dl>
 </dd></dl>
 
-</div>
+</section>
 <hr class="docutils" />
-<div class="section" id="regress">
+<section id="regress">
 <h2>regress<a class="headerlink" href="#regress" title="Permalink to this headline">¶</a></h2>
 <dl class="py function">
 <dt id="spm1d.stats.regress">
-<code class="sig-prename descclassname">spm1d.stats.</code><code class="sig-name descname">regress</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">Y</span></em>, <em class="sig-param"><span class="n">x</span></em>, <em class="sig-param"><span class="n">roi</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/spm1d/stats/t.html#regress"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#spm1d.stats.regress" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname"><span class="pre">spm1d.stats.</span></code><code class="sig-name descname"><span class="pre">regress</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">roi</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/spm1d/stats/t.html#regress"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spm1d.stats.regress" title="Permalink to this definition">¶</a></dt>
 <dd><p>Simple linear regression.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -829,13 +829,13 @@
 </dl>
 </dd></dl>
 
-</div>
+</section>
 <hr class="docutils" />
-<div class="section" id="ttest">
+<section id="ttest">
 <h2>ttest<a class="headerlink" href="#ttest" title="Permalink to this headline">¶</a></h2>
 <dl class="py function">
 <dt id="spm1d.stats.ttest">
-<code class="sig-prename descclassname">spm1d.stats.</code><code class="sig-name descname">ttest</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">Y</span></em>, <em class="sig-param"><span class="n">y0</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">roi</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/spm1d/stats/t.html#ttest"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#spm1d.stats.ttest" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname"><span class="pre">spm1d.stats.</span></code><code class="sig-name descname"><span class="pre">ttest</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y0</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">roi</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/spm1d/stats/t.html#ttest"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spm1d.stats.ttest" title="Permalink to this definition">¶</a></dt>
 <dd><p>One-sample t test.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -865,13 +865,13 @@
 </div>
 </dd></dl>
 
-</div>
+</section>
 <hr class="docutils" />
-<div class="section" id="ttest-paired">
+<section id="ttest-paired">
 <h2>ttest_paired<a class="headerlink" href="#ttest-paired" title="Permalink to this headline">¶</a></h2>
 <dl class="py function">
 <dt id="spm1d.stats.ttest_paired">
-<code class="sig-prename descclassname">spm1d.stats.</code><code class="sig-name descname">ttest_paired</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">YA</span></em>, <em class="sig-param"><span class="n">YB</span></em>, <em class="sig-param"><span class="n">roi</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/spm1d/stats/t.html#ttest_paired"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#spm1d.stats.ttest_paired" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname"><span class="pre">spm1d.stats.</span></code><code class="sig-name descname"><span class="pre">ttest_paired</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">YA</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">YB</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">roi</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/spm1d/stats/t.html#ttest_paired"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spm1d.stats.ttest_paired" title="Permalink to this definition">¶</a></dt>
 <dd><p>Paired t test.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -903,13 +903,13 @@
 </div>
 </dd></dl>
 
-</div>
+</section>
 <hr class="docutils" />
-<div class="section" id="ttest2">
+<section id="ttest2">
 <h2>ttest2<a class="headerlink" href="#ttest2" title="Permalink to this headline">¶</a></h2>
 <dl class="py function">
 <dt id="spm1d.stats.ttest2">
-<code class="sig-prename descclassname">spm1d.stats.</code><code class="sig-name descname">ttest2</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">YA</span></em>, <em class="sig-param"><span class="n">YB</span></em>, <em class="sig-param"><span class="n">equal_var</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">roi</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/spm1d/stats/t.html#ttest2"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#spm1d.stats.ttest2" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname"><span class="pre">spm1d.stats.</span></code><code class="sig-name descname"><span class="pre">ttest2</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">YA</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">YB</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">equal_var</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">roi</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/spm1d/stats/t.html#ttest2"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spm1d.stats.ttest2" title="Permalink to this definition">¶</a></dt>
 <dd><p>Two-sample t test.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -942,8 +942,8 @@
 </div>
 </dd></dl>
 
-</div>
-</div>
+</section>
+</section>
 
 
     </div>
@@ -958,7 +958,7 @@
     </p>
     <p>
         &copy; Copyright 2021, Todd Pataky.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.1.2.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.5.3.<br/>
     </p>
   </div>
 </footer>

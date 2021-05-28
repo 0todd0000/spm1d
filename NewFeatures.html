@@ -6,15 +6,15 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17: http://docutils.sourceforge.net/" />
+
     <title>Version History &#8212; spm1d 0.4 documentation</title>
-    <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
     <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
     <script src="_static/doctools.js"></script>
-    <script src="_static/language_data.js"></script>
     <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -227,7 +227,7 @@
       </div>
     <div class="body col-md-12 content" role="main">
       
-  <div class="section" id="version-history">
+  <section id="version-history">
 <span id="label-newfeatures"></span><h1>Version History<a class="headerlink" href="#version-history" title="Permalink to this headline">¶</a></h1>
 <p>There have been four major <strong>spm1d</strong> releases: 0.4, 0.3, 0.2 and 0.1.</p>
 <p>The current major version is 0.4.</p>
@@ -240,21 +240,21 @@
 <li class="toctree-l1"><a class="reference internal" href="install/VersionHistory.html#version-0-1-python">Version 0.1  (Python)</a></li>
 </ul>
 </div>
-</div>
-<div class="section" id="new-features">
+</section>
+<section id="new-features">
 <h1>New Features<a class="headerlink" href="#new-features" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="version-0-4-3">
+<section id="version-0-4-3">
 <h2>Version 0.4.3<a class="headerlink" href="#version-0-4-3" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="manual-nonlinear-warping-python-only">
+<section id="manual-nonlinear-warping-python-only">
 <h3>Manual nonlinear warping (Python only)<a class="headerlink" href="#manual-nonlinear-warping-python-only" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>Nonlinearly warp 1D data to improve alignment of homologous events.</p></li>
 <li><p>Warp data using “landmark” and “manual” modes.</p></li>
 <li><p>Full documentation:  <a class="reference external" href="http://www.spm1d.org/mwarp1d/index.html">mwarp1d</a></p></li>
 </ul>
-</div>
-</div>
-<div class="section" id="version-0-4-2">
+</section>
+</section>
+<section id="version-0-4-2">
 <h2>Version 0.4.2<a class="headerlink" href="#version-0-4-2" title="Permalink to this headline">¶</a></h2>
 <p>Analysis of 2D data using <strong>spm1d</strong>:</p>
 <div class="toctree-wrapper compound">
@@ -263,8 +263,8 @@
 <li class="toctree-l1"><a class="reference internal" href="doc/Stats2D/ex2d_matlab.html">Analysis of 2D data (MATLAB)</a></li>
 </ul>
 </div>
-</div>
-<div class="section" id="version-0-4-0">
+</section>
+<section id="version-0-4-0">
 <h2>Version 0.4.0<a class="headerlink" href="#version-0-4-0" title="Permalink to this headline">¶</a></h2>
 <p>The main new features in <strong>spm1d</strong> version 0.4 are listed below.</p>
 <ul class="simple">
@@ -279,7 +279,7 @@
 <p class="admonition-title">Note</p>
 <p>Additional documentation will be added following peer review.</p>
 </div>
-<div class="section" id="non-parametric-inference">
+<section id="non-parametric-inference">
 <span id="label-nonparametricinference"></span><h3>Non-parametric inference<a class="headerlink" href="#non-parametric-inference" title="Permalink to this headline">¶</a></h3>
 <p>All statistical tests can now be conducted non-parametrically through the new <strong>spm1d.stats.nonparam</strong> interface.</p>
 <p>Example (0D parametric):</p>
@@ -303,8 +303,8 @@
 <p><strong>spm1d</strong>’s non-parametric procedures follow <strong>Nichols &amp; Holmes (2002)</strong>.  Please consider citing:</p>
 <p>Nichols TE, Holmes AP (2002). <a class="reference external" href="https://www.researchgate.net/publication/11610090_Nonparametric_permutation_tests_for_functional_neuroimaging_A_primer_with_examples">Nonparametric permutation tests for functional neuroimaging: a primer with examples.</a> <em>Human Brain Mapping</em> <strong>15(1)</strong>, 1–25.</p>
 </div>
-</div>
-<div class="section" id="confidence-intervals">
+</section>
+<section id="confidence-intervals">
 <span id="label-confidenceintervals"></span><h3>Confidence intervals<a class="headerlink" href="#confidence-intervals" title="Permalink to this headline">¶</a></h3>
 <p>Parametric and non-parametric confidence intervals (CIs) can be constructed using the following functions:</p>
 <p>Parametric:</p>
@@ -352,8 +352,8 @@
 </ul>
 </li>
 </ul>
-</div>
-<div class="section" id="normality-tests">
+</section>
+<section id="normality-tests">
 <span id="label-normalitytests"></span><h3>Normality tests<a class="headerlink" href="#normality-tests" title="Permalink to this headline">¶</a></h3>
 <p>Normality tests can be conducted using the new <strong>spm1d.stats.normality</strong> interface.</p>
 <p>The normality assessments currently available include:</p>
@@ -369,19 +369,23 @@
 <span class="gp">&gt;&gt;&gt; </span><span class="n">ni</span> <span class="o">=</span> <span class="n">spm</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="mf">0.05</span><span class="p">)</span>                      <span class="c1">#assesses whether the observed non-normality is significant</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="python-3-compatibility">
+</section>
+<section id="python-3-compatibility">
 <span id="label-python3compatibility"></span><h3>Python 3 compatibility<a class="headerlink" href="#python-3-compatibility" title="Permalink to this headline">¶</a></h3>
 <p>FINALLY!</p>
 <p><strong>spm1d</strong> is now compatible with both Python 2.7 and Python 3.5</p>
 <p>Python 2.7 and Python 3.X will both be supported for the forseeable future.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>As of May 2021, Python 2.X is no longer supported. Please use Python 3.8 or newer.</p>
 </div>
-<div class="section" id="rft1d-in-spm1d">
+</section>
+<section id="rft1d-in-spm1d">
 <span id="label-rft1dinspm1d"></span><h3>rft1d in spm1d<a class="headerlink" href="#rft1d-in-spm1d" title="Permalink to this headline">¶</a></h3>
 <p>The <strong>rft1d</strong> package, which <strong>spm1d</strong> uses to compute probabilities, is now packaged inside <strong>spm1d</strong>.</p>
 <p>All <strong>rft1d</strong> updates will be pushed to <strong>spm1d</strong>, so now you only need to keep <strong>spm1d</strong> up-to-date.</p>
-</div>
-<div class="section" id="improved-anova-interface">
+</section>
+<section id="improved-anova-interface">
 <span id="label-improvedanovainferface"></span><h3>Improved ANOVA interface<a class="headerlink" href="#improved-anova-interface" title="Permalink to this headline">¶</a></h3>
 <p>Results from two- and three-way ANOVA are now much easier to summarize, visualize and navigate.</p>
 <p>Example (two-way ANOVA for 1D data):</p>
@@ -443,12 +447,12 @@ Inference:
 </pre></div>
 </div>
 <p>(<a class="reference external" href=".//NewFeatures-1.py">Source code</a>, <a class="reference external" href=".//NewFeatures-1.png">png</a>, <a class="reference external" href=".//NewFeatures-1.hires.png">hires.png</a>, <a class="reference external" href=".//NewFeatures-1.pdf">pdf</a>)</p>
-<div class="figure align-default">
+<figure class="align-default">
 <img alt="_images/NewFeatures-1.png" src="_images/NewFeatures-1.png" />
-</div>
-</div>
-</div>
-<div class="section" id="version-0-3-2">
+</figure>
+</section>
+</section>
+<section id="version-0-3-2">
 <h2>Version 0.3.2<a class="headerlink" href="#version-0-3-2" title="Permalink to this headline">¶</a></h2>
 <p>Region-of-Interest (ROI) analysis.</p>
 <p>All statistical routines in <strong>spm1d.stats</strong> now accept a keyword “roi” for conducting ROI analysis.</p>
@@ -458,8 +462,8 @@ Inference:
 <p>Pataky TC, Vanrenterghem J, Robinson MA (2016). <a class="reference external" href="https://www.researchgate.net/publication/309630403_Region-of-interest_analyses_of_one-dimensional_biomechanical_trajectories_bridging_0D_and_1D_theory_augmenting_statistical_power">Region-of-interest analyses of one-dimensional biomechanical trajectories: bridging 0D and 1D methods, augmenting statistical power</a>. PeerJ 4: e2652, doi.org/10.7717/peerj.2652.</p>
 <p>See the Appendix for a description of <strong>spm1d</strong>’s interface for ROI analysis.</p>
 </div>
-</div>
-<div class="section" id="version-0-3-1">
+</section>
+<section id="version-0-3-1">
 <h2>Version 0.3.1<a class="headerlink" href="#version-0-3-1" title="Permalink to this headline">¶</a></h2>
 <p>This update contains major edits to the ANOVA code.</p>
 <ol class="arabic simple">
@@ -485,8 +489,8 @@ Inference:
 <li><p>The correction for one-way ANOVA is approximate and has not been validated.</p></li>
 <li><p>Non-sphericity corrections for other designs are currently being checked.</p></li>
 </ul>
-</div>
-<div class="section" id="version-0-3">
+</section>
+<section id="version-0-3">
 <h2>Version 0.3<a class="headerlink" href="#version-0-3" title="Permalink to this headline">¶</a></h2>
 <p>The main new features in <strong>spm1d</strong> version 0.3 are:</p>
 <ul class="simple">
@@ -498,7 +502,7 @@ Inference:
 <li><p><a class="reference internal" href="#label-featureinference"><span class="std std-ref">Improved inference using rft1d</span></a></p></li>
 <li><p><a class="reference internal" href="#label-featureinstallation"><span class="std std-ref">Installation and updating</span></a></p></li>
 </ul>
-<div class="section" id="m-way-repeated-measures-anova">
+<section id="m-way-repeated-measures-anova">
 <span id="label-featuremwayanova"></span><h3>M-way repeated measures ANOVA<a class="headerlink" href="#m-way-repeated-measures-anova" title="Permalink to this headline">¶</a></h3>
 <p><strong>spm1d</strong> now supports a variety of M-way repeated measures and nested ANOVA designs:</p>
 <ul class="simple">
@@ -542,8 +546,8 @@ Inference:
 <li><p>Abitrary designs (Latin Square, partially nested, etc.)</p></li>
 </ul>
 </div>
-</div>
-<div class="section" id="multivariate-analysis">
+</section>
+<section id="multivariate-analysis">
 <span id="label-featuremvanalysis"></span><h3>Multivariate analysis<a class="headerlink" href="#multivariate-analysis" title="Permalink to this headline">¶</a></h3>
 <p><strong>spm1d</strong> now supports basic analyses of multivariate 1D continua:</p>
 <ul class="simple">
@@ -561,8 +565,8 @@ Inference:
 <li><p>MANOVA</p></li>
 </ul>
 </div>
-</div>
-<div class="section" id="d-analysis">
+</section>
+<section id="d-analysis">
 <span id="label-feature0danalysis"></span><h3>0D analysis<a class="headerlink" href="#d-analysis" title="Permalink to this headline">¶</a></h3>
 <p>All <strong>spm1d.stats</strong> functions now support both 0D and 1D data data analysis.</p>
 <p>Example (0D):</p>
@@ -583,8 +587,8 @@ Inference:
 </div>
 <p>Find more details in the example scripts in <strong>./spm1d/examples/stats0d/</strong></p>
 <p>The scripts compare <strong>spm1d</strong> results to third-party results (from SAS, SPSS, Excel, R, etc.) for a variety of datasets available on the web.</p>
-</div>
-<div class="section" id="matlab-syntax-python-syntax">
+</section>
+<section id="matlab-syntax-python-syntax">
 <span id="label-featurematlabsyntax"></span><h3>MATLAB syntax == Python syntax<a class="headerlink" href="#matlab-syntax-python-syntax" title="Permalink to this headline">¶</a></h3>
 <p><strong>spm1d</strong>’s MATLAB and Python syntaxes are now nearly identical.</p>
 <p>Example two-sample t test (Python):</p>
@@ -602,8 +606,8 @@ Inference:
 </pre></div>
 </div>
 <p><a class="reference internal" href="DocumentationMatlab.html#label-documentationmatlab"><span class="std std-ref">Click here for MATLAB documentation</span></a></p>
-</div>
-<div class="section" id="datasets">
+</section>
+<section id="datasets">
 <span id="label-featuredatasets"></span><h3>Datasets<a class="headerlink" href="#datasets" title="Permalink to this headline">¶</a></h3>
 <p>A variety of 0D and 1D datasets are now available:</p>
 <ul class="simple">
@@ -612,8 +616,8 @@ Inference:
 <li><p>spm1d.data.<strong>mv0d</strong> — multivariate 0D datasets</p></li>
 <li><p>spm1d.data.<strong>mv1d</strong> — multivariate 1D datasets</p></li>
 </ul>
-</div>
-<div class="section" id="inference">
+</section>
+<section id="inference">
 <span id="label-featureinference"></span><h3>Inference<a class="headerlink" href="#inference" title="Permalink to this headline">¶</a></h3>
 <p><strong>spm1d</strong> now uses the <a class="reference external" href="http://www.spm1d.org/rft1d">rft1d</a> package for conducting statistical inference.</p>
 <p>The following features are supported:</p>
@@ -626,8 +630,8 @@ Inference:
 <p class="admonition-title">Warning</p>
 <p>Other <strong>rft1d</strong> procedures like broken-field analysis and element- vs. node-based inferences will be integrated in future versions of <strong>spm1d</strong>.</p>
 </div>
-</div>
-<div class="section" id="set-level-inference">
+</section>
+<section id="set-level-inference">
 <h3>Set-level inference<a class="headerlink" href="#set-level-inference" title="Permalink to this headline">¶</a></h3>
 <p>Consider the following example:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">spm1d</span>
@@ -639,9 +643,9 @@ Inference:
 </pre></div>
 </div>
 <p>(<a class="reference external" href=".//NewFeatures-2.py">Source code</a>, <a class="reference external" href=".//NewFeatures-2.png">png</a>, <a class="reference external" href=".//NewFeatures-2.hires.png">hires.png</a>, <a class="reference external" href=".//NewFeatures-2.pdf">pdf</a>)</p>
-<div class="figure align-default">
+<figure class="align-default">
 <img alt="_images/NewFeatures-2.png" src="_images/NewFeatures-2.png" />
-</div>
+</figure>
 <p>This yields the following results:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SPM</span><span class="p">{</span><span class="n">T</span><span class="p">}</span> <span class="n">inference</span> <span class="n">field</span>
         <span class="n">SPM</span><span class="o">.</span><span class="n">z</span>         <span class="p">:</span>  <span class="p">(</span><span class="mi">1</span><span class="n">x101</span><span class="p">)</span> <span class="n">raw</span> <span class="n">test</span> <span class="n">stat</span> <span class="n">field</span>
@@ -664,8 +668,8 @@ Inference:
 <p><strong>Set-level p value</strong> : the probability that 1D Gaussian random fields with the observed smoothness would produce C suprathreshold clusters, all with extents larger than the minimum observed extent.</p>
 </div>
 <p>Set- and cluster-level probabilities are identical when there is just one suprathreshold cluster.</p>
-</div>
-<div class="section" id="circular-fields">
+</section>
+<section id="circular-fields">
 <h3>Circular fields<a class="headerlink" href="#circular-fields" title="Permalink to this headline">¶</a></h3>
 <p>If the first point in the 1D field is homologous with the last point, like in calendar years or gait strides, then the field is ‘circular’.</p>
 <p>Consider the following example from Ramsay JO, Silverman BW (2005). Functional Data Analysis (Second Edition), Springer, New York.</p>
@@ -680,9 +684,9 @@ Inference:
 </pre></div>
 </div>
 <p>(<a class="reference external" href=".//NewFeatures-3.py">Source code</a>, <a class="reference external" href=".//NewFeatures-3.png">png</a>, <a class="reference external" href=".//NewFeatures-3.hires.png">hires.png</a>, <a class="reference external" href=".//NewFeatures-3.pdf">pdf</a>)</p>
-<div class="figure align-default">
+<figure class="align-default">
 <img alt="_images/NewFeatures-3.png" src="_images/NewFeatures-3.png" />
-</div>
+</figure>
 <p>There appear to be two suprathreshold clusters, but Day 0 is homologous with Day 365, so in fact there is just one suprathreshold cluster.</p>
 <p>If the example above is regarded as circular, we get a single cluster-level p value of approximately 0.000003.</p>
 <p>If instead it is regarded as non-circular, we get two cluster-level p values of approximately 0.006 and 0.001.</p>
@@ -694,8 +698,8 @@ Inference:
 </div>
 <p>By default <strong>circular</strong> is False.</p>
 </div>
-</div>
-<div class="section" id="cluster-interpolation">
+</section>
+<section id="cluster-interpolation">
 <h3>Cluster interpolation<a class="headerlink" href="#cluster-interpolation" title="Permalink to this headline">¶</a></h3>
 <p><strong>spm1d</strong> now interpolates to the critical threshold u as depicted in panel (b) of the figure below.</p>
 <p>Interpolation is conducted by deault, but can be toggled using the <strong>interp</strong> keyword for inference:</p>
@@ -705,11 +709,11 @@ Inference:
 </pre></div>
 </div>
 <p>(<a class="reference external" href="./pyplots/fig_upcrossing.py">Source code</a>, <a class="reference external" href="./pyplots/fig_upcrossing.png">png</a>, <a class="reference external" href="./pyplots/fig_upcrossing.hires.png">hires.png</a>, <a class="reference external" href="./pyplots/fig_upcrossing.pdf">pdf</a>)</p>
-<div class="figure align-default">
+<figure class="align-default">
 <img alt="_images/fig_upcrossing.png" src="_images/fig_upcrossing.png" />
-</div>
-</div>
-<div class="section" id="installation-updating">
+</figure>
+</section>
+<section id="installation-updating">
 <span id="label-featureinstallation"></span><h3>Installation &amp; Updating<a class="headerlink" href="#installation-updating" title="Permalink to this headline">¶</a></h3>
 <p>The Python version of <strong>spm1d</strong> can be now installed and updated from the command line:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">easy_install</span> <span class="n">spm1d</span>
@@ -720,9 +724,9 @@ Inference:
 <li><p><a class="reference internal" href="install/InstallationPython.html#label-installationpython"><span class="std std-ref">Detailed Python installation instructions</span></a></p></li>
 <li><p><a class="reference internal" href="install/InstallationMatlab.html#label-installationmatlab"><span class="std std-ref">Detailed MATLAB installation instructions</span></a></p></li>
 </ul>
-</div>
-</div>
-</div>
+</section>
+</section>
+</section>
 
 
     </div>
@@ -737,7 +741,7 @@ Inference:
     </p>
     <p>
         &copy; Copyright 2021, Todd Pataky.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.1.2.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.5.3.<br/>
     </p>
   </div>
 </footer>
