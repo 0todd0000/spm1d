@@ -31,11 +31,11 @@ _________________________________________
 Equal variance test
 -------------------------------------------------
 
-* `eqvartest`: a test for the equality of variance in two samples. This is a preliminary, in-development test based on the MATLAB code from [Kowalski et al. (2021)](https://www.sciencedirect.com/science/article/abs/pii/S0021929021004267). Two alternative options are implemented: "unequal" or "greater". The "unequal" alternative currently can be applied only if the sample sizes are equal. The "greater" alternative can be used for arbitrary sample sizes.
+* `eqvartest`: a test for the equality of variance in two samples. This is a preliminary, in-development test based on the MATLAB code from `Kowalski et al. (2021) <https://www.sciencedirect.com/science/article/abs/pii/S0021929021004267>`_. Two alternative options are implemented: "unequal" or "greater". The "unequal" alternative currently can be applied only if the sample sizes are equal. The "greater" alternative can be used for arbitrary sample sizes.
 
-* Here are links to an [example Python script](https://github.com/0todd0000/spm1d/blob/master/spm1d/examples/stats1d/ex_eqvartest.py) and an [example MATLAB script](https://github.com/0todd0000/spm1dmatlab/blob/master/examples/stats1d/ex1d_eqvartest.m). 
+* Here are links to an `example Python script <https://github.com/0todd0000/spm1d/blob/master/spm1d/examples/stats1d/ex_eqvartest.py>`_ and an `example MATLAB script <https://github.com/0todd0000/spm1dmatlab/blob/master/examples/stats1d/ex1d_eqvartest.m>`_. 
 
-* Check the [Python function](https://github.com/0todd0000/spm1d/blob/master/spm1d/stats/var.py) or [MATLAB function](https://github.com/0todd0000/spm1dmatlab/blob/master/%2Bspm1d/%2Bstats/eqvartest.m) for additional details.
+* Check the `Python function <https://github.com/0todd0000/spm1d/blob/master/spm1d/stats/var.py>`_ or `MATLAB function <https://github.com/0todd0000/spm1dmatlab/blob/master/%2Bspm1d/%2Bstats/eqvartest.m>`_ for additional details.
 
 
 Version 0.4.3
