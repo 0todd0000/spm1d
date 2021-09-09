@@ -6,12 +6,13 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
     <title>Version History &#8212; spm1d 0.4 documentation</title>
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
-    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/bootstrap-sphinx.css" />
+    <link rel="stylesheet" type="text/css" href="_static/plot_directive.css" />
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
     <script src="_static/doctools.js"></script>
@@ -111,6 +112,10 @@
       aria-labelledby="dLabelLocalToc"><ul>
 <li><a class="reference internal" href="#">Version History</a></li>
 <li><a class="reference internal" href="#new-features">New Features</a><ul>
+<li><a class="reference internal" href="#version-0-4-8-2021-09-09">Version 0.4.8 (2021-09-09)</a><ul>
+<li><a class="reference internal" href="#equal-variance-test">Equal variance test</a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#version-0-4-3">Version 0.4.3</a><ul>
 <li><a class="reference internal" href="#manual-nonlinear-warping-python-only">Manual nonlinear warping (Python only)</a></li>
 </ul>
@@ -175,6 +180,10 @@
         <div class="sphinxsidebarwrapper"><ul>
 <li><a class="reference internal" href="#">Version History</a></li>
 <li><a class="reference internal" href="#new-features">New Features</a><ul>
+<li><a class="reference internal" href="#version-0-4-8-2021-09-09">Version 0.4.8 (2021-09-09)</a><ul>
+<li><a class="reference internal" href="#equal-variance-test">Equal variance test</a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#version-0-4-3">Version 0.4.3</a><ul>
 <li><a class="reference internal" href="#manual-nonlinear-warping-python-only">Manual nonlinear warping (Python only)</a></li>
 </ul>
@@ -243,6 +252,17 @@
 </section>
 <section id="new-features">
 <h1>New Features<a class="headerlink" href="#new-features" title="Permalink to this headline">¶</a></h1>
+<section id="version-0-4-8-2021-09-09">
+<h2>Version 0.4.8 (2021-09-09)<a class="headerlink" href="#version-0-4-8-2021-09-09" title="Permalink to this headline">¶</a></h2>
+<section id="equal-variance-test">
+<h3>Equal variance test<a class="headerlink" href="#equal-variance-test" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><cite>eqvartest</cite>: a test for the equality of variance in two samples. This is a preliminary, in-development test based on the MATLAB code from [Kowalski et al. (2021)](<a class="reference external" href="https://www.sciencedirect.com/science/article/abs/pii/S0021929021004267">https://www.sciencedirect.com/science/article/abs/pii/S0021929021004267</a>). Two alternative options are implemented: “unequal” or “greater”. The “unequal” alternative currently can be applied only if the sample sizes are equal. The “greater” alternative can be used for arbitrary sample sizes.</p></li>
+<li><p>Here are links to an [example Python script](<a class="reference external" href="https://github.com/0todd0000/spm1d/blob/master/spm1d/examples/stats1d/ex_eqvartest.py">https://github.com/0todd0000/spm1d/blob/master/spm1d/examples/stats1d/ex_eqvartest.py</a>) and an [example MATLAB script](<a class="reference external" href="https://github.com/0todd0000/spm1dmatlab/blob/master/examples/stats1d/ex1d_eqvartest.m">https://github.com/0todd0000/spm1dmatlab/blob/master/examples/stats1d/ex1d_eqvartest.m</a>).</p></li>
+<li><p>Check the [Python function](<a class="reference external" href="https://github.com/0todd0000/spm1d/blob/master/spm1d/stats/var.py">https://github.com/0todd0000/spm1d/blob/master/spm1d/stats/var.py</a>) or [MATLAB function](<a class="reference external" href="https://github.com/0todd0000/spm1dmatlab/blob/master/%2Bspm1d/%2Bstats/eqvartest.m">https://github.com/0todd0000/spm1dmatlab/blob/master/%2Bspm1d/%2Bstats/eqvartest.m</a>) for additional details.</p></li>
+</ul>
+</section>
+</section>
 <section id="version-0-4-3">
 <h2>Version 0.4.3<a class="headerlink" href="#version-0-4-3" title="Permalink to this headline">¶</a></h2>
 <section id="manual-nonlinear-warping-python-only">
@@ -448,7 +468,7 @@ Inference:
 </div>
 <p>(<a class="reference external" href=".//NewFeatures-1.py">Source code</a>, <a class="reference external" href=".//NewFeatures-1.png">png</a>, <a class="reference external" href=".//NewFeatures-1.hires.png">hires.png</a>, <a class="reference external" href=".//NewFeatures-1.pdf">pdf</a>)</p>
 <figure class="align-default">
-<img alt="_images/NewFeatures-1.png" src="_images/NewFeatures-1.png" />
+<img alt="_images/NewFeatures-1.png" class="plot-directive" src="_images/NewFeatures-1.png" />
 </figure>
 </section>
 </section>
@@ -644,7 +664,7 @@ Inference:
 </div>
 <p>(<a class="reference external" href=".//NewFeatures-2.py">Source code</a>, <a class="reference external" href=".//NewFeatures-2.png">png</a>, <a class="reference external" href=".//NewFeatures-2.hires.png">hires.png</a>, <a class="reference external" href=".//NewFeatures-2.pdf">pdf</a>)</p>
 <figure class="align-default">
-<img alt="_images/NewFeatures-2.png" src="_images/NewFeatures-2.png" />
+<img alt="_images/NewFeatures-2.png" class="plot-directive" src="_images/NewFeatures-2.png" />
 </figure>
 <p>This yields the following results:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SPM</span><span class="p">{</span><span class="n">T</span><span class="p">}</span> <span class="n">inference</span> <span class="n">field</span>
@@ -685,7 +705,7 @@ Inference:
 </div>
 <p>(<a class="reference external" href=".//NewFeatures-3.py">Source code</a>, <a class="reference external" href=".//NewFeatures-3.png">png</a>, <a class="reference external" href=".//NewFeatures-3.hires.png">hires.png</a>, <a class="reference external" href=".//NewFeatures-3.pdf">pdf</a>)</p>
 <figure class="align-default">
-<img alt="_images/NewFeatures-3.png" src="_images/NewFeatures-3.png" />
+<img alt="_images/NewFeatures-3.png" class="plot-directive" src="_images/NewFeatures-3.png" />
 </figure>
 <p>There appear to be two suprathreshold clusters, but Day 0 is homologous with Day 365, so in fact there is just one suprathreshold cluster.</p>
 <p>If the example above is regarded as circular, we get a single cluster-level p value of approximately 0.000003.</p>
@@ -710,7 +730,7 @@ Inference:
 </div>
 <p>(<a class="reference external" href="./pyplots/fig_upcrossing.py">Source code</a>, <a class="reference external" href="./pyplots/fig_upcrossing.png">png</a>, <a class="reference external" href="./pyplots/fig_upcrossing.hires.png">hires.png</a>, <a class="reference external" href="./pyplots/fig_upcrossing.pdf">pdf</a>)</p>
 <figure class="align-default">
-<img alt="_images/fig_upcrossing.png" src="_images/fig_upcrossing.png" />
+<img alt="_images/fig_upcrossing.png" class="plot-directive" src="_images/fig_upcrossing.png" />
 </figure>
 </section>
 <section id="installation-updating">
@@ -741,7 +761,7 @@ Inference:
     </p>
     <p>
         &copy; Copyright 2021, Todd Pataky.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.5.3.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.0.2.<br/>
     </p>
   </div>
 </footer>
