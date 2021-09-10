@@ -15,6 +15,12 @@ Do you think that there are better ways to explore your data, but these are prob
 - A certificate can be earned at the end of the two-day workshop, based on successfully conducting  hypothesis tests on experimental and simulated data.
 
 
+Online Workshop
+---------------------------
+
+**Coming soon!!!** We expect to be live by late September, 2021.
+
+
 Workshop Slides
 ---------------------------
 

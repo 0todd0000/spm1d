@@ -20,7 +20,7 @@ import sphinx_bootstrap_theme
 # documentation root, use os.path.abspath to make it absolute, like shown here.
 #sys.path.insert(0, os.path.abspath('.'))
 
-sys.path.append('/Users/todd/WorkingCopies/spm1d/trunk/')
+sys.path.append('/Users/todd/WorkingCopies/')
 import spm1d
 from spm1d import rft1d
 
