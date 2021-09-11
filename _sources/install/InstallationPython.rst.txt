@@ -18,51 +18,53 @@ ________________
 
 Newer or older versions may work but have not been tested.
 
-Once those packages are installed, open a Terminal (Linux, Mac) or a Command Prompt (Windows) and enter::
+All of these packages are available in the default `Anaconda package <https://www.anaconda.com/products/individual>`_
 
-	easy_install spm1d
+After installing Anaconda, open a Terminal (Linux, Mac) or an Anaconda Command Prompt (Windows) and enter::
 
-To check installation:
+	conda install -c toddp spm1d
 
-	>>> import spm1d
-
-
-
-
-
-
-
-New to Python?
-________________
-
-Python is a free-and-open-source object-oriented programming language.
-
-To install Python we highly recommend `Enthought Canopy <https://www.enthought.com/products/canopy/>`_.
-
-The free (as in beer) **Canopy Express** installation contains all of the libraries you will need to get started with **spm1d**.
-
-Enthought also offers a free (as in beer) academic license for users who may want additional functionality.
-
-After Canopy is installed, open a Terminal (Linux, Mac) or a Command Prompt (Windows) and enter::
-
-	easy_install spm1d
-
-After that command finishes running, launch an interactive Python session by entering::
-
-	ipython
-
-To check installation enter the following command at the Python command prompt:
+To check installation, launch Python or IPython, then enter:
 
 	>>> import spm1d
-
 
 If there are no error messages generated then congratulations, you're ready to go!
 
 
 
+
+
+.. New to Python?
+..
+.. Python is a free-and-open-source object-oriented programming language.
+..
+.. To install Python we highly recommend `Anaconda
+ .. <https://www.anaconda.com/products/individual>`_.
+..
+.. **Anaconda** contains all of the libraries you will need to get started with **spm1d**.
+..
+.. Enthought also offers a free (as in beer) academic license for users who may want additional functionality.
+..
+.. After Canopy is installed, open a Terminal (Linux, Mac) or a Command Prompt (Windows) and enter::
+..
+.. 	easy_install spm1d
+..
+.. After that command finishes running, launch an interactive Python session by entering::
+..
+.. 	ipython
+..
+.. To check installation enter the following command at the Python command prompt:
+..
+.. 	>>> import spm1d
+..
+..
+.. If there are no error messages generated then congratulations, you're ready to go!
+
+
+
 .. .. warning:: The **spm1d** team can only offer direct support for Enthought Canopy.
 ..
-.. 	If you have issues with other distributions (e.g. Spyder, PythonXY) we would be pleased to receive your comments at **spm1d**'s `github site <https://github.com/0todd0000/spm1d/>`_ , but we can't guarantee fixes.
+	.. If you have issues with other distributions (e.g. Spyder, PythonXY) we would be pleased to receive your comments at **spm1d**'s `github site <https://github.com/0todd0000/spm1d/>`_ , but we can't guarantee fixes.
 
 
 
@@ -77,18 +79,18 @@ ________________
 A variety of online resources exist for learning Python.
 If you are new to Python the best place to start might be the main Python documentation site:
 
-* http://docs.python.org/index.html
+* https://docs.python.org/3/index.html
 
 Matlab users may find these documents useful:
 
-* http://wiki.scipy.org/NumPy_for_Matlab_Users
+* http://scipy.github.io/old-wiki/pages/NumPy_for_Matlab_Users
 * http://mathesaurus.sourceforge.net/matlab-numpy.html
 
 Other helpful documentation can be found here:
 
-* `NumPy Reference <http://docs.scipy.org/doc/numpy/reference/>`_
-* `SciPy Reference <http://docs.scipy.org/doc/scipy/reference/>`_
-* `Matplotlib Documentation <http://matplotlib.org/>`_ 
+* `NumPy Reference <https://numpy.org/doc/stable/reference/>`_
+* `SciPy Reference <https://docs.scipy.org/doc/scipy/reference/>`_
+* `Matplotlib Documentation <https://matplotlib.org>`_
 
 
 Book suggestions:

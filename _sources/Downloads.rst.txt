@@ -29,9 +29,11 @@ Downloads
 Quick Installation (Python)
 -------------------------------
 
-In a Terminal (Linux, Mac) or a Command Prompt (Windows)::
+1. Install `Anaconda <https://www.anaconda.com/products/individual>`_
 
-	easy_install spm1d
+2. In a Terminal (Linux, Mac) or an Anaconda Command Prompt (Windows)::
+
+	conda install -c toddp spm1d
 
 
 
