@@ -1,6 +1,6 @@
 
 import numpy as np
-from matplotlib import pyplot
+import matplotlib.pyplot as plt
 import spm1d
 
 
@@ -20,11 +20,12 @@ BETA          = np.array(BETA)
 
 
 #plot:
-pyplot.close('all')
-ax            = pyplot.axes( (0.15, 0.15, 0.8, 0.8) )
-pyplot.plot(BETA.T, color='k')
+plt.close('all')
+ax            = plt.axes( (0.15, 0.15, 0.8, 0.8) )
+plt.plot(BETA.T, color='k')
 ax.axhline(y=0, color='k', linewidth=1, linestyle=':')
 ax.set_xlabel('Time (% stance)')
 ax.set_ylabel(r'$\beta_0$   $(BW / ms^{-1})$')
-pyplot.show()
+plt.tight_layout()
+plt.show()
 

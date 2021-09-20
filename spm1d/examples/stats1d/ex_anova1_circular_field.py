@@ -1,5 +1,5 @@
 
-from matplotlib import pyplot
+import matplotlib.pyplot as plt
 import spm1d
 
 
@@ -18,10 +18,11 @@ print( ti )
 
 
 #(2) Plot:
-pyplot.close('all')
+plt.close('all')
 ti.plot()
 ti.plot_p_values()
-pyplot.show()
+plt.tight_layout()
+plt.show()
 
 
 

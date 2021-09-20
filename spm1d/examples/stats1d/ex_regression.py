@@ -1,5 +1,5 @@
 
-from matplotlib import pyplot
+import matplotlib.pyplot as plt
 import spm1d
 
 
@@ -19,12 +19,13 @@ ti         = t.inference(alpha, two_tailed=False, interp=True)
 
 
 #(2) Plot:
-pyplot.close('all')
-ax     = pyplot.axes()
+plt.close('all')
+ax     = plt.axes()
 ti.plot()
 ti.plot_threshold_label(fontsize=8)
 ti.plot_p_values(size=10, offsets=[(0,0.3)])
 ax.set_xlabel('Time (%)')
-pyplot.show()
+plt.tight_layout()
+plt.show()
 
 

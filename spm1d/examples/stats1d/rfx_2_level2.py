@@ -1,6 +1,6 @@
 import os
 import numpy as np
-from matplotlib import pyplot
+import matplotlib.pyplot as plt
 import spm1d
 
 
@@ -23,9 +23,10 @@ ti            = t.inference(alpha, two_tailed=True)
 
 
 #plot:
-pyplot.close('all')
+plt.close('all')
 ti.plot()
 ti.plot_threshold_label(fontsize=12)
 ti.plot_p_values()
-pyplot.xlabel('Time (% stance)', size=16)
-pyplot.show()
+plt.xlabel('Time (% stance)', size=16)
+plt.tight_layout()
+plt.show()

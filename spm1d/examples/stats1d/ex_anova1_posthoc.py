@@ -1,6 +1,6 @@
 
 import numpy as np
-from matplotlib import pyplot
+import matplotlib.pyplot as plt
 import spm1d
 
 
@@ -35,19 +35,19 @@ t23i  = t23.inference(alpha=p_critical, two_tailed=True)
 
 
 #(2) Plot results:
-pyplot.close('all')
-pyplot.subplot(221)
+plt.close('all')
+plt.subplot(221)
 Fi.plot()
 Fi.plot_threshold_label(bbox=dict(facecolor='w'))
-pyplot.ylim(-1, 500)
-pyplot.title('Main test')
+plt.ylim(-1, 500)
+plt.title('Main test')
 
-pyplot.subplot(222);  t12i.plot();  pyplot.title('Posthoc:  1 vs. 2');  pyplot.ylim(-40, 40)
-pyplot.subplot(223);  t23i.plot();  pyplot.title('Posthoc:  2 vs. 3');  pyplot.ylim(-40, 40)
-pyplot.subplot(224);  t13i.plot();  pyplot.title('Posthoc:  1 vs. 3');  pyplot.ylim(-40, 40)
+plt.subplot(222);  t12i.plot();  plt.title('Posthoc:  1 vs. 2');  plt.ylim(-40, 40)
+plt.subplot(223);  t23i.plot();  plt.title('Posthoc:  2 vs. 3');  plt.ylim(-40, 40)
+plt.subplot(224);  t13i.plot();  plt.title('Posthoc:  1 vs. 3');  plt.ylim(-40, 40)
 
 
-pyplot.show()
+plt.show()
 
 
 

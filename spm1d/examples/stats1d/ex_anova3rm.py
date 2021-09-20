@@ -1,6 +1,6 @@
 
 import numpy as np
-from matplotlib import pyplot
+import matplotlib.pyplot as plt
 import spm1d
 
 
@@ -22,8 +22,8 @@ print( FFi )
 
 
 #(2) Plot results:
-pyplot.close('all')
+plt.close('all')
 FFi.plot(plot_threshold_label=True, plot_p_values=True, autoset_ylim=True)
-pyplot.show()
+plt.show()
 
 

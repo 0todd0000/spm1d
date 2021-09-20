@@ -1,5 +1,5 @@
 
-from matplotlib import pyplot
+import matplotlib.pyplot as plt
 import spm1d
 
 
@@ -22,13 +22,13 @@ print( Fi )
 
 
 #(2) Plot results:
-pyplot.close('all')
+plt.close('all')
 Fi.plot()
 Fi.plot_threshold_label(bbox=dict(facecolor='w'))
-# pyplot.ylim(-1, 500)
-pyplot.xlabel('Time (%)', size=20)
-pyplot.title(r'Critical threshold at $\alpha$=%.2f:  $F^*$=%.3f' %(alpha, Fi.zstar))
-pyplot.show()
+# plt.ylim(-1, 500)
+plt.xlabel('Time (%)', size=20)
+plt.title(r'Critical threshold at $\alpha$=%.2f:  $F^*$=%.3f' %(alpha, Fi.zstar))
+plt.show()
 
 
 

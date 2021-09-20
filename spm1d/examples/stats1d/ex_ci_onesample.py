@@ -17,7 +17,7 @@ Thus "mu=None" is generally useful only for exploratory purposes.
 
 
 import numpy as np
-from matplotlib import pyplot
+import matplotlib.pyplot as plt
 import spm1d
 
 
@@ -44,27 +44,27 @@ print( ci1 )
 
 
 #(2) Plot the CIs:
-pyplot.close('all')
-pyplot.figure(figsize=(14,7))
+plt.close('all')
+plt.figure(figsize=(14,7))
 
 
 ### FIRST POPULATION MEAN
 
 ### plot means and SD:
-ax = pyplot.subplot(231)
+ax = plt.subplot(231)
 spm1d.plot.plot_mean_sd(y-mu0, ax=ax)
 ax.set_title('Mean and SD', size=10)
 spm1d.plot.legend_manual(ax, labels=['Mean', 'SD'], colors=['k','0.85'], linestyles=['-', '-'], linewidths=[3, 10], loc='upper left', fontsize=10)
 
 ### plot hypothesis test results:
-ax = pyplot.subplot(232)
+ax = plt.subplot(232)
 spmi = spm1d.stats.ttest(y, mu0).inference(alpha, two_tailed=True)
 spmi.plot(ax=ax)
 spmi.plot_p_values()
 ax.set_title('Hypothesis test', size=10)
 
 ### plot CIs:
-ax = pyplot.subplot(233)
+ax = plt.subplot(233)
 ci0.plot(ax)
 ax.set_title('CI  (criterion: mu=0)', size=10)
 spm1d.plot.legend_manual(ax, labels=['Mean', 'CI', 'Criterion'], colors=['k','0.85','r'], linestyles=['-', '-','--'], linewidths=[3, 10, 1], loc='upper left', fontsize=10)
@@ -73,25 +73,25 @@ spm1d.plot.legend_manual(ax, labels=['Mean', 'CI', 'Criterion'], colors=['k','0.
 ### SECOND POPULATION MEAN
 
 ### plot means and SD:
-ax = pyplot.subplot(234)
+ax = plt.subplot(234)
 spm1d.plot.plot_mean_sd(y-mu1, ax=ax)
 ax.set_title('Mean and SD  (y - mu1)', size=10)
 
 ### plot hypothesis test results:
-ax = pyplot.subplot(235)
+ax = plt.subplot(235)
 spmi = spm1d.stats.ttest(y, mu1).inference(alpha, two_tailed=True)
 spmi.plot(ax=ax)
 spmi.plot_p_values()
 ax.set_title('Hypothesis test (y - mu1)', size=10)
 
 ### plot CIs:
-ax = pyplot.subplot(236)
+ax = plt.subplot(236)
 ci1.plot(ax)
 ax.set_title('CI  (criterion: mu1)', size=10)
 
 
-pyplot.suptitle('One-sample analysis')
-pyplot.show()
+plt.suptitle('One-sample analysis')
+plt.show()
 
 
 

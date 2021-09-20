@@ -1,6 +1,6 @@
 
 import numpy as np
-from matplotlib import pyplot
+import matplotlib.pyplot as plt
 import spm1d
 from spm1d import rft1d
 
@@ -35,11 +35,11 @@ ci_spm1d   = spm1d.stats.ci_onesample(y, alpha, mu)
 
 
 #(3) Plot the CIs:
-pyplot.close('all')
-pyplot.figure(figsize=(10,4))
+plt.close('all')
+plt.figure(figsize=(10,4))
 
 ### plot parametric CI:
-ax = pyplot.subplot(121)
+ax = plt.subplot(121)
 ax.plot(m, color='b', lw=3)
 ax.plot(ci[0], color='b', lw=1, linestyle=':')
 ax.plot(ci[1], color='b', lw=1, linestyle=':')
@@ -47,9 +47,9 @@ ax.axhline(0, color='k', linestyle='--')
 ax.set_title('Manually computed CI', size=10)
 ax.set_ylim(-7, 13)
 ### plot parametric CI:
-ax = pyplot.subplot(122)
+ax = plt.subplot(122)
 ci_spm1d.plot(ax)
 ax.set_title('spm1d result', size=10)
-pyplot.suptitle('One-sample CIs')
+plt.suptitle('One-sample CIs')
 ax.set_ylim(-7, 13)
-pyplot.show()
+plt.show()

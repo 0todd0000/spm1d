@@ -1,6 +1,6 @@
 
 import numpy as np
-from matplotlib import pyplot
+import matplotlib.pyplot as plt
 import spm1d
 
 
@@ -21,14 +21,15 @@ Y1,Y2,Y3     = np.asarray(Y1), np.asarray(Y2), np.asarray(Y3)
 
 
 # plot:
-pyplot.close('all')
-h1 = pyplot.plot(Y1.T, color='b')
-h2 = pyplot.plot(Y2.T, color='k')
-h3 = pyplot.plot(Y3.T, color='r')
+plt.close('all')
+h1 = plt.plot(Y1.T, color='b')
+h2 = plt.plot(Y2.T, color='k')
+h3 = plt.plot(Y3.T, color='r')
 h1[0].set_label('Slow')
 h2[0].set_label('Normal')
 h3[0].set_label('Fast')
-pyplot.legend(loc='lower center', fontsize=12)
-pyplot.xlabel('Time (% stance)')
-pyplot.ylabel('GRF (BW)')
-pyplot.show()
+plt.legend(loc='lower center', fontsize=12)
+plt.xlabel('Time (% stance)')
+plt.ylabel('GRF (BW)')
+plt.tight_layout()
+plt.show()

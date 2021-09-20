@@ -1,5 +1,5 @@
 	
-from matplotlib import pyplot
+import matplotlib.pyplot as plt
 import spm1d
 
 
@@ -19,8 +19,9 @@ print( T2i )
 
 
 #(2) Plot:
-pyplot.close('all')
+plt.close('all')
 T2i.plot()
-pyplot.show()
+plt.tight_layout()
+plt.show()
 
 

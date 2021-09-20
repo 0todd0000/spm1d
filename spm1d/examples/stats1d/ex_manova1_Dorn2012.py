@@ -1,5 +1,5 @@
 
-from matplotlib import pyplot
+import matplotlib.pyplot as plt
 import spm1d
 
 
@@ -19,9 +19,10 @@ X2i          = X2.inference(0.05)
 
 
 #(2) Plot:
-pyplot.close('all')
+plt.close('all')
 X2i.plot()
 X2i.plot_p_values()
-pyplot.show()
+plt.tight_layout()
+plt.show()
 
 
