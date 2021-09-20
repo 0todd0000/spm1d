@@ -14,7 +14,7 @@ YA,YB        = dataset.get_data()
 #(1) Conduct t test:
 alpha      = 0.05
 t          = spm1d.stats.ttest2(YB, YA, equal_var=True)
-ti         = t.inference(alpha, two_tailed=False, interp=True)
+ti         = t.inference(alpha, two_tailed=True, interp=True)
 print( ti )
 
 

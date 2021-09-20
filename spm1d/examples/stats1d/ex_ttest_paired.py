@@ -5,15 +5,15 @@ import spm1d
 
 
 #(0) Load data:
-dataset      = spm1d.data.uv1d.t2.PlantarArchAngle()
-YA,YB        = dataset.get_data()  #normal and fast walking
+dataset    = spm1d.data.uv1d.t2.PlantarArchAngle()
+YA,YB      = dataset.get_data()  #normal and fast walking
 
 
 
 #(1) Conduct t test:
-alpha      = 0.05
-t          = spm1d.stats.ttest_paired(YA, YB)
-ti         = t.inference(alpha, two_tailed=True, interp=True)
+spm        = spm1d.stats.ttest_paired(YA, YB)
+spmi       = spm.inference(0.05, two_tailed=False, interp=True)
+print( spmi )
 
 
 
@@ -31,9 +31,9 @@ ax.set_ylabel('Plantar arch angle  (deg)')
 ### plot SPM results:
 ax     = AX[1]
 plt.sca(ax)
-ti.plot()
-ti.plot_threshold_label(fontsize=8)
-ti.plot_p_values(size=10, offsets=[(0,0.3)])
+spmi.plot()
+spmi.plot_threshold_label(fontsize=8)
+spmi.plot_p_values(size=10, offsets=[(0,0.3)])
 ax.set_xlabel('Time (%)')
 plt.tight_layout()
 plt.show()

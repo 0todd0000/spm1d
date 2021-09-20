@@ -275,6 +275,14 @@ class _SPM(_SPMParent):
 		s       += '   SPM.resels :  (%d, %.5f)\n\n\n' %tuple(self.resels)
 		return s
 	
+	@property
+	def R(self):
+		return self.residuals
+	@property
+	def nNodes(self):
+		return self.Q
+	
+	
 	def _repr_teststat(self):
 		return '(1x%d) test stat field' %self.Q
 	def _repr_teststat_short(self):
