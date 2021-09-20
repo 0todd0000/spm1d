@@ -1,5 +1,5 @@
 
-from matplotlib import pyplot
+import matplotlib.pyplot as plt
 import spm1d
 
 
@@ -13,12 +13,12 @@ Y2      = Y[A==3]
 
 
 # plot:
-pyplot.close('all')
+plt.close('all')
 spm1d.plot.plot_mean_sd(Y0, linecolor='b', facecolor=(0.7,0.7,1), edgecolor='b', label='Slow')
 spm1d.plot.plot_mean_sd(Y1, label='Normal')
 spm1d.plot.plot_mean_sd(Y2, linecolor='r', facecolor=(1,0.7,0.7), edgecolor='r', label='Fast')
-pyplot.xlim(0, 100)
-pyplot.xlabel('Time (%)', size=20)
-pyplot.ylabel('VGRF  (BW)', size=20)
-pyplot.legend(loc='lower left')
-pyplot.show()
+plt.xlim(0, 100)
+plt.xlabel('Time (%)', size=20)
+plt.ylabel('VGRF  (BW)', size=20)
+plt.legend(loc='lower left')
+plt.show()

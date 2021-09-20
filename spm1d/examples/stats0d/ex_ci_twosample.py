@@ -1,6 +1,6 @@
 
 import numpy as np
-from matplotlib import pyplot
+import matplotlib.pyplot as plt
 import spm1d
 
 
@@ -27,11 +27,11 @@ print( ci3 )
 
 
 #(2) Plot the CIs:
-pyplot.close('all')
-pyplot.figure(figsize=(8,8))
-ax0 = pyplot.subplot(221);  ci0.plot(ax0);  ax0.set_title('datum="difference", mu=None', size=10)
-ax1 = pyplot.subplot(222);  ci1.plot(ax1);  ax1.set_title('datum="difference", mu=%.5f'%mu, size=10)
-ax2 = pyplot.subplot(223);  ci2.plot(ax2);  ax2.set_title('datum="meanA", mu="meanB"', size=10)
-ax3 = pyplot.subplot(224);  ci3.plot(ax3);  ax3.set_title('datum="meanA", mu="tailsAB"', size=10)
-pyplot.suptitle('Paired sample CIs')
-pyplot.show()
+plt.close('all')
+plt.figure(figsize=(8,8))
+ax0 = plt.subplot(221);  ci0.plot(ax0);  ax0.set_title('datum="difference", mu=None', size=10)
+ax1 = plt.subplot(222);  ci1.plot(ax1);  ax1.set_title('datum="difference", mu=%.5f'%mu, size=10)
+ax2 = plt.subplot(223);  ci2.plot(ax2);  ax2.set_title('datum="meanA", mu="meanB"', size=10)
+ax3 = plt.subplot(224);  ci3.plot(ax3);  ax3.set_title('datum="meanA", mu="tailsAB"', size=10)
+plt.suptitle('Paired sample CIs')
+plt.show()

@@ -1,6 +1,6 @@
 
 import numpy as np
-from matplotlib import pyplot
+import matplotlib.pyplot as plt
 import spm1d
 
 
@@ -38,11 +38,11 @@ print( FFi )
 
 
 #(3) Plot
-pyplot.close('all')
-pyplot.figure(figsize=(15,4))
+plt.close('all')
+plt.figure(figsize=(12,3))
 
 for i,(Fi,Fni) in enumerate( zip(FFi,FFni) ):
-	ax = pyplot.subplot(1,3,i+1)
+	ax = plt.subplot(1,3,i+1)
 	Fni.plot(ax=ax)
 	Fni.plot_threshold_label(ax=ax, fontsize=8)
 	Fni.plot_p_values(ax=ax, size=10)
@@ -52,7 +52,8 @@ for i,(Fi,Fni) in enumerate( zip(FFi,FFni) ):
 	if i==0:
 		ax.legend(fontsize=10, loc='best')
 	ax.set_title( Fni.effect )
-pyplot.show()
+plt.tight_layout()
+plt.show()
 
 
 

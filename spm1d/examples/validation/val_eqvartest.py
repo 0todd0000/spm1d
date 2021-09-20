@@ -6,7 +6,7 @@ This script presents simple, non-thorough validations of the
 
 import numpy as np
 from scipy import stats
-from matplotlib import pyplot as plt
+import matplotlib.pyplot as plt
 import spm1d
 rft1d = spm1d.rft1d
 

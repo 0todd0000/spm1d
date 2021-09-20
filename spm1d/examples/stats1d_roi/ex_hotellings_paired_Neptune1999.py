@@ -1,6 +1,6 @@
 
 import numpy as np
-from matplotlib import pyplot
+import matplotlib.pyplot as plt
 import spm1d
 
 
@@ -27,11 +27,11 @@ print(T2i)
 
 
 #(2) Plot:
-pyplot.close('all')
-ax0     = pyplot.subplot(221)
-ax1     = pyplot.subplot(222)
-ax2     = pyplot.subplot(223)
-ax3     = pyplot.subplot(224)
+plt.close('all')
+ax0     = plt.subplot(221)
+ax1     = plt.subplot(222)
+ax2     = plt.subplot(223)
+ax3     = plt.subplot(224)
 ### plot SPM results:
 h=ax0.plot(YA[:,:,0].T, 'k'); h[0].set_label('side-shuffle')
 h=ax0.plot(YB[:,:,0].T, 'r'); h[0].set_label('v-cut')
@@ -41,6 +41,6 @@ ax2.plot(YA[:,:,2].T, 'k')
 ax2.plot(YB[:,:,2].T, 'r')
 T2i.plot(ax=ax3)
 ax0.legend(fontsize=9)
-pyplot.show()
+plt.show()
 
 

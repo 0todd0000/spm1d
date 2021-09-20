@@ -1,6 +1,6 @@
 
 import numpy as np
-from matplotlib import pyplot
+import matplotlib.pyplot as plt
 import spm1d
 
 
@@ -25,17 +25,18 @@ print( cinp )
 
 
 #(2) Plot the CIs:
-pyplot.close('all')
-pyplot.figure(figsize=(10,4))
+plt.close('all')
+plt.figure(figsize=(10,4))
 
 ### plot parametric CI:
-ax = pyplot.subplot(121)
+ax = plt.subplot(121)
 ci.plot(ax)
 ax.set_title('Parametric CI', size=10)
 ### plot parametric CI:
-ax = pyplot.subplot(122)
+ax = plt.subplot(122)
 cinp.plot(ax)
 ax.set_title('Non-parametric CI', size=10)
-pyplot.suptitle('Paired-sample CIs')
-pyplot.show()
+plt.suptitle('Paired-sample CIs')
+plt.tight_layout()
+plt.show()
 

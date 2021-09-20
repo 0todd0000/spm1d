@@ -1,6 +1,6 @@
 
 import numpy as np
-from matplotlib import pyplot
+import matplotlib.pyplot as plt
 import spm1d
 
 
@@ -22,12 +22,13 @@ print( spmi )
 
 
 #(2) Plot
-pyplot.close('all')
-pyplot.figure(figsize=(14,4))
-ax = pyplot.subplot(131);  ax.plot(y.T, 'k', lw=0.5);   ax.set_title('Data')
-ax = pyplot.subplot(132);  ax.plot(spmi.residuals.T, 'k', lw=0.5);   ax.set_title('Residuals')
-ax = pyplot.subplot(133);  spmi.plot(ax=ax);   spmi.plot_threshold_label(ax=ax); ax.set_title('Normality test')
-pyplot.show()
+plt.close('all')
+plt.figure(figsize=(14,4))
+ax = plt.subplot(131);  ax.plot(y.T, 'k', lw=0.5);   ax.set_title('Data')
+ax = plt.subplot(132);  ax.plot(spmi.residuals.T, 'k', lw=0.5);   ax.set_title('Residuals')
+ax = plt.subplot(133);  spmi.plot(ax=ax);   spmi.plot_threshold_label(ax=ax); ax.set_title('Normality test')
+plt.tight_layout()
+plt.show()
 
 
 

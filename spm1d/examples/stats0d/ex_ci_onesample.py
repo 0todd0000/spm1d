@@ -17,7 +17,7 @@ Thus "mu=None" is generally useful only for exploratory purposes.
 
 
 import numpy as np
-from matplotlib import pyplot
+import matplotlib.pyplot as plt
 import spm1d
 
 
@@ -41,9 +41,9 @@ print( ci1 )
 
 
 #(2) Plot the CIs:
-pyplot.close('all')
-pyplot.figure(figsize=(8,4))
-ax0 = pyplot.subplot(121);  ci0.plot(ax0);  ax0.set_title('mu=None', size=10)
-ax1 = pyplot.subplot(122);  ci1.plot(ax1);  ax1.set_title('mu=%.5f'%mu, size=10)
-pyplot.suptitle('One-sample CIs')
-pyplot.show()
+plt.close('all')
+plt.figure(figsize=(8,4))
+ax0 = plt.subplot(121);  ci0.plot(ax0);  ax0.set_title('mu=None', size=10)
+ax1 = plt.subplot(122);  ci1.plot(ax1);  ax1.set_title('mu=%.5f'%mu, size=10)
+plt.suptitle('One-sample CIs')
+plt.show()

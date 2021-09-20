@@ -1,6 +1,6 @@
 
 import numpy as np
-from matplotlib import pyplot
+import matplotlib.pyplot as plt
 import spm1d
 
 
@@ -25,7 +25,8 @@ FFi          = [F.inference(alpha)   for F in FF]
 
 
 #(2) Plot results:
-pyplot.close('all')
+plt.close('all')
+plt.figure(figsize=(12,8))
 titles       = ['Main effect A',
                'Main effect B',
                'Main effect C',
@@ -35,10 +36,11 @@ titles       = ['Main effect A',
                'Interaction ABC',
 ]
 for i,Fi in enumerate(FFi):
-	ax = pyplot.subplot(3,3,i+1)
+	ax = plt.subplot(3,3,i+1)
 	Fi.plot()
 	ax.text(0.1, 0.85, titles[i], transform=ax.transAxes)
-pyplot.show()
+plt.tight_layout()
+plt.show()
 
 
 

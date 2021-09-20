@@ -1,6 +1,6 @@
 
 import numpy as np
-from matplotlib import pyplot
+import matplotlib.pyplot as plt
 import spm1d
 
 
@@ -20,14 +20,14 @@ logP       = -np.log10(P)
 
 
 #(2) Plot:
-pyplot.close('all')
+plt.close('all')
 figw       = 8
 figh       = figw / 1.6
-pyplot.figure(figsize=(figw,figh))
+plt.figure(figsize=(figw,figh))
 ### create axes:
 axw = axh  = 0.27
 axx,axy    = np.linspace(0.08, 0.71, 3), [0.72, 0.42, 0.04]
-AX         = np.array(  [[pyplot.axes([xx, yy, axw, axh])  for xx in axx]  for yy in axy]  )
+AX         = np.array(  [[plt.axes([xx, yy, axw, axh])  for xx in axx]  for yy in axy]  )
 ### plot datasets:
 [ax.plot(yy.T, 'k', lw=0.2)   for ax,yy in zip(AX[0], [y0,y1,y2])]
 ### plot K2 stats:
@@ -38,12 +38,12 @@ rng        = -7, 7
 ind        = 50
 [ax.hist(yy[:,ind], bins=bins, range=rng, facecolor='c')   for ax,yy in zip(AX[2], [y0,y1,y2])]
 ### adjust axis tick labels:
-[pyplot.setp(ax.get_xticklabels() + ax.get_yticklabels(), size=8 )   for ax in AX.flatten()]
-pyplot.setp(AX[0], ylim=(-7,7))
-pyplot.setp(AX[1], ylim=(0, 55), ylabel='')
-pyplot.setp(AX[2], ylim=(0, 220))
-pyplot.setp(AX[:2],   xticklabels=[])
-pyplot.setp(AX[:,1:], yticklabels=[])
+[plt.setp(ax.get_xticklabels() + ax.get_yticklabels(), size=8 )   for ax in AX.flatten()]
+plt.setp(AX[0], ylim=(-7,7))
+plt.setp(AX[1], ylim=(0, 55), ylabel='')
+plt.setp(AX[2], ylim=(0, 220))
+plt.setp(AX[:2],   xticklabels=[])
+plt.setp(AX[:,1:], yticklabels=[])
 ### axis labels:
 [ax.set_xlabel('Time  (%)', size=14)   for ax in AX[1]]
 ylabels   = '', r'$K^2$', 'Frequency'
@@ -52,7 +52,7 @@ ylabels   = '', r'$K^2$', 'Frequency'
 [ax.text(0.05, 0.8, 'Time = %d%s'%(ind,'%'), size=9, transform=ax.transAxes)  for ax in AX[2]]
 ### dataset labels
 [ax.text(0.5, 0.85, 'Dataset A%d'%(i+12), size=10, ha='center', bbox=dict(color='0.85'), transform=ax.transAxes)  for  i,ax in enumerate(AX[0])]
-pyplot.show()
+plt.show()
 
 
 

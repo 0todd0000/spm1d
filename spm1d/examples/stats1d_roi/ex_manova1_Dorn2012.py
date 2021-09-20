@@ -1,6 +1,6 @@
 
 import numpy as np
-from matplotlib import pyplot
+import matplotlib.pyplot as plt
 import spm1d
 
 
@@ -26,9 +26,9 @@ print( X2i )
 
 
 #(2) Plot:
-pyplot.close('all')
+plt.close('all')
 X2i.plot()
 X2i.plot_p_values()
-pyplot.show()
+plt.show()
 
 

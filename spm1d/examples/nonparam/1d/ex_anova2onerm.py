@@ -1,6 +1,6 @@
 
 import numpy as np
-from matplotlib import pyplot
+import matplotlib.pyplot as plt
 import spm1d
 
 
@@ -35,13 +35,15 @@ print( FFi )
 
 
 #(3) Plot results:
-pyplot.close('all')
+plt.close('all')
+plt.figure( figsize=(10,6) )
 FFni.plot(plot_threshold_label=True, plot_p_values=True, autoset_ylim=True)
 ### optionally plot parametric thresholds for comparison:
 for i,Fi in enumerate(FFi):
-	ax = pyplot.subplot(2,2,i+1)
+	ax = plt.subplot(2,2,i+1)
 	ax.axhline( Fi.zstar, color='c', linestyle='--' )
 	ax.text(2, Fi.zstar, 'Parametric', color='c')
-pyplot.show()
+plt.tight_layout()
+plt.show()
 
 

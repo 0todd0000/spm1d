@@ -1,6 +1,6 @@
 
 import numpy as np
-from matplotlib import pyplot
+import matplotlib.pyplot as plt
 import spm1d
 
 
@@ -28,31 +28,14 @@ print( FFi )
 
 
 
-#(3) Plot
-pyplot.close('all')
-pyplot.figure(figsize=(15,10))
-
-for i,(Fi,Fni) in enumerate( zip(FFi,FFni) ):
-	ax = pyplot.subplot(3,3,i+1)
-	Fni.plot(ax=ax)
-	Fni.plot_threshold_label(ax=ax, fontsize=8)
-	Fni.plot_p_values(ax=ax, size=10)
-	ax.axhline( Fi.zstar, color='orange', linestyle='--', label='Parametric threshold')
-	if (Fi.zstar > Fi.z.max()) and (Fi.zstar>Fni.zstar):
-		ax.set_ylim(0, Fi.zstar+1)
-	if i==0:
-		ax.legend(fontsize=10, loc='best')
-	ax.set_title( Fni.effect )
-pyplot.show()
-
-
-
 #(3) Plot results:
-pyplot.close('all')
+plt.close('all')
+plt.figure(figsize=(12,8))
 FFni.plot(plot_threshold_label=False, plot_p_values=True, autoset_ylim=True)
 ### optionally plot parametric thresholds for comparison:
 for i,Fi in enumerate(FFi):
-	ax = pyplot.subplot(3,3,i+1)
+	ax = plt.subplot(3,3,i+1)
 	ax.axhline( Fi.zstar, color='c', linestyle='--' )
 	ax.text(2, Fi.zstar, 'Parametric', color='c')
-pyplot.show()
+plt.tight_layout()
+plt.show()

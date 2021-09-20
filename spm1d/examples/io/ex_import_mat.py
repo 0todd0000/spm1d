@@ -1,7 +1,7 @@
 
 import os
 import scipy.io
-from matplotlib import pyplot
+import matplotlib.pyplot as plt
 
 
 
@@ -11,8 +11,8 @@ fname        = os.path.join(dir0, 'data', 'ex_kinematics.mat')
 Y            = scipy.io.loadmat(fname)['Y']   #30 curves, 100 nodes
 
 # plot:
-pyplot.close('all')
-pyplot.plot(Y.T, color = 'k')
-pyplot.xlabel('Time (%)', size=20)
-pyplot.ylabel(r'$\theta$ (deg)', size=20)
-pyplot.show()
+plt.close('all')
+plt.plot(Y.T, color = 'k')
+plt.xlabel('Time (%)', size=20)
+plt.ylabel(r'$\theta$ (deg)', size=20)
+plt.show()

@@ -1,6 +1,6 @@
 
 import numpy as np
-from matplotlib import pyplot
+import matplotlib.pyplot as plt
 import spm1d
 
 
@@ -22,14 +22,14 @@ logP       = -np.log10(P)
 
 
 #(2) Plot:
-pyplot.close('all')
+plt.close('all')
 figw       = 8
 figh       = figw / 1.6
-pyplot.figure(figsize=(figw,figh))
+plt.figure(figsize=(figw,figh))
 ### create axes:
 axw = axh  = 0.27
 axx,axy    = np.linspace(0.07, 0.71, 3), np.linspace(0.72, 0.09, 3)
-AX         = np.array(  [[pyplot.axes([xx, yy, axw, axh])  for xx in axx]  for yy in axy]  )
+AX         = np.array(  [[plt.axes([xx, yy, axw, axh])  for xx in axx]  for yy in axy]  )
 ### plot datasets:
 [ax.plot(yy.T, 'k', lw=0.2)   for ax,yy in zip(AX[0], [y0,y1,y2])]
 ### plot K2 stats:
@@ -37,12 +37,12 @@ AX         = np.array(  [[pyplot.axes([xx, yy, axw, axh])  for xx in axx]  for y
 ### plot Shapiro-Wilk p values:
 [ax.plot(p, 'g', lw=2)   for ax,p in zip(AX[2], logP)]
 ### adjust axis tick labels:
-[pyplot.setp(ax.get_xticklabels() + ax.get_yticklabels(), size=8 )   for ax in AX.flatten()]
-pyplot.setp(AX[0], ylim=(-4.9,4.9))
-pyplot.setp(AX[1], ylim=(0, 15))
-pyplot.setp(AX[2], ylim=(0, 2.8))
-pyplot.setp(AX[:2],   xticklabels=[])
-pyplot.setp(AX[:,1:], yticklabels=[])
+[plt.setp(ax.get_xticklabels() + ax.get_yticklabels(), size=8 )   for ax in AX.flatten()]
+plt.setp(AX[0], ylim=(-4.9,4.9))
+plt.setp(AX[1], ylim=(0, 15))
+plt.setp(AX[2], ylim=(0, 2.8))
+plt.setp(AX[:2],   xticklabels=[])
+plt.setp(AX[:,1:], yticklabels=[])
 ### axis labels:
 [ax.set_xlabel('Time  (%)', size=14)   for ax in AX[2]]
 ylabels   = '', r'$K^2$', r'$-\log_{10}(p)$'
@@ -50,7 +50,7 @@ ylabels   = '', r'$K^2$', r'$-\log_{10}(p)$'
 ### dataset labels
 [ax.text(0.25, 0.85, 'Dataset A%d'%(i+7), size=10, ha='center', bbox=dict(color='0.85'), transform=ax.transAxes)  for  i,ax in enumerate(AX[0])]
 [ax.text(0.55, 0.85, 'FWHM = %d'%w, size=10, ha='left', transform=ax.transAxes)  for  i,(ax,w) in enumerate(zip(AX[0],WW))]
-pyplot.show()
+plt.show()
 
 
 

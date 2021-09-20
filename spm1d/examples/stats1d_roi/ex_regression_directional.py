@@ -1,6 +1,6 @@
 
 import numpy as np
-from matplotlib import pyplot
+import matplotlib.pyplot as plt
 import spm1d
 
 
@@ -29,13 +29,13 @@ print( ti )
 
 
 #(2) Plot:
-pyplot.close('all')
-pyplot.figure(figsize=(7.5,5))
-ax      = pyplot.axes()
+plt.close('all')
+plt.figure(figsize=(7.5,5))
+ax      = plt.axes()
 ti.plot()
 ti.plot_threshold_label(fontsize=8)
 ti.plot_p_values(size=10)
 ax.set_xlabel('Time (%)')
-pyplot.show()
+plt.show()
 
 

@@ -1,6 +1,6 @@
 
 import numpy as np
-from matplotlib import pyplot
+import matplotlib.pyplot as plt
 import spm1d
 
 
@@ -24,11 +24,11 @@ FFi          = [F.inference(alpha, interp=True)   for F in FF]
 
 
 #(2) Plot results:
-pyplot.close('all')
-pyplot.subplot(221);  FFi[0].plot();  pyplot.title('Main effect A')
-pyplot.subplot(222);  FFi[1].plot();  pyplot.title('Main effect B')
-pyplot.subplot(223);  FFi[2].plot();  pyplot.title('Interaction effect AB')
-pyplot.show()
+plt.close('all')
+plt.subplot(221);  FFi[0].plot();  plt.title('Main effect A')
+plt.subplot(222);  FFi[1].plot();  plt.title('Main effect B')
+plt.subplot(223);  FFi[2].plot();  plt.title('Interaction effect AB')
+plt.show()
 
 
 

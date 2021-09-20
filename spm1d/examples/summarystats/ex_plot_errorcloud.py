@@ -1,6 +1,6 @@
 
 import numpy as np
-from matplotlib import pyplot
+import matplotlib.pyplot as plt
 import spm1d
 
 
@@ -20,7 +20,7 @@ err      = np.linspace(0.1, 2.5, datum.size)**2
 
 
 # plot:
-pyplot.close('all')
-pyplot.plot(datum, 'b', lw=3)
+plt.close('all')
+plt.plot(datum, 'b', lw=3)
 spm1d.plot.plot_errorcloud(datum, err, facecolor='r', edgecolor='r')
-pyplot.show()
+plt.show()

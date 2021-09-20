@@ -1,6 +1,6 @@
 
 import numpy as np
-from matplotlib import pyplot
+import matplotlib.pyplot as plt
 import spm1d
 
 
@@ -25,10 +25,10 @@ ti         = t.inference(alpha, two_tailed=False, interp=True)
 
 
 #(2) Plot:
-pyplot.close('all')
+plt.close('all')
 ### plot mean and SD:
-pyplot.figure( figsize=(8, 3.5) )
-ax     = pyplot.axes( (0.1, 0.15, 0.35, 0.8) )
+plt.figure( figsize=(8, 3.5) )
+ax     = plt.axes( (0.1, 0.15, 0.35, 0.8) )
 spm1d.plot.plot_mean_sd(YA)
 spm1d.plot.plot_mean_sd(YB, linecolor='r', facecolor='r')
 spm1d.plot.plot_roi(roi, facecolor='b', alpha=0.3)
@@ -36,9 +36,9 @@ ax.axhline(y=0, color='k', linestyle=':')
 ax.set_xlabel('Time (%)')
 ax.set_ylabel('Plantar arch angle  (deg)')
 ### plot SPM results:
-ax     = pyplot.axes((0.55,0.15,0.35,0.8))
+ax     = plt.axes((0.55,0.15,0.35,0.8))
 ti.plot()
 ti.plot_threshold_label(fontsize=8)
 ti.plot_p_values(size=10, offsets=[(0,0.3)])
 ax.set_xlabel('Time (%)')
-pyplot.show()
+plt.show()
