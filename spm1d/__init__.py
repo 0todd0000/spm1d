@@ -17,11 +17,10 @@ probabilities in Python, Journal of Statistical Software, in press.
 
 
 Copyright (C) 2021  Todd Pataky
-Version: 0.4.10 (2021-09-21)
 '''
 
 
-__version__ = '0.4.10 (2021-09-21)'
+__version__ = '0.4.11 (2021-09-30)'
 
 
 __all__ = ['data', 'io', 'plot', 'rft1d', 'stats', 'util']
