@@ -7,6 +7,7 @@ import spm1d
 
 
 #(0) Load dataset:
+dataset    = spm1d.data.uv1d.t1.Random()
 # dataset    = spm1d.data.uv1d.t1.SimulatedPataky2015a()
 dataset    = spm1d.data.uv1d.t1.SimulatedPataky2015b()
 y,mu       = dataset.get_data()
@@ -14,9 +15,8 @@ y,mu       = dataset.get_data()
 
 
 #(1) Conduct normality test:
-np.random.seed(0)
 alpha      = 0.05
-spmi       = spm1d.stats.normality.ttest(y).inference(alpha)
+spmi       = spm1d.stats.normality.ttest(y-mu).inference(alpha)
 print( spmi )
 
 
