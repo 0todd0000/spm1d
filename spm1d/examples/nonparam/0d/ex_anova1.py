@@ -20,7 +20,7 @@ print( dataset )
 np.random.seed(0)
 alpha      = 0.05
 F          = spm1d.stats.nonparam.anova1(y, A)
-Fi         = F.inference(alpha, iterations=1000)
+Fi         = F.inference(alpha, iterations=500)
 print(Fi)
 
 
