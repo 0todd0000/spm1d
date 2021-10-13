@@ -6,12 +6,13 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
     <title>Version History &#8212; spm1d 0.4 documentation</title>
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
-    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/bootstrap-sphinx.css" />
+    <link rel="stylesheet" type="text/css" href="_static/plot_directive.css" />
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
     <script src="_static/doctools.js"></script>
@@ -465,10 +466,7 @@ Inference:
 <span class="gp">&gt;&gt;&gt; </span> <span class="n">pyplot</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>(<a class="reference external" href=".//NewFeatures-1.py">Source code</a>, <a class="reference external" href=".//NewFeatures-1.png">png</a>, <a class="reference external" href=".//NewFeatures-1.hires.png">hires.png</a>, <a class="reference external" href=".//NewFeatures-1.pdf">pdf</a>)</p>
-<figure class="align-default">
-<img alt="_images/NewFeatures-1.png" src="_images/NewFeatures-1.png" />
-</figure>
+<p>(<a class="reference external" href=".//NewFeatures-1.py">Source code</a>)</p>
 </section>
 </section>
 <section id="version-0-3-2">
@@ -661,10 +659,7 @@ Inference:
 <span class="n">ti</span><span class="o">.</span><span class="n">plot_p_values</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>(<a class="reference external" href=".//NewFeatures-2.py">Source code</a>, <a class="reference external" href=".//NewFeatures-2.png">png</a>, <a class="reference external" href=".//NewFeatures-2.hires.png">hires.png</a>, <a class="reference external" href=".//NewFeatures-2.pdf">pdf</a>)</p>
-<figure class="align-default">
-<img alt="_images/NewFeatures-2.png" src="_images/NewFeatures-2.png" />
-</figure>
+<p>(<a class="reference external" href=".//NewFeatures-2.py">Source code</a>)</p>
 <p>This yields the following results:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SPM</span><span class="p">{</span><span class="n">T</span><span class="p">}</span> <span class="n">inference</span> <span class="n">field</span>
         <span class="n">SPM</span><span class="o">.</span><span class="n">z</span>         <span class="p">:</span>  <span class="p">(</span><span class="mi">1</span><span class="n">x101</span><span class="p">)</span> <span class="n">raw</span> <span class="n">test</span> <span class="n">stat</span> <span class="n">field</span>
@@ -702,10 +697,7 @@ Inference:
 <span class="n">ti</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>(<a class="reference external" href=".//NewFeatures-3.py">Source code</a>, <a class="reference external" href=".//NewFeatures-3.png">png</a>, <a class="reference external" href=".//NewFeatures-3.hires.png">hires.png</a>, <a class="reference external" href=".//NewFeatures-3.pdf">pdf</a>)</p>
-<figure class="align-default">
-<img alt="_images/NewFeatures-3.png" src="_images/NewFeatures-3.png" />
-</figure>
+<p>(<a class="reference external" href=".//NewFeatures-3.py">Source code</a>)</p>
 <p>There appear to be two suprathreshold clusters, but Day 0 is homologous with Day 365, so in fact there is just one suprathreshold cluster.</p>
 <p>If the example above is regarded as circular, we get a single cluster-level p value of approximately 0.000003.</p>
 <p>If instead it is regarded as non-circular, we get two cluster-level p values of approximately 0.006 and 0.001.</p>
@@ -727,10 +719,7 @@ Inference:
 <span class="gp">&gt;&gt;&gt; </span> <span class="n">ti</span> <span class="o">=</span> <span class="n">t</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="mf">0.05</span><span class="p">,</span> <span class="n">interp</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>(<a class="reference external" href="./pyplots/fig_upcrossing.py">Source code</a>, <a class="reference external" href="./pyplots/fig_upcrossing.png">png</a>, <a class="reference external" href="./pyplots/fig_upcrossing.hires.png">hires.png</a>, <a class="reference external" href="./pyplots/fig_upcrossing.pdf">pdf</a>)</p>
-<figure class="align-default">
-<img alt="_images/fig_upcrossing.png" src="_images/fig_upcrossing.png" />
-</figure>
+<p>(<a class="reference external" href="./pyplots/fig_upcrossing.py">Source code</a>)</p>
 </section>
 <section id="installation-updating">
 <span id="label-featureinstallation"></span><h3>Installation &amp; Updating<a class="headerlink" href="#installation-updating" title="Permalink to this headline">¶</a></h3>
@@ -760,7 +749,7 @@ Inference:
     </p>
     <p>
         &copy; Copyright 2021, Todd Pataky.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.5.3.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.2.0.<br/>
     </p>
   </div>
 </footer>

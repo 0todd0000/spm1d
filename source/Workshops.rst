@@ -41,12 +41,19 @@ Workshop Slides
 :download:`Slides-ISB2017.pdf (free direct download) <./_static/Slides-ISB2017.pdf>`
 
 
+|
+|
+
 
 Future Workshops
 ---------------------------
 
-(None currently scheduled)
+2022 January 20-21 (**Leuven, Belgium**)
 
+(Registration details coming soon!)
+
+|
+|
 
 
 Previous Workshops
