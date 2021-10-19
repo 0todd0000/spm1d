@@ -30,6 +30,74 @@ Hosted by KU Leuven. `Click here <https://faber.kuleuven.be/nl/lll/aanbod/30-08-
 |
 |
 
+.. raw:: html
+
+
+    <div class="slideshow-container">
+    
+        <link rel="stylesheet" href="_static/slideshow-container.css">
+        <script type = "text/javascript" src="_static/slideshow-container.js"></script>
+
+      <!-- Full images with numbers and message Info -->
+      <div class="Containers">
+        <div class="MessageInfo"></div>
+        <img src="_static/SPMOnlineWorkshop.003.jpeg" style="width:100%">
+        <div class="Info">Videos</div>
+      </div>
+
+      <div class="Containers">
+        <div class="MessageInfo"></div>
+        <img src="_static/SPMOnlineWorkshop.004.jpeg" style="width:100%">
+        <div class="Info">Quizzes</div>
+      </div>
+
+      <div class="Containers">
+        <div class="MessageInfo"></div>
+        <img src="_static/SPMOnlineWorkshop.005.jpeg" style="width:100%">
+        <div class="Info">Worksheets</div>
+      </div>
+
+      <div class="Containers">
+        <div class="MessageInfo"></div>
+        <img src="_static/SPMOnlineWorkshop.006.jpeg" style="width:100%">
+        <div class="Info">MATLAB + Python</div>
+      </div>
+
+      <div class="Containers">
+        <div class="MessageInfo"></div>
+        <img src="_static/SPMOnlineWorkshop.007.jpeg" style="width:100%">
+        <div class="Info">Basic to Intermediate</div>
+      </div>
+
+      <div class="Containers">
+        <div class="MessageInfo"></div>
+        <img src="_static/SPMOnlineWorkshop.008.jpeg" style="width:100%">
+        <div class="Info">Support</div>
+      </div>
+
+      <!-- Back and forward buttons -->
+      <a class="Back" onclick="plusSlides(-1)">&#10094;</a>
+      <a class="forward" onclick="plusSlides(1)">&#10095;</a>
+    </div>
+    <br>
+
+    <!-- The circles/dots -->
+    <div style="text-align:center">
+      <span class="dots" onclick="currentSlide(1)"></span>
+      <span class="dots" onclick="currentSlide(2)"></span>
+      <span class="dots" onclick="currentSlide(3)"></span>
+      <span class="dots" onclick="currentSlide(4)"></span>
+      <span class="dots" onclick="currentSlide(5)"></span>
+      <span class="dots" onclick="currentSlide(6)"></span>
+    </div>
+
+    <script>currentSlide(1);</script>
+
+
+|
+|
+|
+
 
 Workshop Slides
 ---------------------------

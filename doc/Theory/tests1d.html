@@ -92,7 +92,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../References.html">References</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../Workshops.html">Workshops</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Workshops.html">Workshopsa</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../Workshops.html#sponsored-courses">Sponsored Courses</a></li>
 </ul>
 <ul>
@@ -217,7 +217,10 @@
 <li><p>The probability (<em>p</em>) value indicates the probability that smooth, random continua would produce a supra-threshold cluster as broad as the observed cluster. Here “smooth” means <strong>the same smoothness as the residual continua</strong>, and “broad” means <strong>the proportion of the continuum spanned by a suprathreshold cluster</strong>.</p></li>
 </ul>
 <p>This example is considered in extended detail below.</p>
-<p>(<a class="reference external" href="../../doc/Theory/tests1d-1.py">Source code</a>)</p>
+<p>(<a class="reference external" href="../../doc/Theory/tests1d-1.py">Source code</a>, <a class="reference external" href="../../doc/Theory/tests1d-1.png">png</a>, <a class="reference external" href="../../doc/Theory/tests1d-1.hires.png">hires.png</a>, <a class="reference external" href="../../doc/Theory/tests1d-1.pdf">pdf</a>)</p>
+<figure class="align-default">
+<img alt="../../_images/tests1d-1.png" class="plot-directive" src="../../_images/tests1d-1.png" />
+</figure>
 </section>
 <section id="dataset">
 <span id="label-theory-statisticaltest-dataset"></span><h2>Dataset<a class="headerlink" href="#dataset" title="Permalink to this headline">¶</a></h2>
@@ -232,13 +235,19 @@
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">pyplot</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">Y</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>(<a class="reference external" href="../../doc/Theory/tests1d-2.py">Source code</a>)</p>
+<p>(<a class="reference external" href="../../doc/Theory/tests1d-2.py">Source code</a>, <a class="reference external" href="../../doc/Theory/tests1d-2.png">png</a>, <a class="reference external" href="../../doc/Theory/tests1d-2.hires.png">hires.png</a>, <a class="reference external" href="../../doc/Theory/tests1d-2.pdf">pdf</a>)</p>
+<figure class="align-default">
+<img alt="../../_images/tests1d-2.png" class="plot-directive" src="../../_images/tests1d-2.png" />
+</figure>
 <p>Mean continua can be visualized along with standard deviation (SD) clouds like this:</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">spm1d</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">plot_mean_sd</span><span class="p">(</span><span class="n">Y</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">pyplot</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">100</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span> <span class="s1">&#39;b:&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>(<a class="reference external" href="../../doc/Theory/tests1d-3.py">Source code</a>)</p>
+<p>(<a class="reference external" href="../../doc/Theory/tests1d-3.py">Source code</a>, <a class="reference external" href="../../doc/Theory/tests1d-3.png">png</a>, <a class="reference external" href="../../doc/Theory/tests1d-3.hires.png">hires.png</a>, <a class="reference external" href="../../doc/Theory/tests1d-3.pdf">pdf</a>)</p>
+<figure class="align-default">
+<img alt="../../_images/tests1d-3.png" class="plot-directive" src="../../_images/tests1d-3.png" />
+</figure>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>Although the mean minus SD exceeds zero in the vicinity of <em>q</em> = 18%, implying that this is the strongest signal, this observation has no probabilistic meaning.</p>
@@ -258,7 +267,10 @@ It can be visualized as follows:</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">t</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>(<a class="reference external" href="../../doc/Theory/tests1d-4.py">Source code</a>)</p>
+<p>(<a class="reference external" href="../../doc/Theory/tests1d-4.py">Source code</a>, <a class="reference external" href="../../doc/Theory/tests1d-4.png">png</a>, <a class="reference external" href="../../doc/Theory/tests1d-4.hires.png">hires.png</a>, <a class="reference external" href="../../doc/Theory/tests1d-4.pdf">pdf</a>)</p>
+<figure class="align-default">
+<img alt="../../_images/tests1d-4.png" class="plot-directive" src="../../_images/tests1d-4.png" />
+</figure>
 <p>In addition to visualizing the results, as in the figure above, you can also probe SPM attributes as described in <a class="reference internal" href="../Stats1D/outputs.html#label-examples-statsoutputs"><span class="std std-ref">Test outputs</span></a>.</p>
 <div class="admonition danger">
 <p class="admonition-title">Danger</p>
@@ -294,7 +306,10 @@ It can be visualized as follows:</p>
 </div>
 <p>You can also probe inference results interactively as described in <a class="reference internal" href="../Stats1D/outputs.html#label-spmobject-details"><span class="std std-ref">Inference SPMs</span></a>.</p>
 <p>The resulting figure (below) depicts the raw SPM{t} along with the <em>alpha</em>-based critical threshold <em>t*</em> and the probability value associated with the suprathreshold cluster.</p>
-<p>(<a class="reference external" href="../../doc/Theory/tests1d-5.py">Source code</a>)</p>
+<p>(<a class="reference external" href="../../doc/Theory/tests1d-5.py">Source code</a>, <a class="reference external" href="../../doc/Theory/tests1d-5.png">png</a>, <a class="reference external" href="../../doc/Theory/tests1d-5.hires.png">hires.png</a>, <a class="reference external" href="../../doc/Theory/tests1d-5.pdf">pdf</a>)</p>
+<figure class="align-default">
+<img alt="../../_images/tests1d-5.png" class="plot-directive" src="../../_images/tests1d-5.png" />
+</figure>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>The probability that smooth random continua will produce an SPM{t} that reaches <em>t*</em> is precisely <em>alpha</em>. If the test statistic continuum just touches the critical threshold, then by definition the <em>p</em> value is <em>alpha</em>. As the test statistic continuum traverses beyond the critical threshold, as in the example above, the <em>p</em> value gets progressively smaller. The <em>p</em> value specifies the probability that smooth random fields would produce a suprathreshold cluster as broad or broader than the observed cluster, where “broad” refers to the width of the cluster relative to the width of the whole continuum.</p>
