@@ -118,7 +118,7 @@ Future Workshops
 
 2022 January 20-21 (**Leuven, Belgium**)
 
-(Registration details coming soon!)
+`Click here to register <https://faber.kuleuven.be/nl/lll/aanbod/20-01-2022_SPM>`_
 
 |
 |
