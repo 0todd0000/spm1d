@@ -16,7 +16,7 @@ yA,yB        = dataset.get_data()  #A:slow, B:fast
 np.random.seed(0)
 alpha      = 0.05
 snpm       = spm1d.stats.nonparam.hotellings2(yA, yB)
-snpmi      = snpm.inference(alpha, iterations=100)
+snpmi      = snpm.inference(alpha, iterations=1000)
 print( snpmi )
 
 

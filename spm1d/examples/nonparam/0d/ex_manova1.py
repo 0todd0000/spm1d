@@ -7,7 +7,7 @@ import spm1d
 
 #(0) Load dataset:
 dataset = spm1d.data.mv0d.manova1.AnimalDepression()
-dataset = spm1d.data.mv0d.manova1.Stevens2002()
+# dataset = spm1d.data.mv0d.manova1.Stevens2002()
 y,A     = dataset.Y, dataset.A
 print( dataset )
 

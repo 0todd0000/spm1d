@@ -25,7 +25,7 @@ y,A          = np.vstack([y,y]), np.hstack([A,A])
 #(1) Conduct non-parametric test:
 np.random.seed(0)
 X2n     = spm1d.stats.nonparam.manova1(y, A)
-X2ni    = X2n.inference(alpha=0.05, iterations=200)
+X2ni    = X2n.inference(alpha=0.05, iterations=500)
 print( 'Non-parametric test:')
 print( X2ni)
 

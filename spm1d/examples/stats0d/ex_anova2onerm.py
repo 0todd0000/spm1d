@@ -5,9 +5,9 @@ import spm1d
 
 
 #(0) Load dataset:
+dataset    = spm1d.data.uv0d.anova2onerm.RSXLDrug()
 dataset    = spm1d.data.uv0d.anova2onerm.Santa23()
-dataset    = spm1d.data.uv0d.anova2onerm.Southampton2onerm()
-# dataset    = spm1d.data.uv0d.anova2onerm.RSXLDrug()
+# dataset    = spm1d.data.uv0d.anova2onerm.Southampton2onerm()
 # dataset    = spm1d.data.uv0d.anova2onerm.SPM1D3x3()
 # dataset    = spm1d.data.uv0d.anova2onerm.SPM1D3x4()
 # dataset    = spm1d.data.uv0d.anova2onerm.SPM1D3x4A()

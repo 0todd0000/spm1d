@@ -18,7 +18,7 @@ y,mu       = dataset.get_data()
 #(1) Conduct non-parametric test:
 np.random.seed(0)
 alpha      = 0.05
-two_tailed = True
+two_tailed = False
 snpm       = spm1d.stats.nonparam.ttest(y, mu)
 snpmi      = snpm.inference(alpha, two_tailed=two_tailed, iterations=-1)
 print( snpmi )

@@ -18,7 +18,7 @@ print( dataset )
 np.random.seed(0)
 alpha      = 0.05
 snpmlist   = spm1d.stats.nonparam.anova3rm(y, A, B, C, SUBJ)
-snpmilist  = snpmlist.inference(alpha, iterations=100)
+snpmilist  = snpmlist.inference(alpha, iterations=1000)
 F,p        = np.array(   [(s.z, s.p)  for s in snpmilist]   ).T
 
 

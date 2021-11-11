@@ -6,9 +6,9 @@ import spm1d
 
 #(0) Load dataset:
 dataset    = spm1d.data.uv0d.anova2rm.Antidepressant()
-dataset    = spm1d.data.uv0d.anova2rm.RSXLTraining()
-dataset    = spm1d.data.uv0d.anova2rm.SocialNetworks()
-dataset    = spm1d.data.uv0d.anova2rm.Southampton2rm()
+# dataset    = spm1d.data.uv0d.anova2rm.RSXLTraining()
+# dataset    = spm1d.data.uv0d.anova2rm.SocialNetworks()
+# dataset    = spm1d.data.uv0d.anova2rm.Southampton2rm()
 # dataset    = spm1d.data.uv0d.anova2rm.SPM1D3x3()
 # dataset    = spm1d.data.uv0d.anova2rm.SPM1D3x4()
 # dataset    = spm1d.data.uv0d.anova2rm.SPM1D3x5()
@@ -25,7 +25,7 @@ print( dataset )
 np.random.seed(0)
 alpha      = 0.05
 snpmlist   = spm1d.stats.nonparam.anova2rm(y, A, B, SUBJ)
-snpmilist  = snpmlist.inference(alpha, iterations=200)
+snpmilist  = snpmlist.inference(alpha, iterations=1000)
 print( 'Non-parametric results:')
 print( snpmilist )
 

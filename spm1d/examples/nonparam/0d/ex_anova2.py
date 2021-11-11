@@ -23,7 +23,7 @@ print( dataset )
 np.random.seed(0)
 alpha      = 0.05
 snpmlist   = spm1d.stats.nonparam.anova2(y, A, B)
-snpmilist  = snpmlist.inference(alpha, iterations=200)
+snpmilist  = snpmlist.inference(alpha, iterations=1000)
 print( 'Non-parametric results:')
 print( snpmilist )
 

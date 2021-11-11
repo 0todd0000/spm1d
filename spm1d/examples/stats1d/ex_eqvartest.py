@@ -5,7 +5,7 @@ import spm1d
 
 #(0) Load dataset:
 dataset      = spm1d.data.uv1d.t2.PlantarArchAngle()
-dataset      = spm1d.data.uv1d.t2.SimulatedTwoLocalMax()
+# dataset      = spm1d.data.uv1d.t2.SimulatedTwoLocalMax()
 y0,y1        = dataset.YA, dataset.YB
 
 

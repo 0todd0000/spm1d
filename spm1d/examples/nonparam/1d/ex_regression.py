@@ -7,7 +7,7 @@ import spm1d
 
 
 #(0) Load dataset:
-dataset    = spm1d.data.uv1d.regress.SimulatedPataky2015c()
+# dataset    = spm1d.data.uv1d.regress.SimulatedPataky2015c()
 dataset    = spm1d.data.uv1d.regress.SpeedGRF()
 y,x        = dataset.get_data()
 
@@ -16,7 +16,7 @@ y,x        = dataset.get_data()
 #(1) Conduct non-parametric test:
 np.random.seed(0)
 alpha      = 0.05
-two_tailed = False
+two_tailed = True
 snpm       = spm1d.stats.nonparam.regress(y, x)
 snpmi      = snpm.inference(alpha, two_tailed=two_tailed, iterations=500)
 print( snpmi )
