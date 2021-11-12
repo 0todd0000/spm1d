@@ -5,8 +5,8 @@ import spm1d
 
 
 #(0) Load dataset:
-dataset = spm1d.data.mv0d.hotellings2.RSXLHotellings2()
-# dataset = spm1d.data.mv0d.hotellings2.HELPHomeless()
+# dataset = spm1d.data.mv0d.hotellings2.RSXLHotellings2()
+dataset = spm1d.data.mv0d.hotellings2.HELPHomeless()
 yA,yB   = dataset.get_data()
 # yA,yB   = [y[:10]  for y in [yA,yB]]
 

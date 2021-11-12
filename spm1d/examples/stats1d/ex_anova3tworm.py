@@ -8,7 +8,7 @@ import spm1d
 
 #(0) Load data:
 dataset      = spm1d.data.uv1d.anova3tworm.SPM1D_ANOVA3TWORM_2x2x2()
-dataset      = spm1d.data.uv1d.anova3tworm.SPM1D_ANOVA3TWORM_2x3x4()
+#dataset      = spm1d.data.uv1d.anova3tworm.SPM1D_ANOVA3TWORM_2x3x4()
 Y,A,B,C,SUBJ = dataset.get_data()
 
 

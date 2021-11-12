@@ -7,7 +7,7 @@ import spm1d
 
 #(0) Load dataset:
 dataset = spm1d.data.uv0d.t1.RSWeightReduction()
-dataset = spm1d.data.uv0d.t1.ColumbiaSalmonella()
+# dataset = spm1d.data.uv0d.t1.ColumbiaSalmonella()
 y,mu    = dataset.get_data()
 print( dataset )
 

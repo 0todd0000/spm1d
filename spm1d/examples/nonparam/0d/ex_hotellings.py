@@ -5,8 +5,8 @@ import spm1d
 
 
 #(0) Load dataset:
-dataset = spm1d.data.mv0d.hotellings1.RSXLHotellings1()
-# dataset = spm1d.data.mv0d.hotellings1.Sweat()
+# dataset = spm1d.data.mv0d.hotellings1.RSXLHotellings1()
+dataset = spm1d.data.mv0d.hotellings1.Sweat()
 y,mu    = dataset.Y, dataset.mu
 # y       = y[:10]
 

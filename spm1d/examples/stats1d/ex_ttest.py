@@ -4,9 +4,9 @@ import spm1d
 
 
 #(0) Load dataset:
-# dataset    = spm1d.data.uv1d.t1.Random()
+dataset    = spm1d.data.uv1d.t1.Random()
 # dataset    = spm1d.data.uv1d.t1.SimulatedPataky2015a()
-dataset    = spm1d.data.uv1d.t1.SimulatedPataky2015b()
+# dataset    = spm1d.data.uv1d.t1.SimulatedPataky2015b()
 Y,mu       = dataset.get_data()
 
 

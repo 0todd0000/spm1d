@@ -17,7 +17,7 @@ y,A,B,C      = dataset.get_data()
 np.random.seed(0)
 alpha      = 0.05
 FFn        = spm1d.stats.nonparam.anova3(y, A, B, C)
-FFni       = FFn.inference(alpha, iterations=200)
+FFni       = FFn.inference(alpha, iterations=500)
 print( FFni )
 
 

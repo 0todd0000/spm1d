@@ -7,7 +7,7 @@ import spm1d
 
 #(0) Load dataset:
 dataset = spm1d.data.uv0d.t2.RSFlavor()
-dataset = spm1d.data.uv0d.t2.ColumbiaPlacebo()
+# dataset = spm1d.data.uv0d.t2.ColumbiaPlacebo()
 yA,yB   = dataset.get_data()
 print( dataset )
 

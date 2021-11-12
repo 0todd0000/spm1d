@@ -6,7 +6,7 @@ import spm1d
 
 #(0) Load dataset:
 dataset = spm1d.data.mv0d.cca.FitnessClub()
-dataset = spm1d.data.mv0d.cca.StackExchange()
+# dataset = spm1d.data.mv0d.cca.StackExchange()
 y,x     = dataset.Y, dataset.x
 print( dataset )
 

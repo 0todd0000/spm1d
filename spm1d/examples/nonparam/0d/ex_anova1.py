@@ -5,11 +5,11 @@ import spm1d
 
 
 #(0) Load dataset:
-dataset = spm1d.data.uv0d.anova1.Cars()
-dataset = spm1d.data.uv0d.anova1.Sound()
+# dataset = spm1d.data.uv0d.anova1.Cars()
+# dataset = spm1d.data.uv0d.anova1.Sound()
 # dataset = spm1d.data.uv0d.anova1.Southampton1()
 # dataset = spm1d.data.uv0d.anova1.ConstructionUnequalSampleSizes()
-# dataset = spm1d.data.uv0d.anova1.RSUnequalSampleSizes()
+dataset = spm1d.data.uv0d.anova1.RSUnequalSampleSizes()
 y,A     = dataset.get_data()
 print( dataset )
 
@@ -20,7 +20,7 @@ print( dataset )
 np.random.seed(0)
 alpha      = 0.05
 F          = spm1d.stats.nonparam.anova1(y, A)
-Fi         = F.inference(alpha, iterations=500)
+Fi         = F.inference(alpha, iterations=1000)
 print(Fi)
 
 

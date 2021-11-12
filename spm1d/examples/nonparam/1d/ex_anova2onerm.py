@@ -22,7 +22,7 @@ y,A,B,SUBJ   = dataset.get_data()
 np.random.seed(0)
 alpha      = 0.05
 FFn        = spm1d.stats.nonparam.anova2onerm(y, A, B, SUBJ)
-FFni       = FFn.inference(alpha, iterations=200)
+FFni       = FFn.inference(alpha, iterations=500)
 print( FFni )
 
 

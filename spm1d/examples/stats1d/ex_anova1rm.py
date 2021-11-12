@@ -17,7 +17,7 @@ Y,A,SUBJ     = dataset.get_data()
 alpha        = 0.05
 equal_var    = True
 F            = spm1d.stats.anova1(Y, A, equal_var)  #between-subjects
-Frm          = spm1d.stats.anova1rm(Y, A, SUBJ, equal_var)  #withing-subjects (repeated-measures)
+Frm          = spm1d.stats.anova1rm(Y, A, SUBJ, equal_var)  #within-subjects (repeated-measures)
 Fi           = F.inference(alpha)
 Firm         = Frm.inference(alpha)
 
