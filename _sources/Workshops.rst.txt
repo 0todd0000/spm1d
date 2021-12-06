@@ -116,9 +116,11 @@ Workshop Slides
 Future Workshops
 ---------------------------
 
-2022 January 20-21 (**Leuven, Belgium**)
+2022 January (**Leuven, Belgium**)
 
-`Click here to register <https://faber.kuleuven.be/nl/lll/aanbod/20-01-2022_SPM>`_
+Postponed until further notice.
+
+.. `Click here to register <https://faber.kuleuven.be/nl/lll/aanbod/20-01-2022_SPM>`_
 
 |
 |
