@@ -12,15 +12,16 @@ This module contains a variety of convenience functions, including:
 - smooth
 '''
 
-# Copyright (C) 2016  Todd Pataky
-# updated (2016/10/01) todd
+# Copyright (C) 2022  Todd Pataky
+# updated (2022/02/06) todd
 
 
 
 from math import sqrt,log
 import numpy as np
 from . stats._spm import plist2string as p2s
-from scipy.ndimage.filters import gaussian_filter1d
+# from scipy.ndimage.filters import gaussian_filter1d
+from scipy.ndimage import gaussian_filter1d
 
 
 
