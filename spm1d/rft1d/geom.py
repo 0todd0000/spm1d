@@ -5,14 +5,15 @@ This module contains functions for computing various geomtric characteristics
 of 1D fields and upcrossings.
 '''
 
-# Copyright (C) 2016  Todd Pataky
+# Copyright (C) 2022  Todd Pataky
 
 
 from math import log
 import numpy as np
 
 
-eps         = np.finfo(np.float).eps
+# eps         = np.finfo(np.float).eps
+eps         = np.finfo(float).eps
 
 
 

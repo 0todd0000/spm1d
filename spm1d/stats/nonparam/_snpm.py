@@ -1,5 +1,5 @@
 
-# Copyright (C) 2016  Todd Pataky
+# Copyright (C) 2022  Todd Pataky
 
 from math import ceil
 import numpy as np

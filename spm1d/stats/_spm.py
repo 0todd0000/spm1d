@@ -9,7 +9,7 @@ This module contains class definitions for raw SPMs (raw test statistic continua
 and inference SPMs (thresholded test statistic).
 '''
 
-# Copyright (C) 2016  Todd Pataky
+# Copyright (C) 2022  Todd Pataky
 
 
 import sys
@@ -270,6 +270,8 @@ class _SPM(_SPMParent):
 		if self.isanova:
 			s   += '   SPM.effect :   %s\n' %self.effect
 		s       += '   SPM.z      :  %s\n' %self._repr_teststat()
+		if self.isregress:
+			s   += '   SPM.r      :  %s\n' %self._repr_corrcoeff()
 		s       += '   SPM.df     :  %s\n' %dflist2str(self.df)
 		s       += '   SPM.fwhm   :  %.5f\n' %self.fwhm
 		s       += '   SPM.resels :  (%d, %.5f)\n\n\n' %tuple(self.resels)
@@ -283,6 +285,8 @@ class _SPM(_SPMParent):
 		return self.Q
 	
 	
+	def _repr_corrcoeff(self):
+		return '(1x%d) correlation coefficient field' %self.Q
 	def _repr_teststat(self):
 		return '(1x%d) test stat field' %self.Q
 	def _repr_teststat_short(self):
@@ -594,11 +598,14 @@ class _SPMinference(_SPM):
 		self.alpha       = alpha               #Type I error rate
 		self.zstar       = zstar               #critical threshold
 		self.clusters    = clusters            #supra-threshold cluster information
+		self.isregress   = spm.isregress       #propagate regression flag
 		self.nClusters   = len(clusters)       #number of supra-threshold clusters
 		self.h0reject    = self.nClusters > 0  #null hypothesis rejection decision
 		self.p_set       = p_set               #set-level p value
 		self.p           = p                   #cluster-level p values
 		self.two_tailed  = two_tailed          #two-tailed test boolean
+		if self.isregress:
+			self.r       = spm.r
 		if self.isanova:
 			self.set_effect_label( spm.effect )
 
@@ -609,6 +616,8 @@ class _SPMinference(_SPM):
 		if self.isanova:
 			s   += '   SPM.effect    :   %s\n' %self.effect
 		s       += '   SPM.z         :  (1x%d) raw test stat field\n' %self.Q
+		if self.isregress:
+			s   += '   SPM.r         :  %s\n' %self._repr_corrcoeff()
 		s       += '   SPM.df        :  %s\n' %dflist2str(self.df)
 		s       += '   SPM.fwhm      :  %.5f\n' %self.fwhm
 		s       += '   SPM.resels    :  (%d, %.5f)\n' %tuple(self.resels)
