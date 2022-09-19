@@ -6,8 +6,7 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Analysis of 2D data (MATLAB) &#8212; spm1d 0.4 documentation</title>
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/bootstrap-sphinx.css" />
@@ -25,10 +24,10 @@
 <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
 <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
 <meta name="apple-mobile-web-app-capable" content="yes">
-<script type="text/javascript" src="../../_static/js/jquery-1.12.4.min.js "></script>
-<script type="text/javascript" src="../../_static/js/jquery-fix.js "></script>
-<script type="text/javascript" src="../../_static/bootstrap-3.4.1/js/bootstrap.min.js "></script>
-<script type="text/javascript" src="../../_static/bootstrap-sphinx.js "></script>
+<script type="text/javascript" src="../../_static/js/jquery-1.12.4.min.js"></script>
+<script type="text/javascript" src="../../_static/js/jquery-fix.js"></script>
+<script type="text/javascript" src="../../_static/bootstrap-3.4.1/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../../_static/bootstrap-sphinx.js"></script>
 
   </head><body>
 
@@ -392,11 +391,12 @@ div.nboutput.container div.output_area > div[class^='highlight']{
 }
 
 /* hide copybtn icon on prompts (needed for 'sphinx_copybutton') */
-.prompt a.copybtn {
+.prompt .copybtn {
     display: none;
 }
 
 /* Some additional styling taken form the Jupyter notebook CSS */
+.jp-RenderedHTMLCommon table,
 div.rendered_html table {
   border: none;
   border-collapse: collapse;
@@ -405,10 +405,14 @@ div.rendered_html table {
   font-size: 12px;
   table-layout: fixed;
 }
+.jp-RenderedHTMLCommon thead,
 div.rendered_html thead {
   border-bottom: 1px solid black;
   vertical-align: bottom;
 }
+.jp-RenderedHTMLCommon tr,
+.jp-RenderedHTMLCommon th,
+.jp-RenderedHTMLCommon td,
 div.rendered_html tr,
 div.rendered_html th,
 div.rendered_html td {
@@ -420,46 +424,48 @@ div.rendered_html td {
   max-width: none;
   border: none;
 }
+.jp-RenderedHTMLCommon th,
 div.rendered_html th {
   font-weight: bold;
 }
+.jp-RenderedHTMLCommon tbody tr:nth-child(odd),
 div.rendered_html tbody tr:nth-child(odd) {
   background: #f5f5f5;
 }
+.jp-RenderedHTMLCommon tbody tr:hover,
 div.rendered_html tbody tr:hover {
   background: rgba(66, 165, 245, 0.2);
 }
 </style>
-<section id="Analysis-of-2D-data-(MATLAB)">
+<div class="section" id="Analysis-of-2D-data-(MATLAB)">
 <h1>Analysis of 2D data (MATLAB)<a class="headerlink" href="#Analysis-of-2D-data-(MATLAB)" title="Permalink to this headline">¶</a></h1>
 <p>This MATLAB notebook demonstrates how 2D data can be analyzed using <strong>spm1d</strong>.</p>
 <div class="alert alert-block alert-info"><p>Note: Currently spm1d can be used only for non-parametric analysis of 2D data.</p>
 </div><div class="alert alert-block alert-warning"><p>Warning: 2D data must be registered prior to analysis. spm1d does not support 2D registration. Algorithmic registration of 2D data can be achieved with third-party software like ITK. Manual registration of 2D data is possible with software like 3D Slicer.</p>
 </div><div class="alert alert-block alert-warning"><p>Warning: Probability values can not be calculated. Hypothesis testing is possible (i.e., critical test statistic calculation), but spm1d does not support cluster-specific probability calculations for 2D data.</p>
 </div><hr class="docutils" />
-<section id="Dataset">
+<div class="section" id="Dataset">
 <h2>Dataset<a class="headerlink" href="#Dataset" title="Permalink to this headline">¶</a></h2>
 <p>The 2D data analyzed below are from <a class="reference external" href="https://www.sciencedirect.com/science/article/pii/S0021929012003193">Pataky (2012)</a>, and include 20 pressure plate measurements of quiet standing in a single subject. Ten measurements were made for each of two quiet standing tasks: backward leaning and forward leaning. For the first ten measurements the subject leaned backward while maintaining toe contact, and for the next ten measurements the subject leaned forward while maintaining heel contact.
 Pressure distributions were recorded at 50 Hz for 5 s with a spatial resolution of 8.5 mm.</p>
 <p>The attached dataset represents the average 2D pressure distribution (units: kPa) over the 5 s recorded interval. Each of the 20 observations is saved as a (60 x 32) array of pressure values. While the subject was required to step off the measurement plate between each measurement, thus implying non-constant foot positions with respect to the measurement device’s coordinate system, the attached data have been pre-registered following <a class="reference external" href="https://iom3.tandfonline.com/doi/abs/10.1080/10255840903573020">Oliveira et
 al. (2010)</a>.</p>
 <p>The goal of the analyses below is to test the null hypothes of equal pressure distributions in the two tasks.</p>
-<section id="References">
+<div class="section" id="References">
 <h3>References<a class="headerlink" href="#References" title="Permalink to this headline">¶</a></h3>
 <p>Oliveira FP, Pataky TC, Tavares JM (2010). Registration of pedobarographic image data in the frequency domain. <em>Computer Methods in Biomechanics and Biomedical Engineering</em> 13(6): 731-40.</p>
 <p>Pataky TC (2012). Spatial resolution in plantar pressure measurement revisited. <em>Journal of Biomechanics</em> 45(12): 2116-24.</p>
-</section>
-</section>
+</div>
+</div>
 <hr class="docutils" />
-<section id="Importing-and-visualizing-the-data">
+<div class="section" id="Importing-and-visualizing-the-data">
 <h2>Importing and visualizing the data<a class="headerlink" href="#Importing-and-visualizing-the-data" title="Permalink to this headline">¶</a></h2>
 <p>The data are saved the “data2d” file and can be imported as follows:</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
 </pre></div>
 </div>
-<div class="input_area highlight-matlab notranslate"><div class="highlight"><pre>
-<span></span><span class="nb">load</span><span class="p">(</span><span class="s">&#39;data2d.mat&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;Y&#39;</span><span class="p">)</span><span class="w"></span>
+<div class="input_area highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="nb">load</span><span class="p">(</span><span class="s">&#39;data2d.mat&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;Y&#39;</span><span class="p">)</span><span class="w"></span>
 
 <span class="nb">disp</span><span class="p">(</span><span class="w"> </span><span class="nb">size</span><span class="p">(</span><span class="n">Y</span><span class="p">)</span><span class="w"> </span><span class="p">)</span><span class="w"></span>
 </pre></div>
@@ -479,8 +485,7 @@ al. (2010)</a>.</p>
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
 </pre></div>
 </div>
-<div class="input_area highlight-matlab notranslate"><div class="highlight"><pre>
-<span></span><span class="n">I</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">squeeze</span><span class="p">(</span><span class="w"> </span><span class="n">Y</span><span class="p">(</span><span class="mi">1</span><span class="p">,:,:)</span><span class="w"> </span><span class="p">);</span><span class="w"></span>
+<div class="input_area highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">I</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">squeeze</span><span class="p">(</span><span class="w"> </span><span class="n">Y</span><span class="p">(</span><span class="mi">1</span><span class="p">,:,:)</span><span class="w"> </span><span class="p">);</span><span class="w"></span>
 <span class="n">I</span><span class="p">(</span><span class="n">I</span><span class="o">&lt;</span><span class="nb">eps</span><span class="p">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">nan</span><span class="p">;</span><span class="w"></span>
 
 <span class="n">h</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">pcolor</span><span class="p">(</span><span class="n">I</span><span class="p">);</span><span class="w"></span>
@@ -505,8 +510,7 @@ al. (2010)</a>.</p>
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
 </pre></div>
 </div>
-<div class="input_area highlight-matlab notranslate"><div class="highlight"><pre>
-<span></span><span class="n">row1</span><span class="w">  </span><span class="p">=</span><span class="w"> </span><span class="p">[];</span><span class="w"></span>
+<div class="input_area highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">row1</span><span class="w">  </span><span class="p">=</span><span class="w"> </span><span class="p">[];</span><span class="w"></span>
 <span class="n">row2</span><span class="w">  </span><span class="p">=</span><span class="w"> </span><span class="p">[];</span><span class="w"></span>
 <span class="k">for</span><span class="w"> </span><span class="nb">i</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="p">:</span><span class="mi">10</span><span class="w"></span>
 <span class="w">    </span><span class="n">row1</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="n">row1</span><span class="w"> </span><span class="nb">squeeze</span><span class="p">(</span><span class="n">Y</span><span class="p">(</span><span class="nb">i</span><span class="p">,:,:))];</span><span class="w">    </span><span class="c">%#ok&lt;AGROW&gt;</span><span class="w"></span>
@@ -539,8 +543,7 @@ al. (2010)</a>.</p>
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
 </pre></div>
 </div>
-<div class="input_area highlight-matlab notranslate"><div class="highlight"><pre>
-<span></span><span class="n">mA</span><span class="w">   </span><span class="p">=</span><span class="w"> </span><span class="nb">squeeze</span><span class="p">(</span><span class="w">  </span><span class="nb">mean</span><span class="p">(</span><span class="w"> </span><span class="n">Y</span><span class="p">(</span><span class="w"> </span><span class="mi">1</span><span class="p">:</span><span class="mi">10</span><span class="p">,:,:)</span><span class="w"> </span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">)</span><span class="w">  </span><span class="p">);</span><span class="w"></span>
+<div class="input_area highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">mA</span><span class="w">   </span><span class="p">=</span><span class="w"> </span><span class="nb">squeeze</span><span class="p">(</span><span class="w">  </span><span class="nb">mean</span><span class="p">(</span><span class="w"> </span><span class="n">Y</span><span class="p">(</span><span class="w"> </span><span class="mi">1</span><span class="p">:</span><span class="mi">10</span><span class="p">,:,:)</span><span class="w"> </span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">)</span><span class="w">  </span><span class="p">);</span><span class="w"></span>
 <span class="n">mB</span><span class="w">   </span><span class="p">=</span><span class="w"> </span><span class="nb">squeeze</span><span class="p">(</span><span class="w">  </span><span class="nb">mean</span><span class="p">(</span><span class="w"> </span><span class="n">Y</span><span class="p">(</span><span class="mi">11</span><span class="p">:</span><span class="mi">20</span><span class="p">,:,:)</span><span class="w"> </span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">)</span><span class="w">  </span><span class="p">);</span><span class="w"></span>
 <span class="n">m</span><span class="w">    </span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="n">mA</span><span class="w"> </span><span class="n">mB</span><span class="p">];</span><span class="w"></span>
 <span class="n">m</span><span class="p">(</span><span class="n">m</span><span class="o">&lt;</span><span class="nb">eps</span><span class="p">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">nan</span><span class="p">;</span><span class="w"></span>
@@ -565,9 +568,9 @@ al. (2010)</a>.</p>
 <img alt="../../_images/doc_Stats2D_ex2d_matlab_9_0.png" src="../../_images/doc_Stats2D_ex2d_matlab_9_0.png" />
 </div>
 </div>
-</section>
+</div>
 <hr class="docutils" />
-<section id="Statistical-analysis">
+<div class="section" id="Statistical-analysis">
 <h2>Statistical analysis<a class="headerlink" href="#Statistical-analysis" title="Permalink to this headline">¶</a></h2>
 <p>A two-sample t test can be conducted on these data using <strong>spm1d</strong> as follows.</p>
 <p>The data must be flattened so that each observation is a 1D array.</p>
@@ -575,8 +578,7 @@ al. (2010)</a>.</p>
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
 </pre></div>
 </div>
-<div class="input_area highlight-matlab notranslate"><div class="highlight"><pre>
-<span></span><span class="p">[</span><span class="n">J</span><span class="p">,</span><span class="n">q0</span><span class="p">,</span><span class="n">q1</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">size</span><span class="p">(</span><span class="n">Y</span><span class="p">);</span><span class="w"></span>
+<div class="input_area highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">J</span><span class="p">,</span><span class="n">q0</span><span class="p">,</span><span class="n">q1</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">size</span><span class="p">(</span><span class="n">Y</span><span class="p">);</span><span class="w"></span>
 <span class="n">Q</span><span class="w">         </span><span class="p">=</span><span class="w"> </span><span class="n">q0</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">q1</span><span class="p">;</span><span class="w"></span>
 <span class="n">y</span><span class="w">         </span><span class="p">=</span><span class="w"> </span><span class="nb">zeros</span><span class="p">(</span><span class="n">J</span><span class="p">,</span><span class="w"> </span><span class="n">Q</span><span class="p">);</span><span class="w"></span>
 <span class="k">for</span><span class="w"> </span><span class="nb">i</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="p">:</span><span class="n">J</span><span class="w"></span>
@@ -602,8 +604,7 @@ al. (2010)</a>.</p>
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
 </pre></div>
 </div>
-<div class="input_area highlight-matlab notranslate"><div class="highlight"><pre>
-<span></span><span class="c">%separate the observations:</span><span class="w"></span>
+<div class="input_area highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">%separate the observations:</span><span class="w"></span>
 <span class="n">yA</span><span class="w">        </span><span class="p">=</span><span class="w"> </span><span class="n">y</span><span class="p">(</span><span class="w"> </span><span class="mi">1</span><span class="p">:</span><span class="mi">10</span><span class="p">,:,:);</span><span class="w">  </span><span class="c">%flattend observations for Task A</span><span class="w"></span>
 <span class="n">yB</span><span class="w">        </span><span class="p">=</span><span class="w"> </span><span class="n">y</span><span class="p">(</span><span class="mi">10</span><span class="p">:</span><span class="mi">20</span><span class="p">,:,:);</span><span class="w">  </span><span class="c">%flattend observations for Task B</span><span class="w"></span>
 
@@ -624,8 +625,7 @@ al. (2010)</a>.</p>
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
 </pre></div>
 </div>
-<div class="input_area highlight-matlab notranslate"><div class="highlight"><pre>
-<span></span><span class="n">snpm</span><span class="w">      </span><span class="p">=</span><span class="w"> </span><span class="n">spm1d</span><span class="p">.</span><span class="n">stats</span><span class="p">.</span><span class="n">nonparam</span><span class="p">.</span><span class="n">ttest2</span><span class="p">(</span><span class="n">ynzA</span><span class="p">,</span><span class="w"> </span><span class="n">ynzB</span><span class="p">);</span><span class="w"></span>
+<div class="input_area highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">snpm</span><span class="w">      </span><span class="p">=</span><span class="w"> </span><span class="n">spm1d</span><span class="p">.</span><span class="n">stats</span><span class="p">.</span><span class="n">nonparam</span><span class="p">.</span><span class="n">ttest2</span><span class="p">(</span><span class="n">ynzA</span><span class="p">,</span><span class="w"> </span><span class="n">ynzB</span><span class="p">);</span><span class="w"></span>
 <span class="n">snpmi</span><span class="w">     </span><span class="p">=</span><span class="w"> </span><span class="n">snpm</span><span class="p">.</span><span class="n">inference</span><span class="p">(</span><span class="mf">0.05</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;two_tailed&#39;</span><span class="p">,</span><span class="w"> </span><span class="nb">true</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;iterations&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">10000</span><span class="p">);</span><span class="w"></span>
 </pre></div>
 </div>
@@ -639,8 +639,7 @@ the critical test statistic arise due changes in the number of iterations and/or
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
 </pre></div>
 </div>
-<div class="input_area highlight-matlab notranslate"><div class="highlight"><pre>
-<span></span><span class="n">znz</span><span class="w">       </span><span class="p">=</span><span class="w"> </span><span class="n">snpmi</span><span class="p">.</span><span class="n">z</span><span class="p">;</span><span class="w">     </span><span class="c">%flattened test statistic  (i.e., t value) over only non-zero-variance nodes</span><span class="w"></span>
+<div class="input_area highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">znz</span><span class="w">       </span><span class="p">=</span><span class="w"> </span><span class="n">snpmi</span><span class="p">.</span><span class="n">z</span><span class="p">;</span><span class="w">     </span><span class="c">%flattened test statistic  (i.e., t value) over only non-zero-variance nodes</span><span class="w"></span>
 <span class="n">zstar</span><span class="w">     </span><span class="p">=</span><span class="w"> </span><span class="n">snpmi</span><span class="p">.</span><span class="n">zstar</span><span class="p">;</span><span class="w"> </span><span class="c">%critical test statistic  (i.e., critical t value)</span><span class="w"></span>
 <span class="n">z</span><span class="w">         </span><span class="p">=</span><span class="w"> </span><span class="nb">zeros</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">Q</span><span class="p">);</span><span class="w">  </span><span class="c">%flattened test statistic including all nodes</span><span class="w"></span>
 <span class="n">z</span><span class="p">(</span><span class="nb">i</span><span class="p">)</span><span class="w">      </span><span class="p">=</span><span class="w"> </span><span class="n">znz</span><span class="p">;</span><span class="w">         </span><span class="c">%add test statistic values for the non-zero-variance nodes</span><span class="w"></span>
@@ -677,13 +676,13 @@ the critical test statistic arise due changes in the number of iterations and/or
 </div>
 </div>
 <p>The “Raw SPM” image depicts the t values for all non-zero-variance nodes. The “Inference” image is the same, but is thresholded using the critical test statistic. In this case there are nodes whose t values exceed the critical t value, implying that the null hypothesis is rejected.</p>
-</section>
+</div>
 <hr class="docutils" />
-<section id="Summary">
+<div class="section" id="Summary">
 <h2>Summary<a class="headerlink" href="#Summary" title="Permalink to this headline">¶</a></h2>
 <p><strong>spm1d</strong> can be used to conduct nonparametric statistical inference on 2D data, but currently only supports hypothesis testing (i.e., critical test statistic calculation) and does not provide cluster-specific p values. Users requiring cluster-specific values can use another SPM packages like <a class="reference external" href="https://www.fil.ion.ucl.ac.uk/spm/software/spm12/">SPM12</a> or <a class="reference external" href="https://nipy.org">nipy</a>.</p>
-</section>
-</section>
+</div>
+</div>
 
 
     </div>
