@@ -3,10 +3,11 @@
 
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
     <title>One- and two-sample tests &#8212; spm1d 0.4 documentation</title>
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/bootstrap-sphinx.css" />
@@ -14,6 +15,7 @@
     <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
     <script src="../../_static/jquery.js"></script>
     <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../../_static/doctools.js"></script>
     <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
@@ -183,10 +185,10 @@
 <p>J = number of 1D responses</p>
 <p>Q = number of nodes to which the 1D responses have been resampled</p>
 </div>
-<div class="section" id="one-and-two-sample-tests">
-<h1>One- and two-sample tests<a class="headerlink" href="#one-and-two-sample-tests" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="one-sample-t-test">
-<span id="label-stats-one-sample-t-test"></span><h2>One-sample t test<a class="headerlink" href="#one-sample-t-test" title="Permalink to this headline">¶</a></h2>
+<section id="one-and-two-sample-tests">
+<h1>One- and two-sample tests<a class="headerlink" href="#one-and-two-sample-tests" title="Permalink to this heading">¶</a></h1>
+<section id="one-sample-t-test">
+<span id="label-stats-one-sample-t-test"></span><h2>One-sample t test<a class="headerlink" href="#one-sample-t-test" title="Permalink to this heading">¶</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">./spm1d/examples/stats1d/ex_ttest.py</span></code></p>
 <p>Import necessary packages:</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">spm1d</span>
@@ -212,12 +214,12 @@
 <p><strong>interp</strong> : Interpolate clusters to the critical threshold (True {default} or False).</p>
 </div>
 <p>(<a class="reference external" href="../../pyplots/stats1d/ex_ttest.py">Source code</a>, <a class="reference external" href="../../pyplots/stats1d/ex_ttest.png">png</a>, <a class="reference external" href="../../pyplots/stats1d/ex_ttest.hires.png">hires.png</a>, <a class="reference external" href="../../pyplots/stats1d/ex_ttest.pdf">pdf</a>)</p>
-<div class="figure align-default">
+<figure class="align-default">
 <img alt="../../_images/ex_ttest.png" class="plot-directive" src="../../_images/ex_ttest.png" />
-</div>
-</div>
-<div class="section" id="paired-t-test">
-<span id="label-stats-paired-t-test"></span><h2>Paired t test<a class="headerlink" href="#paired-t-test" title="Permalink to this headline">¶</a></h2>
+</figure>
+</section>
+<section id="paired-t-test">
+<span id="label-stats-paired-t-test"></span><h2>Paired t test<a class="headerlink" href="#paired-t-test" title="Permalink to this heading">¶</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">./spm1d/examples/stats1d/ex_ttest_paired.py</span></code></p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -229,12 +231,12 @@
 </div>
 </div>
 <p>(<a class="reference external" href="../../pyplots/stats1d/ex_ttest_paired.py">Source code</a>, <a class="reference external" href="../../pyplots/stats1d/ex_ttest_paired.png">png</a>, <a class="reference external" href="../../pyplots/stats1d/ex_ttest_paired.hires.png">hires.png</a>, <a class="reference external" href="../../pyplots/stats1d/ex_ttest_paired.pdf">pdf</a>)</p>
-<div class="figure align-default">
+<figure class="align-default">
 <img alt="../../_images/ex_ttest_paired.png" class="plot-directive" src="../../_images/ex_ttest_paired.png" />
-</div>
-</div>
-<div class="section" id="two-sample-t-test">
-<span id="label-stats-two-sample-t-test"></span><h2>Two-sample t test<a class="headerlink" href="#two-sample-t-test" title="Permalink to this headline">¶</a></h2>
+</figure>
+</section>
+<section id="two-sample-t-test">
+<span id="label-stats-two-sample-t-test"></span><h2>Two-sample t test<a class="headerlink" href="#two-sample-t-test" title="Permalink to this heading">¶</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">./spm1d/examples/stats1d/ex_ttest2.py</span></code></p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -255,12 +257,12 @@
 <p><strong>ttest2 options</strong>:</p>
 <p><em>equal_var</em>  : Whether or not to assume equal variance.  True or False (default).</p>
 <p>(<a class="reference external" href="../../pyplots/stats1d/ex_ttest2.py">Source code</a>, <a class="reference external" href="../../pyplots/stats1d/ex_ttest2.png">png</a>, <a class="reference external" href="../../pyplots/stats1d/ex_ttest2.hires.png">hires.png</a>, <a class="reference external" href="../../pyplots/stats1d/ex_ttest2.pdf">pdf</a>)</p>
-<div class="figure align-default">
+<figure class="align-default">
 <img alt="../../_images/ex_ttest2.png" class="plot-directive" src="../../_images/ex_ttest2.png" />
-</div>
-</div>
-<div class="section" id="regression">
-<span id="label-stats-regression"></span><h2>Regression<a class="headerlink" href="#regression" title="Permalink to this headline">¶</a></h2>
+</figure>
+</section>
+<section id="regression">
+<span id="label-stats-regression"></span><h2>Regression<a class="headerlink" href="#regression" title="Permalink to this heading">¶</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">./spm1d/examples/stats1d/ex_regression.py</span></code></p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -274,12 +276,12 @@
 <p>These results are from:</p>
 <p>Pataky, T. C., Vanrenterghem, J., &amp; Robinson, M. A. (2015). Zero- vs. one-dimensional, parametric vs. non-parametric, and confidence interval vs. hypothesis testing procedures in one-dimensional biomechanical trajectory analysis. Journal of Biomechanics, 1–9. <a class="reference external" href="http://doi.org/10.1016/j.jbiomech.2015.02.051">http://doi.org/10.1016/j.jbiomech.2015.02.051</a></p>
 <p>(<a class="reference external" href="../../pyplots/stats1d/ex_regression.py">Source code</a>, <a class="reference external" href="../../pyplots/stats1d/ex_regression.png">png</a>, <a class="reference external" href="../../pyplots/stats1d/ex_regression.hires.png">hires.png</a>, <a class="reference external" href="../../pyplots/stats1d/ex_regression.pdf">pdf</a>)</p>
-<div class="figure align-default">
+<figure class="align-default">
 <img alt="../../_images/ex_regression.png" class="plot-directive" src="../../_images/ex_regression.png" />
-</div>
-</div>
-<div class="section" id="general-linear-model-glm">
-<span id="label-stats-glm"></span><h2>General linear model (GLM)<a class="headerlink" href="#general-linear-model-glm" title="Permalink to this headline">¶</a></h2>
+</figure>
+</section>
+<section id="general-linear-model-glm">
+<span id="label-stats-glm"></span><h2>General linear model (GLM)<a class="headerlink" href="#general-linear-model-glm" title="Permalink to this heading">¶</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">./spm1d/examples/stats1d/ex_glm.py</span></code></p>
 <div class="admonition danger">
 <p class="admonition-title">Danger</p>
@@ -304,11 +306,11 @@
 </pre></div>
 </div>
 <p>(<a class="reference external" href="../../pyplots/stats1d/ex_glm.py">Source code</a>, <a class="reference external" href="../../pyplots/stats1d/ex_glm.png">png</a>, <a class="reference external" href="../../pyplots/stats1d/ex_glm.hires.png">hires.png</a>, <a class="reference external" href="../../pyplots/stats1d/ex_glm.pdf">pdf</a>)</p>
-<div class="figure align-default">
+<figure class="align-default">
 <img alt="../../_images/ex_glm.png" class="plot-directive" src="../../_images/ex_glm.png" />
-</div>
-</div>
-</div>
+</figure>
+</section>
+</section>
 
 
     </div>
@@ -323,7 +325,7 @@
     </p>
     <p>
         &copy; Copyright 2021, Todd Pataky.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.2.0.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.0.2.<br/>
     </p>
   </div>
 </footer>

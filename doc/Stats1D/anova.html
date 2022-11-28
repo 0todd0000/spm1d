@@ -3,10 +3,11 @@
 
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
     <title>ANOVA &#8212; spm1d 0.4 documentation</title>
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/bootstrap-sphinx.css" />
@@ -14,6 +15,7 @@
     <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
     <script src="../../_static/jquery.js"></script>
     <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../../_static/doctools.js"></script>
     <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
@@ -187,16 +189,16 @@
       </div>
     <div class="body col-md-12 content" role="main">
       
-  <div class="section" id="anova">
-<span id="label-stats1danova"></span><h1>ANOVA<a class="headerlink" href="#anova" title="Permalink to this headline">¶</a></h1>
+  <section id="anova">
+<span id="label-stats1danova"></span><h1>ANOVA<a class="headerlink" href="#anova" title="Permalink to this heading">¶</a></h1>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p><strong>p-values for ANOVA</strong></p>
 <p>In previous versions of <strong>spm1d</strong> no p values were generated for ANOVA because they had not yet been validated.</p>
 <p>They have now been validated <a class="reference internal" href="../../References.html#label-references"><span class="std std-ref">(Pataky, 2015)</span></a> so now appear in results.</p>
 </div>
-<div class="section" id="one-way-anova">
-<span id="label-stats-anova"></span><h2>One-way ANOVA<a class="headerlink" href="#one-way-anova" title="Permalink to this headline">¶</a></h2>
+<section id="one-way-anova">
+<span id="label-stats-anova"></span><h2>One-way ANOVA<a class="headerlink" href="#one-way-anova" title="Permalink to this heading">¶</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">./spm1d/examples/stats1d/ex_anova1.py</span></code></p>
 <p><strong>Method 1</strong> : stacked groups</p>
 <p>If data for all groups is stored in a single (<em>J</em> x <em>Q</em>) array and <em>A</em> is a (<em>J</em> x 1) vector containing integers which specify the groups to which each observation belongs, then one-way ANOVA can be conducted like this:</p>
@@ -213,12 +215,12 @@
 </pre></div>
 </div>
 <p>(<a class="reference external" href="../../pyplots/stats1d/ex_anova1.py">Source code</a>, <a class="reference external" href="../../pyplots/stats1d/ex_anova1.png">png</a>, <a class="reference external" href="../../pyplots/stats1d/ex_anova1.hires.png">hires.png</a>, <a class="reference external" href="../../pyplots/stats1d/ex_anova1.pdf">pdf</a>)</p>
-<div class="figure align-default">
+<figure class="align-default">
 <img alt="../../_images/ex_anova1.png" class="plot-directive" src="../../_images/ex_anova1.png" />
-</div>
-</div>
-<div class="section" id="one-way-repeated-measures-anova">
-<span id="label-stats-anova1rm"></span><h2>One-way repeated-measures ANOVA<a class="headerlink" href="#one-way-repeated-measures-anova" title="Permalink to this headline">¶</a></h2>
+</figure>
+</section>
+<section id="one-way-repeated-measures-anova">
+<span id="label-stats-anova1rm"></span><h2>One-way repeated-measures ANOVA<a class="headerlink" href="#one-way-repeated-measures-anova" title="Permalink to this heading">¶</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">./spm1d/examples/stats1d/ex_anova1rm.py</span></code></p>
 <p>Repeated-measures ANOVA, also called “Within-subjects ANOVA”, can be conducted using <a class="reference internal" href="#label-stats-anova"><span class="std std-ref">Method 1 above</span></a> and an additional (Jx1) vector of integers which specifies subjects.</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">F</span>  <span class="o">=</span> <span class="n">spm1d</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">anova1rm</span><span class="p">(</span> <span class="n">Y</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="n">SUBJ</span><span class="p">,</span> <span class="n">equal_var</span><span class="o">=</span><span class="kc">False</span> <span class="p">)</span>
@@ -227,12 +229,12 @@
 </pre></div>
 </div>
 <p>(<a class="reference external" href="../../pyplots/stats1d/ex_anova1rm.py">Source code</a>, <a class="reference external" href="../../pyplots/stats1d/ex_anova1rm.png">png</a>, <a class="reference external" href="../../pyplots/stats1d/ex_anova1rm.hires.png">hires.png</a>, <a class="reference external" href="../../pyplots/stats1d/ex_anova1rm.pdf">pdf</a>)</p>
-<div class="figure align-default">
+<figure class="align-default">
 <img alt="../../_images/ex_anova1rm.png" class="plot-directive" src="../../_images/ex_anova1rm.png" />
-</div>
-</div>
-<div class="section" id="two-way-anova">
-<span id="label-stats-anova2"></span><h2>Two-way ANOVA<a class="headerlink" href="#two-way-anova" title="Permalink to this headline">¶</a></h2>
+</figure>
+</section>
+<section id="two-way-anova">
+<span id="label-stats-anova2"></span><h2>Two-way ANOVA<a class="headerlink" href="#two-way-anova" title="Permalink to this heading">¶</a></h2>
 <p>Example:</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">FF</span>  <span class="o">=</span> <span class="n">spm1d</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">anova2</span><span class="p">(</span><span class="n">Y</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">,</span> <span class="n">equal_var</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">FFi</span> <span class="o">=</span> <span class="p">[</span><span class="n">F</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.05</span><span class="p">)</span>   <span class="k">for</span> <span class="n">F</span> <span class="ow">in</span> <span class="n">FF</span><span class="p">]</span>
@@ -241,9 +243,9 @@
 <span class="gp">&gt;&gt;&gt; </span><span class="n">FFi</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>   <span class="c1">#Interaction effect</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="two-way-nested-anova">
-<span id="label-stats-anova2nested"></span><h2>Two-way nested ANOVA<a class="headerlink" href="#two-way-nested-anova" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="two-way-nested-anova">
+<span id="label-stats-anova2nested"></span><h2>Two-way nested ANOVA<a class="headerlink" href="#two-way-nested-anova" title="Permalink to this heading">¶</a></h2>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <dl class="simple">
@@ -254,9 +256,9 @@
 </pre></div>
 </div>
 </div>
-</div>
-<div class="section" id="two-way-repeated-measures-anova">
-<span id="label-stats-anova2rm"></span><h2>Two-way repeated-measures ANOVA<a class="headerlink" href="#two-way-repeated-measures-anova" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="two-way-repeated-measures-anova">
+<span id="label-stats-anova2rm"></span><h2>Two-way repeated-measures ANOVA<a class="headerlink" href="#two-way-repeated-measures-anova" title="Permalink to this heading">¶</a></h2>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <dl class="simple">
@@ -272,9 +274,9 @@
 <p>Non-sphericity corrections are not yet implemented for this design.</p>
 <p>Since non-sphericity corrections weaken results with respect to assumed sphericity, interpret results cautiously, especially when close to alpha.</p>
 </div>
-</div>
-<div class="section" id="two-way-anova-with-repeated-measures-on-one-factor">
-<span id="label-stats-anova2onerm"></span><h2>Two-way ANOVA with repeated-measures on one factor<a class="headerlink" href="#two-way-anova-with-repeated-measures-on-one-factor" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="two-way-anova-with-repeated-measures-on-one-factor">
+<span id="label-stats-anova2onerm"></span><h2>Two-way ANOVA with repeated-measures on one factor<a class="headerlink" href="#two-way-anova-with-repeated-measures-on-one-factor" title="Permalink to this heading">¶</a></h2>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <dl>
@@ -291,9 +293,9 @@
 <p>Non-sphericity corrections are not yet implemented for this design.</p>
 <p>Since non-sphericity corrections weaken results with respect to assumed sphericity, interpret results cautiously, especially when close to alpha.</p>
 </div>
-</div>
-<div class="section" id="three-way-anova">
-<span id="label-stats-anova3"></span><h2>Three-way ANOVA<a class="headerlink" href="#three-way-anova" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="three-way-anova">
+<span id="label-stats-anova3"></span><h2>Three-way ANOVA<a class="headerlink" href="#three-way-anova" title="Permalink to this heading">¶</a></h2>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>We do not yet have any real data examples to show.</p>
@@ -301,9 +303,9 @@
 </pre></div>
 </div>
 </div>
-</div>
-<div class="section" id="three-way-nested-anova">
-<span id="label-stats-anova3nested"></span><h2>Three-way nested ANOVA<a class="headerlink" href="#three-way-nested-anova" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="three-way-nested-anova">
+<span id="label-stats-anova3nested"></span><h2>Three-way nested ANOVA<a class="headerlink" href="#three-way-nested-anova" title="Permalink to this heading">¶</a></h2>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <dl>
@@ -315,9 +317,9 @@
 </pre></div>
 </div>
 </div>
-</div>
-<div class="section" id="three-way-anova-with-repeated-measures-on-two-factors">
-<span id="label-stats-anova3tworm"></span><h2>Three-way ANOVA with repeated-measures on two factors<a class="headerlink" href="#three-way-anova-with-repeated-measures-on-two-factors" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="three-way-anova-with-repeated-measures-on-two-factors">
+<span id="label-stats-anova3tworm"></span><h2>Three-way ANOVA with repeated-measures on two factors<a class="headerlink" href="#three-way-anova-with-repeated-measures-on-two-factors" title="Permalink to this heading">¶</a></h2>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <dl>
@@ -334,9 +336,9 @@
 <p>Non-sphericity corrections are not yet implemented for this design.</p>
 <p>Since non-sphericity corrections weaken results with respect to assumed sphericity, interpret results cautiously, especially when close to alpha.</p>
 </div>
-</div>
-<div class="section" id="three-way-anova-with-repeated-measures-on-one-factor">
-<span id="label-stats-anova3onerm"></span><h2>Three-way ANOVA with repeated-measures on one factor<a class="headerlink" href="#three-way-anova-with-repeated-measures-on-one-factor" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="three-way-anova-with-repeated-measures-on-one-factor">
+<span id="label-stats-anova3onerm"></span><h2>Three-way ANOVA with repeated-measures on one factor<a class="headerlink" href="#three-way-anova-with-repeated-measures-on-one-factor" title="Permalink to this heading">¶</a></h2>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <dl>
@@ -353,8 +355,8 @@
 <p>Non-sphericity corrections are not yet implemented for this design.</p>
 <p>Since non-sphericity corrections weaken results with respect to assumed sphericity, interpret results cautiously, especially when close to alpha.</p>
 </div>
-</div>
-</div>
+</section>
+</section>
 
 
     </div>
@@ -369,7 +371,7 @@
     </p>
     <p>
         &copy; Copyright 2021, Todd Pataky.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.2.0.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.0.2.<br/>
     </p>
   </div>
 </footer>

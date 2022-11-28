@@ -3,10 +3,11 @@
 
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
     <title>Documentation (Matlab) &#8212; spm1d 0.4 documentation</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="_static/bootstrap-sphinx.css" />
@@ -14,6 +15,7 @@
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
     <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
@@ -171,8 +173,8 @@
       </div>
     <div class="body col-md-12 content" role="main">
       
-  <div class="section" id="documentation-matlab">
-<span id="label-documentationmatlab"></span><h1>Documentation (Matlab)<a class="headerlink" href="#documentation-matlab" title="Permalink to this headline">¶</a></h1>
+  <section id="documentation-matlab">
+<span id="label-documentationmatlab"></span><h1>Documentation (Matlab)<a class="headerlink" href="#documentation-matlab" title="Permalink to this heading">¶</a></h1>
 <div class="admonition danger">
 <p class="admonition-title">Danger</p>
 <p>Unbalanced two- and three-way repeated-measures ANOVA results have not been verified.</p>
@@ -183,25 +185,16 @@
 <p><a class="reference internal" href="Documentation.html#label-documentation"><span class="std std-ref">Link to Python documentation</span></a></p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p>There are a few key differences between the MATLAB and Python versions of <strong>spm1d</strong>.</p>
-<p>The main version of <strong>spm1d</strong> is the Python version.  The MATLAB version incorporates much but not all of the functionaly of the Python version.</p>
-<p>There will be discrepancies between the Python and MATLAB versions for two main reasons:</p>
-<ol class="arabic simple">
-<li><p>The MATLAB version of <strong>spm1d</strong> does not yet employ non-sphericity corrections, which are employed by default in the Python version.</p></li>
-<li><p>The MATLAB version of <strong>spm1d</strong> does not interpolate supra-threshold clusters, thereby generating somewhat inaccurate measurements of cluster size.</p></li>
-</ol>
-<p>Practically the differences are likely to be small, but users should be aware that non-sphericity corrections, by definition, drive the critical threshold higher.</p>
-<p><strong>MATLAB results which just reach the critical threshold must therefore be interpreted with caution</strong>.</p>
-<p>The second issue will result in slightly underestimated cluster-level p values.</p>
+<p>There are a few key differences between the MATLAB and Python versions of <strong>spm1d</strong>. The main version of <strong>spm1d</strong> is the Python version, and the MATLAB version incorporates much but not all of the functionaly of the Python version. A key difference is that the MATLAB version of <strong>spm1d</strong> does not yet employ non-sphericity corrections, which are employed by default in the Python version. Practically these differences are likely to be small.</p>
 </div>
-<div class="section" id="examples">
-<h2>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h2>
+<section id="examples">
+<h2>Examples<a class="headerlink" href="#examples" title="Permalink to this heading">¶</a></h2>
 <p>Inside the <strong>./spm1d/examples</strong> folder you will find Matlab scripts which implement a variety of statistical tests.</p>
 <p>These examples correspond to the Python scripts of the same name, which are described in: <a class="reference internal" href="Documentation.html#label-documentation"><span class="std std-ref">the main documentation</span></a>.</p>
 <p>Statistical theory underlying the examples is documented here: <a class="reference internal" href="Documentation.html#label-theory"><span class="std std-ref">Theory</span></a></p>
-</div>
-<div class="section" id="support">
-<h2>Support<a class="headerlink" href="#support" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="support">
+<h2>Support<a class="headerlink" href="#support" title="Permalink to this heading">¶</a></h2>
 <p>We do not provide detailed documentation for the MATLAB version of <strong>spm1d</strong>.</p>
 <p>If you require support consider the following options:</p>
 <ol class="arabic simple">
@@ -210,8 +203,8 @@
 <li><p>Submitting a support request to <strong>spm1d</strong>’s <a class="reference external" href="http://0todd0000.github.io/spm1dmatlab">MATLAB github site</a>.</p></li>
 <li><p>Contacting us to request an <a class="reference internal" href="Workshops.html#label-workshops"><span class="std std-ref">educational workshop</span></a>.</p></li>
 </ol>
-</div>
-</div>
+</section>
+</section>
 
 
     </div>
@@ -226,7 +219,7 @@
     </p>
     <p>
         &copy; Copyright 2021, Todd Pataky.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.2.0.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.0.2.<br/>
     </p>
   </div>
 </footer>

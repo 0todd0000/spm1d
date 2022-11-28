@@ -3,10 +3,11 @@
 
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
     <title>Overview of random effects analysis &#8212; spm1d 0.4 documentation</title>
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../_static/bootstrap-sphinx.css" />
@@ -14,6 +15,7 @@
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
@@ -175,17 +177,17 @@
       </div>
     <div class="body col-md-12 content" role="main">
       
-  <div class="section" id="overview-of-random-effects-analysis">
-<span id="label-examples-statsadvanced"></span><h1>Overview of random effects analysis<a class="headerlink" href="#overview-of-random-effects-analysis" title="Permalink to this headline">¶</a></h1>
+  <section id="overview-of-random-effects-analysis">
+<span id="label-examples-statsadvanced"></span><h1>Overview of random effects analysis<a class="headerlink" href="#overview-of-random-effects-analysis" title="Permalink to this heading">¶</a></h1>
 <p>If one’s hypothesis pertains to a population of subjects, or multiple populations of subjects, then <strong>spm1d</strong> can be used to conduct <strong>random effects analysis</strong> (RFX) using a hierarchical (two-level) random effects model:</p>
 <ul class="simple">
 <li><p><strong>Level 1</strong> — estimate within-subject effect(s) (” β “) using one experimental model (e.g. regression, t test, etc.) for each subject.</p></li>
 <li><p><strong>Level 2</strong> — test estimated effects (” β “) using a separate population-level model.</p></li>
 </ul>
 <p>The RFX approach is described in detail in <a class="reference internal" href="../References.html#label-spmliterature"><span class="std std-ref">References [4] and [6]</span></a></p>
-</div>
-<div class="section" id="hypothetical-experiment">
-<h1>Hypothetical experiment<a class="headerlink" href="#hypothetical-experiment" title="Permalink to this headline">¶</a></h1>
+</section>
+<section id="hypothetical-experiment">
+<h1>Hypothetical experiment<a class="headerlink" href="#hypothetical-experiment" title="Permalink to this heading">¶</a></h1>
 <p>Consider a simple experiment:</p>
 <ul class="simple">
 <li><p><strong>Subjects</strong> —   Group A (8 subjects), Group B (8 subjects)</p></li>
@@ -206,9 +208,9 @@
 <li><p>Repeated measurements on each subject leads to more accurate measurements of each subject’s  β, implying that between-subject differences generally become more stable as one performs more measurements on each subject.</p></li>
 </ul>
 <p>We shall see that these basic RFX concepts apply equivalently to 1D continuum analysis.</p>
-</div>
-<div class="section" id="example-analysis">
-<h1>Example analysis<a class="headerlink" href="#example-analysis" title="Permalink to this headline">¶</a></h1>
+</section>
+<section id="example-analysis">
+<h1>Example analysis<a class="headerlink" href="#example-analysis" title="Permalink to this heading">¶</a></h1>
 <p><code class="docutils literal notranslate"><span class="pre">./spm1d/examples/stats1d/rfx_0_means.py</span></code></p>
 <p>This dataset examines the effects of walking speed on vertical ground reaction forces (GRF) in ten subjects. Each performed 20 trials of each of Slow, Normal, and Fast walking and all GRF trajectories were normalized in time by stance phase (% stance) and in magnitude by body weight (BW). Since we are interested in whether measured SPEED-GRF effects extrapolate to the broader population of subjects from which these ten were drawn, our null hypothesis is: <strong>no between-subject effect of SPEED on GRF</strong>. In other words, we are not interested in an <em>a priori</em> sense whether or not particular subjects exhibit SPEED-GRF effects.  We are only interested in whether SPEED-GRF effects are systematic across subjects.</p>
 <p>The figure below depicts within-subject mean GRF continua for each of the three SPEED conditions. Despite rather large between-subject variability there appear to be various systematic effects of walking speed on the GRF trajectory. For example, there appears to be a postive correlation between SPED and GRF in early stance (before 20%).</p>
@@ -217,11 +219,11 @@
 <p>The between-subject variability depicted in the figure below is relatively large compared the to within-subject variability depicted in <a class="reference internal" href="Stats1D/onetwosample.html#label-stats-regression"><span class="std std-ref">the main regression example</span></a>.</p>
 </div>
 <p>(<a class="reference external" href="../pyplots/stats1d/rfx_0_means.py">Source code</a>, <a class="reference external" href="../pyplots/stats1d/rfx_0_means.png">png</a>, <a class="reference external" href="../pyplots/stats1d/rfx_0_means.hires.png">hires.png</a>, <a class="reference external" href="../pyplots/stats1d/rfx_0_means.pdf">pdf</a>)</p>
-<div class="figure align-default">
+<figure class="align-default">
 <img alt="../_images/rfx_0_means.png" class="plot-directive" src="../_images/rfx_0_means.png" />
-</div>
-<div class="section" id="level-1-analysis">
-<h2>Level 1 Analysis<a class="headerlink" href="#level-1-analysis" title="Permalink to this headline">¶</a></h2>
+</figure>
+<section id="level-1-analysis">
+<h2>Level 1 Analysis<a class="headerlink" href="#level-1-analysis" title="Permalink to this heading">¶</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">./spm1d/examples/stats1d/rfx_1_level1.py</span></code></p>
 <p>To model the effect of SPEED on GRF within each subject, we can use a linear regression model, just like in the <a class="reference internal" href="Stats1D/onetwosample.html#label-stats-regression"><span class="std std-ref">the main regression example</span></a>:</p>
 <div class="admonition note">
@@ -267,16 +269,16 @@
 <p>If our null hypothesis were true, and there were truly no effect of SPEED on GRF, we would expect each subject’s β continuum to be quite different. In particular, we would expect the mean between-subject β continuum to converge to the null continuum as the number of subjects increases. The goal of Level 2 analysis is to quantify the likelihood that smooth, random continua would yield a set of β continua that similarly diverge from the null continuum.</p>
 </div>
 <p>(<a class="reference external" href="../pyplots/stats1d/rfx_1_level1.py">Source code</a>, <a class="reference external" href="../pyplots/stats1d/rfx_1_level1.png">png</a>, <a class="reference external" href="../pyplots/stats1d/rfx_1_level1.hires.png">hires.png</a>, <a class="reference external" href="../pyplots/stats1d/rfx_1_level1.pdf">pdf</a>)</p>
-<div class="figure align-default">
+<figure class="align-default">
 <img alt="../_images/rfx_1_level1.png" class="plot-directive" src="../_images/rfx_1_level1.png" />
-</div>
+</figure>
 <p>To appreciate the meaning of the β parameters, consider the simple regression model:</p>
 <div class="math">
 <p><img src="../_images/math/ca585ec400285ec183a6a54b18d544aaf35f43bc.png" alt="y = \beta_0 x + \beta_1 + \varepsilon"/></p>
 </div><p>The first and second β parameters are clearly the slope and intercept. In <strong>spm1d</strong> arbitrary models like this are fit to the data at each continuum node, to generate one-dimensional β parameter continua.</p>
-</div>
-<div class="section" id="level-2-analysis">
-<h2>Level 2 Analysis<a class="headerlink" href="#level-2-analysis" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="level-2-analysis">
+<h2>Level 2 Analysis<a class="headerlink" href="#level-2-analysis" title="Permalink to this heading">¶</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">./spm1d/examples/stats1d/rfx_2_level2.py</span></code></p>
 <p>If our null hypothesis were true we would expect no systematic difference between a group of β continua and the null continua. We can therefore submit the β continua to a one-sample t test, where the datum is the null continuum. First we assemble the BETA parameters for each subject as follows:</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">nSubj</span>    <span class="o">=</span> <span class="mi">10</span>
@@ -298,9 +300,9 @@
 <p>The figure below depcits the resulting <strong>SPM{t}</strong>, which exceeds the critical threshold at various points in the continuum. From a classical hypothesis testing perspective we can therefore reject the null hypothesis of no between-subject effect of SPEED on GRF at a Type I error rate of α.</p>
 <p>A verbose interpretation of “p &lt; 0.001” is:  “Gaussian random fields of the identical smoothness as the observed residuals, and as long as the observed continua, would produce a suprathreshold cluster as large as the observed cluster in fewer than 0.1% of many repeated experiments.”</p>
 <p>(<a class="reference external" href="../pyplots/stats1d/rfx_2_level2.py">Source code</a>, <a class="reference external" href="../pyplots/stats1d/rfx_2_level2.png">png</a>, <a class="reference external" href="../pyplots/stats1d/rfx_2_level2.hires.png">hires.png</a>, <a class="reference external" href="../pyplots/stats1d/rfx_2_level2.pdf">pdf</a>)</p>
-<div class="figure align-default">
+<figure class="align-default">
 <img alt="../_images/rfx_2_level2.png" class="plot-directive" src="../_images/rfx_2_level2.png" />
-</div>
+</figure>
 <div class="admonition danger">
 <p class="admonition-title">Danger</p>
 <p>These results do not prove that there is, in fact, a real effect of SPEED on GRF. The results mean one thing and one thing only: <strong>random data would produce similar results relatively infrequently</strong>. The null hypothesis is generally falsifiable only through repeated experimentation, and an accumulation of scientific evidence. This notion is formally embodied in Bayesian inference, but is currently not implemented in <strong>spm1d</strong>.</p>
@@ -309,8 +311,8 @@
 <p class="admonition-title">Warning</p>
 <p>Had we chosen a different model, for example: two-way ANOVA with SUBJECT and SPEED as factors, both SUBJECT and SPEED would have been <strong>fixed</strong>. This is quite different to the Level 2 analysis above, which regards SUBJECT as <strong>random</strong>. If SUBJECT is <strong>fixed</strong>, inference pertains only to those subjects, and not to the larger population from which those subjects were drawn. Conversely, modeling SUBJECT as <strong>random</strong> allows us to extrapolate to the larger population.</p>
 </div>
-</div>
-</div>
+</section>
+</section>
 
 
     </div>
@@ -325,7 +327,7 @@
     </p>
     <p>
         &copy; Copyright 2021, Todd Pataky.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.2.0.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.0.2.<br/>
     </p>
   </div>
 </footer>

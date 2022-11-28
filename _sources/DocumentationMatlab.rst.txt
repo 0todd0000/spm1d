@@ -16,21 +16,7 @@ Documentation (Matlab)
 
 :ref:`Link to Python documentation <label-Documentation>`
 
-.. warning:: There are a few key differences between the MATLAB and Python versions of **spm1d**.
-
-	The main version of **spm1d** is the Python version.  The MATLAB version incorporates much but not all of the functionaly of the Python version.
-	
-	There will be discrepancies between the Python and MATLAB versions for two main reasons:
-	
-	1. The MATLAB version of **spm1d** does not yet employ non-sphericity corrections, which are employed by default in the Python version.
-	2. The MATLAB version of **spm1d** does not interpolate supra-threshold clusters, thereby generating somewhat inaccurate measurements of cluster size.
-	
-	Practically the differences are likely to be small, but users should be aware that non-sphericity corrections, by definition, drive the critical threshold higher.
-	
-	**MATLAB results which just reach the critical threshold must therefore be interpreted with caution**.
-	
-	The second issue will result in slightly underestimated cluster-level p values.
-
+.. warning:: There are a few key differences between the MATLAB and Python versions of **spm1d**. The main version of **spm1d** is the Python version, and the MATLAB version incorporates much but not all of the functionaly of the Python version. A key difference is that the MATLAB version of **spm1d** does not yet employ non-sphericity corrections, which are employed by default in the Python version. Practically these differences are likely to be small.
 
 
 Examples

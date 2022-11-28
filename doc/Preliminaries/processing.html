@@ -3,10 +3,11 @@
 
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
     <title>Data processing basics &#8212; spm1d 0.4 documentation</title>
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/bootstrap-sphinx.css" />
@@ -14,6 +15,7 @@
     <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
     <script src="../../_static/jquery.js"></script>
     <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../../_static/doctools.js"></script>
     <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
@@ -171,8 +173,8 @@
       </div>
     <div class="body col-md-12 content" role="main">
       
-  <div class="section" id="data-processing-basics">
-<span id="label-examples-processing"></span><h1>Data processing basics<a class="headerlink" href="#data-processing-basics" title="Permalink to this headline">¶</a></h1>
+  <section id="data-processing-basics">
+<span id="label-examples-processing"></span><h1>Data processing basics<a class="headerlink" href="#data-processing-basics" title="Permalink to this heading">¶</a></h1>
 <p>The examples below detail pre-processing functionality in <strong>spm1d.util</strong>.</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
@@ -181,8 +183,8 @@
 <li><p>Please consider using other software tools like <strong>SciPy</strong> and <strong>Visual3D</strong> for data processing.</p></li>
 </ul>
 </div>
-<div class="section" id="interpolation">
-<h2>Interpolation<a class="headerlink" href="#interpolation" title="Permalink to this headline">¶</a></h2>
+<section id="interpolation">
+<h2>Interpolation<a class="headerlink" href="#interpolation" title="Permalink to this heading">¶</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">./spm1d/examples/processing/ex_interpolate.py</span></code></p>
 <p>Linear interpolation to <em>n</em> points:</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">y0</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">51</span><span class="p">)</span>
@@ -195,23 +197,23 @@
 </pre></div>
 </div>
 <p>(<a class="reference external" href="../../pyplots/processing/ex_interpolate.py">Source code</a>, <a class="reference external" href="../../pyplots/processing/ex_interpolate.png">png</a>, <a class="reference external" href="../../pyplots/processing/ex_interpolate.hires.png">hires.png</a>, <a class="reference external" href="../../pyplots/processing/ex_interpolate.pdf">pdf</a>)</p>
-<div class="figure align-default">
+<figure class="align-default">
 <img alt="../../_images/ex_interpolate.png" class="plot-directive" src="../../_images/ex_interpolate.png" />
-</div>
-</div>
-<div class="section" id="smoothing">
-<h2>Smoothing<a class="headerlink" href="#smoothing" title="Permalink to this headline">¶</a></h2>
+</figure>
+</section>
+<section id="smoothing">
+<h2>Smoothing<a class="headerlink" href="#smoothing" title="Permalink to this heading">¶</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">./spm1d/examples/processing/ex_smooth.py</span></code></p>
 <p>Convolution with a Gaussian kernel having a given FWHM (full-width at half-maximum):</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">Y_smoothed</span> <span class="o">=</span> <span class="n">spm1d</span><span class="o">.</span><span class="n">util</span><span class="o">.</span><span class="n">smooth</span><span class="p">(</span><span class="n">Y0</span><span class="p">,</span> <span class="n">fwhm</span><span class="o">=</span><span class="mf">5.0</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>(<a class="reference external" href="../../pyplots/processing/ex_smooth.py">Source code</a>, <a class="reference external" href="../../pyplots/processing/ex_smooth.png">png</a>, <a class="reference external" href="../../pyplots/processing/ex_smooth.hires.png">hires.png</a>, <a class="reference external" href="../../pyplots/processing/ex_smooth.pdf">pdf</a>)</p>
-<div class="figure align-default">
+<figure class="align-default">
 <img alt="../../_images/ex_smooth.png" class="plot-directive" src="../../_images/ex_smooth.png" />
-</div>
-</div>
-</div>
+</figure>
+</section>
+</section>
 
 
     </div>
@@ -226,7 +228,7 @@
     </p>
     <p>
         &copy; Copyright 2021, Todd Pataky.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.2.0.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.0.2.<br/>
     </p>
   </div>
 </footer>

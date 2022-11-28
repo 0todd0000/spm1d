@@ -3,10 +3,11 @@
 
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
     <title>spm1d.plot &#8212; spm1d 0.4 documentation</title>
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/bootstrap-sphinx.css" />
@@ -14,6 +15,7 @@
     <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
     <script src="../../_static/jquery.js"></script>
     <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../../_static/doctools.js"></script>
     <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
@@ -179,16 +181,11 @@
       </div>
     <div class="body col-md-12 content" role="main">
       
-  <div class="section" id="module-spm1d.plot">
-<span id="spm1d-plot"></span><span id="label-api-plot"></span><h1>spm1d.plot<a class="headerlink" href="#module-spm1d.plot" title="Permalink to this headline">¶</a></h1>
+  <section id="module-spm1d.plot">
+<span id="spm1d-plot"></span><span id="label-api-plot"></span><h1>spm1d.plot<a class="headerlink" href="#module-spm1d.plot" title="Permalink to this heading">¶</a></h1>
 <p>This module contains a variety of plotting functions.</p>
 <p>The following functions may be accessed as methods of <strong>spm1d</strong> SPM objects:</p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 32%" />
-<col style="width: 27%" />
-<col style="width: 40%" />
-</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>spm1d.plot</p></th>
 <th class="head"><p>SPM instance method</p></th>
@@ -226,14 +223,14 @@ These include:</p>
 <li><p>plot_mean_sd</p></li>
 </ul>
 <hr class="docutils" />
-<div class="section" id="plot-errorcloud">
-<h2>plot_errorcloud<a class="headerlink" href="#plot-errorcloud" title="Permalink to this headline">¶</a></h2>
+<section id="plot-errorcloud">
+<h2>plot_errorcloud<a class="headerlink" href="#plot-errorcloud" title="Permalink to this heading">¶</a></h2>
 <dl class="py function">
 <dt class="sig sig-object py" id="spm1d.plot.plot_errorcloud">
 <span class="sig-prename descclassname"><span class="pre">spm1d.plot.</span></span><span class="sig-name descname"><span class="pre">plot_errorcloud</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">datum</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sd</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ax</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">facecolor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'0.8'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">edgecolor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'0.8'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alpha</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">autoset_ylim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/spm1d/plot.html#plot_errorcloud"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spm1d.plot.plot_errorcloud" title="Permalink to this definition">¶</a></dt>
 <dd><p>Plot an arbitrary error cloud surrounding a datum continuum.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p></p></dd>
 </dl>
 <ul class="simple">
@@ -247,14 +244,14 @@ These include:</p>
 <li><p><em>autoset_ylim</em> — if True (default), will set the y axis limits so that all text, line and patch objects are visible inside the axes</p></li>
 </ul>
 <dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
 <dd class="field-odd"><p></p></dd>
 </dl>
 <ul class="simple">
 <li><p>a <strong>matplotlib.collections.PatchCollection</strong> object</p></li>
 </ul>
 <dl class="field-list simple">
-<dt class="field-odd">Example</dt>
+<dt class="field-odd">Example<span class="colon">:</span></dt>
 <dd class="field-odd"><p></p></dd>
 </dl>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -269,16 +266,16 @@ These include:</p>
 </div>
 </dd></dl>
 
-</div>
+</section>
 <hr class="docutils" />
-<div class="section" id="plot-mean-sd">
-<h2>plot_mean_sd<a class="headerlink" href="#plot-mean-sd" title="Permalink to this headline">¶</a></h2>
+<section id="plot-mean-sd">
+<h2>plot_mean_sd<a class="headerlink" href="#plot-mean-sd" title="Permalink to this heading">¶</a></h2>
 <dl class="py function">
 <dt class="sig sig-object py" id="spm1d.plot.plot_mean_sd">
 <span class="sig-prename descclassname"><span class="pre">spm1d.plot.</span></span><span class="sig-name descname"><span class="pre">plot_mean_sd</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ax</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lw</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">3</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">linecolor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'k'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">linestyle</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'-'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">facecolor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'0.8'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">edgecolor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'0.8'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alpha</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">label</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">autoset_ylim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">roi</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/spm1d/plot.html#plot_mean_sd"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spm1d.plot.plot_mean_sd" title="Permalink to this definition">¶</a></dt>
 <dd><p>Plot mean continuum with standard deviation cloud.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p></p></dd>
 </dl>
 <ul class="simple">
@@ -296,14 +293,14 @@ These include:</p>
 <li><p><em>roi</em> — optional region-of-interest vector (either boolean OR vector of (-1, 0, +1))</p></li>
 </ul>
 <dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
 <dd class="field-odd"><p></p></dd>
 </dl>
 <ul class="simple">
 <li><p><em>None</em></p></li>
 </ul>
 <dl class="field-list simple">
-<dt class="field-odd">Example</dt>
+<dt class="field-odd">Example<span class="colon">:</span></dt>
 <dd class="field-odd"><p></p></dd>
 </dl>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">Y</span>  <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">101</span><span class="p">)</span>
@@ -312,16 +309,16 @@ These include:</p>
 </div>
 </dd></dl>
 
-</div>
+</section>
 <hr class="docutils" />
-<div class="section" id="plot-spm">
-<h2>plot_spm<a class="headerlink" href="#plot-spm" title="Permalink to this headline">¶</a></h2>
+<section id="plot-spm">
+<h2>plot_spm<a class="headerlink" href="#plot-spm" title="Permalink to this heading">¶</a></h2>
 <dl class="py function">
 <dt class="sig sig-object py" id="spm1d.plot.plot_spm">
 <span class="sig-prename descclassname"><span class="pre">spm1d.plot.</span></span><span class="sig-name descname"><span class="pre">plot_spm</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">spm</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ax</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">plot_ylabel</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">autoset_xlim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">autoset_ylim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwdargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/spm1d/plot.html#plot_spm"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spm1d.plot.plot_spm" title="Permalink to this definition">¶</a></dt>
 <dd><p>Plot an <strong>spm1d</strong> SPM object as a line.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p></p></dd>
 </dl>
 <ul class="simple">
@@ -332,14 +329,14 @@ These include:</p>
 <li><p><em>kwdards</em> — any keyword argument accepted by <strong>matplotlib.pyplot.plot</strong></p></li>
 </ul>
 <dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
 <dd class="field-odd"><p></p></dd>
 </dl>
 <ul class="simple">
 <li><p><em>h</em> — a <strong>matplotlib.lines.Line2D</strong> object</p></li>
 </ul>
 <dl class="field-list simple">
-<dt class="field-odd">Example</dt>
+<dt class="field-odd">Example<span class="colon">:</span></dt>
 <dd class="field-odd"><p></p></dd>
 </dl>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">t</span>     <span class="o">=</span> <span class="n">spm1d</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">ttest</span><span class="p">(</span><span class="n">Y</span><span class="p">)</span>
@@ -349,16 +346,16 @@ These include:</p>
 </div>
 </dd></dl>
 
-</div>
+</section>
 <hr class="docutils" />
-<div class="section" id="plot-spmi">
-<h2>plot_spmi<a class="headerlink" href="#plot-spmi" title="Permalink to this headline">¶</a></h2>
+<section id="plot-spmi">
+<h2>plot_spmi<a class="headerlink" href="#plot-spmi" title="Permalink to this heading">¶</a></h2>
 <dl class="py function">
 <dt class="sig sig-object py" id="spm1d.plot.plot_spmi">
 <span class="sig-prename descclassname"><span class="pre">spm1d.plot.</span></span><span class="sig-name descname"><span class="pre">plot_spmi</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">spmi</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ax</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">color</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'k'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">linestyle</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'-'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">marker</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">facecolor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'0.8'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lw</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">plot_thresh</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">plot_ylabel</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">thresh_color</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'k'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">autoset_xlim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">autoset_ylim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">label</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/spm1d/plot.html#plot_spmi"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spm1d.plot.plot_spmi" title="Permalink to this definition">¶</a></dt>
 <dd><p>Plot an <strong>spm1d</strong> SPM inference object as a line.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p></p></dd>
 </dl>
 <ul class="simple">
@@ -373,14 +370,14 @@ These include:</p>
 <li><p><em>autoset_ylim</em> — if True (default), will set the y axis limits so that all text, line and patch objects are visible inside the axes</p></li>
 </ul>
 <dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
 <dd class="field-odd"><p></p></dd>
 </dl>
 <ul class="simple">
 <li><p><em>None</em></p></li>
 </ul>
 <dl class="field-list simple">
-<dt class="field-odd">Example</dt>
+<dt class="field-odd">Example<span class="colon">:</span></dt>
 <dd class="field-odd"><p></p></dd>
 </dl>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">t</span>     <span class="o">=</span> <span class="n">spm1d</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">ttest</span><span class="p">(</span><span class="n">Y</span><span class="p">)</span>
@@ -390,16 +387,16 @@ These include:</p>
 </div>
 </dd></dl>
 
-</div>
+</section>
 <hr class="docutils" />
-<div class="section" id="plot-spmi-p-values">
-<h2>plot_spmi_p_values<a class="headerlink" href="#plot-spmi-p-values" title="Permalink to this headline">¶</a></h2>
+<section id="plot-spmi-p-values">
+<h2>plot_spmi_p_values<a class="headerlink" href="#plot-spmi-p-values" title="Permalink to this heading">¶</a></h2>
 <dl class="py function">
 <dt class="sig sig-object py" id="spm1d.plot.plot_spmi_p_values">
 <span class="sig-prename descclassname"><span class="pre">spm1d.plot.</span></span><span class="sig-name descname"><span class="pre">plot_spmi_p_values</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">spmi</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ax</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">8</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">offsets</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">offset_all_clusters</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">autoset_ylim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/spm1d/plot.html#plot_spmi_p_values"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spm1d.plot.plot_spmi_p_values" title="Permalink to this definition">¶</a></dt>
 <dd><p>Plot an <strong>spm1d</strong> SPM inference object’s p values as text (if they exist).</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p></p></dd>
 </dl>
 <ul class="simple">
@@ -411,14 +408,14 @@ These include:</p>
 <li><p><em>autoset_ylim</em> — if True (default), will set the y axis limits so that all text, line and patch objects are visible inside the axes</p></li>
 </ul>
 <dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
 <dd class="field-odd"><p></p></dd>
 </dl>
 <ul class="simple">
 <li><p><em>None</em></p></li>
 </ul>
 <dl class="field-list simple">
-<dt class="field-odd">Example</dt>
+<dt class="field-odd">Example<span class="colon">:</span></dt>
 <dd class="field-odd"><p></p></dd>
 </dl>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">t</span>   <span class="o">=</span> <span class="n">spm1d</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">ttest</span><span class="p">(</span><span class="n">Y</span><span class="p">)</span>
@@ -430,16 +427,16 @@ These include:</p>
 </div>
 </dd></dl>
 
-</div>
+</section>
 <hr class="docutils" />
-<div class="section" id="plot-spmi-threshold-label">
-<h2>plot_spmi_threshold_label<a class="headerlink" href="#plot-spmi-threshold-label" title="Permalink to this headline">¶</a></h2>
+<section id="plot-spmi-threshold-label">
+<h2>plot_spmi_threshold_label<a class="headerlink" href="#plot-spmi-threshold-label" title="Permalink to this heading">¶</a></h2>
 <dl class="py function">
 <dt class="sig sig-object py" id="spm1d.plot.plot_spmi_threshold_label">
 <span class="sig-prename descclassname"><span class="pre">spm1d.plot.</span></span><span class="sig-name descname"><span class="pre">plot_spmi_threshold_label</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">spmi</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ax</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lower</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pos</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">autoset_ylim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwdargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/spm1d/plot.html#plot_spmi_threshold_label"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spm1d.plot.plot_spmi_threshold_label" title="Permalink to this definition">¶</a></dt>
 <dd><p>Plot an <strong>spm1d</strong> SPM inference object as a line.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p></p></dd>
 </dl>
 <ul class="simple">
@@ -451,14 +448,14 @@ These include:</p>
 <li><p><em>kwdards</em> — any keyword argument accepted by <strong>matplotlib.pyplot.text</strong></p></li>
 </ul>
 <dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
 <dd class="field-odd"><p></p></dd>
 </dl>
 <ul class="simple">
 <li><p>a <strong>matplotlib.text.Text</strong> object</p></li>
 </ul>
 <dl class="field-list simple">
-<dt class="field-odd">Example</dt>
+<dt class="field-odd">Example<span class="colon">:</span></dt>
 <dd class="field-odd"><p></p></dd>
 </dl>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">t</span>     <span class="o">=</span> <span class="n">spm1d</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">ttest</span><span class="p">(</span><span class="n">Y</span><span class="p">)</span>
@@ -468,8 +465,8 @@ These include:</p>
 </div>
 </dd></dl>
 
-</div>
-</div>
+</section>
+</section>
 
 
     </div>
@@ -484,7 +481,7 @@ These include:</p>
     </p>
     <p>
         &copy; Copyright 2021, Todd Pataky.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.2.0.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.0.2.<br/>
     </p>
   </div>
 </footer>
