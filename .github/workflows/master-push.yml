@@ -1,4 +1,4 @@
-name: Push spm1d
+name: publish-spm1d
 
 on:
   push:
@@ -8,26 +8,26 @@ on:
 
 
 jobs:
-  publish_pypi:
-    runs-on: ubuntu-latest
+  # publish-pypi:
+  #   runs-on: ubuntu-latest
+  #
+  #   steps:
+  #   - uses: actions/checkout@v3
+  #   - uses: actions/setup-python@v3
+  #   - name: Install dependencies
+  #     run: |
+  #       python -m pip install --upgrade pip
+  #       pip install setuptools wheel twine
+  #       if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+  #   - name: publish-to-pypi
+  #     env:
+  #       TWINE_USERNAME: __token__
+  #       TWINE_PASSWORD: ${{ secrets.PYPI_PASSWORD }}
+  #     run: |
+  #       python setup.py sdist bdist_wheel
+  #       twine upload dist/*
 
-    steps:
-    - uses: actions/checkout@v3
-    - uses: actions/setup-python@v3
-    - name: Install dependencies
-      run: |
-        python -m pip install --upgrade pip
-        pip install setuptools wheel twine
-        if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
-    - name: publish-to-pypi
-      env:
-        TWINE_USERNAME: __token__
-        TWINE_PASSWORD: ${{ secrets.PYPI_PASSWORD }}
-      run: |
-        python setup.py sdist bdist_wheel
-        twine upload dist/*
-
-  publish_conda:
+  publish-conda:
     runs-on: ubuntu-latest
 
     steps:
@@ -39,4 +39,3 @@ jobs:
         AnacondaToken: ${{ secrets.ANACONDA_TOKEN }}
         platforms: 'all'
         override: true
-        dry_run: true
