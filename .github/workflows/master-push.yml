@@ -37,5 +37,6 @@ jobs:
       with:
         subDir: '.conda'
         AnacondaToken: ${{ secrets.ANACONDA_TOKEN }}
+        channels: toddp
         platforms: 'all'
         override: true
