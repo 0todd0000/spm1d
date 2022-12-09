@@ -8,7 +8,7 @@ on:
 
 
 jobs:
-  publish:
+  publish_pypi:
     runs-on: ubuntu-latest
 
     steps:
@@ -27,7 +27,7 @@ jobs:
         python setup.py sdist bdist_wheel
         twine upload dist/*
 
-  publish:
+  publish_conda:
     runs-on: ubuntu-latest
 
     steps:
