@@ -8,7 +8,7 @@ on:
 
 
 jobs:
-  deploy:
+  publish:
     runs-on: ubuntu-latest
 
     steps:
@@ -26,3 +26,11 @@ jobs:
       run: |
         python setup.py sdist bdist_wheel
         twine upload dist/*
+    - name: publish-to-conda
+      uses: MichaelsJP/conda-package-publish-action@v1.0.0
+      with:
+        subDir: '.conda'
+        AnacondaToken: ${{ secrets.ANACONDA_TOKEN }}
+        platforms: 'all'
+        override: true
+        dry_run: true

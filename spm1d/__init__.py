@@ -20,7 +20,7 @@ Copyright (C) 2022  Todd Pataky
 '''
 
 
-__version__ = '0.4.15 (2022-12-09)'
+__version__ = '0.4.16 (2022-12-09)'
 
 
 __all__ = ['data', 'io', 'plot', 'rft1d', 'stats', 'util']
