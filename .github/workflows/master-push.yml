@@ -30,12 +30,13 @@ jobs:
   publish-conda:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v1
-    - name: publish-to-conda
-      uses: MichaelsJP/conda-package-publish-action@v1.0.0
+    - uses: actions/checkout@v2
+    # Initializes Conda on a GitHub hosted Runner
+    - uses: conda-incubator/setup-miniconda@v2
       with:
-        subDir: '.conda'
-        AnacondaToken: ${{ secrets.ANACONDA_TOKEN }}
-        platforms: 'all'
-        override: true
-
+        python-version: 3.7
+    # Runs the action with the following inputs or defaults if not specified.
+    - uses: cascode-labs/build-conda-action/action.yml@v0
+      with:
+        recipe_path: '.conda'
+        build_options: '-c toddp'
