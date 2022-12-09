@@ -29,13 +29,9 @@ jobs:
 
   publish-conda:
     runs-on: ubuntu-latest
-
     steps:
     - uses: actions/checkout@v1
     - name: publish-to-conda
-      uses: conda-incubator/setup-miniconda@v2
-      with:
-        channels: toddp
       uses: MichaelsJP/conda-package-publish-action@v1.0.0
       with:
         subDir: '.conda'
