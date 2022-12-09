@@ -32,11 +32,13 @@ jobs:
 
     steps:
     - uses: actions/checkout@v1
+    - uses: conda-incubator/setup-miniconda@v2
+      with:
+        channels: toddp
     - name: publish-to-conda
-      uses: MichaelsJP/conda-package-publish-action@v1.0.0
+    - uses: MichaelsJP/conda-package-publish-action@v1.0.0
       with:
         subDir: '.conda'
         AnacondaToken: ${{ secrets.ANACONDA_TOKEN }}
-        channels: toddp
         platforms: 'all'
         override: true
