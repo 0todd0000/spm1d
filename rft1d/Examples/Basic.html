@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Basic &mdash; rft1d 0.1.1 documentation</title>
+  <title>Basic &mdash; rft1d 0.2.0 documentation</title>
   
 
   
@@ -29,9 +29,18 @@
 
   
   
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../_static/plot_directive.css" type="text/css" />
+  
     <link rel="stylesheet" href="../_static/theme.css" type="text/css" />
   
-    <link rel="top" title="rft1d 0.1.1 documentation" href="../index.html"/>
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="rft1d 0.2.0 documentation" href="../index.html"/>
         <link rel="up" title="Examples" href="../Examples.html"/>
         <link rel="next" title="Broken fields" href="BrokenFields.html"/>
         <link rel="prev" title="Examples" href="../Examples.html"/> 
@@ -56,8 +65,9 @@
 
       <div class="wy-side-nav-search">
         <!-- <a href="../index.html" class="fa fa-home"> rft1d</a> -->
-		<div role="search">
-  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+		
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
@@ -76,7 +86,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../Download.html#source-code-download">Source code download</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../Download.html#release-notes">Release Notes</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../Download.html#license-information">License information</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../Download.html#license-agreement-for-spm1d">License agreement for spm1d</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Download.html#license-agreement-for-rft1d">License agreement for rft1d</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../Theory.html">RFT Overview</a><ul>
@@ -89,7 +99,7 @@
 </ul>
 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="../Examples.html">Examples</a><ul class="current">
-<li class="toctree-l2 current"><a class="current reference internal" href="">Basic</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Basic</a></li>
 <li class="toctree-l2"><a class="reference internal" href="BrokenFields.html">Broken fields</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Validation.html">Validation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Application.html">Application</a></li>
@@ -126,8 +136,9 @@
 	  
       <!-- <div class="wy-side-nav-search">
         <a href="../index.html" class="fa fa-home"> rft1d</a>
-		<div role="search">
-  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+		
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
@@ -160,7 +171,7 @@
     <li>Basic</li>
       <li class="wy-breadcrumbs-aside">
         
-          <!-- <a href="../_sources/Examples/Basic.txt" rel="nofollow"> View page source</a> -->
+          <!-- <a href="../_sources/Examples/Basic.rst.txt" rel="nofollow"> View page source</a> -->
         
       </li>
   </ul>
@@ -168,12 +179,12 @@
 </div>
           <div role="main">
             
-  <div class="section" id="basic">
-<h1>Basic<a class="headerlink" href="#basic" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="generating-1d-gaussian-fields">
-<span id="label-examples-generatinggaussianfields"></span><h2>Generating 1D Gaussian fields<a class="headerlink" href="#generating-1d-gaussian-fields" title="Permalink to this headline">¶</a></h2>
+  <section id="basic">
+<h1>Basic<a class="headerlink" href="#basic" title="Permalink to this heading">¶</a></h1>
+<section id="generating-1d-gaussian-fields">
+<span id="label-examples-generatinggaussianfields"></span><h2>Generating 1D Gaussian fields<a class="headerlink" href="#generating-1d-gaussian-fields" title="Permalink to this heading">¶</a></h2>
 <p>Smooth 1D Gaussian fields can be generated using the <strong>rft1d.randn1d</strong> function:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">rft1d</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">rft1d</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">nResponses</span> <span class="o">=</span> <span class="mi">5</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">nNodes</span> <span class="o">=</span> <span class="mi">101</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">FWHM</span> <span class="o">=</span> <span class="mf">10.0</span>
@@ -182,207 +193,199 @@
 </div>
 <p>The generated fields are stored in a 2D NumPy array with shape = (<em>nResponses</em>, <em>nNodes</em>).
 They can thus be visualized easily using <strong>matplotlib</strong>:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">pyplot</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">y</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>(<a class="reference external" href="../Examples/Basic-1.py">Source code</a>, <a class="reference external" href="../Examples/Basic-1.png">png</a>, <a class="reference external" href="../Examples/Basic-1.hires.png">hires.png</a>, <a class="reference external" href="../Examples/Basic-1.pdf">pdf</a>)</p>
-<div class="figure">
-<img alt="../_images/Basic-1.png" src="../_images/Basic-1.png" />
-</div>
+<figure class="align-default">
+<img alt="../_images/Basic-1.png" class="plot-directive" src="../_images/Basic-1.png" />
+</figure>
 <p>To precisely reproduce partcular random fields, use <strong>np.random.seed</strong>:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">rft1d</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">yA</span> <span class="o">=</span> <span class="n">rft1d</span><span class="o">.</span><span class="n">randn1d</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">101</span><span class="p">,</span> <span class="mf">20.0</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">yB</span> <span class="o">=</span> <span class="n">rft1d</span><span class="o">.</span><span class="n">randn1d</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">101</span><span class="p">,</span> <span class="mf">20.0</span><span class="p">)</span>  <span class="c">#yB and yA are different</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">yB</span> <span class="o">=</span> <span class="n">rft1d</span><span class="o">.</span><span class="n">randn1d</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">101</span><span class="p">,</span> <span class="mf">20.0</span><span class="p">)</span>  <span class="c1">#yB and yA are different</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">yC</span> <span class="o">=</span> <span class="n">rft1d</span><span class="o">.</span><span class="n">randn1d</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">101</span><span class="p">,</span> <span class="mf">20.0</span><span class="p">)</span>  <span class="c">#yC and yA are identical</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">yC</span> <span class="o">=</span> <span class="n">rft1d</span><span class="o">.</span><span class="n">randn1d</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">101</span><span class="p">,</span> <span class="mf">20.0</span><span class="p">)</span>  <span class="c1">#yC and yA are identical</span>
 </pre></div>
 </div>
 <p>If simulating random fields over many iterations the <strong>rft1d.Generator1D</strong> is slightly faster:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">g</span> <span class="o">=</span> <span class="n">rft1d</span><span class="o">.</span><span class="n">Generator1D</span><span class="p">(</span><span class="n">nResponses</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">nNodes</span><span class="o">=</span><span class="mi">101</span><span class="p">,</span> <span class="n">FWHM</span><span class="o">=</span><span class="mf">10.0</span><span class="p">)</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">g</span> <span class="o">=</span> <span class="n">rft1d</span><span class="o">.</span><span class="n">Generator1D</span><span class="p">(</span><span class="n">nResponses</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">nNodes</span><span class="o">=</span><span class="mi">101</span><span class="p">,</span> <span class="n">FWHM</span><span class="o">=</span><span class="mf">10.0</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">yA</span> <span class="o">=</span> <span class="n">g</span><span class="o">.</span><span class="n">generate_array</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">yB</span> <span class="o">=</span> <span class="n">g</span><span class="o">.</span><span class="n">generate_array</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">yC</span> <span class="o">=</span> <span class="n">g</span><span class="o">.</span><span class="n">generate_array</span><span class="p">()</span>
 </pre></div>
 </div>
 <div class="admonition warning">
-<p class="first admonition-title">Warning</p>
+<p class="admonition-title">Warning</p>
 <p>Generating very smooth random fields requires field padding to adhere to RFT expectations. This can be done easily using the <em>pad</em> keyword argument, but this becomes increasingly slow as FWHM increases. By default <em>pad</em> is False.</p>
-<div class="last highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">y</span> <span class="o">=</span> <span class="n">rft1d</span><span class="o">.</span><span class="n">randn1d</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">101</span><span class="p">,</span> <span class="mf">80.0</span><span class="p">,</span> <span class="n">pad</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">g</span> <span class="o">=</span> <span class="n">rft1d</span><span class="o">.</span><span class="n">Generator1D</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">101</span><span class="p">,</span> <span class="mf">80.0</span><span class="p">,</span> <span class="n">pad</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">y</span> <span class="o">=</span> <span class="n">rft1d</span><span class="o">.</span><span class="n">randn1d</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">101</span><span class="p">,</span> <span class="mf">80.0</span><span class="p">,</span> <span class="n">pad</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">g</span> <span class="o">=</span> <span class="n">rft1d</span><span class="o">.</span><span class="n">Generator1D</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">101</span><span class="p">,</span> <span class="mf">80.0</span><span class="p">,</span> <span class="n">pad</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">y</span> <span class="o">=</span> <span class="n">g</span><span class="o">.</span><span class="n">generate_array</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <p>Increasing the FWHM in this manner yields much smoother fields; below is an example of FWHM=80.0.</p>
 <p>(<a class="reference external" href="../Examples/Basic-2.py">Source code</a>, <a class="reference external" href="../Examples/Basic-2.png">png</a>, <a class="reference external" href="../Examples/Basic-2.hires.png">hires.png</a>, <a class="reference external" href="../Examples/Basic-2.pdf">pdf</a>)</p>
-<div class="figure">
-<img alt="../_images/Basic-2.png" src="../_images/Basic-2.png" />
-</div>
-</div>
-<div class="section" id="node-based-vs-element-based-sampling">
-<span id="label-nodebasedelementbased"></span><h2>Node-based vs. element-based sampling<a class="headerlink" href="#node-based-vs-element-based-sampling" title="Permalink to this headline">¶</a></h2>
+<figure class="align-default">
+<img alt="../_images/Basic-2.png" class="plot-directive" src="../_images/Basic-2.png" />
+</figure>
+</section>
+<section id="node-based-vs-element-based-sampling">
+<span id="label-nodebasedelementbased"></span><h2>Node-based vs. element-based sampling<a class="headerlink" href="#node-based-vs-element-based-sampling" title="Permalink to this heading">¶</a></h2>
 <p>Fields may be sampled either in a node-based sense or in an element-based sense.
 As suggested by the figure below, node-based sampling refers to discrete measurements
 at single instants in time or at single points in space. Element-based sampling, on
 the other hand, refers to measurements that span an interval.</p>
 <blockquote>
 <div><p>(<a class="reference external" href="../Examples/Basic-3.py">Source code</a>, <a class="reference external" href="../Examples/Basic-3.png">png</a>, <a class="reference external" href="../Examples/Basic-3.hires.png">hires.png</a>, <a class="reference external" href="../Examples/Basic-3.pdf">pdf</a>)</p>
-<div class="figure">
-<img alt="../_images/Basic-3.png" src="../_images/Basic-3.png" />
-</div>
+<figure class="align-default">
+<img alt="../_images/Basic-3.png" class="plot-directive" src="../_images/Basic-3.png" />
+</figure>
 </div></blockquote>
 <p>Some common examples of each:</p>
 <blockquote>
-<div><dl class="docutils">
-<dt><strong>Node-based sampling</strong>:</dt>
-<dd><ul class="first last simple">
-<li>Biomechanical time series (sampled at discrete instants)</li>
-<li>Ocean wave heights (sampled by discrete sensors)</li>
+<div><dl class="simple">
+<dt><strong>Node-based sampling</strong>:</dt><dd><ul class="simple">
+<li><p>Biomechanical time series (sampled at discrete instants)</p></li>
+<li><p>Ocean wave heights (sampled by discrete sensors)</p></li>
 </ul>
 </dd>
-<dt><strong>Element-based sampling</strong>:</dt>
-<dd><ul class="first last simple">
-<li>Contact pressure distribution (average pressure acting over an area)</li>
-<li>Long-interval time series (sampled daily, weekly or monthly, where each sample represents one whole day, week or month)</li>
+<dt><strong>Element-based sampling</strong>:</dt><dd><ul class="simple">
+<li><p>Contact pressure distribution (average pressure acting over an area)</p></li>
+<li><p>Long-interval time series (sampled daily, weekly or monthly, where each sample represents one whole day, week or month)</p></li>
 </ul>
 </dd>
 </dl>
 </div></blockquote>
-<p>Node-based sampling is assumed by default in <strong>rft1d</strong>. Switching to element-based sampling can be done by setting the keyword &#8220;element_based&#8221; to True in relevant <strong>rft1d</strong> procedures.</p>
-</div>
-<div class="section" id="extracting-maxima">
-<h2>Extracting maxima<a class="headerlink" href="#extracting-maxima" title="Permalink to this headline">¶</a></h2>
+<p>Node-based sampling is assumed by default in <strong>rft1d</strong>. Switching to element-based sampling can be done by setting the keyword “element_based” to True in relevant <strong>rft1d</strong> procedures.</p>
+</section>
+<section id="extracting-maxima">
+<h2>Extracting maxima<a class="headerlink" href="#extracting-maxima" title="Permalink to this heading">¶</a></h2>
 <p>Since the fields are NumPy arrays field maxima can be extracted using <strong>np.max</strong> and <strong>np.argmax</strong>:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">y</span> <span class="o">=</span> <span class="n">rft1d</span><span class="o">.</span><span class="n">randn1d</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">101</span><span class="p">,</span> <span class="mf">25.0</span><span class="p">)</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">y</span> <span class="o">=</span> <span class="n">rft1d</span><span class="o">.</span><span class="n">randn1d</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">101</span><span class="p">,</span> <span class="mf">25.0</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">ymax</span> <span class="o">=</span> <span class="n">y</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">y</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">pyplot</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">y</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="s">&#39;k&#39;</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">pyplot</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">ymax</span><span class="p">,</span> <span class="s">&#39;ro&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pyplot</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">y</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="s1">&#39;k&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pyplot</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">ymax</span><span class="p">,</span> <span class="s1">&#39;ro&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>(<a class="reference external" href="../Examples/Basic-4.py">Source code</a>, <a class="reference external" href="../Examples/Basic-4.png">png</a>, <a class="reference external" href="../Examples/Basic-4.hires.png">hires.png</a>, <a class="reference external" href="../Examples/Basic-4.pdf">pdf</a>)</p>
-<div class="figure">
-<img alt="../_images/Basic-4.png" src="../_images/Basic-4.png" />
-</div>
-</div>
-<div class="section" id="computing-upcrossing-metrics">
-<span id="label-examples-computingupcrossingmetrics"></span><h2>Computing upcrossing metrics<a class="headerlink" href="#computing-upcrossing-metrics" title="Permalink to this headline">¶</a></h2>
+<figure class="align-default">
+<img alt="../_images/Basic-4.png" class="plot-directive" src="../_images/Basic-4.png" />
+</figure>
+</section>
+<section id="computing-upcrossing-metrics">
+<span id="label-examples-computingupcrossingmetrics"></span><h2>Computing upcrossing metrics<a class="headerlink" href="#computing-upcrossing-metrics" title="Permalink to this heading">¶</a></h2>
 <p>Consider the following random field thresholded at a height of -0.2, for which there are three upcrossings.</p>
 <p>(<a class="reference external" href="../Examples/Basic-5.py">Source code</a>, <a class="reference external" href="../Examples/Basic-5.png">png</a>, <a class="reference external" href="../Examples/Basic-5.hires.png">hires.png</a>, <a class="reference external" href="../Examples/Basic-5.pdf">pdf</a>)</p>
-<div class="figure">
-<img alt="../_images/Basic-5.png" src="../_images/Basic-5.png" />
-</div>
-<p>Let&#8217;s zoom in on the first upcrossing to give a clearer context to upcrossing metric results below.</p>
+<figure class="align-default">
+<img alt="../_images/Basic-5.png" class="plot-directive" src="../_images/Basic-5.png" />
+</figure>
+<p>Let’s zoom in on the first upcrossing to give a clearer context to upcrossing metric results below.</p>
 <p>(<a class="reference external" href="../Examples/Basic-6.py">Source code</a>, <a class="reference external" href="../Examples/Basic-6.png">png</a>, <a class="reference external" href="../Examples/Basic-6.hires.png">hires.png</a>, <a class="reference external" href="../Examples/Basic-6.pdf">pdf</a>)</p>
-<div class="figure">
-<img alt="../_images/Basic-6.png" src="../_images/Basic-6.png" />
-</div>
+<figure class="align-default">
+<img alt="../_images/Basic-6.png" class="plot-directive" src="../_images/Basic-6.png" />
+</figure>
 <p>To compute upcrossing metrics set a height <em>u</em> then use the <strong>rft1d.geom.ClusterMetricCalculator</strong> class.</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span> <span class="n">y</span> <span class="o">=</span> <span class="n">rft1d</span><span class="o">.</span><span class="n">randn1d</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">101</span><span class="p">,</span> <span class="mf">20.0</span><span class="p">,</span> <span class="n">pad</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span> <span class="n">y</span> <span class="o">=</span> <span class="n">rft1d</span><span class="o">.</span><span class="n">randn1d</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">101</span><span class="p">,</span> <span class="mf">20.0</span><span class="p">,</span> <span class="n">pad</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span> <span class="n">calc</span> <span class="o">=</span> <span class="n">rft1d</span><span class="o">.</span><span class="n">geom</span><span class="o">.</span><span class="n">ClusterMetricCalculator</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span> <span class="n">u</span> <span class="o">=</span> <span class="o">-</span><span class="mf">0.2</span>
-<span class="gp">&gt;&gt;&gt; </span> <span class="k">print</span> <span class="n">calc</span><span class="o">.</span><span class="n">cluster_extents</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">u</span><span class="p">)</span> <span class="c">#yields [3.54, 21.3, 18.2]</span>
-<span class="gp">&gt;&gt;&gt; </span> <span class="k">print</span> <span class="n">calc</span><span class="o">.</span><span class="n">max_cluster_extent</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">u</span><span class="p">)</span> <span class="c">#yields 21.3</span>
-<span class="gp">&gt;&gt;&gt; </span> <span class="k">print</span> <span class="n">calc</span><span class="o">.</span><span class="n">mean_cluster_extent</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">u</span><span class="p">)</span> <span class="c">#yields 14.4</span>
-<span class="gp">&gt;&gt;&gt; </span> <span class="k">print</span> <span class="n">calc</span><span class="o">.</span><span class="n">nSuprathresholdNodes</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">u</span><span class="p">)</span> <span class="c">#yields 45</span>
-<span class="gp">&gt;&gt;&gt; </span> <span class="k">print</span> <span class="n">calc</span><span class="o">.</span><span class="n">nSuprathresholdResels</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">u</span><span class="p">,</span> <span class="n">fwhm</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span> <span class="c">#yields 4.31</span>
-<span class="gp">&gt;&gt;&gt; </span> <span class="k">print</span> <span class="n">calc</span><span class="o">.</span><span class="n">nUpcrossings</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">u</span><span class="p">)</span> <span class="c">#yields 3</span>
-<span class="gp">&gt;&gt;&gt; </span> <span class="k">print</span> <span class="n">calc</span><span class="o">.</span><span class="n">nUpcrossingsByExtent</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">u</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span> <span class="c">#yields 2</span>
+<span class="gp">&gt;&gt;&gt; </span> <span class="nb">print</span> <span class="n">calc</span><span class="o">.</span><span class="n">cluster_extents</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">u</span><span class="p">)</span> <span class="c1">#yields [3.54, 21.3, 18.2]</span>
+<span class="gp">&gt;&gt;&gt; </span> <span class="nb">print</span> <span class="n">calc</span><span class="o">.</span><span class="n">max_cluster_extent</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">u</span><span class="p">)</span> <span class="c1">#yields 21.3</span>
+<span class="gp">&gt;&gt;&gt; </span> <span class="nb">print</span> <span class="n">calc</span><span class="o">.</span><span class="n">mean_cluster_extent</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">u</span><span class="p">)</span> <span class="c1">#yields 14.4</span>
+<span class="gp">&gt;&gt;&gt; </span> <span class="nb">print</span> <span class="n">calc</span><span class="o">.</span><span class="n">nSuprathresholdNodes</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">u</span><span class="p">)</span> <span class="c1">#yields 45</span>
+<span class="gp">&gt;&gt;&gt; </span> <span class="nb">print</span> <span class="n">calc</span><span class="o">.</span><span class="n">nSuprathresholdResels</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">u</span><span class="p">,</span> <span class="n">fwhm</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span> <span class="c1">#yields 4.31</span>
+<span class="gp">&gt;&gt;&gt; </span> <span class="nb">print</span> <span class="n">calc</span><span class="o">.</span><span class="n">nUpcrossings</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">u</span><span class="p">)</span> <span class="c1">#yields 3</span>
+<span class="gp">&gt;&gt;&gt; </span> <span class="nb">print</span> <span class="n">calc</span><span class="o">.</span><span class="n">nUpcrossingsByExtent</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">u</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span> <span class="c1">#yields 2</span>
 </pre></div>
 </div>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">There are four supra-threshold nodes in the first upcrossing shown above, but the length of the upcrossing (i.e. its extent) is less than four. From the procedures above, <strong>cluster_extents</strong> and <strong>nSuprathresholdResels</strong> are reported as lengths.</p>
+<p class="admonition-title">Note</p>
+<p>There are four supra-threshold nodes in the first upcrossing shown above, but the length of the upcrossing (i.e. its extent) is less than four. From the procedures above, <strong>cluster_extents</strong> and <strong>nSuprathresholdResels</strong> are reported as lengths.</p>
 </div>
 <p>By default cluster extents are interpolated to the threshold <em>u</em>. Disabling interpolation using the keyword <strong>interp</strong> is faster, and will yield integer extents:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span> <span class="k">print</span> <span class="n">calc</span><span class="o">.</span><span class="n">cluster_extents</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">u</span><span class="p">,</span> <span class="n">interp</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span> <span class="c">#yields [3, 21, 18]</span>
-<span class="gp">&gt;&gt;&gt; </span> <span class="k">print</span> <span class="n">calc</span><span class="o">.</span><span class="n">max_cluster_extent</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">u</span><span class="p">,</span> <span class="n">interp</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span> <span class="c">#yields 21</span>
-<span class="gp">&gt;&gt;&gt; </span> <span class="k">print</span> <span class="n">calc</span><span class="o">.</span><span class="n">mean_cluster_extent</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">u</span><span class="p">,</span> <span class="n">interp</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span> <span class="c">#yields 14</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span> <span class="nb">print</span> <span class="n">calc</span><span class="o">.</span><span class="n">cluster_extents</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">u</span><span class="p">,</span> <span class="n">interp</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span> <span class="c1">#yields [3, 21, 18]</span>
+<span class="gp">&gt;&gt;&gt; </span> <span class="nb">print</span> <span class="n">calc</span><span class="o">.</span><span class="n">max_cluster_extent</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">u</span><span class="p">,</span> <span class="n">interp</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span> <span class="c1">#yields 21</span>
+<span class="gp">&gt;&gt;&gt; </span> <span class="nb">print</span> <span class="n">calc</span><span class="o">.</span><span class="n">mean_cluster_extent</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">u</span><span class="p">,</span> <span class="n">interp</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span> <span class="c1">#yields 14</span>
 </pre></div>
 </div>
 <div class="admonition danger">
-<p class="first admonition-title">Danger</p>
-<p class="last">Setting <em>interp</em> to False is faster, but it may cause disagreements between node-based and element-based sampling (if only one node exceeds <em>u</em>, the node-based extent is zero, but the element-based extent may be zero or one). If the upcrossing is large this difference is negligible, but for small upcrossing there may be strange results (i.e. upcrossing with an extent of zero). Recommendation: <strong>always interpolate</strong>.</p>
+<p class="admonition-title">Danger</p>
+<p>Setting <em>interp</em> to False is faster, but it may cause disagreements between node-based and element-based sampling (if only one node exceeds <em>u</em>, the node-based extent is zero, but the element-based extent may be zero or one). If the upcrossing is large this difference is negligible, but for small upcrossing there may be strange results (i.e. upcrossing with an extent of zero). Recommendation: <strong>always interpolate</strong>.</p>
 </div>
-</div>
-<div class="section" id="checking-rft-expectations">
-<span id="label-examples-checkingrftexpectations"></span><h2>Checking RFT expectations<a class="headerlink" href="#checking-rft-expectations" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="checking-rft-expectations">
+<span id="label-examples-checkingrftexpectations"></span><h2>Checking RFT expectations<a class="headerlink" href="#checking-rft-expectations" title="Permalink to this heading">¶</a></h2>
 <p>RFT expectations regarding Gaussian random fields can be accessed via an interface
 similar to <strong>scipy.stats</strong>. As an example, in <strong>scipy</strong> the survival function for
 the standard normal distribution is given by:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span> <span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">stats</span>
-<span class="gp">&gt;&gt;&gt; </span> <span class="n">stats</span><span class="o">.</span><span class="n">norm</span><span class="o">.</span><span class="n">sf</span><span class="p">(</span><span class="mf">2.0</span><span class="p">)</span> <span class="c">#yields 0.023</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span> <span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">stats</span>
+<span class="gp">&gt;&gt;&gt; </span> <span class="n">stats</span><span class="o">.</span><span class="n">norm</span><span class="o">.</span><span class="n">sf</span><span class="p">(</span><span class="mf">2.0</span><span class="p">)</span> <span class="c1">#yields 0.023</span>
 </pre></div>
 </div>
 <p>In <strong>rft1d</strong> the survival function for standard normal Gaussian fields is given by:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span> <span class="n">nNodes</span> <span class="o">=</span> <span class="mi">101</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span> <span class="n">nNodes</span> <span class="o">=</span> <span class="mi">101</span>
 <span class="gp">&gt;&gt;&gt; </span> <span class="n">FWHM</span> <span class="o">=</span> <span class="mf">10.0</span>
-<span class="gp">&gt;&gt;&gt; </span> <span class="k">print</span> <span class="n">rft1d</span><span class="o">.</span><span class="n">norm</span><span class="o">.</span><span class="n">sf</span><span class="p">(</span><span class="mf">2.0</span><span class="p">,</span> <span class="n">nNodes</span><span class="p">,</span> <span class="n">FWHM</span><span class="p">)</span> <span class="c">#yields 0.320</span>
+<span class="gp">&gt;&gt;&gt; </span> <span class="nb">print</span> <span class="n">rft1d</span><span class="o">.</span><span class="n">norm</span><span class="o">.</span><span class="n">sf</span><span class="p">(</span><span class="mf">2.0</span><span class="p">,</span> <span class="n">nNodes</span><span class="p">,</span> <span class="n">FWHM</span><span class="p">)</span> <span class="c1">#yields 0.320</span>
 </pre></div>
 </div>
 <p>Thus a 1D Gaussian random field with FWHM=10 and a field length of 100 is about 14 times more likely to reach
 a height of 2.0 than is a 0D Gaussian scalar.</p>
 <p>The most convenient way to explore RFT expectations and probabilities is with the <strong>rft1d.prob.RFTCalculator</strong> class:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">calc</span> <span class="o">=</span> <span class="n">rft1d</span><span class="o">.</span><span class="n">prob</span><span class="o">.</span><span class="n">RFTCalculator</span><span class="p">(</span><span class="s">&#39;T&#39;</span><span class="p">,</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">8</span><span class="p">),</span> <span class="mi">101</span><span class="p">,</span> <span class="mf">15.0</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">calc</span><span class="o">.</span><span class="n">expected</span><span class="o">.</span><span class="n">number_of_upcrossings</span><span class="p">(</span><span class="mf">1.0</span><span class="p">)</span> <span class="c">#yields 1.343</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">calc</span><span class="o">.</span><span class="n">expected</span><span class="o">.</span><span class="n">number_of_upcrossings</span><span class="p">(</span><span class="mf">4.5</span><span class="p">)</span> <span class="c">#yields 0.0223</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">calc</span><span class="o">.</span><span class="n">expected</span><span class="o">.</span><span class="n">nodes_per_upcrossing</span><span class="p">(</span><span class="mf">2.0</span><span class="p">)</span>  <span class="c">#yields 10.419</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">calc</span><span class="o">.</span><span class="n">p</span><span class="o">.</span><span class="n">upcrossing</span><span class="p">(</span><span class="mf">3.0</span><span class="p">)</span>  <span class="c">#yields 0.126</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">calc</span> <span class="o">=</span> <span class="n">rft1d</span><span class="o">.</span><span class="n">prob</span><span class="o">.</span><span class="n">RFTCalculator</span><span class="p">(</span><span class="s1">&#39;T&#39;</span><span class="p">,</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">8</span><span class="p">),</span> <span class="mi">101</span><span class="p">,</span> <span class="mf">15.0</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span> <span class="n">calc</span><span class="o">.</span><span class="n">expected</span><span class="o">.</span><span class="n">number_of_upcrossings</span><span class="p">(</span><span class="mf">1.0</span><span class="p">)</span> <span class="c1">#yields 1.343</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span> <span class="n">calc</span><span class="o">.</span><span class="n">expected</span><span class="o">.</span><span class="n">number_of_upcrossings</span><span class="p">(</span><span class="mf">4.5</span><span class="p">)</span> <span class="c1">#yields 0.0223</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span> <span class="n">calc</span><span class="o">.</span><span class="n">expected</span><span class="o">.</span><span class="n">nodes_per_upcrossing</span><span class="p">(</span><span class="mf">2.0</span><span class="p">)</span>  <span class="c1">#yields 10.419</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span> <span class="n">calc</span><span class="o">.</span><span class="n">p</span><span class="o">.</span><span class="n">upcrossing</span><span class="p">(</span><span class="mf">3.0</span><span class="p">)</span>  <span class="c1">#yields 0.126</span>
 </pre></div>
 </div>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">The minum value of <strong>expected.nodes_per_upcrossing</strong> is one because, if there is an upcrossing, it must have at least one node.</p>
+<p class="admonition-title">Note</p>
+<p>The minum value of <strong>expected.nodes_per_upcrossing</strong> is one because, if there is an upcrossing, it must have at least one node.</p>
 </div>
-</div>
-<div class="section" id="validating-rft-expectations">
-<span id="label-examples-validatingrftexpectations"></span><h2>Validating RFT expectations<a class="headerlink" href="#validating-rft-expectations" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="validating-rft-expectations">
+<span id="label-examples-validatingrftexpectations"></span><h2>Validating RFT expectations<a class="headerlink" href="#validating-rft-expectations" title="Permalink to this heading">¶</a></h2>
 <p>RFT expectations can be validated as follows:</p>
 <blockquote>
 <div><ol class="arabic simple">
-<li>Use <strong>rft1d.prob.RFTCalculator</strong> to generate theoretical predictions <a class="reference internal" href="#label-examples-checkingrftexpectations"><span>(see here)</span></a></li>
-<li>Then use <strong>rft1d.randn1d</strong> to generate random fields <a class="reference internal" href="#label-examples-generatinggaussianfields"><span>(see here)</span></a></li>
-<li>For each random field use <strong>rft1d.geom.ClusterMetricCalculator</strong> to compute upcrossing metrics <a class="reference internal" href="#label-examples-computingupcrossingmetrics"><span>(see here)</span></a></li>
+<li><p>Use <strong>rft1d.prob.RFTCalculator</strong> to generate theoretical predictions <a class="reference internal" href="#label-examples-checkingrftexpectations"><span class="std std-ref">(see here)</span></a></p></li>
+<li><p>Then use <strong>rft1d.randn1d</strong> to generate random fields <a class="reference internal" href="#label-examples-generatinggaussianfields"><span class="std std-ref">(see here)</span></a></p></li>
+<li><p>For each random field use <strong>rft1d.geom.ClusterMetricCalculator</strong> to compute upcrossing metrics <a class="reference internal" href="#label-examples-computingupcrossingmetrics"><span class="std std-ref">(see here)</span></a></p></li>
 </ol>
 </div></blockquote>
 <p>The figure below depicts a validation for the
 expected number of upcrossings in Gaussian fields with FWHM=10. Click on the
-&#8220;source code&#8221; link below to see details.</p>
+“source code” link below to see details.</p>
 <p>(<a class="reference external" href="../pyplots/fig_val_nUpcrossings.py">Source code</a>, <a class="reference external" href="../pyplots/fig_val_nUpcrossings.png">png</a>, <a class="reference external" href="../pyplots/fig_val_nUpcrossings.hires.png">hires.png</a>, <a class="reference external" href="../pyplots/fig_val_nUpcrossings.pdf">pdf</a>)</p>
-<div class="figure">
-<img alt="../_images/fig_val_nUpcrossings.png" src="../_images/fig_val_nUpcrossings.png" />
-</div>
-</div>
-</div>
+<figure class="align-default">
+<img alt="../_images/fig_val_nUpcrossings.png" class="plot-directive" src="../_images/fig_val_nUpcrossings.png" />
+</figure>
+</section>
+</section>
 
 
           </div>
-          <footer>
-  
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="BrokenFields.html" class="btn btn-neutral float-right" title="Broken fields">Next <span class="fa fa-arrow-circle-right"></span></a>
-      
-      
-        <a href="../Examples.html" class="btn btn-neutral" title="Examples"><span class="fa fa-arrow-circle-left"></span> Previous</a>
-      
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../Examples.html" class="btn btn-neutral float-left" title="Examples" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="BrokenFields.html" class="btn btn-neutral float-right" title="Broken fields" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
-  
 
   <hr/>
 
   <div role="contentinfo">
-    <p>
-        &copy; Copyright 2015, Todd Pataky.
-    </p>
+    <p>&#169; Copyright 2022, Todd Pataky.</p>
   </div>
 
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
-  
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
 </footer>
         </div>
       </div>
@@ -392,20 +395,21 @@ expected number of upcrossings in Gaussian fields with FWHM=10. Click on the
   </div>
   
 
-
   
 
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'0.1.1',
+            VERSION:'0.2.0',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true
         };
     </script>
+      <script type="text/javascript" src="../_static/documentation_options.js"></script>
       <script type="text/javascript" src="../_static/jquery.js"></script>
       <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
       <script type="text/javascript" src="../_static/doctools.js"></script>
 
   

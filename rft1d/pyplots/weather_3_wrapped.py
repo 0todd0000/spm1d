@@ -87,7 +87,7 @@ ax.plot([30,310], [3,3.5], 'ko')
 ### axis labels:
 ax.set_xlabel('Day', size=16)
 ax.set_ylabel('t value', size=16)
-ax.set_title('RFT-based inference of weather dataset (wrapped field)', size=20)
+ax.set_title('RFT-based inference of weather dataset (wrapped field)', size=16)
 # pyplot.show()
 
 

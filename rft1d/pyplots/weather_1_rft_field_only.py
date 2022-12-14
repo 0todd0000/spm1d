@@ -34,7 +34,7 @@ ax     = pyplot.axes()
 ax.plot(t, 'k', lw=3, label='t field')
 ax.set_xlabel('Day', size=16)
 ax.set_ylabel('t value', size=16)
-ax.set_title('Test statistic field', size=20)
+ax.set_title('Test statistic field', size=16)
 # pyplot.show()
 
 

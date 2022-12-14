@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>rft1d.geom &mdash; rft1d 0.1.1 documentation</title>
+  <title>rft1d.geom &mdash; rft1d 0.2.0 documentation</title>
   
 
   
@@ -29,9 +29,18 @@
 
   
   
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../_static/plot_directive.css" type="text/css" />
+  
     <link rel="stylesheet" href="../_static/theme.css" type="text/css" />
   
-    <link rel="top" title="rft1d 0.1.1 documentation" href="../index.html"/>
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="rft1d 0.2.0 documentation" href="../index.html"/>
         <link rel="up" title="API" href="../API.html"/>
         <link rel="next" title="rft1d.prob" href="prob.html"/>
         <link rel="prev" title="rft1d.distributions" href="distributions.html"/> 
@@ -56,8 +65,9 @@
 
       <div class="wy-side-nav-search">
         <!-- <a href="../index.html" class="fa fa-home"> rft1d</a> -->
-		<div role="search">
-  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+		
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
@@ -102,7 +112,7 @@
 <li class="toctree-l1 current"><a class="reference internal" href="../API.html">API</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="data.html">rft1d.data</a></li>
 <li class="toctree-l2"><a class="reference internal" href="distributions.html">rft1d.distributions</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="">rft1d.geom</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">rft1d.geom</a></li>
 <li class="toctree-l2"><a class="reference internal" href="prob.html">rft1d.prob</a></li>
 <li class="toctree-l2"><a class="reference internal" href="random.html">rft1d.random</a></li>
 </ul>
@@ -126,8 +136,9 @@
 	  
       <!-- <div class="wy-side-nav-search">
         <a href="../index.html" class="fa fa-home"> rft1d</a>
-		<div role="search">
-  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+		
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
@@ -160,7 +171,7 @@
     <li>rft1d.geom</li>
       <li class="wy-breadcrumbs-aside">
         
-          <!-- <a href="../_sources/API/geom.txt" rel="nofollow"> View page source</a> -->
+          <!-- <a href="../_sources/API/geom.rst.txt" rel="nofollow"> View page source</a> -->
         
       </li>
   </ul>
@@ -168,627 +179,546 @@
 </div>
           <div role="main">
             
-  <div class="section" id="module-rft1d.geom">
-<span id="rft1d-geom"></span><span id="label-api-geom"></span><h1>rft1d.geom<a class="headerlink" href="#module-rft1d.geom" title="Permalink to this headline">¶</a></h1>
+  <section id="module-rft1d.geom">
+<span id="rft1d-geom"></span><span id="label-api-geom"></span><h1>rft1d.geom<a class="headerlink" href="#module-rft1d.geom" title="Permalink to this heading">¶</a></h1>
 <p>Geometry module</p>
 <p>This module contains functions for computing various geomtric characteristics
 of 1D fields and upcrossings.</p>
-<div class="section" id="basic-geometry-functions">
-<h2>Basic geometry functions:<a class="headerlink" href="#basic-geometry-functions" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="bwlabel">
-<h3>bwlabel<a class="headerlink" href="#bwlabel" title="Permalink to this headline">¶</a></h3>
-<dl class="function">
-<dt id="rft1d.geom.bwlabel">
-<code class="descclassname">rft1d.geom.</code><code class="descname">bwlabel</code><span class="sig-paren">(</span><em>b</em>, <em>merge_wrapped=False</em><span class="sig-paren">)</span><a class="headerlink" href="#rft1d.geom.bwlabel" title="Permalink to this definition">¶</a></dt>
+<section id="basic-geometry-functions">
+<h2>Basic geometry functions:<a class="headerlink" href="#basic-geometry-functions" title="Permalink to this heading">¶</a></h2>
+<section id="bwlabel">
+<h3>bwlabel<a class="headerlink" href="#bwlabel" title="Permalink to this heading">¶</a></h3>
+<dl class="py function">
+<dt class="sig sig-object py" id="rft1d.geom.bwlabel">
+<span class="sig-prename descclassname"><span class="pre">rft1d.geom.</span></span><span class="sig-name descname"><span class="pre">bwlabel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">b</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">merge_wrapped</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rft1d.geom.bwlabel" title="Permalink to this definition">¶</a></dt>
 <dd><p>Label clusters in a binary field <em>b</em>.
 This function yields the same output as <strong>scipy.ndimage.measurements.label</strong>
 but is much faster for 1D fields.
 If <em>merge_wrapped</em></p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><em>b</em> &#8212; a binary field</p>
-<p><em>merge_wrapped</em> &#8212; if True, boundary upcrossings will be merged into a single cluster.</p>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><em>L</em> &#8212; labeled upcrossings (array of integers)</p>
-<p><em>n</em> &#8212; number of upcrossings</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Example:</th><td class="field-body"><div class="first last highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">y</span> <span class="o">=</span> <span class="n">rft1d</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn1d</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">101</span><span class="p">,</span> <span class="mf">10.0</span><span class="p">)</span>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><em>b</em> — a binary field</p>
+<p><em>merge_wrapped</em> — if True, boundary upcrossings will be merged into a single cluster.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><em>L</em> — labeled upcrossings (array of integers)</p>
+<p><em>n</em> — number of upcrossings</p>
+</dd>
+<dt class="field-odd">Example</dt>
+<dd class="field-odd"><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">y</span> <span class="o">=</span> <span class="n">rft1d</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn1d</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">101</span><span class="p">,</span> <span class="mf">10.0</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">b</span> <span class="o">=</span> <span class="n">y</span> <span class="o">&gt;</span> <span class="mf">2.0</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">L</span><span class="p">,</span><span class="n">n</span> <span class="o">=</span> <span class="n">rft1d</span><span class="o">.</span><span class="n">geom</span><span class="o">.</span><span class="n">bwlabel</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
 </pre></div>
 </div>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 </dd></dl>
 
-</div>
-<div class="section" id="estimate-fwhm">
-<h3>estimate_fwhm<a class="headerlink" href="#estimate-fwhm" title="Permalink to this headline">¶</a></h3>
-<dl class="function">
-<dt id="rft1d.geom.estimate_fwhm">
-<code class="descclassname">rft1d.geom.</code><code class="descname">estimate_fwhm</code><span class="sig-paren">(</span><em>R</em><span class="sig-paren">)</span><a class="headerlink" href="#rft1d.geom.estimate_fwhm" title="Permalink to this definition">¶</a></dt>
+</section>
+<section id="estimate-fwhm">
+<h3>estimate_fwhm<a class="headerlink" href="#estimate-fwhm" title="Permalink to this heading">¶</a></h3>
+<dl class="py function">
+<dt class="sig sig-object py" id="rft1d.geom.estimate_fwhm">
+<span class="sig-prename descclassname"><span class="pre">rft1d.geom.</span></span><span class="sig-name descname"><span class="pre">estimate_fwhm</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">R</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rft1d.geom.estimate_fwhm" title="Permalink to this definition">¶</a></dt>
 <dd><p>Estimate field smoothness (FWHM) from a set of random fields or a set of residuals.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><em>R</em> &#8212; a set of random fields, or a set of residuals</p>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><em>FWHM</em> &#8212; the estimated FWHM</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Example:</th><td class="field-body"><div class="first last highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">FWHM</span> <span class="o">=</span> <span class="mf">12.5</span>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><em>R</em> — a set of random fields, or a set of residuals</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><em>FWHM</em> — the estimated FWHM</p>
+</dd>
+<dt class="field-odd">Example</dt>
+<dd class="field-odd"><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">FWHM</span> <span class="o">=</span> <span class="mf">12.5</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">y</span> <span class="o">=</span> <span class="n">rft1d</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn1d</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">101</span><span class="p">,</span> <span class="n">FWHM</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">w</span> <span class="o">=</span> <span class="n">rft1d</span><span class="o">.</span><span class="n">geom</span><span class="o">.</span><span class="n">estimate_fwhm</span><span class="p">(</span><span class="n">y</span><span class="p">)</span> <span class="c">#should be close to 12.5</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">w</span> <span class="o">=</span> <span class="n">rft1d</span><span class="o">.</span><span class="n">geom</span><span class="o">.</span><span class="n">estimate_fwhm</span><span class="p">(</span><span class="n">y</span><span class="p">)</span> <span class="c1">#should be close to 12.5</span>
 </pre></div>
 </div>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">The estimated FWHM will differ from the specified FWHM (just like sample means differ from the population mean). This function implements an unbiased estimate of the FWHM, so the average of many FWHM estimates is expected to converge to the specified value.</p>
+<p class="admonition-title">Note</p>
+<p>The estimated FWHM will differ from the specified FWHM (just like sample means differ from the population mean). This function implements an unbiased estimate of the FWHM, so the average of many FWHM estimates is expected to converge to the specified value.</p>
 </div>
 </dd></dl>
 
-</div>
-</div>
+</section>
+</section>
 <hr class="docutils" />
-<div class="section" id="field-geometry-resel-counts">
-<h2>Field geometry (resel counts)<a class="headerlink" href="#field-geometry-resel-counts" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="resel-counts">
-<h3>resel_counts<a class="headerlink" href="#resel-counts" title="Permalink to this headline">¶</a></h3>
-<dl class="function">
-<dt id="rft1d.geom.resel_counts">
-<code class="descclassname">rft1d.geom.</code><code class="descname">resel_counts</code><span class="sig-paren">(</span><em>R</em>, <em>fwhm=1</em>, <em>element_based=False</em><span class="sig-paren">)</span><a class="headerlink" href="#rft1d.geom.resel_counts" title="Permalink to this definition">¶</a></dt>
+<section id="field-geometry-resel-counts">
+<h2>Field geometry (resel counts)<a class="headerlink" href="#field-geometry-resel-counts" title="Permalink to this heading">¶</a></h2>
+<section id="resel-counts">
+<h3>resel_counts<a class="headerlink" href="#resel-counts" title="Permalink to this heading">¶</a></h3>
+<dl class="py function">
+<dt class="sig sig-object py" id="rft1d.geom.resel_counts">
+<span class="sig-prename descclassname"><span class="pre">rft1d.geom.</span></span><span class="sig-name descname"><span class="pre">resel_counts</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">R</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fwhm</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">element_based</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rft1d.geom.resel_counts" title="Permalink to this definition">¶</a></dt>
 <dd><p>Resolution element (resel) counts.</p>
 <p>This function assembles resel counts, either from a set of residuals or
 from a binary mask. If using a binary mask, True represents regions which
 are masked out.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><em>R</em> &#8212; a set of random fields, a set of residuals, or a binary field mask</p>
-<p><em>fwhm</em> &#8212; the true or estimated FWHM</p>
-<p><em>element_based</em> &#8212; element-based sampling (default: node-based sampling)</p>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><em>resels</em> &#8212; (<em>r0</em>, <em>r1</em>):  0D and 1D resel counts, respectively</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Note:</th><td class="field-body"><p class="first">The resel counts define the field on which the random process occurs.
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><em>R</em> — a set of random fields, a set of residuals, or a binary field mask</p>
+<p><em>fwhm</em> — the true or estimated FWHM</p>
+<p><em>element_based</em> — element-based sampling (default: node-based sampling)</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><em>resels</em> — (<em>r0</em>, <em>r1</em>):  0D and 1D resel counts, respectively</p>
+</dd>
+<dt class="field-odd">Note</dt>
+<dd class="field-odd"><p>The resel counts define the field on which the random process occurs.
 The first count (<em>r0</em>) is the Hadwiger characteristic, which specifies
 the number of unbroken field segments. An unbroken field has <em>r0</em> = 1.
 The second count (<em>r1</em>) is the field size divided by the FWHM.</p>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Important:</th><td class="field-body"><p class="first">All RFT expectations stem directly from these resel counts.</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name" colspan="2">Important cases:</th></tr>
-<tr class="field-odd field"><td>&nbsp;</td><td class="field-body"><ol class="first arabic simple">
-<li>Node-based sampling (default), unbroken field with Q nodes &#8212; the field size is (Q-1) and <strong>resels = [1, (Q-1)/FWHM]</strong></li>
-<li>Element-based sampling, unbroken field, Q elements &#8212; the field size is Q and <strong>resels = [1, Q/FWHM]</strong></li>
-<li>Node-based sampling (default), broken field with S segements and Q nodes &#8212; the field size is (Q-S) and <strong>resels = [S, (Q-S)/FWHM]</strong></li>
-<li>Element-based sampling, broken field with S segements and Q elements &#8212; the field size is Q and <strong>resels = [S, Q/FWHM]</strong></li>
+</dd>
+<dt class="field-even">Important</dt>
+<dd class="field-even"><p>All RFT expectations stem directly from these resel counts.</p>
+</dd>
+<dt class="field-odd">Important cases</dt>
+<dd class="field-odd"><ol class="arabic simple">
+<li><p>Node-based sampling (default), unbroken field with Q nodes — the field size is (Q-1) and <strong>resels = [1, (Q-1)/FWHM]</strong></p></li>
+<li><p>Element-based sampling, unbroken field, Q elements — the field size is Q and <strong>resels = [1, Q/FWHM]</strong></p></li>
+<li><p>Node-based sampling (default), broken field with S segements and Q nodes — the field size is (Q-S) and <strong>resels = [S, (Q-S)/FWHM]</strong></p></li>
+<li><p>Element-based sampling, broken field with S segements and Q elements — the field size is Q and <strong>resels = [S, Q/FWHM]</strong></p></li>
 </ol>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name" colspan="2">Examples (unbroken field):</th></tr>
-<tr class="field-even field"><td>&nbsp;</td><td class="field-body"><div class="first highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">101</span><span class="p">)</span> <span class="c">#no masked regions</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">resels</span> <span class="o">=</span> <span class="n">rft1d</span><span class="o">.</span><span class="n">geom</span><span class="o">.</span><span class="n">resel_counts</span><span class="p">(</span><span class="n">b</span><span class="p">,</span> <span class="n">fwhm</span><span class="o">=</span><span class="mf">10.0</span><span class="p">)</span> <span class="c">#yields(1,10)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">resels</span> <span class="o">=</span> <span class="n">rft1d</span><span class="o">.</span><span class="n">geom</span><span class="o">.</span><span class="n">resel_counts</span><span class="p">(</span><span class="n">b</span><span class="p">,</span> <span class="n">fwhm</span><span class="o">=</span><span class="mf">10.0</span><span class="p">,</span> <span class="n">element_based</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span> <span class="c">#yields(1,10.1)</span>
+</dd>
+<dt class="field-even">Examples (unbroken field)</dt>
+<dd class="field-even"><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">101</span><span class="p">)</span> <span class="c1">#no masked regions</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">resels</span> <span class="o">=</span> <span class="n">rft1d</span><span class="o">.</span><span class="n">geom</span><span class="o">.</span><span class="n">resel_counts</span><span class="p">(</span><span class="n">b</span><span class="p">,</span> <span class="n">fwhm</span><span class="o">=</span><span class="mf">10.0</span><span class="p">)</span> <span class="c1">#yields(1,10)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">resels</span> <span class="o">=</span> <span class="n">rft1d</span><span class="o">.</span><span class="n">geom</span><span class="o">.</span><span class="n">resel_counts</span><span class="p">(</span><span class="n">b</span><span class="p">,</span> <span class="n">fwhm</span><span class="o">=</span><span class="mf">10.0</span><span class="p">,</span> <span class="n">element_based</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="c1">#yields(1,10.1)</span>
 </pre></div>
 </div>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name" colspan="2">Examples (broken field):</th></tr>
-<tr class="field-odd field"><td>&nbsp;</td><td class="field-body"><div class="first last highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">101</span><span class="p">)</span>
+</dd>
+<dt class="field-odd">Examples (broken field)</dt>
+<dd class="field-odd"><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">101</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">b</span><span class="p">[</span><span class="mi">25</span><span class="p">:</span><span class="mi">55</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">resels</span> <span class="o">=</span> <span class="n">rft1d</span><span class="o">.</span><span class="n">geom</span><span class="o">.</span><span class="n">resel_counts</span><span class="p">(</span><span class="n">b</span><span class="p">,</span> <span class="n">fwhm</span><span class="o">=</span><span class="mf">10.0</span><span class="p">)</span> <span class="c">#yields(2,6.9)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">resels</span> <span class="o">=</span> <span class="n">rft1d</span><span class="o">.</span><span class="n">geom</span><span class="o">.</span><span class="n">resel_counts</span><span class="p">(</span><span class="n">b</span><span class="p">,</span> <span class="n">fwhm</span><span class="o">=</span><span class="mf">10.0</span><span class="p">,</span> <span class="n">element_based</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span> <span class="c">#yields(2,7.1)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">resels</span> <span class="o">=</span> <span class="n">rft1d</span><span class="o">.</span><span class="n">geom</span><span class="o">.</span><span class="n">resel_counts</span><span class="p">(</span><span class="n">b</span><span class="p">,</span> <span class="n">fwhm</span><span class="o">=</span><span class="mf">10.0</span><span class="p">)</span> <span class="c1">#yields(2,6.9)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">resels</span> <span class="o">=</span> <span class="n">rft1d</span><span class="o">.</span><span class="n">geom</span><span class="o">.</span><span class="n">resel_counts</span><span class="p">(</span><span class="n">b</span><span class="p">,</span> <span class="n">fwhm</span><span class="o">=</span><span class="mf">10.0</span><span class="p">,</span> <span class="n">element_based</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="c1">#yields(2,7.1)</span>
 </pre></div>
 </div>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 </dd></dl>
 
-</div>
+</section>
 <hr class="docutils" />
-<div class="section" id="resel-conversion-functions">
-<h3>resel conversion functions<a class="headerlink" href="#resel-conversion-functions" title="Permalink to this headline">¶</a></h3>
-<dl class="function">
-<dt id="rft1d.geom.resels2fwhm">
-<code class="descclassname">rft1d.geom.</code><code class="descname">resels2fwhm</code><span class="sig-paren">(</span><em>resels</em>, <em>nNodes</em>, <em>element_based=False</em><span class="sig-paren">)</span><a class="headerlink" href="#rft1d.geom.resels2fwhm" title="Permalink to this definition">¶</a></dt>
+<section id="resel-conversion-functions">
+<h3>resel conversion functions<a class="headerlink" href="#resel-conversion-functions" title="Permalink to this heading">¶</a></h3>
+<dl class="py function">
+<dt class="sig sig-object py" id="rft1d.geom.resels2fwhm">
+<span class="sig-prename descclassname"><span class="pre">rft1d.geom.</span></span><span class="sig-name descname"><span class="pre">resels2fwhm</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">resels</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nNodes</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">element_based</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rft1d.geom.resels2fwhm" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get the FWHM from resel counts based on the number of field nodes.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><em>resels</em> &#8212; resel counts</p>
-<p><em>nNodes</em> &#8212; number of field nodes (in broken fields: number of unbroken nodes)</p>
-<p><em>element_based</em> &#8212; element-based sampling (default: node-based sampling)</p>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><em>fwhm</em> &#8212; field FWHM</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Example:</th><td class="field-body"><div class="first highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">resels</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mf">10.0</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">w</span> <span class="o">=</span> <span class="n">rft1d</span><span class="o">.</span><span class="n">geom</span><span class="o">.</span><span class="n">resels2fwhm</span><span class="p">(</span><span class="n">resels</span><span class="p">,</span> <span class="mi">101</span><span class="p">)</span> <span class="c">#yields 10.0</span>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><em>resels</em> — resel counts</p>
+<p><em>nNodes</em> — number of field nodes (in broken fields: number of unbroken nodes)</p>
+<p><em>element_based</em> — element-based sampling (default: node-based sampling)</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><em>fwhm</em> — field FWHM</p>
+</dd>
+<dt class="field-odd">Example</dt>
+<dd class="field-odd"><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">resels</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mf">10.0</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">w</span> <span class="o">=</span> <span class="n">rft1d</span><span class="o">.</span><span class="n">geom</span><span class="o">.</span><span class="n">resels2fwhm</span><span class="p">(</span><span class="n">resels</span><span class="p">,</span> <span class="mi">101</span><span class="p">)</span> <span class="c1">#yields 10.0</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">resels</span> <span class="o">=</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mf">6.9</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">w</span> <span class="o">=</span> <span class="n">rft1d</span><span class="o">.</span><span class="n">geom</span><span class="o">.</span><span class="n">resels2fwhm</span><span class="p">(</span><span class="n">resels</span><span class="p">,</span> <span class="mi">71</span><span class="p">)</span> <span class="c">#yields 10.0</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">w</span> <span class="o">=</span> <span class="n">rft1d</span><span class="o">.</span><span class="n">geom</span><span class="o">.</span><span class="n">resels2fwhm</span><span class="p">(</span><span class="n">resels</span><span class="p">,</span> <span class="mi">71</span><span class="p">)</span> <span class="c1">#yields 10.0</span>
 </pre></div>
 </div>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Note:</th><td class="field-body"><p class="first last">See <strong>rft1d.geom.resel_counts</strong> for details regarding the keyword &#8220;element_based&#8221;** and node-based vs. element-based sampling.</p>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+<dt class="field-even">Note</dt>
+<dd class="field-even"><p>See <strong>rft1d.geom.resel_counts</strong> for details regarding the keyword “element_based”** and node-based vs. element-based sampling.</p>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="function">
-<dt id="rft1d.geom.resels2fwhm_masked">
-<code class="descclassname">rft1d.geom.</code><code class="descname">resels2fwhm_masked</code><span class="sig-paren">(</span><em>resels</em>, <em>mask</em>, <em>element_based=False</em><span class="sig-paren">)</span><a class="headerlink" href="#rft1d.geom.resels2fwhm_masked" title="Permalink to this definition">¶</a></dt>
+<dl class="py function">
+<dt class="sig sig-object py" id="rft1d.geom.resels2fwhm_masked">
+<span class="sig-prename descclassname"><span class="pre">rft1d.geom.</span></span><span class="sig-name descname"><span class="pre">resels2fwhm_masked</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">resels</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mask</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">element_based</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rft1d.geom.resels2fwhm_masked" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get the FWHM from resel counts based on a binary field mask</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><em>resels</em> &#8212; resel counts</p>
-<p><em>mask</em> &#8212; binary field mask</p>
-<p><em>element_based</em> &#8212; element-based sampling (default: node-based sampling)</p>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><em>fwhm</em> &#8212; field FWHM</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Example:</th><td class="field-body"><div class="first highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">resels</span> <span class="o">=</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mf">6.9</span><span class="p">)</span>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><em>resels</em> — resel counts</p>
+<p><em>mask</em> — binary field mask</p>
+<p><em>element_based</em> — element-based sampling (default: node-based sampling)</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><em>fwhm</em> — field FWHM</p>
+</dd>
+<dt class="field-odd">Example</dt>
+<dd class="field-odd"><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">resels</span> <span class="o">=</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mf">6.9</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">101</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">b</span><span class="p">[</span><span class="mi">25</span><span class="p">:</span><span class="mi">55</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">w</span> <span class="o">=</span> <span class="n">rft1d</span><span class="o">.</span><span class="n">geom</span><span class="o">.</span><span class="n">resels2fwhm_masked</span><span class="p">(</span><span class="n">resels</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span> <span class="c">#yields 10.0</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">w</span> <span class="o">=</span> <span class="n">rft1d</span><span class="o">.</span><span class="n">geom</span><span class="o">.</span><span class="n">resels2fwhm_masked</span><span class="p">(</span><span class="n">resels</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span> <span class="c1">#yields 10.0</span>
 </pre></div>
 </div>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Note:</th><td class="field-body"><p class="first last">See <strong>rft1d.geom.resel_counts</strong> for details regarding the keyword &#8220;element_based&#8221;** and node-based vs. element-based sampling.</p>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+<dt class="field-even">Note</dt>
+<dd class="field-even"><p>See <strong>rft1d.geom.resel_counts</strong> for details regarding the keyword “element_based”** and node-based vs. element-based sampling.</p>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="function">
-<dt id="rft1d.geom.resels2nelements">
-<code class="descclassname">rft1d.geom.</code><code class="descname">resels2nelements</code><span class="sig-paren">(</span><em>resels</em>, <em>fwhm</em><span class="sig-paren">)</span><a class="headerlink" href="#rft1d.geom.resels2nelements" title="Permalink to this definition">¶</a></dt>
+<dl class="py function">
+<dt class="sig sig-object py" id="rft1d.geom.resels2nelements">
+<span class="sig-prename descclassname"><span class="pre">rft1d.geom.</span></span><span class="sig-name descname"><span class="pre">resels2nelements</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">resels</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fwhm</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rft1d.geom.resels2nelements" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get the field size from resel counts based on the FWHM (element-based sampling).</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Example:</th><td class="field-body"><div class="first highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">resels</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mf">10.0</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">nNodes</span> <span class="o">=</span> <span class="n">rft1d</span><span class="o">.</span><span class="n">geom</span><span class="o">.</span><span class="n">resels2nelements</span><span class="p">(</span><span class="n">resels</span><span class="p">,</span> <span class="mf">10.0</span><span class="p">)</span> <span class="c">#yields 100</span>
+<dl class="field-list">
+<dt class="field-odd">Example</dt>
+<dd class="field-odd"><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">resels</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mf">10.0</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">nNodes</span> <span class="o">=</span> <span class="n">rft1d</span><span class="o">.</span><span class="n">geom</span><span class="o">.</span><span class="n">resels2nelements</span><span class="p">(</span><span class="n">resels</span><span class="p">,</span> <span class="mf">10.0</span><span class="p">)</span> <span class="c1">#yields 100</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">resels</span> <span class="o">=</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mf">6.9</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">nNodes</span> <span class="o">=</span> <span class="n">rft1d</span><span class="o">.</span><span class="n">geom</span><span class="o">.</span><span class="n">resels2nelements</span><span class="p">(</span><span class="n">resels</span><span class="p">,</span> <span class="mf">10.0</span><span class="p">)</span> <span class="c">#yields 69</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">nNodes</span> <span class="o">=</span> <span class="n">rft1d</span><span class="o">.</span><span class="n">geom</span><span class="o">.</span><span class="n">resels2nelements</span><span class="p">(</span><span class="n">resels</span><span class="p">,</span> <span class="mf">10.0</span><span class="p">)</span> <span class="c1">#yields 69</span>
 </pre></div>
 </div>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Note:</th><td class="field-body"><p class="first last">See <strong>rft1d.geom.resel_counts</strong> for details regarding node-based vs. element-based sampling.</p>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+<dt class="field-even">Note</dt>
+<dd class="field-even"><p>See <strong>rft1d.geom.resel_counts</strong> for details regarding node-based vs. element-based sampling.</p>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="function">
-<dt id="rft1d.geom.resels2nnodes">
-<code class="descclassname">rft1d.geom.</code><code class="descname">resels2nnodes</code><span class="sig-paren">(</span><em>resels</em>, <em>fwhm</em><span class="sig-paren">)</span><a class="headerlink" href="#rft1d.geom.resels2nnodes" title="Permalink to this definition">¶</a></dt>
+<dl class="py function">
+<dt class="sig sig-object py" id="rft1d.geom.resels2nnodes">
+<span class="sig-prename descclassname"><span class="pre">rft1d.geom.</span></span><span class="sig-name descname"><span class="pre">resels2nnodes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">resels</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fwhm</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rft1d.geom.resels2nnodes" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get the number of field nodes from resel counts based on the FWHM</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><em>resels</em> &#8212; resel counts</p>
-<p><em>fwhm</em> &#8212; actual or estimated FWHM*element_based* &#8212; element-based sampling (default: node-based sampling)</p>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><em>nNodes</em> &#8212; number of field nodes</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Example:</th><td class="field-body"><div class="first highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">resels</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mf">10.0</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">nNodes</span> <span class="o">=</span> <span class="n">rft1d</span><span class="o">.</span><span class="n">geom</span><span class="o">.</span><span class="n">resels2nnodes</span><span class="p">(</span><span class="n">resels</span><span class="p">,</span> <span class="mf">10.0</span><span class="p">)</span> <span class="c">#yields 101</span>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><em>resels</em> — resel counts</p>
+<p><em>fwhm</em> — actual or estimated FWHM*element_based* — element-based sampling (default: node-based sampling)</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><em>nNodes</em> — number of field nodes</p>
+</dd>
+<dt class="field-odd">Example</dt>
+<dd class="field-odd"><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">resels</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mf">10.0</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">nNodes</span> <span class="o">=</span> <span class="n">rft1d</span><span class="o">.</span><span class="n">geom</span><span class="o">.</span><span class="n">resels2nnodes</span><span class="p">(</span><span class="n">resels</span><span class="p">,</span> <span class="mf">10.0</span><span class="p">)</span> <span class="c1">#yields 101</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">resels</span> <span class="o">=</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mf">6.9</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">nNodes</span> <span class="o">=</span> <span class="n">rft1d</span><span class="o">.</span><span class="n">geom</span><span class="o">.</span><span class="n">resels2nnodes</span><span class="p">(</span><span class="n">resels</span><span class="p">,</span> <span class="mf">10.0</span><span class="p">)</span> <span class="c">#yields 71</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">nNodes</span> <span class="o">=</span> <span class="n">rft1d</span><span class="o">.</span><span class="n">geom</span><span class="o">.</span><span class="n">resels2nnodes</span><span class="p">(</span><span class="n">resels</span><span class="p">,</span> <span class="mf">10.0</span><span class="p">)</span> <span class="c1">#yields 71</span>
 </pre></div>
 </div>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Note:</th><td class="field-body"><p class="first last">See <strong>rft1d.geom.resel_counts</strong> for details regarding node-based vs. element-based sampling.</p>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+<dt class="field-even">Note</dt>
+<dd class="field-even"><p>See <strong>rft1d.geom.resel_counts</strong> for details regarding node-based vs. element-based sampling.</p>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="function">
-<dt id="rft1d.geom.resels2fieldsize">
-<code class="descclassname">rft1d.geom.</code><code class="descname">resels2fieldsize</code><span class="sig-paren">(</span><em>resels</em>, <em>fwhm</em>, <em>element_based=False</em><span class="sig-paren">)</span><a class="headerlink" href="#rft1d.geom.resels2fieldsize" title="Permalink to this definition">¶</a></dt>
+<dl class="py function">
+<dt class="sig sig-object py" id="rft1d.geom.resels2fieldsize">
+<span class="sig-prename descclassname"><span class="pre">rft1d.geom.</span></span><span class="sig-name descname"><span class="pre">resels2fieldsize</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">resels</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fwhm</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">element_based</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rft1d.geom.resels2fieldsize" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get the field size from resel counts based on the FWHM.
 Equivalent to <strong>rft1d.geom.resels2nnodes</strong> minus the number of unbroken
 field segments.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Example:</th><td class="field-body"><div class="first highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">resels</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mf">10.0</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">nNodes</span> <span class="o">=</span> <span class="n">rft1d</span><span class="o">.</span><span class="n">geom</span><span class="o">.</span><span class="n">resels2fieldsize</span><span class="p">(</span><span class="n">resels</span><span class="p">,</span> <span class="mf">10.0</span><span class="p">)</span> <span class="c">#yields 100</span>
+<dl class="field-list">
+<dt class="field-odd">Example</dt>
+<dd class="field-odd"><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">resels</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mf">10.0</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">nNodes</span> <span class="o">=</span> <span class="n">rft1d</span><span class="o">.</span><span class="n">geom</span><span class="o">.</span><span class="n">resels2fieldsize</span><span class="p">(</span><span class="n">resels</span><span class="p">,</span> <span class="mf">10.0</span><span class="p">)</span> <span class="c1">#yields 100</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">resels</span> <span class="o">=</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mf">6.9</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">nNodes</span> <span class="o">=</span> <span class="n">rft1d</span><span class="o">.</span><span class="n">geom</span><span class="o">.</span><span class="n">resels2fieldsize</span><span class="p">(</span><span class="n">resels</span><span class="p">,</span> <span class="mf">10.0</span><span class="p">)</span> <span class="c">#yields 69</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">nNodes</span> <span class="o">=</span> <span class="n">rft1d</span><span class="o">.</span><span class="n">geom</span><span class="o">.</span><span class="n">resels2fieldsize</span><span class="p">(</span><span class="n">resels</span><span class="p">,</span> <span class="mf">10.0</span><span class="p">)</span> <span class="c1">#yields 69</span>
 </pre></div>
 </div>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Note:</th><td class="field-body"><p class="first last">See <strong>rft1d.geom.resel_counts</strong> for details regarding the keyword &#8220;element_based&#8221;** and node-based vs. element-based sampling.</p>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+<dt class="field-even">Note</dt>
+<dd class="field-even"><p>See <strong>rft1d.geom.resel_counts</strong> for details regarding the keyword “element_based”** and node-based vs. element-based sampling.</p>
+</dd>
+</dl>
 </dd></dl>
 
-</div>
-</div>
+</section>
+</section>
 <hr class="docutils" />
-<div class="section" id="upcrossing-metric-calculations">
-<h2>Upcrossing metric calculations<a class="headerlink" href="#upcrossing-metric-calculations" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="rft1d-geom-clustermetriccalculator">
-<h3>rft1d.geom.ClusterMetricCalculator<a class="headerlink" href="#rft1d-geom-clustermetriccalculator" title="Permalink to this headline">¶</a></h3>
-<dl class="class">
-<dt id="rft1d.geom.ClusterMetricCalculator">
-<em class="property">class </em><code class="descclassname">rft1d.geom.</code><code class="descname">ClusterMetricCalculator</code><a class="headerlink" href="#rft1d.geom.ClusterMetricCalculator" title="Permalink to this definition">¶</a></dt>
+<section id="upcrossing-metric-calculations">
+<h2>Upcrossing metric calculations<a class="headerlink" href="#upcrossing-metric-calculations" title="Permalink to this heading">¶</a></h2>
+<section id="rft1d-geom-clustermetriccalculator">
+<h3>rft1d.geom.ClusterMetricCalculator<a class="headerlink" href="#rft1d-geom-clustermetriccalculator" title="Permalink to this heading">¶</a></h3>
+<dl class="py class">
+<dt class="sig sig-object py" id="rft1d.geom.ClusterMetricCalculator">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">rft1d.geom.</span></span><span class="sig-name descname"><span class="pre">ClusterMetricCalculator</span></span><a class="headerlink" href="#rft1d.geom.ClusterMetricCalculator" title="Permalink to this definition">¶</a></dt>
 <dd><p>A class for computing various geometric characteristics of the excursion set
 including number of upcrossings, upcrossing (cluster) extents, etc.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><em>None</em></p>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><em>calc</em> &#8212; a ClusterMetricCalculator instance</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Example:</th><td class="field-body"><div class="first last highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">y</span> <span class="o">=</span> <span class="n">rft1d</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn1d</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">101</span><span class="p">,</span> <span class="mf">15.0</span><span class="p">)</span>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><em>None</em></p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><em>calc</em> — a ClusterMetricCalculator instance</p>
+</dd>
+<dt class="field-odd">Example</dt>
+<dd class="field-odd"><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">y</span> <span class="o">=</span> <span class="n">rft1d</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn1d</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">101</span><span class="p">,</span> <span class="mf">15.0</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">calc</span> <span class="o">=</span> <span class="n">rft1d</span><span class="o">.</span><span class="n">geom</span><span class="o">.</span><span class="n">ClusterMetricCalculator</span><span class="p">()</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">k</span> <span class="o">=</span> <span class="n">calc</span><span class="o">.</span><span class="n">cluster_extents</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">)</span> <span class="c">#cluster extents when thresholded at 0.5</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">k</span> <span class="o">=</span> <span class="n">calc</span><span class="o">.</span><span class="n">cluster_extents</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">)</span> <span class="c1">#cluster extents when thresholded at 0.5</span>
 </pre></div>
 </div>
-</td>
-</tr>
-</tbody>
-</table>
-<dl class="method">
-<dt id="rft1d.geom.ClusterMetricCalculator.cluster_extents">
-<code class="descname">cluster_extents</code><span class="sig-paren">(</span><em>y</em>, <em>u</em>, <em>interp=True</em>, <em>wrap=False</em><span class="sig-paren">)</span><a class="headerlink" href="#rft1d.geom.ClusterMetricCalculator.cluster_extents" title="Permalink to this definition">¶</a></dt>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="rft1d.geom.ClusterMetricCalculator.cluster_extents">
+<span class="sig-name descname"><span class="pre">cluster_extents</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">u</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">interp</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wrap</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rft1d.geom.ClusterMetricCalculator.cluster_extents" title="Permalink to this definition">¶</a></dt>
 <dd><p>Upcrossing extents (units: nodes).</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><em>y</em> &#8212; a 1D field</p>
-<p><em>u</em> &#8212; threshold height</p>
-<p><em>interp</em> &#8212; interpolate to threshold <em>u</em></p>
-<p><em>wrap</em> &#8212; wrap upcrossings from the end to the start of the field</p>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><em>k</em> &#8212; list of upcrossing extents, or [0] if no upcrossings</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Example:</th><td class="field-body"><div class="first last highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">k</span> <span class="o">=</span> <span class="n">calc</span><span class="o">.</span><span class="n">cluster_extents</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)</span> <span class="c">#cluster extents when thresholded at 0.0</span>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><em>y</em> — a 1D field</p>
+<p><em>u</em> — threshold height</p>
+<p><em>interp</em> — interpolate to threshold <em>u</em></p>
+<p><em>wrap</em> — wrap upcrossings from the end to the start of the field</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><em>k</em> — list of upcrossing extents, or [0] if no upcrossings</p>
+</dd>
+<dt class="field-odd">Example</dt>
+<dd class="field-odd"><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">k</span> <span class="o">=</span> <span class="n">calc</span><span class="o">.</span><span class="n">cluster_extents</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)</span> <span class="c1">#cluster extents when thresholded at 0.0</span>
 </pre></div>
 </div>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 <div class="admonition danger">
-<p class="first admonition-title">Danger</p>
-<p class="last">Setting <em>interp</em> to False is faster, but it will cause disagreements between node-based and element-based sampling. If the upcrossing is large this difference is negligible, but for small upcrossing there may be strange results (e.g. upcrossing with an extent of zero). Recommendation: <strong>always interpolate</strong>.</p>
+<p class="admonition-title">Danger</p>
+<p>Setting <em>interp</em> to False is faster, but it will cause disagreements between node-based and element-based sampling. If the upcrossing is large this difference is negligible, but for small upcrossing there may be strange results (e.g. upcrossing with an extent of zero). Recommendation: <strong>always interpolate</strong>.</p>
 </div>
 </dd></dl>
 
-<dl class="method">
-<dt id="rft1d.geom.ClusterMetricCalculator.cluster_minima">
-<code class="descname">cluster_minima</code><span class="sig-paren">(</span><em>y</em>, <em>u</em>, <em>interp=True</em><span class="sig-paren">)</span><a class="headerlink" href="#rft1d.geom.ClusterMetricCalculator.cluster_minima" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="rft1d.geom.ClusterMetricCalculator.cluster_minima">
+<span class="sig-name descname"><span class="pre">cluster_minima</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">u</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">interp</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rft1d.geom.ClusterMetricCalculator.cluster_minima" title="Permalink to this definition">¶</a></dt>
 <dd><p>Minimum field height inside each upcrossing.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><em>y</em> &#8212; a 1D field</p>
-<p><em>u</em> &#8212; threshold height</p>
-<p><em>interp</em> &#8212; interpolate to threshold <em>u</em></p>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><em>zmin</em> &#8212; list of upcrossing minima; [0] if no upcrossings</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Example:</th><td class="field-body"><div class="first last highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">k</span> <span class="o">=</span> <span class="n">calc</span><span class="o">.</span><span class="n">cluster_minima</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)</span>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><em>y</em> — a 1D field</p>
+<p><em>u</em> — threshold height</p>
+<p><em>interp</em> — interpolate to threshold <em>u</em></p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><em>zmin</em> — list of upcrossing minima; [0] if no upcrossings</p>
+</dd>
+<dt class="field-odd">Example</dt>
+<dd class="field-odd"><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">k</span> <span class="o">=</span> <span class="n">calc</span><span class="o">.</span><span class="n">cluster_minima</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)</span>
 </pre></div>
 </div>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 <div class="admonition warning">
-<p class="first admonition-title">Warning</p>
-<p class="last">If <em>interp</em> is <em>True</em>, the minima are all <em>u</em>.</p>
+<p class="admonition-title">Warning</p>
+<p>If <em>interp</em> is <em>True</em>, the minima are all <em>u</em>.</p>
 </div>
 <div class="admonition danger">
-<p class="first admonition-title">Danger</p>
-<p class="last">If <em>u</em> is zero and <em>interp</em> is <em>True</em> the user may be unable to distinguish between two cases: (i) no upcrossings and (ii) one upcrossing with a minimum of zero. Most thresholds we&#8217;re interested in are much higher than zero, so this buggy behavior is not deemed serious. To check the number of upcrossings use the <strong>nMaxima</strong> method.</p>
+<p class="admonition-title">Danger</p>
+<p>If <em>u</em> is zero and <em>interp</em> is <em>True</em> the user may be unable to distinguish between two cases: (i) no upcrossings and (ii) one upcrossing with a minimum of zero. Most thresholds we’re interested in are much higher than zero, so this buggy behavior is not deemed serious. To check the number of upcrossings use the <strong>nMaxima</strong> method.</p>
 </div>
 </dd></dl>
 
-<dl class="method">
-<dt id="rft1d.geom.ClusterMetricCalculator.max_cluster_extent">
-<code class="descname">max_cluster_extent</code><span class="sig-paren">(</span><em>y</em>, <em>u</em>, <em>interp=True</em>, <em>wrap=False</em><span class="sig-paren">)</span><a class="headerlink" href="#rft1d.geom.ClusterMetricCalculator.max_cluster_extent" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="rft1d.geom.ClusterMetricCalculator.max_cluster_extent">
+<span class="sig-name descname"><span class="pre">max_cluster_extent</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">u</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">interp</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wrap</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rft1d.geom.ClusterMetricCalculator.max_cluster_extent" title="Permalink to this definition">¶</a></dt>
 <dd><p>Maximum upcrossing extent</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><em>y</em> &#8212; a 1D field</p>
-<p><em>u</em> &#8212; threshold height</p>
-<p><em>interp</em> &#8212; interpolate to threshold <em>u</em></p>
-<p><em>wrap</em> &#8212; wrap upcrossings from the end to the start of the field</p>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><em>kmax</em> &#8212; maximum upcrossing extent (unit: nodes)</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Example:</th><td class="field-body"><div class="first last highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">k</span> <span class="o">=</span> <span class="n">calc</span><span class="o">.</span><span class="n">max_cluster_extent</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">)</span>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><em>y</em> — a 1D field</p>
+<p><em>u</em> — threshold height</p>
+<p><em>interp</em> — interpolate to threshold <em>u</em></p>
+<p><em>wrap</em> — wrap upcrossings from the end to the start of the field</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><em>kmax</em> — maximum upcrossing extent (unit: nodes)</p>
+</dd>
+<dt class="field-odd">Example</dt>
+<dd class="field-odd"><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">k</span> <span class="o">=</span> <span class="n">calc</span><span class="o">.</span><span class="n">max_cluster_extent</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">)</span>
 </pre></div>
 </div>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 <div class="admonition danger">
-<p class="first admonition-title">Danger</p>
-<p class="last">Setting <em>interp</em> to False is faster, but it will cause disagreements between node-based and element-based sampling. If the upcrossing is large this difference is negligible, but for small upcrossing there may be strange results (e.g. upcrossing with an extent of zero). Recommendation: <strong>always interpolate</strong>.</p>
+<p class="admonition-title">Danger</p>
+<p>Setting <em>interp</em> to False is faster, but it will cause disagreements between node-based and element-based sampling. If the upcrossing is large this difference is negligible, but for small upcrossing there may be strange results (e.g. upcrossing with an extent of zero). Recommendation: <strong>always interpolate</strong>.</p>
 </div>
 </dd></dl>
 
-<dl class="method">
-<dt id="rft1d.geom.ClusterMetricCalculator.mean_cluster_extent">
-<code class="descname">mean_cluster_extent</code><span class="sig-paren">(</span><em>y</em>, <em>u</em>, <em>interp=True</em>, <em>wrap=False</em><span class="sig-paren">)</span><a class="headerlink" href="#rft1d.geom.ClusterMetricCalculator.mean_cluster_extent" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="rft1d.geom.ClusterMetricCalculator.mean_cluster_extent">
+<span class="sig-name descname"><span class="pre">mean_cluster_extent</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">u</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">interp</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wrap</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rft1d.geom.ClusterMetricCalculator.mean_cluster_extent" title="Permalink to this definition">¶</a></dt>
 <dd><p>Mean upcrossing extent</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><em>y</em> &#8212; a 1D field</p>
-<p><em>u</em> &#8212; threshold height</p>
-<p><em>interp</em> &#8212; interpolate to threshold <em>u</em></p>
-<p><em>wrap</em> &#8212; wrap upcrossings from the end to the start of the field</p>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><em>kmean</em> &#8212; mean upcrossing extent (unit: nodes)</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Example:</th><td class="field-body"><div class="first last highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">k</span> <span class="o">=</span> <span class="n">calc</span><span class="o">.</span><span class="n">mean_cluster_extent</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">)</span>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><em>y</em> — a 1D field</p>
+<p><em>u</em> — threshold height</p>
+<p><em>interp</em> — interpolate to threshold <em>u</em></p>
+<p><em>wrap</em> — wrap upcrossings from the end to the start of the field</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><em>kmean</em> — mean upcrossing extent (unit: nodes)</p>
+</dd>
+<dt class="field-odd">Example</dt>
+<dd class="field-odd"><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">k</span> <span class="o">=</span> <span class="n">calc</span><span class="o">.</span><span class="n">mean_cluster_extent</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">)</span>
 </pre></div>
 </div>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 <div class="admonition danger">
-<p class="first admonition-title">Danger</p>
-<p class="last">Setting <em>interp</em> to False is faster, but it will cause disagreements between node-based and element-based sampling. If the upcrossing is large this difference is negligible, but for small upcrossing there may be strange results (e.g. upcrossing with an extent of zero). Recommendation: <strong>always interpolate</strong>.</p>
+<p class="admonition-title">Danger</p>
+<p>Setting <em>interp</em> to False is faster, but it will cause disagreements between node-based and element-based sampling. If the upcrossing is large this difference is negligible, but for small upcrossing there may be strange results (e.g. upcrossing with an extent of zero). Recommendation: <strong>always interpolate</strong>.</p>
 </div>
 </dd></dl>
 
-<dl class="method">
-<dt id="rft1d.geom.ClusterMetricCalculator.nMaxima">
-<code class="descname">nMaxima</code><span class="sig-paren">(</span><em>y</em>, <em>u</em><span class="sig-paren">)</span><a class="headerlink" href="#rft1d.geom.ClusterMetricCalculator.nMaxima" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="rft1d.geom.ClusterMetricCalculator.nMaxima">
+<span class="sig-name descname"><span class="pre">nMaxima</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">u</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rft1d.geom.ClusterMetricCalculator.nMaxima" title="Permalink to this definition">¶</a></dt>
 <dd><p>Number of maxima. Equivalent to <strong>nUpcrossings</strong>.</p>
 </dd></dl>
 
-<dl class="method">
-<dt id="rft1d.geom.ClusterMetricCalculator.nSuprathresholdNodes">
-<code class="descname">nSuprathresholdNodes</code><span class="sig-paren">(</span><em>y</em>, <em>u</em><span class="sig-paren">)</span><a class="headerlink" href="#rft1d.geom.ClusterMetricCalculator.nSuprathresholdNodes" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="rft1d.geom.ClusterMetricCalculator.nSuprathresholdNodes">
+<span class="sig-name descname"><span class="pre">nSuprathresholdNodes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">u</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rft1d.geom.ClusterMetricCalculator.nSuprathresholdNodes" title="Permalink to this definition">¶</a></dt>
 <dd><p>Number of nodes in the excursion set.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><em>y</em> &#8212; a 1D field</p>
-<p><em>u</em> &#8212; threshold height</p>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><em>nNodes</em> &#8212; number of nodes which survive the threshold <em>u</em></p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Example:</th><td class="field-body"><div class="first last highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">nNodes</span> <span class="o">=</span> <span class="n">calc</span><span class="o">.</span><span class="n">nSuprathresholdNodes</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">)</span>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><em>y</em> — a 1D field</p>
+<p><em>u</em> — threshold height</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><em>nNodes</em> — number of nodes which survive the threshold <em>u</em></p>
+</dd>
+<dt class="field-odd">Example</dt>
+<dd class="field-odd"><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">nNodes</span> <span class="o">=</span> <span class="n">calc</span><span class="o">.</span><span class="n">nSuprathresholdNodes</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">)</span>
 </pre></div>
 </div>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 <div class="admonition warning">
-<p class="first admonition-title">Warning</p>
-<p class="last">This returns simply the number of nodes, which is not equivelent to extent. To compute the total extent you must subtract the number of upcrossings from this value. Otherwise use <strong>rft1d.geom.nSuprathresholdResels</strong> or <strong>rft1d.geom.total_excursion_set_extent</strong>.</p>
+<p class="admonition-title">Warning</p>
+<p>This returns simply the number of nodes, which is not equivelent to extent. To compute the total extent you must subtract the number of upcrossings from this value. Otherwise use <strong>rft1d.geom.nSuprathresholdResels</strong> or <strong>rft1d.geom.total_excursion_set_extent</strong>.</p>
 </div>
 </dd></dl>
 
-<dl class="method">
-<dt id="rft1d.geom.ClusterMetricCalculator.nSuprathresholdResels">
-<code class="descname">nSuprathresholdResels</code><span class="sig-paren">(</span><em>y</em>, <em>u</em>, <em>fwhm=1.0</em>, <em>interp=True</em><span class="sig-paren">)</span><a class="headerlink" href="#rft1d.geom.ClusterMetricCalculator.nSuprathresholdResels" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="rft1d.geom.ClusterMetricCalculator.nSuprathresholdResels">
+<span class="sig-name descname"><span class="pre">nSuprathresholdResels</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">u</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fwhm</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">interp</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rft1d.geom.ClusterMetricCalculator.nSuprathresholdResels" title="Permalink to this definition">¶</a></dt>
 <dd><p>Number of resels in the excursion set.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><em>y</em> &#8212; a 1D field</p>
-<p><em>u</em> &#8212; threshold height</p>
-<p><em>fwhm</em> &#8212; actual or estimated FWHM</p>
-<p><em>interp</em> &#8212; interpolate to threshold <em>u</em></p>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><em>nResels</em> &#8212; number of resels which survive the threshold <em>u</em></p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Example:</th><td class="field-body"><div class="first last highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">nResels</span> <span class="o">=</span> <span class="n">calc</span><span class="o">.</span><span class="n">nSuprathresholdResels</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">)</span>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><em>y</em> — a 1D field</p>
+<p><em>u</em> — threshold height</p>
+<p><em>fwhm</em> — actual or estimated FWHM</p>
+<p><em>interp</em> — interpolate to threshold <em>u</em></p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><em>nResels</em> — number of resels which survive the threshold <em>u</em></p>
+</dd>
+<dt class="field-odd">Example</dt>
+<dd class="field-odd"><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">nResels</span> <span class="o">=</span> <span class="n">calc</span><span class="o">.</span><span class="n">nSuprathresholdResels</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">)</span>
 </pre></div>
 </div>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 <div class="admonition warning">
-<p class="first admonition-title">Warning</p>
-<p class="last">This is a length measure, so is similar to (<strong>nSuprathresholdNodes</strong> minus <strong>nUpcrossings</strong>) divided by the FWHM, with the exception that extents can be interpolated to <em>u</em>.</p>
+<p class="admonition-title">Warning</p>
+<p>This is a length measure, so is similar to (<strong>nSuprathresholdNodes</strong> minus <strong>nUpcrossings</strong>) divided by the FWHM, with the exception that extents can be interpolated to <em>u</em>.</p>
 </div>
 <div class="admonition danger">
-<p class="first admonition-title">Danger</p>
-<p class="last">Setting <em>interp</em> to False is faster, but it will cause disagreements between node-based and element-based sampling. If the upcrossing is large this difference is negligible, but for small upcrossing there may be strange results (e.g. upcrossing with an extent of zero). Recommendation: <strong>always interpolate</strong>.</p>
+<p class="admonition-title">Danger</p>
+<p>Setting <em>interp</em> to False is faster, but it will cause disagreements between node-based and element-based sampling. If the upcrossing is large this difference is negligible, but for small upcrossing there may be strange results (e.g. upcrossing with an extent of zero). Recommendation: <strong>always interpolate</strong>.</p>
 </div>
 </dd></dl>
 
-<dl class="method">
-<dt id="rft1d.geom.ClusterMetricCalculator.nUpcrossings">
-<code class="descname">nUpcrossings</code><span class="sig-paren">(</span><em>y</em>, <em>u</em><span class="sig-paren">)</span><a class="headerlink" href="#rft1d.geom.ClusterMetricCalculator.nUpcrossings" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="rft1d.geom.ClusterMetricCalculator.nUpcrossings">
+<span class="sig-name descname"><span class="pre">nUpcrossings</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">u</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rft1d.geom.ClusterMetricCalculator.nUpcrossings" title="Permalink to this definition">¶</a></dt>
 <dd><p>Number of upcrossings.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><em>y</em> &#8212; a 1D field</p>
-<p><em>u</em> &#8212; threshold height</p>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><em>c</em> &#8212; number of upcrossings</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Example:</th><td class="field-body"><div class="first last highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">c</span> <span class="o">=</span> <span class="n">calc</span><span class="o">.</span><span class="n">nUpcrossings</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">)</span>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><em>y</em> — a 1D field</p>
+<p><em>u</em> — threshold height</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><em>c</em> — number of upcrossings</p>
+</dd>
+<dt class="field-odd">Example</dt>
+<dd class="field-odd"><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">c</span> <span class="o">=</span> <span class="n">calc</span><span class="o">.</span><span class="n">nUpcrossings</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">)</span>
 </pre></div>
 </div>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="method">
-<dt id="rft1d.geom.ClusterMetricCalculator.nUpcrossingsByExtent">
-<code class="descname">nUpcrossingsByExtent</code><span class="sig-paren">(</span><em>y</em>, <em>u</em>, <em>k</em>, <em>interp=True</em>, <em>wrap=False</em><span class="sig-paren">)</span><a class="headerlink" href="#rft1d.geom.ClusterMetricCalculator.nUpcrossingsByExtent" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="rft1d.geom.ClusterMetricCalculator.nUpcrossingsByExtent">
+<span class="sig-name descname"><span class="pre">nUpcrossingsByExtent</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">u</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">k</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">interp</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wrap</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rft1d.geom.ClusterMetricCalculator.nUpcrossingsByExtent" title="Permalink to this definition">¶</a></dt>
 <dd><p>Number of upcrossings at threshold extent <em>k</em>.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><em>y</em> &#8212; a 1D field</p>
-<p><em>u</em> &#8212; threshold height</p>
-<p><em>k</em> &#8212; cluster extent threshold (unit: nodes)</p>
-<p><em>interp</em> &#8212; interpolate to threshold <em>u</em></p>
-<p><em>wrap</em> &#8212; wrap upcrossings from the end to the start of the field</p>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><em>c</em> &#8212; number of upcrossings whose extents equal or exceed <em>k</em></p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Example:</th><td class="field-body"><div class="first last highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">c</span> <span class="o">=</span> <span class="n">calc</span><span class="o">.</span><span class="n">nUpcrossingsByExtent</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="mf">3.5</span><span class="p">,</span> <span class="mf">5.0</span><span class="p">)</span>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><em>y</em> — a 1D field</p>
+<p><em>u</em> — threshold height</p>
+<p><em>k</em> — cluster extent threshold (unit: nodes)</p>
+<p><em>interp</em> — interpolate to threshold <em>u</em></p>
+<p><em>wrap</em> — wrap upcrossings from the end to the start of the field</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><em>c</em> — number of upcrossings whose extents equal or exceed <em>k</em></p>
+</dd>
+<dt class="field-odd">Example</dt>
+<dd class="field-odd"><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">c</span> <span class="o">=</span> <span class="n">calc</span><span class="o">.</span><span class="n">nUpcrossingsByExtent</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="mf">3.5</span><span class="p">,</span> <span class="mf">5.0</span><span class="p">)</span>
 </pre></div>
 </div>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 <div class="admonition danger">
-<p class="first admonition-title">Danger</p>
-<p class="last">Setting <em>interp</em> to False is faster, but it will cause disagreements between node-based and element-based sampling. If the upcrossing is large this difference is negligible, but for small upcrossing there may be strange results (e.g. upcrossing with an extent of zero). Recommendation: <strong>always interpolate</strong>.</p>
+<p class="admonition-title">Danger</p>
+<p>Setting <em>interp</em> to False is faster, but it will cause disagreements between node-based and element-based sampling. If the upcrossing is large this difference is negligible, but for small upcrossing there may be strange results (e.g. upcrossing with an extent of zero). Recommendation: <strong>always interpolate</strong>.</p>
 </div>
 </dd></dl>
 
-<dl class="method">
-<dt id="rft1d.geom.ClusterMetricCalculator.total_excursion_set_extent">
-<code class="descname">total_excursion_set_extent</code><span class="sig-paren">(</span><em>y</em>, <em>u</em>, <em>interp=True</em><span class="sig-paren">)</span><a class="headerlink" href="#rft1d.geom.ClusterMetricCalculator.total_excursion_set_extent" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="rft1d.geom.ClusterMetricCalculator.total_excursion_set_extent">
+<span class="sig-name descname"><span class="pre">total_excursion_set_extent</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">u</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">interp</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rft1d.geom.ClusterMetricCalculator.total_excursion_set_extent" title="Permalink to this definition">¶</a></dt>
 <dd><p>Total extent of the excursion set.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><em>y</em> &#8212; a 1D field</p>
-<p><em>u</em> &#8212; threshold height</p>
-<p><em>fwhm</em> &#8212; actual or estimated FWHM</p>
-<p><em>interp</em> &#8212; interpolate to threshold <em>u</em></p>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><em>k</em> &#8212; total extent of the excursion set <em>u</em></p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Example:</th><td class="field-body"><div class="first highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">nResels</span> <span class="o">=</span> <span class="n">calc</span><span class="o">.</span><span class="n">total_excursion_set_extent</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">)</span>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><em>y</em> — a 1D field</p>
+<p><em>u</em> — threshold height</p>
+<p><em>fwhm</em> — actual or estimated FWHM</p>
+<p><em>interp</em> — interpolate to threshold <em>u</em></p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><em>k</em> — total extent of the excursion set <em>u</em></p>
+</dd>
+<dt class="field-odd">Example</dt>
+<dd class="field-odd"><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">nResels</span> <span class="o">=</span> <span class="n">calc</span><span class="o">.</span><span class="n">total_excursion_set_extent</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">)</span>
 </pre></div>
 </div>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Note:</th><td class="field-body"><p class="first last">This is a length measure, so is similar to <strong>nSuprathresholdNodes</strong> minus <strong>nUpcrossings</strong>, with the exception that extents can be interpolated to <em>u</em>.</p>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+<dt class="field-even">Note</dt>
+<dd class="field-even"><p>This is a length measure, so is similar to <strong>nSuprathresholdNodes</strong> minus <strong>nUpcrossings</strong>, with the exception that extents can be interpolated to <em>u</em>.</p>
+</dd>
+</dl>
 <div class="admonition danger">
-<p class="first admonition-title">Danger</p>
-<p class="last">Setting <em>interp</em> to False is faster, but it will cause disagreements between node-based and element-based sampling. If the upcrossing is large this difference is negligible, but for small upcrossing there may be strange results (e.g. upcrossing with an extent of zero). Recommendation: <strong>always interpolate</strong>.</p>
+<p class="admonition-title">Danger</p>
+<p>Setting <em>interp</em> to False is faster, but it will cause disagreements between node-based and element-based sampling. If the upcrossing is large this difference is negligible, but for small upcrossing there may be strange results (e.g. upcrossing with an extent of zero). Recommendation: <strong>always interpolate</strong>.</p>
 </div>
 </dd></dl>
 
 </dd></dl>
 
-</div>
-</div>
-</div>
+</section>
+</section>
+</section>
 
 
           </div>
-          <footer>
-  
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="prob.html" class="btn btn-neutral float-right" title="rft1d.prob">Next <span class="fa fa-arrow-circle-right"></span></a>
-      
-      
-        <a href="distributions.html" class="btn btn-neutral" title="rft1d.distributions"><span class="fa fa-arrow-circle-left"></span> Previous</a>
-      
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="distributions.html" class="btn btn-neutral float-left" title="rft1d.distributions" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="prob.html" class="btn btn-neutral float-right" title="rft1d.prob" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
-  
 
   <hr/>
 
   <div role="contentinfo">
-    <p>
-        &copy; Copyright 2015, Todd Pataky.
-    </p>
+    <p>&#169; Copyright 2022, Todd Pataky.</p>
   </div>
 
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
-  
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
 </footer>
         </div>
       </div>
@@ -798,20 +728,21 @@ including number of upcrossings, upcrossing (cluster) extents, etc.</p>
   </div>
   
 
-
   
 
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'0.1.1',
+            VERSION:'0.2.0',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true
         };
     </script>
+      <script type="text/javascript" src="../_static/documentation_options.js"></script>
       <script type="text/javascript" src="../_static/jquery.js"></script>
       <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
       <script type="text/javascript" src="../_static/doctools.js"></script>
 
   

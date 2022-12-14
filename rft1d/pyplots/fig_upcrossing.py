@@ -92,31 +92,44 @@ color2      = 0.21, 0.57, 0.89
 ax0   = pyplot.axes([0.06,0.14,0.44,0.84])
 ax1   = pyplot.axes([0.55,0.14,0.44,0.84])
 AX    = ax0,ax1
+
+
+ind   = np.arange(26,39)
+
+x     = np.arange( y.size )
+b     = np.array( [True]*y.size )
+b[:25] = False
+b[40:] = False
+
+
 for ax in [ax0,ax1]:
-	plot_filled(y, ax, thresh=h, plot_thresh=False, color='k', lw=2, facecolor=color0)
+	# plot_filled(y, ax, thresh=h, plot_thresh=False, color='k', lw=2, facecolor=color0)
+	ax.plot(x-1, y, color='k', lw=2)
+	patch = ax.fill_between(x-1, y, y2=h, where=b, interpolate=False, fc=color0)
+	
 	ax.hlines(0, 0, 100, color='k', linestyle='-', lw=0.5)
-	ax.hlines(h, 0, 100, color=color0, linestyle='--')
+	# ax.hlines(h, 0, 100, color=color0, linestyle='--')
 ### plot nNodes:
-ind   = range(25,38)
-ax1.plot(ind, y[ind], 'o', markersize=6, markerfacecolor=color1, markeredgecolor=color0)
-ax1.plot(ind, [h]*len(ind), 'o', markersize=6, markerfacecolor=color1, markeredgecolor=color0)
+
+ax1.plot(ind-1, y[ind], 'o', markersize=6, markerfacecolor=color1, markeredgecolor=color0)
+ax1.plot(ind-1, [h]*len(ind), 'o', markersize=6, markerfacecolor=color1, markeredgecolor=color0)
 for i in ind:
-	ax1.plot([i,i], [h,y[i]], '0.7')
+	ax1.plot([i-1,i-1], [h,y[i]], '0.7')
 ax1.text(31, 0.58, 'extent (nodes)', color='w', ha='center', size=14)
 ### label threshold:
-ax0.text(72, 0.4, 'threshold  $u$', color=color0, size=12)
+ax0.text(72, 0.4, r'threshold  $u$', color=color0, size=12, usetex=True)
 ### plot maximum:
-ax0.plot(y.argmax(), y.max(), 'o', markersize=5, markerfacecolor='w', markeredgecolor=color0)
-ax1.plot(y.argmax(), y.max(), 'o', markersize=12, markerfacecolor='w', markeredgecolor=color0)
+ax0.plot(y.argmax()-1, y.max(), 'o', markersize=5, markerfacecolor='w', markeredgecolor=color0)
+ax1.plot(y.argmax()-1, y.max(), 'o', markersize=12, markerfacecolor='w', markeredgecolor=color0)
 ax0.plot([48]*2, [0,y.max()], '-', lw=3, marker='<', color=color0)
-ax0.text(52, y.max(), 'maximum height  $z_{\mathrm{max}}$', color=color0, size=12)
+ax0.text(52, y.max(), r'maximum height  $z_{\mathrm{max}}$', color=color0, size=12, usetex=True)
 ### plot extent:
 ax1.hlines(h, 0, 100, color=color0, linestyle='-', lw=3)
 ax1.plot([24.1,37.9], [0.519]*2, '^-', lw=3, color=color0)
 ax1.text(31, 0.49, 'extent (interpolated)', color=color0, ha='center', size=14)
 ### axes labels:
 [ax.set_xlabel('Field position  (%)')   for ax in AX]
-ax0.text(-0.15, 0.5, '$z$', size=24, transform=ax0.transAxes, rotation=90, va='center')
+ax0.text(-0.15, 0.5, r'$z$', size=24, transform=ax0.transAxes, rotation=90, va='center', usetex=True)
 ### annotate:
 pyplot.setp(ax0, xlim=(0,100), ylim=(-1.2,1.2))
 pyplot.setp(ax1, xlim=(23,39), ylim=(0.47,0.92))
@@ -124,6 +137,6 @@ pyplot.setp(ax1, xlim=(23,39), ylim=(0.47,0.92))
 ax0.text(0.04, 0.91, '(a) Upcrossing', transform=ax0.transAxes)
 ax1.text(0.04, 0.91, '(b) Upcrossing  (zoomed)', transform=ax1.transAxes)
 
-
+# pyplot.show()
 
 

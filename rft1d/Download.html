@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Download &mdash; rft1d 0.1.1 documentation</title>
+  <title>Download &mdash; rft1d 0.2.0 documentation</title>
   
 
   
@@ -29,9 +29,18 @@
 
   
   
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+    <link rel="stylesheet" href="_static/plot_directive.css" type="text/css" />
+  
     <link rel="stylesheet" href="_static/theme.css" type="text/css" />
   
-    <link rel="top" title="rft1d 0.1.1 documentation" href="index.html"/>
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
+    <link rel="top" title="rft1d 0.2.0 documentation" href="index.html"/>
         <link rel="next" title="RFT Overview" href="Theory.html"/>
         <link rel="prev" title="One-Dimensional Random Field Theory" href="index.html"/> 
 
@@ -55,8 +64,9 @@
 
       <div class="wy-side-nav-search">
         <!-- <a href="index.html" class="fa fa-home"> rft1d</a> -->
-		<div role="search">
-  <form id ="rtd-search-form" class="wy-form" action="search.html" method="get">
+		
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
@@ -70,7 +80,7 @@
 		
         
             <ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="">Download</a><ul>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Download</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#automated-installation">Automated installation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#source-code-download">Source code download</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#release-notes">Release Notes</a></li>
@@ -125,8 +135,9 @@
 	  
       <!-- <div class="wy-side-nav-search">
         <a href="index.html" class="fa fa-home"> rft1d</a>
-		<div role="search">
-  <form id ="rtd-search-form" class="wy-form" action="search.html" method="get">
+		
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
@@ -157,7 +168,7 @@
     <li>Download</li>
       <li class="wy-breadcrumbs-aside">
         
-          <!-- <a href="_sources/Download.txt" rel="nofollow"> View page source</a> -->
+          <!-- <a href="_sources/Download.rst.txt" rel="nofollow"> View page source</a> -->
         
       </li>
   </ul>
@@ -165,92 +176,65 @@
 </div>
           <div role="main">
             
-  <div class="section" id="download">
-<h1>Download<a class="headerlink" href="#download" title="Permalink to this headline">¶</a></h1>
+  <section id="download">
+<h1>Download<a class="headerlink" href="#download" title="Permalink to this heading">¶</a></h1>
 <div class="admonition warning">
-<p class="first admonition-title">Warning</p>
-<p class="last">Please read <a class="reference internal" href="#label-license"><span>the license below</span></a> before downloading any materials.</p>
+<p class="admonition-title">Warning</p>
+<p>Please read <a class="reference internal" href="#label-license"><span class="std std-ref">the license below</span></a> before downloading any materials.</p>
 </div>
-<div class="section" id="automated-installation">
-<h2>Automated installation<a class="headerlink" href="#automated-installation" title="Permalink to this headline">¶</a></h2>
-<div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">Automated installation assumes that Python is already installed and that the
-<a class="reference external" href="https://pypi.python.org/pypi/setuptools">setuptools</a> and <a class="reference external" href="https://pypi.python.org/pypi/pip/">pip</a> are packages also also installed. To check whether you have these packages enter <code class="docutils literal"><span class="pre">import</span> <span class="pre">setuptools</span></code> and <code class="docutils literal"><span class="pre">import</span> <span class="pre">pip</span></code> into a Python script or interactive session; if no errors are generated you should be fine.</p>
-</div>
-<p>The easiest way to download and install <strong>rft1d</strong> is using one of the following commands:</p>
-<div class="highlight-python"><div class="highlight"><pre>easy_install rft1d
-</pre></div>
-</div>
-<p>or:</p>
-<div class="highlight-python"><div class="highlight"><pre>pip install rft1d
-</pre></div>
-</div>
-<p>These commands will find the <strong>rft1d</strong> source code at the
-<a class="reference external" href="https://pypi.python.org/pypi/rft1d/">Python Package Index</a> ,
-then download it and install it to your default Python <code class="docutils literal"><span class="pre">site-packages</span></code> directory.
-If you are not sure how to find your <code class="docutils literal"><span class="pre">site-packages</span></code> directory,
-<a class="reference external" href="http://stackoverflow.com/questions/122327/how-do-i-find-the-location-of-my-python-site-packages-directory/">check out this discussion at stackoverflow.com</a> .
-To uninstall <strong>rft1d</strong> simply delete the <strong>rft1d</strong> folders from your <code class="docutils literal"><span class="pre">site-packages</span></code> directory.</p>
-</div>
-<div class="section" id="source-code-download">
-<h2>Source code download<a class="headerlink" href="#source-code-download" title="Permalink to this headline">¶</a></h2>
-<p><a class="reference external" href="https://github.com/0todd0000/rft1d/archive/master.zip">Current master source code</a>  (will be downloaded from github.com)</p>
-<p><a class="reference external" href="https://github.com/0todd0000/rft1d/">Full source code repository at github.com</a></p>
-<p><a class="reference external" href="https://pypi.python.org/pypi/rft1d/">All source code versions at pypi.python.org</a></p>
-</div>
+<section id="automated-installation">
+<h2>Automated installation<a class="headerlink" href="#automated-installation" title="Permalink to this heading">¶</a></h2>
+<blockquote>
+<div><p>pip install rft1d</p>
+</div></blockquote>
+</section>
+<section id="source-code-download">
+<h2>Source code download<a class="headerlink" href="#source-code-download" title="Permalink to this heading">¶</a></h2>
+<p>Visit rft1d’s <a class="reference external" href="https://github.com/0todd0000/rft1d/">GitHub repository</a></p>
+</section>
 <hr class="docutils" />
-<div class="section" id="release-notes">
-<h2>Release Notes<a class="headerlink" href="#release-notes" title="Permalink to this headline">¶</a></h2>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Version:</th><td class="field-body">0.1.1  (2015.04.26)</td>
-</tr>
-</tbody>
-</table>
+<section id="release-notes">
+<h2>Release Notes<a class="headerlink" href="#release-notes" title="Permalink to this heading">¶</a></h2>
+<dl class="field-list simple">
+<dt class="field-odd">Version</dt>
+<dd class="field-odd"><p>0.2.0  (2015.04.26)</p>
+</dd>
+</dl>
 <p>Initial version following acceptance at the <strong>Journal of Statistical Software</strong>.</p>
-</div>
+</section>
 <hr class="docutils" id="label-license" />
-<div class="section" id="license-information">
-<h2>License information<a class="headerlink" href="#license-information" title="Permalink to this headline">¶</a></h2>
-<p><strong>rft1d</strong> is free but copyright software, distributed under the terms of the GNU General Public License as published by the Free Software Foundation (version 3). Further details on &#8220;copyleft&#8221; can be found at <a class="reference external" href="http://www.gnu.org/copyleft/">http://www.gnu.org/copyleft/</a>. In particular, <strong>rft1d</strong> is supplied as is. No formal support or maintenance is provided or implied.</p>
-</div>
+<section id="license-information">
+<h2>License information<a class="headerlink" href="#license-information" title="Permalink to this heading">¶</a></h2>
+<p><strong>rft1d</strong> is free but copyright software, distributed under the terms of the GNU General Public License as published by the Free Software Foundation (version 3). Further details on “copyleft” can be found at <a class="reference external" href="http://www.gnu.org/copyleft/">http://www.gnu.org/copyleft/</a>. In particular, <strong>rft1d</strong> is supplied as is. No formal support or maintenance is provided or implied.</p>
+</section>
 <hr class="docutils" />
-<div class="section" id="license-agreement-for-rft1d">
-<h2>License agreement for rft1d<a class="headerlink" href="#license-agreement-for-rft1d" title="Permalink to this headline">¶</a></h2>
+<section id="license-agreement-for-rft1d">
+<h2>License agreement for rft1d<a class="headerlink" href="#license-agreement-for-rft1d" title="Permalink to this heading">¶</a></h2>
 <p>Copyright (C) 2015  Todd Pataky</p>
 <p>This program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.</p>
 <p>This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more details.</p>
 <p>You should have received a copy of the GNU General Public License along with this program.  If not, see &lt;<a class="reference external" href="http://www.gnu.org/licenses/">http://www.gnu.org/licenses/</a>&gt;.</p>
-</div>
-</div>
+</section>
+</section>
 
 
           </div>
-          <footer>
-  
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="Theory.html" class="btn btn-neutral float-right" title="RFT Overview">Next <span class="fa fa-arrow-circle-right"></span></a>
-      
-      
-        <a href="index.html" class="btn btn-neutral" title="One-Dimensional Random Field Theory"><span class="fa fa-arrow-circle-left"></span> Previous</a>
-      
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="index.html" class="btn btn-neutral float-left" title="One-Dimensional Random Field Theory" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="Theory.html" class="btn btn-neutral float-right" title="RFT Overview" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
-  
 
   <hr/>
 
   <div role="contentinfo">
-    <p>
-        &copy; Copyright 2015, Todd Pataky.
-    </p>
+    <p>&#169; Copyright 2022, Todd Pataky.</p>
   </div>
 
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
-  
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
 </footer>
         </div>
       </div>
@@ -260,20 +244,21 @@ To uninstall <strong>rft1d</strong> simply delete the <strong>rft1d</strong> fol
   </div>
   
 
-
   
 
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'./',
-            VERSION:'0.1.1',
+            VERSION:'0.2.0',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true
         };
     </script>
+      <script type="text/javascript" src="_static/documentation_options.js"></script>
       <script type="text/javascript" src="_static/jquery.js"></script>
       <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/_sphinx_javascript_frameworks_compat.js"></script>
       <script type="text/javascript" src="_static/doctools.js"></script>
 
   

@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>rft1d.prob &mdash; rft1d 0.1.1 documentation</title>
+  <title>rft1d.prob &mdash; rft1d 0.2.0 documentation</title>
   
 
   
@@ -29,9 +29,18 @@
 
   
   
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../_static/plot_directive.css" type="text/css" />
+  
     <link rel="stylesheet" href="../_static/theme.css" type="text/css" />
   
-    <link rel="top" title="rft1d 0.1.1 documentation" href="../index.html"/>
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="rft1d 0.2.0 documentation" href="../index.html"/>
         <link rel="up" title="API" href="../API.html"/>
         <link rel="next" title="rft1d.random" href="random.html"/>
         <link rel="prev" title="rft1d.geom" href="geom.html"/> 
@@ -56,8 +65,9 @@
 
       <div class="wy-side-nav-search">
         <!-- <a href="../index.html" class="fa fa-home"> rft1d</a> -->
-		<div role="search">
-  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+		
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
@@ -103,7 +113,7 @@
 <li class="toctree-l2"><a class="reference internal" href="data.html">rft1d.data</a></li>
 <li class="toctree-l2"><a class="reference internal" href="distributions.html">rft1d.distributions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="geom.html">rft1d.geom</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="">rft1d.prob</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">rft1d.prob</a></li>
 <li class="toctree-l2"><a class="reference internal" href="random.html">rft1d.random</a></li>
 </ul>
 </li>
@@ -126,8 +136,9 @@
 	  
       <!-- <div class="wy-side-nav-search">
         <a href="../index.html" class="fa fa-home"> rft1d</a>
-		<div role="search">
-  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+		
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
@@ -160,7 +171,7 @@
     <li>rft1d.prob</li>
       <li class="wy-breadcrumbs-aside">
         
-          <!-- <a href="../_sources/API/prob.txt" rel="nofollow"> View page source</a> -->
+          <!-- <a href="../_sources/API/prob.rst.txt" rel="nofollow"> View page source</a> -->
         
       </li>
   </ul>
@@ -168,63 +179,61 @@
 </div>
           <div role="main">
             
-  <div class="section" id="module-rft1d.prob">
-<span id="rft1d-prob"></span><span id="label-api-prob"></span><h1>rft1d.prob<a class="headerlink" href="#module-rft1d.prob" title="Permalink to this headline">¶</a></h1>
+  <section id="module-rft1d.prob">
+<span id="rft1d-prob"></span><span id="label-api-prob"></span><h1>rft1d.prob<a class="headerlink" href="#module-rft1d.prob" title="Permalink to this heading">¶</a></h1>
 <p>Random Field Theory expectations and probabilities.
 The core RFT computations are conducted inside <strong>prob.rft</strong>, and the 
 <strong>RFTCalculator</strong> class serves as a high-level interface to <strong>prob.rft</strong></p>
-<div class="section" id="core-rft-computations">
-<h2>Core RFT computations<a class="headerlink" href="#core-rft-computations" title="Permalink to this headline">¶</a></h2>
-<dl class="method">
-<dt id="rft1d.prob.rft">
-<code class="descclassname">prob.</code><code class="descname">rft</code><span class="sig-paren">(</span><em>c</em>, <em>k</em>, <em>STAT</em>, <em>Z</em>, <em>df</em>, <em>R</em>, <em>n=1</em>, <em>Q=None</em>, <em>expectations_only=False</em>, <em>version='spm12'</em><span class="sig-paren">)</span><a class="headerlink" href="#rft1d.prob.rft" title="Permalink to this definition">¶</a></dt>
+<section id="core-rft-computations">
+<h2>Core RFT computations<a class="headerlink" href="#core-rft-computations" title="Permalink to this heading">¶</a></h2>
+<dl class="py method">
+<dt class="sig sig-object py" id="rft1d.prob.rft">
+<span class="sig-prename descclassname"><span class="pre">prob.</span></span><span class="sig-name descname"><span class="pre">rft</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">k</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">STAT</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Z</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">R</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Q</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">expectations_only</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">version</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'spm12'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">_0d_check</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rft1d.prob.rft" title="Permalink to this definition">¶</a></dt>
 <dd><p>Random Field Theory probabilities and expectations using unified Euler Characteristic (EC) theory.
-This code is based on &#8220;spm_P_RF.m&#8221; and &#8220;spm_P.m&#8221; from the spm8 and spm12 Matlab packages
+This code is based on “spm_P_RF.m” and “spm_P.m” from the spm8 and spm12 Matlab packages
 which are available from: <a class="reference external" href="http://www.fil.ion.ucl.ac.uk/spm/">http://www.fil.ion.ucl.ac.uk/spm/</a></p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><em>c</em> &#8212; number of clusters</p>
-<p><em>k</em> &#8212; cluster extent (resels)</p>
-<p><em>STAT</em> &#8212; test statistic (one of:  &#8220;Z&#8221;, &#8220;T&#8221;, &#8220;F&#8221;, &#8220;X2&#8221;, &#8220;T2&#8221;)</p>
-<p><em>Z</em> &#8212; field height</p>
-<p><em>df</em> &#8212; degrees of freedom [df{interest} df{error}]</p>
-<p><em>R</em> &#8212; resel counts (0D counts, 1D counts) defining search volume</p>
-<p><em>n</em> &#8212; number of test statistic fields in conjunction</p>
-<p><em>Q</em> &#8212; number of field nodes (used for Bonferroni comparison)</p>
-<p><em>expectations_only</em> &#8212; if True only expectations will be returned</p>
-<p><em>version</em> &#8212; &#8220;spm8&#8221; or &#8220;spm12&#8221; (see below)</p>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><em>P</em>  &#8212; corrected P value</p>
-<p><em>p</em>  &#8212; uncorrected P value</p>
-<p><em>Ec</em> &#8212; expected number of upcrossings {c}</p>
-<p><em>Ek</em> &#8212; expected resels per upcrossing {k}</p>
-<p><em>EN</em> &#8212; expected excursion set resels</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><em>c</em> — number of clusters</p>
+<p><em>k</em> — cluster extent (resels)</p>
+<p><em>STAT</em> — test statistic (one of:  “Z”, “T”, “F”, “X2”, “T2”)</p>
+<p><em>Z</em> — field height</p>
+<p><em>df</em> — degrees of freedom [df{interest} df{error}]</p>
+<p><em>R</em> — resel counts (0D counts, 1D counts) defining search volume</p>
+<p><em>n</em> — number of test statistic fields in conjunction</p>
+<p><em>Q</em> — number of field nodes (used for Bonferroni comparison)</p>
+<p><em>expectations_only</em> — if True only expectations will be returned</p>
+<p><em>version</em> — “spm8” or “spm12” (see below)</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><em>P</em>  — corrected P value</p>
+<p><em>p</em>  — uncorrected P value</p>
+<p><em>Ec</em> — expected number of upcrossings {c}</p>
+<p><em>Ek</em> — expected resels per upcrossing {k}</p>
+<p><em>EN</em> — expected excursion set resels</p>
 <p>NOTE!  If expectations_only==True, then only (Ec,Ek,EN) are returned.</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Examples:</th><td class="field-body"><div class="first highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">P</span><span class="p">,</span><span class="n">p</span><span class="p">,</span><span class="n">Ec</span><span class="p">,</span><span class="n">Ek</span><span class="p">,</span><span class="n">EN</span> <span class="o">=</span> <span class="n">rft1d</span><span class="o">.</span><span class="n">prob</span><span class="o">.</span><span class="n">rft</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="s">&#39;T&#39;</span><span class="p">,</span> <span class="mf">2.1</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">8</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">10</span><span class="p">])</span>
+</dd>
+<dt class="field-odd">Examples</dt>
+<dd class="field-odd"><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">P</span><span class="p">,</span><span class="n">p</span><span class="p">,</span><span class="n">Ec</span><span class="p">,</span><span class="n">Ek</span><span class="p">,</span><span class="n">EN</span> <span class="o">=</span> <span class="n">rft1d</span><span class="o">.</span><span class="n">prob</span><span class="o">.</span><span class="n">rft</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;T&#39;</span><span class="p">,</span> <span class="mf">2.1</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">8</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">10</span><span class="p">])</span>
 </pre></div>
 </div>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Notes:</th><td class="field-body"><p class="first">1. The spm8 and spm12 Matlab functions on which this code is based were
+</dd>
+<dt class="field-even">Notes</dt>
+<dd class="field-even"><p>1. The spm8 and spm12 Matlab functions on which this code is based were
 developed by K.Friston and other members of the Wellcome Trust Centre for
 Neuroimaging. This function makes minor modifications to those procedures
 to take advantage of the simplicity of the 1D case.</p>
 <p>2. Results for the spm8 and spm12 versions can be obtained via the
-keyword &#8220;version&#8221;. When expected ECs approach zero, the spm8 and spm12
+keyword “version”. When expected ECs approach zero, the spm8 and spm12
 results will diverge slightly, due to a minor modification in spm12:
-In spm8: &#8220;EC = EC + eps&#8221;.
-In spm12: &#8220;EC = np.array([max(ec,eps) for ec in EC])&#8221;</p>
+In spm8: “EC = EC + eps”.
+In spm12: “EC = np.array([max(ec,eps) for ec in EC])”</p>
 <p>3. Setting <em>c</em> and <em>k</em> in particular manners will yield important
 probabilities. Consider these three cases:</p>
 <ol class="loweralpha simple">
-<li>rft(1, 0, STAT, Z, R)  &#8212; field maximum</li>
-<li>rft(1, k, STAT, u, R)  &#8212; cluster-based inference</li>
-<li>rft(c, k, STAT, u, R)  &#8212; set-based inference</li>
+<li><p>rft(1, 0, STAT, Z, R)  — field maximum</p></li>
+<li><p>rft(1, k, STAT, u, R)  — cluster-based inference</p></li>
+<li><p>rft(c, k, STAT, u, R)  — set-based inference</p></li>
 </ol>
 <p>(a) is the probability that Gaussian fields will produce 1 upcrossing
 with an extent of 0. Thus this pertains to the maximum of height of
@@ -237,391 +246,335 @@ cluster-level inference (i.e. p values for individual upcrossings).</p>
 will produce <em>c</em> upcrossings with a minimum extent of <em>k</em>. This is
 used for set-level inference (i.e. p values for the entire result).</p>
 <div class="admonition warning">
-<p class="first admonition-title">Warning</p>
-<p class="last">Set-based inference (c) is more powerful than cluster-based inference (b), but unlike (b) it has no localizing information; it is a global p value pertaining to the entire excursion set en masse. It will thus always be lower than (b).</p>
+<p class="admonition-title">Warning</p>
+<p>Set-based inference (c) is more powerful than cluster-based inference (b), but unlike (b) it has no localizing information; it is a global p value pertaining to the entire excursion set en masse. It will thus always be lower than (b).</p>
 </div>
 <p>4. If Q==None, then no Bonferroni check is made. If Q!=None, the RFT
 correction will be compared to Bonferroni correction, and the less
 severe correction will be returned. This will only have an effect
 for very rough fields, for example: when then second resel count
 approaches 0.5*Q.</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">References:</th><td class="field-body"><ol class="first last arabic simple">
-<li>Hasofer AM (1978) Upcrossings of random fields. Suppl Adv Appl
-Prob 10:14-21.</li>
-<li>Friston KJ et al (1994) Assessing the significance of focal
+</dd>
+<dt class="field-odd">References</dt>
+<dd class="field-odd"><ol class="arabic simple">
+<li><p>Hasofer AM (1978) Upcrossings of random fields. Suppl Adv Appl
+Prob 10:14-21.</p></li>
+<li><p>Friston KJ et al (1994) Assessing the significance of focal
 activations using their spatial extent. Human Brain Mapping 1:
-210-220.</li>
-<li>Worsley KJ et al (1996) A unified statistical approach for
+210-220.</p></li>
+<li><p>Worsley KJ et al (1996) A unified statistical approach for
 determining significant signals in images of cerebral
-activation. Human Brain Mapping 4:58-73.</li>
+activation. Human Brain Mapping 4:58-73.</p></li>
 </ol>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 </dd></dl>
 
-</div>
-<div class="section" id="high-level-interface-to-rft-computations">
-<h2>High-level interface to RFT computations<a class="headerlink" href="#high-level-interface-to-rft-computations" title="Permalink to this headline">¶</a></h2>
-<dl class="class">
-<dt id="rft1d.prob.RFTCalculator">
-<em class="property">class </em><code class="descclassname">rft1d.prob.</code><code class="descname">RFTCalculator</code><span class="sig-paren">(</span><em>STAT='Z'</em>, <em>df=None</em>, <em>nodes=101</em>, <em>FWHM=10.0</em>, <em>n=1</em>, <em>withBonf=False</em>, <em>version='spm12'</em><span class="sig-paren">)</span><a class="headerlink" href="#rft1d.prob.RFTCalculator" title="Permalink to this definition">¶</a></dt>
+</section>
+<section id="high-level-interface-to-rft-computations">
+<h2>High-level interface to RFT computations<a class="headerlink" href="#high-level-interface-to-rft-computations" title="Permalink to this heading">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="rft1d.prob.RFTCalculator">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">rft1d.prob.</span></span><span class="sig-name descname"><span class="pre">RFTCalculator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">STAT</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Z'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">df</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nodes</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">101</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">FWHM</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">withBonf</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">version</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'spm12'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rft1d.prob.RFTCalculator" title="Permalink to this definition">¶</a></dt>
 <dd><p>A convenience class for high-level access to RFT probabilities.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><em>STAT</em> &#8212; test statistic (one of:  &#8220;Z&#8221;, &#8220;T&#8221;, &#8220;F&#8221;, &#8220;X2&#8221;, &#8220;T2&#8221;)</p>
-<p><em>df</em> &#8212; degrees of freedom [df{interest} df{error}]</p>
-<p><em>nodes</em> &#8212; number of field nodes (int)  OR a binary field (boolean array)</p>
-<p><em>FWHM</em> &#8212; field smoothness (float)</p>
-<p><em>n</em> &#8212; number of test statistic fields in conjunction</p>
-<p><em>withBonf</em> &#8212; use a Bonferroni correction if less severe than the RFT correction</p>
-<p><em>version</em> &#8212; &#8220;spm8&#8221; or &#8220;spm12&#8221; (see below)</p>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">An instance of the RFTCalculator class.</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Attributes:</th><td class="field-body"><p class="first"><em>expected</em> &#8212; access to RFT expectations</p>
-<p><em>p</em> &#8212; access to RFT probabilities</p>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Methods:</th><td class="field-body"><p class="first"><em>isf</em> &#8212; inverse survival function</p>
-<p><em>sf</em> &#8212; survival function</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Examples:</th><td class="field-body"><div class="first last highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">calc</span> <span class="o">=</span> <span class="n">rft1d</span><span class="o">.</span><span class="n">prob</span><span class="o">.</span><span class="n">RFTCalculator</span><span class="p">(</span><span class="s">&#39;T&#39;</span><span class="p">,</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">8</span><span class="p">),</span> <span class="mi">101</span><span class="p">,</span> <span class="mf">15.0</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">calc</span><span class="o">.</span><span class="n">expected</span><span class="o">.</span><span class="n">number_of_upcrossings</span><span class="p">(</span><span class="mf">1.0</span><span class="p">)</span> <span class="c">#yields 1.343</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">calc</span><span class="o">.</span><span class="n">expected</span><span class="o">.</span><span class="n">number_of_upcrossings</span><span class="p">(</span><span class="mf">4.5</span><span class="p">)</span> <span class="c">#yields 0.0223</span>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><em>STAT</em> — test statistic (one of:  “Z”, “T”, “F”, “X2”, “T2”)</p>
+<p><em>df</em> — degrees of freedom [df{interest} df{error}]</p>
+<p><em>nodes</em> — number of field nodes (int)  OR a binary field (boolean array)</p>
+<p><em>FWHM</em> — field smoothness (float)</p>
+<p><em>n</em> — number of test statistic fields in conjunction</p>
+<p><em>withBonf</em> — use a Bonferroni correction if less severe than the RFT correction</p>
+<p><em>version</em> — “spm8” or “spm12” (see below)</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>An instance of the RFTCalculator class.</p>
+</dd>
+<dt class="field-odd">Attributes</dt>
+<dd class="field-odd"><p><em>expected</em> — access to RFT expectations</p>
+<p><em>p</em> — access to RFT probabilities</p>
+</dd>
+<dt class="field-even">Methods</dt>
+<dd class="field-even"><p><em>isf</em> — inverse survival function</p>
+<p><em>sf</em> — survival function</p>
+</dd>
+<dt class="field-odd">Examples</dt>
+<dd class="field-odd"><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">calc</span> <span class="o">=</span> <span class="n">rft1d</span><span class="o">.</span><span class="n">prob</span><span class="o">.</span><span class="n">RFTCalculator</span><span class="p">(</span><span class="s1">&#39;T&#39;</span><span class="p">,</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">8</span><span class="p">),</span> <span class="mi">101</span><span class="p">,</span> <span class="mf">15.0</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">calc</span><span class="o">.</span><span class="n">expected</span><span class="o">.</span><span class="n">number_of_upcrossings</span><span class="p">(</span><span class="mf">1.0</span><span class="p">)</span> <span class="c1">#yields 1.343</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">calc</span><span class="o">.</span><span class="n">expected</span><span class="o">.</span><span class="n">number_of_upcrossings</span><span class="p">(</span><span class="mf">4.5</span><span class="p">)</span> <span class="c1">#yields 0.0223</span>
 </pre></div>
 </div>
-</td>
-</tr>
-</tbody>
-</table>
-<dl class="method">
-<dt id="rft1d.prob.RFTCalculator.isf">
-<code class="descname">isf</code><span class="sig-paren">(</span><em>alpha</em><span class="sig-paren">)</span><a class="headerlink" href="#rft1d.prob.RFTCalculator.isf" title="Permalink to this definition">¶</a></dt>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="rft1d.prob.RFTCalculator.isf">
+<span class="sig-name descname"><span class="pre">isf</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">alpha</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rft1d.prob.RFTCalculator.isf" title="Permalink to this definition">¶</a></dt>
 <dd><p>Inverse survival function.
 (see also the survival function: <strong>RFTCalculator.sf</strong>)</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><em>alpha</em> &#8211; upper tail probability (float;  0 &lt; alpha &lt; 1)</p>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Quantile corresponding to upper-tail probability alpha.
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><em>alpha</em> – upper tail probability (float;  0 &lt; alpha &lt; 1)</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Quantile corresponding to upper-tail probability alpha.
 Equivalently: critical threshold at a Type I error rate of alpha.</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Examples:</th><td class="field-body"><div class="first last highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">calc</span> <span class="o">=</span> <span class="n">rft1d</span><span class="o">.</span><span class="n">prob</span><span class="o">.</span><span class="n">RFTCalculator</span><span class="p">(</span><span class="s">&#39;T&#39;</span><span class="p">,</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">8</span><span class="p">),</span> <span class="mi">101</span><span class="p">,</span> <span class="mf">15.0</span><span class="p">)</span>
+</dd>
+<dt class="field-odd">Examples</dt>
+<dd class="field-odd"><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">calc</span> <span class="o">=</span> <span class="n">rft1d</span><span class="o">.</span><span class="n">prob</span><span class="o">.</span><span class="n">RFTCalculator</span><span class="p">(</span><span class="s1">&#39;T&#39;</span><span class="p">,</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">8</span><span class="p">),</span> <span class="mi">101</span><span class="p">,</span> <span class="mf">15.0</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">calc</span><span class="o">.</span><span class="n">isf</span><span class="p">(</span><span class="mf">0.05</span><span class="p">)</span>
 </pre></div>
 </div>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="method">
-<dt id="rft1d.prob.RFTCalculator.sf">
-<code class="descname">sf</code><span class="sig-paren">(</span><em>u</em><span class="sig-paren">)</span><a class="headerlink" href="#rft1d.prob.RFTCalculator.sf" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="rft1d.prob.RFTCalculator.sf">
+<span class="sig-name descname"><span class="pre">sf</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">u</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rft1d.prob.RFTCalculator.sf" title="Permalink to this definition">¶</a></dt>
 <dd><p>Survival function.
 (Equivalent to <strong>RFTCalculator.p.upcrossing</strong>)</p>
 <p>Probability that 1D Gaussian fields with a smoothness <em>FWHM</em> would produce a 1D statistic field whose maximum exceeds <em>u</em>.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><em>u</em> &#8211; threshold (int, float, or sequence of int or float)</p>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">The probability of exceeding the specified heights.</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Examples:</th><td class="field-body"><div class="first last highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">calc</span> <span class="o">=</span> <span class="n">rft1d</span><span class="o">.</span><span class="n">prob</span><span class="o">.</span><span class="n">RFTCalculator</span><span class="p">(</span><span class="s">&#39;T&#39;</span><span class="p">,</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">8</span><span class="p">),</span> <span class="mi">101</span><span class="p">,</span> <span class="mf">15.0</span><span class="p">)</span>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><em>u</em> – threshold (int, float, or sequence of int or float)</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The probability of exceeding the specified heights.</p>
+</dd>
+<dt class="field-odd">Examples</dt>
+<dd class="field-odd"><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">calc</span> <span class="o">=</span> <span class="n">rft1d</span><span class="o">.</span><span class="n">prob</span><span class="o">.</span><span class="n">RFTCalculator</span><span class="p">(</span><span class="s1">&#39;T&#39;</span><span class="p">,</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">8</span><span class="p">),</span> <span class="mi">101</span><span class="p">,</span> <span class="mf">15.0</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">calc</span><span class="o">.</span><span class="n">sf</span><span class="p">(</span><span class="mf">3.5</span><span class="p">)</span>
 </pre></div>
 </div>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 </dd></dl>
 
 </dd></dl>
 
-<div class="section" id="expectations-rftcalculator-expected">
-<h3>Expectations (RFTCalculator.expected)<a class="headerlink" href="#expectations-rftcalculator-expected" title="Permalink to this headline">¶</a></h3>
+<section id="expectations-rftcalculator-expected">
+<h3>Expectations (RFTCalculator.expected)<a class="headerlink" href="#expectations-rftcalculator-expected" title="Permalink to this heading">¶</a></h3>
 <blockquote>
-<div><dl class="method">
-<dt id="rft1d.prob.expected.nodes_per_upcrossing">
-<code class="descclassname">expected.</code><code class="descname">nodes_per_upcrossing</code><span class="sig-paren">(</span><em>u</em><span class="sig-paren">)</span><a class="headerlink" href="#rft1d.prob.expected.nodes_per_upcrossing" title="Permalink to this definition">¶</a></dt>
+<div><dl class="py method">
+<dt class="sig sig-object py" id="rft1d.prob.expected.nodes_per_upcrossing">
+<span class="sig-prename descclassname"><span class="pre">expected.</span></span><span class="sig-name descname"><span class="pre">nodes_per_upcrossing</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">u</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rft1d.prob.expected.nodes_per_upcrossing" title="Permalink to this definition">¶</a></dt>
 <dd><p>Number of nodes expected for each uprcrossing at threshold <em>u</em>.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Example:</th><td class="field-body"><div class="first last highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">calc</span> <span class="o">=</span> <span class="n">rft1d</span><span class="o">.</span><span class="n">prob</span><span class="o">.</span><span class="n">RFTCalculator</span><span class="p">(</span><span class="s">&#39;T&#39;</span><span class="p">,</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">8</span><span class="p">),</span> <span class="mi">101</span><span class="p">,</span> <span class="mf">15.0</span><span class="p">)</span>
+<dl class="field-list">
+<dt class="field-odd">Example</dt>
+<dd class="field-odd"><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">calc</span> <span class="o">=</span> <span class="n">rft1d</span><span class="o">.</span><span class="n">prob</span><span class="o">.</span><span class="n">RFTCalculator</span><span class="p">(</span><span class="s1">&#39;T&#39;</span><span class="p">,</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">8</span><span class="p">),</span> <span class="mi">101</span><span class="p">,</span> <span class="mf">15.0</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">calc</span><span class="o">.</span><span class="n">expected</span><span class="o">.</span><span class="n">nodes_per_upcrossing</span><span class="p">(</span><span class="mf">2.7</span><span class="p">)</span>
 </pre></div>
 </div>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 <div class="admonition warning">
-<p class="first admonition-title">Warning</p>
-<p class="last">This is a node count, so is equivalent to: (FWHM x <strong>resels_per_upcrossing</strong>)  + 1</p>
+<p class="admonition-title">Warning</p>
+<p>This is a node count, so is equivalent to: (FWHM x <strong>resels_per_upcrossing</strong>)  + 1</p>
 </div>
 </dd></dl>
 
-<dl class="method">
-<dt id="rft1d.prob.expected.number_of_upcrossings">
-<code class="descclassname">expected.</code><code class="descname">number_of_upcrossings</code><span class="sig-paren">(</span><em>u</em><span class="sig-paren">)</span><a class="headerlink" href="#rft1d.prob.expected.number_of_upcrossings" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="rft1d.prob.expected.number_of_upcrossings">
+<span class="sig-prename descclassname"><span class="pre">expected.</span></span><span class="sig-name descname"><span class="pre">number_of_upcrossings</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">u</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rft1d.prob.expected.number_of_upcrossings" title="Permalink to this definition">¶</a></dt>
 <dd><p>Number of upcrossings expected for threshold <em>u</em>.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Example:</th><td class="field-body"><div class="first last highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">calc</span> <span class="o">=</span> <span class="n">rft1d</span><span class="o">.</span><span class="n">prob</span><span class="o">.</span><span class="n">RFTCalculator</span><span class="p">(</span><span class="s">&#39;T&#39;</span><span class="p">,</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">8</span><span class="p">),</span> <span class="mi">101</span><span class="p">,</span> <span class="mf">15.0</span><span class="p">)</span>
+<dl class="field-list">
+<dt class="field-odd">Example</dt>
+<dd class="field-odd"><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">calc</span> <span class="o">=</span> <span class="n">rft1d</span><span class="o">.</span><span class="n">prob</span><span class="o">.</span><span class="n">RFTCalculator</span><span class="p">(</span><span class="s1">&#39;T&#39;</span><span class="p">,</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">8</span><span class="p">),</span> <span class="mi">101</span><span class="p">,</span> <span class="mf">15.0</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">calc</span><span class="o">.</span><span class="n">expected</span><span class="o">.</span><span class="n">number_of_upcrossings</span><span class="p">(</span><span class="mf">2.7</span><span class="p">)</span>
 </pre></div>
 </div>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="method">
-<dt id="rft1d.prob.expected.number_of_suprathreshold_nodes">
-<code class="descclassname">expected.</code><code class="descname">number_of_suprathreshold_nodes</code><span class="sig-paren">(</span><em>u</em><span class="sig-paren">)</span><a class="headerlink" href="#rft1d.prob.expected.number_of_suprathreshold_nodes" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="rft1d.prob.expected.number_of_suprathreshold_nodes">
+<span class="sig-prename descclassname"><span class="pre">expected.</span></span><span class="sig-name descname"><span class="pre">number_of_suprathreshold_nodes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">u</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rft1d.prob.expected.number_of_suprathreshold_nodes" title="Permalink to this definition">¶</a></dt>
 <dd><p>Number of nodes expected in the entire excursion set at threshold <em>u</em>.
 These nodes can come from multiple upcrossings.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Example:</th><td class="field-body"><div class="first last highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">calc</span> <span class="o">=</span> <span class="n">rft1d</span><span class="o">.</span><span class="n">prob</span><span class="o">.</span><span class="n">RFTCalculator</span><span class="p">(</span><span class="s">&#39;T&#39;</span><span class="p">,</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">8</span><span class="p">),</span> <span class="mi">101</span><span class="p">,</span> <span class="mf">15.0</span><span class="p">)</span>
+<dl class="field-list">
+<dt class="field-odd">Example</dt>
+<dd class="field-odd"><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">calc</span> <span class="o">=</span> <span class="n">rft1d</span><span class="o">.</span><span class="n">prob</span><span class="o">.</span><span class="n">RFTCalculator</span><span class="p">(</span><span class="s1">&#39;T&#39;</span><span class="p">,</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">8</span><span class="p">),</span> <span class="mi">101</span><span class="p">,</span> <span class="mf">15.0</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">calc</span><span class="o">.</span><span class="n">expected</span><span class="o">.</span><span class="n">number_of_suprathreshold_nodes</span><span class="p">(</span><span class="mf">2.8</span><span class="p">)</span>
 </pre></div>
 </div>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 <div class="admonition warning">
-<p class="first admonition-title">Warning</p>
-<p class="last">This is a node count, so is equivalent to: (FWHM x <strong>number_of_suprathreshold_resels</strong>)  + <strong>number_of_upcrossings</strong></p>
+<p class="admonition-title">Warning</p>
+<p>This is a node count, so is equivalent to: (FWHM x <strong>number_of_suprathreshold_resels</strong>)  + <strong>number_of_upcrossings</strong></p>
 </div>
 </dd></dl>
 
-<dl class="method">
-<dt id="rft1d.prob.expected.number_of_suprathreshold_resels">
-<code class="descclassname">expected.</code><code class="descname">number_of_suprathreshold_resels</code><span class="sig-paren">(</span><em>u</em><span class="sig-paren">)</span><a class="headerlink" href="#rft1d.prob.expected.number_of_suprathreshold_resels" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="rft1d.prob.expected.number_of_suprathreshold_resels">
+<span class="sig-prename descclassname"><span class="pre">expected.</span></span><span class="sig-name descname"><span class="pre">number_of_suprathreshold_resels</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">u</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rft1d.prob.expected.number_of_suprathreshold_resels" title="Permalink to this definition">¶</a></dt>
 <dd><p>Number of resels expected in the entire excursion set at threshold <em>u</em>.
 These resels can come from multiple upcrossings.
 One resel contains (1 x FWHM) nodes.
 Thus this is equivalent to:  (FWHM x number_of_suprathreshold_nodes)</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Example:</th><td class="field-body"><div class="first last highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">calc</span> <span class="o">=</span> <span class="n">rft1d</span><span class="o">.</span><span class="n">prob</span><span class="o">.</span><span class="n">RFTCalculator</span><span class="p">(</span><span class="s">&#39;T&#39;</span><span class="p">,</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">8</span><span class="p">),</span> <span class="mi">101</span><span class="p">,</span> <span class="mf">15.0</span><span class="p">)</span>
+<dl class="field-list">
+<dt class="field-odd">Example</dt>
+<dd class="field-odd"><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">calc</span> <span class="o">=</span> <span class="n">rft1d</span><span class="o">.</span><span class="n">prob</span><span class="o">.</span><span class="n">RFTCalculator</span><span class="p">(</span><span class="s1">&#39;T&#39;</span><span class="p">,</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">8</span><span class="p">),</span> <span class="mi">101</span><span class="p">,</span> <span class="mf">15.0</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">calc</span><span class="o">.</span><span class="n">expected</span><span class="o">.</span><span class="n">number_of_suprathreshold_resels</span><span class="p">(</span><span class="mf">2.9</span><span class="p">)</span>
 </pre></div>
 </div>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="method">
-<dt id="rft1d.prob.expected.resels_per_upcrossing">
-<code class="descclassname">expected.</code><code class="descname">resels_per_upcrossing</code><span class="sig-paren">(</span><em>u</em><span class="sig-paren">)</span><a class="headerlink" href="#rft1d.prob.expected.resels_per_upcrossing" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="rft1d.prob.expected.resels_per_upcrossing">
+<span class="sig-prename descclassname"><span class="pre">expected.</span></span><span class="sig-name descname"><span class="pre">resels_per_upcrossing</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">u</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rft1d.prob.expected.resels_per_upcrossing" title="Permalink to this definition">¶</a></dt>
 <dd><p>Number of nodes expected for each uprcrossing at threshold <em>u</em>.
 One resel contains (1 x FWHM) nodes.
 Thus this is equivalent to:  (FWHM x nodes_per_upcrossing)</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Example:</th><td class="field-body"><div class="first last highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">calc</span> <span class="o">=</span> <span class="n">rft1d</span><span class="o">.</span><span class="n">prob</span><span class="o">.</span><span class="n">RFTCalculator</span><span class="p">(</span><span class="s">&#39;T&#39;</span><span class="p">,</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">8</span><span class="p">),</span> <span class="mi">101</span><span class="p">,</span> <span class="mf">15.0</span><span class="p">)</span>
+<dl class="field-list">
+<dt class="field-odd">Example</dt>
+<dd class="field-odd"><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">calc</span> <span class="o">=</span> <span class="n">rft1d</span><span class="o">.</span><span class="n">prob</span><span class="o">.</span><span class="n">RFTCalculator</span><span class="p">(</span><span class="s1">&#39;T&#39;</span><span class="p">,</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">8</span><span class="p">),</span> <span class="mi">101</span><span class="p">,</span> <span class="mf">15.0</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">calc</span><span class="o">.</span><span class="n">expected</span><span class="o">.</span><span class="n">resels_per_upcrossing</span><span class="p">(</span><span class="mf">3.0</span><span class="p">)</span>
 </pre></div>
 </div>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 </dd></dl>
 
 </div></blockquote>
-</div>
-<div class="section" id="probabilities-rftcalculator-p">
-<h3>Probabilities (RFTCalculator.p)<a class="headerlink" href="#probabilities-rftcalculator-p" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="probabilities-rftcalculator-p">
+<h3>Probabilities (RFTCalculator.p)<a class="headerlink" href="#probabilities-rftcalculator-p" title="Permalink to this heading">¶</a></h3>
 <blockquote>
-<div><dl class="method">
-<dt id="rft1d.prob.p.cluster">
-<code class="descclassname">p.</code><code class="descname">cluster</code><span class="sig-paren">(</span><em>k</em>, <em>u</em><span class="sig-paren">)</span><a class="headerlink" href="#rft1d.prob.p.cluster" title="Permalink to this definition">¶</a></dt>
+<div><dl class="py method">
+<dt class="sig sig-object py" id="rft1d.prob.p.cluster">
+<span class="sig-prename descclassname"><span class="pre">p.</span></span><span class="sig-name descname"><span class="pre">cluster</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">k</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">u</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rft1d.prob.p.cluster" title="Permalink to this definition">¶</a></dt>
 <dd><p>Cluster-level inference.</p>
 <p>Probability that 1D Gaussian fields would produce an upcrossing of extent <em>k</em>
 when thresholded at <em>u</em>.</p>
 <div class="admonition warning">
-<p class="first admonition-title">Warning</p>
-<p class="last">The threshold <em>u</em> should generally be chosen objectively. One possibility is to calculate the <em>alpha</em>-based critical threshold using the inverse survival function: <strong>RFTCalculator.isf</strong></p>
+<p class="admonition-title">Warning</p>
+<p>The threshold <em>u</em> should generally be chosen objectively. One possibility is to calculate the <em>alpha</em>-based critical threshold using the inverse survival function: <strong>RFTCalculator.isf</strong></p>
 </div>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><em>k</em> &#8211; cluster extent (resels)</p>
-<p><em>u</em> &#8211; threshold</p>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Cluster-specific probability value.</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Examples:</th><td class="field-body"><div class="first last highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">calc</span> <span class="o">=</span> <span class="n">rft1d</span><span class="o">.</span><span class="n">prob</span><span class="o">.</span><span class="n">RFTCalculator</span><span class="p">(</span><span class="s">&#39;T&#39;</span><span class="p">,</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">8</span><span class="p">),</span> <span class="mi">101</span><span class="p">,</span> <span class="mf">15.0</span><span class="p">)</span>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><em>k</em> – cluster extent (resels)</p>
+<p><em>u</em> – threshold</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Cluster-specific probability value.</p>
+</dd>
+<dt class="field-odd">Examples</dt>
+<dd class="field-odd"><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">calc</span> <span class="o">=</span> <span class="n">rft1d</span><span class="o">.</span><span class="n">prob</span><span class="o">.</span><span class="n">RFTCalculator</span><span class="p">(</span><span class="s1">&#39;T&#39;</span><span class="p">,</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">8</span><span class="p">),</span> <span class="mi">101</span><span class="p">,</span> <span class="mf">15.0</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">calc</span><span class="o">.</span><span class="n">p</span><span class="o">.</span><span class="n">cluster</span><span class="p">(</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">3.0</span><span class="p">)</span>
 </pre></div>
 </div>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="method">
-<dt id="rft1d.prob.p.set">
-<code class="descclassname">p.</code><code class="descname">set</code><span class="sig-paren">(</span><em>c</em>, <em>k</em>, <em>u</em><span class="sig-paren">)</span><a class="headerlink" href="#rft1d.prob.p.set" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="rft1d.prob.p.set">
+<span class="sig-prename descclassname"><span class="pre">p.</span></span><span class="sig-name descname"><span class="pre">set</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">c</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">k</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">u</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rft1d.prob.p.set" title="Permalink to this definition">¶</a></dt>
 <dd><p>Set-level inference.</p>
 <p>Probability that 1D Gaussian fields would produce at least <em>c</em> upcrossings
 with a minimum extent of <em>k</em> when thresholded at <em>u</em>.
 This probability pertains to the entire excursion set.</p>
 <div class="admonition warning">
-<p class="first admonition-title">Warning</p>
-<p class="last">The threshold <em>u</em> should generally be chosen objectively. One possibility is to calculate the <em>alpha</em>-based critical threshold using the inverse survival function: <strong>RFTCalculator.isf</strong></p>
+<p class="admonition-title">Warning</p>
+<p>The threshold <em>u</em> should generally be chosen objectively. One possibility is to calculate the <em>alpha</em>-based critical threshold using the inverse survival function: <strong>RFTCalculator.isf</strong></p>
 </div>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><em>c</em> &#8211; number of upcrossings</p>
-<p><em>k</em> &#8211; minimum cluster extent (resels)</p>
-<p><em>u</em> &#8211; threshold</p>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Set-specific probability value.</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Examples:</th><td class="field-body"><div class="first last highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">calc</span> <span class="o">=</span> <span class="n">rft1d</span><span class="o">.</span><span class="n">prob</span><span class="o">.</span><span class="n">RFTCalculator</span><span class="p">(</span><span class="s">&#39;T&#39;</span><span class="p">,</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">8</span><span class="p">),</span> <span class="mi">101</span><span class="p">,</span> <span class="mf">15.0</span><span class="p">)</span>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><em>c</em> – number of upcrossings</p>
+<p><em>k</em> – minimum cluster extent (resels)</p>
+<p><em>u</em> – threshold</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Set-specific probability value.</p>
+</dd>
+<dt class="field-odd">Examples</dt>
+<dd class="field-odd"><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">calc</span> <span class="o">=</span> <span class="n">rft1d</span><span class="o">.</span><span class="n">prob</span><span class="o">.</span><span class="n">RFTCalculator</span><span class="p">(</span><span class="s1">&#39;T&#39;</span><span class="p">,</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">8</span><span class="p">),</span> <span class="mi">101</span><span class="p">,</span> <span class="mf">15.0</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">calc</span><span class="o">.</span><span class="n">p</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">2.7</span><span class="p">)</span>
 </pre></div>
 </div>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="method">
-<dt id="rft1d.prob.p.upcrossing">
-<code class="descclassname">p.</code><code class="descname">upcrossing</code><span class="sig-paren">(</span><em>u</em><span class="sig-paren">)</span><a class="headerlink" href="#rft1d.prob.p.upcrossing" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="rft1d.prob.p.upcrossing">
+<span class="sig-prename descclassname"><span class="pre">p.</span></span><span class="sig-name descname"><span class="pre">upcrossing</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">u</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rft1d.prob.p.upcrossing" title="Permalink to this definition">¶</a></dt>
 <dd><p>Survival function (equivalent to <strong>RFTCalculator.sf</strong>)</p>
 <p>Probability that 1D Gaussian fields would produce a 1D statistic field whose maximum exceeds <em>u</em>.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><em>u</em> &#8211; threshold (int, float, or sequence of int or float)</p>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">The probability of exceeding the specified heights.</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Examples:</th><td class="field-body"><div class="first last highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">calc</span> <span class="o">=</span> <span class="n">rft1d</span><span class="o">.</span><span class="n">prob</span><span class="o">.</span><span class="n">RFTCalculator</span><span class="p">(</span><span class="s">&#39;T&#39;</span><span class="p">,</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">8</span><span class="p">),</span> <span class="mi">101</span><span class="p">,</span> <span class="mf">15.0</span><span class="p">)</span>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><em>u</em> – threshold (int, float, or sequence of int or float)</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The probability of exceeding the specified heights.</p>
+</dd>
+<dt class="field-odd">Examples</dt>
+<dd class="field-odd"><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">calc</span> <span class="o">=</span> <span class="n">rft1d</span><span class="o">.</span><span class="n">prob</span><span class="o">.</span><span class="n">RFTCalculator</span><span class="p">(</span><span class="s1">&#39;T&#39;</span><span class="p">,</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">8</span><span class="p">),</span> <span class="mi">101</span><span class="p">,</span> <span class="mf">15.0</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">calc</span><span class="o">.</span><span class="n">sf</span><span class="p">(</span><span class="mf">3.5</span><span class="p">)</span>
 </pre></div>
 </div>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 </dd></dl>
 
 </div></blockquote>
-</div>
-</div>
-<div class="section" id="bonferroni-correction">
-<h2>Bonferroni correction<a class="headerlink" href="#bonferroni-correction" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+<section id="bonferroni-correction">
+<h2>Bonferroni correction<a class="headerlink" href="#bonferroni-correction" title="Permalink to this heading">¶</a></h2>
 <blockquote>
-<div><dl class="method">
-<dt id="rft1d.prob.p_bonferroni">
-<code class="descclassname">prob.</code><code class="descname">p_bonferroni</code><span class="sig-paren">(</span><em>STAT</em>, <em>z</em>, <em>df</em>, <em>Q</em>, <em>n=1</em><span class="sig-paren">)</span><a class="headerlink" href="#rft1d.prob.p_bonferroni" title="Permalink to this definition">¶</a></dt>
+<div><dl class="py method">
+<dt class="sig sig-object py" id="rft1d.prob.p_bonferroni">
+<span class="sig-prename descclassname"><span class="pre">prob.</span></span><span class="sig-name descname"><span class="pre">p_bonferroni</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">z</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Q</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rft1d.prob.p_bonferroni" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bonferroni correction.</p>
 <p>When fields are very rough a Bonferroni correction might be less severe than
 the RFT threshold. This function yields Bonferroni-corrected p values based
 on the number of field nodes <em>Q</em>.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><em>STAT</em> &#8212; test statistic (one of:  &#8220;Z&#8221;, &#8220;T&#8221;, &#8220;F&#8221;, &#8220;X2&#8221;, &#8220;T2&#8221;)</p>
-<p><em>z</em> &#8212; field height</p>
-<p><em>df</em> &#8212; degrees of freedom [df{interest} df{error}]</p>
-<p><em>Q</em> &#8212; number of field nodes (used for Bonferroni comparison)</p>
-<p><em>n</em> &#8212; number of test statistic fields in conjunction</p>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">The probability of exceeding the specified height.</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Example:</th><td class="field-body"><div class="first last highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">rft1d</span><span class="o">.</span><span class="n">prob</span><span class="o">.</span><span class="n">p_bonferroni</span><span class="p">(</span><span class="s">&#39;Z&#39;</span><span class="p">,</span> <span class="mf">3.1</span><span class="p">,</span> <span class="bp">None</span><span class="p">,</span> <span class="mi">101</span><span class="p">)</span> <span class="c">#yields 0.098</span>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><em>STAT</em> — test statistic (one of:  “Z”, “T”, “F”, “X2”, “T2”)</p>
+<p><em>z</em> — field height</p>
+<p><em>df</em> — degrees of freedom [df{interest} df{error}]</p>
+<p><em>Q</em> — number of field nodes (used for Bonferroni comparison)</p>
+<p><em>n</em> — number of test statistic fields in conjunction</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The probability of exceeding the specified height.</p>
+</dd>
+<dt class="field-odd">Example</dt>
+<dd class="field-odd"><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">rft1d</span><span class="o">.</span><span class="n">prob</span><span class="o">.</span><span class="n">p_bonferroni</span><span class="p">(</span><span class="s1">&#39;Z&#39;</span><span class="p">,</span> <span class="mf">3.1</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="mi">101</span><span class="p">)</span> <span class="c1">#yields 0.098</span>
 </pre></div>
 </div>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 </dd></dl>
 
 </div></blockquote>
-</div>
-</div>
+</section>
+</section>
 
 
           </div>
-          <footer>
-  
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="random.html" class="btn btn-neutral float-right" title="rft1d.random">Next <span class="fa fa-arrow-circle-right"></span></a>
-      
-      
-        <a href="geom.html" class="btn btn-neutral" title="rft1d.geom"><span class="fa fa-arrow-circle-left"></span> Previous</a>
-      
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="geom.html" class="btn btn-neutral float-left" title="rft1d.geom" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="random.html" class="btn btn-neutral float-right" title="rft1d.random" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
-  
 
   <hr/>
 
   <div role="contentinfo">
-    <p>
-        &copy; Copyright 2015, Todd Pataky.
-    </p>
+    <p>&#169; Copyright 2022, Todd Pataky.</p>
   </div>
 
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
-  
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
 </footer>
         </div>
       </div>
@@ -631,20 +584,21 @@ on the number of field nodes <em>Q</em>.</p>
   </div>
   
 
-
   
 
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'0.1.1',
+            VERSION:'0.2.0',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true
         };
     </script>
+      <script type="text/javascript" src="../_static/documentation_options.js"></script>
       <script type="text/javascript" src="../_static/jquery.js"></script>
       <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
       <script type="text/javascript" src="../_static/doctools.js"></script>
 
   

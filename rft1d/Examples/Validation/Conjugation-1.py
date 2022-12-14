@@ -45,10 +45,12 @@ sfE         = rftcalc.sf(heights)  #theoretical
 #(3) Plot results:
 pyplot.close('all')
 ax          = pyplot.axes()
+name        = 'Times New Roman'
 ax.plot(heights, sf,   'o',  label='Simulated')
 ax.plot(heights, sfE,  '-',  label='Theoretical')
-ax.set_xlabel('$u$', size=20)
-ax.set_ylabel('$P(t_\mathrm{conj} > u)$', size=20)
-ax.legend()
-ax.set_title('Conjunction validation (t fields)', size=20)
+ax.set_xlabel(r'$u$', size=20, usetex=True)
+ax.set_ylabel(r'$P(t_\mathrm{conj} > u)$', size=20, usetex=True)
+leg = ax.legend()
+pyplot.setp( leg.get_texts(), name=name)
+ax.set_title('Conjunction validation (t fields)', size=20, name=name)
 pyplot.show()

@@ -19,12 +19,14 @@ sfN        = rft1d.norm.sf0d(heights) #theoretical (0D)
 
 #(3) Plot results:
 pyplot.close('all')
+name       = 'Times New Roman'
 ax         = pyplot.axes()
 ax.plot(heights, sf, 'bo', label='Simulated')
 ax.plot(heights, sfE, 'b-', label='Theoretical')
 ax.plot(heights, sfN, 'r-', label='Standard normal')
-ax.set_xlabel('$u$', size=20)
-ax.set_ylabel('$P (z_\mathrm{max} > u)$', size=20)
-ax.legend()
-ax.set_title('Survival function validation (Gaussian)', size=20)
+ax.set_xlabel(r'$u$', size=20, usetex=True)
+ax.set_ylabel(r'$P (z_\mathrm{max} > u)$', size=20, usetex=True)
+leg = ax.legend()
+pyplot.setp( leg.get_texts(), name=name )
+ax.set_title('Survival function validation (Gaussian)', size=20, name=name)
 pyplot.show()

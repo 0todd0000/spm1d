@@ -63,17 +63,18 @@ sfE         = rft1d.f.sf(heights, df, nNodes, FWHM)  #theoretical
 sf0D        = rft1d.f.sf0d(heights, df) #theoretical (0D)
 
 
+
 #(3) Plot results:
 pyplot.close('all')
-ax        = pyplot.axes()
-ax.plot(heights, sf, 'o', label='Simulated')
-ax.plot(heights, sfE, '-', label='Theoretical')
+name        = 'Times New Roman'
+ax          = pyplot.axes()
+ax.plot(heights, sf,   'o',  label='Simulated')
+ax.plot(heights, sfE,  '-',  label='Theoretical')
 ax.plot(heights, sf0D, 'r-', label='Theoretical (0D)')
-ax.set_xlabel('$u$', size=20)
-ax.set_ylabel('$P (F_\mathrm{max} > u)$', size=20)
-ax.legend()
-ax.set_title('ANOVA validation (1D)', size=20)
+ax.set_xlabel(r'$u$', size=20, usetex=True)
+ax.set_ylabel(r'$P (F_\mathrm{max} > u)$', size=20, usetex=True)
+leg = ax.legend()
+pyplot.setp( leg.get_texts(), name=name)
+ax.set_title('ANOVA validation (1D)', size=20, name=name)
 # pyplot.show()
-
-
 

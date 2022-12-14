@@ -55,6 +55,7 @@ sfN        = stats.norm.sf(heights)
 
 #(4) Plot results:
 pyplot.close('all')
+pyplot.figure(figsize=(8,6))
 ax         = pyplot.axes([0.15,0.14,0.82,0.84])
 colors     = scalar2color(range(len(WW)+2), cmap=cm.PuRd)
 for W,sf,sfE,c in zip(WW,SF,SFE,colors[2:]):
@@ -63,8 +64,8 @@ for W,sf,sfE,c in zip(WW,SF,SFE,colors[2:]):
 ax.plot(heights[[0,-1]],[2,2], 'k-', label='Theoretical')
 ax.plot(heights[[0,-1]],[2,2], 'ko', label='Simulated', markersize=8)
 ax.plot(heights, sfN, 'k-', lw=3, label='Standard normal')
-ax.text(0.5, -0.15, '$u$', size=20, transform=ax.transAxes, ha='center')
-ax.text(-0.17, 0.5, 'P ($z_{\mathrm{max}}$ > $u$)', size=18, transform=ax.transAxes, va='center', rotation=90)
+ax.text(0.5, -0.15, r'$u$', size=20, transform=ax.transAxes, ha='center', usetex=True)
+ax.text(-0.17, 0.5, r'$P (z_{\mathrm{max}} > u)$', size=18, transform=ax.transAxes, va='center', rotation=90, usetex=True)
 ax.set_ylim(0,0.35)
 ax.legend()
 # pyplot.show()

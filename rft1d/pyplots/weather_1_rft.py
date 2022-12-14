@@ -73,7 +73,7 @@ ax.text(280, 2.3, r'$\alpha$ = %.3f'%alpha, color='r')
 ### axis labels:
 ax.set_xlabel('Day', size=16)
 ax.set_ylabel('t value', size=16)
-ax.set_title('RFT-based inference of weather dataset', size=20)
+ax.set_title('RFT-based inference of weather dataset', size=16)
 # pyplot.show()
 
 

@@ -28,10 +28,12 @@ nActual    = np.array([[calc.nUpcrossings(yy, uu)   for yy in y]  for uu in U]).
 #(4) Plot results:
 pyplot.close('all')
 ax      = pyplot.axes()
+name    = 'Times New Roman'
 ax.plot(U, nExpected, 'b-', label='Expected')
 ax.plot(U, nActual, 'bo', label='Actual')
-ax.legend()
-ax.set_xlabel('Threshold ($u$)', size=16)
-ax.set_ylabel('Number of upcrossings', size=16)
-ax.set_title('Validation for number of upcrossings (Gaussian fields)', size=20)
-# pyplot.show()
+leg     = ax.legend()
+pyplot.setp(leg.get_texts(), name=name)
+ax.set_xlabel('Threshold (u)', size=16, name=name)
+ax.set_ylabel('Number of upcrossings', size=16, name=name)
+ax.set_title('Validation for number of upcrossings (Gaussian fields)', size=16, name=name)
+pyplot.show()

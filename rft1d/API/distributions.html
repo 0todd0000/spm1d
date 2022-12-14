@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>rft1d.distributions &mdash; rft1d 0.1.1 documentation</title>
+  <title>rft1d.distributions &mdash; rft1d 0.2.0 documentation</title>
   
 
   
@@ -29,9 +29,18 @@
 
   
   
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../_static/plot_directive.css" type="text/css" />
+  
     <link rel="stylesheet" href="../_static/theme.css" type="text/css" />
   
-    <link rel="top" title="rft1d 0.1.1 documentation" href="../index.html"/>
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="rft1d 0.2.0 documentation" href="../index.html"/>
         <link rel="up" title="API" href="../API.html"/>
         <link rel="next" title="rft1d.geom" href="geom.html"/>
         <link rel="prev" title="rft1d.data" href="data.html"/> 
@@ -56,8 +65,9 @@
 
       <div class="wy-side-nav-search">
         <!-- <a href="../index.html" class="fa fa-home"> rft1d</a> -->
-		<div role="search">
-  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+		
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
@@ -101,7 +111,7 @@
 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="../API.html">API</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="data.html">rft1d.data</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="">rft1d.distributions</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">rft1d.distributions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="geom.html">rft1d.geom</a></li>
 <li class="toctree-l2"><a class="reference internal" href="prob.html">rft1d.prob</a></li>
 <li class="toctree-l2"><a class="reference internal" href="random.html">rft1d.random</a></li>
@@ -126,8 +136,9 @@
 	  
       <!-- <div class="wy-side-nav-search">
         <a href="../index.html" class="fa fa-home"> rft1d</a>
-		<div role="search">
-  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+		
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
@@ -160,7 +171,7 @@
     <li>rft1d.distributions</li>
       <li class="wy-breadcrumbs-aside">
         
-          <!-- <a href="../_sources/API/distributions.txt" rel="nofollow"> View page source</a> -->
+          <!-- <a href="../_sources/API/distributions.rst.txt" rel="nofollow"> View page source</a> -->
         
       </li>
   </ul>
@@ -168,974 +179,841 @@
 </div>
           <div role="main">
             
-  <p id="label-api-distributions"><a class="reference internal" href="#label-distributionsgaussian"><span>Gaussian</span></a> _____
-<a class="reference internal" href="#label-distributionsstudentst"><span>Student&#8217;s t</span></a> _____
-<a class="reference internal" href="#label-distributionschisquared"><span>Chi-squared</span></a> _____
-<a class="reference internal" href="#label-distributionsf"><span>Fisher-Snedecor F</span></a> _____
-<a class="reference internal" href="#label-distributionshotellingst2"><span>Hotelling&#8217;s T-squared</span></a></p>
-<div class="section" id="module-rft1d.distributions">
-<span id="rft1d-distributions"></span><h1>rft1d.distributions<a class="headerlink" href="#module-rft1d.distributions" title="Permalink to this headline">¶</a></h1>
+  <p id="label-api-distributions"><a class="reference internal" href="#label-distributionsgaussian"><span class="std std-ref">Gaussian</span></a> _____
+<a class="reference internal" href="#label-distributionsstudentst"><span class="std std-ref">Student’s t</span></a> _____
+<a class="reference internal" href="#label-distributionschisquared"><span class="std std-ref">Chi-squared</span></a> _____
+<a class="reference internal" href="#label-distributionsf"><span class="std std-ref">Fisher-Snedecor F</span></a> _____
+<a class="reference internal" href="#label-distributionshotellingst2"><span class="std std-ref">Hotelling’s T-squared</span></a></p>
+<section id="module-rft1d.distributions">
+<span id="rft1d-distributions"></span><h1>rft1d.distributions<a class="headerlink" href="#module-rft1d.distributions" title="Permalink to this heading">¶</a></h1>
 <p>SciPy-like interface to 1D RFT distributions.
 Currently implemented distributions include:</p>
 <blockquote>
 <div><ul class="simple">
-<li>Gaussian</li>
-<li>Student&#8217;s t</li>
-<li><img src="../_images/mathmpl/math-aaa14da0e7.png" style="position: relative; bottom: -7px"/></li>
-<li>Fisher-Snedecor F</li>
-<li>Hotelling&#8217;s T<sup>2</sup></li>
+<li><p>Gaussian</p></li>
+<li><p>Student’s t</p></li>
+<li><p><img class="math" src="../_images/math/1cbe49dd16598c0550b8a7477dd597e6bc04367e.png" alt="\chi^2"/></p></li>
+<li><p>Fisher-Snedecor F</p></li>
+<li><p>Hotelling’s T<sup>2</sup></p></li>
 </ul>
 </div></blockquote>
 <p>All distributions share the following functions:</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Methods:</th><td class="field-body"><p class="first"><strong>isf</strong> &#8212; RFT inverse survival function (critical height)</p>
-<p><strong>isf0d</strong> &#8212; Common (0D) inverse survival function (critical height)</p>
-<p><strong>p_cluster</strong> &#8212; RFT cluster-level inference</p>
-<p><strong>p_set</strong> &#8212; RFT set-level inference</p>
-<p><strong>sf</strong> &#8212; RFT survival function</p>
-<p><strong>sf0d</strong> &#8212; Common (0D) survival function.</p>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Basic use:</th><td class="field-body"><p class="first">All distributions can be accessed directly from <strong>rft1d</strong> as follows:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">height</span> <span class="o">=</span> <span class="mf">3.0</span>
+<dl class="field-list">
+<dt class="field-odd">Methods</dt>
+<dd class="field-odd"><p><strong>isf</strong> — RFT inverse survival function (critical height)</p>
+<p><strong>isf0d</strong> — Common (0D) inverse survival function (critical height)</p>
+<p><strong>p_cluster</strong> — RFT cluster-level inference</p>
+<p><strong>p_set</strong> — RFT set-level inference</p>
+<p><strong>sf</strong> — RFT survival function</p>
+<p><strong>sf0d</strong> — Common (0D) survival function.</p>
+</dd>
+<dt class="field-even">Basic use</dt>
+<dd class="field-even"><p>All distributions can be accessed directly from <strong>rft1d</strong> as follows:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">height</span> <span class="o">=</span> <span class="mf">3.0</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">nodes</span> <span class="o">=</span> <span class="mi">101</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">FWHM</span> <span class="o">=</span> <span class="mf">10.0</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">rft1d</span><span class="o">.</span><span class="n">norm</span><span class="o">.</span><span class="n">sf</span><span class="p">(</span><span class="n">height</span><span class="p">,</span> <span class="n">nodes</span><span class="p">,</span> <span class="n">FWHM</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">rft1d</span><span class="o">.</span><span class="n">norm</span><span class="o">.</span><span class="n">sf0d</span><span class="p">(</span><span class="n">height</span><span class="p">)</span>
 </pre></div>
 </div>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name" colspan="2">Unbroken and broken fields:</th></tr>
-<tr class="field-odd field"><td>&nbsp;</td><td class="field-body"><p class="first">If the field is unbroken (i.e. continuous) between the start and the
-end of the field, then the &#8220;nodes&#8221; argument to all methods should be
+</dd>
+<dt class="field-odd">Unbroken and broken fields</dt>
+<dd class="field-odd"><p>If the field is unbroken (i.e. continuous) between the start and the
+end of the field, then the “nodes” argument to all methods should be
 an integer representing the number of field nodes:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">height</span> <span class="o">=</span> <span class="mf">3.0</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">height</span> <span class="o">=</span> <span class="mf">3.0</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">nodes</span> <span class="o">=</span> <span class="mi">101</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">FWHM</span> <span class="o">=</span> <span class="mf">10.0</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">rft1d</span><span class="o">.</span><span class="n">norm</span><span class="o">.</span><span class="n">sf</span><span class="p">(</span><span class="n">height</span><span class="p">,</span> <span class="n">nodes</span><span class="p">,</span> <span class="n">FWHM</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>However, if the field is broken (i.e. piecewise continuous), then the
-&#8220;nodes&#8221; argument should be a 1D mask:  a boolean array (size: nodes)
+“nodes” argument should be a 1D mask:  a boolean array (size: nodes)
 where False specifies nodes which are masked out:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">height</span> <span class="o">=</span> <span class="mf">3.0</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">nodes</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="bp">True</span><span class="p">]</span><span class="o">*</span><span class="mi">20</span> <span class="o">+</span> <span class="p">[</span><span class="bp">False</span><span class="p">]</span><span class="o">*</span><span class="mi">30</span> <span class="o">+</span> <span class="p">[</span><span class="bp">True</span><span class="p">]</span><span class="o">*</span><span class="mi">51</span><span class="p">)</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">height</span> <span class="o">=</span> <span class="mf">3.0</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">nodes</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="kc">True</span><span class="p">]</span><span class="o">*</span><span class="mi">20</span> <span class="o">+</span> <span class="p">[</span><span class="kc">False</span><span class="p">]</span><span class="o">*</span><span class="mi">30</span> <span class="o">+</span> <span class="p">[</span><span class="kc">True</span><span class="p">]</span><span class="o">*</span><span class="mi">51</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">FWHM</span> <span class="o">=</span> <span class="mf">10.0</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">rft1d</span><span class="o">.</span><span class="n">norm</span><span class="o">.</span><span class="n">sf</span><span class="p">(</span><span class="n">height</span><span class="p">,</span> <span class="n">nodes</span><span class="p">,</span> <span class="n">FWHM</span><span class="p">)</span>
 </pre></div>
 </div>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name" colspan="2">Very rough fields and the Bonferroni correction:</th></tr>
-<tr class="field-even field"><td>&nbsp;</td><td class="field-body"><p class="first">When the fields are very rough (e.g. <em>FWHM</em> &lt; 2),
+</dd>
+<dt class="field-even">Very rough fields and the Bonferroni correction</dt>
+<dd class="field-even"><p>When the fields are very rough (e.g. <em>FWHM</em> &lt; 2),
 the Bonferroni correction may be less severe than the RFT correction.
 While both are vaild, it is generally best to use the less-severe
 threshold to maintain statistical power.
 To adopt the less-severe threshold use the keyword argument
 <em>withBonf</em> as follows:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">rft1d</span><span class="o">.</span><span class="n">norm</span><span class="o">.</span><span class="n">sf</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">101</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">,</span> <span class="n">withBonf</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span> <span class="c">#yields 0.179</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">rft1d</span><span class="o">.</span><span class="n">norm</span><span class="o">.</span><span class="n">sf</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">101</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">,</span> <span class="n">withBonf</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>  <span class="c">#yields 0.136</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">rft1d</span><span class="o">.</span><span class="n">norm</span><span class="o">.</span><span class="n">sf</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">101</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">,</span> <span class="n">withBonf</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span> <span class="c1">#yields 0.179</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">rft1d</span><span class="o">.</span><span class="n">norm</span><span class="o">.</span><span class="n">sf</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">101</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">,</span> <span class="n">withBonf</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>  <span class="c1">#yields 0.136</span>
 </pre></div>
 </div>
 <p>By default the <em>withBonf</em> argument is False.</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">rft1d</span><span class="o">.</span><span class="n">norm</span><span class="o">.</span><span class="n">sf</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">101</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">)</span>  <span class="c">#yields 0.179</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">rft1d</span><span class="o">.</span><span class="n">norm</span><span class="o">.</span><span class="n">sf</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">101</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">)</span>  <span class="c1">#yields 0.179</span>
 </pre></div>
 </div>
 <p>For smooth fields the keyword argument will have no effect:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">rft1d</span><span class="o">.</span><span class="n">norm</span><span class="o">.</span><span class="n">sf</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">101</span><span class="p">,</span> <span class="mf">5.0</span><span class="p">,</span> <span class="n">withBonf</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span> <span class="c">#yields 0.0590</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">rft1d</span><span class="o">.</span><span class="n">norm</span><span class="o">.</span><span class="n">sf</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">101</span><span class="p">,</span> <span class="mf">5.0</span><span class="p">,</span> <span class="n">withBonf</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>  <span class="c">#yields 0.0590</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">rft1d</span><span class="o">.</span><span class="n">norm</span><span class="o">.</span><span class="n">sf</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">101</span><span class="p">,</span> <span class="mf">5.0</span><span class="p">,</span> <span class="n">withBonf</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span> <span class="c1">#yields 0.0590</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">rft1d</span><span class="o">.</span><span class="n">norm</span><span class="o">.</span><span class="n">sf</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">101</span><span class="p">,</span> <span class="mf">5.0</span><span class="p">,</span> <span class="n">withBonf</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>  <span class="c1">#yields 0.0590</span>
 </pre></div>
 </div>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name" colspan="2">Very smooth fields:</th></tr>
-<tr class="field-odd field"><td>&nbsp;</td><td class="field-body"><p class="first">When Gaussian fields become very smooth, they start to behave like
+</dd>
+<dt class="field-odd">Very smooth fields</dt>
+<dd class="field-odd"><p>When Gaussian fields become very smooth, they start to behave like
 Gaussian scalars. Theoretically RFT results are equivalent to scalar
 results when smoothness is infinite. Thus raising the <em>FWHM</em> value
 systematically will cause the RFT results to converge to typical 0D results:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">scipy</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">norm</span><span class="o">.</span><span class="n">sf</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>  <span class="c">#yields 0.02275</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">rft1d</span><span class="o">.</span><span class="n">norm</span><span class="o">.</span><span class="n">sf</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">101</span><span class="p">,</span> <span class="mf">10.0</span><span class="p">)</span> <span class="c">#yields 0.31710</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">rft1d</span><span class="o">.</span><span class="n">norm</span><span class="o">.</span><span class="n">sf</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">101</span><span class="p">,</span> <span class="mf">100.0</span><span class="p">)</span> <span class="c">#yields 0.05693</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">rft1d</span><span class="o">.</span><span class="n">norm</span><span class="o">.</span><span class="n">sf</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">101</span><span class="p">,</span> <span class="mf">1000.0</span><span class="p">)</span> <span class="c">#yields 0.02599</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">rft1d</span><span class="o">.</span><span class="n">norm</span><span class="o">.</span><span class="n">sf</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">101</span><span class="p">,</span> <span class="mf">10000.0</span><span class="p">)</span> <span class="c">#yields 0.02284</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">rft1d</span><span class="o">.</span><span class="n">norm</span><span class="o">.</span><span class="n">sf</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">101</span><span class="p">,</span> <span class="mf">100000.0</span><span class="p">)</span> <span class="c">#yields 0.02275</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">scipy</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">norm</span><span class="o">.</span><span class="n">sf</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>  <span class="c1">#yields 0.02275</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">rft1d</span><span class="o">.</span><span class="n">norm</span><span class="o">.</span><span class="n">sf</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">101</span><span class="p">,</span> <span class="mf">10.0</span><span class="p">)</span> <span class="c1">#yields 0.31710</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">rft1d</span><span class="o">.</span><span class="n">norm</span><span class="o">.</span><span class="n">sf</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">101</span><span class="p">,</span> <span class="mf">100.0</span><span class="p">)</span> <span class="c1">#yields 0.05693</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">rft1d</span><span class="o">.</span><span class="n">norm</span><span class="o">.</span><span class="n">sf</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">101</span><span class="p">,</span> <span class="mf">1000.0</span><span class="p">)</span> <span class="c1">#yields 0.02599</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">rft1d</span><span class="o">.</span><span class="n">norm</span><span class="o">.</span><span class="n">sf</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">101</span><span class="p">,</span> <span class="mf">10000.0</span><span class="p">)</span> <span class="c1">#yields 0.02284</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">rft1d</span><span class="o">.</span><span class="n">norm</span><span class="o">.</span><span class="n">sf</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">101</span><span class="p">,</span> <span class="mf">100000.0</span><span class="p">)</span> <span class="c1">#yields 0.02275</span>
 </pre></div>
 </div>
 <p>Setting the smoothness to infinite will return the same result:</p>
-<div class="last highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">rft1d</span><span class="o">.</span><span class="n">norm</span><span class="o">.</span><span class="n">sf</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">101</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">inf</span><span class="p">)</span> <span class="c">#yields 0.02275</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">rft1d</span><span class="o">.</span><span class="n">norm</span><span class="o">.</span><span class="n">sf</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">101</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">inf</span><span class="p">)</span> <span class="c1">#yields 0.02275</span>
 </pre></div>
 </div>
-</td>
-</tr>
-</tbody>
-</table>
-<div class="section" id="gaussian-rft1d-norm">
-<span id="label-distributionsgaussian"></span><h2>Gaussian (<strong>rft1d.norm</strong>)<a class="headerlink" href="#gaussian-rft1d-norm" title="Permalink to this headline">¶</a></h2>
-<dl class="method">
-<dt id="rft1d.distributions.norm.isf">
-<code class="descclassname">norm.</code><code class="descname">isf</code><span class="sig-paren">(</span><em>alpha</em>, <em>nodes</em>, <em>FWHM</em>, <em>withBonf=False</em><span class="sig-paren">)</span><a class="headerlink" href="#rft1d.distributions.norm.isf" title="Permalink to this definition">¶</a></dt>
+</dd>
+</dl>
+<section id="gaussian-rft1d-norm">
+<span id="label-distributionsgaussian"></span><h2>Gaussian (<strong>rft1d.norm</strong>)<a class="headerlink" href="#gaussian-rft1d-norm" title="Permalink to this heading">¶</a></h2>
+<dl class="py method">
+<dt class="sig sig-object py" id="rft1d.distributions.norm.isf">
+<span class="sig-prename descclassname"><span class="pre">norm.</span></span><span class="sig-name descname"><span class="pre">isf</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">alpha</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nodes</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">FWHM</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">withBonf</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rft1d.distributions.norm.isf" title="Permalink to this definition">¶</a></dt>
 <dd><p>RFT inverse survival function.
 (see also the survival function: <strong>rft1d.norm.sf</strong>)</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><em>alpha</em> &#8211; upper tail probability (float;  0 &lt; alpha &lt; 1)</p>
-<p><em>nodes</em> &#8211; number of field nodes (int)  OR a binary field (boolean array)</p>
-<p><em>FWHM</em> &#8211; field smoothness (float)</p>
-<p><em>withBonf</em> &#8211; use a Bonferroni correction if less severe than the RFT correction (bool)</p>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Quantile corresponding to upper-tail probability alpha.
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><em>alpha</em> – upper tail probability (float;  0 &lt; alpha &lt; 1)</p>
+<p><em>nodes</em> – number of field nodes (int)  OR a binary field (boolean array)</p>
+<p><em>FWHM</em> – field smoothness (float)</p>
+<p><em>withBonf</em> – use a Bonferroni correction if less severe than the RFT correction (bool)</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Quantile corresponding to upper-tail probability alpha.
 Equivalently: critical threshold at a Type I error rate of alpha.</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Examples:</th><td class="field-body"><div class="first last highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">rft1d</span><span class="o">.</span><span class="n">norm</span><span class="o">.</span><span class="n">isf</span><span class="p">(</span><span class="mf">0.05</span><span class="p">,</span> <span class="mi">101</span><span class="p">,</span> <span class="mf">10.0</span><span class="p">)</span>
+</dd>
+<dt class="field-odd">Examples</dt>
+<dd class="field-odd"><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">rft1d</span><span class="o">.</span><span class="n">norm</span><span class="o">.</span><span class="n">isf</span><span class="p">(</span><span class="mf">0.05</span><span class="p">,</span> <span class="mi">101</span><span class="p">,</span> <span class="mf">10.0</span><span class="p">)</span>
 </pre></div>
 </div>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="method">
-<dt id="rft1d.distributions.norm.isf0d">
-<code class="descclassname">norm.</code><code class="descname">isf0d</code><span class="sig-paren">(</span><em>alpha</em><span class="sig-paren">)</span><a class="headerlink" href="#rft1d.distributions.norm.isf0d" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="rft1d.distributions.norm.isf0d">
+<span class="sig-prename descclassname"><span class="pre">norm.</span></span><span class="sig-name descname"><span class="pre">isf0d</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">alpha</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rft1d.distributions.norm.isf0d" title="Permalink to this definition">¶</a></dt>
 <dd><p>Inverse survival function (0D);  equivalent to <strong>scipy.stats.norm.isf</strong></p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Examples:</th><td class="field-body"><div class="first last highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">rft1d</span><span class="o">.</span><span class="n">norm</span><span class="o">.</span><span class="n">isf0d</span><span class="p">([</span><span class="mf">0.01</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">])</span>
+<dl class="field-list">
+<dt class="field-odd">Examples</dt>
+<dd class="field-odd"><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">rft1d</span><span class="o">.</span><span class="n">norm</span><span class="o">.</span><span class="n">isf0d</span><span class="p">([</span><span class="mf">0.01</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">scipy</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">norm</span><span class="o">.</span><span class="n">isf</span><span class="p">([</span><span class="mf">0.01</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">]</span><span class="mi">3</span><span class="p">)</span>
 </pre></div>
 </div>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="method">
-<dt id="rft1d.distributions.norm.p_cluster">
-<code class="descclassname">norm.</code><code class="descname">p_cluster</code><span class="sig-paren">(</span><em>k</em>, <em>u</em>, <em>nodes</em>, <em>FWHM</em>, <em>withBonf=False</em><span class="sig-paren">)</span><a class="headerlink" href="#rft1d.distributions.norm.p_cluster" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="rft1d.distributions.norm.p_cluster">
+<span class="sig-prename descclassname"><span class="pre">norm.</span></span><span class="sig-name descname"><span class="pre">p_cluster</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">k</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">u</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nodes</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">FWHM</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">withBonf</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rft1d.distributions.norm.p_cluster" title="Permalink to this definition">¶</a></dt>
 <dd><p>RFT cluster-level inference.</p>
 <p>Probability that 1D Gaussian fields with a smoothness of <em>FWHM</em> would produce
 an upcrossing of extent <em>k</em> when thresholded at <em>u</em>.
 For set-specific probabilities use <strong>rft1d.norm.p_set</strong></p>
 <div class="admonition warning">
-<p class="first admonition-title">Warning</p>
-<p class="last">The threshold <em>u</em> should generally be chosen objectively. One possibility is to calculate the <em>alpha</em>-based critical threshold using the inverse survival function: <strong>rft1d.norm.isf</strong></p>
+<p class="admonition-title">Warning</p>
+<p>The threshold <em>u</em> should generally be chosen objectively. One possibility is to calculate the <em>alpha</em>-based critical threshold using the inverse survival function: <strong>rft1d.norm.isf</strong></p>
 </div>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><em>k</em> &#8211; cluster extent (resels)</p>
-<p><em>u</em> &#8211; threshold</p>
-<p><em>nodes</em> &#8211; number of field nodes (int)  OR a binary field (boolean array)</p>
-<p><em>FWHM</em> &#8211; field smoothness (float)</p>
-<p><em>withBonf</em> &#8211; use a Bonferroni correction if less severe than the RFT correction (bool)</p>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Cluster-specific probability value.</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Examples:</th><td class="field-body"><div class="first last highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">rft1d</span><span class="o">.</span><span class="n">norm</span><span class="o">.</span><span class="n">p_cluster</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">3.0</span><span class="p">,</span> <span class="mi">101</span><span class="p">,</span> <span class="mf">15.0</span><span class="p">)</span>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><em>k</em> – cluster extent (resels)</p>
+<p><em>u</em> – threshold</p>
+<p><em>nodes</em> – number of field nodes (int)  OR a binary field (boolean array)</p>
+<p><em>FWHM</em> – field smoothness (float)</p>
+<p><em>withBonf</em> – use a Bonferroni correction if less severe than the RFT correction (bool)</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Cluster-specific probability value.</p>
+</dd>
+<dt class="field-odd">Examples</dt>
+<dd class="field-odd"><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">rft1d</span><span class="o">.</span><span class="n">norm</span><span class="o">.</span><span class="n">p_cluster</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">3.0</span><span class="p">,</span> <span class="mi">101</span><span class="p">,</span> <span class="mf">15.0</span><span class="p">)</span>
 </pre></div>
 </div>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="method">
-<dt id="rft1d.distributions.norm.p_set">
-<code class="descclassname">norm.</code><code class="descname">p_set</code><span class="sig-paren">(</span><em>c</em>, <em>k</em>, <em>u</em>, <em>nodes</em>, <em>FWHM</em>, <em>withBonf=False</em><span class="sig-paren">)</span><a class="headerlink" href="#rft1d.distributions.norm.p_set" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="rft1d.distributions.norm.p_set">
+<span class="sig-prename descclassname"><span class="pre">norm.</span></span><span class="sig-name descname"><span class="pre">p_set</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">c</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">k</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">u</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nodes</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">FWHM</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">withBonf</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rft1d.distributions.norm.p_set" title="Permalink to this definition">¶</a></dt>
 <dd><p>RFT set-level inference.</p>
 <p>Probability that 1D Gaussian fields with a smoothness of <em>FWHM</em> would produce
 at least <em>c</em> upcrossings with a minimum extent of <em>k</em> when thresholded at <em>u</em>.
 This probability pertains to the entire excursion set.
 For cluster-specific probabilities use <strong>rft1d.norm.p_cluster</strong></p>
 <div class="admonition warning">
-<p class="first admonition-title">Warning</p>
-<p class="last">The threshold <em>u</em> should generally be chosen objectively. One possibility is to calculate the <em>alpha</em>-based critical threshold using the inverse survival function: <strong>rft1d.norm.isf</strong></p>
+<p class="admonition-title">Warning</p>
+<p>The threshold <em>u</em> should generally be chosen objectively. One possibility is to calculate the <em>alpha</em>-based critical threshold using the inverse survival function: <strong>rft1d.norm.isf</strong></p>
 </div>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><em>c</em> &#8211; number of upcrossings</p>
-<p><em>k</em> &#8211; minimum cluster extent (resels)</p>
-<p><em>u</em> &#8211; threshold</p>
-<p><em>nodes</em> &#8211; number of field nodes (int)  OR a binary field (boolean array)</p>
-<p><em>FWHM</em> &#8211; field smoothness (float)</p>
-<p><em>withBonf</em> &#8211; use a Bonferroni correction if less severe than the RFT correction (bool)</p>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Set-specific probability value.</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Examples:</th><td class="field-body"><div class="first last highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">rft1d</span><span class="o">.</span><span class="n">norm</span><span class="o">.</span><span class="n">p_set</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">3.0</span><span class="p">,</span> <span class="mi">101</span><span class="p">,</span> <span class="mf">15.0</span><span class="p">)</span>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><em>c</em> – number of upcrossings</p>
+<p><em>k</em> – minimum cluster extent (resels)</p>
+<p><em>u</em> – threshold</p>
+<p><em>nodes</em> – number of field nodes (int)  OR a binary field (boolean array)</p>
+<p><em>FWHM</em> – field smoothness (float)</p>
+<p><em>withBonf</em> – use a Bonferroni correction if less severe than the RFT correction (bool)</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Set-specific probability value.</p>
+</dd>
+<dt class="field-odd">Examples</dt>
+<dd class="field-odd"><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">rft1d</span><span class="o">.</span><span class="n">norm</span><span class="o">.</span><span class="n">p_set</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">3.0</span><span class="p">,</span> <span class="mi">101</span><span class="p">,</span> <span class="mf">15.0</span><span class="p">)</span>
 </pre></div>
 </div>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="method">
-<dt id="rft1d.distributions.norm.sf">
-<code class="descclassname">norm.</code><code class="descname">sf</code><span class="sig-paren">(</span><em>u</em>, <em>nodes</em>, <em>FWHM</em>, <em>withBonf=False</em><span class="sig-paren">)</span><a class="headerlink" href="#rft1d.distributions.norm.sf" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="rft1d.distributions.norm.sf">
+<span class="sig-prename descclassname"><span class="pre">norm.</span></span><span class="sig-name descname"><span class="pre">sf</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">u</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nodes</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">FWHM</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">withBonf</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rft1d.distributions.norm.sf" title="Permalink to this definition">¶</a></dt>
 <dd><p>RFT survival function.</p>
 <p>Probability that 1D Gaussian fields with a smoothness <em>FWHM</em> would produce a 1D statistic field whose maximum exceeds <em>u</em>.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><em>u</em> &#8211; threshold (int, float, or sequence of int or float)</p>
-<p><em>nodes</em> &#8211; number of field nodes (int)  OR a binary field (boolean array)</p>
-<p><em>FWHM</em> &#8211; field smoothness (float)</p>
-<p><em>withBonf</em> &#8211; use a Bonferroni correction if less severe than the RFT correction (bool)</p>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">The probability of exceeding the specified heights.</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Examples:</th><td class="field-body"><div class="first last highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">rft1d</span><span class="o">.</span><span class="n">norm</span><span class="o">.</span><span class="n">sf</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">],</span> <span class="mi">101</span><span class="p">,</span> <span class="mf">10.0</span><span class="p">)</span>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><em>u</em> – threshold (int, float, or sequence of int or float)</p>
+<p><em>nodes</em> – number of field nodes (int)  OR a binary field (boolean array)</p>
+<p><em>FWHM</em> – field smoothness (float)</p>
+<p><em>withBonf</em> – use a Bonferroni correction if less severe than the RFT correction (bool)</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The probability of exceeding the specified heights.</p>
+</dd>
+<dt class="field-odd">Examples</dt>
+<dd class="field-odd"><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">rft1d</span><span class="o">.</span><span class="n">norm</span><span class="o">.</span><span class="n">sf</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">],</span> <span class="mi">101</span><span class="p">,</span> <span class="mf">10.0</span><span class="p">)</span>
 </pre></div>
 </div>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="method">
-<dt id="rft1d.distributions.norm.sf0d">
-<code class="descclassname">norm.</code><code class="descname">sf0d</code><span class="sig-paren">(</span><em>heights</em><span class="sig-paren">)</span><a class="headerlink" href="#rft1d.distributions.norm.sf0d" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="rft1d.distributions.norm.sf0d">
+<span class="sig-prename descclassname"><span class="pre">norm.</span></span><span class="sig-name descname"><span class="pre">sf0d</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">heights</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rft1d.distributions.norm.sf0d" title="Permalink to this definition">¶</a></dt>
 <dd><p>Survival function (0D);  equivalent to <strong>scipy.stats.norm.sf</strong></p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Examples:</th><td class="field-body"><div class="first last highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">rft1d</span><span class="o">.</span><span class="n">norm</span><span class="o">.</span><span class="n">sf0d</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">])</span>
+<dl class="field-list">
+<dt class="field-odd">Examples</dt>
+<dd class="field-odd"><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">rft1d</span><span class="o">.</span><span class="n">norm</span><span class="o">.</span><span class="n">sf0d</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">scipy</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">norm</span><span class="o">.</span><span class="n">sf</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">]</span><span class="mi">3</span><span class="p">)</span>
 </pre></div>
 </div>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 </dd></dl>
 
-</div>
-<div class="section" id="student-s-t-rft1d-t">
-<span id="label-distributionsstudentst"></span><h2>Student&#8217;s t (<strong>rft1d.t</strong>)<a class="headerlink" href="#student-s-t-rft1d-t" title="Permalink to this headline">¶</a></h2>
-<dl class="method">
-<dt id="rft1d.distributions.t.isf">
-<code class="descclassname">t.</code><code class="descname">isf</code><span class="sig-paren">(</span><em>alpha</em>, <em>df</em>, <em>nodes</em>, <em>FWHM</em>, <em>withBonf=False</em><span class="sig-paren">)</span><a class="headerlink" href="#rft1d.distributions.t.isf" title="Permalink to this definition">¶</a></dt>
+</section>
+<section id="student-s-t-rft1d-t">
+<span id="label-distributionsstudentst"></span><h2>Student’s t (<strong>rft1d.t</strong>)<a class="headerlink" href="#student-s-t-rft1d-t" title="Permalink to this heading">¶</a></h2>
+<dl class="py method">
+<dt class="sig sig-object py" id="rft1d.distributions.t.isf">
+<span class="sig-prename descclassname"><span class="pre">t.</span></span><span class="sig-name descname"><span class="pre">isf</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">alpha</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nodes</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">FWHM</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">withBonf</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rft1d.distributions.t.isf" title="Permalink to this definition">¶</a></dt>
 <dd><p>RFT inverse survival function.
 (see also the survival function: <strong>rft1d.t.sf</strong>)</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><em>alpha</em> &#8211; upper tail probability (float;  0 &lt; alpha &lt; 1)</p>
-<p><em>df</em> &#8211; degrees of freedom (int or float)</p>
-<p><em>nodes</em> &#8211; number of field nodes (int)  OR a binary field (boolean array)</p>
-<p><em>FWHM</em> &#8211; field smoothness (float)</p>
-<p><em>withBonf</em> &#8211; use a Bonferroni correction if less severe than the RFT correction (bool)</p>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Quantile corresponding to upper-tail probability alpha.
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><em>alpha</em> – upper tail probability (float;  0 &lt; alpha &lt; 1)</p>
+<p><em>df</em> – degrees of freedom (int or float)</p>
+<p><em>nodes</em> – number of field nodes (int)  OR a binary field (boolean array)</p>
+<p><em>FWHM</em> – field smoothness (float)</p>
+<p><em>withBonf</em> – use a Bonferroni correction if less severe than the RFT correction (bool)</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Quantile corresponding to upper-tail probability alpha.
 Equivalently: critical threshold at a Type I error rate of alpha.</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Examples:</th><td class="field-body"><div class="first last highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">rft1d</span><span class="o">.</span><span class="n">t</span><span class="o">.</span><span class="n">isf</span><span class="p">(</span><span class="mf">0.05</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">101</span><span class="p">,</span> <span class="mf">10.0</span><span class="p">)</span>
+</dd>
+<dt class="field-odd">Examples</dt>
+<dd class="field-odd"><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">rft1d</span><span class="o">.</span><span class="n">t</span><span class="o">.</span><span class="n">isf</span><span class="p">(</span><span class="mf">0.05</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">101</span><span class="p">,</span> <span class="mf">10.0</span><span class="p">)</span>
 </pre></div>
 </div>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="method">
-<dt id="rft1d.distributions.t.isf0d">
-<code class="descclassname">t.</code><code class="descname">isf0d</code><span class="sig-paren">(</span><em>alpha</em>, <em>df</em><span class="sig-paren">)</span><a class="headerlink" href="#rft1d.distributions.t.isf0d" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="rft1d.distributions.t.isf0d">
+<span class="sig-prename descclassname"><span class="pre">t.</span></span><span class="sig-name descname"><span class="pre">isf0d</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">alpha</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">df</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rft1d.distributions.t.isf0d" title="Permalink to this definition">¶</a></dt>
 <dd><p>Inverse survival function (0D);  equivalent to <strong>scipy.stats.t.isf</strong></p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Examples:</th><td class="field-body"><div class="first last highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">rft1d</span><span class="o">.</span><span class="n">t</span><span class="o">.</span><span class="n">isf0d</span><span class="p">([</span><span class="mf">0.01</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">],</span> <span class="mi">8</span><span class="p">)</span>
+<dl class="field-list">
+<dt class="field-odd">Examples</dt>
+<dd class="field-odd"><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">rft1d</span><span class="o">.</span><span class="n">t</span><span class="o">.</span><span class="n">isf0d</span><span class="p">([</span><span class="mf">0.01</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">],</span> <span class="mi">8</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">scipy</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">t</span><span class="o">.</span><span class="n">isf</span><span class="p">([</span><span class="mf">0.01</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">],</span> <span class="mi">8</span><span class="p">)</span>
 </pre></div>
 </div>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="method">
-<dt id="rft1d.distributions.t.p_cluster">
-<code class="descclassname">t.</code><code class="descname">p_cluster</code><span class="sig-paren">(</span><em>k</em>, <em>u</em>, <em>df</em>, <em>nodes</em>, <em>FWHM</em>, <em>withBonf=False</em><span class="sig-paren">)</span><a class="headerlink" href="#rft1d.distributions.t.p_cluster" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="rft1d.distributions.t.p_cluster">
+<span class="sig-prename descclassname"><span class="pre">t.</span></span><span class="sig-name descname"><span class="pre">p_cluster</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">k</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">u</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nodes</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">FWHM</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">withBonf</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rft1d.distributions.t.p_cluster" title="Permalink to this definition">¶</a></dt>
 <dd><p>RFT cluster-level inference.</p>
 <p>Probability that 1D Gaussian fields with a smoothness of <em>FWHM</em> would produce
 an upcrossing of extent <em>k</em> when thresholded at <em>u</em>.
 For set-specific probabilities use <strong>rft1d.t.p_set</strong></p>
 <div class="admonition warning">
-<p class="first admonition-title">Warning</p>
-<p class="last">The threshold <em>u</em> should generally be chosen objectively. One possibility is to calculate the <em>alpha</em>-based critical threshold using the inverse survival function: <strong>rft1d.t.isf</strong></p>
+<p class="admonition-title">Warning</p>
+<p>The threshold <em>u</em> should generally be chosen objectively. One possibility is to calculate the <em>alpha</em>-based critical threshold using the inverse survival function: <strong>rft1d.t.isf</strong></p>
 </div>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><em>k</em> &#8211; cluster extent (resels)</p>
-<p><em>u</em> &#8211; threshold</p>
-<p><em>df</em> &#8211; degrees of freedom (int or float)</p>
-<p><em>nodes</em> &#8211; number of field nodes (int)  OR a binary field (boolean array)</p>
-<p><em>FWHM</em> &#8211; field smoothness (float)</p>
-<p><em>withBonf</em> &#8211; use a Bonferroni correction if less severe than the RFT correction (bool)</p>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Cluster-specific probability value.</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Examples:</th><td class="field-body"><div class="first last highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">rft1d</span><span class="o">.</span><span class="n">t</span><span class="o">.</span><span class="n">p_cluster</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">3.0</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">101</span><span class="p">,</span> <span class="mf">15.0</span><span class="p">)</span>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><em>k</em> – cluster extent (resels)</p>
+<p><em>u</em> – threshold</p>
+<p><em>df</em> – degrees of freedom (int or float)</p>
+<p><em>nodes</em> – number of field nodes (int)  OR a binary field (boolean array)</p>
+<p><em>FWHM</em> – field smoothness (float)</p>
+<p><em>withBonf</em> – use a Bonferroni correction if less severe than the RFT correction (bool)</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Cluster-specific probability value.</p>
+</dd>
+<dt class="field-odd">Examples</dt>
+<dd class="field-odd"><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">rft1d</span><span class="o">.</span><span class="n">t</span><span class="o">.</span><span class="n">p_cluster</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">3.0</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">101</span><span class="p">,</span> <span class="mf">15.0</span><span class="p">)</span>
 </pre></div>
 </div>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="method">
-<dt id="rft1d.distributions.t.p_set">
-<code class="descclassname">t.</code><code class="descname">p_set</code><span class="sig-paren">(</span><em>c</em>, <em>k</em>, <em>u</em>, <em>df</em>, <em>nodes</em>, <em>FWHM</em>, <em>withBonf=False</em><span class="sig-paren">)</span><a class="headerlink" href="#rft1d.distributions.t.p_set" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="rft1d.distributions.t.p_set">
+<span class="sig-prename descclassname"><span class="pre">t.</span></span><span class="sig-name descname"><span class="pre">p_set</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">c</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">k</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">u</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nodes</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">FWHM</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">withBonf</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rft1d.distributions.t.p_set" title="Permalink to this definition">¶</a></dt>
 <dd><p>RFT set-level inference.</p>
 <p>Probability that 1D Gaussian fields with a smoothness of <em>FWHM</em> would produce
 at least <em>c</em> upcrossings with a minimum extent of <em>k</em> when thresholded at <em>u</em>.
 This probability pertains to the entire excursion set.
 For cluster-specific probabilities use <strong>rft1d.t.p_cluster</strong></p>
 <div class="admonition warning">
-<p class="first admonition-title">Warning</p>
-<p class="last">The threshold <em>u</em> should generally be chosen objectively. One possibility is to calculate the <em>alpha</em>-based critical threshold using the inverse survival function: <strong>rft1d.t.isf</strong></p>
+<p class="admonition-title">Warning</p>
+<p>The threshold <em>u</em> should generally be chosen objectively. One possibility is to calculate the <em>alpha</em>-based critical threshold using the inverse survival function: <strong>rft1d.t.isf</strong></p>
 </div>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><em>c</em> &#8211; number of upcrossings</p>
-<p><em>k</em> &#8211; minimum cluster extent (resels)</p>
-<p><em>u</em> &#8211; threshold</p>
-<p><em>df</em> &#8211; degrees of freedom (int or float)</p>
-<p><em>nodes</em> &#8211; number of field nodes (int)  OR a binary field (boolean array)</p>
-<p><em>FWHM</em> &#8211; field smoothness (float)</p>
-<p><em>withBonf</em> &#8211; use a Bonferroni correction if less severe than the RFT correction (bool)</p>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Set-specific probability value.</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Examples:</th><td class="field-body"><div class="first last highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">rft1d</span><span class="o">.</span><span class="n">t</span><span class="o">.</span><span class="n">p_set</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">3.0</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">101</span><span class="p">,</span> <span class="mf">15.0</span><span class="p">)</span>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><em>c</em> – number of upcrossings</p>
+<p><em>k</em> – minimum cluster extent (resels)</p>
+<p><em>u</em> – threshold</p>
+<p><em>df</em> – degrees of freedom (int or float)</p>
+<p><em>nodes</em> – number of field nodes (int)  OR a binary field (boolean array)</p>
+<p><em>FWHM</em> – field smoothness (float)</p>
+<p><em>withBonf</em> – use a Bonferroni correction if less severe than the RFT correction (bool)</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Set-specific probability value.</p>
+</dd>
+<dt class="field-odd">Examples</dt>
+<dd class="field-odd"><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">rft1d</span><span class="o">.</span><span class="n">t</span><span class="o">.</span><span class="n">p_set</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">3.0</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">101</span><span class="p">,</span> <span class="mf">15.0</span><span class="p">)</span>
 </pre></div>
 </div>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="method">
-<dt id="rft1d.distributions.t.sf">
-<code class="descclassname">t.</code><code class="descname">sf</code><span class="sig-paren">(</span><em>u</em>, <em>df</em>, <em>nodes</em>, <em>FWHM</em>, <em>withBonf=False</em><span class="sig-paren">)</span><a class="headerlink" href="#rft1d.distributions.t.sf" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="rft1d.distributions.t.sf">
+<span class="sig-prename descclassname"><span class="pre">t.</span></span><span class="sig-name descname"><span class="pre">sf</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">u</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nodes</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">FWHM</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">withBonf</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rft1d.distributions.t.sf" title="Permalink to this definition">¶</a></dt>
 <dd><p>RFT survival function.</p>
 <p>Probability that 1D Gaussian fields with a smoothness <em>FWHM</em> would produce a 1D statistic field whose maximum exceeds <em>u</em>.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><em>u</em> &#8211; threshold (int, float, or sequence of int or float)</p>
-<p><em>df</em> &#8211; degrees of freedom (int or float)</p>
-<p><em>nodes</em> &#8211; number of field nodes (int)  OR a binary field (boolean array)</p>
-<p><em>FWHM</em> &#8211; field smoothness (float)</p>
-<p><em>withBonf</em> &#8211; use a Bonferroni correction if less severe than the RFT correction (bool)</p>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">The probability of exceeding the specified heights.</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Examples:</th><td class="field-body"><div class="first last highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">rft1d</span><span class="o">.</span><span class="n">t</span><span class="o">.</span><span class="n">sf</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">],</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">101</span><span class="p">,</span> <span class="mf">10.0</span><span class="p">)</span>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><em>u</em> – threshold (int, float, or sequence of int or float)</p>
+<p><em>df</em> – degrees of freedom (int or float)</p>
+<p><em>nodes</em> – number of field nodes (int)  OR a binary field (boolean array)</p>
+<p><em>FWHM</em> – field smoothness (float)</p>
+<p><em>withBonf</em> – use a Bonferroni correction if less severe than the RFT correction (bool)</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The probability of exceeding the specified heights.</p>
+</dd>
+<dt class="field-odd">Examples</dt>
+<dd class="field-odd"><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">rft1d</span><span class="o">.</span><span class="n">t</span><span class="o">.</span><span class="n">sf</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">],</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">101</span><span class="p">,</span> <span class="mf">10.0</span><span class="p">)</span>
 </pre></div>
 </div>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="method">
-<dt id="rft1d.distributions.t.sf0d">
-<code class="descclassname">t.</code><code class="descname">sf0d</code><span class="sig-paren">(</span><em>u</em>, <em>df</em><span class="sig-paren">)</span><a class="headerlink" href="#rft1d.distributions.t.sf0d" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="rft1d.distributions.t.sf0d">
+<span class="sig-prename descclassname"><span class="pre">t.</span></span><span class="sig-name descname"><span class="pre">sf0d</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">u</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">df</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rft1d.distributions.t.sf0d" title="Permalink to this definition">¶</a></dt>
 <dd><p>Survival function (0D);  equivalent to <strong>scipy.stats.t.sf</strong></p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Examples:</th><td class="field-body"><div class="first last highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">rft1d</span><span class="o">.</span><span class="n">t</span><span class="o">.</span><span class="n">sf0d</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">],</span> <span class="mi">8</span><span class="p">)</span>
+<dl class="field-list">
+<dt class="field-odd">Examples</dt>
+<dd class="field-odd"><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">rft1d</span><span class="o">.</span><span class="n">t</span><span class="o">.</span><span class="n">sf0d</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">],</span> <span class="mi">8</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">scipy</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">t</span><span class="o">.</span><span class="n">sf</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">],</span> <span class="mi">8</span><span class="p">)</span>
 </pre></div>
 </div>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 </dd></dl>
 
-</div>
-<div class="section" id="chi-squared-rft1d-chi2">
-<span id="label-distributionschisquared"></span><h2>Chi-squared (<strong>rft1d.chi2</strong>)<a class="headerlink" href="#chi-squared-rft1d-chi2" title="Permalink to this headline">¶</a></h2>
-<dl class="method">
-<dt id="rft1d.distributions.chi2.isf">
-<code class="descclassname">chi2.</code><code class="descname">isf</code><span class="sig-paren">(</span><em>alpha</em>, <em>df</em>, <em>nodes</em>, <em>FWHM</em>, <em>withBonf=False</em><span class="sig-paren">)</span><a class="headerlink" href="#rft1d.distributions.chi2.isf" title="Permalink to this definition">¶</a></dt>
+</section>
+<section id="chi-squared-rft1d-chi2">
+<span id="label-distributionschisquared"></span><h2>Chi-squared (<strong>rft1d.chi2</strong>)<a class="headerlink" href="#chi-squared-rft1d-chi2" title="Permalink to this heading">¶</a></h2>
+<dl class="py method">
+<dt class="sig sig-object py" id="rft1d.distributions.chi2.isf">
+<span class="sig-prename descclassname"><span class="pre">chi2.</span></span><span class="sig-name descname"><span class="pre">isf</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">alpha</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nodes</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">FWHM</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">withBonf</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rft1d.distributions.chi2.isf" title="Permalink to this definition">¶</a></dt>
 <dd><p>RFT inverse survival function.
 (see also the survival function: <strong>rft1d.chi2.sf</strong>)</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><em>alpha</em> &#8211; upper tail probability (float;  0 &lt; alpha &lt; 1)</p>
-<p><em>df</em> &#8211; degrees of freedom (int or float)</p>
-<p><em>nodes</em> &#8211; number of field nodes (int)  OR a binary field (boolean array)</p>
-<p><em>FWHM</em> &#8211; field smoothness (float)</p>
-<p><em>withBonf</em> &#8211; use a Bonferroni correction if less severe than the RFT correction (bool)</p>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Quantile corresponding to upper-tail probability alpha.
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><em>alpha</em> – upper tail probability (float;  0 &lt; alpha &lt; 1)</p>
+<p><em>df</em> – degrees of freedom (int or float)</p>
+<p><em>nodes</em> – number of field nodes (int)  OR a binary field (boolean array)</p>
+<p><em>FWHM</em> – field smoothness (float)</p>
+<p><em>withBonf</em> – use a Bonferroni correction if less severe than the RFT correction (bool)</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Quantile corresponding to upper-tail probability alpha.
 Equivalently: critical threshold at a Type I error rate of alpha.</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Examples:</th><td class="field-body"><div class="first last highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">rft1d</span><span class="o">.</span><span class="n">chi2</span><span class="o">.</span><span class="n">isf</span><span class="p">(</span><span class="mf">0.05</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">101</span><span class="p">,</span> <span class="mf">10.0</span><span class="p">)</span>
+</dd>
+<dt class="field-odd">Examples</dt>
+<dd class="field-odd"><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">rft1d</span><span class="o">.</span><span class="n">chi2</span><span class="o">.</span><span class="n">isf</span><span class="p">(</span><span class="mf">0.05</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">101</span><span class="p">,</span> <span class="mf">10.0</span><span class="p">)</span>
 </pre></div>
 </div>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="method">
-<dt id="rft1d.distributions.chi2.isf0d">
-<code class="descclassname">chi2.</code><code class="descname">isf0d</code><span class="sig-paren">(</span><em>alpha</em>, <em>df</em><span class="sig-paren">)</span><a class="headerlink" href="#rft1d.distributions.chi2.isf0d" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="rft1d.distributions.chi2.isf0d">
+<span class="sig-prename descclassname"><span class="pre">chi2.</span></span><span class="sig-name descname"><span class="pre">isf0d</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">alpha</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">df</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rft1d.distributions.chi2.isf0d" title="Permalink to this definition">¶</a></dt>
 <dd><p>Inverse survival function (0D);  equivalent to <strong>scipy.stats.chi2.isf</strong></p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Examples:</th><td class="field-body"><div class="first last highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">rft1d</span><span class="o">.</span><span class="n">chi2</span><span class="o">.</span><span class="n">isf0d</span><span class="p">([</span><span class="mf">0.01</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">],</span> <span class="mi">8</span><span class="p">)</span>
+<dl class="field-list">
+<dt class="field-odd">Examples</dt>
+<dd class="field-odd"><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">rft1d</span><span class="o">.</span><span class="n">chi2</span><span class="o">.</span><span class="n">isf0d</span><span class="p">([</span><span class="mf">0.01</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">],</span> <span class="mi">8</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">scipy</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">chi2</span><span class="o">.</span><span class="n">isf</span><span class="p">([</span><span class="mf">0.01</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">],</span> <span class="mi">8</span><span class="p">)</span>
 </pre></div>
 </div>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="method">
-<dt id="rft1d.distributions.chi2.p_cluster">
-<code class="descclassname">chi2.</code><code class="descname">p_cluster</code><span class="sig-paren">(</span><em>k</em>, <em>u</em>, <em>df</em>, <em>nodes</em>, <em>FWHM</em>, <em>withBonf=False</em><span class="sig-paren">)</span><a class="headerlink" href="#rft1d.distributions.chi2.p_cluster" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="rft1d.distributions.chi2.p_cluster">
+<span class="sig-prename descclassname"><span class="pre">chi2.</span></span><span class="sig-name descname"><span class="pre">p_cluster</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">k</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">u</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nodes</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">FWHM</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">withBonf</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rft1d.distributions.chi2.p_cluster" title="Permalink to this definition">¶</a></dt>
 <dd><p>RFT cluster-level inference.</p>
 <p>Probability that 1D Gaussian fields with a smoothness of <em>FWHM</em> would produce
 an upcrossing of extent <em>k</em> when thresholded at <em>u</em>.
 For set-specific probabilities use <strong>rft1d.chi2.p_set</strong></p>
 <div class="admonition warning">
-<p class="first admonition-title">Warning</p>
-<p class="last">The threshold <em>u</em> should generally be chosen objectively. One possibility is to calculate the <em>alpha</em>-based critical threshold using the inverse survival function: <strong>rft1d.chi2.isf</strong></p>
+<p class="admonition-title">Warning</p>
+<p>The threshold <em>u</em> should generally be chosen objectively. One possibility is to calculate the <em>alpha</em>-based critical threshold using the inverse survival function: <strong>rft1d.chi2.isf</strong></p>
 </div>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><em>k</em> &#8211; cluster extent (resels)</p>
-<p><em>u</em> &#8211; threshold</p>
-<p><em>df</em> &#8211; degrees of freedom (int or float)</p>
-<p><em>nodes</em> &#8211; number of field nodes (int)  OR a binary field (boolean array)</p>
-<p><em>FWHM</em> &#8211; field smoothness (float)</p>
-<p><em>withBonf</em> &#8211; use a Bonferroni correction if less severe than the RFT correction (bool)</p>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Cluster-specific probability value.</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Examples:</th><td class="field-body"><div class="first last highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">rft1d</span><span class="o">.</span><span class="n">chi2</span><span class="o">.</span><span class="n">p_cluster</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">3.0</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">101</span><span class="p">,</span> <span class="mf">15.0</span><span class="p">)</span>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><em>k</em> – cluster extent (resels)</p>
+<p><em>u</em> – threshold</p>
+<p><em>df</em> – degrees of freedom (int or float)</p>
+<p><em>nodes</em> – number of field nodes (int)  OR a binary field (boolean array)</p>
+<p><em>FWHM</em> – field smoothness (float)</p>
+<p><em>withBonf</em> – use a Bonferroni correction if less severe than the RFT correction (bool)</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Cluster-specific probability value.</p>
+</dd>
+<dt class="field-odd">Examples</dt>
+<dd class="field-odd"><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">rft1d</span><span class="o">.</span><span class="n">chi2</span><span class="o">.</span><span class="n">p_cluster</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">3.0</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">101</span><span class="p">,</span> <span class="mf">15.0</span><span class="p">)</span>
 </pre></div>
 </div>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="method">
-<dt id="rft1d.distributions.chi2.p_set">
-<code class="descclassname">chi2.</code><code class="descname">p_set</code><span class="sig-paren">(</span><em>c</em>, <em>k</em>, <em>u</em>, <em>df</em>, <em>nodes</em>, <em>FWHM</em>, <em>withBonf=False</em><span class="sig-paren">)</span><a class="headerlink" href="#rft1d.distributions.chi2.p_set" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="rft1d.distributions.chi2.p_set">
+<span class="sig-prename descclassname"><span class="pre">chi2.</span></span><span class="sig-name descname"><span class="pre">p_set</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">c</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">k</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">u</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nodes</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">FWHM</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">withBonf</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rft1d.distributions.chi2.p_set" title="Permalink to this definition">¶</a></dt>
 <dd><p>RFT set-level inference.</p>
 <p>Probability that 1D Gaussian fields with a smoothness of <em>FWHM</em> would produce
 at least <em>c</em> upcrossings with a minimum extent of <em>k</em> when thresholded at <em>u</em>.
 This probability pertains to the entire excursion set.
 For cluster-specific probabilities use <strong>rft1d.chi2.p_cluster</strong></p>
 <div class="admonition warning">
-<p class="first admonition-title">Warning</p>
-<p class="last">The threshold <em>u</em> should generally be chosen objectively. One possibility is to calculate the <em>alpha</em>-based critical threshold using the inverse survival function: <strong>rft1d.chi2.isf</strong></p>
+<p class="admonition-title">Warning</p>
+<p>The threshold <em>u</em> should generally be chosen objectively. One possibility is to calculate the <em>alpha</em>-based critical threshold using the inverse survival function: <strong>rft1d.chi2.isf</strong></p>
 </div>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><em>c</em> &#8211; number of upcrossings</p>
-<p><em>k</em> &#8211; minimum cluster extent (resels)</p>
-<p><em>u</em> &#8211; threshold</p>
-<p><em>df</em> &#8211; degrees of freedom (int or float)</p>
-<p><em>nodes</em> &#8211; number of field nodes (int)  OR a binary field (boolean array)</p>
-<p><em>FWHM</em> &#8211; field smoothness (float)</p>
-<p><em>withBonf</em> &#8211; use a Bonferroni correction if less severe than the RFT correction (bool)</p>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Set-specific probability value.</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Examples:</th><td class="field-body"><div class="first last highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">rft1d</span><span class="o">.</span><span class="n">chi2</span><span class="o">.</span><span class="n">p_set</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">3.0</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">101</span><span class="p">,</span> <span class="mf">15.0</span><span class="p">)</span>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><em>c</em> – number of upcrossings</p>
+<p><em>k</em> – minimum cluster extent (resels)</p>
+<p><em>u</em> – threshold</p>
+<p><em>df</em> – degrees of freedom (int or float)</p>
+<p><em>nodes</em> – number of field nodes (int)  OR a binary field (boolean array)</p>
+<p><em>FWHM</em> – field smoothness (float)</p>
+<p><em>withBonf</em> – use a Bonferroni correction if less severe than the RFT correction (bool)</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Set-specific probability value.</p>
+</dd>
+<dt class="field-odd">Examples</dt>
+<dd class="field-odd"><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">rft1d</span><span class="o">.</span><span class="n">chi2</span><span class="o">.</span><span class="n">p_set</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">3.0</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">101</span><span class="p">,</span> <span class="mf">15.0</span><span class="p">)</span>
 </pre></div>
 </div>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="method">
-<dt id="rft1d.distributions.chi2.sf">
-<code class="descclassname">chi2.</code><code class="descname">sf</code><span class="sig-paren">(</span><em>u</em>, <em>df</em>, <em>nodes</em>, <em>FWHM</em>, <em>withBonf=False</em><span class="sig-paren">)</span><a class="headerlink" href="#rft1d.distributions.chi2.sf" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="rft1d.distributions.chi2.sf">
+<span class="sig-prename descclassname"><span class="pre">chi2.</span></span><span class="sig-name descname"><span class="pre">sf</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">u</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nodes</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">FWHM</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">withBonf</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rft1d.distributions.chi2.sf" title="Permalink to this definition">¶</a></dt>
 <dd><p>RFT survival function.</p>
 <p>Probability that 1D Gaussian fields with a smoothness <em>FWHM</em> would produce a 1D statistic field whose maximum exceeds <em>u</em>.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><em>u</em> &#8211; threshold (int, float, or sequence of int or float)</p>
-<p><em>df</em> &#8211; degrees of freedom (int or float)</p>
-<p><em>nodes</em> &#8211; number of field nodes (int)  OR a binary field (boolean array)</p>
-<p><em>FWHM</em> &#8211; field smoothness (float)</p>
-<p><em>withBonf</em> &#8211; use a Bonferroni correction if less severe than the RFT correction (bool)</p>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">The probability of exceeding the specified heights.</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Examples:</th><td class="field-body"><div class="first last highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">rft1d</span><span class="o">.</span><span class="n">chi2</span><span class="o">.</span><span class="n">sf</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">],</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">101</span><span class="p">,</span> <span class="mf">10.0</span><span class="p">)</span>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><em>u</em> – threshold (int, float, or sequence of int or float)</p>
+<p><em>df</em> – degrees of freedom (int or float)</p>
+<p><em>nodes</em> – number of field nodes (int)  OR a binary field (boolean array)</p>
+<p><em>FWHM</em> – field smoothness (float)</p>
+<p><em>withBonf</em> – use a Bonferroni correction if less severe than the RFT correction (bool)</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The probability of exceeding the specified heights.</p>
+</dd>
+<dt class="field-odd">Examples</dt>
+<dd class="field-odd"><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">rft1d</span><span class="o">.</span><span class="n">chi2</span><span class="o">.</span><span class="n">sf</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">],</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">101</span><span class="p">,</span> <span class="mf">10.0</span><span class="p">)</span>
 </pre></div>
 </div>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="method">
-<dt id="rft1d.distributions.chi2.sf0d">
-<code class="descclassname">chi2.</code><code class="descname">sf0d</code><span class="sig-paren">(</span><em>u</em>, <em>df</em><span class="sig-paren">)</span><a class="headerlink" href="#rft1d.distributions.chi2.sf0d" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="rft1d.distributions.chi2.sf0d">
+<span class="sig-prename descclassname"><span class="pre">chi2.</span></span><span class="sig-name descname"><span class="pre">sf0d</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">u</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">df</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rft1d.distributions.chi2.sf0d" title="Permalink to this definition">¶</a></dt>
 <dd><p>Survival function (0D);  equivalent to <strong>scipy.stats.chi2.sf</strong></p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Examples:</th><td class="field-body"><div class="first last highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">rft1d</span><span class="o">.</span><span class="n">chi2</span><span class="o">.</span><span class="n">sf0d</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">],</span> <span class="mi">8</span><span class="p">)</span>
+<dl class="field-list">
+<dt class="field-odd">Examples</dt>
+<dd class="field-odd"><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">rft1d</span><span class="o">.</span><span class="n">chi2</span><span class="o">.</span><span class="n">sf0d</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">],</span> <span class="mi">8</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">scipy</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">chi2</span><span class="o">.</span><span class="n">sf</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">],</span> <span class="mi">8</span><span class="p">)</span>
 </pre></div>
 </div>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 </dd></dl>
 
-</div>
-<div class="section" id="fisher-snedecor-f-rft1d-f">
-<span id="label-distributionsf"></span><h2>Fisher-Snedecor F (<strong>rft1d.f</strong>)<a class="headerlink" href="#fisher-snedecor-f-rft1d-f" title="Permalink to this headline">¶</a></h2>
-<dl class="method">
-<dt id="rft1d.distributions.f.isf">
-<code class="descclassname">f.</code><code class="descname">isf</code><span class="sig-paren">(</span><em>alpha</em>, <em>df</em>, <em>nodes</em>, <em>FWHM</em>, <em>withBonf=False</em><span class="sig-paren">)</span><a class="headerlink" href="#rft1d.distributions.f.isf" title="Permalink to this definition">¶</a></dt>
+</section>
+<section id="fisher-snedecor-f-rft1d-f">
+<span id="label-distributionsf"></span><h2>Fisher-Snedecor F (<strong>rft1d.f</strong>)<a class="headerlink" href="#fisher-snedecor-f-rft1d-f" title="Permalink to this heading">¶</a></h2>
+<dl class="py method">
+<dt class="sig sig-object py" id="rft1d.distributions.f.isf">
+<span class="sig-prename descclassname"><span class="pre">f.</span></span><span class="sig-name descname"><span class="pre">isf</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">alpha</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nodes</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">FWHM</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">withBonf</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rft1d.distributions.f.isf" title="Permalink to this definition">¶</a></dt>
 <dd><p>RFT inverse survival function.
 (see also the survival function: <strong>rft1d.f.sf</strong>)</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><em>alpha</em> &#8211; upper tail probability (float;  0 &lt; alpha &lt; 1)</p>
-<p><em>df</em> &#8211; degrees of freedom (two-tuple of int or float)</p>
-<p><em>nodes</em> &#8211; number of field nodes (int)  OR a binary field (boolean array)</p>
-<p><em>FWHM</em> &#8211; field smoothness (float)</p>
-<p><em>withBonf</em> &#8211; use a Bonferroni correction if less severe than the RFT correction (bool)</p>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Quantile corresponding to upper-tail probability alpha.
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><em>alpha</em> – upper tail probability (float;  0 &lt; alpha &lt; 1)</p>
+<p><em>df</em> – degrees of freedom (two-tuple of int or float)</p>
+<p><em>nodes</em> – number of field nodes (int)  OR a binary field (boolean array)</p>
+<p><em>FWHM</em> – field smoothness (float)</p>
+<p><em>withBonf</em> – use a Bonferroni correction if less severe than the RFT correction (bool)</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Quantile corresponding to upper-tail probability alpha.
 Equivalently: critical threshold at a Type I error rate of alpha.</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Examples:</th><td class="field-body"><div class="first last highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">rft1d</span><span class="o">.</span><span class="n">f</span><span class="o">.</span><span class="n">isf</span><span class="p">(</span><span class="mf">0.05</span><span class="p">,</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">14</span><span class="p">),</span> <span class="mi">101</span><span class="p">,</span> <span class="mf">10.0</span><span class="p">)</span>
+</dd>
+<dt class="field-odd">Examples</dt>
+<dd class="field-odd"><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">rft1d</span><span class="o">.</span><span class="n">f</span><span class="o">.</span><span class="n">isf</span><span class="p">(</span><span class="mf">0.05</span><span class="p">,</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">14</span><span class="p">),</span> <span class="mi">101</span><span class="p">,</span> <span class="mf">10.0</span><span class="p">)</span>
 </pre></div>
 </div>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="method">
-<dt id="rft1d.distributions.f.isf0d">
-<code class="descclassname">f.</code><code class="descname">isf0d</code><span class="sig-paren">(</span><em>alpha</em>, <em>df</em><span class="sig-paren">)</span><a class="headerlink" href="#rft1d.distributions.f.isf0d" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="rft1d.distributions.f.isf0d">
+<span class="sig-prename descclassname"><span class="pre">f.</span></span><span class="sig-name descname"><span class="pre">isf0d</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">alpha</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">df</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rft1d.distributions.f.isf0d" title="Permalink to this definition">¶</a></dt>
 <dd><p>Inverse survival function (0D);  equivalent to <strong>scipy.stats.f.isf</strong></p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Examples:</th><td class="field-body"><div class="first last highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">rft1d</span><span class="o">.</span><span class="n">f</span><span class="o">.</span><span class="n">isf0d</span><span class="p">([</span><span class="mf">0.01</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">],</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">15</span><span class="p">))</span>
+<dl class="field-list">
+<dt class="field-odd">Examples</dt>
+<dd class="field-odd"><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">rft1d</span><span class="o">.</span><span class="n">f</span><span class="o">.</span><span class="n">isf0d</span><span class="p">([</span><span class="mf">0.01</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">],</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">15</span><span class="p">))</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">scipy</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">f</span><span class="o">.</span><span class="n">isf</span><span class="p">([</span><span class="mf">0.01</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">],</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">21</span><span class="p">)</span>
 </pre></div>
 </div>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="method">
-<dt id="rft1d.distributions.f.p_cluster">
-<code class="descclassname">f.</code><code class="descname">p_cluster</code><span class="sig-paren">(</span><em>k</em>, <em>u</em>, <em>df</em>, <em>nodes</em>, <em>FWHM</em>, <em>withBonf=False</em><span class="sig-paren">)</span><a class="headerlink" href="#rft1d.distributions.f.p_cluster" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="rft1d.distributions.f.p_cluster">
+<span class="sig-prename descclassname"><span class="pre">f.</span></span><span class="sig-name descname"><span class="pre">p_cluster</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">k</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">u</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nodes</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">FWHM</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">withBonf</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rft1d.distributions.f.p_cluster" title="Permalink to this definition">¶</a></dt>
 <dd><p>RFT cluster-level inference.</p>
 <p>Probability that 1D Gaussian fields with a smoothness of <em>FWHM</em> would produce
 an upcrossing of extent <em>k</em> when thresholded at <em>u</em>.
 For set-specific probabilities use <strong>rft1d.f.p_set</strong></p>
 <div class="admonition warning">
-<p class="first admonition-title">Warning</p>
-<p class="last">The threshold <em>u</em> should generally be chosen objectively. One possibility is to calculate the <em>alpha</em>-based critical threshold using the inverse survival function: <strong>rft1d.f.isf</strong></p>
+<p class="admonition-title">Warning</p>
+<p>The threshold <em>u</em> should generally be chosen objectively. One possibility is to calculate the <em>alpha</em>-based critical threshold using the inverse survival function: <strong>rft1d.f.isf</strong></p>
 </div>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><em>k</em> &#8211; cluster extent (resels)</p>
-<p><em>u</em> &#8211; threshold</p>
-<p><em>df</em> &#8211; degrees of freedom (two-tuple of int or float)</p>
-<p><em>nodes</em> &#8211; number of field nodes (int)  OR a binary field (boolean array)</p>
-<p><em>FWHM</em> &#8211; field smoothness (float)</p>
-<p><em>withBonf</em> &#8211; use a Bonferroni correction if less severe than the RFT correction (bool)</p>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Cluster-specific probability value.</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Examples:</th><td class="field-body"><div class="first last highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">rft1d</span><span class="o">.</span><span class="n">f</span><span class="o">.</span><span class="n">p_cluster</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">3.0</span><span class="p">,</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">14</span><span class="p">),</span> <span class="mi">101</span><span class="p">,</span> <span class="mf">15.0</span><span class="p">)</span>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><em>k</em> – cluster extent (resels)</p>
+<p><em>u</em> – threshold</p>
+<p><em>df</em> – degrees of freedom (two-tuple of int or float)</p>
+<p><em>nodes</em> – number of field nodes (int)  OR a binary field (boolean array)</p>
+<p><em>FWHM</em> – field smoothness (float)</p>
+<p><em>withBonf</em> – use a Bonferroni correction if less severe than the RFT correction (bool)</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Cluster-specific probability value.</p>
+</dd>
+<dt class="field-odd">Examples</dt>
+<dd class="field-odd"><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">rft1d</span><span class="o">.</span><span class="n">f</span><span class="o">.</span><span class="n">p_cluster</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">3.0</span><span class="p">,</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">14</span><span class="p">),</span> <span class="mi">101</span><span class="p">,</span> <span class="mf">15.0</span><span class="p">)</span>
 </pre></div>
 </div>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="method">
-<dt id="rft1d.distributions.f.p_set">
-<code class="descclassname">f.</code><code class="descname">p_set</code><span class="sig-paren">(</span><em>c</em>, <em>k</em>, <em>u</em>, <em>df</em>, <em>nodes</em>, <em>FWHM</em>, <em>withBonf=False</em><span class="sig-paren">)</span><a class="headerlink" href="#rft1d.distributions.f.p_set" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="rft1d.distributions.f.p_set">
+<span class="sig-prename descclassname"><span class="pre">f.</span></span><span class="sig-name descname"><span class="pre">p_set</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">c</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">k</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">u</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nodes</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">FWHM</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">withBonf</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rft1d.distributions.f.p_set" title="Permalink to this definition">¶</a></dt>
 <dd><p>RFT set-level inference.</p>
 <p>Probability that 1D Gaussian fields with a smoothness of <em>FWHM</em> would produce
 at least <em>c</em> upcrossings with a minimum extent of <em>k</em> when thresholded at <em>u</em>.
 This probability pertains to the entire excursion set.
 For cluster-specific probabilities use <strong>rft1d.f.p_cluster</strong></p>
 <div class="admonition warning">
-<p class="first admonition-title">Warning</p>
-<p class="last">The threshold <em>u</em> should generally be chosen objectively. One possibility is to calculate the <em>alpha</em>-based critical threshold using the inverse survival function: <strong>rft1d.f.isf</strong></p>
+<p class="admonition-title">Warning</p>
+<p>The threshold <em>u</em> should generally be chosen objectively. One possibility is to calculate the <em>alpha</em>-based critical threshold using the inverse survival function: <strong>rft1d.f.isf</strong></p>
 </div>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><em>c</em> &#8211; number of upcrossings</p>
-<p><em>k</em> &#8211; minimum cluster extent (resels)</p>
-<p><em>u</em> &#8211; threshold</p>
-<p><em>df</em> &#8211; degrees of freedom (two-tuple of int or float)</p>
-<p><em>nodes</em> &#8211; number of field nodes (int)  OR a binary field (boolean array)</p>
-<p><em>FWHM</em> &#8211; field smoothness (float)</p>
-<p><em>withBonf</em> &#8211; use a Bonferroni correction if less severe than the RFT correction (bool)</p>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Set-specific probability value.</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Examples:</th><td class="field-body"><div class="first last highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">rft1d</span><span class="o">.</span><span class="n">f</span><span class="o">.</span><span class="n">p_set</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">3.0</span><span class="p">,</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">14</span><span class="p">),</span> <span class="mi">101</span><span class="p">,</span> <span class="mf">15.0</span><span class="p">)</span>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><em>c</em> – number of upcrossings</p>
+<p><em>k</em> – minimum cluster extent (resels)</p>
+<p><em>u</em> – threshold</p>
+<p><em>df</em> – degrees of freedom (two-tuple of int or float)</p>
+<p><em>nodes</em> – number of field nodes (int)  OR a binary field (boolean array)</p>
+<p><em>FWHM</em> – field smoothness (float)</p>
+<p><em>withBonf</em> – use a Bonferroni correction if less severe than the RFT correction (bool)</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Set-specific probability value.</p>
+</dd>
+<dt class="field-odd">Examples</dt>
+<dd class="field-odd"><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">rft1d</span><span class="o">.</span><span class="n">f</span><span class="o">.</span><span class="n">p_set</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">3.0</span><span class="p">,</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">14</span><span class="p">),</span> <span class="mi">101</span><span class="p">,</span> <span class="mf">15.0</span><span class="p">)</span>
 </pre></div>
 </div>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="method">
-<dt id="rft1d.distributions.f.sf">
-<code class="descclassname">f.</code><code class="descname">sf</code><span class="sig-paren">(</span><em>u</em>, <em>df</em>, <em>nodes</em>, <em>FWHM</em>, <em>withBonf=False</em><span class="sig-paren">)</span><a class="headerlink" href="#rft1d.distributions.f.sf" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="rft1d.distributions.f.sf">
+<span class="sig-prename descclassname"><span class="pre">f.</span></span><span class="sig-name descname"><span class="pre">sf</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">u</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nodes</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">FWHM</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">withBonf</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rft1d.distributions.f.sf" title="Permalink to this definition">¶</a></dt>
 <dd><p>RFT survival function.</p>
 <p>Probability that 1D Gaussian fields with a smoothness <em>FWHM</em> would produce a 1D statistic field whose maximum exceeds <em>u</em>.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><em>u</em> &#8211; threshold (int, float, or sequence of int or float)</p>
-<p><em>df</em> &#8211; degrees of freedom (two-tuple of int or float)</p>
-<p><em>nodes</em> &#8211; number of field nodes (int)  OR a binary field (boolean array)</p>
-<p><em>FWHM</em> &#8211; field smoothness (float)</p>
-<p><em>withBonf</em> &#8211; use a Bonferroni correction if less severe than the RFT correction (bool)</p>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">The probability of exceeding the specified heights.</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Examples:</th><td class="field-body"><div class="first last highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">rft1d</span><span class="o">.</span><span class="n">f</span><span class="o">.</span><span class="n">sf</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">],</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">14</span><span class="p">),</span> <span class="mi">101</span><span class="p">,</span> <span class="mf">10.0</span><span class="p">)</span>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><em>u</em> – threshold (int, float, or sequence of int or float)</p>
+<p><em>df</em> – degrees of freedom (two-tuple of int or float)</p>
+<p><em>nodes</em> – number of field nodes (int)  OR a binary field (boolean array)</p>
+<p><em>FWHM</em> – field smoothness (float)</p>
+<p><em>withBonf</em> – use a Bonferroni correction if less severe than the RFT correction (bool)</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The probability of exceeding the specified heights.</p>
+</dd>
+<dt class="field-odd">Examples</dt>
+<dd class="field-odd"><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">rft1d</span><span class="o">.</span><span class="n">f</span><span class="o">.</span><span class="n">sf</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">],</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">14</span><span class="p">),</span> <span class="mi">101</span><span class="p">,</span> <span class="mf">10.0</span><span class="p">)</span>
 </pre></div>
 </div>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="method">
-<dt id="rft1d.distributions.f.sf0d">
-<code class="descclassname">f.</code><code class="descname">sf0d</code><span class="sig-paren">(</span><em>u</em>, <em>df</em><span class="sig-paren">)</span><a class="headerlink" href="#rft1d.distributions.f.sf0d" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="rft1d.distributions.f.sf0d">
+<span class="sig-prename descclassname"><span class="pre">f.</span></span><span class="sig-name descname"><span class="pre">sf0d</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">u</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">df</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rft1d.distributions.f.sf0d" title="Permalink to this definition">¶</a></dt>
 <dd><p>Survival function (0D);  equivalent to <strong>scipy.stats.f.sf</strong></p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Examples:</th><td class="field-body"><div class="first last highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">rft1d</span><span class="o">.</span><span class="n">f</span><span class="o">.</span><span class="n">sf0d</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">],</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">15</span><span class="p">))</span>
+<dl class="field-list">
+<dt class="field-odd">Examples</dt>
+<dd class="field-odd"><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">rft1d</span><span class="o">.</span><span class="n">f</span><span class="o">.</span><span class="n">sf0d</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">],</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">15</span><span class="p">))</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">scipy</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">f</span><span class="o">.</span><span class="n">sf</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">],</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">21</span><span class="p">)</span>
 </pre></div>
 </div>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 </dd></dl>
 
-</div>
-<div class="section" id="hotelling-s-t2-rft1d-t2">
-<span id="label-distributionshotellingst2"></span><h2>Hotelling&#8217;s T2 (<strong>rft1d.T2</strong>)<a class="headerlink" href="#hotelling-s-t2-rft1d-t2" title="Permalink to this headline">¶</a></h2>
-<dl class="method">
-<dt id="rft1d.distributions.T2.isf">
-<code class="descclassname">T2.</code><code class="descname">isf</code><span class="sig-paren">(</span><em>alpha</em>, <em>df</em>, <em>nodes</em>, <em>FWHM</em>, <em>withBonf=False</em><span class="sig-paren">)</span><a class="headerlink" href="#rft1d.distributions.T2.isf" title="Permalink to this definition">¶</a></dt>
+</section>
+<section id="hotelling-s-t2-rft1d-t2">
+<span id="label-distributionshotellingst2"></span><h2>Hotelling’s T2 (<strong>rft1d.T2</strong>)<a class="headerlink" href="#hotelling-s-t2-rft1d-t2" title="Permalink to this heading">¶</a></h2>
+<dl class="py method">
+<dt class="sig sig-object py" id="rft1d.distributions.T2.isf">
+<span class="sig-prename descclassname"><span class="pre">T2.</span></span><span class="sig-name descname"><span class="pre">isf</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">alpha</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nodes</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">FWHM</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">withBonf</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rft1d.distributions.T2.isf" title="Permalink to this definition">¶</a></dt>
 <dd><p>RFT inverse survival function.
 (see also the survival function: <strong>rft1d.T2.sf</strong>)</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><em>alpha</em> &#8211; upper tail probability (float;  0 &lt; alpha &lt; 1)</p>
-<p><em>df</em> &#8211; degrees of freedom (two-tuple of int or float)</p>
-<p><em>nodes</em> &#8211; number of field nodes (int)  OR a binary field (boolean array)</p>
-<p><em>FWHM</em> &#8211; field smoothness (float)</p>
-<p><em>withBonf</em> &#8211; use a Bonferroni correction if less severe than the RFT correction (bool)</p>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Quantile corresponding to upper-tail probability alpha.
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><em>alpha</em> – upper tail probability (float;  0 &lt; alpha &lt; 1)</p>
+<p><em>df</em> – degrees of freedom (two-tuple of int or float)</p>
+<p><em>nodes</em> – number of field nodes (int)  OR a binary field (boolean array)</p>
+<p><em>FWHM</em> – field smoothness (float)</p>
+<p><em>withBonf</em> – use a Bonferroni correction if less severe than the RFT correction (bool)</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Quantile corresponding to upper-tail probability alpha.
 Equivalently: critical threshold at a Type I error rate of alpha.</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Examples:</th><td class="field-body"><div class="first last highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">rft1d</span><span class="o">.</span><span class="n">T2</span><span class="o">.</span><span class="n">isf</span><span class="p">(</span><span class="mf">0.05</span><span class="p">,</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">14</span><span class="p">),</span> <span class="mi">101</span><span class="p">,</span> <span class="mf">10.0</span><span class="p">)</span>
+</dd>
+<dt class="field-odd">Examples</dt>
+<dd class="field-odd"><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">rft1d</span><span class="o">.</span><span class="n">T2</span><span class="o">.</span><span class="n">isf</span><span class="p">(</span><span class="mf">0.05</span><span class="p">,</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">14</span><span class="p">),</span> <span class="mi">101</span><span class="p">,</span> <span class="mf">10.0</span><span class="p">)</span>
 </pre></div>
 </div>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="method">
-<dt id="rft1d.distributions.T2.isf0d">
-<code class="descclassname">T2.</code><code class="descname">isf0d</code><span class="sig-paren">(</span><em>alpha</em>, <em>df</em><span class="sig-paren">)</span><a class="headerlink" href="#rft1d.distributions.T2.isf0d" title="Permalink to this definition">¶</a></dt>
-<dd><p>0D inverse survival function for the Hotelling&#8217;s T2 distribution
+<dl class="py method">
+<dt class="sig sig-object py" id="rft1d.distributions.T2.isf0d">
+<span class="sig-prename descclassname"><span class="pre">T2.</span></span><span class="sig-name descname"><span class="pre">isf0d</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">alpha</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">df</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rft1d.distributions.T2.isf0d" title="Permalink to this definition">¶</a></dt>
+<dd><p>0D inverse survival function for the Hotelling’s T2 distribution
 (not implemented in <strong>scipy.stats</strong>)</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Examples:</th><td class="field-body"><div class="first last highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">rft1d</span><span class="o">.</span><span class="n">T2</span><span class="o">.</span><span class="n">isf0d</span><span class="p">(</span><span class="mf">0.05</span><span class="p">,</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">14</span><span class="p">))</span>
+<dl class="field-list">
+<dt class="field-odd">Examples</dt>
+<dd class="field-odd"><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">rft1d</span><span class="o">.</span><span class="n">T2</span><span class="o">.</span><span class="n">isf0d</span><span class="p">(</span><span class="mf">0.05</span><span class="p">,</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">14</span><span class="p">))</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">rft1d</span><span class="o">.</span><span class="n">T2</span><span class="o">.</span><span class="n">isf0d</span><span class="p">([</span><span class="mf">0.01</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.10</span><span class="p">],</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">14</span><span class="p">))</span>
 </pre></div>
 </div>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="method">
-<dt id="rft1d.distributions.T2.p_cluster">
-<code class="descclassname">T2.</code><code class="descname">p_cluster</code><span class="sig-paren">(</span><em>k</em>, <em>u</em>, <em>df</em>, <em>nodes</em>, <em>FWHM</em>, <em>withBonf=False</em><span class="sig-paren">)</span><a class="headerlink" href="#rft1d.distributions.T2.p_cluster" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="rft1d.distributions.T2.p_cluster">
+<span class="sig-prename descclassname"><span class="pre">T2.</span></span><span class="sig-name descname"><span class="pre">p_cluster</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">k</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">u</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nodes</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">FWHM</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">withBonf</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rft1d.distributions.T2.p_cluster" title="Permalink to this definition">¶</a></dt>
 <dd><p>RFT cluster-level inference.</p>
 <p>Probability that 1D Gaussian fields with a smoothness of <em>FWHM</em> would produce
 an upcrossing of extent <em>k</em> when thresholded at <em>u</em>.
 For set-specific probabilities use <strong>rft1d.T2.p_set</strong></p>
 <div class="admonition warning">
-<p class="first admonition-title">Warning</p>
-<p class="last">The threshold <em>u</em> should generally be chosen objectively. One possibility is to calculate the <em>alpha</em>-based critical threshold using the inverse survival function: <strong>rft1d.T2.isf</strong></p>
+<p class="admonition-title">Warning</p>
+<p>The threshold <em>u</em> should generally be chosen objectively. One possibility is to calculate the <em>alpha</em>-based critical threshold using the inverse survival function: <strong>rft1d.T2.isf</strong></p>
 </div>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><em>k</em> &#8211; cluster extent (resels)</p>
-<p><em>u</em> &#8211; threshold</p>
-<p><em>df</em> &#8211; degrees of freedom (two-tuple of int or float)</p>
-<p><em>nodes</em> &#8211; number of field nodes (int)  OR a binary field (boolean array)</p>
-<p><em>FWHM</em> &#8211; field smoothness (float)</p>
-<p><em>withBonf</em> &#8211; use a Bonferroni correction if less severe than the RFT correction (bool)</p>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Cluster-specific probability value.</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Examples:</th><td class="field-body"><div class="first last highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">rft1d</span><span class="o">.</span><span class="n">T2</span><span class="o">.</span><span class="n">p_cluster</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">3.0</span><span class="p">,</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">14</span><span class="p">),</span> <span class="mi">101</span><span class="p">,</span> <span class="mf">15.0</span><span class="p">)</span>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><em>k</em> – cluster extent (resels)</p>
+<p><em>u</em> – threshold</p>
+<p><em>df</em> – degrees of freedom (two-tuple of int or float)</p>
+<p><em>nodes</em> – number of field nodes (int)  OR a binary field (boolean array)</p>
+<p><em>FWHM</em> – field smoothness (float)</p>
+<p><em>withBonf</em> – use a Bonferroni correction if less severe than the RFT correction (bool)</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Cluster-specific probability value.</p>
+</dd>
+<dt class="field-odd">Examples</dt>
+<dd class="field-odd"><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">rft1d</span><span class="o">.</span><span class="n">T2</span><span class="o">.</span><span class="n">p_cluster</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">3.0</span><span class="p">,</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">14</span><span class="p">),</span> <span class="mi">101</span><span class="p">,</span> <span class="mf">15.0</span><span class="p">)</span>
 </pre></div>
 </div>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="method">
-<dt id="rft1d.distributions.T2.p_set">
-<code class="descclassname">T2.</code><code class="descname">p_set</code><span class="sig-paren">(</span><em>c</em>, <em>k</em>, <em>u</em>, <em>df</em>, <em>nodes</em>, <em>FWHM</em>, <em>withBonf=False</em><span class="sig-paren">)</span><a class="headerlink" href="#rft1d.distributions.T2.p_set" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="rft1d.distributions.T2.p_set">
+<span class="sig-prename descclassname"><span class="pre">T2.</span></span><span class="sig-name descname"><span class="pre">p_set</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">c</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">k</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">u</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nodes</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">FWHM</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">withBonf</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rft1d.distributions.T2.p_set" title="Permalink to this definition">¶</a></dt>
 <dd><p>RFT set-level inference.</p>
 <p>Probability that 1D Gaussian fields with a smoothness of <em>FWHM</em> would produce
 at least <em>c</em> upcrossings with a minimum extent of <em>k</em> when thresholded at <em>u</em>.
 This probability pertains to the entire excursion set.
 For cluster-specific probabilities use <strong>rft1d.T2.p_cluster</strong></p>
 <div class="admonition warning">
-<p class="first admonition-title">Warning</p>
-<p class="last">The threshold <em>u</em> should generally be chosen objectively. One possibility is to calculate the <em>alpha</em>-based critical threshold using the inverse survival function: <strong>rft1d.T2.isf</strong></p>
+<p class="admonition-title">Warning</p>
+<p>The threshold <em>u</em> should generally be chosen objectively. One possibility is to calculate the <em>alpha</em>-based critical threshold using the inverse survival function: <strong>rft1d.T2.isf</strong></p>
 </div>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><em>c</em> &#8211; number of upcrossings</p>
-<p><em>k</em> &#8211; minimum cluster extent (resels)</p>
-<p><em>u</em> &#8211; threshold</p>
-<p><em>df</em> &#8211; degrees of freedom (two-tuple of int or float)</p>
-<p><em>nodes</em> &#8211; number of field nodes (int)  OR a binary field (boolean array)</p>
-<p><em>FWHM</em> &#8211; field smoothness (float)</p>
-<p><em>withBonf</em> &#8211; use a Bonferroni correction if less severe than the RFT correction (bool)</p>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Set-specific probability value.</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Examples:</th><td class="field-body"><div class="first last highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">rft1d</span><span class="o">.</span><span class="n">T2</span><span class="o">.</span><span class="n">p_set</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">3.0</span><span class="p">,</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">14</span><span class="p">),</span> <span class="mi">101</span><span class="p">,</span> <span class="mf">15.0</span><span class="p">)</span>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><em>c</em> – number of upcrossings</p>
+<p><em>k</em> – minimum cluster extent (resels)</p>
+<p><em>u</em> – threshold</p>
+<p><em>df</em> – degrees of freedom (two-tuple of int or float)</p>
+<p><em>nodes</em> – number of field nodes (int)  OR a binary field (boolean array)</p>
+<p><em>FWHM</em> – field smoothness (float)</p>
+<p><em>withBonf</em> – use a Bonferroni correction if less severe than the RFT correction (bool)</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Set-specific probability value.</p>
+</dd>
+<dt class="field-odd">Examples</dt>
+<dd class="field-odd"><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">rft1d</span><span class="o">.</span><span class="n">T2</span><span class="o">.</span><span class="n">p_set</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">3.0</span><span class="p">,</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">14</span><span class="p">),</span> <span class="mi">101</span><span class="p">,</span> <span class="mf">15.0</span><span class="p">)</span>
 </pre></div>
 </div>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="method">
-<dt id="rft1d.distributions.T2.sf">
-<code class="descclassname">T2.</code><code class="descname">sf</code><span class="sig-paren">(</span><em>u</em>, <em>df</em>, <em>nodes</em>, <em>FWHM</em>, <em>withBonf=False</em><span class="sig-paren">)</span><a class="headerlink" href="#rft1d.distributions.T2.sf" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="rft1d.distributions.T2.sf">
+<span class="sig-prename descclassname"><span class="pre">T2.</span></span><span class="sig-name descname"><span class="pre">sf</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">u</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nodes</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">FWHM</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">withBonf</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rft1d.distributions.T2.sf" title="Permalink to this definition">¶</a></dt>
 <dd><p>RFT survival function.</p>
 <p>Probability that 1D Gaussian fields with a smoothness <em>FWHM</em> would produce a 1D statistic field whose maximum exceeds <em>u</em>.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><em>u</em> &#8211; threshold (int, float, or sequence of int or float)</p>
-<p><em>df</em> &#8211; degrees of freedom (two-tuple of int or float)</p>
-<p><em>nodes</em> &#8211; number of field nodes (int)  OR a binary field (boolean array)</p>
-<p><em>FWHM</em> &#8211; field smoothness (float)</p>
-<p><em>withBonf</em> &#8211; use a Bonferroni correction if less severe than the RFT correction (bool)</p>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">The probability of exceeding the specified heights.</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Examples:</th><td class="field-body"><div class="first last highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">rft1d</span><span class="o">.</span><span class="n">T2</span><span class="o">.</span><span class="n">sf</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">],</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">14</span><span class="p">),</span> <span class="mi">101</span><span class="p">,</span> <span class="mf">10.0</span><span class="p">)</span>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><em>u</em> – threshold (int, float, or sequence of int or float)</p>
+<p><em>df</em> – degrees of freedom (two-tuple of int or float)</p>
+<p><em>nodes</em> – number of field nodes (int)  OR a binary field (boolean array)</p>
+<p><em>FWHM</em> – field smoothness (float)</p>
+<p><em>withBonf</em> – use a Bonferroni correction if less severe than the RFT correction (bool)</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The probability of exceeding the specified heights.</p>
+</dd>
+<dt class="field-odd">Examples</dt>
+<dd class="field-odd"><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">rft1d</span><span class="o">.</span><span class="n">T2</span><span class="o">.</span><span class="n">sf</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">],</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">14</span><span class="p">),</span> <span class="mi">101</span><span class="p">,</span> <span class="mf">10.0</span><span class="p">)</span>
 </pre></div>
 </div>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="method">
-<dt id="rft1d.distributions.T2.sf0d">
-<code class="descclassname">T2.</code><code class="descname">sf0d</code><span class="sig-paren">(</span><em>u</em>, <em>df</em><span class="sig-paren">)</span><a class="headerlink" href="#rft1d.distributions.T2.sf0d" title="Permalink to this definition">¶</a></dt>
-<dd><p>0D survival function for the Hotelling&#8217;s T2 distribution
+<dl class="py method">
+<dt class="sig sig-object py" id="rft1d.distributions.T2.sf0d">
+<span class="sig-prename descclassname"><span class="pre">T2.</span></span><span class="sig-name descname"><span class="pre">sf0d</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">u</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">df</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rft1d.distributions.T2.sf0d" title="Permalink to this definition">¶</a></dt>
+<dd><p>0D survival function for the Hotelling’s T2 distribution
 (not implemented in <strong>scipy.stats</strong>)</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Examples:</th><td class="field-body"><div class="first last highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">rft1d</span><span class="o">.</span><span class="n">T2</span><span class="o">.</span><span class="n">sf0d</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">],</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">14</span><span class="p">))</span>
+<dl class="field-list">
+<dt class="field-odd">Examples</dt>
+<dd class="field-odd"><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">rft1d</span><span class="o">.</span><span class="n">T2</span><span class="o">.</span><span class="n">sf0d</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">],</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">14</span><span class="p">))</span>
 </pre></div>
 </div>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 </dd></dl>
 
-</div>
-</div>
+</section>
+</section>
 
 
           </div>
-          <footer>
-  
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="geom.html" class="btn btn-neutral float-right" title="rft1d.geom">Next <span class="fa fa-arrow-circle-right"></span></a>
-      
-      
-        <a href="data.html" class="btn btn-neutral" title="rft1d.data"><span class="fa fa-arrow-circle-left"></span> Previous</a>
-      
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="data.html" class="btn btn-neutral float-left" title="rft1d.data" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="geom.html" class="btn btn-neutral float-right" title="rft1d.geom" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
-  
 
   <hr/>
 
   <div role="contentinfo">
-    <p>
-        &copy; Copyright 2015, Todd Pataky.
-    </p>
+    <p>&#169; Copyright 2022, Todd Pataky.</p>
   </div>
 
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
-  
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
 </footer>
         </div>
       </div>
@@ -1145,20 +1023,21 @@ For cluster-specific probabilities use <strong>rft1d.T2.p_cluster</strong></p>
   </div>
   
 
-
   
 
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'0.1.1',
+            VERSION:'0.2.0',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true
         };
     </script>
+      <script type="text/javascript" src="../_static/documentation_options.js"></script>
       <script type="text/javascript" src="../_static/jquery.js"></script>
       <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
       <script type="text/javascript" src="../_static/doctools.js"></script>
 
   

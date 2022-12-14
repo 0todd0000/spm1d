@@ -28,13 +28,15 @@ P0      = np.array([[rftcalc.p.set(c, k0, h)  for h in heights]  for k0 in K0/FW
 
 #(2) Plot results:
 pyplot.close('all')
+name       = 'Times New Roman'
 colors  = ['b', 'g', 'r']
 ax      = pyplot.axes()
 for color,p,p0,u in zip(colors,P,P0,heights):
         ax.plot(K0, p,  'o', color=color)
         ax.plot(K0, p0, '-', color=color, label='u = %.1f'%u)
-ax.set_xlabel('$x$', size=20)
-ax.set_ylabel('$P(c | k_min) > x$', size=20)
-ax.legend()
-ax.set_title('Set-level inference validations (Gaussian fields)', size=20)
+ax.set_xlabel(r'$x$', size=20, usetex=True)
+ax.set_ylabel(r'$P(c | k_{min}) > x$', size=20, usetex=True)
+leg = ax.legend()
+pyplot.setp( leg.get_texts() , name=name )
+ax.set_title('Set-level inference validations (Gaussian fields)', size=20, name=name)
 pyplot.show()

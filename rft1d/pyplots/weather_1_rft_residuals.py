@@ -48,7 +48,7 @@ ax.legend(loc='upper center')
 ### axis labels:
 ax.set_xlabel('Day', size=16)
 ax.set_ylabel('Temperature difference from mean', size=16)
-ax.set_title('Model residuals', size=20)
+ax.set_title('Model residuals', size=16)
 # pyplot.show()
 
 

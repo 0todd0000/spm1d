@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Scripts (overview) &mdash; rft1d 0.1.1 documentation</title>
+  <title>Scripts (overview) &mdash; rft1d 0.2.0 documentation</title>
   
 
   
@@ -29,9 +29,18 @@
 
   
   
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../_static/plot_directive.css" type="text/css" />
+  
     <link rel="stylesheet" href="../_static/theme.css" type="text/css" />
   
-    <link rel="top" title="rft1d 0.1.1 documentation" href="../index.html"/>
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="rft1d 0.2.0 documentation" href="../index.html"/>
         <link rel="up" title="Examples" href="../Examples.html"/>
         <link rel="next" title="API" href="../API.html"/>
         <link rel="prev" title="Results from the paper" href="Paper.html"/> 
@@ -56,8 +65,9 @@
 
       <div class="wy-side-nav-search">
         <!-- <a href="../index.html" class="fa fa-home"> rft1d</a> -->
-		<div role="search">
-  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+		
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
@@ -76,7 +86,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../Download.html#source-code-download">Source code download</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../Download.html#release-notes">Release Notes</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../Download.html#license-information">License information</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../Download.html#license-agreement-for-spm1d">License agreement for spm1d</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Download.html#license-agreement-for-rft1d">License agreement for rft1d</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../Theory.html">RFT Overview</a><ul>
@@ -94,7 +104,7 @@
 <li class="toctree-l2"><a class="reference internal" href="Validation.html">Validation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Application.html">Application</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Paper.html">Results from the paper</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="">Scripts (overview)</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Scripts (overview)</a></li>
 </ul>
 </li>
 </ul>
@@ -126,8 +136,9 @@
 	  
       <!-- <div class="wy-side-nav-search">
         <a href="../index.html" class="fa fa-home"> rft1d</a>
-		<div role="search">
-  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+		
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
@@ -160,7 +171,7 @@
     <li>Scripts (overview)</li>
       <li class="wy-breadcrumbs-aside">
         
-          <!-- <a href="../_sources/Examples/List.txt" rel="nofollow"> View page source</a> -->
+          <!-- <a href="../_sources/Examples/List.rst.txt" rel="nofollow"> View page source</a> -->
         
       </li>
   </ul>
@@ -168,143 +179,137 @@
 </div>
           <div role="main">
             
-  <div class="section" id="scripts-overview">
-<span id="label-scripts"></span><h1>Scripts (overview)<a class="headerlink" href="#scripts-overview" title="Permalink to this headline">¶</a></h1>
+  <section id="scripts-overview">
+<span id="label-scripts"></span><h1>Scripts (overview)<a class="headerlink" href="#scripts-overview" title="Permalink to this heading">¶</a></h1>
 <p>All scripts are located in <strong>./rft1d/examples</strong>,
 and below are listed alphabetically, and also bundled into categories.
 Details regarding particular concepts are available
-<a class="reference internal" href="../Examples.html#label-examples"><span>in the main Examples section</span></a>.</p>
+<a class="reference internal" href="../Examples.html#label-examples"><span class="std std-ref">in the main Examples section</span></a>.</p>
 <p>Categories:</p>
 <blockquote>
 <div><ol class="arabic simple">
-<li><a class="reference internal" href="#label-scripts-rfs"><span>Random field generation</span></a></li>
-<li><a class="reference internal" href="#label-scripts-smoothness"><span>Validation &#8212; field smoothness estimation</span></a></li>
-<li><a class="reference internal" href="#label-scripts-validationconjunction"><span>Validation &#8212; conjunction analysis</span></a></li>
-<li><a class="reference internal" href="#label-scripts-validationmax"><span>Validation &#8212; field maxima</span></a></li>
-<li><a class="reference internal" href="#label-scripts-upx"><span>Validation &#8212; upcrossing extent</span></a></li>
-<li><a class="reference internal" href="#label-scripts-application"><span>Example application &#8212; weather dataset</span></a></li>
+<li><p><a class="reference internal" href="#label-scripts-rfs"><span class="std std-ref">Random field generation</span></a></p></li>
+<li><p><a class="reference internal" href="#label-scripts-smoothness"><span class="std std-ref">Validation — field smoothness estimation</span></a></p></li>
+<li><p><a class="reference internal" href="#label-scripts-validationconjunction"><span class="std std-ref">Validation — conjunction analysis</span></a></p></li>
+<li><p><a class="reference internal" href="#label-scripts-validationmax"><span class="std std-ref">Validation — field maxima</span></a></p></li>
+<li><p><a class="reference internal" href="#label-scripts-upx"><span class="std std-ref">Validation — upcrossing extent</span></a></p></li>
+<li><p><a class="reference internal" href="#label-scripts-application"><span class="std std-ref">Example application — weather dataset</span></a></p></li>
 </ol>
 </div></blockquote>
-<div class="section" id="random-field-generation">
-<span id="label-scripts-rfs"></span><h2>Random field generation<a class="headerlink" href="#random-field-generation" title="Permalink to this headline">¶</a></h2>
+<section id="random-field-generation">
+<span id="label-scripts-rfs"></span><h2>Random field generation<a class="headerlink" href="#random-field-generation" title="Permalink to this heading">¶</a></h2>
 <blockquote>
 <div><ul class="simple">
-<li><span class="red">random_fields_0.py</span> &#8212; verbose random field generation</li>
-<li><span class="red">random_fields_1.py</span> &#8212; using <strong>rft1d.randn1d</strong></li>
-<li><span class="red">random_fields_2.py</span> &#8212; using <strong>rft1d.random.Generator1D</strong></li>
+<li><p><span class="red">random_fields_0.py</span> — verbose random field generation</p></li>
+<li><p><span class="red">random_fields_1.py</span> — using <strong>rft1d.randn1d</strong></p></li>
+<li><p><span class="red">random_fields_2.py</span> — using <strong>rft1d.random.Generator1D</strong></p></li>
 </ul>
 </div></blockquote>
-</div>
-<div class="section" id="broken-random-field-generation">
-<span id="label-scripts-brokenrfs"></span><h2>Broken random field generation<a class="headerlink" href="#broken-random-field-generation" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="broken-random-field-generation">
+<span id="label-scripts-brokenrfs"></span><h2>Broken random field generation<a class="headerlink" href="#broken-random-field-generation" title="Permalink to this heading">¶</a></h2>
 <blockquote>
 <div><ul class="simple">
-<li><span class="red">random_fields_broken_0.py</span> &#8212; verbose broken random field generation</li>
-<li><span class="red">random_fields_broken_1.py</span> &#8212; using <strong>rft1d.randn1d</strong></li>
-<li><span class="red">random_fields_broken_2.py</span> &#8212; using <strong>rft1d.random.Generator1D</strong></li>
+<li><p><span class="red">random_fields_broken_0.py</span> — verbose broken random field generation</p></li>
+<li><p><span class="red">random_fields_broken_1.py</span> — using <strong>rft1d.randn1d</strong></p></li>
+<li><p><span class="red">random_fields_broken_2.py</span> — using <strong>rft1d.random.Generator1D</strong></p></li>
 </ul>
 </div></blockquote>
-</div>
-<div class="section" id="field-smoothness-estimation">
-<span id="label-scripts-smoothness"></span><h2>Field smoothness estimation<a class="headerlink" href="#field-smoothness-estimation" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="field-smoothness-estimation">
+<span id="label-scripts-smoothness"></span><h2>Field smoothness estimation<a class="headerlink" href="#field-smoothness-estimation" title="Permalink to this heading">¶</a></h2>
 <blockquote>
 <div><ul class="simple">
-<li><span class="red">smoothness_estimation.py</span> &#8212;  continous field FWHM estimation validation</li>
-<li><span class="red">smoothness_estimation_broken.py</span> &#8212; piecewise continuous field FWHM estimation validation</li>
+<li><p><span class="red">smoothness_estimation.py</span> —  continous field FWHM estimation validation</p></li>
+<li><p><span class="red">smoothness_estimation_broken.py</span> — piecewise continuous field FWHM estimation validation</p></li>
 </ul>
 </div></blockquote>
-</div>
-<div class="section" id="validation-conjunction-analysis">
-<span id="label-scripts-validationconjunction"></span><h2>Validation (conjunction analysis)<a class="headerlink" href="#validation-conjunction-analysis" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="validation-conjunction-analysis">
+<span id="label-scripts-validationconjunction"></span><h2>Validation (conjunction analysis)<a class="headerlink" href="#validation-conjunction-analysis" title="Permalink to this heading">¶</a></h2>
 <blockquote>
 <div><ul class="simple">
-<li><span class="red">val_conj_0_gauss</span> &#8212; standard normal distribution</li>
-<li><span class="red">val_conj_1_t</span> &#8212; Student&#8217;s t distribution</li>
-<li><span class="red">val_conj_1_F</span> &#8212; Fisher-Snedecor F</li>
-<li><span class="red">val_conj_1_T2</span> &#8212; Hotelling&#8217;s T-squared</li>
-<li><span class="red">val_conj_1_X2</span> &#8212; chi-squared</li>
+<li><p><span class="red">val_conj_0_gauss</span> — standard normal distribution</p></li>
+<li><p><span class="red">val_conj_1_t</span> — Student’s t distribution</p></li>
+<li><p><span class="red">val_conj_1_F</span> — Fisher-Snedecor F</p></li>
+<li><p><span class="red">val_conj_1_T2</span> — Hotelling’s T-squared</p></li>
+<li><p><span class="red">val_conj_1_X2</span> — chi-squared</p></li>
 </ul>
 </div></blockquote>
-</div>
-<div class="section" id="validation-field-maxima">
-<span id="label-scripts-validationmax"></span><h2>Validation (field maxima)<a class="headerlink" href="#validation-field-maxima" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="validation-field-maxima">
+<span id="label-scripts-validationmax"></span><h2>Validation (field maxima)<a class="headerlink" href="#validation-field-maxima" title="Permalink to this heading">¶</a></h2>
 <blockquote>
 <div><ul class="simple">
-<li><span class="red">val_max_0_gaussian_0d.py</span> &#8212; standard normal distribution</li>
-<li><span class="red">val_max_0_gaussian_1d.py</span> &#8212; standard normal 1D Gaussian fields</li>
-<li><span class="red">val_max_1_onesampleT_0d.py</span> &#8212; Student&#8217;s t distribution, from one-sample statistic</li>
-<li><span class="red">val_max_1_onesampleT_1d.py</span> &#8212; Student&#8217;s t distribution (1D), from one-sample statistic</li>
-<li><span class="red">val_max_2_twosampleT_0d.py</span> &#8212; Student&#8217;s t distribution, from one-sample statistic</li>
-<li><span class="red">val_max_2_twosampleT_1d.py</span> &#8212; Student&#8217;s t distribution (1D), from two-sample statistic</li>
-<li><span class="red">val_max_3_regress_0d.py</span> &#8212; Student&#8217;s t distribution, from linear regression</li>
-<li><span class="red">val_max_3_regress_1d.py</span> &#8212; Student&#8217;s t distribution (1D), from linear regression</li>
-<li><span class="red">val_max_4_anova1_0d.py</span> &#8212; Fisher-Snedecor F distribution, from one-way design</li>
-<li><span class="red">val_max_4_anova1_1d.py</span> &#8212; Fisher-Snedecor F distribution (1D), from one-way design</li>
-<li><span class="red">val_max_5_onesampleT2_0d.py</span> &#8212; Hotelling&#8217;s T-squared distribution, from one-way design</li>
-<li><span class="red">val_max_5_onesampleT2_1d.py</span> &#8212; Hotelling&#8217;s T-squared distribution (1D), from one-way design</li>
-<li><span class="red">val_max_6_twosampleT2_0d.py</span> &#8212; Hotelling&#8217;s T-squared distribution, from two-way design</li>
-<li><span class="red">val_max_6_twosampleT2_1d.py</span> &#8212; Hotelling&#8217;s T-squared distribution (1D), from two-way design</li>
-<li><span class="red">val_max_7_cca_0d.py</span> &#8212; chi-squared distribution, from CCA</li>
-<li><span class="red">val_max_7_cca_1d.py</span> &#8212; chi-squared distribution (1D), from CCA</li>
-<li><span class="red">val_max_8_manova1_0d.py</span> &#8212; chi-squared distribution, from one-way MANOVA</li>
-<li><span class="red">val_max_8_manova1_1d.py</span> &#8212; chi-squared distribution (1D), from one-way MANOVA</li>
+<li><p><span class="red">val_max_0_gaussian_0d.py</span> — standard normal distribution</p></li>
+<li><p><span class="red">val_max_0_gaussian_1d.py</span> — standard normal 1D Gaussian fields</p></li>
+<li><p><span class="red">val_max_1_onesampleT_0d.py</span> — Student’s t distribution, from one-sample statistic</p></li>
+<li><p><span class="red">val_max_1_onesampleT_1d.py</span> — Student’s t distribution (1D), from one-sample statistic</p></li>
+<li><p><span class="red">val_max_2_twosampleT_0d.py</span> — Student’s t distribution, from one-sample statistic</p></li>
+<li><p><span class="red">val_max_2_twosampleT_1d.py</span> — Student’s t distribution (1D), from two-sample statistic</p></li>
+<li><p><span class="red">val_max_3_regress_0d.py</span> — Student’s t distribution, from linear regression</p></li>
+<li><p><span class="red">val_max_3_regress_1d.py</span> — Student’s t distribution (1D), from linear regression</p></li>
+<li><p><span class="red">val_max_4_anova1_0d.py</span> — Fisher-Snedecor F distribution, from one-way design</p></li>
+<li><p><span class="red">val_max_4_anova1_1d.py</span> — Fisher-Snedecor F distribution (1D), from one-way design</p></li>
+<li><p><span class="red">val_max_5_onesampleT2_0d.py</span> — Hotelling’s T-squared distribution, from one-way design</p></li>
+<li><p><span class="red">val_max_5_onesampleT2_1d.py</span> — Hotelling’s T-squared distribution (1D), from one-way design</p></li>
+<li><p><span class="red">val_max_6_twosampleT2_0d.py</span> — Hotelling’s T-squared distribution, from two-way design</p></li>
+<li><p><span class="red">val_max_6_twosampleT2_1d.py</span> — Hotelling’s T-squared distribution (1D), from two-way design</p></li>
+<li><p><span class="red">val_max_7_cca_0d.py</span> — chi-squared distribution, from CCA</p></li>
+<li><p><span class="red">val_max_7_cca_1d.py</span> — chi-squared distribution (1D), from CCA</p></li>
+<li><p><span class="red">val_max_8_manova1_0d.py</span> — chi-squared distribution, from one-way MANOVA</p></li>
+<li><p><span class="red">val_max_8_manova1_1d.py</span> — chi-squared distribution (1D), from one-way MANOVA</p></li>
 </ul>
 </div></blockquote>
-</div>
-<div class="section" id="validation-upcrossing-extents">
-<span id="label-scripts-upx"></span><h2>Validation (upcrossing extents)<a class="headerlink" href="#validation-upcrossing-extents" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="validation-upcrossing-extents">
+<span id="label-scripts-upx"></span><h2>Validation (upcrossing extents)<a class="headerlink" href="#validation-upcrossing-extents" title="Permalink to this heading">¶</a></h2>
 <blockquote>
 <div><ul class="simple">
-<li><span class="red">val_upx_0_gauss_cluster.py</span> &#8212; cluster-level inference (Gaussian fields)</li>
-<li><span class="red">val_upx_0_gauss_set.py</span> &#8212; set-level inference (Gaussian fields)</li>
-<li><span class="red">val_upx_1_t_cluster.py</span> &#8212; cluster-level inference (t fields)</li>
-<li><span class="red">val_upx_1_t_set.py</span> &#8212; set-level inference (t fields)</li>
-<li><span class="red">val_upx_2_F_cluster.py</span> &#8212; cluster-level inference (F fields)</li>
-<li><span class="red">val_upx_2_F_set.py</span> &#8212; set-level inference (F fields)</li>
-<li><span class="red">val_upx_3_T2_cluster.py</span> &#8212; cluster-level inference (T-squared fields)</li>
-<li><span class="red">val_upx_3_T2_set.py</span> &#8212; set-level inference (T-squared fields)</li>
-<li><span class="red">val_upx_4_X2_cluster.py</span> &#8212; cluster-level inference (chi-squared fields)</li>
-<li><span class="red">val_upx_4_X2_set.py</span> &#8212; set-level inference (chi-squared fields)</li>
+<li><p><span class="red">val_upx_0_gauss_cluster.py</span> — cluster-level inference (Gaussian fields)</p></li>
+<li><p><span class="red">val_upx_0_gauss_set.py</span> — set-level inference (Gaussian fields)</p></li>
+<li><p><span class="red">val_upx_1_t_cluster.py</span> — cluster-level inference (t fields)</p></li>
+<li><p><span class="red">val_upx_1_t_set.py</span> — set-level inference (t fields)</p></li>
+<li><p><span class="red">val_upx_2_F_cluster.py</span> — cluster-level inference (F fields)</p></li>
+<li><p><span class="red">val_upx_2_F_set.py</span> — set-level inference (F fields)</p></li>
+<li><p><span class="red">val_upx_3_T2_cluster.py</span> — cluster-level inference (T-squared fields)</p></li>
+<li><p><span class="red">val_upx_3_T2_set.py</span> — set-level inference (T-squared fields)</p></li>
+<li><p><span class="red">val_upx_4_X2_cluster.py</span> — cluster-level inference (chi-squared fields)</p></li>
+<li><p><span class="red">val_upx_4_X2_set.py</span> — set-level inference (chi-squared fields)</p></li>
 </ul>
 </div></blockquote>
-</div>
-<div class="section" id="example-application">
-<span id="label-scripts-application"></span><h2>Example application<a class="headerlink" href="#example-application" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="example-application">
+<span id="label-scripts-application"></span><h2>Example application<a class="headerlink" href="#example-application" title="Permalink to this heading">¶</a></h2>
 <blockquote>
 <div><ul class="simple">
-<li><span class="red">weather_0_plotdata.py</span> &#8212; plot of all experimental temperature fields</li>
-<li><span class="red">weather_1_rft.py</span> &#8212; parametric inference using RFT</li>
-<li><span class="red">weater_2_nonparam.py</span> &#8212; non-parametric inference using permutation</li>
-<li><span class="red">weater_3_wrapped.py</span> &#8212; parametric inference, assuming a circular field</li>
+<li><p><span class="red">weather_0_plotdata.py</span> — plot of all experimental temperature fields</p></li>
+<li><p><span class="red">weather_1_rft.py</span> — parametric inference using RFT</p></li>
+<li><p><span class="red">weater_2_nonparam.py</span> — non-parametric inference using permutation</p></li>
+<li><p><span class="red">weater_3_wrapped.py</span> — parametric inference, assuming a circular field</p></li>
 </ul>
 </div></blockquote>
-</div>
-</div>
+</section>
+</section>
 
 
           </div>
-          <footer>
-  
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="../API.html" class="btn btn-neutral float-right" title="API">Next <span class="fa fa-arrow-circle-right"></span></a>
-      
-      
-        <a href="Paper.html" class="btn btn-neutral" title="Results from the paper"><span class="fa fa-arrow-circle-left"></span> Previous</a>
-      
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="Paper.html" class="btn btn-neutral float-left" title="Results from the paper" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../API.html" class="btn btn-neutral float-right" title="API" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
-  
 
   <hr/>
 
   <div role="contentinfo">
-    <p>
-        &copy; Copyright 2015, Todd Pataky.
-    </p>
+    <p>&#169; Copyright 2022, Todd Pataky.</p>
   </div>
 
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
-  
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
 </footer>
         </div>
       </div>
@@ -314,20 +319,21 @@ Details regarding particular concepts are available
   </div>
   
 
-
   
 
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'0.1.1',
+            VERSION:'0.2.0',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true
         };
     </script>
+      <script type="text/javascript" src="../_static/documentation_options.js"></script>
       <script type="text/javascript" src="../_static/jquery.js"></script>
       <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
       <script type="text/javascript" src="../_static/doctools.js"></script>
 
   

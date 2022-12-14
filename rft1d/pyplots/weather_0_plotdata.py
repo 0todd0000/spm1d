@@ -32,7 +32,7 @@ for y,color,label in zip((y0,y1,y2,y3), colors, labels):
 ax.set_xlabel('Day', size=16)
 ax.set_ylabel('Temperature', size=16)
 ax.legend()
-ax.set_title('Weather dataset (Ramsay and Silverman 2005)', size=20)
+ax.set_title('Weather dataset (Ramsay and Silverman 2005)', size=16)
 # pyplot.show()
 
 

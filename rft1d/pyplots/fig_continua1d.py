@@ -44,7 +44,7 @@ def scalar2color(x, cmap=cm.jet, xmin=None, xmax=None):
 seed        = [18]*5 + [0]
 nResponses  = 8
 nNodes      = 101
-W           = [0, 5, 10, 20, 50, np.inf]
+W           = [0, 5, 10, 20, 50, 1000]  # int(1e12)]
 colors      = scalar2color(range(nResponses+3), cmap=cm.PuRd)
 Y           = []
 for s,w in zip(seed,W):
@@ -70,7 +70,7 @@ pyplot.setp(AX[:3], xticklabels=[])
 pyplot.setp([ax1,ax2,ax4,ax5], yticklabels=[])
 ### axes labels:
 [ax.set_xlabel('Field position  (%)')    for ax in AX[3:]]
-[ax.text(-0.15, 0.5, '$z$', size=24, transform=ax.transAxes, rotation=90, va='center')  for ax in (ax0,ax3)]
+[ax.text(-0.15, 0.5, r'$z$', size=24, transform=ax.transAxes, rotation=90, va='center', usetex=True)  for ax in (ax0,ax3)]
 ### panel labels:
 for i,(ax,w) in enumerate(zip(AX,W)):
 	if np.isinf(w):
@@ -78,3 +78,5 @@ for i,(ax,w) in enumerate(zip(AX,W)):
 	else:
 		s   = '(%s)  FWHM = %d' %(chr(97+i), w)
 	ax.text(0.05, 0.9, s, transform=ax.transAxes, size=12)
+# pyplot.show()
+

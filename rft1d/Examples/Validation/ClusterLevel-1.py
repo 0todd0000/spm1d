@@ -32,6 +32,7 @@ P0      = np.array([[rftcalc.p.cluster(k0, h)  for k0 in K0/FWHM]  for h in heig
 
 #(2) Plot results:
 pyplot.close('all')
+name    = 'Times New Roman'
 colors  = ['b', 'g', 'r', 'orange']
 labels  = ['u = %.1f'%h for h in heights]
 ax      = pyplot.axes()
@@ -40,9 +41,10 @@ for color,p,p0,label in zip(colors,P,P0,labels):
         ax.plot(K0, p0, '-', color=color, label=label)
 ax.plot([0,1],[10,10], 'k-', label='Theoretical')
 ax.plot([0,1],[10,10], 'ko-', label='Simulated')
-ax.legend()
-ax.set_xlabel('$x$', size=20)
-ax.set_ylabel('$P(k_{max}) > x$', size=20)
+leg = ax.legend()
+pyplot.setp( leg.get_texts() , name=name )
+ax.set_xlabel(r'$x$', size=20, usetex=True)
+ax.set_ylabel(r'$P(k_{max}) > x$', size=20, usetex=True)
 ax.set_ylim(0, 0.25)
-ax.set_title('Upcrossing extent validations (Gaussian fields)', size=20)
+ax.set_title('Upcrossing extent validations (Gaussian fields)', size=20, name=name)
 pyplot.show()
