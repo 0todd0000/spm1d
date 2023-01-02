@@ -64,8 +64,8 @@ class SPMFList(list):
 		return tuple( [f.effect for f in self] )
 	def get_f_values(self):
 		return tuple( [f.z for f in self] )
-	def inference(self, alpha=0.05):
-		FFi               = SPMFiList(  [f.inference(alpha=alpha)   for f in self]  )
+	def inference(self, alpha=0.05, **kwargs):
+		FFi               = SPMFiList(  [f.inference(alpha=alpha, **kwargs)   for f in self]  )
 		FFi.set_design_label( self.design )
 		FFi.effect_labels = self.effect_labels
 		FFi.nFactors      = self.nFactors
