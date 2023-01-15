@@ -16,15 +16,20 @@ ________________
 * `SciPy 1.6 <http://scipy.org>`_
 * `Matplotlib 3.3 <http://matplotlib.org>`_
 
-Newer or older versions may work but have not been tested.
+Newer or older versions may work but have not been thoroughly tested.
 
-All of these packages are available in the default `Anaconda package <https://www.anaconda.com/products/individual>`_
+If you are new to Python we highly recommend starting out with the `Anaconda package <https://www.anaconda.com/products/individual>`_ .  All of spm1d's dependencies are available in the default Anaconda installation.
 
 After installing Anaconda, open a Terminal (Linux, Mac) or an Anaconda Command Prompt (Windows) and enter::
 
-	conda install -c toddp spm1d
+	pip install spm1d
 
-To check installation, launch Python or IPython, then enter:
+
+To check installation, launch Python or IPython::
+
+	ipython
+
+then enter:
 
 	>>> import spm1d
 

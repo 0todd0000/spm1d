@@ -39,9 +39,9 @@ It uses `random field theory <http://www.spm1d.org/rft1d>`_ to make statistical 
 Contents
 =====================================
 
-Current Python version: **0.4.8**  (released 2021-09-09)
+Current Python version: **0.4.18**  (released 2023-01-02)
 
-Current Matlab version: **M.0.4.8**  (released 2021-09-09)
+Current Matlab version: **M.0.4.10**  (released 2021-09-23)
 
 
 .. toctree::

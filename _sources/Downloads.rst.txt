@@ -29,11 +29,11 @@ Downloads
 Quick Installation (Python)
 -------------------------------
 
-1. Install `Anaconda <https://www.anaconda.com/products/individual>`_
+1. Install Python. If you are new to Python, we recommend: `Anaconda <https://www.anaconda.com/products/individual>`_
 
 2. In a Terminal (Linux, Mac) or an Anaconda Command Prompt (Windows)::
 
-	conda install -c toddp spm1d
+	pip install spm1d
 
 
 
