@@ -20,6 +20,34 @@ Pataky TC (2017) Power1D: A Python toolbox for numerical power estimates in expe
 https://peerj.com/articles/cs-125/
 
 
+.. toctree::
+   :maxdepth: 2
+   :caption: Contents:
+
+
+
+------------------------
+
+**Download**
+
+`Python source code <https://github.com/0todd0000/power1d/archive/master.zip>`_
+
+
+------------------------
+
+Contents
+=====================================
+
+
+.. toctree::
+	:maxdepth: 2
+
+	License.rst
+	Examples.rst
+	API.rst
+	References.rst
+
+
 
 
 Indices and tables
