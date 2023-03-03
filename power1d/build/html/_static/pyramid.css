@@ -4,7 +4,7 @@
  *
  * Sphinx stylesheet -- pylons theme.
  *
- * :copyright: Copyright 2007-2022 by the Sphinx team, see AUTHORS.
+ * :copyright: Copyright 2007-2023 by the Sphinx team, see AUTHORS.
  * :license: BSD, see LICENSE for details.
  *
  */
@@ -244,9 +244,9 @@ div.seealso {
     border-right-style: none;
     padding: 10px 20px 10px 60px;
 }
+
 nav.contents,
 aside.topic,
-
 div.topic {
     background: #eeeeee;
     border: 2px solid #C6C9CB;
