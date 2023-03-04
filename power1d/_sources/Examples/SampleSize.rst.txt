@@ -2,7 +2,7 @@
 .. _label-Examples-SampleSize:
 
 
-Sample size calculation
+Manual sample size calculation
 =====================================
 
 Due to complexities such as the

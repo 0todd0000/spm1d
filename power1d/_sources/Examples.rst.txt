@@ -10,6 +10,6 @@ Examples
 	Examples/DataSample.rst
 	Examples/PowerAnalysis.rst
 	Examples/SampleSize.rst
-
+	Examples/SampleSizeAuto.rst
 
 

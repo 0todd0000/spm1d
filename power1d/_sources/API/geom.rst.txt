@@ -15,6 +15,18 @@ The figure below provides an overview of all geometric primitive types. Details 
 .. plot:: pyplots/all_geom.py
 
 
+from_array
+-------------------------------------
+
+.. autofunction:: power1d.geom.from_array
+
+
+from_file
+-------------------------------------
+
+.. autofunction:: power1d.geom.from_file
+
+
 Continuum1D
 -------------------------------------
 
