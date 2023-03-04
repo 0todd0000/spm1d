@@ -7,7 +7,7 @@ power in experiments involving one-dimensional continua.
 
 Dependencies:
 
-* Python 3
+* Python 3.X
 * NumPy
 * SciPy
 * Matplotlib 
@@ -20,20 +20,27 @@ Pataky TC (2017) Power1D: A Python toolbox for numerical power estimates in expe
 https://peerj.com/articles/cs-125/
 
 
-.. toctree::
-   :maxdepth: 2
-   :caption: Contents:
+|
+|
 
+**Install**
 
+.. code-block:: bash
 
-------------------------
+    pip install power1d
+
+|
+|
+
 
 **Download**
 
 `Python source code <https://github.com/0todd0000/power1d/archive/master.zip>`_
 
 
-------------------------
+|
+|
+
 
 Contents
 =====================================
