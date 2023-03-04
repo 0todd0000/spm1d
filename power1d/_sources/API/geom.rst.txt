@@ -15,11 +15,15 @@ The figure below provides an overview of all geometric primitive types. Details 
 .. plot:: pyplots/all_geom.py
 
 
+.. _label-API-geom-from_array:
+
 from_array
 -------------------------------------
 
 .. autofunction:: power1d.geom.from_array
 
+
+.. _label-API-geom-from_file:
 
 from_file
 -------------------------------------

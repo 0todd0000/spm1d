@@ -42,6 +42,13 @@ https://peerj.com/articles/cs-125/
 |
 
 
+New Features (v0.1.7)
+=====================================
+
+See the :ref:`Features <label-Features>` page.
+
+
+
 Contents
 =====================================
 
@@ -50,6 +57,7 @@ Contents
 	:maxdepth: 2
 
 	License.rst
+	Features.rst
 	Examples.rst
 	API.rst
 	References.rst

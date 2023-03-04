@@ -14,11 +14,15 @@ The figure below provides overview of all noise types. Details regarding reach a
 .. plot:: pyplots/all_noise.py
 
 
+.. _label-API-noise-from_array:
+
 from_array
 ___________________
 
 .. autofunction:: power1d.noise.from_array
 
+
+.. _label-API-noise-from_residuals:
 
 from_residuals
 ___________________

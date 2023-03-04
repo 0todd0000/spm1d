@@ -15,12 +15,12 @@ Below attributes and methods can be distinguished as follows:
 - method names are followed by "( )" with arguments inside the parentheses, and all methods also have code snippets attached.
 
 
+.. _label-API-models-datasample_from_array:
 
 datasample_from_array
 ---------------------------------
 
 .. autofunction:: power1d.models.datasample_from_array
-
 
 
 DataSample
