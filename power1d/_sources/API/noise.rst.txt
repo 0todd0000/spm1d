@@ -14,6 +14,18 @@ The figure below provides overview of all noise types. Details regarding reach a
 .. plot:: pyplots/all_noise.py
 
 
+from_array
+___________________
+
+.. autofunction:: power1d.noise.from_array
+
+
+from_residuals
+___________________
+
+.. autofunction:: power1d.noise.from_residuals
+
+
 Additive
 ___________________
 

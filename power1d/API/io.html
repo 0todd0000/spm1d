@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 
-    <title>power1d.models &#8212; power1d 0.1.7 documentation</title>
+    <title>power1d.io &#8212; power1d 0.1.7 documentation</title>
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../_static/pyramid.css" />
     <link rel="stylesheet" type="text/css" href="../_static/plot_directive.css" />
@@ -15,8 +15,8 @@
     <script src="../_static/sphinx_highlight.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="power1d.noise" href="noise.html" />
-    <link rel="prev" title="power1d.io" href="io.html" />
+    <link rel="next" title="power1d.models" href="models.html" />
+    <link rel="prev" title="power1d.geom" href="geom.html" />
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Neuton&amp;subset=latin" type="text/css" media="screen" charset="utf-8" />
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nobile:regular,italic,bold,bolditalic&amp;subset=latin" type="text/css" media="screen" charset="utf-8" />
 <!--[if lte IE 6]>
@@ -39,14 +39,14 @@
           <a href="../genindex.html" title="General Index"
              accesskey="I">index</a></li>
         <li class="right" >
-          <a href="noise.html" title="power1d.noise"
+          <a href="models.html" title="power1d.models"
              accesskey="N">next</a> |</li>
         <li class="right" >
-          <a href="io.html" title="power1d.io"
+          <a href="geom.html" title="power1d.geom"
              accesskey="P">previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="../index.html">power1d 0.1.7 documentation</a> &#187;</li>
           <li class="nav-item nav-item-1"><a href="../API.html" accesskey="U">API</a> &#187;</li>
-        <li class="nav-item nav-item-this"><a href="">power1d.models</a></li> 
+        <li class="nav-item nav-item-this"><a href="">power1d.io</a></li> 
       </ul>
     </div>  
 
@@ -55,24 +55,13 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <section id="power1d-models">
-<span id="label-api-models"></span><h1>power1d.models<a class="headerlink" href="#power1d-models" title="Permalink to this heading">¶</a></h1>
-<p>Below attributes and methods can be distinguished as follows:</p>
-<ul class="simple">
-<li><p>attribute names are followed by “= None”</p></li>
-<li><p>method names are followed by “( )” with arguments inside the parentheses, and all methods also have code snippets attached.</p></li>
-</ul>
-<section id="datasample-from-array">
-<h2>datasample_from_array<a class="headerlink" href="#datasample-from-array" title="Permalink to this heading">¶</a></h2>
+  <section id="power1d-io">
+<span id="label-api-io"></span><h1>power1d.io<a class="headerlink" href="#power1d-io" title="Permalink to this heading">¶</a></h1>
+<section id="file2geom">
+<h2>file2geom<a class="headerlink" href="#file2geom" title="Permalink to this heading">¶</a></h2>
 </section>
-<section id="datasample">
-<h2>DataSample<a class="headerlink" href="#datasample" title="Permalink to this heading">¶</a></h2>
-</section>
-<section id="experiment">
-<h2>Experiment<a class="headerlink" href="#experiment" title="Permalink to this heading">¶</a></h2>
-</section>
-<section id="experimentsimulator">
-<h2>ExperimentSimulator<a class="headerlink" href="#experimentsimulator" title="Permalink to this heading">¶</a></h2>
+<section id="file2datasamplemodel">
+<h2>file2datasamplemodel<a class="headerlink" href="#file2datasamplemodel" title="Permalink to this heading">¶</a></h2>
 </section>
 </section>
 
@@ -86,11 +75,9 @@
   <div>
     <h3><a href="../index.html">Table of Contents</a></h3>
     <ul>
-<li><a class="reference internal" href="#">power1d.models</a><ul>
-<li><a class="reference internal" href="#datasample-from-array">datasample_from_array</a></li>
-<li><a class="reference internal" href="#datasample">DataSample</a></li>
-<li><a class="reference internal" href="#experiment">Experiment</a></li>
-<li><a class="reference internal" href="#experimentsimulator">ExperimentSimulator</a></li>
+<li><a class="reference internal" href="#">power1d.io</a><ul>
+<li><a class="reference internal" href="#file2geom">file2geom</a></li>
+<li><a class="reference internal" href="#file2datasamplemodel">file2datasamplemodel</a></li>
 </ul>
 </li>
 </ul>
@@ -98,18 +85,18 @@
   </div>
   <div>
     <h4>Previous topic</h4>
-    <p class="topless"><a href="io.html"
-                          title="previous chapter">power1d.io</a></p>
+    <p class="topless"><a href="geom.html"
+                          title="previous chapter">power1d.geom</a></p>
   </div>
   <div>
     <h4>Next topic</h4>
-    <p class="topless"><a href="noise.html"
-                          title="next chapter">power1d.noise</a></p>
+    <p class="topless"><a href="models.html"
+                          title="next chapter">power1d.models</a></p>
   </div>
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
-      <li><a href="../_sources/API/models.rst.txt"
+      <li><a href="../_sources/API/io.rst.txt"
             rel="nofollow">Show Source</a></li>
     </ul>
    </div>
@@ -134,14 +121,14 @@
           <a href="../genindex.html" title="General Index"
              >index</a></li>
         <li class="right" >
-          <a href="noise.html" title="power1d.noise"
+          <a href="models.html" title="power1d.models"
              >next</a> |</li>
         <li class="right" >
-          <a href="io.html" title="power1d.io"
+          <a href="geom.html" title="power1d.geom"
              >previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="../index.html">power1d 0.1.7 documentation</a> &#187;</li>
           <li class="nav-item nav-item-1"><a href="../API.html" >API</a> &#187;</li>
-        <li class="nav-item nav-item-this"><a href="">power1d.models</a></li> 
+        <li class="nav-item nav-item-this"><a href="">power1d.io</a></li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">

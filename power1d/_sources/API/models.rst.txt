@@ -16,6 +16,13 @@ Below attributes and methods can be distinguished as follows:
 
 
 
+datasample_from_array
+---------------------------------
+
+.. autofunction:: power1d.models.datasample_from_array
+
+
+
 DataSample
 ---------------------------------
 

@@ -12,6 +12,7 @@ API
 
 	API/data.rst
 	API/geom.rst
+	API/io.rst
 	API/models.rst
 	API/noise.rst
 	API/prob.rst
