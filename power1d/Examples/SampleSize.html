@@ -4,15 +4,17 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>Manual sample size calculation &#8212; power1d 0.1.7 documentation</title>
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../_static/pyramid.css" />
     <link rel="stylesheet" type="text/css" href="../_static/plot_directive.css" />
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
-    <script src="../_static/sphinx_highlight.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Automated sample size calculation" href="SampleSizeAuto.html" />
@@ -38,6 +40,9 @@
         <li class="right" style="margin-right: 10px">
           <a href="../genindex.html" title="General Index"
              accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
         <li class="right" >
           <a href="SampleSizeAuto.html" title="Automated sample size calculation"
              accesskey="N">next</a> |</li>
@@ -83,7 +88,10 @@ iterative simulations as demonstrated below.</p>
 <span class="n">model1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;r&#39;</span> <span class="p">)</span>
 </pre></div>
 </div>
-<p>(<a class="reference download internal" download="" href="../_downloads/38afa6dfebcd4f5b8f4059b3549257d4/SampleSize-1.py"><code class="xref download docutils literal notranslate"><span class="pre">Source</span> <span class="pre">code</span></code></a>)</p>
+<p>(<a class="reference external" href="../Examples/SampleSize-1.py">Source code</a>, <a class="reference external" href="../Examples/SampleSize-1.png">png</a>, <a class="reference external" href="../Examples/SampleSize-1.hires.png">hires.png</a>, <a class="reference external" href="../Examples/SampleSize-1.pdf">pdf</a>)</p>
+<figure class="align-default">
+<img alt="../_images/SampleSize-1.png" class="plot-directive" src="../_images/SampleSize-1.png" />
+</figure>
 <p>The goal is to compute the sample size <em>J</em> that will allow us to detect
 the modeled signal with a certain probability (usually 0.8). To do that
 iteratively simulate null and alternative experiments, and for each
@@ -137,7 +145,10 @@ are saved for each iteration and plotted at the end.</p>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>(<a class="reference download internal" download="" href="../_downloads/0308df8be7d25856c6327d7e382dcde6/SampleSize-2.py"><code class="xref download docutils literal notranslate"><span class="pre">Source</span> <span class="pre">code</span></code></a>)</p>
+<p>(<a class="reference external" href="../Examples/SampleSize-2.py">Source code</a>, <a class="reference external" href="../Examples/SampleSize-2.png">png</a>, <a class="reference external" href="../Examples/SampleSize-2.hires.png">hires.png</a>, <a class="reference external" href="../Examples/SampleSize-2.pdf">pdf</a>)</p>
+<figure class="align-default">
+<img alt="../_images/SampleSize-2.png" class="plot-directive" src="../_images/SampleSize-2.png" />
+</figure>
 <p>These results suggest that the omnibus power reaches 0.8 for a sample size of
 <em>J</em> = 7 but that a sample size of <em>J</em> = 9 is needed for COI power of 0.8.</p>
 <p>Note that the power vs. sample size curves are not smoothly increasing due to
@@ -191,6 +202,9 @@ required to achieve certain powers will likely not change dramatically.</p>
           <a href="../genindex.html" title="General Index"
              >index</a></li>
         <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
           <a href="SampleSizeAuto.html" title="Automated sample size calculation"
              >next</a> |</li>
         <li class="right" >
@@ -203,7 +217,7 @@ required to achieve certain powers will likely not change dramatically.</p>
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2023, Todd Pataky.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 6.1.3.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.0.2.
     </div>
   </body>
 </html>

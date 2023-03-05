@@ -4,15 +4,17 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>Data sample modeling &#8212; power1d 0.1.7 documentation</title>
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../_static/pyramid.css" />
     <link rel="stylesheet" type="text/css" href="../_static/plot_directive.css" />
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
-    <script src="../_static/sphinx_highlight.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Power analysis" href="PowerAnalysis.html" />
@@ -39,6 +41,9 @@
           <a href="../genindex.html" title="General Index"
              accesskey="I">index</a></li>
         <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
           <a href="PowerAnalysis.html" title="Power analysis"
              accesskey="N">next</a> |</li>
         <li class="right" >
@@ -64,7 +69,10 @@ and are available for download here:</p>
 <div class="line"><a class="reference external" href="http://www.psych.mcgill.ca/misc/fda/downloads/FDAfuns/Matlab/">http://www.psych.mcgill.ca/misc/fda/downloads/FDAfuns/Matlab/</a></div>
 <div class="line">The data are in <strong>fdaMatlab.zip</strong> in the <strong>/examples/weather</strong> folder.</div>
 </div>
-<p id="label-weatherdata">(<a class="reference download internal" download="" href="../_downloads/8507d4969336fdf7666e6b3b6d72101a/DataSample-1.py"><code class="xref download docutils literal notranslate"><span class="pre">Source</span> <span class="pre">code</span></code></a>)</p>
+<p id="label-weatherdata">(<a class="reference external" href="../Examples/DataSample-1.py">Source code</a>, <a class="reference external" href="../Examples/DataSample-1.png">png</a>, <a class="reference external" href="../Examples/DataSample-1.hires.png">hires.png</a>, <a class="reference external" href="../Examples/DataSample-1.pdf">pdf</a>)</p>
+<figure class="align-default">
+<img alt="../_images/DataSample-1.png" class="plot-directive" src="../_images/DataSample-1.png" />
+</figure>
 <p>The first step of power analysis is to create a model the data that can be used to generate real
 numerical data samples. Later those data samples will be iteratively generated over a large number
 of iterations in order to numerically accumulate probability distributions associated with the model.</p>
@@ -88,7 +96,10 @@ it is easy to generate that baseline as a <strong>power1d.geom.Continuum1D</stro
 <span class="n">baseline</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>(<a class="reference download internal" download="" href="../_downloads/8ec28f35d0ffbf62cb77760a3c1fca2e/DataSample-2.py"><code class="xref download docutils literal notranslate"><span class="pre">Source</span> <span class="pre">code</span></code></a>)</p>
+<p>(<a class="reference external" href="../Examples/DataSample-2.py">Source code</a>, <a class="reference external" href="../Examples/DataSample-2.png">png</a>, <a class="reference external" href="../Examples/DataSample-2.hires.png">hires.png</a>, <a class="reference external" href="../Examples/DataSample-2.pdf">pdf</a>)</p>
+<figure class="align-default">
+<img alt="../_images/DataSample-2.png" class="plot-directive" src="../_images/DataSample-2.png" />
+</figure>
 <p>If we didn’t have experimental data we could approximate the baseline using the
 geometric models in <a class="reference internal" href="../API/geom.html#label-api-geom"><span class="std std-ref">power1d.geom</span></a>. In this case one possibility for
 modeling the baseline is to subtract a Constant value from a GaussianPulse
@@ -113,7 +124,10 @@ the experimental data.</p>
 <span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>(<a class="reference download internal" download="" href="../_downloads/ca6ba974c97239cbd691f23bd72bda04/DataSample-3.py"><code class="xref download docutils literal notranslate"><span class="pre">Source</span> <span class="pre">code</span></code></a>)</p>
+<p>(<a class="reference external" href="../Examples/DataSample-3.py">Source code</a>, <a class="reference external" href="../Examples/DataSample-3.png">png</a>, <a class="reference external" href="../Examples/DataSample-3.hires.png">hires.png</a>, <a class="reference external" href="../Examples/DataSample-3.pdf">pdf</a>)</p>
+<figure class="align-default">
+<img alt="../_images/DataSample-3.png" class="plot-directive" src="../_images/DataSample-3.png" />
+</figure>
 <p>The second step is to create a signal that we wish to detect experimentally.
 Let’s say that we hope to detect a broad increase in temperature over the
 summer months with a maximum temperature increase of 5 deg. That could be
@@ -141,7 +155,10 @@ modeled as a second Gaussian pulse like this:</p>
 <span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>(<a class="reference download internal" download="" href="../_downloads/0db8e96022ab2c7a227cd565ba157c36/DataSample-4.py"><code class="xref download docutils literal notranslate"><span class="pre">Source</span> <span class="pre">code</span></code></a>)</p>
+<p>(<a class="reference external" href="../Examples/DataSample-4.py">Source code</a>, <a class="reference external" href="../Examples/DataSample-4.png">png</a>, <a class="reference external" href="../Examples/DataSample-4.hires.png">hires.png</a>, <a class="reference external" href="../Examples/DataSample-4.pdf">pdf</a>)</p>
+<figure class="align-default">
+<img alt="../_images/DataSample-4.png" class="plot-directive" src="../_images/DataSample-4.png" />
+</figure>
 <p>The third step is to create a model of the noise we expect to observe
 experimentally.  From the <a class="reference internal" href="#label-weatherdata"><span class="std std-ref">weather data</span></a> above
 we can see at least two types of noise: a high-frequency day-to-day noise
@@ -173,7 +190,10 @@ of uncorrelated Gaussian noise and SmoothGaussian noise:</p>
         <span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.9</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="n">transform</span><span class="o">=</span><span class="n">ax</span><span class="o">.</span><span class="n">transAxes</span><span class="p">,</span> <span class="n">bbox</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">facecolor</span><span class="o">=</span><span class="s1">&#39;w&#39;</span><span class="p">))</span>
 </pre></div>
 </div>
-<p>(<a class="reference download internal" download="" href="../_downloads/9989fa95e3c351dbc5c0f1ad473beadc/DataSample-5.py"><code class="xref download docutils literal notranslate"><span class="pre">Source</span> <span class="pre">code</span></code></a>)</p>
+<p>(<a class="reference external" href="../Examples/DataSample-5.py">Source code</a>, <a class="reference external" href="../Examples/DataSample-5.png">png</a>, <a class="reference external" href="../Examples/DataSample-5.hires.png">hires.png</a>, <a class="reference external" href="../Examples/DataSample-5.pdf">pdf</a>)</p>
+<figure class="align-default">
+<img alt="../_images/DataSample-5.png" class="plot-directive" src="../_images/DataSample-5.png" />
+</figure>
 <p>Before we add that noise to our model let’s consider these noise models briefly.
 Each noise model has an attribute <em>value</em> which contains a  (J x Q) array
 representing the current state of the random noise. New random noise can
@@ -209,7 +229,10 @@ using NumPy’s <strong>np.random.seed</strong> function as follows:</p>
         <span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.9</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="n">transform</span><span class="o">=</span><span class="n">ax</span><span class="o">.</span><span class="n">transAxes</span><span class="p">,</span> <span class="n">bbox</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">facecolor</span><span class="o">=</span><span class="s1">&#39;w&#39;</span><span class="p">))</span>
 </pre></div>
 </div>
-<p>(<a class="reference download internal" download="" href="../_downloads/fdeaba4cf1d9cd7fc33897739130a44f/DataSample-6.py"><code class="xref download docutils literal notranslate"><span class="pre">Source</span> <span class="pre">code</span></code></a>)</p>
+<p>(<a class="reference external" href="../Examples/DataSample-6.py">Source code</a>, <a class="reference external" href="../Examples/DataSample-6.png">png</a>, <a class="reference external" href="../Examples/DataSample-6.hires.png">hires.png</a>, <a class="reference external" href="../Examples/DataSample-6.pdf">pdf</a>)</p>
+<figure class="align-default">
+<img alt="../_images/DataSample-6.png" class="plot-directive" src="../_images/DataSample-6.png" />
+</figure>
 <p>This noise control is identical for all types of <a class="reference internal" href="../API/noise.html#label-api-noise"><span class="std std-ref">noise models</span></a>
 including compound types like the Additive model above.</p>
 <p>The fourth and final step is to combine our baseline, signal and noise objects
@@ -260,7 +283,10 @@ into a DataSample object like this:</p>
         <span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.9</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="n">transform</span><span class="o">=</span><span class="n">ax</span><span class="o">.</span><span class="n">transAxes</span><span class="p">,</span> <span class="n">bbox</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">facecolor</span><span class="o">=</span><span class="s1">&#39;w&#39;</span><span class="p">))</span>
 </pre></div>
 </div>
-<p>(<a class="reference download internal" download="" href="../_downloads/5745b94654dd41932a641108c20ee782/DataSample-7.py"><code class="xref download docutils literal notranslate"><span class="pre">Source</span> <span class="pre">code</span></code></a>)</p>
+<p>(<a class="reference external" href="../Examples/DataSample-7.py">Source code</a>, <a class="reference external" href="../Examples/DataSample-7.png">png</a>, <a class="reference external" href="../Examples/DataSample-7.hires.png">hires.png</a>, <a class="reference external" href="../Examples/DataSample-7.pdf">pdf</a>)</p>
+<figure class="align-default">
+<img alt="../_images/DataSample-7.png" class="plot-directive" src="../_images/DataSample-7.png" />
+</figure>
 <p>In the figure above we see that, like the noise models, we can generate new data sample
 models using the <em>random</em> method and we can control the model’s random state using
 <strong>np.random.seed</strong>.</p>
@@ -319,6 +345,9 @@ we will be able to detect that signal given our noise model.</p>
           <a href="../genindex.html" title="General Index"
              >index</a></li>
         <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
           <a href="PowerAnalysis.html" title="Power analysis"
              >next</a> |</li>
         <li class="right" >
@@ -331,7 +360,7 @@ we will be able to detect that signal given our noise model.</p>
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2023, Todd Pataky.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 6.1.3.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.0.2.
     </div>
   </body>
 </html>
