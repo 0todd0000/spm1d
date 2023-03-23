@@ -116,7 +116,7 @@ Workshop Slides
 Future Workshops
 ---------------------------
 
-2023-05-03 (**Leuven, Belgium**)
+2023-05-03 (**Antwerp, Belgium**)
 
 `Click here to register <https://faber.kuleuven.be/nl/lll/aanbod/03-05-2023_SPM>`_
 
