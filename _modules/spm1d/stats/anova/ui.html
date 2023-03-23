@@ -3,18 +3,19 @@
 
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>spm1d.stats.anova.ui &#8212; spm1d 0.4 documentation</title>
-    <link rel="stylesheet" href="../../../../_static/bootstrap-sphinx.css" type="text/css" />
-    <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
-    <script id="documentation_options" data-url_root="../../../../" src="../../../../_static/documentation_options.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/bootstrap-sphinx.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/plot_directive.css" />
+    <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
     <script src="../../../../_static/jquery.js"></script>
     <script src="../../../../_static/underscore.js"></script>
+    <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../../../../_static/doctools.js"></script>
-    <script src="../../../../_static/language_data.js"></script>
     <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <link rel="index" title="Index" href="../../../../genindex.html" />
     <link rel="search" title="Search" href="../../../../search.html" />
@@ -22,10 +23,10 @@
 <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
 <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
 <meta name="apple-mobile-web-app-capable" content="yes">
-<script type="text/javascript" src="../../../../_static/js/jquery-1.12.4.min.js "></script>
-<script type="text/javascript" src="../../../../_static/js/jquery-fix.js "></script>
-<script type="text/javascript" src="../../../../_static/bootstrap-3.4.1/js/bootstrap.min.js "></script>
-<script type="text/javascript" src="../../../../_static/bootstrap-sphinx.js "></script>
+<script type="text/javascript" src="../../../../_static/js/jquery-1.12.4.min.js"></script>
+<script type="text/javascript" src="../../../../_static/js/jquery-fix.js"></script>
+<script type="text/javascript" src="../../../../_static/bootstrap-3.4.1/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../../../../_static/bootstrap-sphinx.js"></script>
 
   </head><body>
 
@@ -163,7 +164,7 @@
 
 
 <span class="k">def</span> <span class="nf">aov</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">contrasts</span><span class="p">,</span> <span class="n">f_terms</span><span class="p">,</span> <span class="n">nFactors</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
-	<span class="sd">&#39;&#39;&#39;</span>
+<span class="w">	</span><span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">	This code is modified from statsmodels.stats.anova_lm</span>
 <span class="sd">	&#39;&#39;&#39;</span>
 	<span class="n">effects</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">QT</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">Y</span><span class="p">)</span> <span class="p">)</span>
@@ -196,7 +197,7 @@
 <span class="c1">### ONE-WAY DESIGNS ##############</span>
 
 <div class="viewcode-block" id="anova1"><a class="viewcode-back" href="../../../../doc/API/stats.html#spm1d.stats.anova1">[docs]</a><span class="k">def</span> <span class="nf">anova1</span><span class="p">(</span><span class="n">Y</span><span class="p">,</span> <span class="n">A</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">equal_var</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">roi</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-	<span class="sd">&#39;&#39;&#39;</span>
+<span class="w">	</span><span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">	One-way ANOVA.</span>
 <span class="sd">	</span>
 <span class="sd">	:Parameters (Option 1):</span>
@@ -239,7 +240,7 @@
 
 
 <div class="viewcode-block" id="anova1rm"><a class="viewcode-back" href="../../../../doc/API/stats.html#spm1d.stats.anova1rm">[docs]</a><span class="k">def</span> <span class="nf">anova1rm</span><span class="p">(</span><span class="n">Y</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="n">SUBJ</span><span class="p">,</span> <span class="n">equal_var</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">roi</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">_force_approx0D</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
-	<span class="sd">&#39;&#39;&#39;</span>
+<span class="w">	</span><span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">	One-way repeated-measures ANOVA.</span>
 <span class="sd">	</span>
 <span class="sd">	:Parameters:</span>
@@ -287,7 +288,7 @@
 
 
 <div class="viewcode-block" id="anova2"><a class="viewcode-back" href="../../../../doc/API/stats.html#spm1d.stats.anova2">[docs]</a><span class="k">def</span> <span class="nf">anova2</span><span class="p">(</span><span class="n">Y</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">,</span> <span class="n">equal_var</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">roi</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-	<span class="sd">&#39;&#39;&#39;</span>
+<span class="w">	</span><span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">	Two-way ANOVA.</span>
 <span class="sd">	</span>
 <span class="sd">	:Parameters:</span>
@@ -321,7 +322,7 @@
 
 
 <div class="viewcode-block" id="anova2nested"><a class="viewcode-back" href="../../../../doc/API/stats.html#spm1d.stats.anova2nested">[docs]</a><span class="k">def</span> <span class="nf">anova2nested</span><span class="p">(</span><span class="n">Y</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">,</span> <span class="n">equal_var</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">roi</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-	<span class="sd">&#39;&#39;&#39;</span>
+<span class="w">	</span><span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">	Two-way nested ANOVA.</span>
 <span class="sd">	</span>
 <span class="sd">	:Parameters:</span>
@@ -350,7 +351,7 @@
 
 
 <div class="viewcode-block" id="anova2rm"><a class="viewcode-back" href="../../../../doc/API/stats.html#spm1d.stats.anova2rm">[docs]</a><span class="k">def</span> <span class="nf">anova2rm</span><span class="p">(</span><span class="n">Y</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">,</span> <span class="n">SUBJ</span><span class="p">,</span> <span class="n">equal_var</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">roi</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">_force_approx0D</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
-	<span class="sd">&#39;&#39;&#39;</span>
+<span class="w">	</span><span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">	Two-way repeated-measures ANOVA.</span>
 <span class="sd">	</span>
 <span class="sd">	:Parameters:</span>
@@ -390,7 +391,7 @@
 
 
 <div class="viewcode-block" id="anova2onerm"><a class="viewcode-back" href="../../../../doc/API/stats.html#spm1d.stats.anova2onerm">[docs]</a><span class="k">def</span> <span class="nf">anova2onerm</span><span class="p">(</span><span class="n">Y</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">,</span> <span class="n">SUBJ</span><span class="p">,</span> <span class="n">equal_var</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">roi</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">_force_approx0D</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
-	<span class="sd">&#39;&#39;&#39;</span>
+<span class="w">	</span><span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">	Two-way ANOVA with repeated-measures on one factor.</span>
 <span class="sd">	</span>
 <span class="sd">	:Parameters:</span>
@@ -428,7 +429,7 @@
 
 
 <div class="viewcode-block" id="anova3"><a class="viewcode-back" href="../../../../doc/API/stats.html#spm1d.stats.anova3">[docs]</a><span class="k">def</span> <span class="nf">anova3</span><span class="p">(</span><span class="n">Y</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">,</span> <span class="n">C</span><span class="p">,</span> <span class="n">equal_var</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">roi</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-	<span class="sd">&#39;&#39;&#39;</span>
+<span class="w">	</span><span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">	Three-way ANOVA.</span>
 <span class="sd">	</span>
 <span class="sd">	:Parameters:</span>
@@ -466,7 +467,7 @@
 	<span class="c1"># return f</span>
 
 <div class="viewcode-block" id="anova3nested"><a class="viewcode-back" href="../../../../doc/API/stats.html#spm1d.stats.anova3nested">[docs]</a><span class="k">def</span> <span class="nf">anova3nested</span><span class="p">(</span><span class="n">Y</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">,</span> <span class="n">C</span><span class="p">,</span> <span class="n">equal_var</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">roi</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-	<span class="sd">&#39;&#39;&#39;</span>
+<span class="w">	</span><span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">	Three-way fully nested ANOVA.</span>
 <span class="sd">	</span>
 <span class="sd">	:Parameters:</span>
@@ -496,7 +497,7 @@
 
 
 <span class="k">def</span> <span class="nf">anova3rm</span><span class="p">(</span><span class="n">Y</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">,</span> <span class="n">C</span><span class="p">,</span> <span class="n">SUBJ</span><span class="p">,</span> <span class="n">equal_var</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">roi</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">_force_approx0D</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
-	<span class="sd">&#39;&#39;&#39;</span>
+<span class="w">	</span><span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">	Three-way ANOVA (repeated measures on all factors).</span>
 <span class="sd">	</span>
 <span class="sd">	:Parameters:</span>
@@ -531,7 +532,7 @@
 
 
 <div class="viewcode-block" id="anova3onerm"><a class="viewcode-back" href="../../../../doc/API/stats.html#spm1d.stats.anova3onerm">[docs]</a><span class="k">def</span> <span class="nf">anova3onerm</span><span class="p">(</span><span class="n">Y</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">,</span> <span class="n">C</span><span class="p">,</span> <span class="n">SUBJ</span><span class="p">,</span> <span class="n">equal_var</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">roi</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">_force_approx0D</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
-	<span class="sd">&#39;&#39;&#39;</span>
+<span class="w">	</span><span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">	Three-way ANOVA with repeated-measures on one factor.</span>
 <span class="sd">	</span>
 <span class="sd">	:Parameters:</span>
@@ -570,7 +571,7 @@
 
 
 <div class="viewcode-block" id="anova3tworm"><a class="viewcode-back" href="../../../../doc/API/stats.html#spm1d.stats.anova3tworm">[docs]</a><span class="k">def</span> <span class="nf">anova3tworm</span><span class="p">(</span><span class="n">Y</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">,</span> <span class="n">C</span><span class="p">,</span> <span class="n">SUBJ</span><span class="p">,</span> <span class="n">equal_var</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">roi</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">_force_approx0D</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
-	<span class="sd">&#39;&#39;&#39;</span>
+<span class="w">	</span><span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">	Three-way ANOVA with repeated-measures on two factors.</span>
 <span class="sd">	</span>
 <span class="sd">	:Parameters:</span>
@@ -620,8 +621,8 @@
       
     </p>
     <p>
-        &copy; Copyright 2021, Todd Pataky.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.1.2.<br/>
+        &copy; Copyright 2022, Todd Pataky.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.0.2.<br/>
     </p>
   </div>
 </footer>

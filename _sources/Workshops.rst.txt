@@ -116,9 +116,9 @@ Workshop Slides
 Future Workshops
 ---------------------------
 
-2022-11-09 (**Leuven, Belgium**)
+2023-05-03 (**Leuven, Belgium**)
 
-`Click here to register <https://faber.kuleuven.be/nl/lll/aanbod/09-11-2022_SPM>`_
+`Click here to register <https://faber.kuleuven.be/nl/lll/aanbod/03-05-2023_SPM>`_
 
 |
 |
@@ -126,6 +126,8 @@ Future Workshops
 
 Previous Workshops
 ---------------------------
+
+2022 November 9 (**Leuven, Belgium**)
 
 2020 January 23-24 (**Leuven, Belgium**)
 

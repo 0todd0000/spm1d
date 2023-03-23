@@ -3,18 +3,19 @@
 
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>spm1d.util &#8212; spm1d 0.4 documentation</title>
-    <link rel="stylesheet" href="../../_static/bootstrap-sphinx.css" type="text/css" />
-    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/bootstrap-sphinx.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/plot_directive.css" />
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
     <script src="../../_static/jquery.js"></script>
     <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../../_static/doctools.js"></script>
-    <script src="../../_static/language_data.js"></script>
     <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
@@ -22,10 +23,10 @@
 <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
 <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
 <meta name="apple-mobile-web-app-capable" content="yes">
-<script type="text/javascript" src="../../_static/js/jquery-1.12.4.min.js "></script>
-<script type="text/javascript" src="../../_static/js/jquery-fix.js "></script>
-<script type="text/javascript" src="../../_static/bootstrap-3.4.1/js/bootstrap.min.js "></script>
-<script type="text/javascript" src="../../_static/bootstrap-sphinx.js "></script>
+<script type="text/javascript" src="../../_static/js/jquery-1.12.4.min.js"></script>
+<script type="text/javascript" src="../../_static/js/jquery-fix.js"></script>
+<script type="text/javascript" src="../../_static/bootstrap-3.4.1/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../../_static/bootstrap-sphinx.js"></script>
 
   </head><body>
 
@@ -162,15 +163,16 @@
 <span class="sd">- smooth</span>
 <span class="sd">&#39;&#39;&#39;</span>
 
-<span class="c1"># Copyright (C) 2016  Todd Pataky</span>
-<span class="c1"># updated (2016/10/01) todd</span>
+<span class="c1"># Copyright (C) 2022  Todd Pataky</span>
+<span class="c1"># updated (2022/02/06) todd</span>
 
 
 
 <span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">sqrt</span><span class="p">,</span><span class="n">log</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">from</span> <span class="nn">.</span> <span class="n">stats</span><span class="o">.</span><span class="n">_spm</span> <span class="kn">import</span> <span class="nn">plist2string</span> <span class="k">as</span> <span class="nn">p2s</span>
-<span class="kn">from</span> <span class="nn">scipy.ndimage.filters</span> <span class="kn">import</span> <span class="n">gaussian_filter1d</span>
+<span class="c1"># from scipy.ndimage.filters import gaussian_filter1d</span>
+<span class="kn">from</span> <span class="nn">scipy.ndimage</span> <span class="kn">import</span> <span class="n">gaussian_filter1d</span>
 
 
 
@@ -189,7 +191,7 @@
 
 
 <div class="viewcode-block" id="get_dataset"><a class="viewcode-back" href="../../doc/API/util.html#spm1d.util.get_dataset">[docs]</a><span class="k">def</span> <span class="nf">get_dataset</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">):</span>
-	<span class="sd">&#39;&#39;&#39;</span>
+<span class="w">	</span><span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">	.. warning:: Deprecated</span>
 <span class="sd">		</span>
 <span class="sd">		**get_dataset** is deprecated and will be removed from future versions of **spm1d**.  Please access datasets using the &quot;spm1d.data&quot; interface.</span>
@@ -199,7 +201,7 @@
 
 
 <div class="viewcode-block" id="interp"><a class="viewcode-back" href="../../doc/API/util.html#spm1d.util.interp">[docs]</a><span class="k">def</span> <span class="nf">interp</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">Q</span><span class="o">=</span><span class="mi">101</span><span class="p">):</span>
-	<span class="sd">&#39;&#39;&#39;</span>
+<span class="w">	</span><span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">	Simple linear interpolation to *n* values.</span>
 <span class="sd">	</span>
 <span class="sd">	:Parameters:</span>
@@ -234,7 +236,7 @@
 
 
 <div class="viewcode-block" id="p_corrected_bonf"><a class="viewcode-back" href="../../doc/API/util.html#spm1d.util.p_corrected_bonf">[docs]</a><span class="k">def</span> <span class="nf">p_corrected_bonf</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
-	<span class="sd">&#39;&#39;&#39;</span>
+<span class="w">	</span><span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">	Bonferroni-corrected *p* value.</span>
 <span class="sd">	</span>
 <span class="sd">	.. warning:: This correction assumes independence amongst multiple tests.</span>
@@ -264,7 +266,7 @@
 
 
 <div class="viewcode-block" id="p_critical_bonf"><a class="viewcode-back" href="../../doc/API/util.html#spm1d.util.p_critical_bonf">[docs]</a><span class="k">def</span> <span class="nf">p_critical_bonf</span><span class="p">(</span><span class="n">alpha</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
-	<span class="sd">&#39;&#39;&#39;</span>
+<span class="w">	</span><span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">	Bonferroni-corrected critical Type I error rate.</span>
 <span class="sd">	</span>
 <span class="sd">	.. warning:: This crticial threshold assumes independence amongst multiple tests.</span>
@@ -293,7 +295,7 @@
 
 
 <div class="viewcode-block" id="smooth"><a class="viewcode-back" href="../../doc/API/util.html#spm1d.util.smooth">[docs]</a><span class="k">def</span> <span class="nf">smooth</span><span class="p">(</span><span class="n">Y</span><span class="p">,</span> <span class="n">fwhm</span><span class="o">=</span><span class="mf">5.0</span><span class="p">):</span>
-	<span class="sd">&#39;&#39;&#39;</span>
+<span class="w">	</span><span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">	Smooth a set of 1D continua.</span>
 <span class="sd">	This method uses **scipy.ndimage.filters.gaussian_filter1d** but uses the *fwhm*</span>
 <span class="sd">	instead of the standard deviation.</span>
@@ -331,8 +333,8 @@
       
     </p>
     <p>
-        &copy; Copyright 2021, Todd Pataky.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.1.2.<br/>
+        &copy; Copyright 2022, Todd Pataky.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.0.2.<br/>
     </p>
   </div>
 </footer>
