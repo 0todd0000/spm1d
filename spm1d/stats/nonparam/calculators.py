@@ -1,10 +1,10 @@
 
-# Copyright (C) 2016  Todd Pataky
+# Copyright (C) 2023  Todd Pataky
 
 from math import log
 import numpy as np
-from spm1d.stats.anova import designs,models
-from spm1d.stats.anova.ui import aov
+from .. anova import designs,models
+from .. anova.ui import aov
 
 
 
