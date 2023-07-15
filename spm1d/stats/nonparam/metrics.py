@@ -25,7 +25,14 @@ class _Metric(object):
 		L,n     = bwlabel(z>thresh)
 		x       = [0]
 		if n > 0:
-			x   = [self.get_single_cluster_metric(z, thresh, L==i+1)   for i in range(n)]
+			x = list()
+			for i in range(n):
+				temp = self.get_single_cluster_metric(z, thresh, L==i+1)
+				if isinstance(temp, list) or isinstance(temp, np.ndarray):
+					for j in temp:
+						x.append(j)
+				else:
+					x.append(temp)
 			if circular and (n > 1):  #merge clusters for circular fields:
 				if (L==1)[0] and (L==n)[-1]:
 					x[0] += x[-1]
