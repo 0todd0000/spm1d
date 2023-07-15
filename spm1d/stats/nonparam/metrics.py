@@ -32,7 +32,7 @@ class _Metric(object):
 					x     = x[:-1]
 		return x
 	def get_max_metric(self, z, thresh=3.0, circular=False):
-		return max(  self.get_all_cluster_metrics(z, thresh, circular)  )
+		return np.max(  self.get_all_cluster_metrics(z, thresh, circular)  )
 
 
 class MaxClusterExtent(_Metric):
