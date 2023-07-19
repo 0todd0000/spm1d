@@ -25,21 +25,14 @@ class _Metric(object):
 		L,n     = bwlabel(z>thresh)
 		x       = [0]
 		if n > 0:
-			x = list()
-			for i in range(n):
-				temp = self.get_single_cluster_metric(z, thresh, L==i+1)
-				if isinstance(temp, list) or isinstance(temp, np.ndarray):
-					for j in temp:
-						x.append(j)
-				else:
-					x.append(temp)
+			x   = [self.get_single_cluster_metric(z, thresh, L==i+1)   for i in range(n)]
 			if circular and (n > 1):  #merge clusters for circular fields:
 				if (L==1)[0] and (L==n)[-1]:
 					x[0] += x[-1]
 					x     = x[:-1]
 		return x
 	def get_max_metric(self, z, thresh=3.0, circular=False):
-		return np.max(  self.get_all_cluster_metrics(z, thresh, circular)  )
+		return max(  self.get_all_cluster_metrics(z, thresh, circular)  )
 
 
 class MaxClusterExtent(_Metric):
@@ -59,7 +52,7 @@ class MaxClusterHeight(_Metric):
 class MaxClusterIntegral(_Metric):
 	def get_single_cluster_metric(self, z, thresh, i):
 		if i.sum()==1:
-			x = z[i] - thresh
+			x = float(z[i]) - thresh
 		else:
 			x = np.trapz(  z[i]-thresh  )
 		return x
