@@ -169,15 +169,17 @@ def anova1rm(y, A, SUBJ, equal_var=False, gg=True):
 # 		spm = SPMFList( spm )
 # 	return spm
 
-def _assemble_spm_objects(results, design, fit):
-	if fit.dvdim==1:
-		from .. _spmcls import SPM0D as _SPM
+def _assemble_spm_objects(results, design, fit, roi=None):
+	if fit.dvdim==0:
+		from .. _spmcls import SPM0D
+		spm = [SPM0D(r, design, fit, c)  for r,c in zip(results, design.contrasts)]
 	else:
-		from .. _spmcls import SPM1D as _SPM
+		from .. _spmcls import SPM1D
+		spm = [SPM1D(r, design, fit, c, roi)  for r,c in zip(results, design.contrasts)]
 	# spm = [_SPM('F', ff, ddf, beta=None, residuals=None, sigma2=None, X=None)  for ff,ddf in zip(f,df)]
 	# spm = [_SPM('F', ff, ddf, design, fit, c)  for ff,ddf,c in zip(f,df,design.contrasts)]
 	# spm = [_SPM('F', r.f, r.df, design, fit, c)  for r,c in zip(results, design.contrasts)]
-	spm = [_SPM(r, design, fit, c)  for r,c in zip(results, design.contrasts)]
+	# spm = [_SPM(r, design, fit, c)  for r,c in zip(results, design.contrasts)]
 	if len(spm)==1:
 		spm = spm[0]
 	else:
@@ -186,8 +188,8 @@ def _assemble_spm_objects(results, design, fit):
 	return spm
 
 
-@appendSPMargs
-def anova2(y, A, B, equal_var=False):
+# @appendSPMargs
+def anova2(y, A, B, equal_var=False, roi=None):
 	if not equal_var:
 		raise NotImplementedError('variance components not yet implemented for anova2')
 	from . designs import ANOVA2
@@ -206,7 +208,8 @@ def anova2(y, A, B, equal_var=False):
 	# print(fit)
 	
 	# f,df,fit = aov(y, design.X, design.contrasts, Q)
-	return _assemble_spm_objects(res, design, fit)
+	# return res, design, fit
+	return _assemble_spm_objects(res, design, fit, roi)
 
 
 

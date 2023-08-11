@@ -66,20 +66,39 @@ class FittedGLM(object):
 		# self._df   = None   # effective degrees of freedom (for one contrast)
 		# self._f    = None   # F statistic (for one contrast)
 		# self._v    = None   # variance scale (for one contrast); same as df when equal variance is assumed
-		self.model = model
-		self.V     = None   # estimated (co-)variance
-		self.b     = b      # betas (fitted parameters)
-		self.dvdim = 1 if ((y.ndim==1) or (1 in y.shape)) else y.ndim # dependent variable dimensionality
-		self.e     = e      # residuals
-		self.h     = None   # (co-)variance hyperparameters
-		self.mse   = None   # mean squared error
-		self.sse   = None   # sum of error squares
-		self.y     = y      # (J,Q) dependent variable array where J=num.observations and Q=num.continuum nodes
+		self.model  = model
+		self.V      = None   # estimated (co-)variance
+		self.b      = b      # betas (fitted parameters)
+		self.dvdim  = 0 if ((y.ndim==1) or (1 in y.shape)) else 1 # dependent variable dimensionality
+		self.e      = e      # residuals
+		# self.fwhm   = None   # estimated residual smoothness
+		# self.resels = None  # resel counts
+		self.h      = None   # (co-)variance hyperparameters
+		self.mse    = None   # mean squared error
+		self.sse    = None   # sum of error squares
+		self.y      = y      # (J,Q) dependent variable array where J=num.observations and Q=num.continuum nodes
 		self._estimate_variance()
 		self._calculate_sse()
+		# if self.dvdim == 1:
+		# 	from ... geom import estimate_fwhm, resel_counts
+		# 	self.fwhm   = estimate_fwhm( e )
+		# 	self.resels = resel_counts(e, self.fwhm, element_based=False, roi=None)
 
-		
-		
+
+	def __repr__(self):
+		s   = 'FittedGLM\n'
+		s  += '    model = GeneralLinearModel object\n'
+		s  += '    y     = %s dependent variable\n'              % str(self.e.shape)
+		s  += '    dvdim = %d\n'                                 % self.dvdim
+		s  += '    b     = %s fitted parameters\n'               % str(self.b.shape)
+		s  += '    e     = %s residuals\n'                       % str(self.e.shape)
+		s  += '    V     = %s estimated co-variance\n'           % str(self.V.shape)
+		s  += '    h     = %s estimated co-variance hyperparameters\n'  % str( self.h )
+		# if self.dvdim == 1:
+		# 	s  += '    fwhm  = %.3f estimated smoothness\n'   % self.fwhm
+		return s
+
+
 
 	@property
 	def J(self):
@@ -135,7 +154,7 @@ class FittedGLM(object):
 		y,X      = self.y, self.model.X
 		PX       = X @ np.linalg.pinv(X)      # X projector
 		YIPY     = y.T @ ( np.eye( self.J ) - PX ) @ y   # eqn.9.13 denominator (Friston 2007, p.135)
-		self.sse = float(YIPY) if (self.dvdim==1) else np.diag(YIPY)
+		self.sse = float(YIPY) if (self.dvdim==0) else np.diag(YIPY)
 
 
 
@@ -177,9 +196,9 @@ class FittedGLM(object):
 		if gg:
 			df  = self._calculate_adjusted_df_greenhouse_geisser(df)
 
-		f       = float(f)  if (self.dvdim==1) else np.diag(f)
-		ss      = float(ss) if (self.dvdim==1) else np.diag(ss)
-		ms      = float(ms) if (self.dvdim==1) else np.diag(ms)
+		f       = float(f)  if (self.dvdim==0) else np.diag(f)
+		ss      = float(ss) if (self.dvdim==0) else np.diag(ss)
+		ms      = float(ms) if (self.dvdim==0) else np.diag(ms)
 		
 		return FResult(f, df, v, ss, ms)
 		# self._ss  = YPHYY

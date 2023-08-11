@@ -19,6 +19,7 @@ eps = np.finfo(float).eps
 _4log2 = 4 * log(2)
 
 
+# CONVERSION FUNCTIONS
 
 def fwhm2lkc(fwhm, Q):
 	resels = (Q - 1) / fwhm     # use (Q-1) for point-based sampling;  use (Q) for element-based sampling
@@ -34,6 +35,9 @@ def lkc2fwhm(lkc, Q):
 def resels2lkc(resels, d=1):
 	return resels / ( _4log2 **(-d/2) )
 
+
+
+# SMOOTHNESS ESTIMATION FUNCTIONS
 
 
 def _estimate_fwhm_rft1d(r):
@@ -104,7 +108,7 @@ def _estimate_lkc_mv_taylor2008(e):
 
 
 
-def estimate_fwhm(r, method='rft1d'):
+def estimate_fwhm(r, method='rft1d', roi=None):
 	'''
 	Estimate FWHM (smoothness) from univariate residuals
 	
@@ -116,7 +120,7 @@ def estimate_fwhm(r, method='rft1d'):
 	'''
 	
 	if method=='rft1d':
-		fwhm = _estimate_fwhm_rft1d(r)
+		fwhm = _estimate_fwhm_rft1d(r, roi=roi)
 	elif method == 'barnes2013':
 		lkc  = _estimate_lkc_barnes2013(r)
 		fwhm = lkc2fwhm( lkc, r.shape[1] )
@@ -194,4 +198,5 @@ def resel_counts_mv(r, fwhm=1, element_based=False, roi=None):
 	resels     = resel_counts(mask, fwhm, element_based)
 	return resels
 
+	
 	
