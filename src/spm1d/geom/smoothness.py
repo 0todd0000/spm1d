@@ -15,8 +15,49 @@ https://doi.org/10.1198/016214507000000815
 from math import log
 import numpy as np
 from . label import bwlabel
+from .. util import array2shortstr, resels2str, DisplayParams
 eps = np.finfo(float).eps
 _4log2 = 4 * log(2)
+
+
+
+
+class SmoothnessEstimates(object):
+	def __init__(self, e, method='rft1d', roi=None):
+		self.method   = method
+		self.e        = e
+		self.fwhm     = None
+		self.lkc      = None
+		self.resels   = None
+		self._estimate(roi)
+
+	def __repr__(self):
+		dp      = DisplayParams( self )
+		dp.add_header( self.__class__.__name__ )
+		dp.add( 'J' )
+		dp.add( 'Q' )
+		dp.add( 'e', array2shortstr )
+		dp.add( 'fwhm', fmt='%.3f' )
+		dp.add( 'lkc', fmt='%.3f' )
+		dp.add( 'resels', fmt=resels2str )
+		return dp.asstr()
+	
+	def _estimate(self, roi):
+		self.fwhm   = estimate_fwhm(self.e, method=self.method, roi=roi)
+		self.lkc    = fwhm2lkc(self.fwhm, self.Q)
+		self.resels = resel_counts(self.e, self.fwhm, roi=roi)
+
+	@property
+	def J(self):
+		return self.e.shape[0]
+	
+	@property
+	def Q(self):
+		return self.e.shape[1]
+
+	def set_roi(self, roi):
+		self._estimate( roi )
+
 
 
 # CONVERSION FUNCTIONS

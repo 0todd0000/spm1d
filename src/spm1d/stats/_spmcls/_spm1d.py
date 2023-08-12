@@ -27,8 +27,9 @@ class SPM1D(_SPMParent):
 		self.fit            = fit
 		self.results        = results
 		self.roi            = roi
-		self.fwhm           = None
-		self.resels         = None
+		self.sm             = None  # smoothness estimates
+		# self.fwhm           = None
+		# self.resels         = None
 		self._estimate_smoothness()
 
 
@@ -113,6 +114,18 @@ class SPM1D(_SPMParent):
 	@property
 	def z(self):
 		return self.results.z
+
+
+	# smoothness parameters:
+	@property
+	def fwhm(self):
+		return self.sm.fwhm
+	@property
+	def lkc(self):
+		return self.sm.lkc
+	@property
+	def resels(self):
+		return self.sm.resels
 
 
 	# @property
@@ -201,11 +214,15 @@ class SPM1D(_SPMParent):
 	# 	return spmi
 
 	
-	def _estimate_smoothness(self):
-		from ... geom import estimate_fwhm, resel_counts
-		self.fwhm   = estimate_fwhm( self.residuals, roi=self.roi )
-		self.resels = resel_counts(self.residuals, self.fwhm, element_based=False, roi=self.roi)
+	# def _estimate_smoothness(self):
+	# 	from ... geom import estimate_fwhm, resel_counts
+	# 	self.fwhm   = estimate_fwhm( self.residuals, roi=self.roi )
+	# 	self.resels = resel_counts(self.residuals, self.fwhm, element_based=False, roi=self.roi)
 		
+
+	def _estimate_smoothness(self):
+		from ... geom.smoothness import SmoothnessEstimates
+		self.sm     = SmoothnessEstimates( self.residuals, method='rft1d', roi=None )
 	
 	
 	def inference(self, alpha, method='rft', **kwargs):
