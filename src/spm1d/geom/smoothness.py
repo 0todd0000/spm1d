@@ -40,7 +40,7 @@ def resels2lkc(resels, d=1):
 # SMOOTHNESS ESTIMATION FUNCTIONS
 
 
-def _estimate_fwhm_rft1d(r):
+def _estimate_fwhm_rft1d(r, roi=None):
 	'''
 	(Modified from rft1d.geom)
 	'''

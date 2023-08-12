@@ -19,7 +19,9 @@ class SPM1D(_SPMParent):
 	dim                     = 1
 
 	def __init__(self, results, design, fit, contrast, roi=None):
-		self.testname       = None             # hypothesis test name (set using set_testname method)
+		self._args          = None            # arguments for spm1d.stats function
+		self._kwargs        = None            # keyword arguments for spm1d.stats function
+		self.testname       = None            # hypothesis test name (set using set_testname method)
 		self.design         = design
 		self.contrast       = contrast
 		self.fit            = fit
@@ -166,15 +168,15 @@ class SPM1D(_SPMParent):
 	# 	return spmi
 
 
-	def _build_spmi(self, results, df_adjusted=None):
-		from . _spm1di import SPM1Di
-		# spmi             = deepcopy( self )
-		# spmi.__class__   = SPM0Di
-		spmi             = SPM1Di(self, results, df_adjusted)
-		# if results.method=='perm':
-		# 	spmi.nperm    = results.nperm
-		# 	spmi.permuter = results.permuter
-		return spmi
+	# def _build_spmi(self, results, df_adjusted=None):
+	# 	from . _spm1di import SPM1Di
+	# 	# spmi             = deepcopy( self )
+	# 	# spmi.__class__   = SPM0Di
+	# 	spmi             = SPM1Di(self, results, df_adjusted)
+	# 	# if results.method=='perm':
+	# 	# 	spmi.nperm    = results.nperm
+	# 	# 	spmi.permuter = results.permuter
+	# 	return spmi
 
 	# def _build_spmi(self, results, alpha, dirn=0, df_adjusted=None):
 	# 	from . _spm1di import SPM1Di
@@ -209,7 +211,7 @@ class SPM1D(_SPMParent):
 		# kwargs   = parser.parse( alpha, **kwargs )
 		
 		if method == 'rft':
-			results = prob.rft(self.STAT, self.z, self.df, self.fwhm, self.resels, alpha=alpha, **kwargs)
+			iresults = prob.rft(self.STAT, self.z, self.df, self.fwhm, self.resels, alpha=alpha, **kwargs)
 			# results = self.inference_rft(alpha, **kwargs)
 			
 			# spmi = self.inference_rft(alpha, **parser.kwargs)
@@ -217,14 +219,14 @@ class SPM1D(_SPMParent):
 			# print( len(self._args) )
 			# nperm = kwargs['nperm']
 			# results = prob.perm(self.STAT, self.z, alpha=alpha, testname=self.testname, args=self._args, nperm=nperm, dirn=dirn)
-			results = prob.perm(self.STAT, self.z, alpha=alpha, testname=self.testname, args=self._args, dim=1, **kwargs)
+			iresults = prob.perm(self.STAT, self.z, alpha=alpha, testname=self.testname, args=self._args, dim=1, **kwargs)
 			
 			# return self._build_spmi(results, alpha, dirn=dirn)
 			#
 			# spmi = self.inference_perm(alpha, **parser.kwargs)
 		
 		elif method == 'fdr':
-			results = prob.fdr(self.STAT, self.z, self.df, alpha=alpha, **kwargs)
+			iresults = prob.fdr(self.STAT, self.z, self.df, alpha=alpha, **kwargs)
 		
 		else:
 			raise ValueError( f'Unknown inference method: {method}. Must be one of: ["rft", "perm", "fdr"]' )
@@ -236,11 +238,15 @@ class SPM1D(_SPMParent):
 		# dirn = kwargs['dirn'] if 'dirn' in kwargs else None
 		
 		
-		spmi = self._build_spmi(results, df_adjusted=dfa)
+		# spmi = self._build_spmi(results, df_adjusted=dfa)
 		
-		spmi._iargs   = (alpha,)
-		spmi._ikwargs = dict(method=method)
-		spmi._ikwargs.update( **kwargs )
+		from . _spm1di import SPM1Di
+		spmi = SPM1Di(self, iresults, dfa)
+		
+		
+		# spmi._iargs   = (alpha,)
+		# spmi._ikwargs = dict(method=method)
+		# spmi._ikwargs.update( **kwargs )
 		
 		
 		return( spmi )
