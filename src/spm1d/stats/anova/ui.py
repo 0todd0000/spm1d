@@ -84,14 +84,27 @@ from .. _dec import appendSPMargs
 # 	return f, df, fit
 #
 
-def aov(y, X, C, Q, gg=False, _Xeff=None):
+class GLMResults(object):
+	def __init__(self, design, model, fit, stats):
+		self.design  = design
+		self.model   = model
+		self.fit     = fit
+		self.stats   = stats
+
+
+def aov(y, design, Q, gg=False, _Xeff=None):
 	from . models import GeneralLinearModel
 	model    = GeneralLinearModel()
-	model.set_design_matrix( X )
+	model.set_design_matrix( design.X )
 	model.set_variance_model( Q )
 	fit      = model.fit( y )
-	results  = [fit.calculate_f_stat( c, gg=gg, _Xeff=_Xeff )   for c in C]
-	return results, fit
+	stats    = [fit.calculate_f_stat( c, gg=gg, _Xeff=_Xeff )   for c in design.C]
+	
+	glmr     = GLMResults(design, model, fit, stats)
+	
+	
+	
+	return glmr
 	# for c in C:
 	# 	res  =
 	#
@@ -169,7 +182,25 @@ def anova1rm(y, A, SUBJ, equal_var=False, gg=True):
 # 		spm = SPMFList( spm )
 # 	return spm
 
-def _assemble_spm_objects(results, design, fit, roi=None):
+# def _assemble_spm_objects(results, design, fit, roi=None):
+# 	if fit.dvdim==0:
+# 		from .. _spmcls import SPM0D
+# 		spm = [SPM0D(r, design, fit, c)  for r,c in zip(results, design.contrasts)]
+# 	else:
+# 		from .. _spmcls import SPM1D
+# 		spm = [SPM1D(r, design, fit, c, roi)  for r,c in zip(results, design.contrasts)]
+# 	# spm = [_SPM('F', ff, ddf, beta=None, residuals=None, sigma2=None, X=None)  for ff,ddf in zip(f,df)]
+# 	# spm = [_SPM('F', ff, ddf, design, fit, c)  for ff,ddf,c in zip(f,df,design.contrasts)]
+# 	# spm = [_SPM('F', r.f, r.df, design, fit, c)  for r,c in zip(results, design.contrasts)]
+# 	# spm = [_SPM(r, design, fit, c)  for r,c in zip(results, design.contrasts)]
+# 	if len(spm)==1:
+# 		spm = spm[0]
+# 	else:
+# 		from .. _spmcls import SPMFList
+# 		spm = SPMFList( spm )
+# 	return spm
+
+def _assemble_spm_objects(glmr, roi=None):
 	if fit.dvdim==0:
 		from .. _spmcls import SPM0D
 		spm = [SPM0D(r, design, fit, c)  for r,c in zip(results, design.contrasts)]
@@ -202,14 +233,29 @@ def anova2(y, A, B, equal_var=False, roi=None):
 	Q       = [np.eye(J)]
 	# C       = [c.C  for c in design.contrasts]
 
-	res,fit = aov(y, design.X, design.C, Q)
+	# res,fit = aov(y, design.X, design.C, Q)
+	#
+	# # print(res)
+	# # print(fit)
+	#
+	# # f,df,fit = aov(y, design.X, design.contrasts, Q)
+	# # return res, design, fit
+	# return _assemble_spm_objects(res, design, fit, roi)
+
+
+	# glmr = aov(y, design.X, design.C, Q)
 	
-	# print(res)
-	# print(fit)
+	glmr = aov(y, design, Q)
+	# print( glmr )
+	return glmr
 	
-	# f,df,fit = aov(y, design.X, design.contrasts, Q)
-	# return res, design, fit
-	return _assemble_spm_objects(res, design, fit, roi)
+	# # print(res)
+	# # print(fit)
+	#
+	# # f,df,fit = aov(y, design.X, design.contrasts, Q)
+	# # return res, design, fit
+	# return _assemble_spm_objects(glmr, roi)
+
 
 
 
