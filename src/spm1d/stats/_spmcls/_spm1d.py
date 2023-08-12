@@ -21,7 +21,7 @@ class SPM1D(_SPMParent):
 	def __init__(self, results, design, fit, contrast, roi=None):
 		self._args          = None            # arguments for spm1d.stats function
 		self._kwargs        = None            # keyword arguments for spm1d.stats function
-		self.testname       = None            # hypothesis test name (set using set_testname method)
+		# self.testname       = None            # hypothesis test name (set using set_testname method)
 		self.design         = design
 		self.contrast       = contrast
 		self.fit            = fit
@@ -107,6 +107,9 @@ class SPM1D(_SPMParent):
 	@property
 	def ss(self):
 		return self.results.ss if self.isanova else None
+	@property
+	def testname(self):
+		return self.design.testname
 	@property
 	def z(self):
 		return self.results.z

@@ -91,6 +91,8 @@ class SPM0Di(_SPMiParent):
 		dp.add( 'method' )
 		dp.add( 'isparametric' )
 		dp.add( 'alpha' )
+		if self.STAT == 'T':
+			dp.add( 'dirn' )
 		dp.add( 'dirn' )
 		dp.add( 'zc', fmt='%.5f' )
 		dp.add( 'h0reject' )

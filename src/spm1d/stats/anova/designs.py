@@ -24,6 +24,9 @@ class _Design(object):
 	@property
 	def nfactors(self):
 		return len( self.factors )
+	@property
+	def testname(self):
+		return self.__class__.__name__.lower()
 	# @property
 	# def testname(self):
 	# 	return self.__class__.__name__.lower()
