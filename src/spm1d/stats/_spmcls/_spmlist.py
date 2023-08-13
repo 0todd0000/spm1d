@@ -209,16 +209,17 @@ class SPMFList(list):
 
 
 		if method in ['param', 'rft']:
-			FFi     = SPMFiList(self,  [f.inference(alpha=alpha, **kwargs)   for f in self]  )
+			# FFi     = SPMFiList(self,  [f.inference(alpha=alpha, **kwargs)   for f in self]  )
+			FFi     = SPMFiList(  [f.inference(alpha=alpha, **kwargs)   for f in self]  )
 			
 		elif method == 'perm':
 			z       = np.array([f.z for f in self])
 			nperm   = kwargs['nperm']
 			results = prob.perm(self.STAT, z, alpha=alpha, testname=self.testname, args=self._args, nperm=nperm, dim=self.dim)
-			FFi     = SPMFiList(self,   [f._build_spmi(res, dfa)  for f,res in zip(self, results)]   )
+			FFi     = SPMFiList( [f._build_spmi(res, dfa)  for f,res in zip(self, results)]   )
 			
 		elif method == 'fdr':
-			FFi     = SPMFiList(self,  [f.inference(alpha=alpha, method='fdr', **kwargs)   for f in self]  )
+			FFi     = SPMFiList( [f.inference(alpha=alpha, method='fdr', **kwargs)   for f in self]  )
 		
 
 		# FFi.set_design_label( self.design )
@@ -270,9 +271,9 @@ class SPMFList(list):
 class SPMFiList(SPMFList):
 	name          = 'SPM{F} inference list'
 	
-	def __init__(self, spmlist, spmis):
-		super().__init__(spmis)
-		self.testname = spmlist.testname
+	# def __init__(self, spmlist, spmis):
+	# 	super().__init__(spmis)
+	# 	# self.testname = spmlist.testname
 	
 	
 	@property

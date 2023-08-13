@@ -277,16 +277,23 @@ class SPM1D(_SPMParent):
 		
 		# spmi = self._build_spmi(results, df_adjusted=dfa)
 		
-		from . _spm1di import SPM1Di
-		spmi = SPM1Di(self, iresults, dfa)
+		# from . _spm1di import SPM1Di
+		# spmi = SPM1Di(self, iresults, dfa)
 		
+		
+		from . _spm1di import SPM1Di
+		from copy import deepcopy
+		
+		spmi = deepcopy( self )
+		spmi.__class__ = SPM1Di
+		spmi._set_inference_results( iresults, dfa )
 		
 		# spmi._iargs   = (alpha,)
 		# spmi._ikwargs = dict(method=method)
 		# spmi._ikwargs.update( **kwargs )
 		
 		
-		return( spmi )
+		return spmi
 		
 		
 	def normality_test(self, alpha=0.05):
