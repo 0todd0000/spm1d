@@ -11,7 +11,6 @@ This module contains class definitions for 0D SPMs.
 # Copyright (C) 2023  Todd Pataky
 
 
-# from copy import deepcopy
 import numpy as np
 from . _spm import _SPM
 from ... util import dflist2str, tuple2str, DisplayParams
@@ -22,15 +21,7 @@ from ... util import dflist2str, tuple2str, DisplayParams
 
 class SPM0D(_SPM):
 	
-	dim                     =  0
-
-	def __init__(self, design, model, fit, teststat, roi=None):
-		self._args          = None            # arguments for spm1d.stats function
-		self._kwargs        = None            # keyword arguments for spm1d.stats function
-		self.design         = design
-		self.model          = model
-		self.fit            = fit
-		self.teststat       = teststat
+	dim         =  0
 
 	def __repr__(self):
 		dp      = DisplayParams( self )
@@ -50,37 +41,6 @@ class SPM0D(_SPM):
 			dp.add( 'name_short' )
 		
 		return dp.asstr()
-		
-	@property
-	def STAT(self):
-		return self.teststat.STAT
-	@property
-	def contrast(self):
-		return self.design.contrasts[ self.teststat.ind ]
-	@property
-	def df(self):
-		return self.teststat.df
-	@property
-	def ms(self):
-		return self.teststat.ms if self.isanova else None
-	@property
-	def name(self):
-		return self.contrast.name
-	@property
-	def name_s(self):
-		return self.contrast.name_s
-	@property
-	def name_short(self):
-		return self.contrast.name_s
-	@property
-	def ss(self):
-		return self.teststat.ss if self.isanova else None
-	@property
-	def testname(self):
-		return self.design.testname
-	@property
-	def z(self):
-		return self.teststat.z
 
 
 	# def _adjust_df(self):
@@ -129,16 +89,13 @@ class SPM0D(_SPM):
 		return '%.3f' %self.z
 	
 	
+
 	def inference(self, alpha, method='param', **kwargs):
 		from . _argparsers import InferenceArgumentParser0D
 		parser   = InferenceArgumentParser0D(self.STAT, method)
 		parser.parse( alpha, **kwargs )
-		# print( parser.kwargs )
 
-		from copy import deepcopy
 		from ... import prob
-		from . _spmi import SPM0Di
-		
 
 		if method == 'param':
 			dfa = self.df
@@ -156,27 +113,11 @@ class SPM0D(_SPM):
 			# iresults = prob.perm(self.STAT, self.z, alpha=alpha, testname=self.testname, args=self._args, nperm=nperm, dirn=dirn)
 			iresults = prob.perm(self.STAT, self.z, alpha=alpha, testname=self.testname, args=self._args, nperm=nperm, **kwargs)
 			
-			
-			
 			# spmi = self._inference_perm(alpha, **parser.kwargs)
 
-		spmi             = deepcopy( self )
-		spmi.__class__   = SPM0Di
-		# spmi             = SPM0Di(self, iresults, dfa)
-		spmi._set_inference_results( iresults, dfa )
-		
-
-		spmi._iargs   = (alpha,)
-		spmi._ikwargs = dict(method=method)
-		spmi._ikwargs.update( **kwargs )
-
-		return spmi
+		return self._iresults2spmi(iresults, dfa, alpha, method, kwargs)
 
 
-
-	# def normality_test(self, alpha=0.05):
-	# 	from .. normality.k2 import residuals
-	# 	return residuals( self.residuals ).inference( alpha )
 
 
 

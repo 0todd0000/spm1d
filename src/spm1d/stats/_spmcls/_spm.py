@@ -23,6 +23,21 @@ class _SPM(object):
 	ismultigroup   = False
 	testname       = None
 
+
+	def __init__(self, design, model, fit, teststat, roi=None):
+		self._args          = None            # arguments for spm1d.stats function
+		self._kwargs        = None            # keyword arguments for spm1d.stats function
+		self.design         = design
+		self.model          = model
+		self.fit            = fit
+		self.teststat       = teststat
+		if self.dim == 1:
+			self.sm         = None  # smoothness estimates
+			self.roi        = roi
+			self._estimate_smoothness()
+	
+
+
 	def __eq__(self, other):
 		return self.isequal(other, verbose=False)
 		# if type(self)!=type(other):
@@ -64,6 +79,22 @@ class _SPM(object):
 		return s
 	
 	
+	def _iresults2spmi(self, iresults, dfa, alpha, method, kwargs):
+		from copy import deepcopy
+		if self.dim == 0:
+			from . _spmi import SPM0Di as SPMi
+		else:
+			from . _spmi import SPM1Di as SPMi
+		spmi             = deepcopy( self )
+		spmi.__class__   = SPMi
+		spmi._set_inference_results( iresults, dfa )
+		
+
+		spmi._iargs   = (alpha,)
+		spmi._ikwargs = dict(method=method)
+		spmi._ikwargs.update( kwargs )
+		return spmi
+	
 	def _reexec(self):
 		import spm1d
 		fn  = eval(  f'spm1d.stats.{self.testname}'  )
@@ -75,7 +106,49 @@ class _SPM(object):
 	
 	
 	
-
+	# @property
+	# def R(self):
+	#     return self.residuals
+	@property
+	def STAT(self):
+		return self.teststat.STAT
+	@property
+	def contrast(self):
+		return self.design.contrasts[ self.teststat.ind ]
+	@property
+	def df(self):
+		return self.teststat.df
+	# @property
+	# def effect_label(self):
+	# 	return self.name
+	@property
+	def ms(self):
+		return self.teststat.ms if self.isanova else None
+	@property
+	def name(self):
+		return self.contrast.name
+	@property
+	def name_s(self):
+		return self.contrast.name_s
+	@property
+	def name_short(self):
+		return self.contrast.name_s
+	@property
+	def residuals(self):
+		return self.fit.e
+	@property
+	def ss(self):
+		return self.teststat.ss if self.isanova else None
+	@property
+	def testname(self):
+		return self.design.testname
+	@property
+	def z(self):
+		return self.teststat.z
+	
+	
+	
+	
 	
 	
 	@property
@@ -95,6 +168,9 @@ class _SPM(object):
 		return h
 
 
+	def inference(self, alpha, **kwargs):  # abstract method
+		pass
+	
 	def isequal(self, other, verbose=False):
 		if type(self)!=type(other):
 			return False

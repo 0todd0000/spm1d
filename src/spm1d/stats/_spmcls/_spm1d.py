@@ -5,7 +5,6 @@ SPM1D class definition
 
 # Copyright (C) 2023  Todd Pataky
 
-from copy import deepcopy
 import numpy as np
 from . _spm import _SPM
 from ... util import array2shortstr, arraytuple2str, dflist2str, resels2str, DisplayParams
@@ -16,17 +15,6 @@ from ... util import array2shortstr, arraytuple2str, dflist2str, resels2str, Dis
 class SPM1D(_SPM):
 	dim                     = 1
 
-	def __init__(self, design, model, fit, teststat, roi=None):
-		self._args          = None            # arguments for spm1d.stats function
-		self._kwargs        = None            # keyword arguments for spm1d.stats function
-		self.design         = design
-		self.model          = model
-		self.fit            = fit
-		self.teststat       = teststat
-		self.sm             = None  # smoothness estimates
-		self.roi            = roi
-		self._estimate_smoothness()
-		
 
 	# def __eq__(self, other):
 	# 	eq = True
@@ -70,54 +58,20 @@ class SPM1D(_SPM):
 	def _estimate_smoothness(self):
 		from ... geom.smoothness import SmoothnessEstimates
 		self.sm     = SmoothnessEstimates( self.residuals, method='rft1d', roi=None )
+
+
+	# repr private methods:
 	def _repr_corrcoeff(self):
 		return '(1x%d) correlation coefficient field' %self.Q
+	def _repr_summ(self):  # for F lists
+		return '{:<5} z = {:<18} df = {}\n'.format(self.name_s,  self._repr_teststat_short(), dflist2str(self.df))
 	def _repr_teststat(self):
 		return '(1x%d) test stat field' %self.Q
 	def _repr_teststat_short(self):
 		return '(1x%d) array' %self.Q
-	def _repr_summ(self):  # for F lists
-		return '{:<5} z = {:<18} df = {}\n'.format(self.name_s,  self._repr_teststat_short(), dflist2str(self.df))
 	
 	
 	
-	@property
-	def STAT(self):
-		return self.teststat.STAT
-	@property
-	def contrast(self):
-		return self.design.contrasts[ self.teststat.ind ]
-	@property
-	def df(self):
-		return self.teststat.df
-	@property
-	def effect_label(self):
-		return self.name
-	@property
-	def ms(self):
-		return self.teststat.ms if self.isanova else None
-	@property
-	def name(self):
-		return self.contrast.name
-	@property
-	def name_s(self):
-		return self.contrast.name_s
-	@property
-	def name_short(self):
-		return self.contrast.name_s
-	@property
-	def residuals(self):
-		return self.fit.e
-	@property
-	def ss(self):
-		return self.teststat.ss if self.isanova else None
-	@property
-	def testname(self):
-		return self.design.testname
-	@property
-	def z(self):
-		return self.teststat.z
-
 
 	# smoothness parameters:
 	@property
@@ -131,9 +85,6 @@ class SPM1D(_SPM):
 		return self.sm.resels
 
 
-	# @property
-	# def R(self):
-	#     return self.residuals
 	# @property
 	# def nNodes(self):
 	# 	return self.Q
@@ -151,12 +102,11 @@ class SPM1D(_SPM):
 	
 	
 	def inference(self, alpha, method='rft', **kwargs):
-		from copy import deepcopy
-		from . _spmi import SPM1Di
-		from ... import prob
 		# from . _argparsers import InferenceArgumentParser1D
 		# parser   = InferenceArgumentParser1D(self.STAT, self.testname, method)
 		# kwargs   = parser.parse( alpha, **kwargs )
+		
+		from ... import prob
 		
 		if method == 'rft':
 			iresults = prob.rft(self.STAT, self.z, self.df, self.fwhm, self.resels, alpha=alpha, **kwargs)
@@ -181,22 +131,10 @@ class SPM1D(_SPM):
 		
 		dfa  = self.df
 		
-		spmi = deepcopy( self )
-		spmi.__class__ = SPM1Di
-		spmi._set_inference_results( iresults, dfa )
-		
-		# spmi._iargs   = (alpha,)
-		# spmi._ikwargs = dict(method=method)
-		# spmi._ikwargs.update( **kwargs )
-		
-		return spmi
-		
-		
-	# def normality_test(self, alpha=0.05):
-	# 	from .. normality.k2 import residuals
-	# 	return residuals( self.residuals ).inference( alpha )
+		return self._iresults2spmi(iresults, dfa, alpha, method, kwargs)
 
 
+		
 	def plot(self, **kwdargs):
 		from ... plot import plot_spm
 		return plot_spm(self, **kwdargs)
