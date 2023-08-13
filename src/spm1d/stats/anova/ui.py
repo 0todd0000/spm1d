@@ -11,6 +11,21 @@ from .. _dec import appendSPMargs
 # 		self.stats   = stats
 
 
+def _assemble_spm_objects(design, model, fit, teststats, roi=None):
+	if fit.dvdim==0:
+		from .. _spmcls import SPM0D
+		# spm = [SPM0D(r, design, fit, c)  for r,c in zip(results, design.contrasts)]
+		spm = [SPM0D(design, model, fit, s)  for s in teststats]
+	else:
+		from .. _spmcls import SPM1D
+		spm = [SPM1D(design, model, fit, s, roi)  for s in teststats]
+	if len(spm)==1:
+		spm = spm[0]
+	else:
+		from .. _spmcls import SPMFList
+		spm = SPMFList( spm )
+	return spm
+
 
 def aov(y, X, C, Q, gg=False, _Xeff=None):
 	from . models import GeneralLinearModel
@@ -26,10 +41,25 @@ def aov(y, X, C, Q, gg=False, _Xeff=None):
 
 
 def anova1(y, A, equal_var=False):
+	if not equal_var:
+		raise NotImplementedError('variance components not yet implemented for anova1')
+	
 	from . designs import ANOVA1
 	design   = ANOVA1( A )
-	Q        = design.get_variance_model( equal_var=equal_var )
-	return aov(y, design.X, design.C, Q)
+	# Q        = design.get_variance_model( equal_var=equal_var )
+	
+	# temporary variance components:
+	import numpy as np
+	J       = A.size
+	QQ      = [np.eye(J)]
+	
+	
+	model,fit,teststats = aov(y, design.X, design.C, QQ)
+	
+	return _assemble_spm_objects(design, model, fit, teststats)
+	
+	
+	# return aov(y, design.X, design.C, Q)
 	
 	
 def anova1rm(y, A, SUBJ, equal_var=False, gg=True):
@@ -58,20 +88,6 @@ def anova1rm(y, A, SUBJ, equal_var=False, gg=True):
 
 
 
-def _assemble_spm_objects(design, model, fit, teststats, roi=None):
-	if fit.dvdim==0:
-		from .. _spmcls import SPM0D
-		# spm = [SPM0D(r, design, fit, c)  for r,c in zip(results, design.contrasts)]
-		spm = [SPM0D(design, model, fit, s)  for s in teststats]
-	else:
-		from .. _spmcls import SPM1D
-		spm = [SPM1D(design, model, fit, s, roi)  for s in teststats]
-	if len(spm)==1:
-		spm = spm[0]
-	else:
-		from .. _spmcls import SPMFList
-		spm = SPMFList( spm )
-	return spm
 
 
 # @appendSPMargs
@@ -85,8 +101,8 @@ def anova2(y, A, B, equal_var=False, roi=None):
 	# temporary variance components:
 	import numpy as np
 	J       = A.size
-	Q       = [np.eye(J)]
+	QQ      = [np.eye(J)]
 
-	model,fit,teststats = aov(y, design.X, design.C, Q)
+	model,fit,teststats = aov(y, design.X, design.C, QQ)
 	
 	return _assemble_spm_objects(design, model, fit, teststats)

@@ -1,7 +1,10 @@
 
 import numpy as np
+from . contrasts import Contrast #, ContrastList
 from . factors import Factor
 from ... util import array2shortstr, arraytuple2str, dflist2str, objectlist2str, resels2str, DisplayParams
+
+
 
 class _Design(object):
 	def __init__(self):
@@ -65,7 +68,12 @@ class ANOVA1(_Design):
 		for i in range(n-1):
 			C[i,i]   = 1
 			C[i,i+1] = -1
-		return [C.T]
+			
+		C = Contrast( C.T, factors=self.factors, ind=0 )
+	
+		return [C]
+		
+		# return [C.T]
 
 	def _build_design_matrix(self):
 		return self.factors[0].get_design_main()
@@ -133,7 +141,7 @@ class ANOVA2(_Design):
 
 
 	def _build_contrasts(self):
-		from . contrasts import Contrast #, ContrastList
+		# from . contrasts import Contrast #, ContrastList
 		
 		fA,fB = self.factors
 		n     = self.X.shape[1]
