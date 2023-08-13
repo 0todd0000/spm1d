@@ -1,6 +1,7 @@
 
 import numpy as np
 from . factors import Factor
+from ... util import array2shortstr, arraytuple2str, dflist2str, resels2str, DisplayParams
 
 class _Design(object):
 	def __init__(self):
@@ -8,6 +9,29 @@ class _Design(object):
 		self.contrasts     = None   # contrast objects
 		self.factors       = None   # list of factor objects
 		
+	
+	def __repr__(self):
+		dp      = DisplayParams( self )
+		# dp.add_default_header()
+		dp.add_header( f'Design ({self.__class__.__name__})' )
+		dp.add( 'testname' )
+		dp.add( 'X' , array2shortstr )
+		# dp.add( 'testname' )
+		# dp.add( 'STAT' )
+		# if self.isanova:
+		# 	dp.add( 'effect_label' )
+		# 	dp.add( 'ss' , array2shortstr )
+		# 	dp.add( 'ms' , array2shortstr )
+		# dp.add( 'z', fmt=array2shortstr )
+		# if self.isregress:
+		# 	dp.add('r', fmt=array2shortstr )
+		# dp.add( 'df', fmt=dflist2str )
+		# dp.add_header( 'Smoothness estimates:' )
+		# dp.add( 'fwhm', fmt='%.3f' )
+		# dp.add( 'lkc', fmt='%.3f' )
+		# dp.add( 'resels', fmt=resels2str )
+		return dp.asstr()
+	
 	def _init_factors(self, *AA):
 		self.factors = [Factor(A, name=chr(65+i))   for i,A in enumerate(AA)]
 		# s0,s1        = factor_names

@@ -17,6 +17,9 @@ class DisplayParams(list):
 			if v is not None:
 				yield k
 
+	def add_default_header(self):
+		self.add_header( self.obj.__class__.__name__ )
+	
 	def add_header(self, s):
 		self.append( (s, None) )
 		

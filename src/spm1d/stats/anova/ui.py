@@ -92,19 +92,42 @@ class GLMResults(object):
 		self.stats   = stats
 
 
-def aov(y, design, Q, gg=False, _Xeff=None):
+# def aov(y, design, Q, gg=False, _Xeff=None):
+# 	from . models import GeneralLinearModel
+# 	model    = GeneralLinearModel()
+# 	model.set_design_matrix( design.X )
+# 	model.set_variance_model( Q )
+# 	fit      = model.fit( y )
+# 	stats    = [fit.calculate_f_stat( c, gg=gg, _Xeff=_Xeff )   for c in design.C]
+# 	glmr     = GLMResults(design, model, fit, stats)
+# 	return glmr
+# 	# for c in C:
+# 	# 	res  =
+# 	#
+# 	# 	model.set_contrast_matrix( c.C )
+# 	# 	fit.calculate_effective_df( _Xeff )
+# 	# 	fit.calculate_f_stat()
+# 	# 	if gg:
+# 	# 		fit.adjust_df_greenhouse_geisser()
+# 	# 	f.append( fit._f )
+# 	# 	df.append( fit._df )
+# 	# 	ms.append( fit._ms )
+# 	# 	ss.append( fit._ss )
+# 	# return f, df, fit
+#
+
+
+def aov(y, X, C, Q, gg=False, _Xeff=None):
 	from . models import GeneralLinearModel
-	model    = GeneralLinearModel()
-	model.set_design_matrix( design.X )
+	model     = GeneralLinearModel()
+	model.set_design_matrix( X )
 	model.set_variance_model( Q )
 	fit      = model.fit( y )
-	stats    = [fit.calculate_f_stat( c, gg=gg, _Xeff=_Xeff )   for c in design.C]
-	
-	glmr     = GLMResults(design, model, fit, stats)
-	
-	
-	
-	return glmr
+	# stats    = [fit.calculate_f_stat( c, gg=gg, _Xeff=_Xeff )   for c in design.C]
+	# model.fit( y )
+	teststats = [fit.calculate_f_stat( c, gg=gg, _Xeff=_Xeff )   for c in C]
+	# glmr     = GLMResults(design, model, fit, stats)
+	return model, fit, teststats
 	# for c in C:
 	# 	res  =
 	#
@@ -119,7 +142,8 @@ def aov(y, design, Q, gg=False, _Xeff=None):
 	# 	ss.append( fit._ss )
 	# return f, df, fit
 	
-
+	
+	
 
 
 
@@ -200,13 +224,34 @@ def anova1rm(y, A, SUBJ, equal_var=False, gg=True):
 # 		spm = SPMFList( spm )
 # 	return spm
 
-def _assemble_spm_objects(glmr, roi=None):
+# def _assemble_spm_objects(glmr, roi=None):
+# 	if fit.dvdim==0:
+# 		from .. _spmcls import SPM0D
+# 		spm = [SPM0D(r, design, fit, c)  for r,c in zip(results, design.contrasts)]
+# 	else:
+# 		from .. _spmcls import SPM1D
+# 		spm = [SPM1D(r, design, fit, c, roi)  for r,c in zip(results, design.contrasts)]
+# 	# spm = [_SPM('F', ff, ddf, beta=None, residuals=None, sigma2=None, X=None)  for ff,ddf in zip(f,df)]
+# 	# spm = [_SPM('F', ff, ddf, design, fit, c)  for ff,ddf,c in zip(f,df,design.contrasts)]
+# 	# spm = [_SPM('F', r.f, r.df, design, fit, c)  for r,c in zip(results, design.contrasts)]
+# 	# spm = [_SPM(r, design, fit, c)  for r,c in zip(results, design.contrasts)]
+# 	if len(spm)==1:
+# 		spm = spm[0]
+# 	else:
+# 		from .. _spmcls import SPMFList
+# 		spm = SPMFList( spm )
+# 	return spm
+
+
+def _assemble_spm_objects(design, model, fit, teststats, roi=None):
 	if fit.dvdim==0:
 		from .. _spmcls import SPM0D
 		spm = [SPM0D(r, design, fit, c)  for r,c in zip(results, design.contrasts)]
 	else:
 		from .. _spmcls import SPM1D
-		spm = [SPM1D(r, design, fit, c, roi)  for r,c in zip(results, design.contrasts)]
+		# spm = [SPM1D(r, design, fit, c, roi)  for r,c in zip(results, design.contrasts)]
+		# spm = [SPM1D(r, design, fit, c, roi)  for r,c in zip(results, design.contrasts)]
+		spm = [SPM1D(design, model, fit, s, roi)  for s in teststats]
 	# spm = [_SPM('F', ff, ddf, beta=None, residuals=None, sigma2=None, X=None)  for ff,ddf in zip(f,df)]
 	# spm = [_SPM('F', ff, ddf, design, fit, c)  for ff,ddf,c in zip(f,df,design.contrasts)]
 	# spm = [_SPM('F', r.f, r.df, design, fit, c)  for r,c in zip(results, design.contrasts)]
@@ -241,14 +286,19 @@ def anova2(y, A, B, equal_var=False, roi=None):
 	# # f,df,fit = aov(y, design.X, design.contrasts, Q)
 	# # return res, design, fit
 	# return _assemble_spm_objects(res, design, fit, roi)
-
-
-	# glmr = aov(y, design.X, design.C, Q)
+	model,fit,teststats = aov(y, design.X, design.C, Q)
+	# return glm,stats
 	
-	glmr = aov(y, design, Q)
-	# print( glmr )
-	return glmr
-	
+	return _assemble_spm_objects(design, model, fit, teststats)
+
+	# # # glmr = aov(y, design.X, design.C, Q)
+	# # glmr = aov(y, design, Q)
+	# #
+	# # # glmr = aov(y, design, Q)
+	# # # # print( glmr )
+	# # # return glmr
+	# # return _assemble_spm_objects(glmr, roi)
+	#
 	# # print(res)
 	# # print(fit)
 	#
