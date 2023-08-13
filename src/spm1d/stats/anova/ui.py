@@ -61,7 +61,8 @@ def anova1rm(y, A, SUBJ, equal_var=False, gg=True):
 def _assemble_spm_objects(design, model, fit, teststats, roi=None):
 	if fit.dvdim==0:
 		from .. _spmcls import SPM0D
-		spm = [SPM0D(r, design, fit, c)  for r,c in zip(results, design.contrasts)]
+		# spm = [SPM0D(r, design, fit, c)  for r,c in zip(results, design.contrasts)]
+		spm = [SPM0D(design, model, fit, s)  for s in teststats]
 	else:
 		from .. _spmcls import SPM1D
 		spm = [SPM1D(design, model, fit, s, roi)  for s in teststats]

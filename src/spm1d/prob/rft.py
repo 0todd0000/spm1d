@@ -3,7 +3,6 @@
 Common parametric (0D) probabilities
 '''
 
-from copy import deepcopy
 import numpy as np
 from .. geom import assemble_clusters
 from .. util import array2shortstr, arraytuple2str, dflist2str, float2string, largeint2str, resels2str, p2string, plist2string, DisplayParams
@@ -54,8 +53,6 @@ class RFTResults(object):
 		elif self.dirn==-1:
 			h       = self.z.min() < -zc
 		return h
-
-
 
 	@property
 	def p_cluster(self):

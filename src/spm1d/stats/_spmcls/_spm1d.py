@@ -7,16 +7,13 @@ SPM1D class definition
 
 from copy import deepcopy
 import numpy as np
-from . _base import _SPMParent
-from ... import prob
-# from ... plot import plot_spm, plot_spm_design
-# from ... plot import plot_spmi, plot_spmi_p_values, plot_spmi_threshold_label
+from . _spm import _SPM
 from ... util import array2shortstr, arraytuple2str, dflist2str, resels2str, DisplayParams
 
 
 
 
-class SPM1D(_SPMParent):
+class SPM1D(_SPM):
 	dim                     = 1
 
 	def __init__(self, design, model, fit, teststat, roi=None):
@@ -155,7 +152,8 @@ class SPM1D(_SPMParent):
 	
 	def inference(self, alpha, method='rft', **kwargs):
 		from copy import deepcopy
-		from . _spm1di import SPM1Di
+		from . _spmi import SPM1Di
+		from ... import prob
 		# from . _argparsers import InferenceArgumentParser1D
 		# parser   = InferenceArgumentParser1D(self.STAT, self.testname, method)
 		# kwargs   = parser.parse( alpha, **kwargs )
@@ -194,9 +192,9 @@ class SPM1D(_SPMParent):
 		return spmi
 		
 		
-	def normality_test(self, alpha=0.05):
-		from .. normality.k2 import residuals
-		return residuals( self.residuals ).inference( alpha )
+	# def normality_test(self, alpha=0.05):
+	# 	from .. normality.k2 import residuals
+	# 	return residuals( self.residuals ).inference( alpha )
 
 
 	def plot(self, **kwdargs):

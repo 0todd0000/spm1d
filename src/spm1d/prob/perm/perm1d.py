@@ -6,6 +6,10 @@ from ... geom import assemble_clusters, ClusterList
 
 
 class PermResults1D(object):
+	
+	isparametric      = False
+	method            = 'perm'
+	
 	def __init__(self, alpha, dirn, zc, clusters, p_max, p_set, permuter, nperm):
 		self.method   = 'perm'
 		self.alpha    = alpha

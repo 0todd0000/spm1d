@@ -65,11 +65,17 @@ class TestStatisticF(object):
 		dp.add( 'STAT' )
 		dp.add( 'C', array2shortstr )
 		dp.add( 'ind' )
-		dp.add( 'z', array2shortstr )
+		_astr      = array2shortstr if self.dvdim==1 else None
+		dp.add( 'z', _astr )
 		dp.add( 'df', dflist2str )
-		dp.add( 'ms', array2shortstr )
-		dp.add( 'ss', array2shortstr )
+		dp.add( 'ms', _astr )
+		dp.add( 'ss', _astr )
 		return dp.asstr()
+		
+		
+	@property
+	def dvdim(self):
+		return 0 if isinstance(self.z, float) else 1
 
 
 class GLMFit(object):
@@ -107,8 +113,12 @@ class GLMFit(object):
 		dp.add( 'e', array2shortstr )
 		dp.add( 'V', array2shortstr )
 		dp.add( 'h', scalarlist2string )
-		dp.add( 'mse', array2shortstr )
-		dp.add( 'sse', array2shortstr )
+		if self.dvdim == 0:
+			dp.add( 'mse' )
+			dp.add( 'sse' )
+		else:
+			dp.add( 'mse', array2shortstr )
+			dp.add( 'sse', array2shortstr )
 		return dp.asstr()
 
 

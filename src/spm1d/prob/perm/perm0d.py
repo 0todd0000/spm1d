@@ -4,6 +4,10 @@ from . permuters import get_permuter
 
 
 class PermResults0D(object):
+	
+	isparametric      = False
+	method            = 'perm'
+	
 	def __init__(self, alpha, dirn, zc, p, permuter, nperm):
 		self.method   = 'perm'
 		self.alpha    = alpha

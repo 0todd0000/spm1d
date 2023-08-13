@@ -23,7 +23,8 @@ class DisplayParams(list):
 	def add_header(self, s):
 		self.append( (s, None, None) )
 		
-	def add(self, key, fmt='%s', suffix=None):
+	def add(self, key, fmt=None, suffix=None):
+		fmt = '%s' if (fmt is None) else fmt
 		self.append( (key,fmt,suffix) )
 
 	def asstr(self):

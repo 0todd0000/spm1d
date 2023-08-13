@@ -4,18 +4,53 @@ Common parametric (0D) probabilities
 '''
 
 import numpy as np
+from .. util import array2shortstr, arraytuple2str, dflist2str, float2string, largeint2str, resels2str, p2string, plist2string, DisplayParams
+from .. util import p2string_none, plist2string_none, float2string_none
 
 
 
 class ParamResults(object):
-	def __init__(self, alpha, dirn, zc, p):
-		self.method   = 'param'
+	
+	isparametric      = True
+	method            = 'param'
+	
+	def __init__(self, STAT, z, alpha, dirn, zc, p):
+		self.STAT     = STAT
+		self.z        = z
 		self.alpha    = alpha
 		self.dirn     = dirn
 		self.zc       = zc
 		self.p        = p
 		self.extras   = {}
 		
+
+	def __repr__(self):
+		dp      = DisplayParams( self )
+		dp.add_header( 'Inference results:' )
+		dp.add( 'method' )
+		dp.add( 'isparametric' )
+		dp.add( 'alpha' )
+		if self.STAT == 'T':
+			dp.add( 'dirn' )
+		dp.add( 'zc', float2string_none )
+		dp.add( 'h0reject' )
+		dp.add( 'p', p2string )
+		return dp.asstr()
+
+	@property
+	def h0reject(self):
+		zc       = self.zc
+		if zc is None:
+			return False
+		if self.dirn in (None,1):
+			h       = self.z > zc
+		elif self.dirn==0:
+			h       = (self.z < -zc) or (self.z > zc)
+		elif self.dirn==-1:
+			h       = self.z < -zc
+		return h
+
+
 
 def isf_sf_t(z, df, alpha=0.05, dirn=0):
 	import rft1d
@@ -35,24 +70,24 @@ def isf_sf_t(z, df, alpha=0.05, dirn=0):
 # 	return zc,p
 
 
-def param(stat, z, df, alpha=0.05, dirn=None):
+def param(STAT, z, df, alpha=0.05, dirn=None):
 	import rft1d
-	if stat=='T':
+	if STAT=='T':
 		v    = df[1] if isinstance(df, (list,tuple,np.ndarray)) else df
 		zc,p = isf_sf_t(z, v, alpha, dirn=dirn)
-	elif stat=='F':
+	elif STAT=='F':
 		zc   = rft1d.f.isf0d( alpha, df )
 		p    = rft1d.f.sf0d( z, df )
-	elif stat=='T2':
+	elif STAT=='T2':
 		zc   = rft1d.T2.isf0d( alpha, df )
 		p    = rft1d.T2.sf0d( z, df )
-	elif stat=='X2':
+	elif STAT=='X2':
 		v    = df[1] if isinstance(df, (list,tuple,np.ndarray)) else df
 		zc   = rft1d.chi2.isf0d( alpha, v )
 		p    = rft1d.chi2.sf0d( z, v )
 	else:
 		raise ValueError( f'Unknown statistic: {stat}. Must be one of: ["T", "F", "T2", "X2"]' )
-	results = ParamResults( alpha, dirn, zc, p )
+	results = ParamResults( STAT, z, alpha, dirn, zc, p )
 	return results
 
 

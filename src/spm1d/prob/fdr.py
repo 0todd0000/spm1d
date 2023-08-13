@@ -11,6 +11,10 @@ eps    = np.finfo(float).eps  #smallest floating number greater than zero
 
 
 class FDRResults(object):
+	
+	isparametric      = True
+	method            = 'fdr'
+	
 	def __init__(self, alpha, dirn, zc, clusters, pu, pc):
 		self.method        = 'fdr'
 		self.alpha         = alpha
