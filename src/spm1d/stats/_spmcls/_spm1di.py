@@ -14,11 +14,12 @@ import warnings
 from . _base import _SPMiParent
 from . _spm1d import SPM1D
 from ... util import array2shortstr, arraytuple2str, dflist2str, float2string, largeint2str, resels2str, p2string, plist2string, DisplayParams
+from ... util import p2string_none, plist2string_none, float2string_none
 from ... cfg import SPM1DDeprecationWarning
 
-p2string_none     = lambda x: p2string(x, allow_none=True, fmt='%.3f')
-plist2string_none = lambda x: plist2string(x, allow_none=True, fmt='%.3f')
-float2string_none = lambda x: float2string(x, allow_none=True, fmt='%.5f')
+# p2string_none     = lambda x: p2string(x, allow_none=True, fmt='%.3f')
+# plist2string_none = lambda x: plist2string(x, allow_none=True, fmt='%.3f')
+# float2string_none = lambda x: float2string(x, allow_none=True, fmt='%.5f')
 
 
 
@@ -99,9 +100,12 @@ class SPM1Di(_SPMiParent, SPM1D):
 	# @property
 	# def p(self):
 	# 	return self.p_cluster
+	# @property
+	# def p_cluster(self):
+	# 	return [c.p  for c in self.iresults.clusters]
 	@property
 	def p_cluster(self):
-		return [c.p  for c in self.iresults.clusters]
+		return self.iresults.p_cluster
 	@property
 	def p_max(self):
 		return self.iresults.p_max
@@ -152,26 +156,28 @@ class SPM1Di(_SPMiParent, SPM1D):
 	
 	def __repr__(self):
 		s0      = super().__repr__()
-		dp      = DisplayParams( self )
-		dp.add_header( 'Inference:' )
-		dp.add( 'method' )
-		dp.add( 'isparametric' )
-		dp.add( 'alpha' )
-		if self.STAT == 'T':
-			dp.add( 'dirn' )
-		dp.add( 'zc', float2string_none )
-		dp.add( 'h0reject' )
-		dp.add( 'p_max', p2string_none )
-		dp.add( 'p_set', p2string_none )
-		dp.add( 'p_cluster', plist2string_none )
-		if len( self.extras ) > 0:
-			dp.add_header( 'extras:' )
-			for k,v in self.extras.items():
-				if k=='nperm_possible':
-					dp.add(k, largeint2str)
-				else:
-					dp.add(k)
-		return s0 + dp.asstr()
+		s1      = self.iresults.__repr__()
+		return s0 + s1
+		# dp      = DisplayParams( self )
+		# dp.add_header( 'Inference:' )
+		# dp.add( 'method' )
+		# dp.add( 'isparametric' )
+		# dp.add( 'alpha' )
+		# if self.STAT == 'T':
+		# 	dp.add( 'dirn' )
+		# dp.add( 'zc', float2string_none )
+		# dp.add( 'h0reject' )
+		# dp.add( 'p_max', p2string_none )
+		# dp.add( 'p_set', p2string_none )
+		# dp.add( 'p_cluster', plist2string_none )
+		# if len( self.extras ) > 0:
+		# 	dp.add_header( 'extras:' )
+		# 	for k,v in self.extras.items():
+		# 		if k=='nperm_possible':
+		# 			dp.add(k, largeint2str)
+		# 		else:
+		# 			dp.add(k)
+		# return s0 + dp.asstr()
 
 	# def __repr__(self):
 	# 	dp      = DisplayParams( self )
@@ -268,19 +274,25 @@ class SPM1Di(_SPMiParent, SPM1D):
 	# 		h       = self.z.min() < zc0
 	# 	return h
 
+	# @property
+	# def h0reject(self):
+	# 	zc       = self.zc
+	# 	if zc is None:
+	# 		return False
+	# 	if self.dirn in (None,1):
+	# 		h       = self.z.max() > zc
+	# 	elif self.dirn==0:
+	# 		h       = (self.z.min() < -zc) or (self.z.max() > zc)
+	# 	elif self.dirn==-1:
+	# 		h       = self.z.min() < -zc
+	# 	return h
+		
 	@property
 	def h0reject(self):
-		zc       = self.zc
-		if zc is None:
-			return False
-		if self.dirn in (None,1):
-			h       = self.z.max() > zc
-		elif self.dirn==0:
-			h       = (self.z.min() < -zc) or (self.z.max() > zc)
-		elif self.dirn==-1:
-			h       = self.z.min() < -zc
-		return h
+		return self.iresults.h0reject
 		
+
+
 		
 	# # inference proprties:
 	# self.method          = iresults.method

@@ -73,3 +73,9 @@ def resels2str(resels):
 
 def tuple2str(x, fmt='%.3f'):
 	return '(' +  ', '.join( (fmt%xx for xx in x) ) + ')'
+
+
+
+p2string_none     = lambda x: p2string(x, allow_none=True, fmt='%.3f')
+plist2string_none = lambda x: plist2string(x, allow_none=True, fmt='%.3f')
+float2string_none = lambda x: float2string(x, allow_none=True, fmt='%.5f')
