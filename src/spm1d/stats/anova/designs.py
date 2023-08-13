@@ -20,9 +20,6 @@ class _Design(object):
 	
 	def _init_factors(self, *AA):
 		self.factors = [Factor(A, name=chr(65+i))   for i,A in enumerate(AA)]
-		# s0,s1        = factor_names
-		# ss0,ss1      = factor_names_s
-		# self.factors = [ Factor(A, name=s0, name_s=ss0), Factor(B, name=s1, name_s=ss1) ]
 
 
 	@property
@@ -37,9 +34,6 @@ class _Design(object):
 	@property
 	def testname(self):
 		return self.__class__.__name__.lower()
-	# @property
-	# def testname(self):
-	# 	return self.__class__.__name__.lower()
 		
 	def _assemble(self):
 		self.X         = self._build_design_matrix()
@@ -91,27 +85,7 @@ class ANOVA1RM(_Design):
 		self.factors      = [ Factor(A, name='A'), Factor(SUBJ, name='SUBJ') ]
 		self._assemble()
 
-	# def _build_contrasts(self):
-	# 	n        = self.factors[0].nlevels
-	# 	C        = np.zeros( (n-1, n) )
-	# 	for i in range(n-1):
-	# 		C[i,i]   = 1
-	# 		C[i,i+1] = -1
-	# 	return C.T
-	#
-	# def _build_design_matrix(self):
-	# 	return self.factors[0].get_design_main()
-		
-	# def get_variance_model(self, equal_var=False):
-	# 	if equal_var:
-	# 		Q   = [np.eye(self.J)]
-	# 	else:
-	# 		A,u = self.factors[0].A, self.factors[0].u
-	# 		Q   = [np.asarray(np.diag( A==uu ), dtype=float)  for uu in u]
-	# 	return Q
-		
-	
-	
+
 	def _build_contrasts(self):
 		n        = self.factors[0].nlevels
 		C        = np.zeros( (n-1, n) )
@@ -125,49 +99,12 @@ class ANOVA1RM(_Design):
 		return [C.T]
 		
 
-		# n  = self.uA.size
-		# nz = self.X.shape[1] - n
-		# z  = np.zeros(  (n-1,  nz)  )
-		# C  = np.zeros( (n-1, n) )
-		# for i in range(n-1):
-		# 	C[i,i]   = 1
-		# 	C[i,i+1] = -1
-		# C        = np.hstack([C, z])
-		# self.C   = C.T
-
 	def _build_design_matrix(self):
 		XA       = self.factors[0].get_design_main()
 		XS       = self.factors[1].get_design_main()
-		# XS       =
-		#
-		#
-		# u        = self.uA
-		# n        = u.size
-		# X        = np.zeros( (self.J,n) )
-		# for i,uu in enumerate(u):
-		# 	X[:,i]  = self.A==uu
-		# XA       = X
-		
-		# XS = []
-		# for u in self.uS:
-		# 	x        = np.zeros(self.J)
-		# 	x[self.S==u] =  1
-		# 	XS.append(x)
-		# XS = np.vstack(XS).T
-		
 		return np.hstack( [XA, XS] )
 		
 		
-		
-	# def get_variance_model(self, equal_var=False):
-	# 	if equal_var:
-	# 		Q   = [np.eye(self.J)]
-	# 	else:
-	# 		A,u = self.factors[0].A, self.factors[0].u
-	# 		Q   = [np.asarray(np.diag( A==uu ), dtype=float)  for uu in u]
-	# 	return Q
-
-
 	def get_variance_model(self, equal_var=False):
 		if equal_var:
 			Q  = [np.eye(self.J)]
@@ -194,11 +131,6 @@ class ANOVA2(_Design):
 		self._init_factors( A, B )
 		self._assemble()
 
-
-	# def _init_factors(self, A, B):
-	# 	s0,s1        = factor_names
-	# 	ss0,ss1      = factor_names_s
-	# 	self.factors = [ Factor(A, name=s0, name_s=ss0), Factor(B, name=s1, name_s=ss1) ]
 
 	def _build_contrasts(self):
 		from . contrasts import Contrast #, ContrastList
@@ -238,10 +170,6 @@ class ANOVA2(_Design):
 	
 		return [CA, CB, CAB]
 	
-		# return ContrastList( [CA, CB, CAB] )
-	
-		# C    = [CA, CB, CAB]
-		# return C
 		
 
 	def _build_design_matrix(self):

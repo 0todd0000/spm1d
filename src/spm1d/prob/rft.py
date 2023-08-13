@@ -19,7 +19,6 @@ class RFTResults(object):
 	def __init__(self, STAT, z, alpha, dirn, zc, clusters, p_set, p_max):
 		self.STAT     = STAT
 		self.z        = z
-		# self.method   = 'rft'
 		self.alpha    = alpha
 		self.dirn     = dirn
 		self.zc       = zc
@@ -30,7 +29,6 @@ class RFTResults(object):
 		
 	def __repr__(self):
 		dp      = DisplayParams( self )
-		# dp.add_default_header()
 		dp.add_header( 'Inference results:' )
 		dp.add( 'method' )
 		dp.add( 'isparametric' )
