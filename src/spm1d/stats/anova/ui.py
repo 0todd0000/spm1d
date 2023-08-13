@@ -125,7 +125,7 @@ def aov(y, X, C, Q, gg=False, _Xeff=None):
 	fit      = model.fit( y )
 	# stats    = [fit.calculate_f_stat( c, gg=gg, _Xeff=_Xeff )   for c in design.C]
 	# model.fit( y )
-	teststats = [fit.calculate_f_stat( c, gg=gg, _Xeff=_Xeff )   for c in C]
+	teststats = [fit.calculate_f_stat( c, gg=gg, _Xeff=_Xeff, ind=i )   for i,c in enumerate(C)]
 	# glmr     = GLMResults(design, model, fit, stats)
 	return model, fit, teststats
 	# for c in C:

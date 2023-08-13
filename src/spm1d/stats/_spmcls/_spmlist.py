@@ -15,12 +15,14 @@ and inference SPMs (thresholded test statistic).
 import numpy as np
 from ... import prob
 # from ... _plot import _plot_F_list
+from ... util import array2shortstr, arraytuple2str, dflist2str, resels2str, DisplayParams
+
 
 
 class SPMFList(list):
 	STAT          = 'F'
 	name          = 'SPM{F} list'
-	testname      = None
+	# testname      = None
 	# design        = ''
 	dim           = 0
 	isparametric  = True
@@ -49,7 +51,7 @@ class SPMFList(list):
 	def __repr__(self):
 		return self._repr_summ()
 	
-	
+
 	@property
 	def contrasts(self):
 		return self[0].design.contrasts
@@ -71,6 +73,9 @@ class SPMFList(list):
 	@property
 	def nfactors(self):
 		return self[0].design.nfactors
+	@property
+	def testname(self):
+		return self[0].testname
 
 	
 	def _repr_get_header(self):
@@ -79,13 +84,13 @@ class SPMFList(list):
 		s       += '   nfactors  :  %d\n'      %self.nfactors
 		s       += '   neffects  :  %d\n'      %self.neffects
 		return s
-	def _repr_summ(self):
-		n         = max( [len(spm.contrast.name_s) for spm in self] )
-		s         = self._repr_get_header()
-		s        += 'Effects:\n'
-		for f in self:
-			s    += '   %s' %f._repr_summ(n)
-		return s
+	# def _repr_summ(self):
+	# 	n         = max( [len(spm.contrast.name_s) for spm in self] )
+	# 	s         = self._repr_get_header()
+	# 	s        += 'Effects:\n'
+	# 	for f in self:
+	# 		s    += '   %s' %f._repr_summ(n)
+	# 	return s
 	def _repr_verbose(self):
 		s        = self._repr_get_header()
 		s       += '\n'
@@ -93,6 +98,36 @@ class SPMFList(list):
 			s   += f.__repr__()
 			s   += '\n'
 		return s
+
+
+	def _repr_summ(self):
+		dp      = DisplayParams( self )
+		dp.add_default_header()
+		dp.add( 'testname' )
+		dp.add( 'nfactors' )
+		dp.add( 'neffects' )
+		dp.add_header('Effects')
+		s = dp.asstr()
+		for f in self:
+			s    += '    %s' %f._repr_summ()
+		# dp.add( 'STAT' )
+		# if self.isanova:
+		# 	dp.add( 'effect_name' )
+		# 	dp.add( 'ss' , array2shortstr )
+		# 	dp.add( 'ms' , array2shortstr )
+		# dp.add( 'z', fmt=array2shortstr )
+		# if self.isregress:
+		# 	dp.add('r', fmt=array2shortstr )
+		# dp.add( 'df', fmt=dflist2str )
+		# dp.add_header( 'Smoothness estimates:' )
+		# dp.add( 'fwhm', fmt='%.3f' )
+		# dp.add( 'lkc', fmt='%.3f' )
+		# dp.add( 'resels', fmt=resels2str )
+		return s
+
+	
+
+
 
 	def _set_data(self, *args, **kwargs):
 		self._args   = args

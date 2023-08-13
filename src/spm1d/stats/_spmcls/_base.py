@@ -22,8 +22,8 @@ class _SPM(object):
 	isinlist       = False
 	ismultigroup   = False
 	testname       = None
-	effect_label   = None    # only for ANOVA-like designs
-	effect_label_s = None    # only for ANOVA-like designs
+	# effect_label   = None    # only for ANOVA-like designs
+	# effect_label_s = None    # only for ANOVA-like designs
 
 	def __eq__(self, other):
 		return self.isequal(other, verbose=False)
@@ -155,13 +155,13 @@ class _SPMParent(_SPM):
 		self._args   = args
 		self._kwargs = kwargs
 	
-	def _set_testname(self, name):
-		self.testname = str( name )
-
-	def set_effect_label(self, s):
-		if self.STAT=='F':
-			self.effect_label   = s
-			self.effect_label_s = s.split(' ')[1]
+	# def _set_testname(self, name):
+	# 	self.testname = str( name )
+	#
+	# def set_effect_label(self, s):
+	# 	if self.STAT=='F':
+	# 		self.effect_label   = s
+	# 		self.effect_label_s = s.split(' ')[1]
 
 	# def set_effect_label(self, label=""):
 	# 	if self.STAT=='F':

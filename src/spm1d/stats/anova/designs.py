@@ -1,7 +1,7 @@
 
 import numpy as np
 from . factors import Factor
-from ... util import array2shortstr, arraytuple2str, dflist2str, resels2str, DisplayParams
+from ... util import array2shortstr, arraytuple2str, dflist2str, objectlist2str, resels2str, DisplayParams
 
 class _Design(object):
 	def __init__(self):
@@ -12,24 +12,10 @@ class _Design(object):
 	
 	def __repr__(self):
 		dp      = DisplayParams( self )
-		# dp.add_default_header()
 		dp.add_header( f'Design ({self.__class__.__name__})' )
 		dp.add( 'testname' )
 		dp.add( 'X' , array2shortstr )
-		# dp.add( 'testname' )
-		# dp.add( 'STAT' )
-		# if self.isanova:
-		# 	dp.add( 'effect_label' )
-		# 	dp.add( 'ss' , array2shortstr )
-		# 	dp.add( 'ms' , array2shortstr )
-		# dp.add( 'z', fmt=array2shortstr )
-		# if self.isregress:
-		# 	dp.add('r', fmt=array2shortstr )
-		# dp.add( 'df', fmt=dflist2str )
-		# dp.add_header( 'Smoothness estimates:' )
-		# dp.add( 'fwhm', fmt='%.3f' )
-		# dp.add( 'lkc', fmt='%.3f' )
-		# dp.add( 'resels', fmt=resels2str )
+		dp.add( 'contrasts' , objectlist2str )
 		return dp.asstr()
 	
 	def _init_factors(self, *AA):
@@ -215,7 +201,7 @@ class ANOVA2(_Design):
 	# 	self.factors = [ Factor(A, name=s0, name_s=ss0), Factor(B, name=s1, name_s=ss1) ]
 
 	def _build_contrasts(self):
-		from . contrasts import Contrast
+		from . contrasts import Contrast #, ContrastList
 		
 		fA,fB = self.factors
 		n     = self.X.shape[1]
@@ -229,7 +215,7 @@ class ANOVA2(_Design):
 			c[i] = 1
 			CA.append(c)
 		# CA = Contrast( np.asarray(CA).T, name=f'Main {fA.name}', name_s=fA.name_s )
-		CA = Contrast( np.asarray(CA).T, factors=[fA] )
+		CA = Contrast( np.asarray(CA).T, factors=[fA], ind=0 )
 
 
 		CB = []
@@ -238,7 +224,7 @@ class ANOVA2(_Design):
 			c[nA+i] = 1
 			CB.append(c)
 		# CB = Contrast( np.asarray(CB).T, name=f'Main {fB.name}', name_s=fB.name_s )
-		CB = Contrast( np.asarray(CB).T, factors=[fB] )
+		CB = Contrast( np.asarray(CB).T, factors=[fB], ind=1 )
 		
 		
 
@@ -248,11 +234,14 @@ class ANOVA2(_Design):
 			c[nA+nB+i] = 1
 			CAB.append(c)
 		# CAB = Contrast( np.asarray(CAB).T, name=f'Interaction {fA.name} x {fB.name}', name_s=f'{fA.name_s}x{fB.name_s}' )
-		CAB = Contrast( np.asarray(CAB).T, factors=[fA,fB] )
+		CAB = Contrast( np.asarray(CAB).T, factors=[fA,fB], ind=2 )
 	
-		C    = [CA, CB, CAB]
-		
-		return C
+		return [CA, CB, CAB]
+	
+		# return ContrastList( [CA, CB, CAB] )
+	
+		# C    = [CA, CB, CAB]
+		# return C
 		
 
 	def _build_design_matrix(self):

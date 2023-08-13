@@ -29,7 +29,7 @@ class SPM1D(_SPMParent):
 		# self.results        = results
 		self.sm             = None  # smoothness estimates
 		self.roi            = roi
-		# self._estimate_smoothness()
+		self._estimate_smoothness()
 		
 		
 		# # self.testname       = None            # hypothesis test name (set using set_testname method)
@@ -81,7 +81,7 @@ class SPM1D(_SPMParent):
 		dp.add( 'testname' )
 		dp.add( 'STAT' )
 		if self.isanova:
-			dp.add( 'effect_label' )
+			dp.add( 'name' )
 			dp.add( 'ss' , array2shortstr )
 			dp.add( 'ms' , array2shortstr )
 		dp.add( 'z', fmt=array2shortstr )
@@ -99,8 +99,14 @@ class SPM1D(_SPMParent):
 	def STAT(self):
 		return self.teststat.STAT
 	@property
+	def contrast(self):
+		return self.design.contrasts[ self.teststat.ind ]
+	@property
 	def df(self):
 		return self.teststat.df
+	# @property
+	# def effect_name(self):
+	# 	return self.design.contrasts[ self.teststat.ind ].name
 	@property
 	def ms(self):
 		return self.teststat.ms if self.isanova else None
@@ -118,13 +124,13 @@ class SPM1D(_SPMParent):
 		return self.fit.e
 	@property
 	def ss(self):
-		return self.results.ss if self.isanova else None
+		return self.teststat.ss if self.isanova else None
 	@property
 	def testname(self):
 		return self.design.testname
 	@property
 	def z(self):
-		return self.results.z
+		return self.teststat.z
 
 
 	# smoothness parameters:
@@ -170,7 +176,7 @@ class SPM1D(_SPMParent):
 	def _repr_teststat_short(self):
 		return '(1x%d) array' %self.Q
 	def _repr_summ(self):  # for F lists
-		return '{:<5} z = {:<18} df = {}\n'.format(self.effect_label_s,  self._repr_teststat_short(), dflist2str(self.df))
+		return '{:<5} z = {:<18} df = {}\n'.format(self.name_s,  self._repr_teststat_short(), dflist2str(self.df))
 
 
 	# def _build_spmi(self, results, alpha, dirn=0, df_adjusted=None):

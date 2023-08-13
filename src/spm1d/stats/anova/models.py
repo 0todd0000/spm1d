@@ -11,8 +11,7 @@ import scipy.stats
 import rft1d
 from .. _cov import reml, traceRV, traceMV, _reml_old
 from .. _la import rank
-from ... util.str import array2shortstr
-
+from ... util import array2shortstr, arraylist2str, arraytuple2str, dflist2str, objectlist2str, resels2str, scalarlist2string, DisplayParams
 
 
 # class GeneralLinearModel(object):
@@ -51,12 +50,22 @@ class GeneralLinearModel(object):
 		self.QQ   = None   # (co-)variance model
 		self.X    = None   # design matrix
 
+	# def __repr__(self):
+	# 	s   = 'GeneralLinearModel\n'
+	# 	s  += '    X    = %s design matrix\n'      % str(self.X.shape)
+	# 	# s  += '    C    = %s contrast matrix\n'    % str(self.C.shape)
+	# 	s  += '    QQ   = list of %d %s (co-)variance component models\n'  % ( len(self.QQ), f'({self.J},{self.J})' )
+	# 	return s
+	
 	def __repr__(self):
-		s   = 'GeneralLinearModel\n'
-		s  += '    X    = %s design matrix\n'      % str(self.X.shape)
-		# s  += '    C    = %s contrast matrix\n'    % str(self.C.shape)
-		s  += '    QQ   = list of %d %s (co-)variance component models\n'  % ( len(self.QQ), f'({self.J},{self.J})' )
-		return s
+		dp      = DisplayParams( self )
+		dp.add_default_header()
+		dp.add( 'X' , array2shortstr )
+		dp.add( 'QQ' , arraylist2str, 'covariance component models' )
+		return dp.asstr()
+
+	
+	
 	
 	@property
 	def J(self):
@@ -81,17 +90,30 @@ class GeneralLinearModel(object):
 
 
 class TestStatisticF(object):
-	def __init__(self, f, df, v, ss, ms, C):
+	def __init__(self, f, df, v, ss, ms, C, ind=0):
 		self.STAT  = 'F'
 		self.C     = C
+		self.ind   = ind
 		self.z     = f
 		self.df    = df
 		self.v     = v
 		self.ss    = ss
 		self.ms    = ms
 		
+	# def __repr__(self):
+	# 	return str( self.__dict__ )
+		
 	def __repr__(self):
-		return str( self.__dict__ )
+		dp      = DisplayParams( self )
+		dp.add_default_header()
+		dp.add( 'STAT' )
+		dp.add( 'C', array2shortstr )
+		dp.add( 'ind' )
+		dp.add( 'z', array2shortstr )
+		dp.add( 'df', dflist2str )
+		dp.add( 'ms', array2shortstr )
+		dp.add( 'ss', array2shortstr )
+		return dp.asstr()
 
 
 class GLMFit(object):
@@ -143,18 +165,31 @@ class GLMFit(object):
 		# 	self.resels = resel_counts(e, self.fwhm, element_based=False, roi=None)
 
 
+	# def __repr__(self):
+	# 	s   = 'GLMFit\n'
+	# 	# s  += '    model = GeneralLinearModel object\n'
+	# 	s  += '    y     = %s dependent variable\n'              % str(self.e.shape)
+	# 	s  += '    dvdim = %d\n'                                 % self.dvdim
+	# 	s  += '    b     = %s fitted parameters\n'               % str(self.b.shape)
+	# 	s  += '    e     = %s residuals\n'                       % str(self.e.shape)
+	# 	s  += '    V     = %s estimated co-variance\n'           % str(self.V.shape)
+	# 	s  += '    h     = %s estimated co-variance hyperparameters\n'  % str( self.h )
+	# 	# if self.dvdim == 1:
+	# 	# 	s  += '    fwhm  = %.3f estimated smoothness\n'   % self.fwhm
+	# 	return s
+
 	def __repr__(self):
-		s   = 'GLMFit\n'
-		# s  += '    model = GeneralLinearModel object\n'
-		s  += '    y     = %s dependent variable\n'              % str(self.e.shape)
-		s  += '    dvdim = %d\n'                                 % self.dvdim
-		s  += '    b     = %s fitted parameters\n'               % str(self.b.shape)
-		s  += '    e     = %s residuals\n'                       % str(self.e.shape)
-		s  += '    V     = %s estimated co-variance\n'           % str(self.V.shape)
-		s  += '    h     = %s estimated co-variance hyperparameters\n'  % str( self.h )
-		# if self.dvdim == 1:
-		# 	s  += '    fwhm  = %.3f estimated smoothness\n'   % self.fwhm
-		return s
+		dp      = DisplayParams( self )
+		dp.add_default_header()
+		dp.add( 'y' , array2shortstr )
+		dp.add( 'dvdim' )
+		dp.add( 'b', array2shortstr )
+		dp.add( 'e', array2shortstr )
+		dp.add( 'V', array2shortstr )
+		dp.add( 'h', scalarlist2string )
+		dp.add( 'mse', array2shortstr )
+		dp.add( 'sse', array2shortstr )
+		return dp.asstr()
 
 
 
@@ -236,7 +271,7 @@ class GLMFit(object):
 		self.V        = V
 
 
-	def calculate_f_stat(self, C, gg=False, _Xeff=None):
+	def calculate_f_stat(self, C, gg=False, _Xeff=None, ind=0):
 		# build projectors:
 		# y,X      = self.y, self.model.X
 		y,X      = self.y, self.model.X
@@ -260,7 +295,7 @@ class GLMFit(object):
 		ss      = float(ss) if (self.dvdim==0) else np.diag(ss)
 		ms      = float(ms) if (self.dvdim==0) else np.diag(ms)
 		
-		return TestStatisticF(f, df, v, ss, ms, C)
+		return TestStatisticF(f, df, v, ss, ms, C, ind)
 		# self._ss  = YPHYY
 		# self._sse = YIPY
 		# self._ms  = YPHYY / v0
