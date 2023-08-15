@@ -42,7 +42,7 @@ def aov(y, X, C, Q, gg=False, _Xeff=None):
 
 def anova1(y, A, equal_var=False):
 	if not equal_var:
-		raise NotImplementedError('variance components not yet implemented for anova1')
+		raise NotImplementedError('variance components not yet tested for anova1')
 	
 	from . designs import ANOVA1
 	design   = ANOVA1( A )
@@ -63,10 +63,18 @@ def anova1(y, A, equal_var=False):
 	
 	
 def anova1rm(y, A, SUBJ, equal_var=False, gg=True):
+	
+	if not equal_var:
+		raise NotImplementedError('variance components not yet tested for anova1rm')
+	
 	from . designs import ANOVA1RM
 	design   = ANOVA1RM( A, SUBJ )
 	Q        = design.get_variance_model( equal_var=equal_var )
-	return aov(y, design.X, design.C, Q, gg=True, _Xeff= design.X[:,:-1] )  # "design.X[:,:-1]" is a hack;  there must be a different way
+	
+	model,fit,teststats = aov(y, design.X, design.C, Q, gg=False, _Xeff= design.X[:,:-1] )  # "design.X[:,:-1]" is a hack;  there must be a different way
+	
+	return _assemble_spm_objects(design, model, fit, teststats)
+	
 	# model    = GeneralLinearModel()
 	# model.set_design_matrix( design.X )
 	# model.set_contrast_matrix( design.C )

@@ -104,7 +104,10 @@ class ANOVA1RM(_Design):
 		nz       = self.factors[1].nlevels
 		Cz       = np.zeros(  (n-1,  nz)  )
 		C        = np.hstack([C, Cz])
-		return [C.T]
+		# return [C.T]
+		C = Contrast( C.T, factors=self.factors, ind=0 )
+		return [C]
+		
 		
 
 	def _build_design_matrix(self):
