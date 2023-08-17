@@ -114,7 +114,10 @@ class _SPM(object):
 		return self.teststat.STAT
 	@property
 	def contrast(self):
-		return self.design.contrasts[ self.teststat.ind ]
+		if self.STAT == 'F':
+			return self.design.contrasts[ self.teststat.ind ]
+		else:
+			return self.design.contrasts[0]
 	@property
 	def df(self):
 		return self.teststat.df

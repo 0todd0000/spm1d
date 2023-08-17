@@ -24,7 +24,7 @@ Specifically:
 
 from . import _spmcls
 # from . import prob
-
+from . import core
 from . t import ttest, ttest_paired, ttest2, regress, glm
 from . ci import ci_onesample, ci_pairedsample, ci_twosample
 
