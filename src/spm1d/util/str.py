@@ -44,6 +44,14 @@ def p2string(p, allow_none=False, fmt='%.3f'):
 		s   = '<0.001' if p<0.0005 else fmt%p
 	return s
 
+def p2string5(p, allow_none=False):
+	if allow_none and (p is None):
+		s = 'None'
+	else:
+		s   = '<0.00001' if p<0.000005 else '%.5f'%p
+	return s
+
+
 
 def plist2string(plist, allow_none=False, fmt='%.3f'):
 	return '[' + ', '.join( [p2string(p, allow_none=allow_none, fmt=fmt) for p in plist] ) + ']'

@@ -4,7 +4,7 @@ Common parametric (0D) probabilities
 '''
 
 import numpy as np
-from .. util import array2shortstr, arraytuple2str, dflist2str, float2string, largeint2str, resels2str, p2string, plist2string, DisplayParams
+from .. util import array2shortstr, arraytuple2str, dflist2str, float2string, largeint2str, resels2str, p2string, p2string5, plist2string, DisplayParams
 from .. util import p2string_none, plist2string_none, float2string_none
 
 
@@ -34,7 +34,7 @@ class ParamResults(object):
 			dp.add( 'dirn' )
 		dp.add( 'zc', float2string_none )
 		dp.add( 'h0reject' )
-		dp.add( 'p', p2string )
+		dp.add( 'p', p2string5 )
 		return dp.asstr()
 
 	@property

@@ -57,6 +57,33 @@ class _Design(object):
 
 
 
+class REGRESS(_Design):
+	def __init__(self, x):
+		# self.testname      = 'ttest'
+		self.X             = None   # design matrix
+		self.contrasts     = None   # contrast objects
+		self.factors       = None   # list of factor objects
+		
+		# # n0,n1              = y0.shape[0], y1.shape[0]
+		# A                  = np.array( [0]*n0 + [1]*n1 )
+		# self.factors       = [ Factor(A, name='A') ]
+		#
+		# self.X             = np.zeros((n0+n1,2))
+		# self.X[:n0,0]      = 1
+		# self.X[n0:,1]      = 1
+		# C                  = np.array( [1,-1] )
+		# self.contrasts     = [   Contrast( C, factors=self.factors, ind=0 )   ]
+		
+		n              = x.size
+		self.X         = np.ones((n,2))
+		self.X[:,0]    = x
+		c              = np.array( [1,0] )
+		self.contrasts     = [   Contrast( c, factors=self.factors, ind=0 )   ]
+		
+		
+
+
+
 class TTEST(_Design):
 	def __init__(self, y, mu=0):
 		# self.testname      = 'ttest'
@@ -72,3 +99,24 @@ class TTEST(_Design):
 		C                  = np.array( [1,] )
 		self.contrasts     = [   Contrast( C, factors=self.factors, ind=0 )   ]
 		
+
+
+class TTEST2(_Design):
+	def __init__(self, n0, n1):
+		# self.testname      = 'ttest'
+		self.X             = None   # design matrix
+		self.contrasts     = None   # contrast objects
+		self.factors       = None   # list of factor objects
+		
+		# n0,n1              = y0.shape[0], y1.shape[0]
+		A                  = np.array( [0]*n0 + [1]*n1 )
+		self.factors       = [ Factor(A, name='A') ]
+		
+		self.X             = np.zeros((n0+n1,2))
+		self.X[:n0,0]      = 1
+		self.X[n0:,1]      = 1
+		C                  = np.array( [1,-1] )
+		self.contrasts     = [   Contrast( C, factors=self.factors, ind=0 )   ]
+		
+
+
