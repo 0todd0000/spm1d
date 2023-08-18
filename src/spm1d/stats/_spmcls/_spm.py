@@ -100,9 +100,13 @@ class _SPM(object):
 		fn  = eval(  f'spm1d.stats.{self.testname}'  )
 		return fn( *self._args, **self._kwargs )
 	
-	def _set_data(self, *args, **kwargs):
+	def _set_args(self, *args, **kwargs):
 		self._args   = args
 		self._kwargs = kwargs
+
+	# def _set_data(self, *args, **kwargs):
+	# 	self._args   = args
+	# 	self._kwargs = kwargs
 	
 	
 	
