@@ -1,5 +1,5 @@
 
-from .. _dec import appendSPMargs
+from .. _dec import appendargs
 
 
 

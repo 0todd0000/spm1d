@@ -8,7 +8,7 @@ Copyright (C) 2023  Todd Pataky
 
 from math import sqrt,log
 import numpy as np
-from .. _dec import appendSPMargs
+from .. _dec import appendargs
 from .. _spmcls import SPM0D, SPM1D
 from ... geom import estimate_fwhm_mv, resel_counts_mv
 
@@ -105,7 +105,7 @@ def _cca_efficient(y, x, Rz, XXXiX):
 	
 
 
-@appendSPMargs
+@appendargs
 def cca(Y, x, roi=None, _fwhm_method='taylor2008'):
 	'''
 	Canonical correlation analysis (CCA).

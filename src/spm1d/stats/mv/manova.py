@@ -10,7 +10,7 @@ Copyright (C) 2023  Todd Pataky
 
 from math import sqrt,log
 import numpy as np
-from .. _dec import appendSPMargs
+from .. _dec import appendargs
 from .. _spmcls import SPM0D, SPM1D
 from ... geom import estimate_fwhm_mv, resel_counts_mv
 eps        = np.finfo(float).eps   #smallest float, used to avoid divide-by-zero errors
@@ -93,7 +93,7 @@ def _manova1_single_node_efficient(Y, GROUP, X, Xi, X0, X0i, nGroups):
 
 
 
-@appendSPMargs
+@appendargs
 def manova1(Y, A, equal_var=True, roi=None, _fwhm_method='taylor2008'):
 	'''
 	Two-way repeated-measures ANOVA.

@@ -19,7 +19,8 @@ One- and two sample tests.
 
 
 import numpy as np
-from . _dec import appendSPMargs
+# from . _datachecks import checkargs
+from . _dec import appendargs, checkargs
 
 
 
@@ -59,7 +60,8 @@ def glm(y, X, c, QQ=None):
 
 
 
-@appendSPMargs
+@appendargs
+@checkargs
 def regress(y, x, roi=None):
 	from . core.designs import REGRESS
 	design = REGRESS(x)
@@ -82,9 +84,10 @@ def regress(y, x, roi=None):
 
 
 
-
-@appendSPMargs
+@appendargs
+@checkargs
 def ttest(y, mu=0, roi=None):
+	# _datachecks.check('ttest', y, mu)
 	from . core.designs import TTEST
 	design    = TTEST(y, mu)
 	model,fit,teststat = glm(y, design.X, design.contrasts[0].C)
@@ -93,7 +96,8 @@ def ttest(y, mu=0, roi=None):
 	
 	
 
-@appendSPMargs
+@appendargs
+@checkargs
 def ttest2(y0, y1, roi=None):
 	from . core.designs import TTEST2
 	n0,n1     = y0.shape[0], y1.shape[0]
@@ -104,9 +108,9 @@ def ttest2(y0, y1, roi=None):
 	# return model,fit,teststat
 
 
-
+# @checkargs
 def ttest_paired(y0, y1, roi=None):
-	return ttest(y0-y1, roi=roi)
+	return ttest(y0-y1, 0, roi=roi)
 
 
 

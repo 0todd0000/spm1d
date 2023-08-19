@@ -1,11 +1,14 @@
 '''
-Data checking tools.
+Argument checks.  
+
+NOTE!  In v0.5 actual argument checking is performed by 
+the checkargs decorator in _dec.py
 
 (This and all modules whose names start with underscores
 are not meant to be accessed directly by the user.)
 '''
 
-# Copyright (C) 2016  Todd Pataky
+# Copyright (C) 2023  Todd Pataky
 
 
 
@@ -24,7 +27,7 @@ def asmatrix(Y, dtype=None):
 class SPM1DError(ValueError):
 	pass
 
-class DataChecker(object):
+class Checker(object):
 	def check(self):
 		pass
 	
@@ -53,10 +56,11 @@ class DataChecker(object):
 			raise SPM1DError(msg)
 
 	def check_equal_Q(self, Y0, Y1):
-		Q0,Q1     = Y0.shape[1], Y1.shape[1]
-		if Q0!=Q1:
-			msg   = 'Unequal number of nodes in (J x Q) arrays (Q1=%d, Q2=%d). Q1 must equal Q2.' %(Q0,Q1)
-			raise SPM1DError(msg)
+		if (Y0.ndim > 1) and (Y1.ndim > 1):
+			Q0,Q1     = Y0.shape[1], Y1.shape[1]
+			if Q0!=Q1:
+				msg   = 'Unequal number of nodes in (J x Q) arrays (Q1=%d, Q2=%d). Q1 must equal Q2.' %(Q0,Q1)
+				raise SPM1DError(msg)
 	
 	def check_equal_JQ(self, Y0, Y1):
 		self.check_equal_J(Y0, Y1)
@@ -81,26 +85,27 @@ class DataChecker(object):
 
 
 
-class DataCheckerANOVA1List(DataChecker):
-	def __init__(self, YY):
-		self.YY   = YY
-	def check(self):
-		if len(self.YY)==1:
-			raise( ValueError('There must be at least two levels in one-way ANOVA.') )
-		elif len(self.YY)==2:
-			warnings.warn('\nWARNING:  A one-way ANOVA with two levels is equivalent to a two-sample t test. The F statistic is equal to the square of the t statistic.\n', UserWarning, stacklevel=2)
-		[self.check_array(Y)  for Y in self.YY]
-		[self.check_2d(Y) for Y in self.YY]
-		[self.check_size(Y) for Y in self.YY]
-		[self.check_zero_variance(Y) for Y in self.YY]
-		nGroups  = len(self.YY)
-		for i in range(1, nGroups):
-			self.check_equal_Q(self.YY[0], self.YY[i])
+# class CheckerANOVA1LIST(Checker):
+# 	def __init__(self, YY):
+# 		self.YY   = YY
+# 	def check(self):
+# 		if len(self.YY)==1:
+# 			raise( ValueError('There must be at least two levels in one-way ANOVA.') )
+# 		elif len(self.YY)==2:
+# 			warnings.warn('\nWARNING:  A one-way ANOVA with two levels is equivalent to a two-sample t test. The F statistic is equal to the square of the t statistic.\n', UserWarning, stacklevel=2)
+# 		[self.check_array(Y)  for Y in self.YY]
+# 		[self.check_2d(Y) for Y in self.YY]
+# 		[self.check_size(Y) for Y in self.YY]
+# 		[self.check_zero_variance(Y) for Y in self.YY]
+# 		nGroups  = len(self.YY)
+# 		for i in range(1, nGroups):
+# 			self.check_equal_Q(self.YY[0], self.YY[i])
 			
-class DataCheckerANOVA1(DataChecker):
-	def __init__(self, Y, A):
-		self.Y   = Y
-		self.A   = A
+class CheckerANOVA1(Checker):
+	def __init__(self, Y, A, roi=None):
+		self.Y    = Y
+		self.A    = A
+		self.roi  = roi
 	def check(self):
 		[self.check_array(x)  for x in [self.Y,self.A]]
 		self.check_2d(self.Y)
@@ -114,11 +119,12 @@ class DataCheckerANOVA1(DataChecker):
 		self.check_zero_variance(self.Y)
 
 
-class DataCheckerANOVA2(DataChecker):
-	def __init__(self, Y, A, B):
+class CheckerANOVA2(Checker):
+	def __init__(self, Y, A, B, roi=None):
 		self.Y   = Y
 		self.A   = A
 		self.B   = B
+		self.roi  = roi
 	def check(self):
 		YAB      = self.Y, self.A, self.B
 		[self.check_array(x)  for x in YAB]
@@ -132,10 +138,11 @@ class DataCheckerANOVA2(DataChecker):
 
 
 
-class DataCheckerRegress(DataChecker):
-	def __init__(self, Y, x):
+class CheckerREGRESS(Checker):
+	def __init__(self, Y, x, roi=None):
 		self.Y    = Y
 		self.x    = x
+		self.roi  = roi
 	def check(self):
 		self.check_array(self.Y)
 		self.check_2d(self.Y)
@@ -145,20 +152,23 @@ class DataCheckerRegress(DataChecker):
 		self.check_equal_J(self.Y, self.x)
 		
 
-class DataCheckerTtest(DataChecker):
-	def __init__(self, Y, y0):
+class CheckerTTEST(Checker):
+	def __init__(self, Y, y0, roi=None):
 		self.Y    = Y
 		self.y0   = y0
+		self.roi  = roi
 	def check(self):
 		self.check_array(self.Y)
 		self.check_2d(self.Y)
 		self.check_size(self.Y)
 		self.check_zero_variance(self.Y)
 
-class DataCheckerTtest2(DataChecker):
-	def __init__(self, YA, YB):
+class CheckerTTEST2(Checker):
+	def __init__(self, YA, YB, roi=None):
 		self.YA   = YA
 		self.YB   = YB
+		self.roi  = roi
+		# print( YA.shape, YB.shape )
 	def check(self):
 		YY        = self.YA, self.YB
 		[self.check_array(Y)  for Y in YY]
@@ -167,38 +177,48 @@ class DataCheckerTtest2(DataChecker):
 		self.check_equal_Q(self.YA, self.YB)
 		[self.check_zero_variance(Y) for Y in YY]
 
-class DataCheckerTtestPaired(DataCheckerTtest2):
+class CheckerTTEST_PAIRED(CheckerTTEST2):
 	def check(self):
-		DataCheckerTtest2.check(self)
+		CheckerTTEST2.check(self)
 		self.check_equal_J(self.YA, self.YB)
 
 
 
 
 
-def check(testname, *args):
-	if testname == 'anova1list':
-		YY       = args[0]
-		checker  = DataCheckerANOVA1List(YY)
-	if testname == 'anova1':
-		Y,A      = args
-		checker  = DataCheckerANOVA1(Y, A)
-	if testname == 'anova2':
-		Y,A,B    = args
-		checker  = DataCheckerANOVA2(Y, A, B)
-	if testname == 'ttest':
-		Y,y0     = args
-		checker  = DataCheckerTtest(Y, y0)
-	elif testname == 'ttest_paired':
-		YA,YB    = args
-		checker  = DataCheckerTtestPaired(YA, YB)
-	elif testname == 'ttest2':
-		YA,YB    = args
-		checker  = DataCheckerTtest2(YA, YB)
-	elif testname == 'regress':
-		Y,x      = args
-		checker  = DataCheckerRegress(Y, x)
-	checker.check()
+# def check(testname, *args):
+# 	if testname == 'anova1list':
+# 		YY       = args[0]
+# 		checker  = DataCheckerANOVA1List(YY)
+# 	if testname == 'anova1':
+# 		Y,A      = args
+# 		checker  = DataCheckerANOVA1(Y, A)
+# 	if testname == 'anova2':
+# 		Y,A,B    = args
+# 		checker  = DataCheckerANOVA2(Y, A, B)
+# 	if testname == 'ttest':
+# 		Y,y0     = args
+# 		checker  = DataCheckerTtest(Y, y0)
+# 	elif testname == 'ttest_paired':
+# 		YA,YB    = args
+# 		checker  = DataCheckerTtestPaired(YA, YB)
+# 	elif testname == 'ttest2':
+# 		YA,YB    = args
+# 		checker  = DataCheckerTtest2(YA, YB)
+# 	elif testname == 'regress':
+# 		Y,x      = args
+# 		checker  = DataCheckerRegress(Y, x)
+# 	checker.check()
 
 
+# class checkargs(object):
+# 	def __init__(self, f):
+# 		self.f       = f
+# 		self.fname   = f.__name__
+# 		self.Checker = eval( f'Checker{ self.f.__name__.upper() }' )
+#
+# 	def __call__(self, *args, **kwargs):
+# 		c = self.Checker( *args, **kwargs )
+# 		c.check()
+# 		return self.f(*args, **kwargs)
 

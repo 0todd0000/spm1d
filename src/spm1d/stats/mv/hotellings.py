@@ -8,7 +8,7 @@ Copyright (C) 2023  Todd Pataky
 
 
 import numpy as np
-from .. _dec import appendSPMargs
+from .. _dec import appendargs
 from .. _spmcls import SPM0D, SPM1D
 from ... geom import estimate_fwhm_mv, resel_counts_mv
 
@@ -63,7 +63,7 @@ def _T2_twosample_singlenode(yA, yB):  #at a single node:
 
 
 
-@appendSPMargs
+@appendargs
 def hotellings(Y, mu=None, roi=None, _fwhm_method='taylor2008'):
 	'''
 	One-sample Hotelling's T2 test.
@@ -126,7 +126,7 @@ def hotellings_paired(YA, YB, roi=None, _fwhm_method='taylor2008'):
 
 
 
-@appendSPMargs
+@appendargs
 def hotellings2(YA, YB, equal_var=True, roi=None, _fwhm_method='taylor2008'):
 	'''
 	Two-sample Hotelling's T2 test.
