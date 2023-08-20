@@ -19,7 +19,6 @@ class checkargs(object):
 		self.fn      = fn
 		cname        = f'Checker{ self.fn.__name__.upper() }'
 		self.Checker = getattr(_argchecks, cname)
-		print( self.Checker )
 
 	def __call__(self, *args, **kwargs):
 		c = self.Checker( *args, **kwargs )
