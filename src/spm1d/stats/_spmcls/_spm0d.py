@@ -96,6 +96,10 @@ class SPM0D(_SPM):
 		parser.parse( alpha, **kwargs )
 
 		from ... import prob
+		
+		if 'dirn' not in kwargs:
+			kwargs.update( {'dirn':1} )
+		
 
 		if method == 'param':
 			dfa = self.df

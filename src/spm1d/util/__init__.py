@@ -8,6 +8,7 @@ Utility functions
 
 from . prob import p_corrected_bonf, p_critical_bonf
 from . proc import interp, smooth
+# from . prog import ProgressBar
 from . str import *
 from . rpr import DisplayParams
 
