@@ -5,7 +5,7 @@ from . results import SimulationResults
 
 
 class FPRValidator(object):
-	def __init__(self, fn, rng, alpha=0.05, valtype='z', u=None, tol=0.005, progress_bar=True):
+	def __init__(self, fn, rng, alpha=0.05, valtype='h0', u=None, tol=0.005, progress_bar=True):
 		if valtype not in ('h0', 'p', 'z'):
 			raise ValueError('valtype must be one of: "h0", "p" or "z"')
 		self.alpha         = alpha   # false positive rate (FPR)
