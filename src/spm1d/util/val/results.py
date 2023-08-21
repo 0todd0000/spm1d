@@ -31,7 +31,7 @@ class SimulationResults(object):
 	
 	@property
 	def isvalid(self):
-		return abs(self.p - self.validator.alpha) < self.validator.tol
+		return abs(self.p - self.validator.alpha) <= self.validator.tol
 
 	@property
 	def n(self):
