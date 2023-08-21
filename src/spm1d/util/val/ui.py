@@ -51,7 +51,7 @@ def val(fn, rng, valtype='h0', u=None, niter=1000, progress_bar=True):
 	return val
 	
 
-def val_anova1(JJ, ss, Q=None, fwhm=None, valtype='h0', niter=1000, alpha=0.05, progress_bar=True):
+def val_anova1(JJ, ss, Q=None, fwhm=None, valtype='h0', niter=1000, alpha=0.05, progress_bar=True, equal_var=False):
 	from ... stats import anova1
 	A     = np.hstack([[i]*J for i,J in enumerate(JJ)])
 	_rngs = [_get_rng(J, Q, fwhm)  for J in JJ]
@@ -59,13 +59,13 @@ def val_anova1(JJ, ss, Q=None, fwhm=None, valtype='h0', niter=1000, alpha=0.05, 
 		y = [s*_rng() for s,_rng in zip(ss,_rngs)]
 		y = np.hstack(y) if (Q is None) else np.vstack(y)
 		return y
-	fn    = lambda y: anova1(y, A, equal_var=True)
+	fn    = lambda y: anova1(y, A, equal_var=equal_var)
 	df    = len(JJ)-1, A.size-len(JJ)
 	u     = _f_isf(alpha, df, Q, fwhm)
 	return val(fn, rng, valtype=valtype, u=u, niter=niter, progress_bar=progress_bar)
 
 
-def val_anova1rm(J, ss, Q=None, fwhm=None, valtype='h0', niter=1000, alpha=0.05, progress_bar=True):
+def val_anova1rm(J, ss, Q=None, fwhm=None, valtype='h0', niter=1000, alpha=0.05, progress_bar=True, equal_var=False):
 	from ... stats import anova1rm
 	n     = len(ss)
 	A     = np.hstack(   [ [i]*J for i in range(n) ]   )
@@ -75,7 +75,7 @@ def val_anova1rm(J, ss, Q=None, fwhm=None, valtype='h0', niter=1000, alpha=0.05,
 		y = [s*_rng() for s,_rng in zip(ss,_rngs)]
 		y = np.hstack(y) if (Q is None) else np.vstack(y)
 		return y
-	fn    = lambda y: anova1rm(y, A, S, equal_var=True)
+	fn    = lambda y: anova1rm(y, A, S, equal_var=equal_var)
 	df_w  = A.size - n
 	df_b  = J - 1
 	df_e  = df_w - df_b

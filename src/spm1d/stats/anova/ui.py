@@ -41,17 +41,19 @@ def aov(y, X, C, Q, gg=False, _Xeff=None):
 
 
 def anova1(y, A, equal_var=False):
-	if not equal_var:
-		raise NotImplementedError('variance components not yet tested for anova1')
+	# if not equal_var:
+	# 	raise NotImplementedError('variance components not yet tested for anova1')
 	
 	from . designs import ANOVA1
 	design   = ANOVA1( A )
-	# Q        = design.get_variance_model( equal_var=equal_var )
+	QQ       = design.get_variance_model( equal_var=equal_var )
+	# if equal_var:
+	# 	import numpy as np
+	# 	QQ   = None
+	# 	QQ   = [np.eye(A.size)]
+	# else:
+	# 	QQ   = design.get_variance_model( equal_var=equal_var )
 	
-	# temporary variance components:
-	import numpy as np
-	J       = A.size
-	QQ      = [np.eye(J)]
 	
 	
 	model,fit,teststats = aov(y, design.X, design.C, QQ)
@@ -64,14 +66,20 @@ def anova1(y, A, equal_var=False):
 	
 def anova1rm(y, A, SUBJ, equal_var=False, gg=True):
 	
-	if not equal_var:
-		raise NotImplementedError('variance components not yet tested for anova1rm')
+	# if not equal_var:
+	# 	raise NotImplementedError('variance components not yet tested for anova1rm')
 	
 	from . designs import ANOVA1RM
 	design   = ANOVA1RM( A, SUBJ )
-	Q        = design.get_variance_model( equal_var=equal_var )
+	QQ   = design.get_variance_model( equal_var=equal_var )
+	# if equal_var:
+	# 	import numpy as np
+	# 	QQ   = None
+	# 	QQ   = [np.eye(A.size)]
+	# else:
+	# Q        = design.get_variance_model( equal_var=equal_var )
 	
-	model,fit,teststats = aov(y, design.X, design.C, Q, gg=False, _Xeff= design.X[:,:-1] )  # "design.X[:,:-1]" is a hack;  there must be a different way
+	model,fit,teststats = aov(y, design.X, design.C, QQ, gg=False, _Xeff= design.X[:,:-1] )  # "design.X[:,:-1]" is a hack;  there must be a different way
 	
 	return _assemble_spm_objects(design, model, fit, teststats)
 	
@@ -104,7 +112,7 @@ def anova2(y, A, B, equal_var=False, roi=None):
 		raise NotImplementedError('variance components not yet implemented for anova2')
 	from . designs import ANOVA2
 	design   = ANOVA2( A, B )
-	# Q        = design.get_variance_model( equal_var=equal_var )
+	# QQ       = design.get_variance_model( equal_var=equal_var )
 	
 	# temporary variance components:
 	import numpy as np
