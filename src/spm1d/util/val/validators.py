@@ -1,6 +1,5 @@
 
-
-from . results import SimulationResults
+import numpy as np
 
 
 
@@ -18,7 +17,7 @@ class FPRValidator(object):
 		self.tol           = tol     # tolerance for validation
 		self.progbar       = progress_bar  # whether or not to display a progress bar
 		if self.valtype=='z':
-			if isinstance(u, (int,float)):
+			if isinstance(u, (int,float,list,tuple)):
 				self.u     = u
 			else:
 				raise ValueError('When valtype is "z", the critical threshold "u" must also be specified')
@@ -28,7 +27,7 @@ class FPRValidator(object):
 		s += f'  fn       = {self.fn}\n'
 		s += f'  rng      = {self.rng}\n'
 		s += f'  alpha    = {self.alpha}\n'
-		u  = None if self.u is None else f'{self.u:.3f}'
+		u  = None if self.u is None else f'{self._ustr}'
 		s += f'  u        = {u}\n'
 		# s += f'  ikwargs  = {self.ikwargs}\n'
 		s += f'  valtype  = {self.valtype}\n'
@@ -38,12 +37,14 @@ class FPRValidator(object):
 		return s
 	
 	
-	# def _get_u(self):
-	# 	if self.valtype == 'p':
-	# 		return self.alpha
-	# 	else:
-	# 		spmi = self.sim_single().inference(self.alpha, **self.ikwargs)
-	# 		return spmi.zc
+	@property
+	def _ustr(self):
+		if isinstance(self, (int,float)):
+			s = f'{self.u:.3f}'
+		else:
+			s = str(  np.around(self.u, 3)  )
+		return s
+	
 	
 	def _get_progbar(self, niter):
 		if self.progbar:
@@ -55,8 +56,8 @@ class FPRValidator(object):
 		return pbar
 		
 	
-	def plot_results(self, ax):
-		self.results.plot(ax)
+	def plot_results(self):
+		self.results.plot()
 	
 	def sim_single(self):
 		y   = self.rng()
@@ -71,12 +72,27 @@ class FPRValidator(object):
 			spm = self.sim_single()
 			if self.valtype == 'h0':
 				spm = spm.inference( self.alpha )
-				zz  = spm.h0reject
+				if isinstance(spm, list):
+					zz  = [s.h0reject  for s in spm]
+				else:
+					zz  = spm.h0reject
 			if self.valtype == 'p':
 				spm = spm.inference( self.alpha )
-				zz  = spm.p if (spm.dim == 0) else spm.p_max
+				if isinstance(spm, list):
+					zz  = [s.p if (s.dim == 0) else s.p_max  for s in spm]
+				else:
+					zz  = spm.p if (spm.dim == 0) else spm.p_max
 			elif self.valtype=='z':
-				zz = spm.z if (spm.dim == 0) else spm.z.max()
+				if isinstance(spm, list):
+					zz = [s.z if (s.dim == 0) else s.z.max()  for s in spm]
+				else:
+					zz = spm.z if (spm.dim == 0) else spm.z.max()
 			z.append( zz )
 		pbar.destroy()
-		self.results = SimulationResults(z, self)
+		z            = np.asarray(z)
+		if z.ndim == 2:
+			from . results import SimulationResultsMultiContrast
+			self.results = SimulationResultsMultiContrast(z, self)
+		else:
+			from . results import SimulationResults
+			self.results = SimulationResults(z, self)
