@@ -1,9 +1,9 @@
 
 '''
-Example procedural validation of spm1d hypothesis tests.
+Demonstration of validation of hypothesis testing results for
+cases of unequal group variance.
 
-This script uses spm1d.stats.ttest2 and random 0D data with
-unequal group variances as an example.
+This script uses spm1d.stats.ttest2 and random 0D as an example.
 
 A valid hypothesis testing procedure will achieve a false positive
 rate (FPR) of alpha (usually 0.05) over a large number of datasets.
@@ -12,8 +12,7 @@ stability, but here 1000 are used in favor of fast execution.
 
 Below the first validation attempt fails because equal variance
 is assumed through equal_var=True.  The second validation attempt
-succeeds, anecodatally demonstrating spm1d's capabilities for
-handling unequal variance.
+succeeds, anecdotally demonstrating robustness to unequal variance.
 
 This script is meant only to demonstrate key aspects of numerical
 validation. More thorough validation possibilities are available

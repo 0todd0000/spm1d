@@ -40,5 +40,5 @@ print( val )  # report simulation results
 plt.close('all')
 plt.figure( figsize=(8,6) )
 ax = plt.axes()
-val.plot_results(ax)
+val.plot_results()
 plt.show()
