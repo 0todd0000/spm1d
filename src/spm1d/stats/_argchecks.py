@@ -42,6 +42,12 @@ class Checker(object):
 			msg   = 'Object of type %s detected. Must submit a numpy array.' %type(Y)
 			raise SPM1DError(msg)
 	
+	def check_bool(self, b):
+		if not isinstance(b, bool):
+			msg   = 'Object of type %s detected. Must be a boolean (True or False).' %type(b)
+			raise SPM1DError(msg)
+		
+	
 	def check_equal_J(self, Y0, Y1):
 		J0,J1     = Y0.shape[0], Y1.shape[0]
 		if J0!=J1:
@@ -141,10 +147,11 @@ class CheckerTTEST(Checker):
 		self.check_zero_variance(self.Y)
 
 class CheckerTTEST2(Checker):
-	def __init__(self, YA, YB, roi=None):
-		self.YA   = YA
-		self.YB   = YB
-		self.roi  = roi
+	def __init__(self, YA, YB, equal_var=False, roi=None):
+		self.YA        = YA
+		self.YB        = YB
+		self.equal_var = equal_var
+		self.roi       = roi
 	def check(self):
 		YY        = self.YA, self.YB
 		[self.check_array(Y)  for Y in YY]
@@ -152,6 +159,7 @@ class CheckerTTEST2(Checker):
 		[self.check_size(Y) for Y in YY]
 		self.check_equal_Q(self.YA, self.YB)
 		[self.check_zero_variance(Y) for Y in YY]
+		self.check_bool( self.equal_var )
 
 class CheckerTTEST_PAIRED(CheckerTTEST2):
 	def check(self):

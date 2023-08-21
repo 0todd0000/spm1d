@@ -11,6 +11,9 @@ def array2shortstr(a):
 
 def arraylist2str(aa):
 	return '[  ' + ',  '.join(  [array2shortstr(a) for a in aa]  ) + '  ]'
+	
+def arraylist2strnone(aa):
+	return 'None' if (aa is None) else arraylist2str(aa)
 
 def arraytuple2str(aa):
 	return '(  ' + ',  '.join(  [array2shortstr(a) for a in aa]  ) + '  )'

@@ -24,7 +24,9 @@ def _assemble_spm_objects(design, model, fit, teststat, roi=None):
 
 
 
-def glm(y, X, c, ctype='T', QQ=None):
+
+
+def glm(y, X, c, ctype='T', QQ=None, roi=None):
 	'''
 	General Linear Model
 	
@@ -36,9 +38,9 @@ def glm(y, X, c, ctype='T', QQ=None):
 	from . core.models import GeneralLinearModel
 	model     = GeneralLinearModel()
 	model.set_design_matrix( X )
-	# model.set_variance_model( QQ )
+	model.set_variance_model( QQ )
 	fit       = model.fit( y )
-	teststat  = fit.calculate_t_stat( c )
+	teststat  = fit.calculate_t_stat( c, roi=roi )
 	return model, fit, teststat
 
 
@@ -68,12 +70,23 @@ def ttest(y, mu=0, roi=None):
 
 @appendargs
 @checkargs
-def ttest2(y0, y1, roi=None):
+def ttest2(y0, y1, equal_var=True, roi=None):
 	from . core.designs import TTEST2
+	from . _cov import CovarianceModel
 	n0,n1     = y0.shape[0], y1.shape[0]
 	y         = np.hstack( (y0,y1) ) if (y0.ndim==1) else np.vstack(  (y0, y1)  )
 	design    = TTEST2(n0, n1)
-	model,fit,teststat = glm(y, design.X, design.contrasts[0].C)
+	if equal_var:
+		QQ    = None
+		cmodel = CovarianceModel(design.X)
+		# cmodel.add_constant_var()
+	else:
+		cmodel = CovarianceModel(design.X)
+		cmodel.add_group_vars()
+		# model.add_autocorr()
+		QQ    = cmodel.get_model()
+	
+	model,fit,teststat = glm(y, design.X, design.contrasts[0].C, QQ=QQ)
 	return _assemble_spm_objects(design, model, fit, teststat)
 
 

@@ -5,7 +5,7 @@
 
 import numpy as np
 from . fit import GLMFit
-from ... util import array2shortstr, arraylist2str, arraytuple2str, dflist2str, objectlist2str, resels2str, scalarlist2string, DisplayParams
+from ... util import array2shortstr, arraylist2str, arraylist2strnone, arraytuple2str, dflist2str, objectlist2str, resels2str, scalarlist2string, DisplayParams
 
 
 
@@ -24,7 +24,7 @@ class GeneralLinearModel(object):
 		dp      = DisplayParams( self )
 		dp.add_default_header()
 		dp.add( 'X' , array2shortstr )
-		# dp.add( 'QQ' , arraylist2str, 'covariance component models' )
+		dp.add( 'QQ' , arraylist2strnone )
 		return dp.asstr()
 	
 	@property
@@ -38,12 +38,12 @@ class GeneralLinearModel(object):
 		Xi     = np.linalg.pinv( self.X )
 		b      = Xi @ y
 		e      = y - self.X @ b
-		return GLMFit(self, y, b, e)
+		return GLMFit(self, y, b, e, Xi)
 
 	def set_design_matrix(self, X):
-		self.X       = X
-	# def set_variance_model(self, QQ):
-	# 	self.QQ      = QQ
+		self.X  = X
+	def set_variance_model(self, QQ):
+		self.QQ = QQ
 
 
 

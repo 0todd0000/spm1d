@@ -10,12 +10,49 @@ eps = np.finfo(float).eps   #smallest float, used to avoid divide-by-zero errors
 
 
 
+def __tstat_cov_model(Y, X, Xi, c, b, s2, Q):
+	'''
+	t statistic calculation given a covariance model (Q)
+	
+	Covariance components (V) and their hyperparameters (h)
+	are estimated using REML. See spm1d.stats._cov.py for
+	more details
+	'''
+	from .. _cov import reml, traceRV
+	ndim        = Y.ndim
+	if ndim == 1:
+		Y       = np.array([Y]).T
+	n,s         = Y.shape
+	trRV        = n - rank(X)
+	q           = np.diag(np.sqrt( trRV / s2 )).T if (ndim==2) else np.array( [np.sqrt( trRV / s2 )] )
+	Ym          = Y @ q
+	if ndim == 1:
+		Ym      = np.array([Ym]).T
+	YY          = Ym @ Ym.T / s
+	V,h         = reml(YY, X, Q)
+	V           = V * (n / np.trace(V))
+	trRV,trRVRV = traceRV(V, X)
+	df          = trRV**2 / trRVRV  # effective degrees of freedom
+	t           = (c @ b)  /   ( np.sqrt( s2 * (c @ Xi @ V @ Xi.T @ c)  + eps ) )
+	return t, df
+
+
+def _tstat_cov_model(Y, X, Xi, c, b, s2, Q, roi=None):
+	if roi is None:
+		t,df      = __tstat_cov_model(Y, X, Xi, c, b, s2, Q)
+	else:
+		_Y,_b,_s2 = Y[:,roi], b[:,roi], s2[roi]
+		_t,df     = __tstat_cov_model(_Y, X, Xi, c, _b, _s2, Q)
+		t         = np.nan * np.ones(Y.shape[1])
+		t[roi]    = _t
+	return t, df
+
 
 
 class GLMFit(object):
 
 
-	def __init__(self, model, y, b, e):
+	def __init__(self, model, y, b, e, Xi):
 		# print(y.shape)
 		# print(1 in y.shape)
 		# self._df   = None   # effective degrees of freedom (for one contrast)
@@ -26,6 +63,7 @@ class GLMFit(object):
 		self.b      = b      # betas (fitted parameters)
 		# self.dvdim  = 0 if ((y.ndim==1) or (1 in y.shape)) else 1 # dependent variable dimensionality
 		self.e      = e      # residuals
+		self.Xi     = Xi     # design pseudo-inverse
 		# print(self.dvdim)
 		
 		
@@ -76,6 +114,10 @@ class GLMFit(object):
 	@property
 	def J(self):
 		return self.model.J
+	@property
+	def QQ(self):
+		return self.model.QQ
+
 
 	@property
 	def dvdim(self):   # dependent variable domain dimensionality
@@ -123,15 +165,16 @@ class GLMFit(object):
 
 
 
-	def calculate_t_stat(self, c):
-		Q = None
+	def calculate_t_stat(self, c, roi=None):
+		# Q = None
 		b,s2,X = self.b, self.s2, self.model.X
 		
-		if Q is None:  # covariance not modeled
+		if self.QQ is None:  # covariance not modeled
 			t      = (c @ b)  /   ( np.sqrt( s2 * (c @ np.linalg.inv(X.T @ X) @ c) ) + eps )
 			df     = self.df
 		else:
-			t,df   = _tstat_cov_model(Y, X, Xi, c, b, s2, Q, roi=roi)
+			t,df   = _tstat_cov_model(self.y, X, self.Xi, c, b, s2, self.QQ, roi=roi)
+			df     = (1,df)
 			
 			
 		t       = float(t)  if (self.dvdim==0) else t.flatten()
