@@ -31,6 +31,9 @@ class SimulationResults(object):
 	def alpha(self):
 		return self.validator.alpha
 	@property
+	def fpr(self):
+		return self.p
+	@property
 	def xc(self):
 		if self.valtype=='z':
 			return self.validator.u

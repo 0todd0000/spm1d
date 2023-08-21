@@ -35,25 +35,6 @@ def _t_isf(alpha, df, Q=None, fwhm=None):
 	return u
 
 
-'''
----- test stat convenience functions ---- 
-'''
-
-
-def _ttest2(y, A):
-	from ... stats import ttest2
-	u  = np.unique(A)
-	y0 = y[A==u[0]]
-	y1 = y[A==u[1]]
-	return ttest2(y0, y1)
-
-
-def _ttest_paired(y, A):
-	from ... stats import ttest_paired
-	u  = np.unique(A)
-	y0 = y[A==u[0]]
-	y1 = y[A==u[1]]
-	return ttest_paired(y0, y1)
 
 
 
@@ -151,6 +132,13 @@ def val_ttest(J, Q=None, fwhm=None, valtype='h0', niter=1000, alpha=0.05, progre
 
 
 def val_ttest_paired(J, Q=None, fwhm=None, valtype='h0', niter=1000, alpha=0.05, progress_bar=True):
+	def _ttest_paired(y, A):
+		from ... stats import ttest_paired
+		u  = np.unique(A)
+		y0 = y[A==u[0]]
+		y1 = y[A==u[1]]
+		return ttest_paired(y0, y1)
+		
 	A   = np.array([0]*J + [1]*J)
 	rng = _get_rng(2*J, Q, fwhm)
 	fn  = lambda y: _ttest_paired(y, A)
@@ -158,11 +146,20 @@ def val_ttest_paired(J, Q=None, fwhm=None, valtype='h0', niter=1000, alpha=0.05,
 	return val(fn, rng, valtype=valtype, u=u, niter=niter, progress_bar=progress_bar)
 
 
-def val_ttest2(JJ, Q=None, fwhm=None, valtype='h0', niter=1000, alpha=0.05, progress_bar=True):
+def val_ttest2(JJ, ss=(1,1), Q=None, fwhm=None, valtype='h0', niter=1000, alpha=0.05, progress_bar=True, equal_var=False):
+	def _ttest2(y, A, equal_var=False):
+		from ... stats import ttest2
+		u  = np.unique(A)
+		y0 = y[A==u[0]]
+		y1 = y[A==u[1]]
+		return ttest2(y0, y1, equal_var=equal_var)
+	
 	J0,J1 = JJ
-	A     = np.array([0]*J0 + [1]*J1)
-	J     = J0 + J1
-	rng   = _get_rng(J, Q, fwhm)
-	fn    = lambda y: _ttest2(y, A)
+	J     = sum(JJ)
+	A     = np.array(  [0]*J0 + [1]*J1  )
+	s     = np.hstack(  [[s]*j for s,j in zip(ss,JJ)]  )
+	_rng  = _get_rng(J, Q, fwhm)
+	rng   = lambda: (s * _rng().T).T
+	fn    = lambda y: _ttest2(y, A, equal_var=equal_var)
 	u     = _t_isf(alpha, J-2, Q, fwhm)
 	return val(fn, rng, valtype=valtype, u=u, niter=niter, progress_bar=progress_bar)

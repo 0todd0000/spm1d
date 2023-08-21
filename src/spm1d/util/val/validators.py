@@ -32,7 +32,7 @@ class FPRValidator(object):
 		# s += f'  ikwargs  = {self.ikwargs}\n'
 		s += f'  valtype  = {self.valtype}\n'
 		s += f'  tol      = {self.tol}\n'
-		if self.results is not None:
+		if self.hasresults:
 			s += self.results.__repr__()
 		return s
 	
@@ -55,6 +55,15 @@ class FPRValidator(object):
 			pbar = NullProgressBar()
 		return pbar
 		
+	
+	@property
+	def fpr(self):
+		return self.results.fpr if self.hasresults else None
+
+	@property
+	def hasresults(self):
+		return self.results is not None
+	
 	
 	def plot_results(self):
 		self.results.plot()
