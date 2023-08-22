@@ -52,6 +52,10 @@ def val(fn, rng, valtype='h0', u=None, niter=1000, progress_bar=True):
 	
 
 def val_anova1(JJ, ss, Q=None, fwhm=None, valtype='h0', niter=1000, alpha=0.05, progress_bar=True, equal_var=False):
+	
+	if valtype == 'z' and (not equal_var):
+		raise ValueError('"valtype" cannot be "z" when equal_var=False')
+	
 	from ... stats import anova1
 	A     = np.hstack([[i]*J for i,J in enumerate(JJ)])
 	_rngs = [_get_rng(J, Q, fwhm)  for J in JJ]
@@ -66,6 +70,10 @@ def val_anova1(JJ, ss, Q=None, fwhm=None, valtype='h0', niter=1000, alpha=0.05, 
 
 
 def val_anova1rm(J, ss, Q=None, fwhm=None, valtype='h0', niter=1000, alpha=0.05, progress_bar=True, equal_var=False):
+	
+	if valtype == 'z' and (not equal_var):
+		raise ValueError('"valtype" cannot be "z" when equal_var=False')
+	
 	from ... stats import anova1rm
 	n     = len(ss)
 	A     = np.hstack(   [ [i]*J for i in range(n) ]   )
@@ -85,6 +93,10 @@ def val_anova1rm(J, ss, Q=None, fwhm=None, valtype='h0', niter=1000, alpha=0.05,
 
 
 def val_anova2(JJ, ss, Q=None, fwhm=None, valtype='h0', niter=1000, alpha=0.05, progress_bar=True):
+	
+	# if valtype == 'z' and (not equal_var):
+	# 	raise ValueError('"valtype" cannot be "z" when equal_var=False')
+	
 	from ... stats import anova2
 	JJ    = np.asarray(JJ)
 	ss    = np.asarray(ss)
@@ -147,6 +159,10 @@ def val_ttest_paired(J, Q=None, fwhm=None, valtype='h0', niter=1000, alpha=0.05,
 
 
 def val_ttest2(JJ, ss=(1,1), Q=None, fwhm=None, valtype='h0', niter=1000, alpha=0.05, progress_bar=True, equal_var=False):
+	
+	if valtype == 'z' and (not equal_var):
+		raise ValueError('"valtype" cannot be "z" when equal_var=False')
+	
 	def _ttest2(y, A, equal_var=False):
 		from ... stats import ttest2
 		u  = np.unique(A)

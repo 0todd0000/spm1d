@@ -64,6 +64,9 @@ class FPRValidator(object):
 	def hasresults(self):
 		return self.results is not None
 	
+	@property
+	def isvalid(self):
+		return self.results.isvalid if self.hasresults else None
 	
 	def plot_results(self):
 		self.results.plot()
