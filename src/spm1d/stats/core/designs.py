@@ -38,7 +38,7 @@ class _Design(object):
 		return self.X.shape[0]
 	@property
 	def nfactors(self):
-		return len( self.factors )
+		return 0 if (self.factors is None) else len( self.factors )
 	@property
 	def testname(self):
 		return self.__class__.__name__.lower()
@@ -62,9 +62,10 @@ class _Design(object):
 			if c0 != c1:
 				return False
 
-		for f0,f1 in zip(self.factors, other.factors):
-			if f0 != f1:
-				return False
+		if (self.factors is not None) and (other.factors is not None):
+			for f0,f1 in zip(self.factors, other.factors):
+				if f0 != f1:
+					return False
 
 		return True
 

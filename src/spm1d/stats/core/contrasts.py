@@ -47,19 +47,25 @@ class Contrast(object):
 		return self.nfactors == 1
 	@property
 	def effect_name(self):
-		return 'x'.join( [f.name for f in self.factors] )
+		return None if (self.factors is None) else 'x'.join( [f.name for f in self.factors] )
 	@property
 	def effect_name_s(self):
-		return 'x'.join( [f.name_s for f in self.factors] )
+		return None if (self.factors is None) else 'x'.join( [f.name_s for f in self.factors] )
 	@property
 	def effect_type(self):
-		return 'Main' if self.ismain else 'Interaction'
+		if self.factors is None:
+			s = 'Regress'
+		elif self.ismain:
+			s = 'Main'
+		else:
+			s = 'Interaction'
+		return s
 	@property
 	def factor_names(self):
-		return [f.name for f in self.factors]
+		return None if (self.factors is None) else [f.name for f in self.factors]
 	@property
 	def nfactors(self):
-		return len(self.factors)
+		return 0 if (self.factors is None) else len( self.factors )
 
 	@property
 	def name(self):
@@ -76,9 +82,10 @@ class Contrast(object):
 		if not np.all(self.C == other.C):
 			return False
 			
-		for f0,f1 in zip(self.factors, other.factors):
-			if f0 != f1:
-				return False
+		if (self.factors is not None) and (other.factors is not None):
+			for f0,f1 in zip(self.factors, other.factors):
+				if f0 != f1:
+					return False
 				
 		if self.ind != other.ind:
 			return False

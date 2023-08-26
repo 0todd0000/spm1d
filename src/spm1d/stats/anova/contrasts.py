@@ -25,7 +25,11 @@ class Contrast(object):
 		self.factors = factors # list of Factor objects (used only for factor names)
 		self.ind     = ind
 		
-
+	
+	def __eq__(self, other):
+		return self.isequal(other, verbose=False)
+	
+	
 	def __repr__(self):
 		dp      = DisplayParams( self )
 		dp.add_default_header()
@@ -64,3 +68,21 @@ class Contrast(object):
 	@property
 	def name_s(self):
 		return self.effect_name_s
+		
+		
+	def isequal(self, other, verbose=False):
+		if type(self) != type(other):
+			return False
+			
+		if not np.all(self.C == other.C):
+			return False
+			
+		if (self.factors is not None) and (other.factors is not None):
+			for f0,f1 in zip(self.factors, other.factors):
+				if f0 != f1:
+					return False
+				
+		if self.ind != other.ind:
+			return False
+
+		return True

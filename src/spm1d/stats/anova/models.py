@@ -20,6 +20,9 @@ class GeneralLinearModel(object):
 		self.QQ   = None   # (co-)variance model
 		self.X    = None   # design matrix
 
+	def __eq__(self, other):
+		return self.isequal(other, verbose=False)
+
 	def __repr__(self):
 		dp      = DisplayParams( self )
 		dp.add_default_header()
@@ -41,6 +44,20 @@ class GeneralLinearModel(object):
 		# self._set_fit(y, b, e)
 		return GLMFit(self, y, b, e)
 
+	def isequal(self, other, verbose=False):
+		if type(self) != type(other):
+			return False
+			
+		if (self.QQ is not None) and (other.QQ is not None):
+			for Q0,Q1 in zip(self.QQ, other.QQ):
+				if not np.all(Q0 == Q1):
+					return False
+
+		if not np.all(self.X == other.X):
+			return False
+
+		return True
+
 	def set_design_matrix(self, X):
 		self.X       = X
 	def set_variance_model(self, QQ):
@@ -59,6 +76,9 @@ class TestStatisticF(object):
 		self.ss    = ss
 		self.ms    = ms
 		
+	def __eq__(self, other):
+		return self.isequal(other, verbose=False)
+
 	def __repr__(self):
 		dp      = DisplayParams( self )
 		dp.add_default_header()
@@ -78,6 +98,24 @@ class TestStatisticF(object):
 		return 0 if isinstance(self.z, float) else 1
 
 
+	def isequal(self, other, verbose=False):
+		if type(self) != type(other):
+			return False
+			
+		if self.STAT != other.STAT:
+			return False
+		
+		if not self.df == other.df:
+			return False
+
+		for s in ['C', 'z']: 
+			x0,x1  = getattr(self, s), getattr(other, s)
+			if not np.all(x0 == x1):
+				return False
+
+		return True
+		
+		
 class GLMFit(object):
 
 
@@ -103,7 +141,26 @@ class GLMFit(object):
 		# 	self.fwhm   = estimate_fwhm( e )
 		# 	self.resels = resel_counts(e, self.fwhm, element_based=False, roi=None)
 
+	def __eq__(self, other):
+		return self.isequal(other, verbose=False)
 
+	def isequal(self, other, verbose=False):
+		if type(self) != type(other):
+			return False
+			
+		if self.model != other.model:
+			return False
+		
+		# if not self.df == other.df:
+		# 	return False
+
+		for s in ['V', 'b', 'e', 'sse', 'mse', 'y']: 
+			x0,x1  = getattr(self, s), getattr(other, s)
+			if not np.all(x0 == x1):
+				return False
+
+		return True
+		
 	def __repr__(self):
 		dp      = DisplayParams( self )
 		dp.add_default_header()

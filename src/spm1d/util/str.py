@@ -38,7 +38,10 @@ def float2string(x, allow_none=False, fmt='%.3f'):
 
 
 def objectlist2str(x):
-	return f'[list of {len(x)} {x[0].__class__.__name__} objects]'
+	if x is None:
+		return 'None'
+	else:
+		return f'[list of {len(x)} {x[0].__class__.__name__} objects]'
 
 def p2string(p, allow_none=False, fmt='%.3f'):
 	if allow_none and (p is None):
