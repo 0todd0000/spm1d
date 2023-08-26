@@ -19,6 +19,9 @@ class Factor(object):
 		self._parse( level_names )
 
 
+	def __eq__(self, other):
+		return self.isequal(other, verbose=False)
+
 
 	def __repr__(self):
 		s  = f'Factor "{self.name}"\n'
@@ -106,6 +109,34 @@ class Factor(object):
 				XAB.append(x)
 		return np.array(XAB).T
 		
+
+	def isequal(self, other, verbose=False):
+		if type(self) != type(other):
+			return False
+			
+		if not np.all(self.A == other.A):
+			return False
+
+		if not np.all(self.u == other.u):
+			return False
+			
+		if self.J != other.J:
+			return False
+
+		if self.n != other.n:
+			return False
+
+		if self.name != other.name:
+			return False
+
+		if self.name_s != other.name_s:
+			return False
+
+		if self.unames != other.unames:
+			return False
+
+		return True
+
 		
 	def set_name(self, name, name_s=None):
 		self.name   = str(name).upper()

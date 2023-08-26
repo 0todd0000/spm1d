@@ -181,52 +181,74 @@ class _SPM(object):
 	def isequal(self, other, verbose=False):
 		if type(self)!=type(other):
 			return False
+			
+		if self.design != other.design:
+			return False
+			
+		if self.model != other.model:
+			return False
+
+		if self.fit != other.fit:
+			return False
+
+		if self.teststat != other.teststat:
+			return False
+
+		if self.iresults != other.iresults:
+			return False
+
+		if self.df_adjusted != other.df_adjusted:
+			return False
 		
-		for k,v in self.__dict__.items():
-			if k.startswith('_'):
-				continue
-			
-			v1 = getattr(other, k)
-			
-			
-			
-			if v is None:
-				eq = v1 is None
-				
-			elif isinstance(v, float) and np.isnan(v):
-				eq = np.isnan( v1 )
-
-			
-			elif (k=='extras') and (self.method=='perm'):
-				d,d1 = v.copy(), v1.copy()
-				# d.pop('permuter')
-				# d1.pop('permuter')
-				d.pop('_nprandstate')
-				d1.pop('_nprandstate')
-				eq = d==d1
-
-			elif (k=='permuter'):
-				eq = True
-			
-			elif isinstance(v, tuple) and isinstance(v[0], np.ndarray):
-				for vv,vv1 in zip(v,v1):
-					eq = np.all( np.isclose(vv, vv1, rtol=1e-5, atol=1e-9, equal_nan=True ) )
-					if not eq:
-						break
-
-			elif isinstance(v, np.ndarray):
-				eq = np.all( np.isclose(v, v1, rtol=1e-5, atol=1e-9, equal_nan=True ) )
 		
-			elif isinstance(v, (str,int,float,tuple,list,dict)):
-				eq = v==v1
-			else:
-				raise ValueError( f'Unable to hash type: {type(v)}' )
-
-			if verbose:
-				print( f'{k:<14} : equal={eq}'  )
-
-			if not eq:
-				return False
+		# for k,v in self.__dict__.items():
+		# 	if k.startswith('_'):
+		# 		continue
+		#
+		# 	v1 = getattr(other, k)
+		#
+		#
+		#
+		# 	if v is None:
+		# 		eq = v1 is None
+		#
+		# 	elif isinstance(v, float) and np.isnan(v):
+		# 		eq = np.isnan( v1 )
+		#
+		#
+		# 	elif (k=='extras') and (self.method=='perm'):
+		# 		d,d1 = v.copy(), v1.copy()
+		# 		# d.pop('permuter')
+		# 		# d1.pop('permuter')
+		# 		d.pop('_nprandstate')
+		# 		d1.pop('_nprandstate')
+		# 		eq = d==d1
+		#
+		# 	elif (k=='permuter'):
+		# 		eq = True
+		#
+		# 	elif (k=='design'):
+		# 		eq = v == v1
+		#
+		# 	elif isinstance(v, tuple) and isinstance(v[0], np.ndarray):
+		# 		for vv,vv1 in zip(v,v1):
+		# 			eq = np.all( np.isclose(vv, vv1, rtol=1e-5, atol=1e-9, equal_nan=True ) )
+		# 			if not eq:
+		# 				break
+		#
+		# 	elif isinstance(v, np.ndarray):
+		# 		eq = np.all( np.isclose(v, v1, rtol=1e-5, atol=1e-9, equal_nan=True ) )
+		#
+		# 	elif isinstance(v, (str,int,float,tuple,list,dict)):
+		# 		eq = v==v1
+		# 	else:
+		# 		raise ValueError( f'Unable to hash type: {type(v)}' )
+		#
+		# 	if verbose:
+		# 		print( f'{k:<14} : equal={eq}'  )
+		#
+		# 	if not eq:
+		# 		return False
 
 		return True
 

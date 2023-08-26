@@ -26,6 +26,9 @@ class Contrast(object):
 		self.ind     = ind
 		
 
+	def __eq__(self, other):
+		return self.isequal(other, verbose=False)
+
 	def __repr__(self):
 		_afmt   = None if self.C.ndim == 1 else array2shortstr
 		dp      = DisplayParams( self )
@@ -65,3 +68,19 @@ class Contrast(object):
 	@property
 	def name_s(self):
 		return self.effect_name_s
+		
+	def isequal(self, other, verbose=False):
+		if type(self) != type(other):
+			return False
+			
+		if not np.all(self.C == other.C):
+			return False
+			
+		for f0,f1 in zip(self.factors, other.factors):
+			if f0 != f1:
+				return False
+				
+		if self.ind != other.ind:
+			return False
+
+		return True

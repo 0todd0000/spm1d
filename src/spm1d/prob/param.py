@@ -23,6 +23,8 @@ class ParamResults(object):
 		self.p        = p
 		self.extras   = {}
 		
+	def __eq__(self, other):
+		return self.isequal(other, verbose=False)
 
 	def __repr__(self):
 		dp      = DisplayParams( self )
@@ -50,7 +52,16 @@ class ParamResults(object):
 			h       = self.z < -zc
 		return h
 
-
+	def isequal(self, other, verbose=False):
+		if type(self) != type(other):
+			return False
+			
+		for s in ['STAT', 'alpha', 'dirn', 'p', 'z', 'zc']:
+			x0,x1  = getattr(self, s), getattr(other, s)
+			if not x0 == x1:
+				return False
+	
+		return True
 
 def isf_sf_t(z, df, alpha=0.05, dirn=0):
 	import rft1d

@@ -26,6 +26,9 @@ class RFTResults(object):
 		self.p_max    = p_max
 		self.extras   = {}
 		
+	def __eq__(self, other):
+		return self.isequal(other, verbose=False)
+
 	def __repr__(self):
 		dp      = DisplayParams( self )
 		dp.add_header( 'Inference results:' )
@@ -57,6 +60,22 @@ class RFTResults(object):
 	@property
 	def p_cluster(self):
 		return [c.p  for c in self.clusters]
+		
+	def isequal(self, other, verbose=False):
+		if type(self) != type(other):
+			return False
+			
+		for s in ['STAT', 'alpha', 'clusters', 'dirn', 'p_set', 'p_max', 'zc']:
+			x0,x1  = getattr(self, s), getattr(other, s)
+			if not x0 == x1:
+				return False
+
+		for s in ['z']:
+			x0,x1  = getattr(self, s), getattr(other, s)
+			if not np.all(x0 == x1):
+				return False
+	
+		return True
 
 
 def _clusterlevel_inference(calc, z, zc, fwhm, dirn=1, circular=False):

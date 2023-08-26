@@ -1,5 +1,5 @@
 
-
+import numpy as np
 from ... util import array2shortstr, arraylist2str, arraytuple2str, dflist2str, objectlist2str, resels2str, scalarlist2string, DisplayParams
 
 
@@ -14,6 +14,9 @@ class TestStatisticT(object):
 		# self.ss    = ss
 		# self.ms    = ms
 		
+	def __eq__(self, other):
+		return self.isequal(other, verbose=False)
+	
 	def __repr__(self):
 		dp      = DisplayParams( self )
 		dp.add_default_header()
@@ -33,3 +36,19 @@ class TestStatisticT(object):
 		return 0 if isinstance(self.z, float) else 1
 
 
+	def isequal(self, other, verbose=False):
+		if type(self) != type(other):
+			return False
+			
+		if self.STAT != other.STAT:
+			return False
+		
+		if not self.df == other.df:
+			return False
+
+		for s in ['C', 'z']: 
+			x0,x1  = getattr(self, s), getattr(other, s)
+			if not np.all(x0 == x1):
+				return False
+
+		return True

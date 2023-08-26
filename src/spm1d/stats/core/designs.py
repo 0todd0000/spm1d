@@ -15,6 +15,9 @@ class _Design(object):
 		self.factors       = None   # list of factor objects
 		
 	
+	def __eq__(self, other):
+		return self.isequal(other, verbose=False)
+
 	def __repr__(self):
 		dp      = DisplayParams( self )
 		dp.add_header( f'Design ({self.__class__.__name__})' )
@@ -48,6 +51,24 @@ class _Design(object):
 	def get_contrast_matrices(self):
 		return [c.C  for c in self.contrasts]
 	
+	def isequal(self, other, verbose=False):
+		if type(self) != type(other):
+			return False
+			
+		if not np.all(self.X == other.X):
+			return False
+			
+		for c0,c1 in zip(self.contrasts, other.contrasts):
+			if c0 != c1:
+				return False
+
+		for f0,f1 in zip(self.factors, other.factors):
+			if f0 != f1:
+				return False
+
+		return True
+
+
 	def set_factor_names(self, names, names_short=None):
 		# self.set_factor_names(names, names_short)
 		if names_short is None:

@@ -88,6 +88,9 @@ class GLMFit(object):
 		# # 	self.resels = resel_counts(e, self.fwhm, element_based=False, roi=None)
 
 
+	def __eq__(self, other):
+		return self.isequal(other, verbose=False)
+
 	def __repr__(self):
 		dp      = DisplayParams( self )
 		dp.add_default_header()
@@ -183,7 +186,22 @@ class GLMFit(object):
 		
 		
 		
+	def isequal(self, other, verbose=False):
+		if type(self) != type(other):
+			return False
+			
+		if self.model != other.model:
+			return False
+		
+		if not self.df == other.df:
+			return False
 
+		for s in ['b', 'e', 'Xi', 'ss', 's2', 'y']: 
+			x0,x1  = getattr(self, s), getattr(other, s)
+			if not np.all(x0 == x1):
+				return False
+
+		return True
 
 	# def calculate_f_stat(self, C, gg=False, _Xeff=None, ind=0):
 	# 	# build projectors:
