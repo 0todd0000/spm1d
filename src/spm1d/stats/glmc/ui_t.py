@@ -65,7 +65,7 @@ def ttest(y, mu=0, roi=None):
 	from . designs import TTEST
 	design    = TTEST(y, mu)
 	# df0       = design.get_df0(y.shape[0])
-	model,fit,teststat = glm(y, design.X, design.contrasts[0].C)
+	model,fit,teststat = glm(y-mu, design.X, design.contrasts[0].C)
 	
 	return _assemble_spm_objects(design, model, fit, teststat)
 	
