@@ -28,9 +28,10 @@ def _assemble_spm_objects(design, model, fit, teststats, roi=None):
 	return spm
 
 
-def aov(y, X, C, QQ, gg=False, _Xeff=None):
+def aov(y, X, C, QQ, df0=None, gg=False, _Xeff=None):
 	from . models import GeneralLinearModel
-	model     = GeneralLinearModel(X, QQ)
+	# df0       = 1, X.shape[0] - rank(X)
+	model     = GeneralLinearModel(X, df0, QQ)
 	fit       = model.fit( y )
 	teststats = [fit.calculate_f_stat( c, gg=gg, _Xeff=_Xeff, ind=i )   for i,c in enumerate(C)]
 	return model, fit, teststats
@@ -54,7 +55,7 @@ def anova1(y, A, equal_var=False):
 	
 	
 	
-	model,fit,teststats = aov(y, design.X, design.C, QQ)
+	model,fit,teststats = aov(y, design.X, design.C, QQ, df0=design.df0)
 	
 	return _assemble_spm_objects(design, model, fit, teststats)
 
@@ -75,7 +76,7 @@ def anova1rm(y, A, SUBJ, equal_var=False, gg=True):
 	# else:
 	# Q        = design.get_variance_model( equal_var=equal_var )
 	
-	model,fit,teststats = aov(y, design.X, design.C, QQ, gg=False, _Xeff= design.X[:,:-1] )  # "design.X[:,:-1]" is a hack;  there must be a different way
+	model,fit,teststats = aov(y, design.X, design.C, QQ, df0=design.df0, gg=False, _Xeff= design.X[:,:-1] )  # "design.X[:,:-1]" is a hack;  there must be a different way
 	
 	return _assemble_spm_objects(design, model, fit, teststats)
 	

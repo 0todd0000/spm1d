@@ -4,6 +4,7 @@
 import numpy as np
 from . contrasts import Contrast
 from . factors import Factor
+from .. _la import rank
 from ... util import array2shortstr, arraytuple2str, dflist2str, objectlist2str, resels2str, DisplayParams
 
 
@@ -37,6 +38,9 @@ class _Design(object):
 	def J(self):
 		return self.X.shape[0]
 	@property
+	def df0(self):
+		return 1, self.J - rank(self.X)
+	@property
 	def nfactors(self):
 		return 0 if (self.factors is None) else len( self.factors )
 	@property
@@ -50,6 +54,11 @@ class _Design(object):
 
 	def get_contrast_matrices(self):
 		return [c.C  for c in self.contrasts]
+	
+	
+	# def get_df0(self, J):
+	# 	from .. _la import rank
+	# 	return 1, J - rank(self.X)
 	
 	def isequal(self, other, verbose=False):
 		if type(self) != type(other):
@@ -220,6 +229,11 @@ class ANOVA1(_Design):
 		self.factors      = [ Factor(A, name='A') ]
 		self._assemble()
 
+	@property
+	def df0(self):
+		n = self.factors[0].n
+		return n - 1, self.J - n
+
 	def _build_contrasts(self):
 		n        = self.factors[0].nlevels
 		C        = np.zeros( (n-1, n) )
@@ -251,6 +265,13 @@ class ANOVA1RM(_Design):
 		self.factors      = [ Factor(A, name='A'), Factor(SUBJ, name='SUBJ') ]
 		self._assemble()
 
+	@property
+	def df0(self):
+		n     = self.factors[0].n
+		df_w  = self.J - n
+		df_b  = int( self.J / n ) - 1
+		df    = n - 1, df_w - df_b
+		return df
 
 	def _build_contrasts(self):
 		n        = self.factors[0].nlevels
@@ -300,6 +321,9 @@ class ANOVA2(_Design):
 		self._init_factors( A, B )
 		self._assemble()
 
+	@property
+	def df0(self):
+		return None # self._df0
 
 	def _build_contrasts(self):
 		# from . contrasts import Contrast #, ContrastList

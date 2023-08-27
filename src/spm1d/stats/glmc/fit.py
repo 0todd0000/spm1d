@@ -26,14 +26,22 @@ class GLMFit(object):
 		self.e      = e      # residuals
 		self.Xi     = Xi     # design pseudo-inverse
 		self.y      = y      # (J,Q) dependent variable array where J=num.observations and Q=num.continuum nodes
-		self.df0    = 1, y.shape[0] - rank(model.X)  # degrees of freedom  (for a t contrast under an assumption of equal variance)
-		self.df     = None   # adjusted degrees of freedom (unequal variance, non-sphericity)
+		# self.df0    = 1, y.shape[0] - rank(model.X)  # degrees of freedom  (for a t contrast under an assumption of equal variance)
+		self.df0    = self.model.df0   # degrees of freedom
+		self.df     = None   # degrees of freedom (possibly adjusted for unequal variance and non-sphericity)
 		self.V      = None   # estimated (co-)variance  (only used when equal variance is NOT assumed)
 		self.h      = None   # estimated (co-)variance hyperparameters  (only used when equal variance is NOT assumed)
 		self.sse    = None   # sum of squared errors
 		self.mse    = None   # mean squared error
-		self._calculate_sse_mse()
+		
+		self.sse    = (self.e ** 2).sum(axis=0)
 		self._estimate_variance()
+		# self.mse = self.sse / self.df0[1]
+		
+		
+		# self._estimate_variance()
+		# self._calculate_sse_mse()
+		
 
 
 	def __eq__(self, other):
@@ -61,6 +69,9 @@ class GLMFit(object):
 	@property
 	def J(self):
 		return self.model.J
+	# @property
+	# def df0(self):   # degrees of freedom  (under an assumption of equal variance)
+	# 	return self.model.df0
 	@property
 	def dvdim(self):   # dependent variable domain dimensionality
 		return 0 if ((self.y.ndim==1) or (1 in self.y.shape)) else 1
@@ -100,9 +111,9 @@ class GLMFit(object):
 	# 	# self.mse     = self.sse / self.df[1]           # variance
 	# 	self.s2  = self.sse / self.df[1]                  # variance  (same as previous:  self.mse = self.sse / self.df[1] )
 
-	def _calculate_sse_mse(self):
-		self.sse = (self.e ** 2).sum(axis=0)
-		self.mse = self.sse / self.df0[1]
+	# def _calculate_sse_mse(self):
+	# 	self.sse = (self.e ** 2).sum(axis=0)
+	# 	self.mse = self.sse / self.df0[1]
 
 	def _estimate_variance(self):
 		if self.model.QQ is not None:
@@ -137,6 +148,8 @@ class GLMFit(object):
 			df1           = trRV**2 / trRVRV
 			self.df       = df0, df1
 			self.df0      = trMV, trRV
+			self.mse      = self.sse / self.df0[1]
+			# print( trMV, trRV )
 
 
 	def _greenhouse_geisser_adjustment(self):
@@ -225,6 +238,7 @@ class GLMFit(object):
 
 
 	def calculate_t_stat(self, c, roi=None):
+		self.mse      = self.sse / self.df0[1]
 		if self.model.QQ is None:
 			b,s2,X     = self.b, self.mse, self.model.X
 			t          = (c @ b)  /   ( np.sqrt( s2 * (c @ np.linalg.inv(X.T @ X) @ c) ) + eps )

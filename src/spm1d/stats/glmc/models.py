@@ -13,9 +13,10 @@ from ... util import array2shortstr, arraylist2str, arraylist2strnone, arraytupl
 
 class GeneralLinearModel(object):
 	
-	def __init__(self, X, QQ=None):
+	def __init__(self, X, df0, QQ=None):
 		self.QQ   = QQ     # (co-)variance model
 		self.X    = X      # design matrix
+		self.df0  = df0
 
 	def __eq__(self, other):
 		return self.isequal(other, verbose=False)
@@ -24,6 +25,7 @@ class GeneralLinearModel(object):
 		dp      = DisplayParams( self )
 		dp.add_default_header()
 		dp.add( 'X' , array2shortstr )
+		dp.add( 'df0' , dflist2str )
 		dp.add( 'QQ' , arraylist2strnone )
 		return dp.asstr()
 	

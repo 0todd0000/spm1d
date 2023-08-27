@@ -8,7 +8,7 @@ One- and two sample tests (using T contrasts).
 
 import numpy as np
 from .. _dec import appendargs, checkargs
-
+from .. _la import rank
 
 
 
@@ -36,7 +36,8 @@ def glm(y, X, c, ctype='T', QQ=None, roi=None):
 	represent specific cases of this glm function.
 	'''
 	from . models import GeneralLinearModel
-	model     = GeneralLinearModel(X, QQ)
+	df0       = 1, X.shape[0] - rank(X)
+	model     = GeneralLinearModel(X, df0, QQ)
 	fit       = model.fit( y )
 	teststat  = fit.calculate_t_stat( c, roi=roi )
 	return model, fit, teststat
@@ -52,6 +53,8 @@ def regress(y, x, roi=None):
 	model,fit,teststat = glm(y, design.X, design.contrasts[0].C)
 	spm    = _assemble_spm_objects(design, model, fit, teststat)
 	spm.r  = spm.z / (  (spm.design.J - 2 + spm.z**2)**0.5)   # t = r * ((J-2)/(1-r*r) )**0.5
+	# df0    = design.get_df0(y.shape[0])
+	# print(df0)
 	return spm
 
 
@@ -61,7 +64,9 @@ def regress(y, x, roi=None):
 def ttest(y, mu=0, roi=None):
 	from . designs import TTEST
 	design    = TTEST(y, mu)
+	# df0       = design.get_df0(y.shape[0])
 	model,fit,teststat = glm(y, design.X, design.contrasts[0].C)
+	
 	return _assemble_spm_objects(design, model, fit, teststat)
 	
 	
