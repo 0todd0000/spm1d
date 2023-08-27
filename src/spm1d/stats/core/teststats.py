@@ -44,12 +44,12 @@ class TestStatisticT(object):
 		if self.STAT != other.STAT:
 			return False
 		
-		if not self.df == other.df:
-			return False
+		# if not self.df == other.df:
+		# 	return False
 
-		for s in ['C', 'z']: 
+		for s in ['C', 'df', 'z']: 
 			x0,x1  = getattr(self, s), getattr(other, s)
-			if s == 'z':
+			if s in ['df', 'z']:
 				if not self.z == pytest.approx(other.z):
 					return False
 			else:

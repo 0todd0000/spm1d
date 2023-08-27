@@ -91,8 +91,8 @@ class GLMFit(object):
 		# self._calculate_sse()
 		
 		
-		### ANOVA attributes
-		self.h      = None   # (co-)variance hyperparameters
+		# ### ANOVA attributes
+		# self.h      = None   # (co-)variance hyperparameters
 		
 		
 
@@ -166,8 +166,8 @@ class GLMFit(object):
 	# 	self.s2  = self.sse / self.df[1]                  # variance
 
 	def _calculate_sse(self):
-		sse      = (self.e ** 2).sum(axis=0)           # sum-of-squared residuals
-		self.sse = float(sse) if (self.dvdim==0) else sse
+		self.sse = (self.e ** 2).sum(axis=0)           # sum-of-squared residuals
+		# self.sse = float(sse) if (self.dvdim==0) else sse
 		self.mse = self.sse / self.df[1]           # variance
 		# self.s2  = self.sse / self.df[1]           # variance
 
@@ -222,7 +222,7 @@ class GLMFit(object):
 			trRV,trRVRV   = traceRV(self.V, X)
 			df            = 1, trRV**2 / trRVRV  # effective degrees of freedom
 			v             = self.df
-		else:
+		elif STAT=='F':
 			trRV,trRVRV   = traceRV(self.V, X)
 			trMV,trMVMV   = traceMV(self.V, self.model.X, C)
 			df0           = max(trMV**2 / trMVMV, 1.0)
@@ -246,7 +246,7 @@ class GLMFit(object):
 		H        = np.linalg.pinv( X.T ) @ C  # text between eqns. 9.17 & 9.18 (Friston 2007, p.136)
 		PH       = H @ np.linalg.inv(H.T @ H) @ H.T     # H projector
 		# estimate df:
-		df,v     = self._calculate_effective_df( C, _Xeff )
+		df,v     = self._calculate_effective_df( C, _Xeff, STAT='F' )
 		v0,v1    = v
 		# self.mse = self.sse / v1
 		
@@ -290,14 +290,18 @@ class GLMFit(object):
 		# Q = None
 		b,s2,X   = self.b, self.s2, self.model.X
 		
-		t        = (c @ b)  /   ( np.sqrt( s2 * (c @ np.linalg.inv(X.T @ X) @ c) ) + eps )
-		t        = float(t)  if (self.dvdim==0) else t.flatten()
+		# t        = (c @ b)  /   ( np.sqrt( s2 * (c @ np.linalg.inv(X.T @ X) @ c) ) + eps )
+		
 		
 		if self.model.QQ is None:
+			t    = (c @ b)  /   ( np.sqrt( s2 * (c @ np.linalg.inv(X.T @ X) @ c) ) + eps )
 			df   = self.df
 		else:
+			t    = (c @ b)  /   ( np.sqrt( s2 * (c @ self.Xi @ self.V @ self.Xi.T @ c)  + eps ) )
+			# print( self.V )
+			# df   = self.df
 			df,v = self._calculate_effective_df( STAT='T' )
-		
+		t        = float(t)  if (self.dvdim==0) else t.flatten()
 		
 		# if self.QQ is None:  # covariance not modeled
 		# 	t      = (c @ b)  /   ( np.sqrt( s2 * (c @ np.linalg.inv(X.T @ X) @ c) ) + eps )

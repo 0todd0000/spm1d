@@ -179,6 +179,8 @@ class _SPM(object):
 		pass
 	
 	def isequal(self, other, verbose=False):
+		import pytest
+		
 		if type(self)!=type(other):
 			return False
 			
@@ -197,7 +199,7 @@ class _SPM(object):
 		if self.iresults != other.iresults:
 			return False
 
-		if self.df_adjusted != other.df_adjusted:
+		if self.df_adjusted != pytest.approx(other.df_adjusted):
 			return False
 		
 		

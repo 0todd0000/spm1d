@@ -19,12 +19,14 @@ def __tstat_cov_model(Y, X, Xi, c, b, s2, Q):
 	more details
 	'''
 	from .. _cov import reml, traceRV
-	ndim        = Y.ndim
-	if ndim == 1:
-		Y       = np.array([Y]).T
+	# print(Y)
+	ndim        = 1 if (Y.ndim==1  or Y.shape[1]==1) else 2
+	# if ndim == 1:
+	# 	Y       = np.array([Y]).T
 	n,s         = Y.shape
 	trRV        = n - rank(X)
 	q           = np.diag(np.sqrt( trRV / s2 )).T if (ndim==2) else np.array( [np.sqrt( trRV / s2 )] )
+	# q           = np.array( [np.sqrt( trRV / s2 )] ) if isinstance(s2, float) else np.diag(np.sqrt( trRV / s2 )).T
 	Ym          = Y @ q
 	if ndim == 1:
 		Ym      = np.array([Ym]).T

@@ -70,7 +70,7 @@ def ttest(y, mu=0, roi=None):
 
 @appendargs
 @checkargs
-def ttest2(y0, y1, equal_var=True, roi=None):
+def ttest2(y0, y1, equal_var=False, roi=None):
 	from . designs import TTEST2
 	from .. _cov import CovarianceModel
 	n0,n1     = y0.shape[0], y1.shape[0]
