@@ -53,29 +53,26 @@ class GLMFit(object):
 
 
 	def __init__(self, model, y, b, e, Xi):
-		# print(y.shape)
-		# print(1 in y.shape)
 		# self._df   = None   # effective degrees of freedom (for one contrast)
 		# self._f    = None   # F statistic (for one contrast)
 		# self._v    = None   # variance scale (for one contrast); same as df when equal variance is assumed
 		self.model  = model
-		self.V      = None   # estimated (co-)variance
 		self.b      = b      # betas (fitted parameters)
-		# self.dvdim  = 0 if ((y.ndim==1) or (1 in y.shape)) else 1 # dependent variable dimensionality
 		self.e      = e      # residuals
 		self.Xi     = Xi     # design pseudo-inverse
-		# print(self.dvdim)
-		
 		self.y      = y      # (J,Q) dependent variable array where J=num.observations and Q=num.continuum nodes
 		self.df     = 1, y.shape[0] - rank(model.X)  # degrees of freedom
 		
 		
+		self.V      = None   # estimated (co-)variance
+		self.h      = None   # estimated (co-)variance hyperparameters
 		self.sse    = None
 		self.mse    = None
 		# self.ss     = (e ** 2).sum(axis=0)           # sum-of-squared residuals
 		# self.s2     = None
 		
 		self._calculate_sse()
+		self._estimate_variance()
 		
 		
 		
@@ -176,33 +173,63 @@ class GLMFit(object):
 
 
 	def _estimate_variance(self):
-		# i             = np.any(self.C, axis=1)
-		# _X            = self.X[:,i]  # design matrix excluding non-contrast columns
-		# _C            = self.C[i]
-		# X             = self.model.X
-		n,s           = self.y.shape
-		# trRV          = n - rank(_X)
-		trRV          = n - rank(self.model.X)
-		ss            = (self.e**2).sum(axis=0)
-		q             = np.diag(  np.sqrt( trRV / ss )  ).T
-		Ym            = self.y @ q
-		# Ym            = self.e @ q
-		YY            = Ym @ Ym.T / s
-		V,h           = reml(YY, self.model.X, self.model.QQ)
-		# V,h           = reml(YY, self.X, self.QQ)
-		V            *= (n / np.trace(V))
-		self.h        = h
-		self.V        = V
+		if self.model.QQ is not None:
+			from .. _cov import reml, traceRV
+			n,s           = self.y.shape
+			trRV          = n - rank(self.model.X)
+			# ss            = (self.e**2).sum(axis=0)
+			q             = np.diag(  np.sqrt( trRV / self.ss )  ).T
+			Ym            = self.y @ q
+			# Ym            = self.e @ q
+			YY            = Ym @ Ym.T / s
+			V,h           = reml(YY, self.model.X, self.model.QQ)
+			# V,h           = reml(YY, self.X, self.QQ)
+			V            *= (n / np.trace(V))
+			
+			# trRV,trRVRV = traceRV(V, X)
+			# df          = trRV**2 / trRVRV  # effective degrees of freedom
+			
+			
+			self.V        = V
+			self.h        = h
+			
 
-
-	def _calculate_effective_df(self, C, X=None):
+	# def __tstat_cov_model(Y, X, Xi, c, b, s2, Q):
+	# 	from .. _cov import reml, traceRV
+	# 	ndim        = Y.ndim
+	# 	if ndim == 1:
+	# 		Y       = np.array([Y]).T
+	# 	n,s         = Y.shape
+	# 	trRV        = n - rank(X)
+	# 	q           = np.diag(np.sqrt( trRV / s2 )).T if (ndim==2) else np.array( [np.sqrt( trRV / s2 )] )
+	# 	Ym          = Y @ q
+	# 	if ndim == 1:
+	# 		Ym      = np.array([Ym]).T
+	# 	YY          = Ym @ Ym.T / s
+	# 	V,h         = reml(YY, X, Q)
+	# 	V           = V * (n / np.trace(V))
+	# 	trRV,trRVRV = traceRV(V, X)
+	# 	df          = trRV**2 / trRVRV  # effective degrees of freedom
+	# 	t           = (c @ b)  /   ( np.sqrt( s2 * (c @ Xi @ V @ Xi.T @ c)  + eps ) )
+	# 	return t, df
+	
+	
+	
+	def _calculate_effective_df(self, C=None, X=None, STAT='T'):
 		X             = self.model.X if (X is None) else X
-		trRV,trRVRV   = traceRV(self.V, X)
-		trMV,trMVMV   = traceMV(self.V, self.model.X, C)
-		df0           = max(trMV**2 / trMVMV, 1.0)
-		df1           = trRV**2 / trRVRV
-		df            = df0, df1
-		v             = trMV, trRV
+		
+		if STAT=='T':
+			trRV,trRVRV   = traceRV(self.V, X)
+			df            = 1, trRV**2 / trRVRV  # effective degrees of freedom
+			v             = self.df
+		else:
+			trRV,trRVRV   = traceRV(self.V, X)
+			trMV,trMVMV   = traceMV(self.V, self.model.X, C)
+			df0           = max(trMV**2 / trMVMV, 1.0)
+			df1           = trRV**2 / trRVRV
+			df            = df0, df1
+			v             = trMV, trRV
+		self.v            = v
 		return df,v
 		# self._df       = df0, df1
 		# self._v       = v0, v1
@@ -210,7 +237,7 @@ class GLMFit(object):
 
 	def calculate_f_stat(self, C, gg=False, _Xeff=None, ind=0):
 		from . teststats import TestStatisticF
-		self._estimate_variance()
+		# self._estimate_variance()
 		# self._calculate_sse()
 		
 		# build projectors:
@@ -221,7 +248,7 @@ class GLMFit(object):
 		# estimate df:
 		df,v     = self._calculate_effective_df( C, _Xeff )
 		v0,v1    = v
-		self.mse = self.sse / v1
+		# self.mse = self.sse / v1
 		
 		# f stat:
 		# YIPY    = y.T @ ( np.eye( self.J ) - PX ) @ y   # eqn.9.13 denominator (Friston 2007, p.135)
@@ -261,17 +288,26 @@ class GLMFit(object):
 
 	def calculate_t_stat(self, c, roi=None):
 		# Q = None
-		b,s2,X = self.b, self.s2, self.model.X
+		b,s2,X   = self.b, self.s2, self.model.X
 		
-		if self.QQ is None:  # covariance not modeled
-			t      = (c @ b)  /   ( np.sqrt( s2 * (c @ np.linalg.inv(X.T @ X) @ c) ) + eps )
-			df     = self.df
+		t        = (c @ b)  /   ( np.sqrt( s2 * (c @ np.linalg.inv(X.T @ X) @ c) ) + eps )
+		t        = float(t)  if (self.dvdim==0) else t.flatten()
+		
+		if self.model.QQ is None:
+			df   = self.df
 		else:
-			t,df   = _tstat_cov_model(self.y, X, self.Xi, c, b, s2, self.QQ, roi=roi)
-			df     = (1,df)
+			df,v = self._calculate_effective_df( STAT='T' )
+		
+		
+		# if self.QQ is None:  # covariance not modeled
+		# 	t      = (c @ b)  /   ( np.sqrt( s2 * (c @ np.linalg.inv(X.T @ X) @ c) ) + eps )
+		# 	df     = self.df
+		# else:
+		# 	t,df   = _tstat_cov_model(self.y, X, self.Xi, c, b, s2, self.QQ, roi=roi)
+		# 	df     = (1,df)
 			
 			
-		t       = float(t)  if (self.dvdim==0) else t.flatten()
+		
 		return TestStatisticT(t, df, c)
 		# return t,df
 		
