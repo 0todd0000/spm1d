@@ -3,16 +3,16 @@ import numpy as np
 from ... util import array2shortstr, arraylist2str, arraytuple2str, dflist2str, objectlist2str, resels2str, scalarlist2string, DisplayParams
 
 
-class TestStatisticT(object):
-	def __init__(self, z, df, C, ind=0):
+
+class _TestStatistic(object):
+	
+	_attrs2test    = ['STAT', 'C', 'z', 'df']
+	
+	def __init__(self, z, df, C):
 		self.STAT  = 'T'
 		self.C     = C
-		# self.ind   = ind
 		self.z     = z
 		self.df    = df
-		# self.v     = v
-		# self.ss    = ss
-		# self.ms    = ms
 		
 	def __eq__(self, other):
 		return self.isequal(other, verbose=False)
@@ -22,85 +22,50 @@ class TestStatisticT(object):
 		dp.add_default_header()
 		dp.add( 'STAT' )
 		dp.add( 'C', array2shortstr )
-		# dp.add( 'ind' )
 		_astr      = array2shortstr if self.dvdim==1 else None
 		dp.add( 'z', _astr )
 		dp.add( 'df', dflist2str )
-		# dp.add( 'ms', _astr )
-		# dp.add( 'ss', _astr )
 		return dp.asstr()
-		
 		
 	@property
 	def dvdim(self):
 		return 0 if isinstance(self.z, float) else 1
 
-
 	def isequal(self, other, verbose=False):
 		if type(self) != type(other):
 			return False
-			
-		if self.STAT != other.STAT:
-			return False
-		
-		if not self.df == other.df:
-			return False
-
-		for s in ['C', 'z']: 
+		for s in self._attrs2test: 
 			x0,x1  = getattr(self, s), getattr(other, s)
 			if not np.all(x0 == x1):
 				return False
-
 		return True
 		
 		
 
-class TestStatisticF(object):
+class TestStatisticT(_TestStatistic):
+	pass
+
+
+class TestStatisticF(_TestStatistic):
+	
+	_attrs2test    = ['STAT', 'C', 'z', 'df', 'v', 'ss', 'ms', 'ind']
+	
 	def __init__(self, f, df, v, ss, ms, C, ind=0):
 		self.STAT  = 'F'
 		self.C     = C
-		self.ind   = ind
 		self.z     = f
 		self.df    = df
-		self.v     = v
+		self.v     = v     # unadjusted degrees of freedom
 		self.ss    = ss
 		self.ms    = ms
-		
-	def __eq__(self, other):
-		return self.isequal(other, verbose=False)
+		self.ind   = ind
 
 	def __repr__(self):
+		s0      = super().__repr__()
 		dp      = DisplayParams( self )
-		dp.add_default_header()
-		dp.add( 'STAT' )
-		dp.add( 'C', array2shortstr )
-		dp.add( 'ind' )
-		_astr      = array2shortstr if self.dvdim==1 else None
-		dp.add( 'z', _astr )
-		dp.add( 'df', dflist2str )
+		_astr   = array2shortstr if self.dvdim==1 else None
 		dp.add( 'ms', _astr )
 		dp.add( 'ss', _astr )
-		return dp.asstr()
-		
-		
-	@property
-	def dvdim(self):
-		return 0 if isinstance(self.z, float) else 1
+		dp.add( 'ind' )
+		return s0 + dp.asstr()
 
-
-	def isequal(self, other, verbose=False):
-		if type(self) != type(other):
-			return False
-			
-		if self.STAT != other.STAT:
-			return False
-		
-		if not self.df == other.df:
-			return False
-
-		for s in ['C', 'z']: 
-			x0,x1  = getattr(self, s), getattr(other, s)
-			if not np.all(x0 == x1):
-				return False
-
-		return True
