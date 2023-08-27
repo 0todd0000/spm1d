@@ -45,8 +45,8 @@ class GeneralLinearModel(object):
 		return GLMFit(self, y, b, e)
 
 	def isequal(self, other, verbose=False):
-		if type(self) != type(other):
-			return False
+		# if type(self) != type(other):
+		# 	return False
 			
 		if (self.QQ is not None) and (other.QQ is not None):
 			for Q0,Q1 in zip(self.QQ, other.QQ):
@@ -99,8 +99,8 @@ class TestStatisticF(object):
 
 
 	def isequal(self, other, verbose=False):
-		if type(self) != type(other):
-			return False
+		# if type(self) != type(other):
+		# 	return False
 			
 		if self.STAT != other.STAT:
 			return False
@@ -145,8 +145,8 @@ class GLMFit(object):
 		return self.isequal(other, verbose=False)
 
 	def isequal(self, other, verbose=False):
-		if type(self) != type(other):
-			return False
+		# if type(self) != type(other):
+		# 	return False
 			
 		if self.model != other.model:
 			return False

@@ -23,6 +23,9 @@ Specifically:
 
 
 from . import _spmcls
+
+from . import glmc
+
 # from . import prob
 from . import core
 from . t import ttest, ttest_paired, ttest2, regress, glm

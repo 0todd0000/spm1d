@@ -6,7 +6,7 @@ from ... util import array2shortstr, arraytuple2str, dflist2str, objectlist2str,
 
 
 
-class _Design(object):
+class _DesignANOVA(object):
 	def __init__(self):
 		self.X             = None   # design matrix
 		self.contrasts     = None   # contrast objects
@@ -45,8 +45,8 @@ class _Design(object):
 		self.contrasts = self._build_contrasts()
 
 	def isequal(self, other, verbose=False):
-		# if type(self) != type(other):
-		# 	return False
+		if type(self) != type(other):
+			return False
 			
 		if not np.all(self.X == other.X):
 			return False
@@ -76,7 +76,7 @@ class _Design(object):
 
 
 
-class ANOVA1(_Design):
+class ANOVA1(_DesignANOVA):
 	def __init__(self, A):
 		self.factors      = [ Factor(A, name='A') ]
 		self._assemble()
@@ -107,7 +107,7 @@ class ANOVA1(_Design):
 	
 	
 	
-class ANOVA1RM(_Design):
+class ANOVA1RM(_DesignANOVA):
 	def __init__(self, A, SUBJ):
 		self.factors      = [ Factor(A, name='A'), Factor(SUBJ, name='SUBJ') ]
 		self._assemble()
@@ -156,7 +156,7 @@ class ANOVA1RM(_Design):
 
 
 
-class ANOVA2(_Design):
+class ANOVA2(_DesignANOVA):
 	def __init__(self, A, B):
 		self._init_factors( A, B )
 		self._assemble()

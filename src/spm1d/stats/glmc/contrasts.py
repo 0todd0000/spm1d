@@ -4,20 +4,6 @@ from . factors import Factor
 from ... util import array2shortstr, arraytuple2str, dflist2str, objectlist2str, resels2str, DisplayParams
 
 
-# class ContrastList( list ):
-# 	pass
-#
-# 	# def __repr__(self):
-# 	# 	return f'List of {len(self)} Contrast objects'
-# 	#
-# 	# def __repr__(self):
-# 	# 	dp      = DisplayParams( self )
-# 	# 	dp.add_default_header()
-# 	# 	dp.add( 'name' )
-# 	# 	dp.add( 'C' , array2shortstr )
-# 	# 	return dp.asstr()
-
-
 
 class Contrast(object):
 	def __init__(self, C, factors, ind=0):
@@ -76,8 +62,8 @@ class Contrast(object):
 		return self.effect_name_s
 		
 	def isequal(self, other, verbose=False):
-		# if type(self) != type(other):
-		# 	return False
+		if type(self) != type(other):
+			return False
 			
 		if not np.all(self.C == other.C):
 			return False

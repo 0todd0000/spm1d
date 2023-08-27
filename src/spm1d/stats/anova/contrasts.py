@@ -71,8 +71,8 @@ class Contrast(object):
 		
 		
 	def isequal(self, other, verbose=False):
-		if type(self) != type(other):
-			return False
+		# if type(self) != type(other):
+		# 	return False
 			
 		if not np.all(self.C == other.C):
 			return False

@@ -52,8 +52,8 @@ class _Design(object):
 		return [c.C  for c in self.contrasts]
 	
 	def isequal(self, other, verbose=False):
-		if type(self) != type(other):
-			return False
+		# if type(self) != type(other):
+		# 	return False
 			
 		if not np.all(self.X == other.X):
 			return False
