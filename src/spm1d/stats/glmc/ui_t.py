@@ -36,9 +36,7 @@ def glm(y, X, c, ctype='T', QQ=None, roi=None):
 	represent specific cases of this glm function.
 	'''
 	from . models import GeneralLinearModel
-	model     = GeneralLinearModel()
-	model.set_design_matrix( X )
-	model.set_variance_model( QQ )
+	model     = GeneralLinearModel(X, QQ)
 	fit       = model.fit( y )
 	teststat  = fit.calculate_t_stat( c, roi=roi )
 	return model, fit, teststat

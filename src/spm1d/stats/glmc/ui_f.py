@@ -28,14 +28,11 @@ def _assemble_spm_objects(design, model, fit, teststats, roi=None):
 	return spm
 
 
-def aov(y, X, C, Q, gg=False, _Xeff=None):
-	from . models import GeneralLinearModelANOVA
-	model     = GeneralLinearModelANOVA()
-	model.set_design_matrix( X )
-	model.set_variance_model( Q )
+def aov(y, X, C, QQ, gg=False, _Xeff=None):
+	from . models import GeneralLinearModel
+	model     = GeneralLinearModel(X, QQ)
 	fit       = model.fit( y )
 	teststats = [fit.calculate_f_stat( c, gg=gg, _Xeff=_Xeff, ind=i )   for i,c in enumerate(C)]
-	# glmr     = GLMResults(design, model, fit, stats)
 	return model, fit, teststats
 
 

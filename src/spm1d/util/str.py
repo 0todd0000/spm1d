@@ -6,7 +6,7 @@ Utility functions (string)
 
 
 def array2shortstr(a):
-	return f'{a.shape} array'
+	return 'None' if (a is None) else f'{a.shape} array'
 
 
 def arraylist2str(aa):
@@ -77,7 +77,10 @@ def scalar2string(x, fmt='%.3f'):
 	return fmt%x
 
 def scalarlist2string(x, fmt='%.3f'):
-	return '[' + ', '.join( [scalar2string(xx, fmt=fmt) for xx in x] ) + ']'
+	if x is None:
+		return 'None'
+	else:
+		return '[' + ', '.join( [scalar2string(xx, fmt=fmt) for xx in x] ) + ']'
 
 
 

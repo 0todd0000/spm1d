@@ -222,7 +222,7 @@ class GLMFit(object):
 		# if not self.df == other.df:
 		# 	return False
 
-		for s in ['b', 'e', 'ss', 'y']: 
+		for s in ['b', 'e', 'y']: 
 			x0,x1  = getattr(self, s), getattr(other, s)
 			if verbose:
 				print( f'{s}:  {x0},  {x1}' )

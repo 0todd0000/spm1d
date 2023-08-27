@@ -4,7 +4,7 @@
 
 
 import numpy as np
-from . fit import GLMFit #, GLMFitANOVA
+# from . fit import GLMFit #, GLMFitANOVA
 from ... util import array2shortstr, arraylist2str, arraylist2strnone, arraytuple2str, dflist2str, objectlist2str, resels2str, scalarlist2string, DisplayParams
 
 
@@ -13,11 +13,9 @@ from ... util import array2shortstr, arraylist2str, arraylist2strnone, arraytupl
 
 class GeneralLinearModel(object):
 	
-	_FitClass = GLMFit
-	
-	def __init__(self):
-		self.QQ   = None   # (co-)variance model
-		self.X    = None   # design matrix
+	def __init__(self, X, QQ=None):
+		self.QQ   = QQ     # (co-)variance model
+		self.X    = X      # design matrix
 
 	def __eq__(self, other):
 		return self.isequal(other, verbose=False)
@@ -34,12 +32,13 @@ class GeneralLinearModel(object):
 		return None if (self.X is None) else self.X.shape[0]
 
 	def fit(self, y):
+		from . fit import GLMFit
 		y      = np.asarray(y, dtype=float)
 		y      = y if (y.ndim==2) else np.array([y]).T
 		Xi     = np.linalg.pinv( self.X )
 		b      = Xi @ y
 		e      = y - self.X @ b
-		return self._FitClass(self, y, b, e, Xi)
+		return GLMFit(self, y, b, e, Xi)
 
 	def isequal(self, other, verbose=False):
 		if type(self) != type(other):
@@ -55,16 +54,8 @@ class GeneralLinearModel(object):
 
 		return True
 
-	def set_design_matrix(self, X):
-		self.X  = X
-	def set_variance_model(self, QQ):
-		self.QQ = QQ
+	# def set_design_matrix(self, X):
+	# 	self.X  = X
+	# def set_variance_model(self, QQ):
+	# 	self.QQ = QQ
 
-
-
-
-class GeneralLinearModelANOVA(GeneralLinearModel):
-	
-	# _FitClass = GLMFitANOVA
-	_FitClass = GLMFit
-	
