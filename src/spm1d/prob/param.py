@@ -53,13 +53,18 @@ class ParamResults(object):
 		return h
 
 	def isequal(self, other, verbose=False):
+		import pytest
 		if type(self) != type(other):
 			return False
 			
 		for s in ['STAT', 'alpha', 'dirn', 'p', 'z', 'zc']:
 			x0,x1  = getattr(self, s), getattr(other, s)
-			if not x0 == x1:
-				return False
+			if s in ['p', 'z', 'zc']:
+				if not x0 == pytest.approx(x1):
+					return False
+			else:
+				if not x0 == x1:
+					return False
 	
 		return True
 

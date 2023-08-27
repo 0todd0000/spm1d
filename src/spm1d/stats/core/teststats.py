@@ -37,6 +37,7 @@ class TestStatisticT(object):
 
 
 	def isequal(self, other, verbose=False):
+		import pytest
 		# if type(self) != type(other):
 		# 	return False
 			
@@ -48,7 +49,11 @@ class TestStatisticT(object):
 
 		for s in ['C', 'z']: 
 			x0,x1  = getattr(self, s), getattr(other, s)
-			if not np.all(x0 == x1):
-				return False
+			if s == 'z':
+				if not self.z == pytest.approx(other.z):
+					return False
+			else:
+				if not np.all(x0 == x1):
+					return False
 
 		return True

@@ -7,9 +7,9 @@ from ... util import array2shortstr, arraytuple2str, dflist2str, objectlist2str,
 
 class Contrast(object):
 	def __init__(self, C, factors, ind=0):
-		self.C       = C       # contrast matrix
-		self.factors = factors # list of Factor objects (used only for factor names)
-		self.ind     = ind
+		self.C       = C        # contrast matrix
+		self.factors = factors  # list of Factor objects (used only for factor names)
+		self.ind     = ind      # list index (if contrast appears in a list of F contrasts)
 		
 
 	def __eq__(self, other):

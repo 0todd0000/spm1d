@@ -145,77 +145,77 @@ class TTEST2(_Design):
 
 
 
-class _DesignANOVA(object):
-	def __init__(self):
-		self.X             = None   # design matrix
-		self.contrasts     = None   # contrast objects
-		self.factors       = None   # list of factor objects
-		
-	def __eq__(self, other):
-		return self.isequal(other, verbose=False)
-	
-	def __repr__(self):
-		dp      = DisplayParams( self )
-		dp.add_header( f'Design ({self.__class__.__name__})' )
-		dp.add( 'testname' )
-		dp.add( 'X' , array2shortstr )
-		dp.add( 'contrasts' , objectlist2str )
-		return dp.asstr()
-	
-	def _init_factors(self, *AA):
-		self.factors = [Factor(A, name=chr(65+i))   for i,A in enumerate(AA)]
+# class _DesignANOVA(object):
+# 	def __init__(self):
+# 		self.X             = None   # design matrix
+# 		self.contrasts     = None   # contrast objects
+# 		self.factors       = None   # list of factor objects
+#
+# 	def __eq__(self, other):
+# 		return self.isequal(other, verbose=False)
+#
+# 	def __repr__(self):
+# 		dp      = DisplayParams( self )
+# 		dp.add_header( f'Design ({self.__class__.__name__})' )
+# 		dp.add( 'testname' )
+# 		dp.add( 'X' , array2shortstr )
+# 		dp.add( 'contrasts' , objectlist2str )
+# 		return dp.asstr()
+#
+# 	def _init_factors(self, *AA):
+# 		self.factors = [Factor(A, name=chr(65+i))   for i,A in enumerate(AA)]
+#
+#
+# 	@property
+# 	def C(self):
+# 		return self.get_contrast_matrices()
+# 	@property
+# 	def J(self):
+# 		return self.X.shape[0]
+# 	@property
+# 	def nfactors(self):
+# 		return len( self.factors )
+# 	@property
+# 	def testname(self):
+# 		return self.__class__.__name__.lower()
+#
+# 	def _assemble(self):
+# 		self.X         = self._build_design_matrix()
+# 		self.contrasts = self._build_contrasts()
+#
+# 	def isequal(self, other, verbose=False):
+# 		if type(self) != type(other):
+# 			return False
+#
+# 		if not np.all(self.X == other.X):
+# 			return False
+#
+# 		for c0,c1 in zip(self.contrasts, other.contrasts):
+# 			if c0 != c1:
+# 				return False
+#
+# 		if (self.factors is not None) and (other.factors is not None):
+# 			for f0,f1 in zip(self.factors, other.factors):
+# 				if f0 != f1:
+# 					return False
+#
+# 		return True
+#
+# 	def get_contrast_matrices(self):
+# 		return [c.C  for c in self.contrasts]
+#
+# 	def set_factor_names(self, names, names_short=None):
+# 		# self.set_factor_names(names, names_short)
+# 		if names_short is None:
+# 			names_short = [None] * self.nfactors
+# 		for factor,s,ss in zip(self.factors, names, names_short):
+# 			factor.set_name( s, ss )
 
 
-	@property
-	def C(self):
-		return self.get_contrast_matrices()
-	@property
-	def J(self):
-		return self.X.shape[0]
-	@property
-	def nfactors(self):
-		return len( self.factors )
-	@property
-	def testname(self):
-		return self.__class__.__name__.lower()
-		
-	def _assemble(self):
-		self.X         = self._build_design_matrix()
-		self.contrasts = self._build_contrasts()
-
-	def isequal(self, other, verbose=False):
-		if type(self) != type(other):
-			return False
-			
-		if not np.all(self.X == other.X):
-			return False
-			
-		for c0,c1 in zip(self.contrasts, other.contrasts):
-			if c0 != c1:
-				return False
-
-		if (self.factors is not None) and (other.factors is not None):
-			for f0,f1 in zip(self.factors, other.factors):
-				if f0 != f1:
-					return False
-
-		return True
-		
-	def get_contrast_matrices(self):
-		return [c.C  for c in self.contrasts]
-	
-	def set_factor_names(self, names, names_short=None):
-		# self.set_factor_names(names, names_short)
-		if names_short is None:
-			names_short = [None] * self.nfactors
-		for factor,s,ss in zip(self.factors, names, names_short):
-			factor.set_name( s, ss )
 
 
 
-
-
-class ANOVA1(_DesignANOVA):
+class ANOVA1(_Design):
 	def __init__(self, A):
 		self.factors      = [ Factor(A, name='A') ]
 		self._assemble()
@@ -246,7 +246,7 @@ class ANOVA1(_DesignANOVA):
 	
 	
 	
-class ANOVA1RM(_DesignANOVA):
+class ANOVA1RM(_Design):
 	def __init__(self, A, SUBJ):
 		self.factors      = [ Factor(A, name='A'), Factor(SUBJ, name='SUBJ') ]
 		self._assemble()
@@ -295,7 +295,7 @@ class ANOVA1RM(_DesignANOVA):
 
 
 
-class ANOVA2(_DesignANOVA):
+class ANOVA2(_Design):
 	def __init__(self, A, B):
 		self._init_factors( A, B )
 		self._assemble()

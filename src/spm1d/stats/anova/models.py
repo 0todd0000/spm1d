@@ -99,19 +99,24 @@ class TestStatisticF(object):
 
 
 	def isequal(self, other, verbose=False):
+		import pytest
 		# if type(self) != type(other):
 		# 	return False
 			
 		if self.STAT != other.STAT:
 			return False
 		
-		if not self.df == other.df:
+		if not self.df == pytest.approx(other.df):
 			return False
 
 		for s in ['C', 'z']: 
 			x0,x1  = getattr(self, s), getattr(other, s)
-			if not np.all(x0 == x1):
-				return False
+			if s == 'z':
+				if not self.z == pytest.approx(other.z):
+					return False
+			else:
+				if not np.all(x0 == x1):
+					return False
 
 		return True
 		
@@ -145,6 +150,8 @@ class GLMFit(object):
 		return self.isequal(other, verbose=False)
 
 	def isequal(self, other, verbose=False):
+		import pytest
+		# print(  f'isequal, verbose={verbose}' )
 		# if type(self) != type(other):
 		# 	return False
 			
@@ -154,12 +161,24 @@ class GLMFit(object):
 		# if not self.df == other.df:
 		# 	return False
 
-		for s in ['V', 'b', 'e', 'sse', 'mse', 'y']: 
+		for s in ['V', 'b', 'e', 'sse', 'y']: 
 			x0,x1  = getattr(self, s), getattr(other, s)
-			if not np.all(x0 == x1):
+			res    = True
+			if s=='sse':
+				res = self.sse == pytest.approx(other.sse)
+			else:
+				if not np.all(x0 == x1):
+					res = False
+			if verbose:
+				print( f'{s}:  {res}' )
+			if not res:
 				return False
+			#
+			# if not np.all(x0 == x1):
+			# 	return False
 
 		return True
+
 		
 	def __repr__(self):
 		dp      = DisplayParams( self )

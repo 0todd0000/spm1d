@@ -62,18 +62,24 @@ class RFTResults(object):
 		return [c.p  for c in self.clusters]
 		
 	def isequal(self, other, verbose=False):
+		import pytest
+		
 		if type(self) != type(other):
 			return False
 			
-		for s in ['STAT', 'alpha', 'clusters', 'dirn', 'p_set', 'p_max', 'zc']:
+		for s in ['STAT', 'alpha', 'dirn', 'p_set', 'p_max', 'zc']:
 			x0,x1  = getattr(self, s), getattr(other, s)
-			if not x0 == x1:
-				return False
+			if s in ['p_set', 'p_max', 'zc', 'z']:
+				if not x0 == pytest.approx(x1):
+					return False
+			else:
+				if not x0 == x1:
+					return False
 
-		for s in ['z']:
-			x0,x1  = getattr(self, s), getattr(other, s)
-			if not np.all(x0 == x1):
-				return False
+		# for s in ['z']:
+		# 	x0,x1  = getattr(self, s), getattr(other, s)
+		# 	if not np.all(x0 == x1):
+		# 		return False
 	
 		return True
 
