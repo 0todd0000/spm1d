@@ -14,6 +14,7 @@ class _Design(object):
 		self.X             = None   # design matrix
 		self.contrasts     = None   # contrast objects
 		self.factors       = None   # list of factor objects
+		self.df0           = None   # unadjusted degrees of freedom
 		
 	
 	def __eq__(self, other):
@@ -25,6 +26,7 @@ class _Design(object):
 		dp.add( 'testname' )
 		dp.add( 'X' , array2shortstr )
 		dp.add( 'contrasts' , objectlist2str )
+		dp.add( 'df0' , dflist2str )
 		return dp.asstr()
 	
 	def _init_factors(self, *AA):
@@ -37,9 +39,9 @@ class _Design(object):
 	@property
 	def J(self):
 		return self.X.shape[0]
-	@property
-	def df0(self):
-		return 1, self.J - rank(self.X)
+	# @property
+	# def df0(self):
+	# 	return 1, self.J - rank(self.X)
 	@property
 	def nfactors(self):
 		return 0 if (self.factors is None) else len( self.factors )
@@ -47,9 +49,10 @@ class _Design(object):
 	def testname(self):
 		return self.__class__.__name__.lower()
 		
-	def _assemble(self):
-		self.X         = self._build_design_matrix()
-		self.contrasts = self._build_contrasts()
+	# def _assemble(self):
+	# 	self.X         = self._build_design_matrix()
+	# 	self.contrasts = self._build_contrasts()
+	# 	self.df0       = self._calculate_unadjusted_df()
 
 
 	def get_contrast_matrices(self):
@@ -90,64 +93,33 @@ class _Design(object):
 
 class REGRESS(_Design):
 	def __init__(self, x):
-		# self.testname      = 'ttest'
-		self.X             = None   # design matrix
-		self.contrasts     = None   # contrast objects
-		self.factors       = None   # list of factor objects
-		
-		# # n0,n1              = y0.shape[0], y1.shape[0]
-		# A                  = np.array( [0]*n0 + [1]*n1 )
-		# self.factors       = [ Factor(A, name='A') ]
-		#
-		# self.X             = np.zeros((n0+n1,2))
-		# self.X[:n0,0]      = 1
-		# self.X[n0:,1]      = 1
-		# C                  = np.array( [1,-1] )
-		# self.contrasts     = [   Contrast( C, factors=self.factors, ind=0 )   ]
-		
 		n              = x.size
 		self.X         = np.ones((n,2))
 		self.X[:,0]    = x
 		c              = np.array( [1,0] )
-		self.contrasts     = [   Contrast( c, factors=self.factors, ind=0 )   ]
-		
-		
-
+		self.contrasts = [   Contrast( c, factors=None, ind=0 )   ]
+		self.df0       = 1, n-2
 
 
 class TTEST(_Design):
-	def __init__(self, y, mu=0):
-		# self.testname      = 'ttest'
-		self.X             = None   # design matrix
-		self.contrasts     = None   # contrast objects
-		self.factors       = None   # list of factor objects
-		
-		n                  = y.shape[0]
-		A                  = np.ones(n)
-		self.factors       = [ Factor(A, name='A') ]
-		
+	def __init__(self, n):
 		self.X             = np.ones((n,1))
+		A                  = np.ones(n)
 		C                  = np.array( [1,] )
+		self.factors       = [ Factor(A, name='A') ]
 		self.contrasts     = [   Contrast( C, factors=self.factors, ind=0 )   ]
-		
-
+		self.df0           = 1, n-1
 
 class TTEST2(_Design):
 	def __init__(self, n0, n1):
-		# self.testname      = 'ttest'
-		self.X             = None   # design matrix
-		self.contrasts     = None   # contrast objects
-		self.factors       = None   # list of factor objects
-		
-		# n0,n1              = y0.shape[0], y1.shape[0]
-		A                  = np.array( [0]*n0 + [1]*n1 )
-		self.factors       = [ Factor(A, name='A') ]
-		
 		self.X             = np.zeros((n0+n1,2))
 		self.X[:n0,0]      = 1
 		self.X[n0:,1]      = 1
+		A                  = np.array( [0]*n0 + [1]*n1 )
 		C                  = np.array( [1,-1] )
+		self.factors       = [ Factor(A, name='A') ]
 		self.contrasts     = [   Contrast( C, factors=self.factors, ind=0 )   ]
+		self.df0           = 1, n0+n1-2
 		
 
 
@@ -221,18 +193,24 @@ class TTEST2(_Design):
 # 			factor.set_name( s, ss )
 
 
+class _DesignANOVA(_Design):
+	def _assemble(self):
+		self.X         = self._build_design_matrix()
+		self.contrasts = self._build_contrasts()
+		self.df0       = self._calculate_unadjusted_df()
+
+	def _calculate_unadjusted_df(self):
+		df  = [rank(c.C) for c in self.contrasts]
+		dfe = self.J - rank(self.X)
+		df0 = [(x,dfe)  for x in df]
+		return df0
+	
 
 
-
-class ANOVA1(_Design):
+class ANOVA1(_DesignANOVA):
 	def __init__(self, A):
 		self.factors      = [ Factor(A, name='A') ]
 		self._assemble()
-
-	@property
-	def df0(self):
-		n = self.factors[0].n
-		return n - 1, self.J - n
 
 	def _build_contrasts(self):
 		n        = self.factors[0].nlevels
@@ -240,12 +218,8 @@ class ANOVA1(_Design):
 		for i in range(n-1):
 			C[i,i]   = 1
 			C[i,i+1] = -1
-			
 		C = Contrast( C.T, factors=self.factors, ind=0 )
-	
 		return [C]
-		
-		# return [C.T]
 
 	def _build_design_matrix(self):
 		return self.factors[0].get_design_main()
@@ -260,18 +234,18 @@ class ANOVA1(_Design):
 	
 	
 	
-class ANOVA1RM(_Design):
+class ANOVA1RM(_DesignANOVA):
 	def __init__(self, A, SUBJ):
 		self.factors      = [ Factor(A, name='A'), Factor(SUBJ, name='SUBJ') ]
 		self._assemble()
 
-	@property
-	def df0(self):
-		n     = self.factors[0].n
-		df_w  = self.J - n
-		df_b  = int( self.J / n ) - 1
-		df    = n - 1, df_w - df_b
-		return df
+	# @property
+	# def df0(self):
+	# 	n     = self.factors[0].n
+	# 	df_w  = self.J - n
+	# 	df_b  = int( self.J / n ) - 1
+	# 	df    = n - 1, df_w - df_b
+	# 	return df
 
 	def _build_contrasts(self):
 		n        = self.factors[0].nlevels
@@ -316,14 +290,14 @@ class ANOVA1RM(_Design):
 
 
 
-class ANOVA2(_Design):
+class ANOVA2(_DesignANOVA):
 	def __init__(self, A, B):
 		self._init_factors( A, B )
 		self._assemble()
 
-	@property
-	def df0(self):
-		return None # self._df0
+	# @property
+	# def df0(self):
+	# 	return None # self._df0
 
 	def _build_contrasts(self):
 		# from . contrasts import Contrast #, ContrastList
