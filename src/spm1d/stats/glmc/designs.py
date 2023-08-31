@@ -232,11 +232,12 @@ class ANOVA1(_DesignANOVA):
 		
 	def get_variance_model(self, equal_var=False):
 		if equal_var:
-			Q   = [np.eye(self.J)]
+			# Q   = [np.eye(self.J)]
+			QQ  = None
 		else:
 			A,u = self.factors[0].A, self.factors[0].u
-			Q   = [np.asarray(np.diag( A==uu ), dtype=float)  for uu in u]
-		return Q
+			QQ  = [np.asarray(np.diag( A==uu ), dtype=float)  for uu in u]
+		return QQ
 	
 	
 	

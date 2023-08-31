@@ -34,6 +34,8 @@ class GLMFit(object):
 		self.mse    = None   # mean squared error
 		
 		self.sse    = (self.e ** 2).sum(axis=0)
+		# v1          = self.mode.dfe0
+		self.mse    = self.sse / self.model.dfe0
 		# self._estimate_variance()
 		# self.mse = self.sse / self.df0[1]
 		
@@ -71,6 +73,9 @@ class GLMFit(object):
 	# @property
 	# def df0(self):   # degrees of freedom  (under an assumption of equal variance)
 	# 	return self.model.df0
+	# @property
+	# def dfe(self):   # error degrees of freedom
+	# 	return self.model.dfe
 	@property
 	def dvdim(self):   # dependent variable domain dimensionality
 		return 0 if ((self.y.ndim==1) or (1 in self.y.shape)) else 1
@@ -135,19 +140,19 @@ class GLMFit(object):
 	# 		self.h        = h
 
 	
-	def _calculate_effective_df(self, C=None, X=None, STAT='T'):
-		if STAT=='T':
-			trRV,trRVRV   = traceRV(self.V, self.model.X)
-			self.df       = 1, trRV**2 / trRVRV  # effective degrees of freedom
-		elif STAT=='F':
-			X             = self.model.X if (X is None) else X
-			trRV,trRVRV   = traceRV(self.V, X)
-			trMV,trMVMV   = traceMV(self.V, self.model.X, C)
-			df0           = max(trMV**2 / trMVMV, 1.0)
-			df1           = trRV**2 / trRVRV
-			self.df       = df0, df1
-			self.df0      = trMV, trRV
-			self.mse      = self.sse / self.df0[1]
+	# def _calculate_effective_df(self, C=None, X=None, STAT='T'):
+	# 	if STAT=='T':
+	# 		trRV,trRVRV   = traceRV(self.V, self.model.X)
+	# 		self.df       = 1, trRV**2 / trRVRV  # effective degrees of freedom
+	# 	elif STAT=='F':
+	# 		X             = self.model.X if (X is None) else X
+	# 		trRV,trRVRV   = traceRV(self.V, X)
+	# 		trMV,trMVMV   = traceMV(self.V, self.model.X, C)
+	# 		df0           = max(trMV**2 / trMVMV, 1.0)
+	# 		df1           = trRV**2 / trRVRV
+	# 		self.df       = df0, df1
+	# 		self.df0      = trMV, trRV
+	# 		self.mse      = self.sse / self.df0[1]
 
 
 	def _greenhouse_geisser_adjustment(self):
@@ -183,10 +188,82 @@ class GLMFit(object):
 		# e       = w.sum()**2 / (   (k-1) * (w**2).sum()   )   # Eqn.13.37, Friston et al. (2007), p.176
 		# self._df = (k-1)*e, (n-1)*(k-1)*e    # Eqn.13.36, Friston et al. (2007), p.176
 	
+	# def calculate_f_stat(self, C, gg=False, _Xeff=None, ind=0):
+	# 	from . teststats import TestStatisticF
+	#
+	# 	self._calculate_effective_df( C, _Xeff, STAT='F' )
+	# 	# if self.model.QQ is None:
+	# 	# 	self.df  = int(self.df[0]), int(self.df[1])
+	#
+	# 	# build projectors:
+	# 	y,X      = self.y, self.model.X
+	# 	# PX      = X @ np.linalg.pinv(X)      # X projector
+	# 	H        = np.linalg.pinv( X.T ) @ C  # text between eqns. 9.17 & 9.18 (Friston 2007, p.136)
+	# 	PH       = H @ np.linalg.inv(H.T @ H) @ H.T     # H projector
+	#
+	#
+	# 	# f stat:
+	# 	v0      = self.df0[0]
+	# 	# YIPY    = y.T @ ( np.eye( self.J ) - PX ) @ y   # eqn.9.13 denominator (Friston 2007, p.135)
+	# 	YPHYY   = y.T @ PH @ y               # eqn.9.18 (Friston 2007, p.136)
+	# 	f       = (YPHYY / v0) / self.mse    # eqn.9.13 (Friston 2007, p.135)
+	# 	ss      = YPHYY
+	# 	ms      = YPHYY / v0
+	#
+	# 	# greenhouse_geisser adjustment:
+	# 	# if gg:
+	# 	# 	self.df  = self._greenhouse_geisser_adjustment(df)
+	# 	f       = float(f)  if (self.dvdim==0) else np.diag(f)
+	# 	ss      = float(ss) if (self.dvdim==0) else np.diag(ss)
+	# 	ms      = float(ms) if (self.dvdim==0) else np.diag(ms)
+	#
+	# 	return TestStatisticF(f, self.df, self.df0, ss, ms, C, ind)
+
+
+	def _calculate_effective_df_f(self, V, C, X=None):
+		X             = self.model.X if (X is None) else X
+		trRV,trRVRV   = traceRV(V, X)
+		trMV,trMVMV   = traceMV(V, self.model.X, C)
+		df            = max(trMV**2 / trMVMV, 1.0), trRV**2 / trRVRV
+		# self.df       = df0, df1
+		# self.df0      = trMV, trRVRV
+		_df0      = trMV, trRVRV
+		print( _df0 )
+		
+		# self.mse      = self.sse / self.df0[1]
+		return df
+
+	# def _estimate_variance_t(self, QQ):
+	# 	from .. _cov import reml, traceRV
+	# 	n,s           = self.y.shape
+	# 	trRV          = n - rank(self.model.X)
+	# 	q             = np.diag(  np.sqrt( trRV / self.sse )  ).T
+	# 	Ym            = self.y @ q
+	# 	# Ym            = self.e @ q
+	# 	YY            = Ym @ Ym.T / s
+	# 	V,h           = reml(YY, self.model.X, QQ)
+	# 	# V,h           = reml(YY, self.X, self.model.QQ)
+	# 	V            *= (n / np.trace(V))
+	#
+	# 	# trRV,trRVRV = traceRV(V, X)
+	# 	# df          = trRV**2 / trRVRV  # effective degrees of freedom
+	# 	self.V        = V
+	# 	self.h        = h
+	# 	return V,h
+	# 	#
+	# 	# self.V        = V
+	# 	# self.h        = h
+
+
 	def calculate_f_stat(self, C, gg=False, _Xeff=None, ind=0):
 		from . teststats import TestStatisticF
 		
-		self._calculate_effective_df( C, _Xeff, STAT='F' )
+		if self.model.QQ is None:
+			df   = self.model.df0[ind]
+			
+		else:
+			V,_  = self._estimate_variance_t( self.model.QQ )
+			df   = self._calculate_effective_df_f( V, C, _Xeff )
 		# if self.model.QQ is None:
 		# 	self.df  = int(self.df[0]), int(self.df[1])
 		
@@ -198,7 +275,9 @@ class GLMFit(object):
 		
 		
 		# f stat:
-		v0      = self.df0[0]
+		v0      = self.model.df0[ind][0]
+		# v0      = self.model.dfe0
+		
 		# YIPY    = y.T @ ( np.eye( self.J ) - PX ) @ y   # eqn.9.13 denominator (Friston 2007, p.135)
 		YPHYY   = y.T @ PH @ y               # eqn.9.18 (Friston 2007, p.136)
 		f       = (YPHYY / v0) / self.mse    # eqn.9.13 (Friston 2007, p.135)
@@ -212,8 +291,9 @@ class GLMFit(object):
 		ss      = float(ss) if (self.dvdim==0) else np.diag(ss)
 		ms      = float(ms) if (self.dvdim==0) else np.diag(ms)
 		
-		return TestStatisticF(f, self.df, self.df0, ss, ms, C, ind)
-
+		# TestStatisticT(t, df, c, df0=df0)
+		# f, df, v, ss, ms, C, ind=0, df0=None
+		return TestStatisticF(f, df, ss, ms, C, ind=ind, df0=self.df0[ind])
 
 
 

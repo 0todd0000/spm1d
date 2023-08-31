@@ -24,8 +24,12 @@ def df2str(v):
 
 
 def dflist2str(v):
-	s0,s1 = df2str(v[0]), df2str(v[1])
-	return f'({s0}, {s1})'
+	if isinstance(v, list):
+		s     = [dflist2str(vv)  for vv in v]
+		return '[' + ','.join(s) + ']'
+	else:
+		s0,s1 = df2str(v[0]), df2str(v[1])
+		return f'({s0}, {s1})'
 
 
 def largeint2str(x, mx=1e9):

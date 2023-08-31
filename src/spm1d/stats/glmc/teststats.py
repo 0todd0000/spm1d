@@ -52,14 +52,15 @@ class TestStatisticT(_TestStatistic):
 
 class TestStatisticF(_TestStatistic):
 	
-	_attrs2test    = ['STAT', 'C', 'z', 'df', 'v', 'ss', 'ms', 'ind']
+	_attrs2test    = ['STAT', 'C', 'z', 'df', 'df0', 'ss', 'ms', 'ind']
 	
-	def __init__(self, f, df, v, ss, ms, C, ind=0):
+	def __init__(self, f, df, ss, ms, C, ind=0, df0=None):
 		self.STAT  = 'F'
 		self.C     = C
 		self.z     = f
+		self.df0   = df0   # unadjusted degrees of freedom
 		self.df    = df
-		self.v     = v     # unadjusted degrees of freedom
+		# self.v     = v     # unadjusted degrees of freedom
 		self.ss    = ss
 		self.ms    = ms
 		self.ind   = ind
