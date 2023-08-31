@@ -8,7 +8,7 @@ One- and two sample tests (using T contrasts).
 
 import numpy as np
 from . _dec import appendargs, checkargs
-from . _la import rank
+# from . _la import rank
 
 
 
@@ -36,6 +36,7 @@ def glm(y, X, c, ctype='T', QQ=None, roi=None):
 	represent specific cases of this glm function.
 	'''
 	from . glmc.models import GeneralLinearModel
+	from . glmc._la import rank
 	df0       = 1, X.shape[0] - rank(X)
 	model     = GeneralLinearModel(X, df0, QQ)
 	fit       = model.fit( y )

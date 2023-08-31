@@ -1,8 +1,8 @@
 
 
 import numpy as np
-from .. _cov import reml, traceRV, traceMV, _reml_old
-from .. _la import rank
+from . _cov import reml, traceRV, traceMV, _reml_old
+from . _la import rank
 from ... util import array2shortstr, arraylist2str, arraytuple2str, dflist2str, objectlist2str, resels2str, scalarlist2string, DisplayParams
 eps = np.finfo(float).eps   #smallest float, used to avoid divide-by-zero errors
 
@@ -320,7 +320,7 @@ class GLMFit(object):
 
 
 	def _estimate_variance_t(self, QQ):
-		from .. _cov import reml, traceRV
+		from . _cov import reml, traceRV
 		n,s           = self.y.shape
 		trRV          = n - rank(self.model.X)
 		q             = np.diag(  np.sqrt( trRV / self.sse )  ).T

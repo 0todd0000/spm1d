@@ -4,7 +4,7 @@
 import numpy as np
 from . contrasts import Contrast
 from . factors import Factor
-from .. _la import rank
+from . _la import rank
 from ... util import array2shortstr, arraytuple2str, dflist2str, objectlist2str, resels2str, DisplayParams
 
 
