@@ -111,10 +111,11 @@ def anova2(y, A, B, equal_var=False, roi=None):
 	design   = ANOVA2( A, B )
 	# QQ       = design.get_variance_model( equal_var=equal_var )
 	
-	# temporary variance components:
-	import numpy as np
-	J       = A.size
-	QQ      = [np.eye(J)]
+	# # temporary variance components:
+	# import numpy as np
+	# J       = A.size
+	# QQ      = [np.eye(J)]
+	QQ      = None
 
 	model,fit,teststats = aov(y, design.X, design.C, QQ, df0=design.df0)
 	

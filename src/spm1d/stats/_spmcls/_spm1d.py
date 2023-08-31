@@ -46,6 +46,8 @@ class SPM1D(_SPM):
 		dp.add( 'z', fmt=array2shortstr )
 		if self.isregress:
 			dp.add('r', fmt=array2shortstr )
+		if self.df != self.df0:
+			dp.add( 'df0', fmt=dflist2str )
 		dp.add( 'df', fmt=dflist2str )
 		dp.add_header( 'Smoothness estimates:' )
 		dp.add( 'fwhm', fmt='%.3f' )

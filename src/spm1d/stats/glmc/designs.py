@@ -278,10 +278,11 @@ class ANOVA1RM(_DesignANOVA):
 
 	def get_variance_model(self, equal_var=False):
 		if equal_var:
-			Q  = [np.eye(self.J)]
+			# QQ  = [np.eye(self.J)]
+			QQ  = None
 		else:
 			A,u = self.factors[0].A, self.factors[0].u
-			Q   = [np.asarray(np.diag( A==uu ), dtype=float)  for uu in u]
+			QQ  = [np.asarray(np.diag( A==uu ), dtype=float)  for uu in u]
 
 			n   = (A == u[0]).sum()
 			for i,a0 in enumerate(u):
@@ -291,8 +292,8 @@ class ANOVA1RM(_DesignANOVA):
 					i1  = np.argwhere(A==a1).flatten()  # columns
 					for ii0,ii1 in zip(i0,i1):
 						q[ii0,ii1] = 1
-					Q.append( q + q.T )
-		return Q
+					QQ.append( q + q.T )
+		return QQ
 
 
 

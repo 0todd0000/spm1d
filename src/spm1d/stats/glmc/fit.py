@@ -261,12 +261,15 @@ class GLMFit(object):
 		from . teststats import TestStatisticF
 		
 		if self.model.QQ is None:
-			df     = self.model.df0[ind]
+			df     = self.df0[ind]
 			v0     = df[0]
+			# print( df )
+			# df0    = None
 		else:
-			V,_    = self._estimate_variance_t( self.model.QQ )
-			df,dff = self._calculate_effective_df_f( V, C, _Xeff )
-			v0     = dff[0]
+			V,_       = self._estimate_variance_t( self.model.QQ )
+			df,(v0,_) = self._calculate_effective_df_f( V, C, _Xeff )
+			# v0     = dff[0]
+			# df0    = self.df0[ind]
 		# if self.model.QQ is None:
 		# 	self.df  = int(self.df[0]), int(self.df[1])
 		
@@ -297,6 +300,7 @@ class GLMFit(object):
 		
 		# TestStatisticT(t, df, c, df0=df0)
 		# f, df, v, ss, ms, C, ind=0, df0=None
+		
 		return TestStatisticF(f, df, ss, ms, C, ind=ind, df0=self.df0[ind])
 
 
@@ -342,24 +346,39 @@ class GLMFit(object):
 
 
 
+	# def calculate_t_stat(self, c, roi=None):
+	# 	from . teststats import TestStatisticT
+	# 	# self.mse       = self.sse / self.df0[1]
+	# 	if self.model.QQ is None:
+	# 		b,s2,X     = self.b, self.mse, self.model.X
+	# 		t          = (c @ b)  /   ( np.sqrt( s2 * (c @ np.linalg.inv(X.T @ X) @ c) ) + eps )
+	# 		df0        = None
+	# 		df         = self.df0
+	# 	else:
+	# 		V,_        = self._estimate_variance_t( self.model.QQ )
+	# 		b,s2,Xi    = self.b, self.mse, self.Xi
+	# 		t          = (c @ b)  /   ( np.sqrt( s2 * (c @ Xi @ V @ Xi.T @ c)  + eps ) )
+	# 		# self._calculate_effective_df( STAT='T' )
+	# 		df0        = self.df0
+	# 		df         = self._calculate_effective_df_t(self.model.X, V)
+	# 	t        = float(t)  if (self.dvdim==0) else t.flatten()
+	# 	return TestStatisticT(t, df, c, df0=df0)
+		
 	def calculate_t_stat(self, c, roi=None):
 		from . teststats import TestStatisticT
 		# self.mse       = self.sse / self.df0[1]
 		if self.model.QQ is None:
 			b,s2,X     = self.b, self.mse, self.model.X
 			t          = (c @ b)  /   ( np.sqrt( s2 * (c @ np.linalg.inv(X.T @ X) @ c) ) + eps )
-			df0        = None
 			df         = self.df0
 		else:
 			V,_        = self._estimate_variance_t( self.model.QQ )
 			b,s2,Xi    = self.b, self.mse, self.Xi
 			t          = (c @ b)  /   ( np.sqrt( s2 * (c @ Xi @ V @ Xi.T @ c)  + eps ) )
 			# self._calculate_effective_df( STAT='T' )
-			df0        = self.df0
 			df         = self._calculate_effective_df_t(self.model.X, V)
 		t        = float(t)  if (self.dvdim==0) else t.flatten()
-		return TestStatisticT(t, df, c, df0=df0)
-		
+		return TestStatisticT(t, df, c, df0=self.df0)
 		
 		
 	def isequal(self, other, verbose=False):
