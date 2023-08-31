@@ -26,7 +26,8 @@ class GLMFit(object):
 		self.Xi     = Xi     # design pseudo-inverse
 		self.y      = y      # (J,Q) dependent variable array where J=num.observations and Q=num.continuum nodes
 		# self.df0    = 1, y.shape[0] - rank(model.X)  # degrees of freedom  (for a t contrast under an assumption of equal variance)
-		self.df0    = self.model.df0   # degrees of freedom
+		# self.df0    = self.model.df0   # degrees of freedom
+		# self.dff    = None             # degrees of freedom for F stat
 		# self.df     = None   # degrees of freedom (possibly adjusted for unequal variance and non-sphericity)
 		self.V      = None   # estimated (co-)variance  (only used when equal variance is NOT assumed)
 		self.h      = None   # estimated (co-)variance hyperparameters  (only used when equal variance is NOT assumed)
@@ -35,7 +36,7 @@ class GLMFit(object):
 		
 		self.sse    = (self.e ** 2).sum(axis=0)
 		# v1          = self.mode.dfe0
-		self.mse    = self.sse / self.model.dfe0
+		self.mse    = self.sse / self.dfe0
 		# self._estimate_variance()
 		# self.mse = self.sse / self.df0[1]
 		
@@ -70,12 +71,12 @@ class GLMFit(object):
 	@property
 	def J(self):
 		return self.model.J
-	# @property
-	# def df0(self):   # degrees of freedom  (under an assumption of equal variance)
-	# 	return self.model.df0
-	# @property
-	# def dfe(self):   # error degrees of freedom
-	# 	return self.model.dfe
+	@property
+	def df0(self):   # unadjusted degrees of freedom  (under an assumption of equal variance)
+		return self.model.df0
+	@property
+	def dfe0(self):   # unadjusted error degrees of freedom
+		return self.model.dfe0
 	@property
 	def dvdim(self):   # dependent variable domain dimensionality
 		return 0 if ((self.y.ndim==1) or (1 in self.y.shape)) else 1
@@ -227,11 +228,12 @@ class GLMFit(object):
 		df            = max(trMV**2 / trMVMV, 1.0), trRV**2 / trRVRV
 		# self.df       = df0, df1
 		# self.df0      = trMV, trRVRV
-		_df0      = trMV, trRVRV
-		print( _df0 )
+		dff           = trMV, trRVRV  # degrees of freedom for F stat
+		# self.dff      = _df0[0]
+		# print( _df0 )
 		
 		# self.mse      = self.sse / self.df0[1]
-		return df
+		return df, dff
 
 	# def _estimate_variance_t(self, QQ):
 	# 	from .. _cov import reml, traceRV
@@ -259,11 +261,11 @@ class GLMFit(object):
 		from . teststats import TestStatisticF
 		
 		if self.model.QQ is None:
-			df   = self.model.df0[ind]
-			
+			df     = self.model.df0[ind]
+			dff    = df[0]
 		else:
-			V,_  = self._estimate_variance_t( self.model.QQ )
-			df   = self._calculate_effective_df_f( V, C, _Xeff )
+			V,_    = self._estimate_variance_t( self.model.QQ )
+			df,dff = self._calculate_effective_df_f( V, C, _Xeff )
 		# if self.model.QQ is None:
 		# 	self.df  = int(self.df[0]), int(self.df[1])
 		
@@ -275,7 +277,8 @@ class GLMFit(object):
 		
 		
 		# f stat:
-		v0      = self.model.df0[ind][0]
+		# v0      = self.model.df0[ind][0]
+		v0      = dff[0]
 		# v0      = self.model.dfe0
 		
 		# YIPY    = y.T @ ( np.eye( self.J ) - PX ) @ y   # eqn.9.13 denominator (Friston 2007, p.135)
@@ -340,7 +343,7 @@ class GLMFit(object):
 
 	def calculate_t_stat(self, c, roi=None):
 		from . teststats import TestStatisticT
-		self.mse      = self.sse / self.df0[1]
+		# self.mse       = self.sse / self.df0[1]
 		if self.model.QQ is None:
 			b,s2,X     = self.b, self.mse, self.model.X
 			t          = (c @ b)  /   ( np.sqrt( s2 * (c @ np.linalg.inv(X.T @ X) @ c) ) + eps )
