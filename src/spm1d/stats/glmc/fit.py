@@ -262,10 +262,11 @@ class GLMFit(object):
 		
 		if self.model.QQ is None:
 			df     = self.model.df0[ind]
-			dff    = df[0]
+			v0     = df[0]
 		else:
 			V,_    = self._estimate_variance_t( self.model.QQ )
 			df,dff = self._calculate_effective_df_f( V, C, _Xeff )
+			v0     = dff[0]
 		# if self.model.QQ is None:
 		# 	self.df  = int(self.df[0]), int(self.df[1])
 		
@@ -278,7 +279,7 @@ class GLMFit(object):
 		
 		# f stat:
 		# v0      = self.model.df0[ind][0]
-		v0      = dff[0]
+		# v0      = dff[0]
 		# v0      = self.model.dfe0
 		
 		# YIPY    = y.T @ ( np.eye( self.J ) - PX ) @ y   # eqn.9.13 denominator (Friston 2007, p.135)

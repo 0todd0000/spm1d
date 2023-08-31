@@ -99,8 +99,8 @@ class SPM0D(_SPM):
 
 		from ... import prob
 		
-		if 'dirn' not in kwargs:
-			kwargs.update( {'dirn':1} )
+		if (self.STAT=='T') and ('dirn' not in kwargs):
+			kwargs.update( {'dirn':0} )
 		
 
 		if method == 'param':

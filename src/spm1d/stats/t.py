@@ -63,7 +63,7 @@ def regress(y, x, roi=None):
 @checkargs
 def ttest(y, mu=0, roi=None):
 	from . glmc.designs import TTEST
-	design    = TTEST(y, mu)
+	design    = TTEST( y.shape[0] )
 	# df0       = design.get_df0(y.shape[0])
 	model,fit,teststat = glm(y-mu, design.X, design.contrasts[0].C)
 	

@@ -108,6 +108,10 @@ class SPM1D(_SPM):
 		
 		from ... import prob
 		
+		if (self.STAT=='T') and ('dirn' not in kwargs):
+			kwargs.update( {'dirn':0} )
+		
+		
 		if method == 'rft':
 			iresults = prob.rft(self.STAT, self.z, self.df, self.fwhm, self.resels, alpha=alpha, **kwargs)
 			# results = self.inference_rft(alpha, **kwargs)

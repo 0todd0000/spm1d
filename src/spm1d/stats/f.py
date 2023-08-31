@@ -116,6 +116,6 @@ def anova2(y, A, B, equal_var=False, roi=None):
 	J       = A.size
 	QQ      = [np.eye(J)]
 
-	model,fit,teststats = aov(y, design.X, design.C, QQ)
+	model,fit,teststats = aov(y, design.X, design.C, QQ, df0=design.df0)
 	
 	return _assemble_spm_objects(design, model, fit, teststats)
