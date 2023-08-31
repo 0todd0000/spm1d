@@ -122,7 +122,13 @@ class TTEST2(_Design):
 		self.df0           = 1, n0+n1-2
 		
 
-
+	def get_variance_model(self, equal_var=False):
+		if equal_var:
+			QQ  = None
+		else:
+			A,u = self.factors[0].A, self.factors[0].u
+			QQ  = [np.asarray(np.diag( A==uu ), dtype=float)  for uu in u]
+		return QQ
 
 
 

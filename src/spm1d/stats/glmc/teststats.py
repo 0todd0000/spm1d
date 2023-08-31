@@ -8,11 +8,13 @@ class _TestStatistic(object):
 	
 	_attrs2test    = ['STAT', 'C', 'z', 'df']
 	
-	def __init__(self, z, df, C):
+	def __init__(self, z, df, C, df0=None):
 		self.STAT  = 'T'
 		self.C     = C
 		self.z     = z
 		self.df    = df
+		self.df0   = df0   # unadjusted degrees of freedom
+		# print(df, df0)
 		
 	def __eq__(self, other):
 		return self.isequal(other, verbose=False)
@@ -24,6 +26,8 @@ class _TestStatistic(object):
 		dp.add( 'C', array2shortstr )
 		_astr      = array2shortstr if self.dvdim==1 else None
 		dp.add( 'z', _astr )
+		if self.df0 is not None:
+			dp.add( 'df0', dflist2str )
 		dp.add( 'df', dflist2str )
 		return dp.asstr()
 		

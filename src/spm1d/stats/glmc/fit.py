@@ -1,7 +1,6 @@
 
 
 import numpy as np
-from . teststats import TestStatisticT
 from .. _cov import reml, traceRV, traceMV, _reml_old
 from .. _la import rank
 from ... util import array2shortstr, arraylist2str, arraytuple2str, dflist2str, objectlist2str, resels2str, scalarlist2string, DisplayParams
@@ -28,14 +27,14 @@ class GLMFit(object):
 		self.y      = y      # (J,Q) dependent variable array where J=num.observations and Q=num.continuum nodes
 		# self.df0    = 1, y.shape[0] - rank(model.X)  # degrees of freedom  (for a t contrast under an assumption of equal variance)
 		self.df0    = self.model.df0   # degrees of freedom
-		self.df     = None   # degrees of freedom (possibly adjusted for unequal variance and non-sphericity)
+		# self.df     = None   # degrees of freedom (possibly adjusted for unequal variance and non-sphericity)
 		self.V      = None   # estimated (co-)variance  (only used when equal variance is NOT assumed)
 		self.h      = None   # estimated (co-)variance hyperparameters  (only used when equal variance is NOT assumed)
 		self.sse    = None   # sum of squared errors
 		self.mse    = None   # mean squared error
 		
 		self.sse    = (self.e ** 2).sum(axis=0)
-		self._estimate_variance()
+		# self._estimate_variance()
 		# self.mse = self.sse / self.df0[1]
 		
 		
@@ -115,25 +114,25 @@ class GLMFit(object):
 	# 	self.sse = (self.e ** 2).sum(axis=0)
 	# 	self.mse = self.sse / self.df0[1]
 
-	def _estimate_variance(self):
-		if self.model.QQ is not None:
-			from .. _cov import reml, traceRV
-			n,s           = self.y.shape
-			trRV          = n - rank(self.model.X)
-			q             = np.diag(  np.sqrt( trRV / self.sse )  ).T
-			Ym            = self.y @ q
-			# Ym            = self.e @ q
-			YY            = Ym @ Ym.T / s
-			V,h           = reml(YY, self.model.X, self.model.QQ)
-			# V,h           = reml(YY, self.X, self.model.QQ)
-			V            *= (n / np.trace(V))
-			
-			# trRV,trRVRV = traceRV(V, X)
-			# df          = trRV**2 / trRVRV  # effective degrees of freedom
-			
-			
-			self.V        = V
-			self.h        = h
+	# def _estimate_variance(self):
+	# 	if self.model.QQ is not None:
+	# 		from .. _cov import reml, traceRV
+	# 		n,s           = self.y.shape
+	# 		trRV          = n - rank(self.model.X)
+	# 		q             = np.diag(  np.sqrt( trRV / self.sse )  ).T
+	# 		Ym            = self.y @ q
+	# 		# Ym            = self.e @ q
+	# 		YY            = Ym @ Ym.T / s
+	# 		V,h           = reml(YY, self.model.X, self.model.QQ)
+	# 		# V,h           = reml(YY, self.X, self.model.QQ)
+	# 		V            *= (n / np.trace(V))
+	#
+	# 		# trRV,trRVRV = traceRV(V, X)
+	# 		# df          = trRV**2 / trRVRV  # effective degrees of freedom
+	#
+	#
+	# 		self.V        = V
+	# 		self.h        = h
 
 	
 	def _calculate_effective_df(self, C=None, X=None, STAT='T'):
@@ -149,7 +148,6 @@ class GLMFit(object):
 			self.df       = df0, df1
 			self.df0      = trMV, trRV
 			self.mse      = self.sse / self.df0[1]
-			# print( trMV, trRV )
 
 
 	def _greenhouse_geisser_adjustment(self):
@@ -231,24 +229,52 @@ class GLMFit(object):
 
 
 
+	def _calculate_effective_df_t(self, X, V):
+		trRV,trRVRV   = traceRV(V, X)
+		df            = 1, trRV**2 / trRVRV
+		return df
 
 
-
+	def _estimate_variance_t(self, QQ):
+		from .. _cov import reml, traceRV
+		n,s           = self.y.shape
+		trRV          = n - rank(self.model.X)
+		q             = np.diag(  np.sqrt( trRV / self.sse )  ).T
+		Ym            = self.y @ q
+		# Ym            = self.e @ q
+		YY            = Ym @ Ym.T / s
+		V,h           = reml(YY, self.model.X, QQ)
+		# V,h           = reml(YY, self.X, self.model.QQ)
+		V            *= (n / np.trace(V))
+		
+		# trRV,trRVRV = traceRV(V, X)
+		# df          = trRV**2 / trRVRV  # effective degrees of freedom
+		self.V        = V
+		self.h        = h
+		return V,h
+		#
+		# self.V        = V
+		# self.h        = h
 
 
 
 	def calculate_t_stat(self, c, roi=None):
+		from . teststats import TestStatisticT
 		self.mse      = self.sse / self.df0[1]
 		if self.model.QQ is None:
 			b,s2,X     = self.b, self.mse, self.model.X
 			t          = (c @ b)  /   ( np.sqrt( s2 * (c @ np.linalg.inv(X.T @ X) @ c) ) + eps )
-			self.df    = self.df0
+			df0        = None
+			df         = self.df0
 		else:
-			b,s2,Xi,V  = self.b, self.mse, self.Xi, self.V
+			V,_        = self._estimate_variance_t( self.model.QQ )
+			b,s2,Xi    = self.b, self.mse, self.Xi
 			t          = (c @ b)  /   ( np.sqrt( s2 * (c @ Xi @ V @ Xi.T @ c)  + eps ) )
-			self._calculate_effective_df( STAT='T' )
+			# self._calculate_effective_df( STAT='T' )
+			df0        = self.df0
+			df         = self._calculate_effective_df_t(self.model.X, V)
 		t        = float(t)  if (self.dvdim==0) else t.flatten()
-		return TestStatisticT(t, self.df, c)
+		return TestStatisticT(t, df, c, df0=df0)
 		
 		
 		

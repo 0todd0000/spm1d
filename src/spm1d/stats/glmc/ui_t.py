@@ -71,6 +71,28 @@ def ttest(y, mu=0, roi=None):
 	
 	
 
+# @appendargs
+# @checkargs
+# def ttest2(y0, y1, equal_var=False, roi=None):
+# 	from . designs import TTEST2
+# 	from .. _cov import CovarianceModel
+# 	n0,n1     = y0.shape[0], y1.shape[0]
+# 	y         = np.hstack( (y0,y1) ) if (y0.ndim==1) else np.vstack(  (y0, y1)  )
+# 	design    = TTEST2(n0, n1)
+# 	if equal_var:
+# 		QQ    = None
+# 		cmodel = CovarianceModel(design.X)
+# 		# cmodel.add_constant_var()
+# 	else:
+# 		cmodel = CovarianceModel(design.X)
+# 		cmodel.add_group_vars()
+# 		# model.add_autocorr()
+# 		QQ    = cmodel.get_model()
+#
+# 	model,fit,teststat = glm(y, design.X, design.contrasts[0].C, QQ=QQ)
+# 	return _assemble_spm_objects(design, model, fit, teststat)
+
+
 @appendargs
 @checkargs
 def ttest2(y0, y1, equal_var=False, roi=None):
@@ -79,15 +101,16 @@ def ttest2(y0, y1, equal_var=False, roi=None):
 	n0,n1     = y0.shape[0], y1.shape[0]
 	y         = np.hstack( (y0,y1) ) if (y0.ndim==1) else np.vstack(  (y0, y1)  )
 	design    = TTEST2(n0, n1)
-	if equal_var:
-		QQ    = None
-		cmodel = CovarianceModel(design.X)
-		# cmodel.add_constant_var()
-	else:
-		cmodel = CovarianceModel(design.X)
-		cmodel.add_group_vars()
-		# model.add_autocorr()
-		QQ    = cmodel.get_model()
+	QQ        = design.get_variance_model( equal_var=equal_var )
+	# if equal_var:
+	# 	QQ    = None
+	# 	cmodel = CovarianceModel(design.X)
+	# 	# cmodel.add_constant_var()
+	# else:
+	# 	cmodel = CovarianceModel(design.X)
+	# 	cmodel.add_group_vars()
+	# 	# model.add_autocorr()
+	# 	QQ    = cmodel.get_model()
 
 	model,fit,teststat = glm(y, design.X, design.contrasts[0].C, QQ=QQ)
 	return _assemble_spm_objects(design, model, fit, teststat)

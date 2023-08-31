@@ -31,6 +31,8 @@ class SPM0D(_SPM):
 		dp.add( 'z', fmt='%.5f' )
 		if self.isregress:
 			dp.add('r', fmt='%.5f')
+		if self.df0 is not None:
+			dp.add( 'df0', fmt=dflist2str )
 		dp.add( 'df', fmt=dflist2str )
 		if self.isanova:
 			# dp.add( 'ss' , tuple2str )

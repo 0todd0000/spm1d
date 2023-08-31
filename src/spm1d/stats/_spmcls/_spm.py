@@ -123,6 +123,9 @@ class _SPM(object):
 		else:
 			return self.design.contrasts[0]
 	@property
+	def df0(self):
+		return self.teststat.df0
+	@property
 	def df(self):
 		return self.teststat.df
 	# @property
