@@ -42,7 +42,9 @@ class SPM1D(_SPM):
 		if self.isanova:
 			dp.add( 'name' )
 			dp.add( 'ss' , array2shortstr )
+			dp.add( 'sse' , array2shortstr )
 			dp.add( 'ms' , array2shortstr )
+			dp.add( 'mse' , array2shortstr )
 		dp.add( 'z', fmt=array2shortstr )
 		if self.isregress:
 			dp.add('r', fmt=array2shortstr )

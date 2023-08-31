@@ -297,11 +297,13 @@ class GLMFit(object):
 		f       = float(f)  if (self.dvdim==0) else np.diag(f)
 		ss      = float(ss) if (self.dvdim==0) else np.diag(ss)
 		ms      = float(ms) if (self.dvdim==0) else np.diag(ms)
+		sse     = float(self.sse) if (self.dvdim==0) else self.sse
+		mse     = float(self.mse) if (self.dvdim==0) else self.mse
 		
 		# TestStatisticT(t, df, c, df0=df0)
 		# f, df, v, ss, ms, C, ind=0, df0=None
 		
-		return TestStatisticF(f, df, ss, ms, C, ind=ind, df0=self.df0[ind])
+		return TestStatisticF(f, df, ss, sse, ms, mse, C, ind=ind, df0=self.df0[ind])
 
 
 

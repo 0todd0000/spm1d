@@ -54,7 +54,7 @@ class TestStatisticF(_TestStatistic):
 	
 	_attrs2test    = ['STAT', 'C', 'z', 'df', 'df0', 'ss', 'ms', 'ind']
 	
-	def __init__(self, f, df, ss, ms, C, ind=0, df0=None):
+	def __init__(self, f, df, ss, sse, ms, mse, C, ind=0, df0=None):
 		self.STAT  = 'F'
 		self.C     = C
 		self.z     = f
@@ -62,15 +62,19 @@ class TestStatisticF(_TestStatistic):
 		self.df    = df
 		# self.v     = v     # unadjusted degrees of freedom
 		self.ss    = ss
+		self.sse   = sse
 		self.ms    = ms
+		self.mse   = mse
 		self.ind   = ind
 
 	def __repr__(self):
 		s0      = super().__repr__()
 		dp      = DisplayParams( self )
 		_astr   = array2shortstr if self.dvdim==1 else None
-		dp.add( 'ms', _astr )
 		dp.add( 'ss', _astr )
+		dp.add( 'sse', _astr )
+		dp.add( 'ms', _astr )
+		dp.add( 'mse', _astr )
 		dp.add( 'ind' )
 		return s0 + dp.asstr()
 

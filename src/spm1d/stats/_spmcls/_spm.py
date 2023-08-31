@@ -135,6 +135,9 @@ class _SPM(object):
 	def ms(self):
 		return self.teststat.ms if self.isanova else None
 	@property
+	def mse(self):
+		return self.teststat.mse if self.isanova else None
+	@property
 	def name(self):
 		return self.contrast.name
 	@property
@@ -149,6 +152,9 @@ class _SPM(object):
 	@property
 	def ss(self):
 		return self.teststat.ss if self.isanova else None
+	@property
+	def sse(self):
+		return self.teststat.sse if self.isanova else None
 	@property
 	def testname(self):
 		return self.design.testname

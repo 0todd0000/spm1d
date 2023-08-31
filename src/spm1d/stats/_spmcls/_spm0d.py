@@ -40,7 +40,9 @@ class SPM0D(_SPM):
 			# dp.add( 'ss' , tuple2str )
 			# dp.add( 'ms' , tuple2str )
 			dp.add( 'ss', fmt='%.5f' )
+			dp.add( 'sse', fmt='%.5f' )
 			dp.add( 'ms', fmt='%.5f' )
+			dp.add( 'mse', fmt='%.5f' )
 			dp.add( 'name' )
 			dp.add( 'name_short' )
 		
