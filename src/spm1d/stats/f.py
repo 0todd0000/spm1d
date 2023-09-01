@@ -134,24 +134,16 @@ def anova1(y, A, equal_var=False, roi=None):
 	# return _assemble_spm_objects(design, model, fit, teststats)
 
 
-def anova1rm(y, A, SUBJ, equal_var=False, gg=True):
-	
-	# if not equal_var:
-	# 	raise NotImplementedError('variance components not yet tested for anova1rm')
-	
+def anova1rm(y, A, SUBJ, equal_var=False, gg=True, roi=None):
 	from . glmc.designs import ANOVA1RM
-	design   = ANOVA1RM( A, SUBJ )
-	QQ   = design.get_variance_model( equal_var=equal_var )
-	# if equal_var:
-	# 	import numpy as np
-	# 	QQ   = None
-	# 	QQ   = [np.eye(A.size)]
-	# else:
-	# Q        = design.get_variance_model( equal_var=equal_var )
+	from . glmc.ui import _glm_via_design
+	# design   = ANOVA1RM( A, SUBJ )
+	# QQ       = design.get_variance_model( equal_var=equal_var )
+	return _glm_via_design( y , ANOVA1RM( A, SUBJ ) , equal_var, roi )
 	
-	model,fit,teststats = aov(y, design.X, design.C, QQ, df0=design.df0, gg=False, _Xeff= design.X[:,:-1] )  # "design.X[:,:-1]" is a hack;  there must be a different way
-	
-	return _assemble_spm_objects(design, model, fit, teststats)
+	# model,fit,teststats = aov(y, design.X, design.C, QQ, df0=design.df0, gg=False, _Xeff= design.X[:,:-1] )  # "design.X[:,:-1]" is a hack;  there must be a different way
+	#
+	# return _assemble_spm_objects(design, model, fit, teststats)
 	
 	# model    = GeneralLinearModel()
 	# model.set_design_matrix( design.X )
@@ -172,24 +164,67 @@ def anova1rm(y, A, SUBJ, equal_var=False, gg=True):
 	# return f, df, p, model
 
 
+# def anova1rm(y, A, SUBJ, equal_var=False, gg=True):
+#
+# 	# if not equal_var:
+# 	# 	raise NotImplementedError('variance components not yet tested for anova1rm')
+#
+# 	from . glmc.designs import ANOVA1RM
+# 	design   = ANOVA1RM( A, SUBJ )
+# 	QQ   = design.get_variance_model( equal_var=equal_var )
+# 	# if equal_var:
+# 	# 	import numpy as np
+# 	# 	QQ   = None
+# 	# 	QQ   = [np.eye(A.size)]
+# 	# else:
+# 	# Q        = design.get_variance_model( equal_var=equal_var )
+#
+# 	model,fit,teststats = aov(y, design.X, design.C, QQ, df0=design.df0, gg=False, _Xeff= design.X[:,:-1] )  # "design.X[:,:-1]" is a hack;  there must be a different way
+#
+# 	return _assemble_spm_objects(design, model, fit, teststats)
+#
+# 	# model    = GeneralLinearModel()
+# 	# model.set_design_matrix( design.X )
+# 	# model.set_contrast_matrix( design.C )
+# 	# model.set_variance_model( Q )
+# 	# fit      = model.fit( y )
+# 	# fit.estimate_variance()
+# 	# fit.calculate_effective_df(  design.X[:,:-1]  )   # "design.X[:,:-1]" is a hack;  there must be a different way
+# 	# fit.calculate_f_stat()
+# 	# if gg:
+# 	# 	fit.greenhouse_geisser()
+# 	# f,df   = fit.f, fit.df
+# 	# if fit.dvdim==1:
+# 	# 	p  = scipy.stats.f.sf(float(f), df[0], df[1])
+# 	# else:
+# 	# 	fwhm    = rft1d.geom.estimate_fwhm( fit.e )
+# 	# 	p       = rft1d.f.sf(f.max(), df, y.shape[1], fwhm)
+# 	# return f, df, p, model
 
 
 
 
-# @appendSPMargs
-def anova2(y, A, B, equal_var=False, roi=None):
-	if not equal_var:
-		raise NotImplementedError('variance components not yet implemented for anova2')
+def anova2(y, A, B, equal_var=False, gg=True, roi=None):
 	from . glmc.designs import ANOVA2
-	design   = ANOVA2( A, B )
+	from . glmc.ui import _glm_via_design
+	# design   = ANOVA1RM( A, SUBJ )
 	# QQ       = design.get_variance_model( equal_var=equal_var )
-	
-	# # temporary variance components:
-	# import numpy as np
-	# J       = A.size
-	# QQ      = [np.eye(J)]
-	QQ      = None
+	return _glm_via_design( y , ANOVA2( A, B ) , equal_var, roi )
 
-	model,fit,teststats = aov(y, design.X, design.C, QQ, df0=design.df0)
-	
-	return _assemble_spm_objects(design, model, fit, teststats)
+# # @appendSPMargs
+# def anova2(y, A, B, equal_var=False, roi=None):
+# 	if not equal_var:
+# 		raise NotImplementedError('variance components not yet implemented for anova2')
+# 	from . glmc.designs import ANOVA2
+# 	design   = ANOVA2( A, B )
+# 	# QQ       = design.get_variance_model( equal_var=equal_var )
+#
+# 	# # temporary variance components:
+# 	# import numpy as np
+# 	# J       = A.size
+# 	# QQ      = [np.eye(J)]
+# 	QQ      = None
+#
+# 	model,fit,teststats = aov(y, design.X, design.C, QQ, df0=design.df0)
+#
+# 	return _assemble_spm_objects(design, model, fit, teststats)

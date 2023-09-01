@@ -254,11 +254,19 @@ class _DesignANOVA(_Design):
 		self.contrasts = self._build_contrasts()
 		self.df0       = self._calculate_unadjusted_df()
 
+	@property
+	def nfactors(self):
+		return len(self.factors)
+	
 	# def _calculate_unadjusted_df(self):
 	# 	df  = [c.rank for c in self.contrasts]
 	# 	dfe = self.J - rank(self.X)
 	# 	df0 = [(x,dfe)  for x in df]
 	# 	return df0
+	
+	def _init_factors(self, *AA):
+		self.factors = [Factor(A, name=chr(65+i))   for i,A in enumerate(AA)]
+
 	
 
 
@@ -315,7 +323,8 @@ class ANOVA1RM(_DesignANOVA):
 		Cz       = np.zeros(  (n-1,  nz)  )
 		C        = np.hstack([C, Cz])
 		# return [C.T]
-		C = ContrastF( C.T, factors=self.factors, ind=0, isrm=True )
+		# C = ContrastF( C.T, factors=self.factors, ind=0, isrm=True )
+		C = ContrastF( C.T, name='Main A', ind=0, isrm=True )
 		return [C]
 
 
@@ -372,7 +381,7 @@ class ANOVA2(_DesignANOVA):
 			c[i] = 1
 			CA.append(c)
 		# CA = Contrast( np.asarray(CA).T, name=f'Main {fA.name}', name_s=fA.name_s )
-		CA = ContrastF( np.asarray(CA).T, factors=[fA], ind=0 )
+		CA = ContrastF( np.asarray(CA).T, name='Main A', ind=0 )
 
 
 		CB = []
@@ -381,7 +390,7 @@ class ANOVA2(_DesignANOVA):
 			c[nA+i] = 1
 			CB.append(c)
 		# CB = Contrast( np.asarray(CB).T, name=f'Main {fB.name}', name_s=fB.name_s )
-		CB = ContrastF( np.asarray(CB).T, factors=[fB], ind=1 )
+		CB = ContrastF( np.asarray(CB).T, name='Main B', ind=1 )
 
 
 
@@ -391,7 +400,7 @@ class ANOVA2(_DesignANOVA):
 			c[nA+nB+i] = 1
 			CAB.append(c)
 		# CAB = Contrast( np.asarray(CAB).T, name=f'Interaction {fA.name} x {fB.name}', name_s=f'{fA.name_s}x{fB.name_s}' )
-		CAB = ContrastF( np.asarray(CAB).T, factors=[fA,fB], ind=2 )
+		CAB = ContrastF( np.asarray(CAB).T, name='Interaction AB', ind=2 )
 
 		return [CA, CB, CAB]
 
