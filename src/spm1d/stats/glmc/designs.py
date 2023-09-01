@@ -265,7 +265,7 @@ class ANOVA1RM(_DesignANOVA):
 		Cz       = np.zeros(  (n-1,  nz)  )
 		C        = np.hstack([C, Cz])
 		# return [C.T]
-		C = Contrast( C.T, factors=self.factors, ind=0 )
+		C = Contrast( C.T, factors=self.factors, ind=0, isrm=True )
 		return [C]
 
 

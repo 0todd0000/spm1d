@@ -6,10 +6,11 @@ from ... util import array2shortstr, arraytuple2str, dflist2str, objectlist2str,
 
 
 class Contrast(object):
-	def __init__(self, C, factors, ind=0):
+	def __init__(self, C, factors, ind=0, isrm=False):
 		self.C       = C        # contrast matrix
 		self.factors = factors  # list of Factor objects (used only for factor names)
 		self.ind     = ind      # list index (if contrast appears in a list of F contrasts)
+		self.isrm    = isrm
 		
 
 	def __eq__(self, other):
@@ -41,8 +42,12 @@ class Contrast(object):
 	def effect_type(self):
 		if self.factors is None:
 			s = 'Regress'
+		elif self.isrm:
+			s = 'Main (RM)'
 		elif self.ismain:
 			s = 'Main'
+		elif self.isrm:
+			s
 		else:
 			s = 'Interaction'
 		return s
