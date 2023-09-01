@@ -2,10 +2,10 @@
 
 
 import numpy as np
-from . contrasts import Contrast
+from . contrasts import Contrast, ContrastT
 from . factors import Factor
 from . _la import rank
-from ... util import array2shortstr, arraytuple2str, dflist2str, objectlist2str, resels2str, DisplayParams
+from ... util import array2shortstr, arraytuple2str, dflist2str, object2str, objectlist2str, resels2str, DisplayParams
 
 
 
@@ -91,50 +91,183 @@ class _Design(object):
 			factor.set_name( s, ss )
 
 
+
+
+# def _contrast_rank(c):
+# 	df  = [rank(c.C) for c in self.contrasts]
+
+
+
+
+class _SingleContrastDesign(object):
+	
+	def __init__(self):
+		self.X             = None   # design matrix
+		self.contrast      = None   # contrast object
+		self.df0           = None   # unadjusted degrees of freedom
+	
+	def __eq__(self, other):
+		return self.isequal(other, verbose=False)
+
+	def __repr__(self):
+		dp      = DisplayParams( self )
+		dp.add_header( f'Design ({self.__class__.__name__})' )
+		dp.add( 'testname' )
+		dp.add( 'X' , array2shortstr )
+		dp.add( 'contrast' , object2str )
+		dp.add( 'df0' , dflist2str )
+		return dp.asstr()
+	
+	@property
+	def c(self):
+		return self.contrast.c
+	@property
+	def is_single_contrast_design(self):
+		return self.ncontrasts == 1
+	@property
+	def ncontrasts(self):
+		return 1
+	
+	@property
+	def J(self):
+		return self.X.shape[0]
+	@property
+	def ctype(self):
+		return self.contrast_type
+	@property
+	def contrast_type(self):
+		return self.contrast.type
+	@property
+	def testname(self):
+		return self.__class__.__name__.lower()
+
+
+	def get_contrast_matrix(self):
+		return self.contrast.c
+	
+	def get_variance_model(self, equal_var=False):  # abstract method
+		pass
+	
+	def isequal(self, other, verbose=False):
+		if type(self) != type(other):
+			return False
+		if not np.array_equal(self.X, other.X):
+			return False
+		if self.contrast != other.contrast:
+			return False
+		return True
+
+	# def set_factor_names(self, names, names_short=None):
+	# 	# self.set_factor_names(names, names_short)
+	# 	if names_short is None:
+	# 		names_short = [None] * self.nfactors
+	# 	for factor,s,ss in zip(self.factors, names, names_short):
+	# 		factor.set_name( s, ss )
+
+
 class GLM(_Design):
 	def __init__(self, X, c):
 		self.X         = X
-		self.contrasts = [   Contrast( c, factors=None, ind=0 )   ]
-		self.df0       = 1, X.shape[0] - rank(X)
+		self._c        = c
+		self.contrasts = self._assemble_contrasts()
+		self.df0       = self._calculate_unadjusted_df()
 
 
-class REGRESS(_Design):
+	def _assemble_contrasts(self):
+		if isinstance(self._c, list):
+			contrasts = [   Contrast( cc, factors=None, ind=ii )  for ii,cc in enumerate(self._c) ]
+		else:
+			# contrasts = [   Contrast( self._c, factors=None, ind=0 )    ]
+			contrasts = [   ContrastT( self._c )    ]
+		return contrasts
+
+	def _calculate_unadjusted_df(self):
+		df  = [c.rank  for c in self.contrasts]
+		dfe = self.J - rank(self.X)
+		df0 = [(x,dfe)  for x in df]
+		if not self.has_contrast_list:
+			df0 = df0[0]
+		return df0
+
+	@property
+	def has_contrast_list(self):
+		return isinstance(self._c, list)  # and len(self._c)>1
+
+
+
+
+
+
+
+# class REGRESS(_Design):
+# 	def __init__(self, x):
+# 		n              = x.size
+# 		self.X         = np.ones((n,2))
+# 		self.X[:,0]    = x
+# 		c              = np.array( [1,0] )
+# 		self.contrasts = [   Contrast( c, factors=None, ind=0 )   ]
+# 		self.df0       = 1, n-2
+
+
+# class TTEST(_Design):
+# 	def __init__(self, n):
+# 		self.X             = np.ones((n,1))
+# 		A                  = np.ones(n)
+# 		C                  = np.array( [1,] )
+# 		self.factors       = [ Factor(A, name='A') ]
+# 		self.contrasts     = [   Contrast( C, factors=self.factors, ind=0 )   ]
+# 		self.df0           = (1, n-1)
+
+# class TTEST2(_Design):
+# 	def __init__(self, n0, n1):
+# 		self.X             = np.zeros((n0+n1,2))
+# 		self.X[:n0,0]      = 1
+# 		self.X[n0:,1]      = 1
+# 		A                  = np.array( [0]*n0 + [1]*n1 )
+# 		C                  = np.array( [1,-1] )
+# 		self.factors       = [ Factor(A, name='A') ]
+# 		self.contrasts     = [   Contrast( C, factors=self.factors, ind=0 )   ]
+# 		self.df0           = 1, n0+n1-2
+#
+#
+# 	def get_variance_model(self, equal_var=False):
+# 		if equal_var:
+# 			QQ  = None
+# 		else:
+# 			A,u = self.factors[0].A, self.factors[0].u
+# 			QQ  = [np.asarray(np.diag( A==uu ), dtype=float)  for uu in u]
+# 		return QQ
+
+
+class REGRESS(_SingleContrastDesign):
 	def __init__(self, x):
 		n              = x.size
 		self.X         = np.ones((n,2))
 		self.X[:,0]    = x
-		c              = np.array( [1,0] )
-		self.contrasts = [   Contrast( c, factors=None, ind=0 )   ]
+		self.contrast = ContrastT( [1,0] )
 		self.df0       = 1, n-2
 
 
-class TTEST(_Design):
+class TTEST(_SingleContrastDesign):
 	def __init__(self, n):
-		self.X             = np.ones((n,1))
-		A                  = np.ones(n)
-		C                  = np.array( [1,] )
-		self.factors       = [ Factor(A, name='A') ]
-		self.contrasts     = [   Contrast( C, factors=self.factors, ind=0 )   ]
-		self.df0           = 1, n-1
+		self.X        = np.ones((n,1))
+		self.contrast = ContrastT( [1,] )
+		self.df0      = (1, n-1)
 
-class TTEST2(_Design):
+
+class TTEST2(_SingleContrastDesign):
 	def __init__(self, n0, n1):
 		self.X             = np.zeros((n0+n1,2))
 		self.X[:n0,0]      = 1
 		self.X[n0:,1]      = 1
-		A                  = np.array( [0]*n0 + [1]*n1 )
-		C                  = np.array( [1,-1] )
-		self.factors       = [ Factor(A, name='A') ]
-		self.contrasts     = [   Contrast( C, factors=self.factors, ind=0 )   ]
+		self.contrast      = ContrastT( [1,-1] )
 		self.df0           = 1, n0+n1-2
-		
 
 	def get_variance_model(self, equal_var=False):
 		if equal_var:
 			QQ  = None
 		else:
-			A,u = self.factors[0].A, self.factors[0].u
-			QQ  = [np.asarray(np.diag( A==uu ), dtype=float)  for uu in u]
+			QQ  = [np.asarray(np.diag( x==1 ), dtype=float)  for x in self.X.T]
 		return QQ
 
 

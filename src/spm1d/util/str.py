@@ -41,6 +41,12 @@ def float2string(x, allow_none=False, fmt='%.3f'):
 	return 'None' if (allow_none and (x is None)) else fmt%x
 
 
+def object2str(x):
+	if x is None:
+		return 'None'
+	else:
+		return f'( {x.__class__.__name__} object )'
+
 def objectlist2str(x):
 	if x is None:
 		return 'None'

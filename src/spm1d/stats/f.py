@@ -27,6 +27,40 @@ def _assemble_spm_objects(design, model, fit, teststats, roi=None):
 		spm = SPMFList( spm )
 	return spm
 
+def _glm_design(y, design, equal_var=False, roi=None):
+	'''
+	Design object-based interface to glm
+	
+	This is an internal function that is NOT meant for users.
+	'''
+	QQ         = design.get_variance_model( equal_var=equal_var )
+	ctype      = 'T' if design.testname in ['ttest', 'ttest_paired', 'ttest2', 'regress'] else 'F'
+	spm        = glm(y, design.X, design.C, ctype=ctype, QQ=QQ, roi=roi)
+	spm.design = design
+	return spm
+
+
+def glm(y, X, C, ctype='T', QQ=None, roi=None, gg=False, _Xeff=None):
+	'''
+	General Linear Model
+
+	Most general user-facing hypothesis testing function
+
+	Note:  all built-in tests (e.g. ttest2, anova1rm, etc.)
+	represent specific cases of this glm function.
+	'''
+	from . glmc.designs import GLM
+	from . glmc.models import GeneralLinearModel
+	# from . glmc._la import rank
+	# df0       = 1, X.shape[0] - rank(X)
+	design    = GLM(X, C)
+	model     = GeneralLinearModel(X, design.df0, QQ)
+	fit       = model.fit( y )
+	# teststat  = fit.calculate_t_stat( c, roi=roi )
+	teststats = [fit.calculate_f_stat( c, gg=gg, _Xeff=_Xeff, ind=i )   for i,c in enumerate(C)]
+	return _assemble_spm_objects(design, model, fit, teststats, roi=roi)
+
+
 
 def aov(y, X, C, QQ, df0=None, gg=False, _Xeff=None):
 	from . glmc.models import GeneralLinearModel
@@ -39,10 +73,10 @@ def aov(y, X, C, QQ, df0=None, gg=False, _Xeff=None):
 
 
 
-def anova1(y, A, equal_var=False):
+def anova1old(y, A, equal_var=False):
 	# if not equal_var:
 	# 	raise NotImplementedError('variance components not yet tested for anova1')
-	
+
 	from . glmc.designs import ANOVA1
 	design   = ANOVA1( A )
 	QQ       = design.get_variance_model( equal_var=equal_var )
@@ -52,13 +86,30 @@ def anova1(y, A, equal_var=False):
 	# 	QQ   = [np.eye(A.size)]
 	# else:
 	# 	QQ   = design.get_variance_model( equal_var=equal_var )
-	
-	
-	
+
+
+
 	model,fit,teststats = aov(y, design.X, design.C, QQ, df0=design.df0)
-	
+
 	return _assemble_spm_objects(design, model, fit, teststats)
 
+def anova1(y, A, equal_var=False, roi=None):
+	from . glmc.designs import ANOVA1
+	# design   = ANOVA1( A )
+	return _glm_design( y , ANOVA1( A ) , equal_var, roi )
+	# QQ       = design.get_variance_model( equal_var=equal_var )
+	# if equal_var:
+	# 	import numpy as np
+	# 	QQ   = None
+	# 	QQ   = [np.eye(A.size)]
+	# else:
+	# 	QQ   = design.get_variance_model( equal_var=equal_var )
+	
+	
+	
+	# model,fit,teststats = aov(y, design.X, design.C, QQ, df0=design.df0)
+	#
+	# return _assemble_spm_objects(design, model, fit, teststats)
 
 
 def anova1rm(y, A, SUBJ, equal_var=False, gg=True):

@@ -19,40 +19,67 @@ def _assemble_spm_objects(design, model, fit, teststat, roi=None):
 		from . _spmcls import SPM1D
 		spm = SPM1D(design, model, fit, teststat)
 	return spm
-	
+
 
 
 def _glm_design(y, design, equal_var=False, roi=None):
 	'''
 	Design object-based interface to glm
-	
+
 	This is an internal function that is NOT meant for users.
 	'''
 	QQ         = design.get_variance_model( equal_var=equal_var )
-	spm        = glm(y, design.X, design.contrasts[0].C, ctype='T', QQ=QQ, roi=roi)
+	if design.is_single_contrast_design:
+		spm    = glm(y, design.X, design.c, QQ=QQ, roi=roi)
+	else:
+		pass
 	spm.design = design
 	return spm
 
 
-def glm(y, X, c, ctype='T', QQ=None, roi=None):
+# def glm(y, X, c, ctype='T', QQ=None, roi=None):
+# 	'''
+# 	General Linear Model
+#
+# 	Most general user-facing hypothesis testing function
+#
+# 	Note:  all built-in tests (e.g. ttest2, anova1rm, etc.)
+# 	represent specific cases of this glm function.
+# 	'''
+# 	from . glmc.designs import GLM
+# 	from . glmc.models import GeneralLinearModel
+# 	# from . glmc._la import rank
+# 	# df0       = 1, X.shape[0] - rank(X)
+# 	design    = GLM(X, c)
+# 	model     = GeneralLinearModel(X, design.df0, QQ)
+# 	fit       = model.fit( y )
+# 	teststat  = fit.calculate_t_stat( c, roi=roi )
+# 	return _assemble_spm_objects(design, model, fit, teststat, roi=roi)
+
+
+def glm(y, X, c, QQ=None, roi=None):
 	'''
 	General Linear Model
 
-	Most general user-facing hypothesis testing function
-
-	Note:  all built-in tests (e.g. ttest2, anova1rm, etc.)
-	represent specific cases of this glm function.
+	Most general user-facing hypothesis testing function. All built-in
+	tests (e.g. ttest2, anova1rm, etc.) represent specific cases of
+	this "glm" function.
+	
+	The contrasts "c" must be numpy arrays. If a contrast is a 1D array
+	it will be handled as a "T" contrast. If it is 2D it will be handled
+	as an "F" contrast.
+	
 	'''
 	from . glmc.designs import GLM
 	from . glmc.models import GeneralLinearModel
-	# from . glmc._la import rank
-	# df0       = 1, X.shape[0] - rank(X)
 	design    = GLM(X, c)
 	model     = GeneralLinearModel(X, design.df0, QQ)
 	fit       = model.fit( y )
 	teststat  = fit.calculate_t_stat( c, roi=roi )
 	return _assemble_spm_objects(design, model, fit, teststat, roi=roi)
-
+	
+	
+# from . glmc.ui import _glm_via_design as _glm_design
 
 
 @appendargs

@@ -28,10 +28,12 @@ from . import _spmcls
 
 # from . import prob
 # from . import core
-from . t import ttest, ttest_paired, ttest2, regress, glm
+from . t import ttest, ttest_paired, ttest2, regress  # , glm
 # from . ci import ci_onesample, ci_pairedsample, ci_twosample
 
-from . f import anova1,anova1rm,anova2
+from . f import anova1,anova1old,anova1rm,anova2
+from . glmc.ui import glm
+
 # from . anova import anova2#,anova2nested,anova2rm,anova2onerm
 # # from . anova import anova3,anova3nested,anova3rm,anova3tworm,anova3onerm
 
