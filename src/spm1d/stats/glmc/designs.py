@@ -148,6 +148,8 @@ class _SingleContrastDesign(object):
 		return self.__class__.__name__.lower()
 
 
+	def get_contrast_matrices(self):
+		return [self.contrast.c]
 	def get_contrast_matrix(self):
 		return self.contrast.c
 	
