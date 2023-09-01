@@ -34,6 +34,9 @@ class GeneralLinearModel(object):
 		return None if (self.X is None) else self.X.shape[0]
 
 	@property
+	def df0list(self):
+		return [self.df0] if isinstance(self.df0,tuple) else self.df0
+	@property
 	def dfe0(self):
 		return self.df0[0][1] if isinstance(self.df0, list) else self.df0[1]
 

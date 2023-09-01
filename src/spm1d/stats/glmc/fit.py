@@ -59,6 +59,9 @@ class GLMFit(object):
 	def df0(self):   # unadjusted degrees of freedom  (under an assumption of equal variance)
 		return self.model.df0
 	@property
+	def df0list(self):   # unadjusted degrees of freedom  (under an assumption of equal variance)
+		return self.model.df0list
+	@property
 	def dfe0(self):   # unadjusted error degrees of freedom
 		return self.model.dfe0
 	@property
@@ -143,7 +146,8 @@ class GLMFit(object):
 	def calculate_f_stat(self, C, gg=False, _Xeff=None, ind=0, roi=None):
 		from . teststats import TestStatisticF
 		if self.model.QQ is None:
-			df     = self.df0[ind]
+			# df     = self.df0 if isinstance(self.df0, tuple) else self.df0[ind]
+			df     = self.df0list[ind]
 			v0     = df[0]
 		else:
 			V,_       = self._estimate_var( self.model.QQ )
@@ -167,7 +171,7 @@ class GLMFit(object):
 		ms      = float(ms) if (self.dvdim==0) else np.diag(ms)
 		sse     = float(self.sse) if (self.dvdim==0) else self.sse
 		mse     = float(self.mse) if (self.dvdim==0) else self.mse
-		return TestStatisticF(f, df, ss, sse, ms, mse, C, ind=ind, df0=self.df0[ind])
+		return TestStatisticF(f, df, ss, sse, ms, mse, C, ind=ind, df0=self.df0list[ind])
 
 
 	def calculate_t_stat(self, c, roi=None):

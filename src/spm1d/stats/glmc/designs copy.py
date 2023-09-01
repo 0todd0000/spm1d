@@ -11,9 +11,102 @@ from ... util import array2shortstr, arraytuple2str, dflist2str, object2str, obj
 
 class _Design(object):
 	
+	contrast_type = 'F'
+	
 	def __init__(self):
 		self.X             = None   # design matrix
-		self.contrasts     = None   # contrast object
+		self.contrasts     = None   # contrast objects
+		# self.factors       = None   # list of factor objects
+		self.df0           = None   # unadjusted degrees of freedom
+		
+	
+	def __eq__(self, other):
+		return self.isequal(other, verbose=False)
+
+	def __repr__(self):
+		dp      = DisplayParams( self )
+		dp.add_header( f'Design ({self.__class__.__name__})' )
+		dp.add( 'testname' )
+		dp.add( 'X' , array2shortstr )
+		dp.add( 'contrasts' , objectlist2str )
+		dp.add( 'df0' , dflist2str )
+		return dp.asstr()
+	
+	# def _init_factors(self, *AA):
+	# 	self.factors = [Factor(A, name=chr(65+i))   for i,A in enumerate(AA)]
+
+
+	@property
+	def C(self):
+		return self.get_contrast_matrices()
+	@property
+	def J(self):
+		return self.X.shape[0]
+	# @property
+	# def df0(self):
+	# 	return 1, self.J - rank(self.X)
+	# @property
+	# def nfactors(self):
+	# 	return 0 if (self.factors is None) else len( self.factors )
+	@property
+	def testname(self):
+		return self.__class__.__name__.lower()
+		
+	# def _assemble(self):
+	# 	self.X         = self._build_design_matrix()
+	# 	self.contrasts = self._build_contrasts()
+	# 	self.df0       = self._calculate_unadjusted_df()
+
+
+	def get_contrast_matrices(self):
+		return [c.c  for c in self.contrasts]
+	
+	def get_variance_model(self, equal_var=False):
+		pass
+	# def get_df0(self, J):
+	# 	from .. _la import rank
+	# 	return 1, J - rank(self.X)
+	
+	def isequal(self, other, verbose=False):
+		if type(self) != type(other):
+			return False
+			
+		if not np.all(self.X == other.X):
+			return False
+			
+		for c0,c1 in zip(self.contrasts, other.contrasts):
+			if c0 != c1:
+				return False
+
+	# 	if (self.factors is not None) and (other.factors is not None):
+	# 		for f0,f1 in zip(self.factors, other.factors):
+	# 			if f0 != f1:
+	# 				return False
+	#
+	# 	return True
+	#
+	#
+	# def set_factor_names(self, names, names_short=None):
+	# 	# self.set_factor_names(names, names_short)
+	# 	if names_short is None:
+	# 		names_short = [None] * self.nfactors
+	# 	for factor,s,ss in zip(self.factors, names, names_short):
+	# 		factor.set_name( s, ss )
+
+
+
+
+# def _contrast_rank(c):
+# 	df  = [rank(c.C) for c in self.contrasts]
+
+
+
+
+class _SingleContrastDesign(object):
+	
+	def __init__(self):
+		self.X             = None   # design matrix
+		self.contrast      = None   # contrast object
 		self.df0           = None   # unadjusted degrees of freedom
 	
 	def __eq__(self, other):
@@ -24,35 +117,41 @@ class _Design(object):
 		dp.add_header( f'Design ({self.__class__.__name__})' )
 		dp.add( 'testname' )
 		dp.add( 'X' , array2shortstr )
-		# dp.add( 'contrasts' , object2str )
-		dp.add( 'contrasts' , objectlist2str )
+		dp.add( 'contrast' , object2str )
 		dp.add( 'df0' , dflist2str )
 		return dp.asstr()
 	
-	def _calculate_unadjusted_df(self):
-		df  = [c.rank  for c in self.contrasts]
-		dfe = self.J - rank(self.X)
-		df0 = [(x,dfe)  for x in df]
-		if len(df0)==1:
-			df0 = df0[0]
-		return df0
-
+	@property
+	def C(self):
+		return self.contrast.c
+	@property
+	def c(self):
+		return [self.contrast.c]
+	# @property
+	# def is_single_contrast_design(self):
+	# 	return self.ncontrasts == 1
+	@property
+	def ncontrasts(self):
+		return 1
+	
 	@property
 	def J(self):
 		return self.X.shape[0]
 	@property
-	def df0list(self):
-		return [self.df0] if self.ncontrasts==1 else self.df0
+	def ctype(self):
+		return self.contrast_type
 	@property
-	def ncontrasts(self):
-		return len(self.contrasts)
+	def contrast_type(self):
+		return self.contrast.type
 	@property
 	def testname(self):
 		return self.__class__.__name__.lower()
 
 
 	def get_contrast_matrices(self):
-		return [c.c  for c in self.contrasts]
+		return [self.contrast.c]
+	def get_contrast_matrix(self):
+		return self.contrast.c
 	
 	def get_variance_model(self, equal_var=False):  # abstract method
 		pass
@@ -62,9 +161,7 @@ class _Design(object):
 			return False
 		if not np.array_equal(self.X, other.X):
 			return False
-		if self.contrasts != other.contrasts:
-			return False
-		if self.df0 != other.df0:
+		if self.contrast != other.contrast:
 			return False
 		return True
 
@@ -95,6 +192,14 @@ class GLM(_Design):
 		else:
 			contrasts = [   _array2contrast( self._c )    ]
 		return contrasts
+
+	def _calculate_unadjusted_df(self):
+		df  = [c.rank  for c in self.contrasts]
+		dfe = self.J - rank(self.X)
+		df0 = [(x,dfe)  for x in df]
+		if not self.has_contrast_list:
+			df0 = df0[0]
+		return df0
 
 	@property
 	def ctype(self):
@@ -149,28 +254,29 @@ class GLM(_Design):
 # 		return QQ
 
 
-class REGRESS(_Design):
+class REGRESS(_SingleContrastDesign):
 	def __init__(self, x):
 		n              = x.size
 		self.X         = np.ones((n,2))
 		self.X[:,0]    = x
-		self.contrasts = [ContrastT( [1,0] )]
-		self.df0       = (1, n-2)
+		self.contrast = ContrastT( [1,0] )
+		self.df0       = 1, n-2
 
-class TTEST(_Design):
+
+class TTEST(_SingleContrastDesign):
 	def __init__(self, n):
-		self.X         = np.ones((n,1))
-		self.contrasts = [ContrastT( [1,] )]
-		self.df0       = (1, n-1)
+		self.X        = np.ones((n,1))
+		self.contrast = ContrastT( [1,] )
+		self.df0      = (1, n-1)
 
 
-class TTEST2(_Design):
+class TTEST2(_SingleContrastDesign):
 	def __init__(self, n0, n1):
 		self.X             = np.zeros((n0+n1,2))
 		self.X[:n0,0]      = 1
 		self.X[n0:,1]      = 1
-		self.contrasts     = [ContrastT( [1,-1] )]
-		self.df0           = (1, n0+n1-2)
+		self.contrast      = ContrastT( [1,-1] )
+		self.df0           = 1, n0+n1-2
 
 	def get_variance_model(self, equal_var=False):
 		if equal_var:
@@ -254,11 +360,11 @@ class _DesignANOVA(_Design):
 		self.contrasts = self._build_contrasts()
 		self.df0       = self._calculate_unadjusted_df()
 
-	# def _calculate_unadjusted_df(self):
-	# 	df  = [c.rank for c in self.contrasts]
-	# 	dfe = self.J - rank(self.X)
-	# 	df0 = [(x,dfe)  for x in df]
-	# 	return df0
+	def _calculate_unadjusted_df(self):
+		df  = [c.rank for c in self.contrasts]
+		dfe = self.J - rank(self.X)
+		df0 = [(x,dfe)  for x in df]
+		return df0
 	
 
 
