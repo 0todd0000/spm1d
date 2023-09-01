@@ -23,25 +23,42 @@ def _assemble_spm_objects(design, model, fit, teststat, roi=None):
 	
 
 
-
+def _glm_design(y, design, equal_var=False, roi=None):
+	'''
+	Design object-based interface to glm
+	'''
+	QQ         = design.get_variance_model( equal_var=equal_var )
+	spm        = glm(y, design.X, design.contrasts[0].C, ctype='T', QQ=QQ, roi=roi)
+	spm.design = design
+	return spm
 
 
 def glm(y, X, c, ctype='T', QQ=None, roi=None):
 	'''
 	General Linear Model
-	
+
 	Most general user-facing hypothesis testing function
-	
+
 	Note:  all built-in tests (e.g. ttest2, anova1rm, etc.)
 	represent specific cases of this glm function.
 	'''
+	from . glmc.designs import GLM
 	from . glmc.models import GeneralLinearModel
 	from . glmc._la import rank
-	df0       = 1, X.shape[0] - rank(X)
-	model     = GeneralLinearModel(X, df0, QQ)
+	# df0       = 1, X.shape[0] - rank(X)
+	design    = GLM(X, c)
+	model     = GeneralLinearModel(X, design.df0, QQ)
 	fit       = model.fit( y )
 	teststat  = fit.calculate_t_stat( c, roi=roi )
-	return model, fit, teststat
+	return _assemble_spm_objects(design, model, fit, teststat, roi=roi)
+	# if fit.dvdim==0:
+	# 	from . _spmcls import SPM0D
+	# 	spm = SPM0D(design, model, fit, teststat)
+	# else:
+	# 	from . _spmcls import SPM1D
+	# 	spm = SPM1D(design, model, fit, teststat)
+	# return spm
+	# return design, model, fit, teststat
 
 
 
@@ -60,15 +77,22 @@ def regress(y, x, roi=None):
 
 
 
+
+
+	
+
+
 @appendargs
 @checkargs
 def ttest(y, mu=0, roi=None):
 	from . glmc.designs import TTEST
-	design    = TTEST( y.shape[0] )
-	# df0       = design.get_df0(y.shape[0])
-	model,fit,teststat = glm(y-mu, design.X, design.contrasts[0].C)
-	
-	return _assemble_spm_objects(design, model, fit, teststat)
+	return _glm_design(y-mu, TTEST( y.shape[0] ) , roi)
+	# spm       = glm( y-mu, design.X, design.contrasts[0].C, ctype='T', )
+	# return _glm( y - mu , TTEST( y.shape[0] ) )
+	# # df0       = design.get_df0(y.shape[0])
+	# model,fit,teststat = glm(y-mu, design.X, design.contrasts[0].C)
+	#
+	# return _assemble_spm_objects(design, model, fit, teststat)
 	
 	
 

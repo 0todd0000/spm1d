@@ -58,7 +58,8 @@ class _Design(object):
 	def get_contrast_matrices(self):
 		return [c.C  for c in self.contrasts]
 	
-	
+	def get_variance_model(self, equal_var=False):
+		pass
 	# def get_df0(self, J):
 	# 	from .. _la import rank
 	# 	return 1, J - rank(self.X)
@@ -89,6 +90,12 @@ class _Design(object):
 		for factor,s,ss in zip(self.factors, names, names_short):
 			factor.set_name( s, ss )
 
+
+class GLM(_Design):
+	def __init__(self, X, c):
+		self.X         = X
+		self.contrasts = [   Contrast( c, factors=None, ind=0 )   ]
+		self.df0       = 1, X.shape[0] - rank(X)
 
 
 class REGRESS(_Design):
