@@ -54,9 +54,9 @@ class TestStatisticF(_TestStatistic):
 	
 	_attrs2test    = ['STAT', 'C', 'z', 'df', 'df0', 'ss', 'ms', 'ind']
 	
-	def __init__(self, f, df, ss, sse, ms, mse, C, ind=0, df0=None):
+	def __init__(self, f, df, ss, sse, ms, mse, c, ind=0, df0=None):
 		self.STAT  = 'F'
-		self.C     = C
+		self.c     = c
 		self.z     = f
 		self.df0   = df0   # unadjusted degrees of freedom
 		self.df    = df
