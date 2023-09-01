@@ -140,7 +140,7 @@ class GLMFit(object):
 		return V,h
 
 
-	def calculate_f_stat(self, C, gg=False, _Xeff=None, ind=0):
+	def calculate_f_stat(self, C, gg=False, _Xeff=None, ind=0, roi=None):
 		from . teststats import TestStatisticF
 		if self.model.QQ is None:
 			df     = self.df0[ind]
@@ -169,6 +169,7 @@ class GLMFit(object):
 		mse     = float(self.mse) if (self.dvdim==0) else self.mse
 		return TestStatisticF(f, df, ss, sse, ms, mse, C, ind=ind, df0=self.df0[ind])
 
+
 	def calculate_t_stat(self, c, roi=None):
 		from . teststats import TestStatisticT
 		if self.model.QQ is None:
@@ -182,8 +183,24 @@ class GLMFit(object):
 			df       = self._calculate_effective_df_t(self.model.X, V)
 		t            = float(t)  if (self.dvdim==0) else t.flatten()
 		return TestStatisticT(t, df, c, df0=self.df0)
+
 		
-		
+	def _calculate_single_teststat(self, c, gg=False, _Xeff=None, roi=None, ind=None):
+		if c.ndim==1:
+			ts = self.calculate_t_stat( c, roi=roi )
+		else:
+			ts = self.calculate_f_stat( c, gg, _Xeff, ind, roi=roi )
+		return ts
+
+	
+	def calculate_teststats(self, C, gg=False, _Xeff=None, roi=None):
+		if isinstance(C, list):
+			ts = [self._calculate_single_teststat(c, gg, _Xeff, roi, ind=i)  for i,c in enumerate(C) ]
+		else:
+			ts = [self._calculate_single_teststat(C, gg, _Xeff, roi)]
+		return ts
+	
+	
 	def isequal(self, other, verbose=False):
 		import pytest
 		# if type(self) != type(other):

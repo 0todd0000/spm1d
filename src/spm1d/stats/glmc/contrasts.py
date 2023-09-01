@@ -25,6 +25,9 @@ class ContrastT(object):
 		return dp.asstr()
 
 	@property
+	def C(self):
+		return self.c
+	@property
 	def contrast_type(self):
 		return self.type
 	@property
@@ -131,6 +134,9 @@ class ContrastF(object):
 
 
 class Contrast(object):
+	
+	type             = 'F'
+	
 	def __init__(self, C, factors, ind=0, isrm=False):
 		self.C       = C        # contrast matrix
 		self.factors = factors  # list of Factor objects (used only for factor names)

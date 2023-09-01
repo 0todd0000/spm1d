@@ -31,7 +31,7 @@ from . import _spmcls
 from . t import ttest, ttest_paired, ttest2, regress  # , glm
 # from . ci import ci_onesample, ci_pairedsample, ci_twosample
 
-from . f import anova1,anova1old,anova1rm,anova2
+from . f import anova1,anova1rm,anova2
 from . glmc.ui import glm
 
 # from . anova import anova2#,anova2nested,anova2rm,anova2onerm

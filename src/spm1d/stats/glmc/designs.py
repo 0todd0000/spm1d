@@ -10,6 +10,9 @@ from ... util import array2shortstr, arraytuple2str, dflist2str, object2str, obj
 
 
 class _Design(object):
+	
+	contrast_type = 'F'
+	
 	def __init__(self):
 		self.X             = None   # design matrix
 		self.contrasts     = None   # contrast objects
@@ -119,8 +122,11 @@ class _SingleContrastDesign(object):
 		return dp.asstr()
 	
 	@property
-	def c(self):
+	def C(self):
 		return self.contrast.c
+	@property
+	def c(self):
+		return [self.contrast.c]
 	@property
 	def is_single_contrast_design(self):
 		return self.ncontrasts == 1
@@ -164,6 +170,8 @@ class _SingleContrastDesign(object):
 	# 	for factor,s,ss in zip(self.factors, names, names_short):
 	# 		factor.set_name( s, ss )
 
+def _array2contrast(a, ind=None):
+	return ContrastT(a) if a.ndim==1 else Contrast(a, factors=None, ind=ind)
 
 class GLM(_Design):
 	def __init__(self, X, c):
@@ -172,13 +180,11 @@ class GLM(_Design):
 		self.contrasts = self._assemble_contrasts()
 		self.df0       = self._calculate_unadjusted_df()
 
-
 	def _assemble_contrasts(self):
 		if isinstance(self._c, list):
-			contrasts = [   Contrast( cc, factors=None, ind=ii )  for ii,cc in enumerate(self._c) ]
+			contrasts = [   _array2contrast( cc, ind=ii )  for ii,cc in enumerate(self._c) ]
 		else:
-			# contrasts = [   Contrast( self._c, factors=None, ind=0 )    ]
-			contrasts = [   ContrastT( self._c )    ]
+			contrasts = [   _array2contrast( self._c )    ]
 		return contrasts
 
 	def _calculate_unadjusted_df(self):
@@ -189,6 +195,9 @@ class GLM(_Design):
 			df0 = df0[0]
 		return df0
 
+	@property
+	def ctype(self):
+		return self.contrasts[0].type
 	@property
 	def has_contrast_list(self):
 		return isinstance(self._c, list)  # and len(self._c)>1
