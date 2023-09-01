@@ -2,7 +2,7 @@
 
 
 import numpy as np
-from . contrasts import Contrast, ContrastT
+from . contrasts import ContrastF, ContrastT
 from . factors import Factor
 from . _la import rank
 from ... util import array2shortstr, arraytuple2str, dflist2str, object2str, objectlist2str, resels2str, DisplayParams
@@ -59,7 +59,7 @@ class _Design(object):
 
 
 	def get_contrast_matrices(self):
-		return [c.C  for c in self.contrasts]
+		return [c.c  for c in self.contrasts]
 	
 	def get_variance_model(self, equal_var=False):
 		pass
@@ -170,8 +170,12 @@ class _SingleContrastDesign(object):
 	# 	for factor,s,ss in zip(self.factors, names, names_short):
 	# 		factor.set_name( s, ss )
 
+# def _array2contrast(a, ind=None):
+# 	return ContrastT(a) if a.ndim==1 else ContrastF(a, factors=None, ind=ind)
+
 def _array2contrast(a, ind=None):
-	return ContrastT(a) if a.ndim==1 else Contrast(a, factors=None, ind=ind)
+	return ContrastT(a) if a.ndim==1 else ContrastF(a, ind=ind)
+
 
 class GLM(_Design):
 	def __init__(self, X, c):
@@ -355,7 +359,7 @@ class _DesignANOVA(_Design):
 		self.df0       = self._calculate_unadjusted_df()
 
 	def _calculate_unadjusted_df(self):
-		df  = [rank(c.C) for c in self.contrasts]
+		df  = [c.rank for c in self.contrasts]
 		dfe = self.J - rank(self.X)
 		df0 = [(x,dfe)  for x in df]
 		return df0
@@ -373,7 +377,8 @@ class ANOVA1(_DesignANOVA):
 		for i in range(n-1):
 			C[i,i]   = 1
 			C[i,i+1] = -1
-		C = Contrast( C.T, factors=self.factors, ind=0 )
+		# C = ContrastF( C.T, factorors=self.factors, ind=0 )
+		C = ContrastF( C.T, name='Main A', ind=0 )
 		return [C]
 
 	def _build_design_matrix(self):
@@ -414,7 +419,7 @@ class ANOVA1RM(_DesignANOVA):
 		Cz       = np.zeros(  (n-1,  nz)  )
 		C        = np.hstack([C, Cz])
 		# return [C.T]
-		C = Contrast( C.T, factors=self.factors, ind=0, isrm=True )
+		C = ContrastF( C.T, factors=self.factors, ind=0, isrm=True )
 		return [C]
 
 
@@ -471,7 +476,7 @@ class ANOVA2(_DesignANOVA):
 			c[i] = 1
 			CA.append(c)
 		# CA = Contrast( np.asarray(CA).T, name=f'Main {fA.name}', name_s=fA.name_s )
-		CA = Contrast( np.asarray(CA).T, factors=[fA], ind=0 )
+		CA = ContrastF( np.asarray(CA).T, factors=[fA], ind=0 )
 
 
 		CB = []
@@ -480,7 +485,7 @@ class ANOVA2(_DesignANOVA):
 			c[nA+i] = 1
 			CB.append(c)
 		# CB = Contrast( np.asarray(CB).T, name=f'Main {fB.name}', name_s=fB.name_s )
-		CB = Contrast( np.asarray(CB).T, factors=[fB], ind=1 )
+		CB = ContrastF( np.asarray(CB).T, factors=[fB], ind=1 )
 
 
 
@@ -490,7 +495,7 @@ class ANOVA2(_DesignANOVA):
 			c[nA+nB+i] = 1
 			CAB.append(c)
 		# CAB = Contrast( np.asarray(CAB).T, name=f'Interaction {fA.name} x {fB.name}', name_s=f'{fA.name_s}x{fB.name_s}' )
-		CAB = Contrast( np.asarray(CAB).T, factors=[fA,fB], ind=2 )
+		CAB = ContrastF( np.asarray(CAB).T, factors=[fA,fB], ind=2 )
 
 		return [CA, CB, CAB]
 
