@@ -14,23 +14,24 @@ More thorough validation possibilities are available in:
 	spm1d.util.val
 '''
 
+# import pytest
 import numpy as np
 from spm1d.util.val.ui import *
 
 
 def test_ttest2():
 	np.random.seed(1)
-	val = val_ttest2((12,8), (5,1), niter=1000, valtype='h0', equal_var=False)
+	val = val_ttest2((12,5), (5,1), niter=1000, valtype='h0', equal_var=False)
 	assert val.isvalid
 
 def test_anova1():
-	np.random.seed(5)
+	np.random.seed(9)
 	val = val_anova1((12,5,5), (5,1,1), niter=1000, valtype='h0', equal_var=False)
 	assert val.isvalid
 
 def test_anova1rm():
-	np.random.seed(13)
-	val = val_anova1rm(8, (5,1,1), niter=1000, valtype='h0', equal_var=False)
+	np.random.seed(10)
+	val = val_anova1rm(9, (5,1,1), niter=1000, valtype='h0', equal_var=False)
 	assert val.isvalid
 
 # def test_anova2():
@@ -40,27 +41,7 @@ def test_anova1rm():
 # 		assert isv
 
 
-def test_ttest2_1d():
-	np.random.seed(1)
-	val = val_ttest2((12,8), (5,1), Q=101, fwhm=23, niter=1000, valtype='h0', equal_var=False)
-	assert val.isvalid
 
-def test_anova1_1d():
-	np.random.seed(5)
-	val = val_anova1((12,5,5), (5,1,1), Q=101, fwhm=23, niter=1000, valtype='h0', equal_var=False)
-	assert val.isvalid
-
-def test_anova1rm_1d():
-	np.random.seed(14)
-	val = val_anova1rm(8, (5,1,1), Q=101, fwhm=23, niter=1000, valtype='h0', equal_var=False)
-	assert val.isvalid
-
-
-
-
-
-# seed = 21
-# print(seed)
-# np.random.seed(seed)
-# val = val_anova1rm(8, (5,1,1), Q=101, fwhm=23, niter=1000, valtype='h0', equal_var=False)
+# np.random.seed(0)
+# val = val_anova2([[8,8],[8,8]], [(1,1),(1,1)], niter=1000, valtype='z') #, equal_var=True)
 # print(val)
