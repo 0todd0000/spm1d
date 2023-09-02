@@ -68,11 +68,23 @@ class SPMFList(list):
 	def fit(self):
 		return self[0].fit
 	@property
+	def mse(self):
+		x = self.fit.mse
+		if isinstance(x, np.ndarray) and x.size==1:
+			x = float(x)
+		return x
+	@property
 	def neffects(self):
 		return len(self)
 	@property
 	def nfactors(self):
 		return self[0].design.nfactors
+	@property
+	def sse(self):
+		x = self.fit.sse
+		if isinstance(x, np.ndarray) and x.size==1:
+			x = float(x)
+		return x
 	@property
 	def testname(self):
 		return self[0].testname
@@ -291,13 +303,14 @@ class SPMFiList(SPMFList):
 
 
 	def print_table(self):
-		n    = 1 + max(   [len(f.name_s)  for f in self]   )
-		fmt0 = '{:<%d} {:>6} {:>8} {:>8} {:>8} {:>8}' %n
-		fmt  = '{:<%d} {:6.3f} {:8.3f} {:8.3f} {:8.3f} {:8.3f}' %n
-		fmte = '{:<%d} {:6.3f} {:8.3f} {:8.3f}' %n
+		colnames = [f.name_s for f in self] + ['Source', 'Error']
+		n        = 1 + max( [len(s) for s in colnames] )
+		fmt0     = '{:<%d} {:>6} {:>8} {:>8} {:>8} {:>8}' %n
+		fmt      = '{:<%d} {:6.3f} {:8.3f} {:8.3f} {:8.3f} {:8.3f}' %n
+		fmte     = '{:<%d} {:6.3f} {:8.3f} {:8.3f}' %n
 		# print table
 		print( fmt0.format('Source', 'DF', 'SS', 'MS', 'F', 'P') )
 		for f in self:
 			print( fmt.format(f.name_s, f.df[0], f.ss, f.ms, f.z, f.p) )
-		print( fmte.format('Error', self.dfe, self.fit.sse, self.fit.mse) )
+		print( fmte.format('Error', self.dfe, self.sse, self.mse) )
 
