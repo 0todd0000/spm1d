@@ -42,7 +42,7 @@ class Cluster( _Cluster ):
 					eq = v1 is None
 				elif isinstance(v, float) and np.isnan(v):
 					eq = np.isnan( v1 )
-				elif isinstance(v, (int,float,tuple,list)):
+				elif isinstance(v, (int,float,tuple,list,str)):
 					eq = v==v1
 				else:
 					raise ValueError( f'Unable to hash type: {type(v)}' )

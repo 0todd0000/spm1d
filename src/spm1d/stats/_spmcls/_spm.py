@@ -205,11 +205,11 @@ class _SPM(object):
 		if self.teststat != other.teststat:
 			return False
 
-		if self.iresults != other.iresults:
-			return False
+		# if self.iresults != other.iresults:
+		# 	return False
 
-		if self.df_adjusted != pytest.approx(other.df_adjusted):
-			return False
+		# if self.df_adjusted != pytest.approx(other.df_adjusted):
+		# 	return False
 		
 		
 		# for k,v in self.__dict__.items():

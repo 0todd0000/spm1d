@@ -52,6 +52,11 @@ class SPMFList(list):
 		return self._repr_summ()
 	
 
+	def _set_args(self, *args, **kwargs):
+		for spm in self:
+			spm._args   = args
+			spm._kwargs = kwargs
+
 	@property
 	def contrasts(self):
 		return self[0].design.contrasts

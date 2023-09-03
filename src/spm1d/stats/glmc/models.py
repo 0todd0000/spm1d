@@ -61,6 +61,9 @@ class GeneralLinearModel(object):
 		if not np.all(self.X == other.X):
 			return False
 
+		if not np.all(self.df0 == other.df0):
+			return False
+
 		return True
 
 	# def set_design_matrix(self, X):

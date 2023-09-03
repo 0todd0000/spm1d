@@ -114,6 +114,8 @@ from . _dec import appendargs, checkargs
 #
 # 	return _assemble_spm_objects(design, model, fit, teststats)
 
+
+@appendargs
 def anova1(y, A, equal_var=False, roi=None):
 	from . glmc.designs import ANOVA1
 	from . glmc.ui import _glm_via_design
@@ -134,6 +136,7 @@ def anova1(y, A, equal_var=False, roi=None):
 	# return _assemble_spm_objects(design, model, fit, teststats)
 
 
+@appendargs
 def anova1rm(y, A, SUBJ, equal_var=False, gg=True, roi=None):
 	from . glmc.designs import ANOVA1RM
 	from . glmc.ui import _glm_via_design
@@ -203,7 +206,7 @@ def anova1rm(y, A, SUBJ, equal_var=False, gg=True, roi=None):
 
 
 
-
+@appendargs
 def anova2(y, A, B, equal_var=False, gg=True, roi=None):
 	from . glmc.designs import ANOVA2
 	from . glmc.ui import _glm_via_design

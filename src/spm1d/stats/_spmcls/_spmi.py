@@ -120,6 +120,14 @@ class _SPMiParent(_SPM):
 	def _repr_summ(self):  # abstract method to be implemented by all subclasses
 		pass
 
+	def isequal(self, other, verbose=False):
+		import pytest
+		super().isequal(other, verbose=verbose)
+		if self.iresults != other.iresults:
+			return False
+		if self.df_adjusted != pytest.approx(other.df_adjusted):
+			return False
+		return True
 
 
 

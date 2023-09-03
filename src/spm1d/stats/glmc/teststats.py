@@ -6,7 +6,7 @@ from ... util import array2shortstr, arraylist2str, arraytuple2str, dflist2str, 
 
 class _TestStatistic(object):
 	
-	_attrs2test    = ['STAT', 'C', 'z', 'df']
+	_attrs2test    = ['STAT', 'c', 'z', 'df']
 	
 	def __init__(self, z, df, c, df0=None):
 		self.STAT  = 'T'

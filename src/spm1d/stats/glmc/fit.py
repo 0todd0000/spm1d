@@ -23,8 +23,8 @@ class GLMFit(object):
 		self.y      = y      # (J,Q) dependent variable array where J=num.observations and Q=num.continuum nodes
 		self.V      = None   # estimated (co-)variance  (only used when equal variance is NOT assumed)
 		self.h      = None   # estimated (co-)variance hyperparameters  (only used when equal variance is NOT assumed)
-		self.sse    = None   # sum of squared errors
-		self.mse    = None   # mean squared error
+		# self.sse    = None   # sum of squared errors
+		# self.mse    = None   # mean squared error
 		self.sse    = (self.e ** 2).sum(axis=0)
 		self.mse    = self.sse / self.dfe0
 
@@ -207,14 +207,14 @@ class GLMFit(object):
 	
 	def isequal(self, other, verbose=False):
 		import pytest
-		# if type(self) != type(other):
-		# 	return False
+		if type(self) != type(other):
+			return False
 			
 		if self.model != other.model:
 			return False
 		
-		if not self.df == other.df:
-			return False
+		# if not self.df == other.df:
+		# 	return False
 
 		for s in ['b', 'e', 'Xi', 'sse', 'mse', 'y']: 
 			x0,x1  = getattr(self, s), getattr(other, s)
