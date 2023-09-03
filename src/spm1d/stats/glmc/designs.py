@@ -416,7 +416,25 @@ class ANOVA2(_DesignANOVA):
 		return X
 
 	def get_variance_model(self, equal_var=False):
-		pass
+		if equal_var:
+			# QQ  = [np.eye(self.J)]
+			QQ  = None
+		else:
+			A,u = self.factors[0].A, self.factors[0].u
+			QQ  = [np.asarray(np.diag( A==uu ), dtype=float)  for uu in u]
+
+			n   = (A == u[0]).sum()
+			for i,a0 in enumerate(u):
+				for a1 in u[i+1:]:
+					q   = np.zeros( (self.J, self.J) )
+					i0  = np.argwhere(A==a0).flatten()  # rows
+					i1  = np.argwhere(A==a1).flatten()  # columns
+					for ii0,ii1 in zip(i0,i1):
+						q[ii0,ii1] = 1
+					QQ.append( q + q.T )
+		return QQ
+		
+		
 		# if equal_var:
 		# 	Q   = [np.eye(self.J)]
 		# else:
