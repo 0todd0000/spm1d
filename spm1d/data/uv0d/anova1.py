@@ -45,7 +45,7 @@ class ConstructionUnequalSampleSizes(_base.DatasetANOVA1):
 			[33,35,31,31,42,33],
 			[17,30,30,26,32,28,26,29],
 			[28,33,31,27,32,33,40],
-		])
+		], dtype=object)
 		self.Y     = np.hstack(Y)
 		self.A     = np.hstack([[i]*len(yy) for i,yy in enumerate(Y)])
 		self.z     = 3.4971
@@ -62,7 +62,7 @@ class RSUnequalSampleSizes(_base.DatasetANOVA1):
 			[2, 4, 3, 5, 1, 5, 2, 3, 6, 2, 4, 1],
 			[5, 8, 6, 4, 7, 8, 5, 6, 6],
 			[4, 5, 3, 7, 6, 3, 2, 2, 4, 5],
-		])
+		], dtype=object)
 		self.Y     = np.hstack(Y)
 		self.A     = np.hstack([[i]*len(yy) for i,yy in enumerate(Y)])
 		self.z     = 5.864845
