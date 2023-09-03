@@ -23,16 +23,14 @@ Copyright (C) 2023  Todd Pataky
 __version__ = '0.5.0'  # (2023-01-01)
 
 
-__all__ = ['data', 'plot', 'rft1d', 'stats', 'util']
+__all__ = ['geom', 'prob', 'plot', 'stats', 'util', 'cfg']
 
-# from . import data
 from . import geom
-# from . import legacy
 from . import prob
 from . import plot
 from . import stats
 from . import util
-# import rft1d
+
 
 
 from . cfg import cfg
