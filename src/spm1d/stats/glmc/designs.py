@@ -420,18 +420,20 @@ class ANOVA2(_DesignANOVA):
 			# QQ  = [np.eye(self.J)]
 			QQ  = None
 		else:
-			A,u = self.factors[0].A, self.factors[0].u
-			QQ  = [np.asarray(np.diag( A==uu ), dtype=float)  for uu in u]
-
-			n   = (A == u[0]).sum()
-			for i,a0 in enumerate(u):
-				for a1 in u[i+1:]:
-					q   = np.zeros( (self.J, self.J) )
-					i0  = np.argwhere(A==a0).flatten()  # rows
-					i1  = np.argwhere(A==a1).flatten()  # columns
-					for ii0,ii1 in zip(i0,i1):
-						q[ii0,ii1] = 1
-					QQ.append( q + q.T )
+			A,uA = self.factors[0].A, self.factors[0].u
+			B,uB = self.factors[1].A, self.factors[1].u
+			QQ   = [np.diag( np.array((A==a) & (B==b), dtype=float) )  for a in uA for b in uB]
+			
+			
+			# n   = (A == uA[0]).sum()
+			# for i,a0 in enumerate(uA):
+			# 	for a1 in uA[i+1:]:
+			# 		q   = np.zeros( (self.J, self.J) )
+			# 		i0  = np.argwhere(A==a0).flatten()  # rows
+			# 		i1  = np.argwhere(A==a1).flatten()  # columns
+			# 		for ii0,ii1 in zip(i0,i1):
+			# 			q[ii0,ii1] = 1
+			# 		QQ.append( q + q.T )
 		return QQ
 		
 		
