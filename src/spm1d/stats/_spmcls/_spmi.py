@@ -137,6 +137,9 @@ class SPM0Di(_SPMiParent, SPM0D):
 class SPM1Di(_SPMiParent, SPM1D):
 	
 	@property
+	def clusters(self):
+		return self.iresults.clusters
+	@property
 	def nClusters(self):
 		return len( self.iresults.clusters )
 	@property

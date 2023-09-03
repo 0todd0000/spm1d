@@ -82,10 +82,10 @@ class _Cluster(metaclass=ABCMeta):
 		pass
 
 
-	def as_inference_cluster(self, x, p):  # , x, p, **kwargs):
+	def as_inference_cluster(self, x, p, metric_type=None):  # , x, p, **kwargs):
 		c = deepcopy( self )
 		c.__class__ = self._InferenceClass
-		c.set_inference_params(x, p)
+		c.set_inference_params(x, p, metric_type)
 		return c
 		
 
@@ -111,6 +111,7 @@ class _WithInference(object):
 		s   = super().__repr__()
 		s  += 'Inference:\n'
 		s  += '   metric              :  %s\n'   %float2string(self.metric, allow_none=True, fmt='%.5f')
+		s  += '   metric_type         :  %s\n'   %self.metric_type
 		s  += '   p                   :  %s\n'   %p2string(self.p, allow_none=True, fmt='%.5f')
 		return s
 	
@@ -129,9 +130,10 @@ class _WithInference(object):
 	#
 	# def set_p(self, x):
 	# 	self.p   = p
-	def set_inference_params(self, metric, p):
+	def set_inference_params(self, metric, p, metric_type=None):
 		self.metric           = metric
 		self.p                = p
+		self.metric_type      = metric_type
 		# self.inference_params = kwargs
 	
 	# legacy properties:

@@ -67,7 +67,7 @@ class RFTResults(object):
 		if type(self) != type(other):
 			return False
 			
-		for s in ['STAT', 'alpha', 'dirn', 'p_set', 'p_max', 'zc']:
+		for s in ['STAT', 'alpha', 'dirn', 'p_set', 'p_max', 'zc', 'clusters']:
 			x0,x1  = getattr(self, s), getattr(other, s)
 			if s in ['p_set', 'p_max', 'zc', 'z']:
 				if not x0 == pytest.approx(x1):
@@ -90,7 +90,7 @@ def _clusterlevel_inference(calc, z, zc, fwhm, dirn=1, circular=False):
 	for i,c in enumerate( clusters ):
 		k,u  = c.extent / fwhm, abs(c.height)
 		p    = sc * calc.p.cluster(k, u)
-		clusters[i] = c.as_inference_cluster(k, p)
+		clusters[i] = c.as_inference_cluster(k, p, metric_type='extent_resels')
 	return clusters
 
 
