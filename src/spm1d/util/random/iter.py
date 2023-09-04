@@ -13,9 +13,8 @@ def anova1(JJ, ss, Q=None, fwhm=None, niter=10):
 def ttest2(JJ, ss, Q=None, fwhm=None, niter=10):
 	from . rng import ttest2 as rnggen
 	rng,(A,)  = rnggen(JJ, ss)
+	i0,i1     = A==0, A==1
 	for i in range(niter):
 		y     = rng()
-		y0,y1 = y[A==0], y[A==1]
-		yield y0,y1
-		
-		
+		yield y[i0], y[i1]
+

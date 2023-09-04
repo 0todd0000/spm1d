@@ -27,7 +27,11 @@ def anova1(JJ, ss, Q=None, fwhm=None):
 	return rng,(A,)
 	
 
+def ttest(J, s, Q=None, fwhm=None):
+	return anova1((J,), (s,), Q, fwhm)
+
+def ttest_paired(J, ss, Q=None, fwhm=None):
+	return anova1((J,J), ss, Q, fwhm)
+
 def ttest2(JJ, ss, Q=None, fwhm=None):
-	# assert isinstance(JJ, (tuple,int))
-	# assert isinstance(ss, (tuple,int))
 	return anova1(JJ, ss, Q, fwhm)
