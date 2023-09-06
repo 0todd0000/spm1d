@@ -1,5 +1,5 @@
 '''
-An aleternative API for spm1d.stats functions, with a constant, common argument structure:
+An alternative, common API for spm1d.stats functions, with a constant, common argument structure:
 
 	spm1d.stats._a.TESTNAME(y, x)
 
