@@ -27,9 +27,12 @@ def anova1(JJ, ss, Q=None, fwhm=None):
 	return rng,(A,)
 	
 
-def regress(J, Q=None, fwhm=None):
-	x   = np.linspace(0, 1, J)
-	rng = _get_rng(J, Q, fwhm)
+def regress(J, s, Q=None, fwhm=None):
+	x    = np.linspace(0, 1, J)
+	_rng = _get_rng(J, Q, fwhm)
+	def rng():
+		y = s * _rng()
+		return y
 	return rng, (x,)
 
 def ttest(J, s, Q=None, fwhm=None):

@@ -26,7 +26,7 @@ def anova1(JJ, ss, Q=None, fwhm=None):
 	pass
 
 @fgen
-def regress(J, Q=None, fwhm=None):
+def regress(J, s, Q=None, fwhm=None):
 	pass
 
 @fgen

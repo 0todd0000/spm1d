@@ -27,9 +27,9 @@ def anova1(JJ, ss, Q=None, fwhm=None):
 	y,(A,) = c_anova1(JJ, ss, Q, fwhm)
 	return y,A
 
-def regress(J, Q=None, fwhm=None):
+def regress(J, s, Q=None, fwhm=None):
 	from . c import regress as c_ttest
-	y,(x,) = c_ttest(J, Q, fwhm)
+	y,(x,) = c_ttest(J, s, Q, fwhm)
 	return y,x
 
 def ttest(J, s, Q=None, fwhm=None):
