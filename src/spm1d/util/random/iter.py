@@ -10,6 +10,12 @@ def anova1(JJ, ss, Q=None, fwhm=None, niter=10):
 		yield y,A
 
 
+def regress(J, Q=None, fwhm=None, niter=10):
+	from . iterc import regress as c_iter
+	for y,(x,) in c_iter(J, Q, fwhm, niter):
+		yield y,x
+
+
 def ttest2(JJ, ss, Q=None, fwhm=None, niter=10):
 	from . rng import ttest2 as rnggen
 	rng,(A,)  = rnggen(JJ, ss)
