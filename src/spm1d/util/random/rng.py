@@ -15,17 +15,39 @@ def _get_rng(J, Q=None, fwhm=None):
 		rng = lambda: randn1d(J, Q, fwhm, pad=True)
 	return rng
 
-
-
 def anova1(JJ, ss, Q=None, fwhm=None):
-	A     = np.hstack(  [[i]*J for i,J in enumerate(JJ)]  )
-	_rngs = [_get_rng(J, Q, fwhm)  for J in JJ]
+	A     = np.hstack(  [[i]*J   for i,J   in enumerate(JJ)]  )
+	s     = np.hstack(  [[sss]*J for sss,J in zip(ss,JJ)]  )
+	J     = sum(JJ)
+	_rng  = _get_rng(J, Q, fwhm)
 	def rng():
-		y = [s*r() for s,r in zip(ss,_rngs)]
-		y = np.hstack(y) if (Q is None) else np.vstack(y)
+		y = (s * _rng().T).T
 		return y
 	return rng,(A,)
-	
+
+
+def anova1rm(J, ss, Q=None, fwhm=None):
+	n     = len(ss)
+	JJ    = (J,) * n
+	S     = np.array( list(range(J)) * n  )
+	rng,(A,) = anova1(JJ, ss, Q, fwhm)
+	return rng,(A,S)
+
+def anova2(JJ, ss, Q=None, fwhm=None):
+	JJ    = np.asarray(JJ)
+	ss    = np.asarray(ss)
+	nA,nB = JJ.shape
+	AA    = np.vstack([list(range(nA))  for i in range(nB)] ).T
+	BB    = np.vstack([list(range(nB))  for i in range(nA)] )
+	A     = np.hstack([[x]*j  for x,j in zip(AA.ravel(), JJ.ravel())])
+	B     = np.hstack([[x]*j  for x,j in zip(BB.ravel(), JJ.ravel())])
+	s     = np.hstack([[s]*j  for s,j in zip(ss.ravel(), JJ.ravel())])
+	J     = JJ.sum()
+	_rng  = _get_rng(J, Q, fwhm)
+	def rng():
+		y = (s * _rng().T).T
+		return y
+	return rng,(A,B)
 
 def regress(J, s, Q=None, fwhm=None):
 	x    = np.linspace(0, 1, J)

@@ -13,8 +13,18 @@
 		
 def anova1(JJ, ss, Q=None, fwhm=None, niter=10):
 	from . iterc import anova1 as c_iter
-	for y,(A,) in c_iter(J, ss, Q, fwhm, niter):
+	for y,(A,) in c_iter(JJ, ss, Q, fwhm, niter):
 		yield y,A
+
+def anova1rm(J, ss, Q=None, fwhm=None, niter=10):
+	from . iterc import anova1rm as c_iter
+	for y,(A,S) in c_iter(J, ss, Q, fwhm, niter):
+		yield y,A,S
+
+def anova2(JJ, ss, Q=None, fwhm=None, niter=10):
+	from . iterc import anova2 as c_iter
+	for y,(A,B) in c_iter(JJ, ss, Q, fwhm, niter):
+		yield y,A,B
 
 def regress(J, s, Q=None, fwhm=None, niter=10):
 	from . iterc import regress as c_iter

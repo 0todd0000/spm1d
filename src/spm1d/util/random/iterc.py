@@ -9,6 +9,19 @@ def anova1(JJ, ss, Q=None, fwhm=None, niter=10):
 		y    = rng()
 		yield y,(A,)
 
+def anova1rm(J, ss, Q=None, fwhm=None, niter=10):
+	from . rng import anova1rm as rnggen
+	rng,(A,S) = rnggen(J, ss, Q, fwhm)
+	for i in range(niter):
+		y    = rng()
+		yield y,(A,S)
+
+def anova2(JJ, ss, Q=None, fwhm=None, niter=10):
+	from . rng import anova2 as rnggen
+	rng,(A,B) = rnggen(JJ, ss, Q, fwhm)
+	for i in range(niter):
+		y    = rng()
+		yield y,(A,B)
 
 def regress(J, s, Q=None, fwhm=None, niter=10):
 	from . rng import regress as rnggen

@@ -27,6 +27,16 @@ def anova1(JJ, ss, Q=None, fwhm=None):
 	y,(A,) = c_anova1(JJ, ss, Q, fwhm)
 	return y,A
 
+def anova1rm(J, ss, Q=None, fwhm=None):
+	from . c import anova1rm as c_anova1rm
+	y,(A,S) = c_anova1rm(J, ss, Q, fwhm)
+	return y,A,S
+
+def anova2(JJ, ss, Q=None, fwhm=None):
+	from . c import anova2 as c_anova2
+	y,(A,B) = c_anova2(JJ, ss, Q, fwhm)
+	return y,A,B
+
 def regress(J, s, Q=None, fwhm=None):
 	from . c import regress as c_ttest
 	y,(x,) = c_ttest(J, s, Q, fwhm)
