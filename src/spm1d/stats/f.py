@@ -214,6 +214,16 @@ def anova2(y, A, B, equal_var=False, gg=True, roi=None):
 	# QQ       = design.get_variance_model( equal_var=equal_var )
 	return _glm_via_design( y , ANOVA2( A, B ) , equal_var, roi )
 
+
+
+@appendargs
+def anova2rm(y, A, B, S, equal_var=False, gg=True, roi=None):
+	from . glmc.designs import ANOVA2RM
+	from . glmc.ui import _glm_via_design
+	# design   = ANOVA1RM( A, SUBJ )
+	# QQ       = design.get_variance_model( equal_var=equal_var )
+	return _glm_via_design( y , ANOVA2RM( A, B, S ) , equal_var, roi )
+
 # # @appendSPMargs
 # def anova2(y, A, B, equal_var=False, roi=None):
 # 	if not equal_var:

@@ -448,7 +448,7 @@ class ANOVA2(_DesignANOVA):
 
 
 
-class ANOVA2rm(_DesignANOVA):
+class ANOVA2RM(_DesignANOVA):
 	def __init__(self, A, B, SUBJ):
 		self.factors      = [ Factor(A, name='A'), Factor(B, name='B'), Factor(SUBJ, name='SUBJ') ]
 		self._assemble()
@@ -465,14 +465,21 @@ class ANOVA2rm(_DesignANOVA):
 		nA       = fA.n - 1
 		nB       = fB.n - 1
 		nAB      = nA * nB
+		# nz       = fS.nlevels
 
 		CA = []
 		for i in range(nA):
 			c   = np.zeros(n)
 			c[i] = 1
 			CA.append(c)
+		# for i in range(nz):
+		# 	CA.append()
 		# CA = Contrast( np.asarray(CA).T, name=f'Main {fA.name}', name_s=fA.name_s )
+		# Cz = np.zeros(  (n-1,  nz)  )
 		CA = ContrastF( np.asarray(CA).T, name='Main A', ind=0 )
+		
+		
+		
 
 
 		CB = []
@@ -502,8 +509,9 @@ class ANOVA2rm(_DesignANOVA):
 		XA        = fA.get_design_mway_main()
 		XB        = fB.get_design_mway_main()
 		XAB       = np.asarray(  [np.kron( XA[i], XB[i] )   for i in range(XA.shape[0])] )
+		XS        = self.factors[2].get_design_main()
 		X0        = fA.get_design_intercept()
-		X         = np.hstack( [XA, XB, XAB, X0] )
+		X         = np.hstack( [XA, XB, XAB, X0, XS] )
 		return X
 
 	def get_variance_model(self, equal_var=False):
