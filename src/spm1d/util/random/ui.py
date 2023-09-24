@@ -37,6 +37,11 @@ def anova2(JJ, ss, Q=None, fwhm=None):
 	y,(A,B) = c_anova2(JJ, ss, Q, fwhm)
 	return y,A,B
 
+def anova2rm(J, ss, Q=None, fwhm=None):
+	from . c import anova2rm as c_anova2rm
+	y,(A,B,S) = c_anova2rm(J, ss, Q, fwhm)
+	return y,A,B,S
+
 def regress(J, s, Q=None, fwhm=None):
 	from . c import regress as c_ttest
 	y,(x,) = c_ttest(J, s, Q, fwhm)

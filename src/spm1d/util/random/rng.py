@@ -49,6 +49,22 @@ def anova2(JJ, ss, Q=None, fwhm=None):
 		return y
 	return rng,(A,B)
 
+def anova2rm(J, ss, Q=None, fwhm=None):
+	ss    = np.asarray(ss)
+	nA,nB = ss.shape
+	AA    = np.vstack([list(range(nA))  for i in range(nB)] ).T
+	BB    = np.vstack([list(range(nB))  for i in range(nA)] )
+	A     = np.hstack([[x]*J  for x in AA.ravel()])
+	B     = np.hstack([[x]*J  for x in BB.ravel()])
+	S     = np.array( list(range(J)) * nA * nB  )
+	s     = np.hstack([[s]*J  for s in ss.ravel()])
+	J     = s.size
+	_rng  = _get_rng(J, Q, fwhm)
+	def rng():
+		y = (s * _rng().T).T
+		return y
+	return rng,(A,B,S)
+
 def regress(J, s, Q=None, fwhm=None):
 	x    = np.linspace(0, 1, J)
 	_rng = _get_rng(J, Q, fwhm)

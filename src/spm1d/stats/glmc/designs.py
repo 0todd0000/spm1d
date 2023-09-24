@@ -446,3 +446,76 @@ class ANOVA2(_DesignANOVA):
 		return QQ
 		
 
+
+
+class ANOVA2rm(_DesignANOVA):
+	def __init__(self, A, B, SUBJ):
+		self.factors      = [ Factor(A, name='A'), Factor(B, name='B'), Factor(SUBJ, name='SUBJ') ]
+		self._assemble()
+
+	# @property
+	# def df0(self):
+	# 	return None # self._df0
+
+	def _build_contrasts(self):
+		# from . contrasts import Contrast #, ContrastList
+
+		fA,fB,fS = self.factors
+		n        = self.X.shape[1]
+		nA       = fA.n - 1
+		nB       = fB.n - 1
+		nAB      = nA * nB
+
+		CA = []
+		for i in range(nA):
+			c   = np.zeros(n)
+			c[i] = 1
+			CA.append(c)
+		# CA = Contrast( np.asarray(CA).T, name=f'Main {fA.name}', name_s=fA.name_s )
+		CA = ContrastF( np.asarray(CA).T, name='Main A', ind=0 )
+
+
+		CB = []
+		for i in range(nB):
+			c   = np.zeros(n)
+			c[nA+i] = 1
+			CB.append(c)
+		# CB = Contrast( np.asarray(CB).T, name=f'Main {fB.name}', name_s=fB.name_s )
+		CB = ContrastF( np.asarray(CB).T, name='Main B', ind=1 )
+
+
+
+		CAB  = []
+		for i in range(nAB):
+			c   = np.zeros(n)
+			c[nA+nB+i] = 1
+			CAB.append(c)
+		# CAB = Contrast( np.asarray(CAB).T, name=f'Interaction {fA.name} x {fB.name}', name_s=f'{fA.name_s}x{fB.name_s}' )
+		CAB = ContrastF( np.asarray(CAB).T, name='Interaction AB', ind=2 )
+
+		return [CA, CB, CAB]
+
+
+
+	def _build_design_matrix(self):
+		fA,fB,fS  = self.factors
+		XA        = fA.get_design_mway_main()
+		XB        = fB.get_design_mway_main()
+		XAB       = np.asarray(  [np.kron( XA[i], XB[i] )   for i in range(XA.shape[0])] )
+		X0        = fA.get_design_intercept()
+		X         = np.hstack( [XA, XB, XAB, X0] )
+		return X
+
+	def get_variance_model(self, equal_var=False):
+		if equal_var:
+			QQ  = None
+		else:
+			from ._cov import gen_vc_model
+			A   = self.factors[0].A
+			B   = self.factors[1].A
+			S   = self.factors[2].A
+			QQ  = gen_vc_model(  np.vstack([A,B,S]).T , [1,1,0], [0,0,1]  )
+		return QQ
+		
+
+
