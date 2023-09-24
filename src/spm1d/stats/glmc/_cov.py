@@ -170,6 +170,54 @@ def _spm_svd(X, u=1e-6, t=0):  # SVD following spm_svd.m in SPM8
 	return u
 
 
+
+def gen_vc_model(I, var, dep):
+	'''
+	Generate variance component model
+	
+	This is a minor modification of "spm_non_sphericity.m" from SPM8
+	'''
+	
+	n,f   = I.shape  # observations, factors
+	
+	# variance components for factor levels:
+	Q     = []
+	for i,A in enumerate( I.T ):
+		if var[i]:
+			for u in np.unique( A ):
+				q = np.diag( np.asarray(A==u, dtype=int) )
+				Q.append( q )
+
+	# effects (discounting factors with dependencies) as defined by interactions
+	X     = np.ones((n,1), dtype=bool)
+	for i,A in enumerate( I.T ):
+		if not dep[i]:
+			Xi    = np.array([A==u for u in np.unique(A)]).T
+			Xj    = X
+			X     = np.array([  xi & xj  for xj in Xj.T  for xi in Xi.T  ]).T
+	X    = np.asarray(X, dtype=int)
+
+
+	# dependencies among repeated measures created by the hadamrad product
+	nx = X.shape[1]
+	for i,A in enumerate( I.T ):
+		if dep[i]:
+			a = np.array([A==u for u in np.unique(A)]).T
+			P = a @ a.T
+			
+			for ii in range(nx):
+				for iii in range(ii+1, nx):
+					q = (  (X[:,[ii]] @ X[:,[iii]].T) + (X[:,[iii]] @ X[:,[ii]].T)) * P
+					Q.append( q  )
+
+	if len(Q) == 0:
+		Q = np.eye(n)
+
+	return Q
+	
+	
+	
+
 def reml(YY, X, Q, N=1, K=128):   # updated 2023-06-19
 	from copy import deepcopy
 	from math import sqrt,exp,log

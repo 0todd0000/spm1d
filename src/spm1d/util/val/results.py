@@ -83,11 +83,22 @@ class SimulationResultsMultiContrast(SimulationResults):
 	def _xcstr(self):
 		return str( np.around(self.xc, 5) )
 	@property
+	def isvalid_omnibus(self):
+		return abs(self.p_omnibus - self.validator.alpha) <= self.validator.tol
+	@property
 	def m(self):
 		return self.x.shape[1]
 	@property
 	def n(self):
 		return self.x.shape[0]
+	@property
+	def p_omnibus(self):
+		if self.valtype=='h0':
+			return self.x.mean()
+		elif self.valtype=='p':
+			return (self.x < self.alpha).mean()
+		elif self.valtype=='z':
+			return (self.x > self.xc).mean()
 
 	def plot(self):
 		from math import ceil

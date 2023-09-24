@@ -92,7 +92,7 @@ def val_anova1rm(J, ss, Q=None, fwhm=None, valtype='h0', niter=1000, alpha=0.05,
 	return val(fn, rng, valtype=valtype, u=u, niter=niter, progress_bar=progress_bar)
 
 
-def val_anova2(JJ, ss, Q=None, fwhm=None, valtype='h0', niter=1000, alpha=0.05, progress_bar=True):
+def val_anova2(JJ, ss, Q=None, fwhm=None, valtype='h0', niter=1000, alpha=0.05, progress_bar=True, equal_var=False):
 	
 	# if valtype == 'z' and (not equal_var):
 	# 	raise ValueError('"valtype" cannot be "z" when equal_var=False')
@@ -117,7 +117,7 @@ def val_anova2(JJ, ss, Q=None, fwhm=None, valtype='h0', niter=1000, alpha=0.05, 
 		y = [s*_rng() for s,_rng in zip(ss.ravel(),_rngs)]
 		y = np.hstack(y) if (Q is None) else np.vstack(y)
 		return y
-	fn    = lambda y: anova2(y, A, B, equal_var=True)
+	fn    = lambda y: anova2(y, A, B, equal_var=equal_var)
 	df    = len(JJ)-1, A.size-len(JJ)
 	uA    = _f_isf(alpha, dfA,  Q, fwhm)
 	uB    = _f_isf(alpha, dfB,  Q, fwhm)

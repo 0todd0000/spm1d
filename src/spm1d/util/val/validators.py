@@ -66,7 +66,21 @@ class FPRValidator(object):
 	
 	@property
 	def isvalid(self):
-		return self.results.isvalid if self.hasresults else None
+		if self.hasresults:
+			if hasattr(self.results, 'isvalid_omnibus'):
+				v = self.results.isvalid_omnibus
+			else:
+				v = self.results.isvalid
+		else:
+			v     = None
+		return v
+		
+	@property
+	def isvalid_omnibus(self):
+		if self.hasresults and hasattr(self.results, 'isvalid_omnibus'):
+			return self.results.isvalid_omnibus
+		else:
+			return None
 	
 	def plot_results(self):
 		self.results.plot()

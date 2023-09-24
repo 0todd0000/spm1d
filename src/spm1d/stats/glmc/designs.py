@@ -180,7 +180,6 @@ class TTEST2(_Design):
 		return QQ
 
 
-
 # class _DesignANOVA(object):
 # 	def __init__(self):
 # 		self.X             = None   # design matrix
@@ -288,13 +287,22 @@ class ANOVA1(_DesignANOVA):
 	def _build_design_matrix(self):
 		return self.factors[0].get_design_main()
 		
+	# def get_variance_model(self, equal_var=False):
+	# 	if equal_var:
+	# 		# Q   = [np.eye(self.J)]
+	# 		QQ  = None
+	# 	else:
+	# 		A,u = self.factors[0].A, self.factors[0].u
+	# 		QQ  = [np.asarray(np.diag( A==uu ), dtype=float)  for uu in u]
+	# 	return QQ
+	
 	def get_variance_model(self, equal_var=False):
 		if equal_var:
-			# Q   = [np.eye(self.J)]
 			QQ  = None
 		else:
-			A,u = self.factors[0].A, self.factors[0].u
-			QQ  = [np.asarray(np.diag( A==uu ), dtype=float)  for uu in u]
+			from ._cov import gen_vc_model
+			A   = self.factors[0].A
+			QQ  = gen_vc_model(  np.array([A]).T , [1], [0]  )
 		return QQ
 	
 	
@@ -335,69 +343,36 @@ class ANOVA1RM(_DesignANOVA):
 		return np.hstack( [XA, XS] )
 
 
+	# def get_variance_model(self, equal_var=False):
+	# 	if equal_var:
+	# 		# QQ  = [np.eye(self.J)]
+	# 		QQ  = None
+	# 	else:
+	# 		A,u = self.factors[0].A, self.factors[0].u
+	# 		QQ  = [np.asarray(np.diag( A==uu ), dtype=float)  for uu in u]
+	#
+	# 		n   = (A == u[0]).sum()
+	# 		for i,a0 in enumerate(u):
+	# 			for a1 in u[i+1:]:
+	# 				q   = np.zeros( (self.J, self.J) )
+	# 				i0  = np.argwhere(A==a0).flatten()  # rows
+	# 				i1  = np.argwhere(A==a1).flatten()  # columns
+	# 				for ii0,ii1 in zip(i0,i1):
+	# 					q[ii0,ii1] = 1
+	# 				QQ.append( q + q.T )
+	# 	return QQ
+
 	def get_variance_model(self, equal_var=False):
 		if equal_var:
-			# QQ  = [np.eye(self.J)]
 			QQ  = None
 		else:
-			A,u = self.factors[0].A, self.factors[0].u
-			QQ  = [np.asarray(np.diag( A==uu ), dtype=float)  for uu in u]
-
-			n   = (A == u[0]).sum()
-			for i,a0 in enumerate(u):
-				for a1 in u[i+1:]:
-					q   = np.zeros( (self.J, self.J) )
-					i0  = np.argwhere(A==a0).flatten()  # rows
-					i1  = np.argwhere(A==a1).flatten()  # columns
-					for ii0,ii1 in zip(i0,i1):
-						q[ii0,ii1] = 1
-					QQ.append( q + q.T )
+			from ._cov import gen_vc_model
+			A   = self.factors[0].A
+			S   = self.factors[1].A
+			QQ  = gen_vc_model(  np.vstack([A,S]).T , [1,0], [0,1]  )
 		return QQ
 
 
-
-
-def gen_var_components(I, var, dep):
-	'''
-	See spm_non_sphericity.m
-	'''
-	
-	n,f   = I.shape  # observations, factors
-	
-	# variance components for factor levels:
-	Q     = []
-	for i,A in enumerate( I.T ):
-		if var[i]:
-			for u in np.unique( A ):
-				q = np.diag( np.asarray(A==u, dtype=int) )
-				Q.append( q )
-
-	# effects (discounting factors with dependencies) as defined by interactions
-	X     = np.ones((n,1), dtype=bool)
-	for i,A in enumerate( I.T ):
-		if not dep[i]:
-			Xi    = np.array([A==u for u in np.unique(A)]).T
-			Xj    = X
-			X     = np.array([  xi & xj  for xj in Xj.T  for xi in Xi.T  ]).T
-	X    = np.asarray(X, dtype=int)
-
-
-	# dependencies among repeated measures created by the hadamrad product
-	nx = X.shape[1]
-	for i,A in enumerate( I.T ):
-		if dep[i]:
-			a = np.array([A==u for u in np.unique(A)]).T
-			P = a @ a.T
-			
-			for ii in range(nx):
-				for iii in range(ii+1, nx):
-					q = (  (X[:,[ii]] @ X[:,[iii]].T) + (X[:,[iii]] @ X[:,[ii]].T)) * P
-					Q.append( q  )
-
-	if len(Q) == 0:
-		Q = np.eye(n)
-
-	return Q
 
 
 
@@ -462,81 +437,12 @@ class ANOVA2(_DesignANOVA):
 
 	def get_variance_model(self, equal_var=False):
 		if equal_var:
-			# QQ  = [np.eye(self.J)]
 			QQ  = None
 		else:
-			A = self.factors[0].A
-			B = self.factors[1].A
-			I = np.vstack([A,B]).T
-			
-			var   = [1,1]
-			dep   = [0,1]
-			QQ    = gen_var_components(I, var, dep)
-			
-
+			from ._cov import gen_vc_model
+			A   = self.factors[0].A
+			B   = self.factors[1].A
+			QQ  = gen_vc_model(  np.vstack([A,B]).T , [1,1], [0,1]  )
 		return QQ
 		
 
-
-	# def get_variance_model(self, equal_var=False):
-	# 	if equal_var:
-	# 		# QQ  = [np.eye(self.J)]
-	# 		QQ  = None
-	# 	else:
-	# 		A,uA = self.factors[0].A, list(self.factors[0].u)
-	# 		B,uB = self.factors[1].A, list(self.factors[1].u)
-	#
-	# 		QQA  = [np.asarray(np.diag( A==uu ), dtype=float)  for uu in uA]
-	# 		QQB  = [np.asarray(np.diag( B==uu ), dtype=float)  for uu in uB]
-	# 		# QQ   = QQA + QQB
-	#
-	#
-	# 		# n   = (A == u[0]).sum()
-	# 		QQAB = []
-	# 		for ia,a in enumerate(uA):
-	#
-	# 			q   = np.zeros( (self.J, self.J) )
-	#
-	# 			for ib,b in enumerate(uB):
-	#
-	# 				i0  = np.argwhere(A==a).flatten()  # rows
-	# 				i1  = np.argwhere(B==b).flatten()  # columns
-	# 				# q[i0,i1] = 1
-	# 				for ii0 in i0:
-	# 					for ii1 in i1:
-	# 						q[ii0,ii1] = 1
-	# 			QQAB.append( q + q.T )
-	#
-	#
-	# 		QQ   = QQA + QQB + QQAB
-	#
-	# 		# S    = []
-	# 		# for ua in uA:
-	# 		# 	for ub in uB:
-	# 		# 		n  = ((A==ua) & (B==ub)).sum()
-	# 		# 		S += list( range(n) )
-	# 		# S    = np.asarray(S)
-	# 		# uS   = np.unique(S)
-	# 		# # QQ   = [np.diag( np.array((A==a) & (B==b), dtype=float) )  for a in uA for b in uB]
-	# 		# QQS  = [np.asarray(np.diag( (B==ub) & (S==us) ), dtype=float)  for ub in uB for us in uS]
-	# 		# QQ   = QQA + QQB + QQS
-	# 		# # QQ   = QQS
-	#
-	# 		# n   = (A == uA[0]).sum()
-	# 		# for i,a0 in enumerate(uA):
-	# 		# 	for a1 in uA[i+1:]:
-	# 		# 		q   = np.zeros( (self.J, self.J) )
-	# 		# 		i0  = np.argwhere(A==a0).flatten()  # rows
-	# 		# 		i1  = np.argwhere(A==a1).flatten()  # columns
-	# 		# 		for ii0,ii1 in zip(i0,i1):
-	# 		# 			q[ii0,ii1] = 1
-	# 		# 		QQ.append( q + q.T )
-	# 	return QQ
-	#
-		
-		# if equal_var:
-		# 	Q   = [np.eye(self.J)]
-		# else:
-		# 	A,u = self.factors[0].A, self.factors[0].u
-		# 	Q   = [np.asarray(np.diag( A==uu ), dtype=float)  for uu in u]
-		# return Q

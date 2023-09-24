@@ -34,11 +34,10 @@ def test_anova1rm():
 	val = val_anova1rm(9, (5,1,1), niter=1000, valtype='h0', equal_var=False)
 	assert val.isvalid
 
-# def test_anova2():
-# 	np.random.seed(0)
-# 	val = val_anova2([[8,8],[8,8]], [(1,1),(1,1)], niter=1000, valtype='z') #, equal_var=True)
-# 	for isv in val.isvalid:
-# 		assert isv
+def test_anova2():
+	np.random.seed(24)
+	val = val_anova2([[12,5],[5,5]], [(5,1),(1,1)], niter=500, valtype='z', equal_var=False)
+	assert val.isvalid_omnibus
 
 
 
