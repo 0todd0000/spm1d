@@ -281,14 +281,23 @@ def reml(YY, X, Q, N=1, K=128):   # updated 2023-06-19
 		
 		
 		#
+		# #final covariance estimate (with missing data points)
+		# if dF < 0.1:
+		# 	V     = 0
+		# 	for i in range(m):
+		# 		V += Q[i]*float(h[i])
+		# 	return V, h
+
 		#final covariance estimate (with missing data points)
 		if dF < 0.1:
-			V     = 0
-			for i in range(m):
-				V += Q[i]*float(h[i])
-			return V, h
+			break
 		
 		
+	#final covariance estimate (with missing data points)
+	V     = 0
+	for i in range(m):
+		V += Q[i]*float(h[i])
+	return V, h
 		
 		
 		# import scipy.linalg
