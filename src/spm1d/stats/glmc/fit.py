@@ -152,6 +152,9 @@ class GLMFit(object):
 		else:
 			V,_       = self._estimate_var( self.model.QQ )
 			df,(v0,_) = self._calculate_effective_df_f( V, C, _Xeff )
+			# v0 = abs(v0)
+			# if v0<0:
+			# 	v0 = abs(v0)
 		# build projectors:
 		y,X      = self.y, self.model.X
 		# PX      = X @ np.linalg.pinv(X)      # X projector

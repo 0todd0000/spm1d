@@ -443,6 +443,7 @@ class ANOVA2(_DesignANOVA):
 			A   = self.factors[0].A
 			B   = self.factors[1].A
 			QQ  = gen_vc_model(  np.vstack([A,B]).T , [1,1], [0,1]  )
+			# QQ  = gen_vc_model(  np.vstack([A,B]).T , [1,1], [0,0]  )
 		return QQ
 		
 

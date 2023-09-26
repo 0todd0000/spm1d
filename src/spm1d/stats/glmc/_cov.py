@@ -231,7 +231,7 @@ def reml(YY, X, Q, N=1, K=128):   # updated 2023-06-19
 	# h     = np.matrix([float(np.any(np.diag(QQ)))  for QQ in Q]).T
 	h     = np.array(   [float(np.any(np.diag(QQ)))  for QQ in Q]   )
 	
-	X0    = _spm_svd( X )
+	X0    = _spm_svd( X[q,:] )
 	
 	# print( np.around(YY,4)[:,:5] )
 	
@@ -273,7 +273,8 @@ def reml(YY, X, Q, N=1, K=128):   # updated 2023-06-19
 
 
 		PQ   = [P@QQ for QQ in Q]
-		dFdh = np.array([-np.trace(PQQ@U)*0.5*N   for PQQ in PQ]).T
+		# dFdh = np.array([-np.trace(PQQ@U)*0.5*N   for PQQ in PQ]).T
+		dFdh = np.array([-(PQQ.T*U).sum()*0.5*N   for PQQ in PQ]).T
 		
 		# print( np.around(dFdh, 4) )
 		# # print( np.around(dFdh, 4)[:,:5] )
@@ -283,8 +284,9 @@ def reml(YY, X, Q, N=1, K=128):   # updated 2023-06-19
 		# Expected curvature E{dF/dhh} (second derivatives)
 		for i in range(m):
 			for j in range(m):
-		            dFdhh[i,j] = -np.trace(PQ[i]@PQ[j])*0.5*N
-		            dFdhh[j,i] =  dFdhh[i,j]
+				# dFdhh[i,j] = -np.trace(PQ[i]@PQ[j])*0.5*N
+				dFdhh[i,j] = -(PQ[i].T*PQ[j]).sum()*0.5*N
+				dFdhh[j,i] =  dFdhh[i,j]
 
 		# # print( np.around(dFdh, 4) )
 		# print( np.around(dFdhh, 4)[:,:] )
@@ -308,11 +310,11 @@ def reml(YY, X, Q, N=1, K=128):   # updated 2023-06-19
 
 		# Fisher scoring
 		def _spm_dx(dfdx, f, t):
-			import scipy.linalg
+			from scipy.linalg import expm
 			t   = np.diag(   np.exp(t - np.log(np.diagonal(-dfdx)) )   )
 			a   = np.vstack( [t@f,  (t @ dfdx).T] ).T
 			a   = np.vstack(  [np.zeros((1,a.shape[1])), a]  )
-			dx  = scipy.linalg.expm( a )
+			dx  = expm( a )
 			dx  = dx[1:, 0]
 			return dx
 			

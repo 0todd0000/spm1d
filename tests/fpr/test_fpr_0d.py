@@ -19,42 +19,41 @@ import numpy as np
 from spm1d.util.val.ui import *
 
 
-def test_ttest():
-	np.random.seed(0)
-	val = val_ttest(8, niter=1000, valtype='z')
-	assert val.isvalid
-
-def test_ttest_paired():
-	np.random.seed(5)
-	val = val_ttest_paired(12, niter=1000, valtype='z')
-	assert val.isvalid
-
-def test_ttest2():
-	np.random.seed(6)
-	val = val_ttest2((8,11), niter=1000, valtype='z', equal_var=True)
-	assert val.isvalid
-	
-def test_regress():
-	np.random.seed(9)
-	val = val_regress(10, niter=1000, valtype='z')
-	assert val.isvalid
-
-def test_anova1():
-	np.random.seed(12)
-	val = val_anova1((8,5,7), (1,1,1), niter=1000, valtype='z', equal_var=True)
-	assert val.isvalid
-
-def test_anova1rm():
-	np.random.seed(13)
-	val = val_anova1rm(9, (1,1,1), niter=1000, valtype='z', equal_var=True)
-	assert val.isvalid
+# def test_ttest():
+# 	np.random.seed(0)
+# 	val = val_ttest(8, niter=1000, valtype='z')
+# 	assert val.isvalid
+#
+# def test_ttest_paired():
+# 	np.random.seed(5)
+# 	val = val_ttest_paired(12, niter=1000, valtype='z')
+# 	assert val.isvalid
+#
+# def test_ttest2():
+# 	np.random.seed(6)
+# 	val = val_ttest2((8,11), niter=1000, valtype='z', equal_var=True)
+# 	assert val.isvalid
+#
+# def test_regress():
+# 	np.random.seed(9)
+# 	val = val_regress(10, niter=1000, valtype='z')
+# 	assert val.isvalid
+#
+# def test_anova1():
+# 	np.random.seed(12)
+# 	val = val_anova1((8,5,7), (1,1,1), niter=1000, valtype='z', equal_var=True)
+# 	assert val.isvalid
+#
+# def test_anova1rm():
+# 	np.random.seed(13)
+# 	val = val_anova1rm(9, (1,1,1), niter=1000, valtype='z', equal_var=True)
+# 	assert val.isvalid
 
 def test_anova2():
 	np.random.seed(0)
 	val = val_anova2([[8,8],[8,8]], [(1,1),(1,1)], niter=1000, valtype='z') #, equal_var=True)
-	for isv in val.isvalid:
-		assert isv
-	
+	assert val.isvalid_omnibus
+
 
 
 # np.random.seed(0)

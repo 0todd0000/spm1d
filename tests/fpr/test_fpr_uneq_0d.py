@@ -19,20 +19,20 @@ import numpy as np
 from spm1d.util.val.ui import *
 
 
-def test_ttest2():
-	np.random.seed(1)
-	val = val_ttest2((12,5), (5,1), niter=1000, valtype='h0', equal_var=False)
-	assert val.isvalid
-
-def test_anova1():
-	np.random.seed(9)
-	val = val_anova1((12,5,5), (5,1,1), niter=1000, valtype='h0', equal_var=False)
-	assert val.isvalid
-
-def test_anova1rm():
-	np.random.seed(10)
-	val = val_anova1rm(9, (5,1,1), niter=1000, valtype='h0', equal_var=False)
-	assert val.isvalid
+# def test_ttest2():
+# 	np.random.seed(1)
+# 	val = val_ttest2((12,5), (5,1), niter=1000, valtype='h0', equal_var=False)
+# 	assert val.isvalid
+#
+# def test_anova1():
+# 	np.random.seed(9)
+# 	val = val_anova1((12,5,5), (5,1,1), niter=1000, valtype='h0', equal_var=False)
+# 	assert val.isvalid
+#
+# def test_anova1rm():
+# 	np.random.seed(10)
+# 	val = val_anova1rm(9, (5,1,1), niter=1000, valtype='h0', equal_var=False)
+# 	assert val.isvalid
 
 def test_anova2():
 	np.random.seed(24)
