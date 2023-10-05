@@ -171,6 +171,7 @@ def glmc_ancova_V(y, X, c, V):  # follows SPM8.. spm_ancova.m
 def glmc_ancova(y, X, c, QQ=None):
 	if QQ is None:
 		V      = np.eye( X.shape[0] )
+		h      = None
 	else:
 		from . models import GeneralLinearModel
 		from . designs import unadjusted_df
@@ -178,6 +179,7 @@ def glmc_ancova(y, X, c, QQ=None):
 		model  = GeneralLinearModel(X, df0, QQ)
 		fit    = model.fit(y)
 		V,h    = fit._estimate_var(QQ)
-	return glmc_ancova_V(y, X, c, V)
+	F,df,beta,xX,xCon = glmc_ancova_V(y, X, c, V)
+	return F,df,V,h,fit.YY
 
 

@@ -132,8 +132,8 @@ class GLMFit(object):
 		q             = np.diag(  np.sqrt( trRV / self.sse )  ).T
 		Ym            = self.y @ q
 		# Ym            = self.e @ q
-		YY            = Ym @ Ym.T / s
-		V,h           = reml(YY, self.model.X, QQ)
+		self.YY       = Ym @ Ym.T / s
+		V,h           = reml(self.YY, self.model.X, QQ)
 		# V,h           = reml(YY, self.X, self.model.QQ)
 		V            *= (n / np.trace(V))
 		# trRV,trRVRV = traceRV(V, X)
