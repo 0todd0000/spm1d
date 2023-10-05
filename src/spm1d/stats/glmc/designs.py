@@ -9,6 +9,28 @@ from ... util import array2shortstr, arraytuple2str, dflist2str, object2str, obj
 
 
 
+def unadjusted_df(X, c):
+	df  = rank(c)
+	dfe = X.shape[0] - rank(X)
+	return df,dfe
+
+
+
+
+def factors2design(F):
+	# replicates functionality of spm_DesMat.m
+	if isinstance(F, tuple):
+		F = np.vstack( F ).T
+	from itertools import product
+	us   = [np.unique(f) for f in F.T]
+	X    = []
+	for u in product(*us, repeat=1):
+		b = np.logical_and.reduce( [f==uu  for uu,f in zip(u,F.T)] )
+		X.append( b )
+	return np.asarray(X, dtype=float).T
+
+
+
 class _Design(object):
 	
 	def __init__(self):

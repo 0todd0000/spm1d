@@ -146,7 +146,7 @@ def traceRV(V, X):
 	trRV    = trV - trMV
 	return trRV, trRVRV
 
-def glmc_ancova(y, X, V, c):  # follows SPM8.. spm_ancova.m
+def glmc_ancova_V(y, X, c, V):  # follows SPM8.. spm_ancova.m
 	J           = y.shape[0]
 	pX          = np.linalg.pinv(X)
 	beta        = pX @ y
@@ -167,5 +167,17 @@ def glmc_ancova(y, X, V, c):  # follows SPM8.. spm_ancova.m
 	return F,df,beta,xX,xCon
 
 
+
+def glmc_ancova(y, X, c, QQ=None):
+	if QQ is None:
+		V      = np.eye( X.shape[0] )
+	else:
+		from . models import GeneralLinearModel
+		from . designs import unadjusted_df
+		df0    = unadjusted_df(X, c)
+		model  = GeneralLinearModel(X, df0, QQ)
+		fit    = model.fit(y)
+		V,h    = fit._estimate_var(QQ)
+	return glmc_ancova_V(y, X, c, V)
 
 

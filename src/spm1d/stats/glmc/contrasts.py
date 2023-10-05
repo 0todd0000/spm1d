@@ -4,6 +4,66 @@ from . factors import Factor
 from ... util import array2shortstr, arraytuple2str, dflist2str, objectlist2str, resels2str, DisplayParams
 
 
+
+def nlevels2contrasts(k):
+	# replicates functionality of SPM8's spm_make_contrasts.m
+	nf = len(k)
+	if nf == 1:
+		k += [1,1]
+	elif nf == 2:
+		k += [1]
+	elif nf > 3:
+		raise ValueError('Automatic contrast generation is supported only for 1-, 2- and 3-way ANOVA')
+	
+	# common and differential vectors
+	k0,k1,k2 = k
+	C0   = np.ones((k0,1))
+	C1   = np.ones((k1,1))
+	C2   = np.ones((k2,1))
+	D0   = -(  np.diff( np.eye(k0), axis=0 ).T  )
+	D1   = -(  np.diff( np.eye(k1), axis=0 ).T  )
+	D2   = -(  np.diff( np.eye(k2), axis=0 ).T  )
+
+	def kronkron(aa, b):
+		c = np.kron( np.kron(*aa), b ).T
+		c[np.abs(c)<1e-9] = 0
+		return c
+
+	# cg   = np.kron( np.kron(C0, C1), C2 )  # global average
+	c0     = kronkron( (D0,C1), C2 )
+	c_main = [c0]
+	c_intr = None
+	
+	if nf > 1:
+		c1     = kronkron( (C0,D1), C2 )
+		c01    = kronkron( (D0,D1), C2 )
+		c_main.append( c1 )
+		c_intr = [c01]
+		
+	if nf > 2:
+		c2   = kronkron( (C0,C1), D2 )
+		c02  = kronkron( (D0,C1), D2 )
+		c12  = kronkron( (C0,D1), D2 )
+		c012 = kronkron( (D0,D1), D2 )
+		c_main.append( c2 )
+		c_intr += [c02, c12, c012]
+		
+	return c_main, c_intr
+	
+
+def factors2contrasts(F):
+	if isinstance(F, tuple):
+		F = np.vstack( F ).T
+	else:
+		F = np.asarray(F)
+	if F.ndim==1:
+		k  = [np.unique(F).size]
+	else:
+		k  = [np.unique(f).size for f in F.T]
+	return nlevels2contrasts(k)
+	
+	
+	
 class _Contrast(object):
 	
 	def __init__(self, c, name=None):
