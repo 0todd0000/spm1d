@@ -187,10 +187,10 @@ class ClusterNonparam(Cluster):
 			x             += metric.get_single_cluster_metric_xz(self._other._X, self._other._Z, self.threshold, two_tailed)
 		self.metric_value  = x
 
-	def inference(self, pdf, two_tailed):
+	def inference(self, alpha, pdf, two_tailed):
 		pdf      = np.asarray(pdf, dtype=float)  # fix for ragged nested sequences
 		self.P   = (pdf >= self.metric_value).mean()
-		# self.P             = max( self.P,  1.0/self.nPermUnique )
+		self.P   = min(alpha, max( self.P,  1.0/self.nPerm ) )
 
 
 

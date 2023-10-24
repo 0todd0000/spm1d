@@ -21,10 +21,12 @@ class _SnPM(object):
 	isparametric  = False
 	dim           = 0
 	
-	def _check_iterations(self, iterations, alpha, force_iterations):
+	def _check_iterations(self, iterations, alpha, force_iterations, nPermTotal):
 		if iterations > self.nPermUnique:
 			if self.nPermUnique!=-1:
 				raise( ValueError('\nNumber of specified iterations (%d) exceeds the maximum possible number of iterations (%d)\n'%(iterations,self.nPermUnique)) )
+		elif alpha < (1/nPermTotal):
+			raise( ValueError(f'\nSpecified alpha {alpha:0.5f} must be greater than or equal to (1/nPermTotal)={1/nPermTotal:0.5f}\n') )
 		elif (((iterations==-1) and (self.nPermUnique>10000)) or (iterations>10000)) and not force_iterations:
 			n    = self.nPermUnique if iterations==-1 else iterations
 			raise( Warning('\nThe total nuumber of permutations (%d) is very large and may cause computational problems. To enable non-parametric calculations for this many iterations set "force_iterations=True" when calling "inference".\nNOTE: Setting "force_iterations=True" may require substantial computational resources and may cause crashes. USE WITH CAUTION.'%n ))
@@ -82,7 +84,7 @@ class _SnPM0D(_SnPM):
 	def inference(self, alpha=0.05, iterations=-1, force_iterations=False):
 		if self.isinlist:
 			raise( NotImplementedError( 'Non-parametric inference must be conducted using the parent SnPMList (for two- and three-way ANOVA).' ) )
-		self._check_iterations(iterations, alpha, force_iterations)
+		self._check_iterations(iterations, alpha, force_iterations, self.permuter.nPermTotal)
 		self.permuter.build_pdf(iterations)
 		zstar     = self.permuter.get_z_critical(alpha)
 		p         = self.permuter.get_p_value(self.z, zstar, alpha)
@@ -225,9 +227,9 @@ class _SnPM1D(_SnPM, _spm._SPM):
 		return s
 
 
-	def _cluster_inference(self, clusters, two_tailed=False):
+	def _cluster_inference(self, alpha, clusters, two_tailed=False):
 		for cluster in clusters:
-			cluster.inference(self.permuter.Z2, two_tailed)
+			cluster.inference(alpha, self.permuter.Z2, two_tailed)
 		return clusters
 
 	def _get_clusters(self, zstar, two_tailed, interp, circular, iterations, cluster_metric, z=None):
@@ -238,7 +240,7 @@ class _SnPM1D(_SnPM, _spm._SPM):
 		return clusters
 	
 	def inference(self, alpha=0.05, iterations=-1, two_tailed=False, interp=True, circular=False, force_iterations=False, cluster_metric='MaxClusterIntegral'):
-		self._check_iterations(iterations, alpha, force_iterations)
+		self._check_iterations(iterations, alpha, force_iterations, self.permuter.nPermTotal)
 		### build primary PDF:
 		self.permuter.build_pdf(iterations)
 		### compute critical threshold:
@@ -250,7 +252,7 @@ class _SnPM1D(_SnPM, _spm._SPM):
 		self.permuter.build_secondary_pdf( zstar, circular )
 		### assemble clusters and conduct cluster-level inference:
 		clusters   = self._get_clusters(zstar, two_tailed, interp, circular, iterations, cluster_metric)
-		clusters   = self._cluster_inference(clusters, two_tailed)
+		clusters   = self._cluster_inference(alpha, clusters, two_tailed)
 		if self.isanova:
 			Fi     = SnPMiF(self, alpha, zstar, clusters)
 		else:
