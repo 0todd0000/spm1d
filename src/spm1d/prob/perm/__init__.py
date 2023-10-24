@@ -4,6 +4,7 @@ import numpy as np
 
 def perm(stat, z, alpha=0.05, testname=None, args=None, nperm=10000, dim=0, **kwargs):
 	if alpha < 1/nperm:
+		from math import ceil
 		n  = ceil( 1/alpha )
 		raise ValueError( f'nperm={nperm} is too small. For alpha={alpha}, nperm must be at least {n}.' )
 	

@@ -1,10 +1,8 @@
 
-# Copyright (C) 2016  Todd Pataky
+# Copyright (C) 2023  Todd Pataky
 
 from math import log
 import numpy as np
-from spm1d.stats.anova import designs,models
-from spm1d.stats.anova.ui import aov
 
 
 
@@ -257,6 +255,8 @@ class CalculatorCCA1D(CalculatorCCA0D):
 
 class _CalculatorANOVAsingleF(object):
 	def get_test_stat(self, y):
+		from spm1d.stats.anova import models
+		from spm1d.stats.anova.ui import aov
 		model   = models.LinearModel(y, self.design.X)
 		model.fit()
 		F       = aov(model, self.design.contrasts, self.design.f_terms)[0]
@@ -264,6 +264,8 @@ class _CalculatorANOVAsingleF(object):
 
 class _CalculatorANOVAmultiF(object):
 	def get_test_stat(self, y):
+		from spm1d.stats.anova import models
+		from spm1d.stats.anova.ui import aov
 		model   = models.LinearModel(y, self.design.X)
 		model.fit()
 		FF      = aov(model, self.design.contrasts, self.design.f_terms)
@@ -273,42 +275,53 @@ class _CalculatorANOVAmultiF(object):
 
 class CalculatorANOVA1(_CalculatorANOVAsingleF):
 	def __init__(self, A):
+		from spm1d.stats.anova import designs
 		self.design      = designs.ANOVA1(A)
 class CalculatorANOVA1rm(_CalculatorANOVAsingleF):
 	def __init__(self, A, SUBJ):
+		from spm1d.stats.anova import designs
 		self.design      = designs.ANOVA1rm(A, SUBJ)
 
 
 
 class CalculatorANOVA2(_CalculatorANOVAmultiF):
 	def __init__(self, A, B):
+		from spm1d.stats.anova import designs
 		self.design      = designs.ANOVA2(A, B)
 class CalculatorANOVA2nested(_CalculatorANOVAmultiF):
 	def __init__(self, A, B):
+		from spm1d.stats.anova import designs
 		self.design      = designs.ANOVA2nested(A, B)
 class CalculatorANOVA2onerm(_CalculatorANOVAmultiF):
 	def __init__(self, A, B, SUBJ):
+		from spm1d.stats.anova import designs
 		self.design      = designs.ANOVA2onerm(A, B, SUBJ)
 class CalculatorANOVA2rm(_CalculatorANOVAmultiF):
 	def __init__(self, A, B, SUBJ):
+		from spm1d.stats.anova import designs
 		self.design      = designs.ANOVA2rm(A, B, SUBJ)
 
 
 
 class CalculatorANOVA3(_CalculatorANOVAmultiF):
 	def __init__(self, A, B, C):
+		from spm1d.stats.anova import designs
 		self.design      = designs.ANOVA3(A, B, C)
 class CalculatorANOVA3nested(_CalculatorANOVAmultiF):
 	def __init__(self, A, B, C):
+		from spm1d.stats.anova import designs
 		self.design      = designs.ANOVA3nested(A, B, C)
 class CalculatorANOVA3onerm(_CalculatorANOVAmultiF):
 	def __init__(self, A, B, C, SUBJ):
+		from spm1d.stats.anova import designs
 		self.design      = designs.ANOVA3onerm(A, B, C, SUBJ)
 class CalculatorANOVA3tworm(_CalculatorANOVAmultiF):
 	def __init__(self, A, B, C, SUBJ):
+		from spm1d.stats.anova import designs
 		self.design      = designs.ANOVA3tworm(A, B, C, SUBJ)
 class CalculatorANOVA3rm(_CalculatorANOVAmultiF):
 	def __init__(self, A, B, C, SUBJ):
+		from spm1d.stats.anova import designs
 		self.design      = designs.ANOVA3rm(A, B, C, SUBJ)
 
 

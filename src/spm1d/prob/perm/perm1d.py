@@ -34,6 +34,8 @@ class PermResults1D(object):
 def inference1d(stat, z, alpha=0.05, dirn=0, testname=None, args=None, nperm=10000, circular=False, cluster_metric='MaxClusterExtent'):
 	from . probcalc1d import ProbCalc1DSingleStat
 	permuter  = get_permuter(testname, 1)( *args )
+	if alpha < 1/permuter.nPermTotal:
+		raise( ValueError(f'alpha ({alpha:0.5f}) must be greater than or equal to 1/nPermTotal = {1/permuter.nPermTotal:0.5f}') )
 	# build primary PDF:
 	permuter.build_pdf(  nperm  )
 	probcalc = ProbCalc1DSingleStat(stat, permuter, z, alpha, dirn)
