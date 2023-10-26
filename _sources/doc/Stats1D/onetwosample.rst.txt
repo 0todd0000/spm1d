@@ -30,7 +30,7 @@ Load a dataset:
 
 Conduct statistical test:
 
-   >>> t  = spm1d.stats.ttest(Y. mu)  #mu is 0 by default
+   >>> t  = spm1d.stats.ttest(Y, mu)  #mu is 0 by default
    >>> ti = t.inference(alpha=0.05, two_tailed=False, interp=True)
    >>> ti.plot()
 
