@@ -102,7 +102,7 @@ class _SnPM0D(_SnPM):
 class SnPM0D_T(_SnPM0D):
 	STAT = 'T'
 	def inference(self, alpha=0.05, two_tailed=True, iterations=-1, force_iterations=False):
-		self._check_iterations(iterations, alpha, force_iterations)
+		self._check_iterations(iterations, alpha, force_iterations, self.permuter.nPermTotal)
 		self.permuter.build_pdf(iterations)
 		alpha0    = 0.5*alpha if two_tailed else alpha
 		zstar     = self.permuter.get_z_critical(alpha0, two_tailed)

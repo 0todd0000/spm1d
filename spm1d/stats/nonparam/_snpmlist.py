@@ -33,7 +33,7 @@ class SnPMFList0D(_spmlist.SPMFList, _snpm._SnPM0D):
 	
 
 	def inference(self, alpha=0.05, iterations=-1, force_iterations=False):
-		self._check_iterations(iterations, alpha, force_iterations)
+		self._check_iterations(iterations, alpha, force_iterations, self.nPermUnique)
 		self.permuter.build_pdf(iterations)
 		zstarlist = self.permuter.get_z_critical_list(alpha)
 		plist     = self.permuter.get_p_value_list(self.z, zstarlist, alpha)
@@ -103,7 +103,7 @@ class SnPMFList(_spmlist.SPMFList, _snpm._SnPM1D):
 	
 
 	def inference(self, alpha=0.05, iterations=-1, interp=True, circular=False, force_iterations=False, cluster_metric='MaxClusterIntegral'):
-		self._check_iterations(iterations, alpha, force_iterations)
+		self._check_iterations(iterations, alpha, force_iterations, self.nPermUnique)
 		### build primary PDF:
 		self.permuter.build_pdf(iterations)
 		zstarlist  = self.permuter.get_z_critical_list(alpha)
@@ -114,7 +114,7 @@ class SnPMFList(_spmlist.SPMFList, _snpm._SnPM1D):
 		FFi            = []
 		for F,zstar in zip(self, zstarlist):
 			clusters   = F._get_clusters(zstar, False, interp, circular, iterations, cluster_metric)
-			clusters   = F._cluster_inference(clusters, False)
+			clusters   = F._cluster_inference(alpha, clusters, False)
 			Fi         = _snpm.SnPMiF(F, alpha, zstar, clusters)
 			FFi.append( Fi )
 		return SnPMFiList( self, FFi )
