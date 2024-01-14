@@ -374,7 +374,7 @@ def _as_float(x):
 def _float_if_possible(x):
 	if isinstance(x, np.ndarray):
 		if x.size==1:
-			return float(x)
+			return float( x.ravel()[0] )
 		else:
 			return x
 	else:
