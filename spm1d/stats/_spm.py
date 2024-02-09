@@ -92,12 +92,12 @@ class _SPMF(object):
 
 class _SPM0D(_SPMParent):
 	def __init__(self, STAT, z, df, beta=None, residuals=None, sigma2=None):
-		self.STAT           = STAT             #test statistic ("T" or "F")
-		self.z              = float(z)         #test statistic
-		self.df             = df               #degrees of freedom
-		self.beta           = beta             #fitted parameters
-		self.residuals      = residuals        #model residuals
-		self.sigma2         = sigma2           #variance
+		self.STAT           = STAT             # test statistic ("T" or "F")
+		self.z              = float(z[0]) if isinstance(z, np.ndarray) else float(z)  # test statistic
+		self.df             = df               # degrees of freedom
+		self.beta           = beta             # fitted parameters
+		self.residuals      = residuals        # model residuals
+		self.sigma2         = sigma2           # variance
 
 
 	def __repr__(self):
@@ -167,8 +167,10 @@ class _SPM0Dinference(_SPM0D):
 class SPM0D_F(_SPMF, _SPM0D):
 	def __init__(self, z, df, ss=(0,0), ms=(0,0), eij=0, X0=None):
 		_SPM0D.__init__(self, 'F', z, df)
-		self.ss        = tuple( map(float, ss) )
-		self.ms        = tuple( map(float, ms) )
+        # self.ss        = tuple( map(float, ss) )
+        # self.ms        = tuple( map(float, ms) )
+		self.ss        = tuple( np.asarray(ss, dtype=float) )
+		self.ms        = tuple( np.asarray(ms, dtype=float) )
 		self.eij       = eij
 		self.residuals = np.asarray(eij).flatten()
 		self.X0        = X0

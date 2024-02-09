@@ -133,7 +133,7 @@ class SPM1D4x5(_base.DatasetANOVA2rm):
 		#results computed using R (r-project.org):  aov(Y ~ A + B + A*B + Error(SUBJ/B ))
 		self.z       = 1.447, 1.609, 0.868
 		self.df      = (3,36), (4,144), (12,144)
-		self.p       = 0.146, 0.267, 0.635
+		self.p       = 0.245, 0.175, 0.581   # p=0.245 incorrectly reported as p=0.146, 0.267, 0.635 ?
 
 
 

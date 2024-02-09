@@ -18,7 +18,7 @@ class LinearModel(object):
 		Y               = np.asarray(Y, dtype=float)
 		self.dim        = Y.ndim - 1            #dependent variable dimensionality (0 or 1)
 		self.Y          = self._asmatrix(Y)     #stacked dependent variable (JxQ)
-		self.X          = np.matrix(X)          #design matrix
+		self.X          = np.asarray(X)         #design matrix
 		self.J          = self.X.shape[0]       #number of observations
 		self.Q          = self.Y.shape[1]       #number of field nodes
 		self.QT         = None                  #QR decomposition of design matrix
@@ -39,8 +39,10 @@ class LinearModel(object):
 		self.term_labels = None
 		self.Fterms      = None
 
-	def _asmatrix(self, Y):
-		return np.matrix(Y).T if Y.ndim==1 else np.matrix(Y)
+    # def _asmatrix(self, Y):
+    #     return np.matrix(Y).T if Y.ndim==1 else np.matrix(Y)
+	def _asmatrix(self, Y, dtype=float):
+		return np.asarray([Y], dtype=dtype).T if Y.ndim==1 else np.asarray(Y, dtype=dtype)
 
 	def _rank(self, A, tol=None):
 		'''
@@ -58,21 +60,21 @@ class LinearModel(object):
 	def fit(self, approx_residuals=None):
 		Y,X,J           = self.Y, self.X, self.J
 		Xi              = np.linalg.pinv(X)         #design matrix pseudoinverse
-		self._beta      = Xi*Y                      #estimated parameters
-		self._R         = np.eye(J) - X*Xi          #residual forming matrix
+		self._beta      = Xi @ Y                      #estimated parameters
+		self._R         = np.eye(J) - X @ Xi          #residual forming matrix
 		self._rankR     = self._rank(self._R)
-		self._SSE       = np.diag( Y.T * self._R * Y )
+		self._SSE       = np.diag( Y.T @ self._R @ Y )
 		self._dfE       = self._rankR
 		if self._dfE > eps:
 			self._MSE = self._SSE / self._dfE
 		if approx_residuals is None:
-			self.eij    = np.asarray(self.Y - X*self._beta)  #residuals
+			self.eij    = np.asarray(self.Y - X@self._beta)  #residuals
 		else:
 			C           = approx_residuals
-			A           = X * C.T
+			A           = X @ C.T
 			Ai          = np.linalg.pinv(A)
-			beta        = Ai*Y
-			self.eij    = np.asarray(Y - A*beta)  #approximate residuals
+			beta        = Ai@Y
+			self.eij    = np.asarray(Y - A@beta)  #approximate residuals
 		if self.dim==1:
 			self.fwhm   = rft1d.geom.estimate_fwhm(self.eij)            #smoothness
 			### compute resel counts:

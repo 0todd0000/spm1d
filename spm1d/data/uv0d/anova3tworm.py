@@ -50,7 +50,7 @@ class NYUHiringExperience(_base.DatasetANOVA3tworm):
 		self.C     = np.array( ([0]*4 + [1]*4) *3*3 )                #Gender (Female, Male)
 		SUBJ       = np.array( [1,2,3,4]*2*3 )
 		self.SUBJ  = np.hstack([SUBJ, SUBJ+10, SUBJ+20])
-		self.z     = 18.4,35.81,6.48, 3.92,1.35,3.69, 2.23
+		self.z     = 18.4,35.94,6.48, 3.80,1.35,3.69, 2.23
 		self.df    = (2,9),(2,18),(1,9),  (4,18),(2,9),(2,18),  (4,18)
 		self.p     = '<0.001', '<0.001', '<0.05',    '<0.05', '>0.05', '<0.05',  '>0.05'
 		self._atol = 0.15

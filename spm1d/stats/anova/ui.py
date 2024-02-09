@@ -12,6 +12,9 @@ from . import designs,models
 from .. import _datachecks, _reml, _spm, _spmlist
 
 
+def _as_scalar(x):
+    return float( np.asarray(x).flatten()[0] )
+
 def aov(model, contrasts, f_terms, nFactors=1):
 	'''
 	This code is modified from statsmodels.stats.anova_lm
@@ -34,6 +37,7 @@ def aov(model, contrasts, f_terms, nFactors=1):
 			ms1     = ss1 / df1
 		f           = ms0 / ms1
 		if model.dim == 0:
+			ss0,ss1,ms0,ms1 = [_as_scalar(x) for x in (ss0, ss1, ms0, ms1)]
 			F.append( _spm.SPM0D_F(f, (df0,df1), (ss0,ss1), (ms0,ms1), model.eij, model.QT) )
 		else:
 			if model.roi is not None:

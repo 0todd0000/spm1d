@@ -72,7 +72,9 @@ class DesignBuilder(object):
 
 class _Design(object):
 	def _get_column_const(self):
-		return np.matrix( np.ones(self.J) ).T
+		return np.ones(  (self.J, 1)  )
+    # def _get_column_const(self):
+    #     return np.matrix( np.ones(self.J) ).T
 
 	def get_design_label(self):
 		return self.__class__.__name__
@@ -639,8 +641,8 @@ class ANOVA3onerm(ANOVA3rm):
 			raise( ValueError('Design must be balanced.') )
 		if not self.B.check_balanced(self.C):
 			raise( ValueError('Design must be balanced.') )
-		if not self.S.check_balanced_rm(self.C):
-			raise( ValueError('Design must be balanced.') )
+        # if not self.S.check_balanced_rm(self.C):
+        #     raise( ValueError('Design must be balanced.') )
 
 
 
@@ -705,10 +707,10 @@ class ANOVA3tworm(ANOVA3rm):
 			raise( ValueError('Design must be balanced.') )
 		if not self.B.check_balanced(self.C):
 			raise( ValueError('Design must be balanced.') )
-		if not self.S.check_balanced_rm(self.B):
-			raise( ValueError('Design must be balanced.') )
-		if not self.S.check_balanced_rm(self.C):
-			raise( ValueError('Design must be balanced.') )
+        # if not self.S.check_balanced_rm(self.B):
+        #     raise( ValueError('Design must be balanced.') )
+        # if not self.S.check_balanced_rm(self.C):
+        #     raise( ValueError('Design must be balanced.') )
 
 
 

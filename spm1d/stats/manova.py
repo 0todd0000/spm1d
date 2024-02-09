@@ -64,14 +64,14 @@ def manova1_single_node(Y, GROUP):
 
 def _manova1_single_node_efficient(Y, GROUP, X, Xi, X0, X0i, nGroups):
 	### SS for original design:
-	Y     = np.matrix(Y)
-	b     = Xi*Y
-	R     = Y - X*b
-	R     = R.T*R
+	Y     = np.asarray(Y)
+	b     = Xi @ Y
+	R     = Y - X @ b
+	R     = R.T @ R
 	### SS for reduced design:
-	b0    = X0i*Y
-	R0    = Y - X0*b0
-	R0    = R0.T*R0
+	b0    = X0i @ Y
+	R0    = Y - X0 @ b0
+	R0    = R0.T @ R0
 	### Wilk's lambda:
 	lam   = np.linalg.det(R) / (np.linalg.det(R0) + eps)
 	### test statistic:
@@ -106,10 +106,10 @@ def manova1(Y, A, equal_var=True, roi=None):
 	ind0        = 0
 	for i,uu in enumerate(u):
 		X[A==uu, i] = 1
-	X           = np.matrix(X)
+	X           = np.asarray(X)
 	Xi          = np.linalg.pinv(X)
 	### reduced design:
-	X0          = np.matrix(  np.ones(Y.shape[0])  ).T
+	X0          = np.ones(  (nResponses, 1)  )
 	X0i         = np.linalg.pinv(X0)
 	### compute test statistic:
 	if Y.ndim==2:

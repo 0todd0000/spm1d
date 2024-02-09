@@ -88,8 +88,10 @@ class Factor(object):
 
 
 
+    # def get_Q(self):  #non-sphericity components
+    #     return [np.matrix(np.diag(self.A==u), dtype=float) for u in self.u]
 	def get_Q(self):  #non-sphericity components
-		return [np.matrix(np.diag(self.A==u), dtype=float) for u in self.u]
+		return [np.array(np.diag(self.A==u), dtype=float) for u in self.u]
 	
 	
 	def get_design_interaction(self, other):
@@ -100,7 +102,7 @@ class Factor(object):
 				x      = np.zeros(self.J)
 				x[(A==uA)&(B==uB)] =  1
 				XAB.append(x)
-		return np.matrix(XAB).T
+		return np.asarray(XAB).T
 
 
 	def get_design_interaction_3way(self, other, another):
@@ -113,7 +115,7 @@ class Factor(object):
 					### part one:
 					x[(A==uA)&(B==uB)&(C==uC)] =  1
 					XABC.append(x)
-		return np.matrix(XABC).T
+		return np.asarray(XABC).T
 
 
 	def get_design_interaction_4way(self, other, another, yetanother):
@@ -127,7 +129,7 @@ class Factor(object):
 						### part one:
 						x[(A==uA)&(B==uB)&(C==uC)&(S==uS)] =  1
 						X.append(x)
-		return np.matrix(X).T
+		return np.asarray(X).T
 
 
 
@@ -137,7 +139,7 @@ class Factor(object):
 			x        = np.zeros(self.J)
 			x[self.A==u] =  1
 			X.append(x)
-		return np.matrix( X ).T
+		return np.asarray( X ).T
 
 
 	def get_design_main_nested(self, other):
@@ -149,7 +151,7 @@ class Factor(object):
 				x        = np.zeros(self.J)
 				x[(A==uA) & (S==u)] =  1
 				X.append(x)
-		return np.matrix( X ).T
+		return np.asarray( X ).T
 		
 		
 	def get_design_interaction_nested(self, other, another):
@@ -163,7 +165,7 @@ class Factor(object):
 					x      = np.zeros(self.J)
 					x[(A==uA)&(B==uB)&(S==u)] =  1
 					XAB.append(x)
-		return np.matrix(XAB).T
+		return np.asarray(XAB).T
 	
 
 
@@ -190,7 +192,7 @@ class FactorNested(Factor):
 		Q = []
 		for u in self.u:
 			for uu in u:
-				q = np.matrix(np.diag(self.A==uu), dtype=float)
+				q = np.asarray(np.diag(self.A==uu), dtype=float)
 				Q.append(q)
 		return Q
 	
@@ -203,7 +205,7 @@ class FactorNested(Factor):
 				x        = np.zeros(self.J)
 				x[(A==uA) & (B==uB)] = 1
 				X.append(x)
-		return np.matrix( X ).T
+		return np.asarray( X ).T
 		
 
 	def get_design_interaction(self, other):
@@ -215,7 +217,7 @@ class FactorNested(Factor):
 					x      = np.zeros(self.J)
 					x[(A==uA)&(B==uB)&(S==uS)] =  1
 					X.append(x)
-		return np.matrix(X).T
+		return np.asarray(X).T
 
 
 	def get_design_interaction_3way(self, other, another):
@@ -228,7 +230,7 @@ class FactorNested(Factor):
 						x      = np.zeros(self.J)
 						x[(A==uA)&(B==uB)&(C==uC)&(S==uS)] =  1
 						X.append(x)
-		return np.matrix(X).T
+		return np.asarray(X).T
 
 
 
@@ -256,7 +258,7 @@ class FactorNested2(Factor):
 		for u in self.u:
 			for uu in u:
 				for uuu in uu:
-					q = np.matrix(np.diag(self.A==uuu), dtype=float)
+					q = np.asarray(np.diag(self.A==uuu), dtype=float)
 					Q.append(q)
 		return Q
 
@@ -269,7 +271,7 @@ class FactorNested2(Factor):
 					x        = np.zeros(self.J)
 					x[(A==uA) & (B==uB) & (C==uC)] = 1
 					X.append(x)
-		return np.matrix( X ).T
+		return np.asarray( X ).T
 
 
 
@@ -305,7 +307,7 @@ class FactorNestedTwoWay(Factor):
 					x        = np.zeros(self.J)
 					x[(A==uuA) & (B==uuB) & (S==uuS)] = 1
 					X.append(x)
-		return np.matrix( X ).T
+		return np.asarray( X ).T
 
 
 	def get_design_interaction(self, other):
@@ -319,7 +321,7 @@ class FactorNestedTwoWay(Factor):
 						x      = np.zeros(self.J)
 						x[(A==uA)&(B==uB)&(C==uC)&(S==uuS)] =  1
 						X.append(x)
-		return np.matrix(X).T
+		return np.asarray(X).T
 
 
 

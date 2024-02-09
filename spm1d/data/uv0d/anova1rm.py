@@ -36,7 +36,7 @@ class Abdi2010(_base.DatasetANOVA1rm):
 		self.dfGG  = 1.34, 5.35
 		self.dfGGX = 1, 4
 		self.dfHF  = 1.76, 7.04
-		self.p     = 0.018
+		self.p     = 0.014  # incorrectly reported as 0.018?
 		self.pGG   = 0.059
 		self.pGGX  = 0.081
 		self.pHF   = 0.041

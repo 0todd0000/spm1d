@@ -21,63 +21,66 @@ eps    = np.finfo(float).eps   #smallest float, used to avoid divide-by-zero err
 
 
 def glm(Y, X, c, Q=None, roi=None):
-	'''
-	General linear model (for t contrasts).
-	
-	:Parameters:
-	
-	- *Y* --- (J x Q) numpy array (dependent variable)
-	- *X* --- (J x B) design matrix  (J responses, B parameters)
-	- *c* --- B-component contrast vector (list or array)
-	- *Q* --- non-sphericity specifiers (not currently supported for **glm**)
-	
-	.. note:: Non-sphericity estimates are not supported for **spm1d.stats.glm**
-	
-	:Returns:
-	
-	- An **spm1d._spm.SPM_T** object.
-	
-	:Example:
-	
-	>>> t  = spm1d.stats.glm(Y, X, (-1,1))
-	>>> ti = t.inference(alpha=0.05, two_tailed=True)
-	>>> ti.plot()
-	'''
-	### assemble data:
-	Y      = np.matrix(Y)
-	X      = np.matrix(X)
-	c      = np.matrix(c).T
-	### solve the GLM:
-	b      = np.linalg.pinv(X)*Y    #parameters
-	eij    = Y - X*b                #residuals
-	R      = eij.T*eij              #residuals: sum of squares
-	df     = Y.shape[0] - rank(X)   #degrees of freedom
-	sigma2 = np.diag(R)/df          #variance
-	### compute t statistic
-	t      = np.array(c.T*b).flatten()  /   (np.sqrt(sigma2*float(c.T*(np.linalg.inv(X.T*X))*c)) + eps)
-	### estimate df due to non-sphericity:
-	if Q is not None:
-		df = _reml.estimate_df_T(Y, X, eij, Q)
-	eij    = np.asarray(eij)
-	if Y.shape[1] > 1:
-		### estimate field smoothness:
-		fwhm   = rft1d.geom.estimate_fwhm(eij)
-		### compute resel counts:
-		if roi is None:
-			resels = rft1d.geom.resel_counts(eij, fwhm, element_based=False)
-		else:
-			B      = np.any( np.isnan(eij), axis=0)  #node is true if NaN
-			B      = np.logical_and(np.logical_not(B), roi)  #node is true if in ROI and also not NaN
-			mask   = np.logical_not(B)  #true for masked-out regions
-			resels = rft1d.geom.resel_counts(mask, fwhm, element_based=False)
-			t      = np.ma.masked_array(t, np.logical_not(roi))
-		### assemble SPM{t} object
-		s      = np.asarray(sigma2).flatten()
-		t      = _spm.SPM_T(t, (1,df), fwhm, resels, np.asarray(X), np.asarray(b), eij, sigma2=s, roi=roi)
-	else:
-		b,r,s2 = np.asarray(b).flatten(), eij.flatten(), float(sigma2)
-		t      = _spm.SPM0D_T(t, (1,df), beta=b, residuals=r, sigma2=s2)
-	return t
+    '''
+    General linear model (for t contrasts).
+
+    :Parameters:
+
+    - *Y* --- (J x Q) numpy array (dependent variable)
+    - *X* --- (J x B) design matrix  (J responses, B parameters)
+    - *c* --- B-component contrast vector (list or array)
+    - *Q* --- non-sphericity specifiers (not currently supported for **glm**)
+
+    .. note:: Non-sphericity estimates are not supported for **spm1d.stats.glm**
+
+    :Returns:
+
+    - An **spm1d._spm.SPM_T** object.
+
+    :Example:
+
+    >>> t  = spm1d.stats.glm(Y, X, (-1,1))
+    >>> ti = t.inference(alpha=0.05, two_tailed=True)
+    >>> ti.plot()
+    '''
+    ### assemble data:
+    Y      = np.asarray(Y)
+    X      = np.asarray(X)
+    c      = np.asarray([c]).T
+    ### solve the GLM:
+    b      = np.linalg.pinv(X) @ Y  #parameters
+    eij    = Y - X@b                #residuals
+    R      = eij.T@eij              #residuals: sum of squares
+    df     = Y.shape[0] - rank(X)   #degrees of freedom
+    sigma2 = np.diag(R)/df          #variance
+    ### compute t statistic
+    cXXc   = c.T @ np.linalg.inv(X.T@X) @ c
+    cXXc   = float(cXXc[0,0]) if isinstance(cXXc, np.ndarray) else float(cXXc)
+    t      = np.array(c.T@b).flatten()  /   (np.sqrt(sigma2*cXXc + eps))
+    ### estimate df due to non-sphericity:
+    if Q is not None:
+        df = _reml.estimate_df_T(Y, X, eij, Q)
+    eij    = np.asarray(eij)
+    if Y.shape[1] > 1:
+        ### estimate field smoothness:
+        fwhm   = rft1d.geom.estimate_fwhm(eij)
+        ### compute resel counts:
+        if roi is None:
+            resels = rft1d.geom.resel_counts(eij, fwhm, element_based=False)
+        else:
+            B      = np.any( np.isnan(eij), axis=0)  #node is true if NaN
+            B      = np.logical_and(np.logical_not(B), roi)  #node is true if in ROI and also not NaN
+            mask   = np.logical_not(B)  #true for masked-out regions
+            resels = rft1d.geom.resel_counts(mask, fwhm, element_based=False)
+            t      = np.ma.masked_array(t, np.logical_not(roi))
+        ### assemble SPM{t} object
+        s      = np.asarray(sigma2).flatten()
+        t      = _spm.SPM_T(t, (1,df), fwhm, resels, np.asarray(X), np.asarray(b), eij, sigma2=s, roi=roi)
+    else:
+        b,r    = np.asarray(b).flatten(), eij.flatten()
+        s2     = float(sigma2[0]) if isinstance(sigma2, np.ndarray) else float(sigma2)
+        t      = _spm.SPM0D_T(t, (1,df), beta=b, residuals=r, sigma2=s2)
+    return t
 
 
 
@@ -109,7 +112,7 @@ def regress(Y, x, roi=None):
 		- the correlation coefficient is retrievable as "t.r" where "t" is the output from **spm1d.stats.regress**
 		- statistical inferences are based on *t*, not on *r*
 	'''
-	Y              = _datachecks.asmatrix(Y, dtype=float)
+	Y              = _datachecks.asarray(Y, dtype=float)
 	_datachecks.check('regress', Y, x)
 	J              = Y.shape[0]
 	X              = np.ones((J,2))
@@ -146,7 +149,7 @@ def ttest(Y, y0=None, roi=None):
 	>>> ti = t.inference(alpha=0.05, two_tailed=True)
 	>>> ti.plot()
 	'''
-	Y       = _datachecks.asmatrix(Y, dtype=float)
+	Y       = _datachecks.asarray(Y, dtype=float)
 	_datachecks.check('ttest', Y, y0)
 	J       = Y.shape[0]
 	Ytemp   = Y.copy()
@@ -181,7 +184,7 @@ def ttest_paired(YA, YB, roi=None):
 	>>> ti = t.inference(alpha=0.05)
 	>>> ti.plot()
 	'''
-	YA,YB    = _datachecks.asmatrix(YA, dtype=float), _datachecks.asmatrix(YB, dtype=float)
+	YA,YB    = _datachecks.asarray(YA, dtype=float), _datachecks.asarray(YB, dtype=float)
 	_datachecks.check('ttest_paired', YA, YB)
 	return ttest(YA-YB, roi=roi)
 
@@ -211,7 +214,7 @@ def ttest2(YA, YB, equal_var=False, roi=None):
 	>>> ti.plot()
 	'''
 	### check data:
-	YA,YB    = _datachecks.asmatrix(YA, dtype=float), _datachecks.asmatrix(YB, dtype=float)
+	YA,YB    = _datachecks.asarray(YA, dtype=float), _datachecks.asarray(YB, dtype=float)
 	_datachecks.check('ttest2', YA, YB)
 	### assemble data
 	JA,JB    = YA.shape[0], YB.shape[0]

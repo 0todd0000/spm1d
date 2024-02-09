@@ -77,14 +77,14 @@ def cca_single_node(y, x):
 
 def _cca_single_node_efficient(y, x, Rz, XXXiX):
 	N          = y.shape[0]
-	Y          = np.matrix(y)
-	YStar      = Rz * Y
+	Y          = np.asarray(y)
+	YStar      = Rz @ Y
 	p,r        = 1.0, 1.0   #nContrasts, nNuisanceFactors
 	m          = N - p - r
-	H          = YStar.T * XXXiX * YStar / p
-	W          = YStar.T  * (np.eye(N)  -  XXXiX) * YStar  / m
+	H          = YStar.T @ XXXiX @ YStar / p
+	W          = YStar.T  @ (np.eye(N)  -  XXXiX) @ YStar  / m
 	#estimate maximum canonical correlation:
-	F          = np.linalg.inv(W)*H
+	F          = np.linalg.inv(W) @ H
 	ff         = np.linalg.eigvals(  F  )
 	fmax       = float( np.real(ff.max()) )
 	r2max      = fmax * p  / (m + fmax*p)
@@ -112,11 +112,11 @@ def cca(Y, x, roi=None):
 		-  Currently only a univariate 0D independent variable (x) is supported.
 	'''
 	N          = Y.shape[0]
-	X          = np.matrix(x.T).T
-	Z          = np.matrix(np.ones(N)).T
-	Rz         = np.eye(N) - Z*np.linalg.inv(Z.T*Z)*Z.T
-	XStar      = Rz * X
-	XXXiX      = XStar  *  np.linalg.inv( XStar.T * XStar  )  * XStar.T
+	X          = np.asarray([x]).T
+	Z          = np.ones((N,1))
+	Rz         = np.eye(N) - Z @ np.linalg.inv(Z.T@Z) @ Z.T
+	XStar      = Rz @ X
+	XXXiX      = XStar  @  np.linalg.inv( XStar.T @ XStar  )  @ XStar.T
 	if Y.ndim==2:
 		X2         = _cca_single_node_efficient(Y, x, Rz, XXXiX)
 		df         = 1, Y.shape[1]

@@ -52,8 +52,8 @@ def estimate_df_T(Y, X, eij, Q):
 	trRV        = n - _rank(X)
 	ResSS       = (np.asarray(eij)**2).sum(axis=0)
 	q           = np.diag(np.sqrt( trRV / ResSS )).T
-	Ym          = Y*q
-	YY          = Ym*Ym.T / s
+	Ym          = Y @ q
+	YY          = Ym@Ym.T / s
 	V,h         = reml(YY, X, Q)
 	V           = V * (n / np.trace(V))
 	### effective degrees of freedom:
@@ -137,8 +137,8 @@ def estimate_df_anova1(Y, X, eij, Q, c):
 	trRV          = n - rankX
 	ResSS         = (np.asarray(eij)**2).sum(axis=0)
 	q             = np.diag(np.sqrt( trRV / ResSS )).T
-	Ym            = Y*q
-	YY            = Ym*Ym.T / s
+	Ym            = Y@q
+	YY            = Ym@Ym.T / s
 	V,h           = reml(YY, X, Q)
 	V            *= (n / np.trace(V))
 	### effective degrees of freedom (denominator):
@@ -159,8 +159,8 @@ def estimate_df_anova2(Y, X, eij, Q, C):
 	trRV      = J - rankX
 	ResSS     = (np.asarray(eij)**2).sum(axis=0)
 	q         = np.diag(np.sqrt( trRV / ResSS )).T
-	Ym        = Y*q
-	YY        = Ym*Ym.T / s
+	Ym        = Y@q
+	YY        = Ym@Ym.T / s
 	V,h       = reml(YY, X, Q)
 	V        *= (J / np.trace(V))
 	### effective degrees of freedom (denominator):
@@ -176,58 +176,64 @@ def estimate_df_anova2(Y, X, eij, Q, C):
 
 
 def reml(YY, X, Q, N=1, K=128):
-	n     = X.shape[0]
-	W     = deepcopy(Q)
-	
-	q     = np.asarray(np.all(YY<np.inf, axis=0)).flatten()
-	Q     = [QQ[q,:][:,q]   for QQ in Q]
+    n     = X.shape[0]
+    W     = deepcopy(Q)
 
-	m     = len(Q)
-	h     = np.matrix([float(np.any(np.diag(QQ)))  for QQ in Q]).T
-	X0    = np.linalg.qr(X)[0]
-	dFdhh = np.zeros((m,m))
+    q     = np.asarray(np.all(YY<np.inf, axis=0)).flatten()
+    Q     = [QQ[q,:][:,q]   for QQ in Q]
 
-	hE   = np.matrix(np.zeros((m,1)))
-	hP   = np.eye(m)/exp(32)
+    m     = len(Q)
+    h     = np.matrix([float(np.any(np.diag(QQ)))  for QQ in Q]).T
+    X0    = np.linalg.qr(X)[0]
+    dFdhh = np.zeros((m,m))
 
-	dF  = np.inf
-	for k in range(K):
-		C    = np.matrix(np.zeros((n,n)))
-		for i in range(m):
-			C   += Q[i] * float(h[i])
-		iC   = np.linalg.inv(C) + np.eye(n)/exp(32)
-		iCX  = iC*X0
-		Cq   = np.linalg.inv(X0.T*iCX)
-	
-		# Gradient dF/dh (first derivatives)
-		P    = iC - iCX*Cq*iCX.T
-		U    = np.eye(n) - P*YY/N
-	
-		PQ   = [P*QQ for QQ in Q]
-		dFdh = np.matrix([-np.trace(PQQ*U)*0.5*N   for PQQ in PQ]).T
-		
-		# Expected curvature E{dF/dhh} (second derivatives)
-		for i in range(m):
-			for j in range(m):
-		            dFdhh[i,j] = -np.trace(PQ[i]*PQ[j])*0.5*N
-		            dFdhh[j,i] =  dFdhh[i,j]
+    hE   = np.matrix(np.zeros((m,1)))
+    hP   = np.eye(m)/exp(32)
 
-		#add hyper-priors
-		e     = h - hE
-		dFdh -= hP*e
-		dFdhh -= hP
-		
-		# Fisher scoring
-		dh    = -np.linalg.inv(dFdhh)*dFdh / log(k+3)
-		h    += dh
-		dF    = float(dFdh.T*dh)
-		
-		#final covariance estimate (with missing data points)
-		if dF < 0.1:
-			V     = 0
-			for i in range(m):
-				V += Q[i]*float(h[i])
-			return V, h
+    dF  = np.inf
+    for k in range(K):
+        C    = np.matrix(np.zeros((n,n)))
+        for i in range(m):
+            C   += Q[i] * float(h[i])
+        iC   = np.linalg.inv(C) + np.eye(n)/exp(32)
+        iCX  = iC*X0
+        Cq   = np.linalg.inv(X0.T*iCX)
+
+        # Gradient dF/dh (first derivatives)
+        P    = iC - iCX*Cq*iCX.T
+        U    = np.eye(n) - P*YY/N
+
+        PQ   = [P*QQ for QQ in Q]
+        dFdh = np.matrix([-np.trace(PQQ*U)*0.5*N   for PQQ in PQ]).T
+
+        # Expected curvature E{dF/dhh} (second derivatives)
+        for i in range(m):
+            for j in range(m):
+                    dFdhh[i,j] = -np.trace(PQ[i]*PQ[j])*0.5*N
+                    dFdhh[j,i] =  dFdhh[i,j]
+
+        #add hyper-priors
+        e     = h - hE
+        dFdh -= hP*e
+        dFdhh -= hP
+
+        # Fisher scoring
+        dh    = -np.linalg.inv(dFdhh)*dFdh / log(k+3)
+        h    += dh
+        dF    = float(dFdh.T*dh)
+        
+        print('\n\n\n\n\n')
+        print( h.shape, type(h) )
+        print('\n\n\n\n\n')
+
+        #final covariance estimate (with missing data points)
+        if dF < 0.1:
+            V     = 0
+            for i in range(m):
+                hh = h[i]
+                hh = float(hh[0]) if isinstance(hh, np.ndarray) else float(hh)
+                V += Q[i]*hh
+            return V, h
 
 
 
@@ -260,11 +266,11 @@ def traceRV(V, X):
 	sL   = X.shape[0]
 	u    = np.linalg.qr(X)[0]
 
-	Vu      = V*u
+	Vu      = V@u
 	trV     = np.trace(V)
 	trRVRV  = np.linalg.norm(V,  ord='fro')**2
 	trRVRV -= 2*np.linalg.norm(Vu, ord='fro')**2
-	trRVRV += np.linalg.norm(u.T*Vu, ord='fro')**2
+	trRVRV += np.linalg.norm(u.T@Vu, ord='fro')**2
 	trMV    = np.sum(np.array(u)*np.array(Vu))
 	trRV    = trV - trMV
 	return trRV, trRVRV
