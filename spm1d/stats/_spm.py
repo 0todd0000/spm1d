@@ -161,7 +161,9 @@ class _SPM0Dinference(_SPM0D):
 		s       += '\n'
 		return s
 	
-
+	@property
+	def zc(self):
+		return self.zstar
 
 
 class SPM0D_F(_SPMF, _SPM0D):
@@ -631,6 +633,10 @@ class _SPMinference(_SPM):
 		s       += '   SPM.p_cluster :  (%s)\n\n\n' %plist2string(self.p)
 		return s
 	
+	@property
+	def zc(self):
+		return self.zstar
+
 	def plot(self, **kwdargs):
 		return plot_spmi(self, **kwdargs)
 

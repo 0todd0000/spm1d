@@ -77,7 +77,9 @@ class _Cluster(object):
 			s       += '   P               :  %.5f\n\n' %self.P
 		return s
 		
-
+	@property
+	def p(self):
+		return self.P
 
 	def _assemble(self):
 		x0,x1               = self._X[0], self._X[-1]
