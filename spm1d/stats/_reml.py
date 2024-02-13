@@ -221,11 +221,6 @@ def reml(YY, X, Q, N=1, K=128):
         dh    = -np.linalg.inv(dFdhh)*dFdh / log(k+3)
         h    += dh
         dF    = float(dFdh.T*dh)
-        
-        print('\n\n\n\n\n')
-        print( h.shape, type(h) )
-        print('\n\n\n\n\n')
-
         #final covariance estimate (with missing data points)
         if dF < 0.1:
             V     = 0
@@ -234,6 +229,14 @@ def reml(YY, X, Q, N=1, K=128):
                 hh = float(hh[0]) if isinstance(hh, np.ndarray) else float(hh)
                 V += Q[i]*hh
             return V, h
+    # maximum iterations reached:
+    V     = 0
+    for i in range(m):
+        hh = h[i]
+        hh = float(hh[0]) if isinstance(hh, np.ndarray) else float(hh)
+        V += Q[i]*hh
+    return V, h
+    
 
 
 
