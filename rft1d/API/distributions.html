@@ -68,7 +68,7 @@
 		
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -139,7 +139,7 @@
 		
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -199,7 +199,7 @@ Currently implemented distributions include:</p>
 </div></blockquote>
 <p>All distributions share the following functions:</p>
 <dl class="field-list">
-<dt class="field-odd">Methods</dt>
+<dt class="field-odd">Methods<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>isf</strong> — RFT inverse survival function (critical height)</p>
 <p><strong>isf0d</strong> — Common (0D) inverse survival function (critical height)</p>
 <p><strong>p_cluster</strong> — RFT cluster-level inference</p>
@@ -207,7 +207,7 @@ Currently implemented distributions include:</p>
 <p><strong>sf</strong> — RFT survival function</p>
 <p><strong>sf0d</strong> — Common (0D) survival function.</p>
 </dd>
-<dt class="field-even">Basic use</dt>
+<dt class="field-even">Basic use<span class="colon">:</span></dt>
 <dd class="field-even"><p>All distributions can be accessed directly from <strong>rft1d</strong> as follows:</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">height</span> <span class="o">=</span> <span class="mf">3.0</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">nodes</span> <span class="o">=</span> <span class="mi">101</span>
@@ -217,7 +217,7 @@ Currently implemented distributions include:</p>
 </pre></div>
 </div>
 </dd>
-<dt class="field-odd">Unbroken and broken fields</dt>
+<dt class="field-odd">Unbroken and broken fields<span class="colon">:</span></dt>
 <dd class="field-odd"><p>If the field is unbroken (i.e. continuous) between the start and the
 end of the field, then the “nodes” argument to all methods should be
 an integer representing the number of field nodes:</p>
@@ -237,7 +237,7 @@ where False specifies nodes which are masked out:</p>
 </pre></div>
 </div>
 </dd>
-<dt class="field-even">Very rough fields and the Bonferroni correction</dt>
+<dt class="field-even">Very rough fields and the Bonferroni correction<span class="colon">:</span></dt>
 <dd class="field-even"><p>When the fields are very rough (e.g. <em>FWHM</em> &lt; 2),
 the Bonferroni correction may be less severe than the RFT correction.
 While both are vaild, it is generally best to use the less-severe
@@ -258,7 +258,7 @@ To adopt the less-severe threshold use the keyword argument
 </pre></div>
 </div>
 </dd>
-<dt class="field-odd">Very smooth fields</dt>
+<dt class="field-odd">Very smooth fields<span class="colon">:</span></dt>
 <dd class="field-odd"><p>When Gaussian fields become very smooth, they start to behave like
 Gaussian scalars. Theoretically RFT results are equivalent to scalar
 results when smoothness is infinite. Thus raising the <em>FWHM</em> value
@@ -285,17 +285,17 @@ systematically will cause the RFT results to converge to typical 0D results:</p>
 <dd><p>RFT inverse survival function.
 (see also the survival function: <strong>rft1d.norm.sf</strong>)</p>
 <dl class="field-list">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><em>alpha</em> – upper tail probability (float;  0 &lt; alpha &lt; 1)</p>
 <p><em>nodes</em> – number of field nodes (int)  OR a binary field (boolean array)</p>
 <p><em>FWHM</em> – field smoothness (float)</p>
 <p><em>withBonf</em> – use a Bonferroni correction if less severe than the RFT correction (bool)</p>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>Quantile corresponding to upper-tail probability alpha.
 Equivalently: critical threshold at a Type I error rate of alpha.</p>
 </dd>
-<dt class="field-odd">Examples</dt>
+<dt class="field-odd">Examples<span class="colon">:</span></dt>
 <dd class="field-odd"><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">rft1d</span><span class="o">.</span><span class="n">norm</span><span class="o">.</span><span class="n">isf</span><span class="p">(</span><span class="mf">0.05</span><span class="p">,</span> <span class="mi">101</span><span class="p">,</span> <span class="mf">10.0</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -308,7 +308,7 @@ Equivalently: critical threshold at a Type I error rate of alpha.</p>
 <span class="sig-prename descclassname"><span class="pre">norm.</span></span><span class="sig-name descname"><span class="pre">isf0d</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">alpha</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rft1d.distributions.norm.isf0d" title="Permalink to this definition">¶</a></dt>
 <dd><p>Inverse survival function (0D);  equivalent to <strong>scipy.stats.norm.isf</strong></p>
 <dl class="field-list">
-<dt class="field-odd">Examples</dt>
+<dt class="field-odd">Examples<span class="colon">:</span></dt>
 <dd class="field-odd"><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">rft1d</span><span class="o">.</span><span class="n">norm</span><span class="o">.</span><span class="n">isf0d</span><span class="p">([</span><span class="mf">0.01</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">scipy</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">norm</span><span class="o">.</span><span class="n">isf</span><span class="p">([</span><span class="mf">0.01</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">]</span><span class="mi">3</span><span class="p">)</span>
 </pre></div>
@@ -329,17 +329,17 @@ For set-specific probabilities use <strong>rft1d.norm.p_set</strong></p>
 <p>The threshold <em>u</em> should generally be chosen objectively. One possibility is to calculate the <em>alpha</em>-based critical threshold using the inverse survival function: <strong>rft1d.norm.isf</strong></p>
 </div>
 <dl class="field-list">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><em>k</em> – cluster extent (resels)</p>
 <p><em>u</em> – threshold</p>
 <p><em>nodes</em> – number of field nodes (int)  OR a binary field (boolean array)</p>
 <p><em>FWHM</em> – field smoothness (float)</p>
 <p><em>withBonf</em> – use a Bonferroni correction if less severe than the RFT correction (bool)</p>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>Cluster-specific probability value.</p>
 </dd>
-<dt class="field-odd">Examples</dt>
+<dt class="field-odd">Examples<span class="colon">:</span></dt>
 <dd class="field-odd"><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">rft1d</span><span class="o">.</span><span class="n">norm</span><span class="o">.</span><span class="n">p_cluster</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">3.0</span><span class="p">,</span> <span class="mi">101</span><span class="p">,</span> <span class="mf">15.0</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -360,7 +360,7 @@ For cluster-specific probabilities use <strong>rft1d.norm.p_cluster</strong></p>
 <p>The threshold <em>u</em> should generally be chosen objectively. One possibility is to calculate the <em>alpha</em>-based critical threshold using the inverse survival function: <strong>rft1d.norm.isf</strong></p>
 </div>
 <dl class="field-list">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><em>c</em> – number of upcrossings</p>
 <p><em>k</em> – minimum cluster extent (resels)</p>
 <p><em>u</em> – threshold</p>
@@ -368,10 +368,10 @@ For cluster-specific probabilities use <strong>rft1d.norm.p_cluster</strong></p>
 <p><em>FWHM</em> – field smoothness (float)</p>
 <p><em>withBonf</em> – use a Bonferroni correction if less severe than the RFT correction (bool)</p>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>Set-specific probability value.</p>
 </dd>
-<dt class="field-odd">Examples</dt>
+<dt class="field-odd">Examples<span class="colon">:</span></dt>
 <dd class="field-odd"><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">rft1d</span><span class="o">.</span><span class="n">norm</span><span class="o">.</span><span class="n">p_set</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">3.0</span><span class="p">,</span> <span class="mi">101</span><span class="p">,</span> <span class="mf">15.0</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -385,16 +385,16 @@ For cluster-specific probabilities use <strong>rft1d.norm.p_cluster</strong></p>
 <dd><p>RFT survival function.</p>
 <p>Probability that 1D Gaussian fields with a smoothness <em>FWHM</em> would produce a 1D statistic field whose maximum exceeds <em>u</em>.</p>
 <dl class="field-list">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><em>u</em> – threshold (int, float, or sequence of int or float)</p>
 <p><em>nodes</em> – number of field nodes (int)  OR a binary field (boolean array)</p>
 <p><em>FWHM</em> – field smoothness (float)</p>
 <p><em>withBonf</em> – use a Bonferroni correction if less severe than the RFT correction (bool)</p>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>The probability of exceeding the specified heights.</p>
 </dd>
-<dt class="field-odd">Examples</dt>
+<dt class="field-odd">Examples<span class="colon">:</span></dt>
 <dd class="field-odd"><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">rft1d</span><span class="o">.</span><span class="n">norm</span><span class="o">.</span><span class="n">sf</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">],</span> <span class="mi">101</span><span class="p">,</span> <span class="mf">10.0</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -407,7 +407,7 @@ For cluster-specific probabilities use <strong>rft1d.norm.p_cluster</strong></p>
 <span class="sig-prename descclassname"><span class="pre">norm.</span></span><span class="sig-name descname"><span class="pre">sf0d</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">heights</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rft1d.distributions.norm.sf0d" title="Permalink to this definition">¶</a></dt>
 <dd><p>Survival function (0D);  equivalent to <strong>scipy.stats.norm.sf</strong></p>
 <dl class="field-list">
-<dt class="field-odd">Examples</dt>
+<dt class="field-odd">Examples<span class="colon">:</span></dt>
 <dd class="field-odd"><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">rft1d</span><span class="o">.</span><span class="n">norm</span><span class="o">.</span><span class="n">sf0d</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">scipy</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">norm</span><span class="o">.</span><span class="n">sf</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">]</span><span class="mi">3</span><span class="p">)</span>
 </pre></div>
@@ -425,18 +425,18 @@ For cluster-specific probabilities use <strong>rft1d.norm.p_cluster</strong></p>
 <dd><p>RFT inverse survival function.
 (see also the survival function: <strong>rft1d.t.sf</strong>)</p>
 <dl class="field-list">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><em>alpha</em> – upper tail probability (float;  0 &lt; alpha &lt; 1)</p>
 <p><em>df</em> – degrees of freedom (int or float)</p>
 <p><em>nodes</em> – number of field nodes (int)  OR a binary field (boolean array)</p>
 <p><em>FWHM</em> – field smoothness (float)</p>
 <p><em>withBonf</em> – use a Bonferroni correction if less severe than the RFT correction (bool)</p>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>Quantile corresponding to upper-tail probability alpha.
 Equivalently: critical threshold at a Type I error rate of alpha.</p>
 </dd>
-<dt class="field-odd">Examples</dt>
+<dt class="field-odd">Examples<span class="colon">:</span></dt>
 <dd class="field-odd"><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">rft1d</span><span class="o">.</span><span class="n">t</span><span class="o">.</span><span class="n">isf</span><span class="p">(</span><span class="mf">0.05</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">101</span><span class="p">,</span> <span class="mf">10.0</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -449,7 +449,7 @@ Equivalently: critical threshold at a Type I error rate of alpha.</p>
 <span class="sig-prename descclassname"><span class="pre">t.</span></span><span class="sig-name descname"><span class="pre">isf0d</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">alpha</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">df</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rft1d.distributions.t.isf0d" title="Permalink to this definition">¶</a></dt>
 <dd><p>Inverse survival function (0D);  equivalent to <strong>scipy.stats.t.isf</strong></p>
 <dl class="field-list">
-<dt class="field-odd">Examples</dt>
+<dt class="field-odd">Examples<span class="colon">:</span></dt>
 <dd class="field-odd"><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">rft1d</span><span class="o">.</span><span class="n">t</span><span class="o">.</span><span class="n">isf0d</span><span class="p">([</span><span class="mf">0.01</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">],</span> <span class="mi">8</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">scipy</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">t</span><span class="o">.</span><span class="n">isf</span><span class="p">([</span><span class="mf">0.01</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">],</span> <span class="mi">8</span><span class="p">)</span>
 </pre></div>
@@ -470,7 +470,7 @@ For set-specific probabilities use <strong>rft1d.t.p_set</strong></p>
 <p>The threshold <em>u</em> should generally be chosen objectively. One possibility is to calculate the <em>alpha</em>-based critical threshold using the inverse survival function: <strong>rft1d.t.isf</strong></p>
 </div>
 <dl class="field-list">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><em>k</em> – cluster extent (resels)</p>
 <p><em>u</em> – threshold</p>
 <p><em>df</em> – degrees of freedom (int or float)</p>
@@ -478,10 +478,10 @@ For set-specific probabilities use <strong>rft1d.t.p_set</strong></p>
 <p><em>FWHM</em> – field smoothness (float)</p>
 <p><em>withBonf</em> – use a Bonferroni correction if less severe than the RFT correction (bool)</p>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>Cluster-specific probability value.</p>
 </dd>
-<dt class="field-odd">Examples</dt>
+<dt class="field-odd">Examples<span class="colon">:</span></dt>
 <dd class="field-odd"><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">rft1d</span><span class="o">.</span><span class="n">t</span><span class="o">.</span><span class="n">p_cluster</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">3.0</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">101</span><span class="p">,</span> <span class="mf">15.0</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -502,7 +502,7 @@ For cluster-specific probabilities use <strong>rft1d.t.p_cluster</strong></p>
 <p>The threshold <em>u</em> should generally be chosen objectively. One possibility is to calculate the <em>alpha</em>-based critical threshold using the inverse survival function: <strong>rft1d.t.isf</strong></p>
 </div>
 <dl class="field-list">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><em>c</em> – number of upcrossings</p>
 <p><em>k</em> – minimum cluster extent (resels)</p>
 <p><em>u</em> – threshold</p>
@@ -511,10 +511,10 @@ For cluster-specific probabilities use <strong>rft1d.t.p_cluster</strong></p>
 <p><em>FWHM</em> – field smoothness (float)</p>
 <p><em>withBonf</em> – use a Bonferroni correction if less severe than the RFT correction (bool)</p>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>Set-specific probability value.</p>
 </dd>
-<dt class="field-odd">Examples</dt>
+<dt class="field-odd">Examples<span class="colon">:</span></dt>
 <dd class="field-odd"><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">rft1d</span><span class="o">.</span><span class="n">t</span><span class="o">.</span><span class="n">p_set</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">3.0</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">101</span><span class="p">,</span> <span class="mf">15.0</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -528,17 +528,17 @@ For cluster-specific probabilities use <strong>rft1d.t.p_cluster</strong></p>
 <dd><p>RFT survival function.</p>
 <p>Probability that 1D Gaussian fields with a smoothness <em>FWHM</em> would produce a 1D statistic field whose maximum exceeds <em>u</em>.</p>
 <dl class="field-list">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><em>u</em> – threshold (int, float, or sequence of int or float)</p>
 <p><em>df</em> – degrees of freedom (int or float)</p>
 <p><em>nodes</em> – number of field nodes (int)  OR a binary field (boolean array)</p>
 <p><em>FWHM</em> – field smoothness (float)</p>
 <p><em>withBonf</em> – use a Bonferroni correction if less severe than the RFT correction (bool)</p>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>The probability of exceeding the specified heights.</p>
 </dd>
-<dt class="field-odd">Examples</dt>
+<dt class="field-odd">Examples<span class="colon">:</span></dt>
 <dd class="field-odd"><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">rft1d</span><span class="o">.</span><span class="n">t</span><span class="o">.</span><span class="n">sf</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">],</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">101</span><span class="p">,</span> <span class="mf">10.0</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -551,7 +551,7 @@ For cluster-specific probabilities use <strong>rft1d.t.p_cluster</strong></p>
 <span class="sig-prename descclassname"><span class="pre">t.</span></span><span class="sig-name descname"><span class="pre">sf0d</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">u</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">df</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rft1d.distributions.t.sf0d" title="Permalink to this definition">¶</a></dt>
 <dd><p>Survival function (0D);  equivalent to <strong>scipy.stats.t.sf</strong></p>
 <dl class="field-list">
-<dt class="field-odd">Examples</dt>
+<dt class="field-odd">Examples<span class="colon">:</span></dt>
 <dd class="field-odd"><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">rft1d</span><span class="o">.</span><span class="n">t</span><span class="o">.</span><span class="n">sf0d</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">],</span> <span class="mi">8</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">scipy</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">t</span><span class="o">.</span><span class="n">sf</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">],</span> <span class="mi">8</span><span class="p">)</span>
 </pre></div>
@@ -569,18 +569,18 @@ For cluster-specific probabilities use <strong>rft1d.t.p_cluster</strong></p>
 <dd><p>RFT inverse survival function.
 (see also the survival function: <strong>rft1d.chi2.sf</strong>)</p>
 <dl class="field-list">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><em>alpha</em> – upper tail probability (float;  0 &lt; alpha &lt; 1)</p>
 <p><em>df</em> – degrees of freedom (int or float)</p>
 <p><em>nodes</em> – number of field nodes (int)  OR a binary field (boolean array)</p>
 <p><em>FWHM</em> – field smoothness (float)</p>
 <p><em>withBonf</em> – use a Bonferroni correction if less severe than the RFT correction (bool)</p>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>Quantile corresponding to upper-tail probability alpha.
 Equivalently: critical threshold at a Type I error rate of alpha.</p>
 </dd>
-<dt class="field-odd">Examples</dt>
+<dt class="field-odd">Examples<span class="colon">:</span></dt>
 <dd class="field-odd"><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">rft1d</span><span class="o">.</span><span class="n">chi2</span><span class="o">.</span><span class="n">isf</span><span class="p">(</span><span class="mf">0.05</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">101</span><span class="p">,</span> <span class="mf">10.0</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -593,7 +593,7 @@ Equivalently: critical threshold at a Type I error rate of alpha.</p>
 <span class="sig-prename descclassname"><span class="pre">chi2.</span></span><span class="sig-name descname"><span class="pre">isf0d</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">alpha</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">df</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rft1d.distributions.chi2.isf0d" title="Permalink to this definition">¶</a></dt>
 <dd><p>Inverse survival function (0D);  equivalent to <strong>scipy.stats.chi2.isf</strong></p>
 <dl class="field-list">
-<dt class="field-odd">Examples</dt>
+<dt class="field-odd">Examples<span class="colon">:</span></dt>
 <dd class="field-odd"><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">rft1d</span><span class="o">.</span><span class="n">chi2</span><span class="o">.</span><span class="n">isf0d</span><span class="p">([</span><span class="mf">0.01</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">],</span> <span class="mi">8</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">scipy</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">chi2</span><span class="o">.</span><span class="n">isf</span><span class="p">([</span><span class="mf">0.01</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">],</span> <span class="mi">8</span><span class="p">)</span>
 </pre></div>
@@ -614,7 +614,7 @@ For set-specific probabilities use <strong>rft1d.chi2.p_set</strong></p>
 <p>The threshold <em>u</em> should generally be chosen objectively. One possibility is to calculate the <em>alpha</em>-based critical threshold using the inverse survival function: <strong>rft1d.chi2.isf</strong></p>
 </div>
 <dl class="field-list">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><em>k</em> – cluster extent (resels)</p>
 <p><em>u</em> – threshold</p>
 <p><em>df</em> – degrees of freedom (int or float)</p>
@@ -622,10 +622,10 @@ For set-specific probabilities use <strong>rft1d.chi2.p_set</strong></p>
 <p><em>FWHM</em> – field smoothness (float)</p>
 <p><em>withBonf</em> – use a Bonferroni correction if less severe than the RFT correction (bool)</p>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>Cluster-specific probability value.</p>
 </dd>
-<dt class="field-odd">Examples</dt>
+<dt class="field-odd">Examples<span class="colon">:</span></dt>
 <dd class="field-odd"><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">rft1d</span><span class="o">.</span><span class="n">chi2</span><span class="o">.</span><span class="n">p_cluster</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">3.0</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">101</span><span class="p">,</span> <span class="mf">15.0</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -646,7 +646,7 @@ For cluster-specific probabilities use <strong>rft1d.chi2.p_cluster</strong></p>
 <p>The threshold <em>u</em> should generally be chosen objectively. One possibility is to calculate the <em>alpha</em>-based critical threshold using the inverse survival function: <strong>rft1d.chi2.isf</strong></p>
 </div>
 <dl class="field-list">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><em>c</em> – number of upcrossings</p>
 <p><em>k</em> – minimum cluster extent (resels)</p>
 <p><em>u</em> – threshold</p>
@@ -655,10 +655,10 @@ For cluster-specific probabilities use <strong>rft1d.chi2.p_cluster</strong></p>
 <p><em>FWHM</em> – field smoothness (float)</p>
 <p><em>withBonf</em> – use a Bonferroni correction if less severe than the RFT correction (bool)</p>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>Set-specific probability value.</p>
 </dd>
-<dt class="field-odd">Examples</dt>
+<dt class="field-odd">Examples<span class="colon">:</span></dt>
 <dd class="field-odd"><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">rft1d</span><span class="o">.</span><span class="n">chi2</span><span class="o">.</span><span class="n">p_set</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">3.0</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">101</span><span class="p">,</span> <span class="mf">15.0</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -672,17 +672,17 @@ For cluster-specific probabilities use <strong>rft1d.chi2.p_cluster</strong></p>
 <dd><p>RFT survival function.</p>
 <p>Probability that 1D Gaussian fields with a smoothness <em>FWHM</em> would produce a 1D statistic field whose maximum exceeds <em>u</em>.</p>
 <dl class="field-list">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><em>u</em> – threshold (int, float, or sequence of int or float)</p>
 <p><em>df</em> – degrees of freedom (int or float)</p>
 <p><em>nodes</em> – number of field nodes (int)  OR a binary field (boolean array)</p>
 <p><em>FWHM</em> – field smoothness (float)</p>
 <p><em>withBonf</em> – use a Bonferroni correction if less severe than the RFT correction (bool)</p>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>The probability of exceeding the specified heights.</p>
 </dd>
-<dt class="field-odd">Examples</dt>
+<dt class="field-odd">Examples<span class="colon">:</span></dt>
 <dd class="field-odd"><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">rft1d</span><span class="o">.</span><span class="n">chi2</span><span class="o">.</span><span class="n">sf</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">],</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">101</span><span class="p">,</span> <span class="mf">10.0</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -695,7 +695,7 @@ For cluster-specific probabilities use <strong>rft1d.chi2.p_cluster</strong></p>
 <span class="sig-prename descclassname"><span class="pre">chi2.</span></span><span class="sig-name descname"><span class="pre">sf0d</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">u</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">df</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rft1d.distributions.chi2.sf0d" title="Permalink to this definition">¶</a></dt>
 <dd><p>Survival function (0D);  equivalent to <strong>scipy.stats.chi2.sf</strong></p>
 <dl class="field-list">
-<dt class="field-odd">Examples</dt>
+<dt class="field-odd">Examples<span class="colon">:</span></dt>
 <dd class="field-odd"><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">rft1d</span><span class="o">.</span><span class="n">chi2</span><span class="o">.</span><span class="n">sf0d</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">],</span> <span class="mi">8</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">scipy</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">chi2</span><span class="o">.</span><span class="n">sf</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">],</span> <span class="mi">8</span><span class="p">)</span>
 </pre></div>
@@ -713,18 +713,18 @@ For cluster-specific probabilities use <strong>rft1d.chi2.p_cluster</strong></p>
 <dd><p>RFT inverse survival function.
 (see also the survival function: <strong>rft1d.f.sf</strong>)</p>
 <dl class="field-list">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><em>alpha</em> – upper tail probability (float;  0 &lt; alpha &lt; 1)</p>
 <p><em>df</em> – degrees of freedom (two-tuple of int or float)</p>
 <p><em>nodes</em> – number of field nodes (int)  OR a binary field (boolean array)</p>
 <p><em>FWHM</em> – field smoothness (float)</p>
 <p><em>withBonf</em> – use a Bonferroni correction if less severe than the RFT correction (bool)</p>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>Quantile corresponding to upper-tail probability alpha.
 Equivalently: critical threshold at a Type I error rate of alpha.</p>
 </dd>
-<dt class="field-odd">Examples</dt>
+<dt class="field-odd">Examples<span class="colon">:</span></dt>
 <dd class="field-odd"><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">rft1d</span><span class="o">.</span><span class="n">f</span><span class="o">.</span><span class="n">isf</span><span class="p">(</span><span class="mf">0.05</span><span class="p">,</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">14</span><span class="p">),</span> <span class="mi">101</span><span class="p">,</span> <span class="mf">10.0</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -737,7 +737,7 @@ Equivalently: critical threshold at a Type I error rate of alpha.</p>
 <span class="sig-prename descclassname"><span class="pre">f.</span></span><span class="sig-name descname"><span class="pre">isf0d</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">alpha</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">df</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rft1d.distributions.f.isf0d" title="Permalink to this definition">¶</a></dt>
 <dd><p>Inverse survival function (0D);  equivalent to <strong>scipy.stats.f.isf</strong></p>
 <dl class="field-list">
-<dt class="field-odd">Examples</dt>
+<dt class="field-odd">Examples<span class="colon">:</span></dt>
 <dd class="field-odd"><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">rft1d</span><span class="o">.</span><span class="n">f</span><span class="o">.</span><span class="n">isf0d</span><span class="p">([</span><span class="mf">0.01</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">],</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">15</span><span class="p">))</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">scipy</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">f</span><span class="o">.</span><span class="n">isf</span><span class="p">([</span><span class="mf">0.01</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">],</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">21</span><span class="p">)</span>
 </pre></div>
@@ -758,7 +758,7 @@ For set-specific probabilities use <strong>rft1d.f.p_set</strong></p>
 <p>The threshold <em>u</em> should generally be chosen objectively. One possibility is to calculate the <em>alpha</em>-based critical threshold using the inverse survival function: <strong>rft1d.f.isf</strong></p>
 </div>
 <dl class="field-list">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><em>k</em> – cluster extent (resels)</p>
 <p><em>u</em> – threshold</p>
 <p><em>df</em> – degrees of freedom (two-tuple of int or float)</p>
@@ -766,10 +766,10 @@ For set-specific probabilities use <strong>rft1d.f.p_set</strong></p>
 <p><em>FWHM</em> – field smoothness (float)</p>
 <p><em>withBonf</em> – use a Bonferroni correction if less severe than the RFT correction (bool)</p>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>Cluster-specific probability value.</p>
 </dd>
-<dt class="field-odd">Examples</dt>
+<dt class="field-odd">Examples<span class="colon">:</span></dt>
 <dd class="field-odd"><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">rft1d</span><span class="o">.</span><span class="n">f</span><span class="o">.</span><span class="n">p_cluster</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">3.0</span><span class="p">,</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">14</span><span class="p">),</span> <span class="mi">101</span><span class="p">,</span> <span class="mf">15.0</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -790,7 +790,7 @@ For cluster-specific probabilities use <strong>rft1d.f.p_cluster</strong></p>
 <p>The threshold <em>u</em> should generally be chosen objectively. One possibility is to calculate the <em>alpha</em>-based critical threshold using the inverse survival function: <strong>rft1d.f.isf</strong></p>
 </div>
 <dl class="field-list">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><em>c</em> – number of upcrossings</p>
 <p><em>k</em> – minimum cluster extent (resels)</p>
 <p><em>u</em> – threshold</p>
@@ -799,10 +799,10 @@ For cluster-specific probabilities use <strong>rft1d.f.p_cluster</strong></p>
 <p><em>FWHM</em> – field smoothness (float)</p>
 <p><em>withBonf</em> – use a Bonferroni correction if less severe than the RFT correction (bool)</p>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>Set-specific probability value.</p>
 </dd>
-<dt class="field-odd">Examples</dt>
+<dt class="field-odd">Examples<span class="colon">:</span></dt>
 <dd class="field-odd"><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">rft1d</span><span class="o">.</span><span class="n">f</span><span class="o">.</span><span class="n">p_set</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">3.0</span><span class="p">,</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">14</span><span class="p">),</span> <span class="mi">101</span><span class="p">,</span> <span class="mf">15.0</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -816,17 +816,17 @@ For cluster-specific probabilities use <strong>rft1d.f.p_cluster</strong></p>
 <dd><p>RFT survival function.</p>
 <p>Probability that 1D Gaussian fields with a smoothness <em>FWHM</em> would produce a 1D statistic field whose maximum exceeds <em>u</em>.</p>
 <dl class="field-list">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><em>u</em> – threshold (int, float, or sequence of int or float)</p>
 <p><em>df</em> – degrees of freedom (two-tuple of int or float)</p>
 <p><em>nodes</em> – number of field nodes (int)  OR a binary field (boolean array)</p>
 <p><em>FWHM</em> – field smoothness (float)</p>
 <p><em>withBonf</em> – use a Bonferroni correction if less severe than the RFT correction (bool)</p>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>The probability of exceeding the specified heights.</p>
 </dd>
-<dt class="field-odd">Examples</dt>
+<dt class="field-odd">Examples<span class="colon">:</span></dt>
 <dd class="field-odd"><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">rft1d</span><span class="o">.</span><span class="n">f</span><span class="o">.</span><span class="n">sf</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">],</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">14</span><span class="p">),</span> <span class="mi">101</span><span class="p">,</span> <span class="mf">10.0</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -839,7 +839,7 @@ For cluster-specific probabilities use <strong>rft1d.f.p_cluster</strong></p>
 <span class="sig-prename descclassname"><span class="pre">f.</span></span><span class="sig-name descname"><span class="pre">sf0d</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">u</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">df</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rft1d.distributions.f.sf0d" title="Permalink to this definition">¶</a></dt>
 <dd><p>Survival function (0D);  equivalent to <strong>scipy.stats.f.sf</strong></p>
 <dl class="field-list">
-<dt class="field-odd">Examples</dt>
+<dt class="field-odd">Examples<span class="colon">:</span></dt>
 <dd class="field-odd"><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">rft1d</span><span class="o">.</span><span class="n">f</span><span class="o">.</span><span class="n">sf0d</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">],</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">15</span><span class="p">))</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">scipy</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">f</span><span class="o">.</span><span class="n">sf</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">],</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">21</span><span class="p">)</span>
 </pre></div>
@@ -857,18 +857,18 @@ For cluster-specific probabilities use <strong>rft1d.f.p_cluster</strong></p>
 <dd><p>RFT inverse survival function.
 (see also the survival function: <strong>rft1d.T2.sf</strong>)</p>
 <dl class="field-list">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><em>alpha</em> – upper tail probability (float;  0 &lt; alpha &lt; 1)</p>
 <p><em>df</em> – degrees of freedom (two-tuple of int or float)</p>
 <p><em>nodes</em> – number of field nodes (int)  OR a binary field (boolean array)</p>
 <p><em>FWHM</em> – field smoothness (float)</p>
 <p><em>withBonf</em> – use a Bonferroni correction if less severe than the RFT correction (bool)</p>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>Quantile corresponding to upper-tail probability alpha.
 Equivalently: critical threshold at a Type I error rate of alpha.</p>
 </dd>
-<dt class="field-odd">Examples</dt>
+<dt class="field-odd">Examples<span class="colon">:</span></dt>
 <dd class="field-odd"><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">rft1d</span><span class="o">.</span><span class="n">T2</span><span class="o">.</span><span class="n">isf</span><span class="p">(</span><span class="mf">0.05</span><span class="p">,</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">14</span><span class="p">),</span> <span class="mi">101</span><span class="p">,</span> <span class="mf">10.0</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -882,7 +882,7 @@ Equivalently: critical threshold at a Type I error rate of alpha.</p>
 <dd><p>0D inverse survival function for the Hotelling’s T2 distribution
 (not implemented in <strong>scipy.stats</strong>)</p>
 <dl class="field-list">
-<dt class="field-odd">Examples</dt>
+<dt class="field-odd">Examples<span class="colon">:</span></dt>
 <dd class="field-odd"><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">rft1d</span><span class="o">.</span><span class="n">T2</span><span class="o">.</span><span class="n">isf0d</span><span class="p">(</span><span class="mf">0.05</span><span class="p">,</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">14</span><span class="p">))</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">rft1d</span><span class="o">.</span><span class="n">T2</span><span class="o">.</span><span class="n">isf0d</span><span class="p">([</span><span class="mf">0.01</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.10</span><span class="p">],</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">14</span><span class="p">))</span>
 </pre></div>
@@ -903,7 +903,7 @@ For set-specific probabilities use <strong>rft1d.T2.p_set</strong></p>
 <p>The threshold <em>u</em> should generally be chosen objectively. One possibility is to calculate the <em>alpha</em>-based critical threshold using the inverse survival function: <strong>rft1d.T2.isf</strong></p>
 </div>
 <dl class="field-list">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><em>k</em> – cluster extent (resels)</p>
 <p><em>u</em> – threshold</p>
 <p><em>df</em> – degrees of freedom (two-tuple of int or float)</p>
@@ -911,10 +911,10 @@ For set-specific probabilities use <strong>rft1d.T2.p_set</strong></p>
 <p><em>FWHM</em> – field smoothness (float)</p>
 <p><em>withBonf</em> – use a Bonferroni correction if less severe than the RFT correction (bool)</p>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>Cluster-specific probability value.</p>
 </dd>
-<dt class="field-odd">Examples</dt>
+<dt class="field-odd">Examples<span class="colon">:</span></dt>
 <dd class="field-odd"><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">rft1d</span><span class="o">.</span><span class="n">T2</span><span class="o">.</span><span class="n">p_cluster</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">3.0</span><span class="p">,</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">14</span><span class="p">),</span> <span class="mi">101</span><span class="p">,</span> <span class="mf">15.0</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -935,7 +935,7 @@ For cluster-specific probabilities use <strong>rft1d.T2.p_cluster</strong></p>
 <p>The threshold <em>u</em> should generally be chosen objectively. One possibility is to calculate the <em>alpha</em>-based critical threshold using the inverse survival function: <strong>rft1d.T2.isf</strong></p>
 </div>
 <dl class="field-list">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><em>c</em> – number of upcrossings</p>
 <p><em>k</em> – minimum cluster extent (resels)</p>
 <p><em>u</em> – threshold</p>
@@ -944,10 +944,10 @@ For cluster-specific probabilities use <strong>rft1d.T2.p_cluster</strong></p>
 <p><em>FWHM</em> – field smoothness (float)</p>
 <p><em>withBonf</em> – use a Bonferroni correction if less severe than the RFT correction (bool)</p>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>Set-specific probability value.</p>
 </dd>
-<dt class="field-odd">Examples</dt>
+<dt class="field-odd">Examples<span class="colon">:</span></dt>
 <dd class="field-odd"><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">rft1d</span><span class="o">.</span><span class="n">T2</span><span class="o">.</span><span class="n">p_set</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">3.0</span><span class="p">,</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">14</span><span class="p">),</span> <span class="mi">101</span><span class="p">,</span> <span class="mf">15.0</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -961,17 +961,17 @@ For cluster-specific probabilities use <strong>rft1d.T2.p_cluster</strong></p>
 <dd><p>RFT survival function.</p>
 <p>Probability that 1D Gaussian fields with a smoothness <em>FWHM</em> would produce a 1D statistic field whose maximum exceeds <em>u</em>.</p>
 <dl class="field-list">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><em>u</em> – threshold (int, float, or sequence of int or float)</p>
 <p><em>df</em> – degrees of freedom (two-tuple of int or float)</p>
 <p><em>nodes</em> – number of field nodes (int)  OR a binary field (boolean array)</p>
 <p><em>FWHM</em> – field smoothness (float)</p>
 <p><em>withBonf</em> – use a Bonferroni correction if less severe than the RFT correction (bool)</p>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>The probability of exceeding the specified heights.</p>
 </dd>
-<dt class="field-odd">Examples</dt>
+<dt class="field-odd">Examples<span class="colon">:</span></dt>
 <dd class="field-odd"><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">rft1d</span><span class="o">.</span><span class="n">T2</span><span class="o">.</span><span class="n">sf</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">],</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">14</span><span class="p">),</span> <span class="mi">101</span><span class="p">,</span> <span class="mf">10.0</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -985,7 +985,7 @@ For cluster-specific probabilities use <strong>rft1d.T2.p_cluster</strong></p>
 <dd><p>0D survival function for the Hotelling’s T2 distribution
 (not implemented in <strong>scipy.stats</strong>)</p>
 <dl class="field-list">
-<dt class="field-odd">Examples</dt>
+<dt class="field-odd">Examples<span class="colon">:</span></dt>
 <dd class="field-odd"><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">rft1d</span><span class="o">.</span><span class="n">T2</span><span class="o">.</span><span class="n">sf0d</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">],</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">14</span><span class="p">))</span>
 </pre></div>
 </div>
@@ -1035,10 +1035,8 @@ For cluster-specific probabilities use <strong>rft1d.T2.p_cluster</strong></p>
         };
     </script>
       <script type="text/javascript" src="../_static/documentation_options.js"></script>
-      <script type="text/javascript" src="../_static/jquery.js"></script>
-      <script type="text/javascript" src="../_static/underscore.js"></script>
-      <script type="text/javascript" src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
       <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="../_static/sphinx_highlight.js"></script>
 
   
 

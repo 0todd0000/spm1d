@@ -68,7 +68,7 @@
 		
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -139,7 +139,7 @@
 		
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -197,20 +197,10 @@ They can thus be visualized easily using <strong>matplotlib</strong>:</p>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">pyplot</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">y</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>(<a class="reference external" href="../Examples/Basic-1.py">Source code</a>, <a class="reference external" href="../Examples/Basic-1.png">png</a>, <a class="reference external" href="../Examples/Basic-1.hires.png">hires.png</a>, <a class="reference external" href="../Examples/Basic-1.pdf">pdf</a>)</p>
+<p>(<a class="reference download internal" download="" href="../_downloads/a62c8aca04e2e186ef8f579a50719f18/Basic-1.py"><code class="xref download docutils literal notranslate"><span class="pre">Source</span> <span class="pre">code</span></code></a>, <a class="reference download internal" download="" href="../_downloads/cd0f3a30887adab9ab39d757c207646e/Basic-1.png"><code class="xref download docutils literal notranslate"><span class="pre">png</span></code></a>, <a class="reference download internal" download="" href="../_downloads/7759dd150d411038f1c7111b99da227c/Basic-1.hires.png"><code class="xref download docutils literal notranslate"><span class="pre">hires.png</span></code></a>, <a class="reference download internal" download="" href="../_downloads/47cab64fbc2bad09e5d5df77b89cadba/Basic-1.pdf"><code class="xref download docutils literal notranslate"><span class="pre">pdf</span></code></a>)</p>
 <figure class="align-default">
 <img alt="../_images/Basic-1.png" class="plot-directive" src="../_images/Basic-1.png" />
 </figure>
-<p>To precisely reproduce partcular random fields, use <strong>np.random.seed</strong>:</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">rft1d</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">yA</span> <span class="o">=</span> <span class="n">rft1d</span><span class="o">.</span><span class="n">randn1d</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">101</span><span class="p">,</span> <span class="mf">20.0</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">yB</span> <span class="o">=</span> <span class="n">rft1d</span><span class="o">.</span><span class="n">randn1d</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">101</span><span class="p">,</span> <span class="mf">20.0</span><span class="p">)</span>  <span class="c1">#yB and yA are different</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">yC</span> <span class="o">=</span> <span class="n">rft1d</span><span class="o">.</span><span class="n">randn1d</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">101</span><span class="p">,</span> <span class="mf">20.0</span><span class="p">)</span>  <span class="c1">#yC and yA are identical</span>
-</pre></div>
-</div>
 <p>If simulating random fields over many iterations the <strong>rft1d.Generator1D</strong> is slightly faster:</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">g</span> <span class="o">=</span> <span class="n">rft1d</span><span class="o">.</span><span class="n">Generator1D</span><span class="p">(</span><span class="n">nResponses</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">nNodes</span><span class="o">=</span><span class="mi">101</span><span class="p">,</span> <span class="n">FWHM</span><span class="o">=</span><span class="mf">10.0</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">yA</span> <span class="o">=</span> <span class="n">g</span><span class="o">.</span><span class="n">generate_array</span><span class="p">()</span>
@@ -220,7 +210,7 @@ They can thus be visualized easily using <strong>matplotlib</strong>:</p>
 </div>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p>Generating very smooth random fields requires field padding to adhere to RFT expectations. This can be done easily using the <em>pad</em> keyword argument, but this becomes increasingly slow as FWHM increases. By default <em>pad</em> is False.</p>
+<p>Generating very smooth random fields requires field padding to adhere to RFT expectations. This can be done easily using the <em>pad</em> keyword argument, but this becomes increasingly slow as FWHM increases.</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">y</span> <span class="o">=</span> <span class="n">rft1d</span><span class="o">.</span><span class="n">randn1d</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">101</span><span class="p">,</span> <span class="mf">80.0</span><span class="p">,</span> <span class="n">pad</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">g</span> <span class="o">=</span> <span class="n">rft1d</span><span class="o">.</span><span class="n">Generator1D</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">101</span><span class="p">,</span> <span class="mf">80.0</span><span class="p">,</span> <span class="n">pad</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">y</span> <span class="o">=</span> <span class="n">g</span><span class="o">.</span><span class="n">generate_array</span><span class="p">()</span>
@@ -228,10 +218,23 @@ They can thus be visualized easily using <strong>matplotlib</strong>:</p>
 </div>
 </div>
 <p>Increasing the FWHM in this manner yields much smoother fields; below is an example of FWHM=80.0.</p>
-<p>(<a class="reference external" href="../Examples/Basic-2.py">Source code</a>, <a class="reference external" href="../Examples/Basic-2.png">png</a>, <a class="reference external" href="../Examples/Basic-2.hires.png">hires.png</a>, <a class="reference external" href="../Examples/Basic-2.pdf">pdf</a>)</p>
+<p>(<a class="reference download internal" download="" href="../_downloads/589d3ba2128cf89fef025872067a44a1/Basic-2.py"><code class="xref download docutils literal notranslate"><span class="pre">Source</span> <span class="pre">code</span></code></a>, <a class="reference download internal" download="" href="../_downloads/f6b7bf46890d61f3d1e64e461fc33f50/Basic-2.png"><code class="xref download docutils literal notranslate"><span class="pre">png</span></code></a>, <a class="reference download internal" download="" href="../_downloads/8e36e59e506186ef097ea0253597c69b/Basic-2.hires.png"><code class="xref download docutils literal notranslate"><span class="pre">hires.png</span></code></a>, <a class="reference download internal" download="" href="../_downloads/0e850bbc173a8c666847c545e1953098/Basic-2.pdf"><code class="xref download docutils literal notranslate"><span class="pre">pdf</span></code></a>)</p>
 <figure class="align-default">
 <img alt="../_images/Basic-2.png" class="plot-directive" src="../_images/Basic-2.png" />
 </figure>
+</section>
+<section id="reproducing-1d-gaussian-fields">
+<span id="label-examples-reproducinggaussianfields"></span><h2>Reproducing 1D Gaussian fields<a class="headerlink" href="#reproducing-1d-gaussian-fields" title="Permalink to this heading">¶</a></h2>
+<p>To precisely reproduce partcular random fields, use <strong>np.random.seed</strong>:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">rft1d</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">rft1d</span><span class="o">.</span><span class="n">randn1d</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">101</span><span class="p">,</span> <span class="mf">20.0</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">b</span> <span class="o">=</span> <span class="n">rft1d</span><span class="o">.</span><span class="n">randn1d</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">101</span><span class="p">,</span> <span class="mf">20.0</span><span class="p">)</span>  <span class="c1"># a and b are different</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">c</span> <span class="o">=</span> <span class="n">rft1d</span><span class="o">.</span><span class="n">randn1d</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">101</span><span class="p">,</span> <span class="mf">20.0</span><span class="p">)</span>  <span class="c1"># a and c are identical</span>
+</pre></div>
+</div>
 </section>
 <section id="node-based-vs-element-based-sampling">
 <span id="label-nodebasedelementbased"></span><h2>Node-based vs. element-based sampling<a class="headerlink" href="#node-based-vs-element-based-sampling" title="Permalink to this heading">¶</a></h2>
@@ -240,7 +243,7 @@ As suggested by the figure below, node-based sampling refers to discrete measure
 at single instants in time or at single points in space. Element-based sampling, on
 the other hand, refers to measurements that span an interval.</p>
 <blockquote>
-<div><p>(<a class="reference external" href="../Examples/Basic-3.py">Source code</a>, <a class="reference external" href="../Examples/Basic-3.png">png</a>, <a class="reference external" href="../Examples/Basic-3.hires.png">hires.png</a>, <a class="reference external" href="../Examples/Basic-3.pdf">pdf</a>)</p>
+<div><p>(<a class="reference download internal" download="" href="../_downloads/8bb03fde1d57a2e8ce2c3135237465e3/Basic-3.py"><code class="xref download docutils literal notranslate"><span class="pre">Source</span> <span class="pre">code</span></code></a>, <a class="reference download internal" download="" href="../_downloads/b42ba9b74f93d4febfbefe078f232c53/Basic-3.png"><code class="xref download docutils literal notranslate"><span class="pre">png</span></code></a>, <a class="reference download internal" download="" href="../_downloads/f26721507a89af3a2fa41af5e02877e5/Basic-3.hires.png"><code class="xref download docutils literal notranslate"><span class="pre">hires.png</span></code></a>, <a class="reference download internal" download="" href="../_downloads/b2a4e4e46552a8f4eadc8744e20c52ec/Basic-3.pdf"><code class="xref download docutils literal notranslate"><span class="pre">pdf</span></code></a>)</p>
 <figure class="align-default">
 <img alt="../_images/Basic-3.png" class="plot-directive" src="../_images/Basic-3.png" />
 </figure>
@@ -272,7 +275,7 @@ the other hand, refers to measurements that span an interval.</p>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">pyplot</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">ymax</span><span class="p">,</span> <span class="s1">&#39;ro&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>(<a class="reference external" href="../Examples/Basic-4.py">Source code</a>, <a class="reference external" href="../Examples/Basic-4.png">png</a>, <a class="reference external" href="../Examples/Basic-4.hires.png">hires.png</a>, <a class="reference external" href="../Examples/Basic-4.pdf">pdf</a>)</p>
+<p>(<a class="reference download internal" download="" href="../_downloads/b6b8bb0fe7c3eb907ebec1948ca4ad74/Basic-4.py"><code class="xref download docutils literal notranslate"><span class="pre">Source</span> <span class="pre">code</span></code></a>, <a class="reference download internal" download="" href="../_downloads/08f0f510d55ebcba0f1ce65d86cb597d/Basic-4.png"><code class="xref download docutils literal notranslate"><span class="pre">png</span></code></a>, <a class="reference download internal" download="" href="../_downloads/4258d76c669d04df60060921a0358398/Basic-4.hires.png"><code class="xref download docutils literal notranslate"><span class="pre">hires.png</span></code></a>, <a class="reference download internal" download="" href="../_downloads/e3767820a06be2f2df4347e7c9c80a93/Basic-4.pdf"><code class="xref download docutils literal notranslate"><span class="pre">pdf</span></code></a>)</p>
 <figure class="align-default">
 <img alt="../_images/Basic-4.png" class="plot-directive" src="../_images/Basic-4.png" />
 </figure>
@@ -280,12 +283,12 @@ the other hand, refers to measurements that span an interval.</p>
 <section id="computing-upcrossing-metrics">
 <span id="label-examples-computingupcrossingmetrics"></span><h2>Computing upcrossing metrics<a class="headerlink" href="#computing-upcrossing-metrics" title="Permalink to this heading">¶</a></h2>
 <p>Consider the following random field thresholded at a height of -0.2, for which there are three upcrossings.</p>
-<p>(<a class="reference external" href="../Examples/Basic-5.py">Source code</a>, <a class="reference external" href="../Examples/Basic-5.png">png</a>, <a class="reference external" href="../Examples/Basic-5.hires.png">hires.png</a>, <a class="reference external" href="../Examples/Basic-5.pdf">pdf</a>)</p>
+<p>(<a class="reference download internal" download="" href="../_downloads/4dce999debbb4f359486f0b4315c7bed/Basic-5.py"><code class="xref download docutils literal notranslate"><span class="pre">Source</span> <span class="pre">code</span></code></a>, <a class="reference download internal" download="" href="../_downloads/fe0baacbbce9403bbb58fd015aedafc8/Basic-5.png"><code class="xref download docutils literal notranslate"><span class="pre">png</span></code></a>, <a class="reference download internal" download="" href="../_downloads/2ebb3b673a54e09bd472dcafd9d4fef9/Basic-5.hires.png"><code class="xref download docutils literal notranslate"><span class="pre">hires.png</span></code></a>, <a class="reference download internal" download="" href="../_downloads/8a3cdc84cb50892d4e16dcb586c3b5fd/Basic-5.pdf"><code class="xref download docutils literal notranslate"><span class="pre">pdf</span></code></a>)</p>
 <figure class="align-default">
 <img alt="../_images/Basic-5.png" class="plot-directive" src="../_images/Basic-5.png" />
 </figure>
 <p>Let’s zoom in on the first upcrossing to give a clearer context to upcrossing metric results below.</p>
-<p>(<a class="reference external" href="../Examples/Basic-6.py">Source code</a>, <a class="reference external" href="../Examples/Basic-6.png">png</a>, <a class="reference external" href="../Examples/Basic-6.hires.png">hires.png</a>, <a class="reference external" href="../Examples/Basic-6.pdf">pdf</a>)</p>
+<p>(<a class="reference download internal" download="" href="../_downloads/7d5505f3be1bf6e65c1397e61307d7b9/Basic-6.py"><code class="xref download docutils literal notranslate"><span class="pre">Source</span> <span class="pre">code</span></code></a>, <a class="reference download internal" download="" href="../_downloads/3ee2704a49ff9b37f7ed2e7951d9f952/Basic-6.png"><code class="xref download docutils literal notranslate"><span class="pre">png</span></code></a>, <a class="reference download internal" download="" href="../_downloads/e3e36a6927bf35adf03b6b45cc29a84b/Basic-6.hires.png"><code class="xref download docutils literal notranslate"><span class="pre">hires.png</span></code></a>, <a class="reference download internal" download="" href="../_downloads/e7d634f9784070bb04adb8041cbd6ba0/Basic-6.pdf"><code class="xref download docutils literal notranslate"><span class="pre">pdf</span></code></a>)</p>
 <figure class="align-default">
 <img alt="../_images/Basic-6.png" class="plot-directive" src="../_images/Basic-6.png" />
 </figure>
@@ -361,7 +364,7 @@ a height of 2.0 than is a 0D Gaussian scalar.</p>
 <p>The figure below depicts a validation for the
 expected number of upcrossings in Gaussian fields with FWHM=10. Click on the
 “source code” link below to see details.</p>
-<p>(<a class="reference external" href="../pyplots/fig_val_nUpcrossings.py">Source code</a>, <a class="reference external" href="../pyplots/fig_val_nUpcrossings.png">png</a>, <a class="reference external" href="../pyplots/fig_val_nUpcrossings.hires.png">hires.png</a>, <a class="reference external" href="../pyplots/fig_val_nUpcrossings.pdf">pdf</a>)</p>
+<p>(<a class="reference download internal" download="" href="../_downloads/c623af20ac2f1560d835610d7a0f0b06/fig_val_nUpcrossings.py"><code class="xref download docutils literal notranslate"><span class="pre">Source</span> <span class="pre">code</span></code></a>, <a class="reference download internal" download="" href="../_downloads/6921d6bbc8c2f976c042afe07332475a/fig_val_nUpcrossings.png"><code class="xref download docutils literal notranslate"><span class="pre">png</span></code></a>, <a class="reference download internal" download="" href="../_downloads/c6c179250a3dba295f5c187d03d864d4/fig_val_nUpcrossings.hires.png"><code class="xref download docutils literal notranslate"><span class="pre">hires.png</span></code></a>, <a class="reference download internal" download="" href="../_downloads/b10e260b6c4b8d2dc80f052e91e5287c/fig_val_nUpcrossings.pdf"><code class="xref download docutils literal notranslate"><span class="pre">pdf</span></code></a>)</p>
 <figure class="align-default">
 <img alt="../_images/fig_val_nUpcrossings.png" class="plot-directive" src="../_images/fig_val_nUpcrossings.png" />
 </figure>
@@ -407,10 +410,8 @@ expected number of upcrossings in Gaussian fields with FWHM=10. Click on the
         };
     </script>
       <script type="text/javascript" src="../_static/documentation_options.js"></script>
-      <script type="text/javascript" src="../_static/jquery.js"></script>
-      <script type="text/javascript" src="../_static/underscore.js"></script>
-      <script type="text/javascript" src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
       <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="../_static/sphinx_highlight.js"></script>
 
   
 

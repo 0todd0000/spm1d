@@ -33,18 +33,6 @@ They can thus be visualized easily using **matplotlib**:
 	pyplot.plot(y.T)
 	pyplot.plot([0,100],[0,0],'k:')
 
-
-To precisely reproduce partcular random fields, use **np.random.seed**:
-
->>> import numpy as np
->>> import rft1d
->>> np.random.seed(0)
->>> yA = rft1d.randn1d(5, 101, 20.0)
->>> yB = rft1d.randn1d(5, 101, 20.0)  #yB and yA are different
->>> np.random.seed(0)
->>> yC = rft1d.randn1d(5, 101, 20.0)  #yC and yA are identical
-
-
 If simulating random fields over many iterations the **rft1d.Generator1D** is slightly faster:
 
 >>> g = rft1d.Generator1D(nResponses=8, nNodes=101, FWHM=10.0)
@@ -53,7 +41,7 @@ If simulating random fields over many iterations the **rft1d.Generator1D** is sl
 >>> yC = g.generate_array()
 
 
-.. warning:: Generating very smooth random fields requires field padding to adhere to RFT expectations. This can be done easily using the *pad* keyword argument, but this becomes increasingly slow as FWHM increases. By default *pad* is False.
+.. warning:: Generating very smooth random fields requires field padding to adhere to RFT expectations. This can be done easily using the *pad* keyword argument, but this becomes increasingly slow as FWHM increases.
 
 	>>> y = rft1d.randn1d(5, 101, 80.0, pad=True)
 	>>> g = rft1d.Generator1D(5, 101, 80.0, pad=True)
@@ -72,6 +60,24 @@ Increasing the FWHM in this manner yields much smoother fields; below is an exam
 	pyplot.figure(figsize=(5,3))
 	pyplot.plot(y.T)
 	pyplot.plot([0,100],[0,0],'k:')
+
+
+.. _label-Examples-ReproducingGaussianFields:
+
+Reproducing 1D Gaussian fields
+-------------------------------------------
+
+To precisely reproduce partcular random fields, use **np.random.seed**:
+
+>>> import numpy as np
+>>> import rft1d
+>>> np.random.seed(0)
+>>> a = rft1d.randn1d(5, 101, 20.0)
+>>> b = rft1d.randn1d(5, 101, 20.0)  # a and b are different
+>>> np.random.seed(0)
+>>> c = rft1d.randn1d(5, 101, 20.0)  # a and c are identical
+
+
 
 
 .. _label-NodeBasedElementBased:

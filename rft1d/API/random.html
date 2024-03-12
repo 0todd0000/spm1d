@@ -68,7 +68,7 @@
 		
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -139,7 +139,7 @@
 		
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -193,16 +193,16 @@ it may be more efficient to use the <strong>Generator1D</strong> and <strong>Gen
 <span class="sig-prename descclassname"><span class="pre">rft1d.random.</span></span><span class="sig-name descname"><span class="pre">randn1d</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">nResponses</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nodes</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">FWHM</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pad</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rft1d.random.randn1d" title="Permalink to this definition">¶</a></dt>
 <dd><p>Generate smooth Gaussian random fields.</p>
 <dl class="field-list">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><em>nResponses</em> – number of fields (int)</p>
 <p><em>nodes</em> – number of field nodes (int) OR a binary field (boolean array)</p>
 <p><em>FWHM</em> – field smoothness (float)</p>
 <p><em>pad</em> – pad prior to smoothing (bool)</p>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>A 2D numpy array with shape:  (<em>nResponses</em>, <em>nodes</em>)</p>
 </dd>
-<dt class="field-odd">Examples</dt>
+<dt class="field-odd">Examples<span class="colon">:</span></dt>
 <dd class="field-odd"><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">y</span> <span class="o">=</span> <span class="n">rft1d</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn1d</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">101</span><span class="p">,</span> <span class="mf">15.0</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">y</span> <span class="o">=</span> <span class="n">rft1d</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn1d</span><span class="p">(</span><span class="mi">1000</span><span class="p">,</span> <span class="mi">101</span><span class="p">,</span> <span class="mf">75.0</span><span class="p">,</span> <span class="n">pad</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
@@ -223,7 +223,7 @@ it may be more efficient to use the <strong>Generator1D</strong> and <strong>Gen
 <span class="sig-prename descclassname"><span class="pre">rft1d.random.</span></span><span class="sig-name descname"><span class="pre">multirandn1d</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">nResponses</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nodes</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nComponents</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">FWHM</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">W</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pad</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rft1d.random.multirandn1d" title="Permalink to this definition">¶</a></dt>
 <dd><p>Generate smooth Gaussian multivariate random fields.</p>
 <dl class="field-list">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><em>nResponses</em> – number of fields (int)</p>
 <p><em>nodes</em> – number of field nodes (int) OR a binary field (boolean array)</p>
 <p><em>nComponents</em> – number of vector components (int)</p>
@@ -231,16 +231,16 @@ it may be more efficient to use the <strong>Generator1D</strong> and <strong>Gen
 <p><em>W</em> – covariance matrix (<em>nComponents</em> x <em>nComponents</em> array)</p>
 <p><em>pad</em> – pad prior to smoothing (bool)</p>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>A 3D numpy array with shape:  (<em>nResponses</em>, <em>nodes</em>, <em>nComponents</em>)</p>
 </dd>
-<dt class="field-odd">Notes</dt>
+<dt class="field-odd">Notes<span class="colon">:</span></dt>
 <dd class="field-odd"><ol class="arabic simple">
 <li><p>The default <em>W</em> is the identity matrix.</p></li>
 <li><p>Padding is slow but necessary when 2 <em>FWHM</em> &gt; <em>nodes</em></p></li>
 </ol>
 </dd>
-<dt class="field-even">Examples</dt>
+<dt class="field-even">Examples<span class="colon">:</span></dt>
 <dd class="field-even"><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">y</span> <span class="o">=</span> <span class="n">rft1d</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">multirandn1d</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">101</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mf">15.0</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">y</span> <span class="o">=</span> <span class="n">rft1d</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">multirandn1d</span><span class="p">(</span><span class="mi">1000</span><span class="p">,</span> <span class="mi">101</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mf">65.0</span><span class="p">,</span> <span class="n">W</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="mi">5</span><span class="p">),</span> <span class="n">pad</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
@@ -257,21 +257,21 @@ it may be more efficient to use the <strong>Generator1D</strong> and <strong>Gen
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">rft1d.random.</span></span><span class="sig-name descname"><span class="pre">Generator1D</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">nResponses</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nodes</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">101</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">FWHM</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pad</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rft1d.random.Generator1D" title="Permalink to this definition">¶</a></dt>
 <dd><p>Generator of smooth Gaussian random fields.</p>
 <dl class="field-list">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><em>nResponses</em> – number of fields (int)</p>
 <p><em>nodes</em> – number of field nodes (int) OR a binary field (boolean array)</p>
 <p><em>FWHM</em> – field smoothness (float)</p>
 <p><em>pad</em> – pad prior to smoothing (bool)</p>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>A Generator1D object</p>
 </dd>
-<dt class="field-odd">Notes</dt>
+<dt class="field-odd">Notes<span class="colon">:</span></dt>
 <dd class="field-odd"><ol class="arabic simple">
 <li><p>Generator1D is faster than randn1d for iteratively generating many random samples.</p></li>
 </ol>
 </dd>
-<dt class="field-even">Examples</dt>
+<dt class="field-even">Examples<span class="colon">:</span></dt>
 <dd class="field-even"><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">g</span> <span class="o">=</span> <span class="n">rft1d</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">Generator1D</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">101</span><span class="p">,</span> <span class="mf">15.0</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">y</span> <span class="o">=</span> <span class="n">g</span><span class="o">.</span><span class="n">generate_sample</span><span class="p">()</span>
 </pre></div>
@@ -288,7 +288,7 @@ it may be more efficient to use the <strong>Generator1D</strong> and <strong>Gen
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">rft1d.random.</span></span><span class="sig-name descname"><span class="pre">GeneratorMulti1D</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">nResponses</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nodes</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">101</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nComponents</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">FWHM</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">W</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pad</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rft1d.random.GeneratorMulti1D" title="Permalink to this definition">¶</a></dt>
 <dd><p>Generator of smooth multivariate Gaussian random fields.</p>
 <dl class="field-list">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><em>nResponses</em> – number of fields (int)</p>
 <p><em>nodes</em> – number of field nodes (int) OR a binary field (boolean array)</p>
 <p><em>nComponents</em> – number of vector components (int)</p>
@@ -296,15 +296,15 @@ it may be more efficient to use the <strong>Generator1D</strong> and <strong>Gen
 <p><em>W</em> – covariance matrix (<em>nComponents</em> x <em>nComponents</em> array)</p>
 <p><em>pad</em> – pad prior to smoothing (bool)</p>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>A GeneratorMulti1D object</p>
 </dd>
-<dt class="field-odd">Notes</dt>
+<dt class="field-odd">Notes<span class="colon">:</span></dt>
 <dd class="field-odd"><ol class="arabic simple">
 <li><p>GeneratorMulti1D is faster than multirandn1d for iteratively generating many random samples.</p></li>
 </ol>
 </dd>
-<dt class="field-even">Examples</dt>
+<dt class="field-even">Examples<span class="colon">:</span></dt>
 <dd class="field-even"><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">g</span> <span class="o">=</span> <span class="n">rft1d</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">GeneratorMulti1D</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">101</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mf">15.0</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">y</span> <span class="o">=</span> <span class="n">g</span><span class="o">.</span><span class="n">generate_sample</span><span class="p">()</span>
 </pre></div>
@@ -355,10 +355,8 @@ it may be more efficient to use the <strong>Generator1D</strong> and <strong>Gen
         };
     </script>
       <script type="text/javascript" src="../_static/documentation_options.js"></script>
-      <script type="text/javascript" src="../_static/jquery.js"></script>
-      <script type="text/javascript" src="../_static/underscore.js"></script>
-      <script type="text/javascript" src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
       <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="../_static/sphinx_highlight.js"></script>
 
   
 
