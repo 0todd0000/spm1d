@@ -116,9 +116,9 @@ Workshop Slides
 Future Workshops
 ---------------------------
 
-2023-05-03 (**Antwerp, Belgium**)
+2024-07-15 (**Salzburg, Austria**) @ ISBS-2024
 
-`Click here to register <https://faber.kuleuven.be/nl/lll/aanbod/03-05-2023_SPM>`_
+`Click here to register for ISBS-2024 <https://isbs.org/isbs-2024/individual-registration>`_
 
 |
 |
@@ -126,6 +126,8 @@ Future Workshops
 
 Previous Workshops
 ---------------------------
+
+2023-05-03 (**Antwerp, Belgium**)
 
 2022 November 9 (**Leuven, Belgium**)
 
