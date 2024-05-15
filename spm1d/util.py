@@ -50,34 +50,37 @@ def get_dataset(*args):
 
 
 def interp(y, Q=101):
-	'''
-	Simple linear interpolation to *n* values.
-	
-	:Parameters:
-	
-	- *y* --- a 1D array or list of J separate 1D arrays
-	- *Q* --- number of nodes in the interpolated continuum
-	
-	:Returns:
-	
-	- Q-component 1D array or a (J x Q) array
-	
-	:Example:
-	
-	>>> y0 = np.random.rand(51)
-	>>> y1 = np.random.rand(87)
-	>>> y2 = np.random.rand(68)
-	>>> Y  = [y0, y1, y2]
-	
-	>>> Y  = spm1d.util.interp(Y, Q=101)
-	'''
-	y          = np.asarray(y)
-	if (y.ndim==2) or (not np.isscalar(y[0])):
-		return np.asarray( [interp(yy, Q)   for yy in y] )
-	else:
-		x0     = range(y.size)
-		x1     = np.linspace(0, y.size, Q)
-		return np.interp(x1, x0, y, left=None, right=None)
+    '''
+    Simple linear interpolation to *n* values.
+
+    :Parameters:
+
+    - *y* --- a 1D array or list of J separate 1D arrays
+    - *Q* --- number of nodes in the interpolated continuum
+
+    :Returns:
+
+    - Q-component 1D array or a (J x Q) array
+
+    :Example:
+
+    >>> y0 = np.random.rand(51)
+    >>> y1 = np.random.rand(87)
+    >>> y2 = np.random.rand(68)
+    >>> Y  = [y0, y1, y2]
+
+    >>> Y  = spm1d.util.interp(Y, Q=101)
+    '''
+    try:
+        y      = np.asarray(y, dtype=float)
+    except ValueError:
+        y      = np.asarray(y, dtype=object)
+    if (y.ndim==2) or (not np.isscalar(y[0])):
+        return np.asarray( [interp(yy, Q)   for yy in y] )
+    else:
+        x0     = range(y.size)
+        x1     = np.linspace(0, y.size, Q)
+        return np.interp(x1, x0, y, left=None, right=None)
 
 
 
