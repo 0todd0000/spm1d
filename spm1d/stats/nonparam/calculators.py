@@ -204,7 +204,7 @@ class CalculatorRegress1D(CalculatorRegress0D):
         # sigma2 = np.diag(R)/df          #variance
         # new sigam2 calculation (using eigensum trick)
         diagR  = np.einsum('ij,ji->i', eij.T, eij)  # residual sum of squares (eigensum trick)
-        sigma2 = diagR / df          #variance
+        sigma2 = diagR / self.df          #variance
         t      = np.array(self.c.T*b).flatten()  /   ((sigma2*self.cXXc)**0.5 + eps)
         return t
 
