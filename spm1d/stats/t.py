@@ -50,9 +50,13 @@ def glm(Y, X, c, Q=None, roi=None):
     ### solve the GLM:
     b      = np.linalg.pinv(X) @ Y  #parameters
     eij    = Y - X@b                #residuals
-    R      = eij.T@eij              #residuals: sum of squares
     df     = Y.shape[0] - rank(X)   #degrees of freedom
-    sigma2 = np.diag(R)/df          #variance
+    # # previous sigma2 calculation (slow when Q get large: about 5 ms for Q=1000 and about 900 ms for Q=10000! )
+    # R      = eij.T@eij              #residuals: sum of squares
+    # sigma2 = np.diag(R)/df          #variance
+    # new sigam2 calculation (using Einstein summation trick)
+    diagR  = np.einsum('ij,ji->i', eij.T, eij)  # residual sum of squares (eigensum trick)
+    sigma2 = diagR / df          #variance
     ### compute t statistic
     cXXc   = c.T @ np.linalg.inv(X.T@X) @ c
     cXXc   = float(cXXc[0,0]) if isinstance(cXXc, np.ndarray) else float(cXXc)

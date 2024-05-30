@@ -195,14 +195,18 @@ class CalculatorRegress0D(object):
 
 
 class CalculatorRegress1D(CalculatorRegress0D):
-	def get_test_stat(self, y):
-		Y      = np.matrix(y)
-		b      = self.Xi * Y            #parameters
-		eij    = Y - self.X*b           #residuals
-		R      = eij.T*eij              #residual sum of squares
-		sigma2 = np.diag(R) / self.df   #variance
-		t      = np.array(self.c.T*b).flatten()  /   ((sigma2*self.cXXc)**0.5 + eps)
-		return t
+    def get_test_stat(self, y):
+        Y      = np.matrix(y)
+        b      = self.Xi * Y            #parameters
+        eij    = Y - self.X*b           #residuals
+        # # previous sigma2 calculation (slow when Q get large: about 5 ms for Q=1000 and about 900 ms for Q=10000! )
+        # R      = eij.T@eij              #residuals: sum of squares
+        # sigma2 = np.diag(R)/df          #variance
+        # new sigam2 calculation (using eigensum trick)
+        diagR  = np.einsum('ij,ji->i', eij.T, eij)  # residual sum of squares (eigensum trick)
+        sigma2 = diagR / df          #variance
+        t      = np.array(self.c.T*b).flatten()  /   ((sigma2*self.cXXc)**0.5 + eps)
+        return t
 
 
 class CalculatorCCA0D(object):
