@@ -1,7 +1,7 @@
 '''
-A common API for spm1d.stats functions, with a constant, common argument structure:
+A common API for spm1d.stats.nonparam functions, with a constant, common argument structure:
 
-	spm1d.stats.c.TESTNAME(y, x)
+	spm1d.stats.nonparam.c.TESTNAME(y, x)
 
 where:
 
