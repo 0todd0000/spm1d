@@ -20,12 +20,13 @@ Copyright (C) 2024  Todd Pataky
 '''
 
 
-__version__ = '0.4.32'  # 2024-06-02
+__version__ = '0.4.33'  # 2024-08-08
 
 
 __all__ = ['data', 'io', 'plot', 'rft1d', 'stats', 'util']
 
 from . import data
+from . import geom
 from . import io
 from . import plot
 from . import rft1d
