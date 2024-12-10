@@ -1,20 +1,17 @@
-
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="en" data-content_root="../">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>power1d.models &#8212; power1d 0.1.7 documentation</title>
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/pyramid.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/plot_directive.css" />
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../_static/doctools.js"></script>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=4848ba22" />
+    <link rel="stylesheet" type="text/css" href="../_static/pyramid.css?v=310c80ee" />
+    <link rel="stylesheet" type="text/css" href="../_static/plot_directive.css?v=7f9a90b1" />
+    <script src="../_static/documentation_options.js?v=ca7ad2ea"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="power1d.noise" href="noise.html" />
@@ -34,7 +31,7 @@
   </div>
 </div>
 
-    <div class="related" role="navigation" aria-label="related navigation">
+    <div class="related" role="navigation" aria-label="Related">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -61,7 +58,7 @@
           <div class="body" role="main">
             
   <section id="module-power1d.models">
-<span id="power1d-models"></span><span id="label-api-models"></span><h1>power1d.models<a class="headerlink" href="#module-power1d.models" title="Permalink to this heading">¶</a></h1>
+<span id="power1d-models"></span><span id="label-api-models"></span><h1>power1d.models<a class="headerlink" href="#module-power1d.models" title="Link to this heading">¶</a></h1>
 <p>High-level classes for assembling data models and simulating experiments.</p>
 <p>Below attributes and methods can be distinguished as follows:</p>
 <ul class="simple">
@@ -69,10 +66,10 @@
 <li><p>method names are followed by “( )” with arguments inside the parentheses, and all methods also have code snippets attached.</p></li>
 </ul>
 <section id="datasample-from-array">
-<span id="label-api-models-datasample-from-array"></span><h2>datasample_from_array<a class="headerlink" href="#datasample-from-array" title="Permalink to this heading">¶</a></h2>
+<span id="label-api-models-datasample-from-array"></span><h2>datasample_from_array<a class="headerlink" href="#datasample-from-array" title="Link to this heading">¶</a></h2>
 <dl class="py function">
 <dt class="sig sig-object py" id="power1d.models.datasample_from_array">
-<span class="sig-prename descclassname"><span class="pre">power1d.models.</span></span><span class="sig-name descname"><span class="pre">datasample_from_array</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">y</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#power1d.models.datasample_from_array" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">power1d.models.</span></span><span class="sig-name descname"><span class="pre">datasample_from_array</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">y</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#power1d.models.datasample_from_array" title="Link to this definition">¶</a></dt>
 <dd><p>Convenience function for creating a data sample from
 a set of of 1D observations.</p>
 <p>The input array must have a shape (J,Q) where:</p>
@@ -113,10 +110,10 @@ be required. Refer to the noise module for more details.</p>
 
 </section>
 <section id="datasample">
-<h2>DataSample<a class="headerlink" href="#datasample" title="Permalink to this heading">¶</a></h2>
+<h2>DataSample<a class="headerlink" href="#datasample" title="Link to this heading">¶</a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="power1d.models.DataSample">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">power1d.models.</span></span><span class="sig-name descname"><span class="pre">DataSample</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">baseline</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">signal</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">noise</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">J</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">8</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">regressor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#power1d.models.DataSample" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">power1d.models.</span></span><span class="sig-name descname"><span class="pre">DataSample</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">baseline</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">signal</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">noise</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">J</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">8</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">regressor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#power1d.models.DataSample" title="Link to this definition">¶</a></dt>
 <dd><p>Data Sample model.</p>
 <p>Arguments:</p>
 <p><em>baseline</em> —- a power1d.geom object representing the sample datum</p>
@@ -144,56 +141,56 @@ be required. Refer to the noise module for more details.</p>
 </figure>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="power1d.models.DataSample.J">
-<span class="sig-name descname"><span class="pre">J</span></span><a class="headerlink" href="#power1d.models.DataSample.J" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">J</span></span><a class="headerlink" href="#power1d.models.DataSample.J" title="Link to this definition">¶</a></dt>
 <dd><p>sample size</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="power1d.models.DataSample.Q">
-<span class="sig-name descname"><span class="pre">Q</span></span><a class="headerlink" href="#power1d.models.DataSample.Q" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">Q</span></span><a class="headerlink" href="#power1d.models.DataSample.Q" title="Link to this definition">¶</a></dt>
 <dd><p>continuum size</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="power1d.models.DataSample.baseline">
-<span class="sig-name descname"><span class="pre">baseline</span></span><a class="headerlink" href="#power1d.models.DataSample.baseline" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">baseline</span></span><a class="headerlink" href="#power1d.models.DataSample.baseline" title="Link to this definition">¶</a></dt>
 <dd><p>baseline model</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="power1d.models.DataSample.get_baseline">
-<span class="sig-name descname"><span class="pre">get_baseline</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#power1d.models.DataSample.get_baseline" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">get_baseline</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#power1d.models.DataSample.get_baseline" title="Link to this definition">¶</a></dt>
 <dd><p>Return the DataSample’s baseline object</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="power1d.models.DataSample.get_noise">
-<span class="sig-name descname"><span class="pre">get_noise</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#power1d.models.DataSample.get_noise" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">get_noise</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#power1d.models.DataSample.get_noise" title="Link to this definition">¶</a></dt>
 <dd><p>Return the DataSample’s noise object</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="power1d.models.DataSample.get_signal">
-<span class="sig-name descname"><span class="pre">get_signal</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#power1d.models.DataSample.get_signal" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">get_signal</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#power1d.models.DataSample.get_signal" title="Link to this definition">¶</a></dt>
 <dd><p>Return the DataSample’s signal object</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="power1d.models.DataSample.link">
-<span class="sig-name descname"><span class="pre">link</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">other</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#power1d.models.DataSample.link" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">link</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">other</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#power1d.models.DataSample.link" title="Link to this definition">¶</a></dt>
 <dd><p>Link noise to another DataSample object so that the linked object’s
 noise is equivalent to master object’s noise.</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="power1d.models.DataSample.noise">
-<span class="sig-name descname"><span class="pre">noise</span></span><a class="headerlink" href="#power1d.models.DataSample.noise" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">noise</span></span><a class="headerlink" href="#power1d.models.DataSample.noise" title="Link to this definition">¶</a></dt>
 <dd><p>noise model</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="power1d.models.DataSample.plot">
-<span class="sig-name descname"><span class="pre">plot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ax</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">with_noise</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">color</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'k'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lw</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">3</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">q</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#power1d.models.DataSample.plot" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">plot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ax</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">with_noise</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">color</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'k'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lw</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">3</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">q</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#power1d.models.DataSample.plot" title="Link to this definition">¶</a></dt>
 <dd><p>Plot an instantaneous representation of the DataSample</p>
 <p>Arguments:</p>
 <p><em>ax</em> —- pyplot axes object (default None)</p>
@@ -223,20 +220,20 @@ noise is equivalent to master object’s noise.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="power1d.models.DataSample.random">
-<span class="sig-name descname"><span class="pre">random</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">subtract_baseline</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#power1d.models.DataSample.random" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">random</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">subtract_baseline</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#power1d.models.DataSample.random" title="Link to this definition">¶</a></dt>
 <dd><p>Generate a random data sample based on the baseline, signal and noise models.
 The value will be stored in the “value” attribute.</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="power1d.models.DataSample.regressor">
-<span class="sig-name descname"><span class="pre">regressor</span></span><a class="headerlink" href="#power1d.models.DataSample.regressor" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">regressor</span></span><a class="headerlink" href="#power1d.models.DataSample.regressor" title="Link to this definition">¶</a></dt>
 <dd><p>(J,) numpy array representing regressor</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="power1d.models.DataSample.set_baseline">
-<span class="sig-name descname"><span class="pre">set_baseline</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">baseline</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#power1d.models.DataSample.set_baseline" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">set_baseline</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">baseline</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#power1d.models.DataSample.set_baseline" title="Link to this definition">¶</a></dt>
 <dd><p>Change the DataSample’s baseline object</p>
 <p>Arguments:</p>
 <p><em>baseline</em> —- a power1d.geom object representing the sample datum</p>
@@ -244,7 +241,7 @@ The value will be stored in the “value” attribute.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="power1d.models.DataSample.set_noise">
-<span class="sig-name descname"><span class="pre">set_noise</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">noise</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#power1d.models.DataSample.set_noise" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">set_noise</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">noise</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#power1d.models.DataSample.set_noise" title="Link to this definition">¶</a></dt>
 <dd><p>Change the DataSample’s baseline object</p>
 <p>Arguments:</p>
 <p><em>baseline</em> —- a power1d.noise object representing the sample datum</p>
@@ -252,7 +249,7 @@ The value will be stored in the “value” attribute.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="power1d.models.DataSample.set_regressor">
-<span class="sig-name descname"><span class="pre">set_regressor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#power1d.models.DataSample.set_regressor" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">set_regressor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#power1d.models.DataSample.set_regressor" title="Link to this definition">¶</a></dt>
 <dd><p>Set or change the DataSample’s regressor</p>
 <p>Arguments:</p>
 <p><em>x</em> —- a length-J numpy array (float)</p>
@@ -260,7 +257,7 @@ The value will be stored in the “value” attribute.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="power1d.models.DataSample.set_sample_size">
-<span class="sig-name descname"><span class="pre">set_sample_size</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">J</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#power1d.models.DataSample.set_sample_size" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">set_sample_size</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">J</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#power1d.models.DataSample.set_sample_size" title="Link to this definition">¶</a></dt>
 <dd><p>Change the sample size</p>
 <p>Arguments:</p>
 <p><em>J</em> —- sample size (positive int)</p>
@@ -268,7 +265,7 @@ The value will be stored in the “value” attribute.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="power1d.models.DataSample.set_signal">
-<span class="sig-name descname"><span class="pre">set_signal</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">signal</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#power1d.models.DataSample.set_signal" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">set_signal</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">signal</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#power1d.models.DataSample.set_signal" title="Link to this definition">¶</a></dt>
 <dd><p>Change the DataSample’s signal object</p>
 <p>Arguments:</p>
 <p><em>signal</em> —- a power1d.geom object representing the sample signal</p>
@@ -276,7 +273,7 @@ The value will be stored in the “value” attribute.</p>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="power1d.models.DataSample.signal">
-<span class="sig-name descname"><span class="pre">signal</span></span><a class="headerlink" href="#power1d.models.DataSample.signal" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">signal</span></span><a class="headerlink" href="#power1d.models.DataSample.signal" title="Link to this definition">¶</a></dt>
 <dd><p>signal model</p>
 </dd></dl>
 
@@ -284,10 +281,10 @@ The value will be stored in the “value” attribute.</p>
 
 </section>
 <section id="experiment">
-<h2>Experiment<a class="headerlink" href="#experiment" title="Permalink to this heading">¶</a></h2>
+<h2>Experiment<a class="headerlink" href="#experiment" title="Link to this heading">¶</a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="power1d.models.Experiment">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">power1d.models.</span></span><span class="sig-name descname"><span class="pre">Experiment</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data_sample_models</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fn</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#power1d.models.Experiment" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">power1d.models.</span></span><span class="sig-name descname"><span class="pre">Experiment</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data_sample_models</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fn</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#power1d.models.Experiment" title="Link to this definition">¶</a></dt>
 <dd><p>Experiment model.</p>
 <p>Arguments:</p>
 <p><em>data_sample_models</em> —- a list of DataSample objects</p>
@@ -317,37 +314,37 @@ test statistic functions are available in <strong>power1d.stats</strong></p>
 </figure>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="power1d.models.Experiment.Q">
-<span class="sig-name descname"><span class="pre">Q</span></span><a class="headerlink" href="#power1d.models.Experiment.Q" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">Q</span></span><a class="headerlink" href="#power1d.models.Experiment.Q" title="Link to this definition">¶</a></dt>
 <dd><p>continuum length</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="power1d.models.Experiment.Z">
-<span class="sig-name descname"><span class="pre">Z</span></span><a class="headerlink" href="#power1d.models.Experiment.Z" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">Z</span></span><a class="headerlink" href="#power1d.models.Experiment.Z" title="Link to this definition">¶</a></dt>
 <dd><p>output test statistic continua</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="power1d.models.Experiment.data_models">
-<span class="sig-name descname"><span class="pre">data_models</span></span><a class="headerlink" href="#power1d.models.Experiment.data_models" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">data_models</span></span><a class="headerlink" href="#power1d.models.Experiment.data_models" title="Link to this definition">¶</a></dt>
 <dd><p>data models</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="power1d.models.Experiment.fn">
-<span class="sig-name descname"><span class="pre">fn</span></span><a class="headerlink" href="#power1d.models.Experiment.fn" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">fn</span></span><a class="headerlink" href="#power1d.models.Experiment.fn" title="Link to this definition">¶</a></dt>
 <dd><p>test statistic function</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="power1d.models.Experiment.nmodels">
-<span class="sig-name descname"><span class="pre">nmodels</span></span><a class="headerlink" href="#power1d.models.Experiment.nmodels" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">nmodels</span></span><a class="headerlink" href="#power1d.models.Experiment.nmodels" title="Link to this definition">¶</a></dt>
 <dd><p>number of data models</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="power1d.models.Experiment.plot">
-<span class="sig-name descname"><span class="pre">plot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ax</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">with_noise</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">colors</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">q</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#power1d.models.Experiment.plot" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">plot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ax</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">with_noise</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">colors</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">q</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#power1d.models.Experiment.plot" title="Link to this definition">¶</a></dt>
 <dd><p>Plot an instantaneous representation of the Experiment model.</p>
 <p>Arguments:</p>
 <p><em>ax</em> —- pyplot axes object (default None)</p>
@@ -380,7 +377,7 @@ test statistic functions are available in <strong>power1d.stats</strong></p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="power1d.models.Experiment.set_sample_size">
-<span class="sig-name descname"><span class="pre">set_sample_size</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">JJ</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#power1d.models.Experiment.set_sample_size" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">set_sample_size</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">JJ</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#power1d.models.Experiment.set_sample_size" title="Link to this definition">¶</a></dt>
 <dd><p>Change the sample sizes of the models</p>
 <p>Arguments:</p>
 <p><em>J</em> —- sample size (positive int or list of positive int)</p>
@@ -388,7 +385,7 @@ test statistic functions are available in <strong>power1d.stats</strong></p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="power1d.models.Experiment.simulate">
-<span class="sig-name descname"><span class="pre">simulate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">iterations</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1000</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">progress_bar</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#power1d.models.Experiment.simulate" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">simulate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">iterations</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1000</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">progress_bar</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#power1d.models.Experiment.simulate" title="Link to this definition">¶</a></dt>
 <dd><p>Iteratively simulate a number of experiments.</p>
 <p>Calling this method will repeatedly call <strong>simulate_single_iteration</strong> and
 will store the resulting continua in the <strong>Z</strong> attribute;  if 1000 iterations
@@ -425,7 +422,7 @@ are executed then <strong>Z</strong> will be a (1000,Q) array when simulation is
 
 <dl class="py method">
 <dt class="sig sig-object py" id="power1d.models.Experiment.simulate_single_iteration">
-<span class="sig-name descname"><span class="pre">simulate_single_iteration</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#power1d.models.Experiment.simulate_single_iteration" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">simulate_single_iteration</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#power1d.models.Experiment.simulate_single_iteration" title="Link to this definition">¶</a></dt>
 <dd><p>Simulate a single experiment.</p>
 <p>Calling this method will generate new data samples, one for each DataSample model,
 and will then compute and return the test statistic continuum associated with
@@ -436,10 +433,10 @@ the new data samples.</p>
 
 </section>
 <section id="experimentsimulator">
-<h2>ExperimentSimulator<a class="headerlink" href="#experimentsimulator" title="Permalink to this heading">¶</a></h2>
+<h2>ExperimentSimulator<a class="headerlink" href="#experimentsimulator" title="Link to this heading">¶</a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="power1d.models.ExperimentSimulator">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">power1d.models.</span></span><span class="sig-name descname"><span class="pre">ExperimentSimulator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#power1d.models.ExperimentSimulator" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">power1d.models.</span></span><span class="sig-name descname"><span class="pre">ExperimentSimulator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#power1d.models.ExperimentSimulator" title="Link to this definition">¶</a></dt>
 <dd><p>Two-experiment simulator.</p>
 <p>This is a convenience class for simulating two experiments:</p>
 <ul class="simple">
@@ -460,13 +457,13 @@ the new data samples.</p>
 </div>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="power1d.models.ExperimentSimulator.Q">
-<span class="sig-name descname"><span class="pre">Q</span></span><a class="headerlink" href="#power1d.models.ExperimentSimulator.Q" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">Q</span></span><a class="headerlink" href="#power1d.models.ExperimentSimulator.Q" title="Link to this definition">¶</a></dt>
 <dd><p>continuum size</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="power1d.models.ExperimentSimulator.load_simulation_results">
-<span class="sig-name descname"><span class="pre">load_simulation_results</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#power1d.models.ExperimentSimulator.load_simulation_results" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">load_simulation_results</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#power1d.models.ExperimentSimulator.load_simulation_results" title="Link to this definition">¶</a></dt>
 <dd><p>Load saved simulation results.</p>
 <p>Arguments:</p>
 <p><em>filename</em> —- full path to saved results file</p>
@@ -516,19 +513,19 @@ the new data samples.</p>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="power1d.models.ExperimentSimulator.model0">
-<span class="sig-name descname"><span class="pre">model0</span></span><a class="headerlink" href="#power1d.models.ExperimentSimulator.model0" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">model0</span></span><a class="headerlink" href="#power1d.models.ExperimentSimulator.model0" title="Link to this definition">¶</a></dt>
 <dd><p>“null” experiment model</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="power1d.models.ExperimentSimulator.model1">
-<span class="sig-name descname"><span class="pre">model1</span></span><a class="headerlink" href="#power1d.models.ExperimentSimulator.model1" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">model1</span></span><a class="headerlink" href="#power1d.models.ExperimentSimulator.model1" title="Link to this definition">¶</a></dt>
 <dd><p>“effect” experiment model</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="power1d.models.ExperimentSimulator.sample_size">
-<span class="sig-name descname"><span class="pre">sample_size</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">power</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.8</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alpha</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.05</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">niter0</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">200</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">niter</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1000</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">coi</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#power1d.models.ExperimentSimulator.sample_size" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">sample_size</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">power</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.8</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alpha</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.05</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">niter0</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">200</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">niter</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1000</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">coi</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#power1d.models.ExperimentSimulator.sample_size" title="Link to this definition">¶</a></dt>
 <dd><p>Estimate sample size required to achieve a target power.</p>
 <p>When <em>coi</em> is None the omnibus power is used.
 When <em>coi</em> is a dictionary then the COI power is used, e.g. <code class="code docutils literal notranslate"><span class="pre">coi=dict(q=65,</span> <span class="pre">r=3)</span></code></p>
@@ -547,7 +544,7 @@ When <em>coi</em> is a dictionary then the COI power is used, e.g. <code class="
 
 <dl class="py method">
 <dt class="sig sig-object py" id="power1d.models.ExperimentSimulator.simulate">
-<span class="sig-name descname"><span class="pre">simulate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">iterations</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">50</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">progress_bar</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">two_tailed</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#power1d.models.ExperimentSimulator.simulate" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">simulate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">iterations</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">50</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">progress_bar</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">two_tailed</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">_qprogressbar</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#power1d.models.ExperimentSimulator.simulate" title="Link to this definition">¶</a></dt>
 <dd><p>Iteratively simulate a number of experiments.</p>
 <p>Calling this method will repeatedly call <strong>simulate_single_iteration</strong> for
 both the “null” model and the “effect” model.</p>
@@ -597,16 +594,66 @@ both the “null” model and the “effect” model.</p>
           </div>
         </div>
       </div>
-      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
         <div class="sphinxsidebarwrapper">
   <div>
     <h3><a href="../index.html">Table of Contents</a></h3>
     <ul>
 <li><a class="reference internal" href="#">power1d.models</a><ul>
-<li><a class="reference internal" href="#datasample-from-array">datasample_from_array</a></li>
-<li><a class="reference internal" href="#datasample">DataSample</a></li>
-<li><a class="reference internal" href="#experiment">Experiment</a></li>
-<li><a class="reference internal" href="#experimentsimulator">ExperimentSimulator</a></li>
+<li><a class="reference internal" href="#datasample-from-array">datasample_from_array</a><ul>
+<li><a class="reference internal" href="#power1d.models.datasample_from_array"><code class="docutils literal notranslate"><span class="pre">datasample_from_array()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#datasample">DataSample</a><ul>
+<li><a class="reference internal" href="#power1d.models.DataSample"><code class="docutils literal notranslate"><span class="pre">DataSample</span></code></a><ul>
+<li><a class="reference internal" href="#power1d.models.DataSample.J"><code class="docutils literal notranslate"><span class="pre">DataSample.J</span></code></a></li>
+<li><a class="reference internal" href="#power1d.models.DataSample.Q"><code class="docutils literal notranslate"><span class="pre">DataSample.Q</span></code></a></li>
+<li><a class="reference internal" href="#power1d.models.DataSample.baseline"><code class="docutils literal notranslate"><span class="pre">DataSample.baseline</span></code></a></li>
+<li><a class="reference internal" href="#power1d.models.DataSample.get_baseline"><code class="docutils literal notranslate"><span class="pre">DataSample.get_baseline()</span></code></a></li>
+<li><a class="reference internal" href="#power1d.models.DataSample.get_noise"><code class="docutils literal notranslate"><span class="pre">DataSample.get_noise()</span></code></a></li>
+<li><a class="reference internal" href="#power1d.models.DataSample.get_signal"><code class="docutils literal notranslate"><span class="pre">DataSample.get_signal()</span></code></a></li>
+<li><a class="reference internal" href="#power1d.models.DataSample.link"><code class="docutils literal notranslate"><span class="pre">DataSample.link()</span></code></a></li>
+<li><a class="reference internal" href="#power1d.models.DataSample.noise"><code class="docutils literal notranslate"><span class="pre">DataSample.noise</span></code></a></li>
+<li><a class="reference internal" href="#power1d.models.DataSample.plot"><code class="docutils literal notranslate"><span class="pre">DataSample.plot()</span></code></a></li>
+<li><a class="reference internal" href="#power1d.models.DataSample.random"><code class="docutils literal notranslate"><span class="pre">DataSample.random()</span></code></a></li>
+<li><a class="reference internal" href="#power1d.models.DataSample.regressor"><code class="docutils literal notranslate"><span class="pre">DataSample.regressor</span></code></a></li>
+<li><a class="reference internal" href="#power1d.models.DataSample.set_baseline"><code class="docutils literal notranslate"><span class="pre">DataSample.set_baseline()</span></code></a></li>
+<li><a class="reference internal" href="#power1d.models.DataSample.set_noise"><code class="docutils literal notranslate"><span class="pre">DataSample.set_noise()</span></code></a></li>
+<li><a class="reference internal" href="#power1d.models.DataSample.set_regressor"><code class="docutils literal notranslate"><span class="pre">DataSample.set_regressor()</span></code></a></li>
+<li><a class="reference internal" href="#power1d.models.DataSample.set_sample_size"><code class="docutils literal notranslate"><span class="pre">DataSample.set_sample_size()</span></code></a></li>
+<li><a class="reference internal" href="#power1d.models.DataSample.set_signal"><code class="docutils literal notranslate"><span class="pre">DataSample.set_signal()</span></code></a></li>
+<li><a class="reference internal" href="#power1d.models.DataSample.signal"><code class="docutils literal notranslate"><span class="pre">DataSample.signal</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#experiment">Experiment</a><ul>
+<li><a class="reference internal" href="#power1d.models.Experiment"><code class="docutils literal notranslate"><span class="pre">Experiment</span></code></a><ul>
+<li><a class="reference internal" href="#power1d.models.Experiment.Q"><code class="docutils literal notranslate"><span class="pre">Experiment.Q</span></code></a></li>
+<li><a class="reference internal" href="#power1d.models.Experiment.Z"><code class="docutils literal notranslate"><span class="pre">Experiment.Z</span></code></a></li>
+<li><a class="reference internal" href="#power1d.models.Experiment.data_models"><code class="docutils literal notranslate"><span class="pre">Experiment.data_models</span></code></a></li>
+<li><a class="reference internal" href="#power1d.models.Experiment.fn"><code class="docutils literal notranslate"><span class="pre">Experiment.fn</span></code></a></li>
+<li><a class="reference internal" href="#power1d.models.Experiment.nmodels"><code class="docutils literal notranslate"><span class="pre">Experiment.nmodels</span></code></a></li>
+<li><a class="reference internal" href="#power1d.models.Experiment.plot"><code class="docutils literal notranslate"><span class="pre">Experiment.plot()</span></code></a></li>
+<li><a class="reference internal" href="#power1d.models.Experiment.set_sample_size"><code class="docutils literal notranslate"><span class="pre">Experiment.set_sample_size()</span></code></a></li>
+<li><a class="reference internal" href="#power1d.models.Experiment.simulate"><code class="docutils literal notranslate"><span class="pre">Experiment.simulate()</span></code></a></li>
+<li><a class="reference internal" href="#power1d.models.Experiment.simulate_single_iteration"><code class="docutils literal notranslate"><span class="pre">Experiment.simulate_single_iteration()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#experimentsimulator">ExperimentSimulator</a><ul>
+<li><a class="reference internal" href="#power1d.models.ExperimentSimulator"><code class="docutils literal notranslate"><span class="pre">ExperimentSimulator</span></code></a><ul>
+<li><a class="reference internal" href="#power1d.models.ExperimentSimulator.Q"><code class="docutils literal notranslate"><span class="pre">ExperimentSimulator.Q</span></code></a></li>
+<li><a class="reference internal" href="#power1d.models.ExperimentSimulator.load_simulation_results"><code class="docutils literal notranslate"><span class="pre">ExperimentSimulator.load_simulation_results()</span></code></a></li>
+<li><a class="reference internal" href="#power1d.models.ExperimentSimulator.model0"><code class="docutils literal notranslate"><span class="pre">ExperimentSimulator.model0</span></code></a></li>
+<li><a class="reference internal" href="#power1d.models.ExperimentSimulator.model1"><code class="docutils literal notranslate"><span class="pre">ExperimentSimulator.model1</span></code></a></li>
+<li><a class="reference internal" href="#power1d.models.ExperimentSimulator.sample_size"><code class="docutils literal notranslate"><span class="pre">ExperimentSimulator.sample_size()</span></code></a></li>
+<li><a class="reference internal" href="#power1d.models.ExperimentSimulator.simulate"><code class="docutils literal notranslate"><span class="pre">ExperimentSimulator.simulate()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -629,7 +676,7 @@ both the “null” model and the “effect” model.</p>
             rel="nofollow">Show Source</a></li>
     </ul>
    </div>
-<div id="searchbox" style="display: none" role="search">
+<search id="searchbox" style="display: none" role="search">
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="../search.html" method="get">
@@ -637,13 +684,13 @@ both the “null” model and the “effect” model.</p>
       <input type="submit" value="Go" />
     </form>
     </div>
-</div>
+</search>
 <script>document.getElementById('searchbox').style.display = "block"</script>
         </div>
       </div>
       <div class="clearer"></div>
     </div>
-    <div class="related" role="navigation" aria-label="related navigation">
+    <div class="related" role="navigation" aria-label="Related">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -664,8 +711,8 @@ both the “null” model and the “effect” model.</p>
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2023, Todd Pataky.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.0.2.
+    &#169; Copyright 2023, Todd Pataky.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.7.
     </div>
   </body>
 </html>

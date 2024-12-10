@@ -1,20 +1,17 @@
-
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="en" data-content_root="../">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>power1d.prob &#8212; power1d 0.1.7 documentation</title>
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/pyramid.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/plot_directive.css" />
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../_static/doctools.js"></script>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=4848ba22" />
+    <link rel="stylesheet" type="text/css" href="../_static/pyramid.css?v=310c80ee" />
+    <link rel="stylesheet" type="text/css" href="../_static/plot_directive.css?v=7f9a90b1" />
+    <script src="../_static/documentation_options.js?v=ca7ad2ea"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="power1d.random" href="random.html" />
@@ -34,7 +31,7 @@
   </div>
 </div>
 
-    <div class="related" role="navigation" aria-label="related navigation">
+    <div class="related" role="navigation" aria-label="Related">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -61,7 +58,7 @@
           <div class="body" role="main">
             
   <section id="module-power1d.prob">
-<span id="power1d-prob"></span><span id="label-api-prob"></span><h1>power1d.prob<a class="headerlink" href="#module-power1d.prob" title="Permalink to this heading">¶</a></h1>
+<span id="power1d-prob"></span><span id="label-api-prob"></span><h1>power1d.prob<a class="headerlink" href="#module-power1d.prob" title="Link to this heading">¶</a></h1>
 <p>Theoretical continuum-level probabilities for central t fields
 and for noncentral t and F fields.</p>
 <p>These calculations come from the random field theory (RFT)
@@ -104,10 +101,10 @@ Statistical Power Calculation in Neuroimaging Studies <strong>Neuroinform</stron
 <div class="line"><a class="reference external" href="https://sourceforge.net/projects/powermap/">https://sourceforge.net/projects/powermap/</a></div>
 </div>
 <section id="ec-density-f">
-<h2>ec_density_f<a class="headerlink" href="#ec-density-f" title="Permalink to this heading">¶</a></h2>
+<h2>ec_density_f<a class="headerlink" href="#ec-density-f" title="Link to this heading">¶</a></h2>
 <dl class="py function">
 <dt class="sig sig-object py" id="power1d.prob.ec_density_f">
-<span class="sig-prename descclassname"><span class="pre">power1d.prob.</span></span><span class="sig-name descname"><span class="pre">ec_density_f</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">z</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">v</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">delta</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#power1d.prob.ec_density_f" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">power1d.prob.</span></span><span class="sig-name descname"><span class="pre">ec_density_f</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">z</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">v</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">delta</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#power1d.prob.ec_density_f" title="Link to this definition">¶</a></dt>
 <dd><p>Euler characteristic density for central F fields.</p>
 <p>Adapted from “spm_ECdensity.m” in “SPM12” (Friston et al. 1994)</p>
 <p>Arguments:</p>
@@ -120,10 +117,10 @@ Reference:  Worsley KJ et al. (2004) [Eqn.2 and Table 2]</p>
 
 </section>
 <section id="ec-density-ncf">
-<h2>ec_density_ncf<a class="headerlink" href="#ec-density-ncf" title="Permalink to this heading">¶</a></h2>
+<h2>ec_density_ncf<a class="headerlink" href="#ec-density-ncf" title="Link to this heading">¶</a></h2>
 <dl class="py function">
 <dt class="sig sig-object py" id="power1d.prob.ec_density_ncf">
-<span class="sig-prename descclassname"><span class="pre">power1d.prob.</span></span><span class="sig-name descname"><span class="pre">ec_density_ncf</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">z</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">v</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">delta</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#power1d.prob.ec_density_ncf" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">power1d.prob.</span></span><span class="sig-name descname"><span class="pre">ec_density_ncf</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">z</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">v</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">delta</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#power1d.prob.ec_density_ncf" title="Link to this definition">¶</a></dt>
 <dd><p>Euler characteristic density for non-central F fields.</p>
 <p>Adapted from “pm_ECncF.m” in “PowerMap” (Joyce &amp; Hayasaka 2012)</p>
 <p>Arguments:</p>
@@ -134,10 +131,10 @@ Reference:  Worsley KJ et al. (2004) [Eqn.2 and Table 2]</p>
 
 </section>
 <section id="ec-density-nct">
-<h2>ec_density_nct<a class="headerlink" href="#ec-density-nct" title="Permalink to this heading">¶</a></h2>
+<h2>ec_density_nct<a class="headerlink" href="#ec-density-nct" title="Link to this heading">¶</a></h2>
 <dl class="py function">
 <dt class="sig sig-object py" id="power1d.prob.ec_density_nct">
-<span class="sig-prename descclassname"><span class="pre">power1d.prob.</span></span><span class="sig-name descname"><span class="pre">ec_density_nct</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">z</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">v</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">delta</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#power1d.prob.ec_density_nct" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">power1d.prob.</span></span><span class="sig-name descname"><span class="pre">ec_density_nct</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">z</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">v</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">delta</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#power1d.prob.ec_density_nct" title="Link to this definition">¶</a></dt>
 <dd><p>Euler characteristic density for non-central t fields.</p>
 <p>Adapted from “pm_ECncT.m” in “PowerMap” (Joyce &amp; Hayasaka 2012)</p>
 <p>Arguments:</p>
@@ -148,10 +145,10 @@ Reference:  Worsley KJ et al. (2004) [Eqn.2 and Table 2]</p>
 
 </section>
 <section id="ec-density-t">
-<h2>ec_density_t<a class="headerlink" href="#ec-density-t" title="Permalink to this heading">¶</a></h2>
+<h2>ec_density_t<a class="headerlink" href="#ec-density-t" title="Link to this heading">¶</a></h2>
 <dl class="py function">
 <dt class="sig sig-object py" id="power1d.prob.ec_density_t">
-<span class="sig-prename descclassname"><span class="pre">power1d.prob.</span></span><span class="sig-name descname"><span class="pre">ec_density_t</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">z</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">v</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">delta</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#power1d.prob.ec_density_t" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">power1d.prob.</span></span><span class="sig-name descname"><span class="pre">ec_density_t</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">z</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">v</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">delta</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#power1d.prob.ec_density_t" title="Link to this definition">¶</a></dt>
 <dd><p>Euler characteristic density for central t fields.</p>
 <p>Adapted from “spm_ECdensity.m” in “SPM12” (Friston et al. 1994)</p>
 <p>Arguments:</p>
@@ -164,10 +161,10 @@ Reference:  Worsley KJ et al. (2004) [Eqn.2 and Table 2]</p>
 
 </section>
 <section id="exp-ncx">
-<h2>exp_ncx<a class="headerlink" href="#exp-ncx" title="Permalink to this heading">¶</a></h2>
+<h2>exp_ncx<a class="headerlink" href="#exp-ncx" title="Link to this heading">¶</a></h2>
 <dl class="py function">
 <dt class="sig sig-object py" id="power1d.prob.exp_ncx">
-<span class="sig-prename descclassname"><span class="pre">power1d.prob.</span></span><span class="sig-name descname"><span class="pre">exp_ncx</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">delta</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">r</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#power1d.prob.exp_ncx" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">power1d.prob.</span></span><span class="sig-name descname"><span class="pre">exp_ncx</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">delta</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">r</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#power1d.prob.exp_ncx" title="Link to this definition">¶</a></dt>
 <dd><p>Non-central chi-square moments around zero</p>
 <p>Adapted from “pm_Exp_ncX.m” in “PowerMap” (Joyce &amp; Hayasaka 2012)</p>
 <p>Arguments:</p>
@@ -178,10 +175,10 @@ Reference:  Worsley KJ et al. (2004) [Eqn.2 and Table 2]</p>
 
 </section>
 <section id="f-isf">
-<h2>f_isf<a class="headerlink" href="#f-isf" title="Permalink to this heading">¶</a></h2>
+<h2>f_isf<a class="headerlink" href="#f-isf" title="Link to this heading">¶</a></h2>
 <dl class="py function">
 <dt class="sig sig-object py" id="power1d.prob.f_isf">
-<span class="sig-prename descclassname"><span class="pre">power1d.prob.</span></span><span class="sig-name descname"><span class="pre">f_isf</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">alpha</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Q</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fwhm</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#power1d.prob.f_isf" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">power1d.prob.</span></span><span class="sig-name descname"><span class="pre">f_isf</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">alpha</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Q</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fwhm</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#power1d.prob.f_isf" title="Link to this definition">¶</a></dt>
 <dd><p>Inverse survival function for central f fields</p>
 <p>Arguments:</p>
 <p><em>alpha</em> —- Type I error rate (float between 0 and 1)</p>
@@ -192,10 +189,10 @@ Reference:  Worsley KJ et al. (2004) [Eqn.2 and Table 2]</p>
 
 </section>
 <section id="f-sf">
-<h2>f_sf<a class="headerlink" href="#f-sf" title="Permalink to this heading">¶</a></h2>
+<h2>f_sf<a class="headerlink" href="#f-sf" title="Link to this heading">¶</a></h2>
 <dl class="py function">
 <dt class="sig sig-object py" id="power1d.prob.f_sf">
-<span class="sig-prename descclassname"><span class="pre">power1d.prob.</span></span><span class="sig-name descname"><span class="pre">f_sf</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">u</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Q</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fwhm</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#power1d.prob.f_sf" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">power1d.prob.</span></span><span class="sig-name descname"><span class="pre">f_sf</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">u</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Q</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fwhm</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#power1d.prob.f_sf" title="Link to this definition">¶</a></dt>
 <dd><p>Survival function for central F fields.</p>
 <p>Arguments:</p>
 <p><em>u</em> —- height (float)</p>
@@ -206,10 +203,10 @@ Reference:  Worsley KJ et al. (2004) [Eqn.2 and Table 2]</p>
 
 </section>
 <section id="ncf-sf">
-<h2>ncf_sf<a class="headerlink" href="#ncf-sf" title="Permalink to this heading">¶</a></h2>
+<h2>ncf_sf<a class="headerlink" href="#ncf-sf" title="Link to this heading">¶</a></h2>
 <dl class="py function">
 <dt class="sig sig-object py" id="power1d.prob.ncf_sf">
-<span class="sig-prename descclassname"><span class="pre">power1d.prob.</span></span><span class="sig-name descname"><span class="pre">ncf_sf</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">u</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Q</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fwhm</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">delta</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#power1d.prob.ncf_sf" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">power1d.prob.</span></span><span class="sig-name descname"><span class="pre">ncf_sf</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">u</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Q</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fwhm</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">delta</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#power1d.prob.ncf_sf" title="Link to this definition">¶</a></dt>
 <dd><p>Survival function for noncentral f fields.</p>
 <p>Adapted from “pm_P_ncT.m” in “PowerMap” (Joyce &amp; Hayasaka 2012)</p>
 <p>Arguments:</p>
@@ -222,10 +219,10 @@ Reference:  Worsley KJ et al. (2004) [Eqn.2 and Table 2]</p>
 
 </section>
 <section id="nct-sf">
-<h2>nct_sf<a class="headerlink" href="#nct-sf" title="Permalink to this heading">¶</a></h2>
+<h2>nct_sf<a class="headerlink" href="#nct-sf" title="Link to this heading">¶</a></h2>
 <dl class="py function">
 <dt class="sig sig-object py" id="power1d.prob.nct_sf">
-<span class="sig-prename descclassname"><span class="pre">power1d.prob.</span></span><span class="sig-name descname"><span class="pre">nct_sf</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">u</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Q</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fwhm</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">delta</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#power1d.prob.nct_sf" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">power1d.prob.</span></span><span class="sig-name descname"><span class="pre">nct_sf</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">u</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Q</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fwhm</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">delta</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#power1d.prob.nct_sf" title="Link to this definition">¶</a></dt>
 <dd><p>Survival function for noncentral t fields.</p>
 <p>Adapted from “pm_P_ncT.m” in “PowerMap” (Joyce &amp; Hayasaka 2012)</p>
 <p>Arguments:</p>
@@ -238,10 +235,10 @@ Reference:  Worsley KJ et al. (2004) [Eqn.2 and Table 2]</p>
 
 </section>
 <section id="t-isf">
-<h2>t_isf<a class="headerlink" href="#t-isf" title="Permalink to this heading">¶</a></h2>
+<h2>t_isf<a class="headerlink" href="#t-isf" title="Link to this heading">¶</a></h2>
 <dl class="py function">
 <dt class="sig sig-object py" id="power1d.prob.t_isf">
-<span class="sig-prename descclassname"><span class="pre">power1d.prob.</span></span><span class="sig-name descname"><span class="pre">t_isf</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">alpha</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Q</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fwhm</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#power1d.prob.t_isf" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">power1d.prob.</span></span><span class="sig-name descname"><span class="pre">t_isf</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">alpha</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Q</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fwhm</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#power1d.prob.t_isf" title="Link to this definition">¶</a></dt>
 <dd><p>Inverse survival function for central t fields</p>
 <p>Arguments:</p>
 <p><em>alpha</em> —- Type I error rate (float between 0 and 1)</p>
@@ -252,10 +249,10 @@ Reference:  Worsley KJ et al. (2004) [Eqn.2 and Table 2]</p>
 
 </section>
 <section id="t-sf">
-<h2>t_sf<a class="headerlink" href="#t-sf" title="Permalink to this heading">¶</a></h2>
+<h2>t_sf<a class="headerlink" href="#t-sf" title="Link to this heading">¶</a></h2>
 <dl class="py function">
 <dt class="sig sig-object py" id="power1d.prob.t_sf">
-<span class="sig-prename descclassname"><span class="pre">power1d.prob.</span></span><span class="sig-name descname"><span class="pre">t_sf</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">u</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Q</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fwhm</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#power1d.prob.t_sf" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">power1d.prob.</span></span><span class="sig-name descname"><span class="pre">t_sf</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">u</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Q</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fwhm</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#power1d.prob.t_sf" title="Link to this definition">¶</a></dt>
 <dd><p>Survival function for central t fields.</p>
 <p>Arguments:</p>
 <p><em>u</em> —- height (float)</p>
@@ -266,10 +263,10 @@ Reference:  Worsley KJ et al. (2004) [Eqn.2 and Table 2]</p>
 
 </section>
 <section id="power-friston1994">
-<h2>power_Friston1994<a class="headerlink" href="#power-friston1994" title="Permalink to this heading">¶</a></h2>
+<h2>power_Friston1994<a class="headerlink" href="#power-friston1994" title="Link to this heading">¶</a></h2>
 <dl class="py function">
 <dt class="sig sig-object py" id="power1d.prob.power_Friston1994">
-<span class="sig-prename descclassname"><span class="pre">power1d.prob.</span></span><span class="sig-name descname"><span class="pre">power_Friston1994</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">alpha</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Q</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">W0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">W1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sigma</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#power1d.prob.power_Friston1994" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">power1d.prob.</span></span><span class="sig-name descname"><span class="pre">power_Friston1994</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">alpha</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Q</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">W0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">W1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sigma</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#power1d.prob.power_Friston1994" title="Link to this definition">¶</a></dt>
 <dd><p>Continuum-level power calculation using the inflated variance method
 (Friston et al. 1994)</p>
 <p>Arguments:</p>
@@ -290,10 +287,10 @@ their spatial extent. <strong>Human Brain Mapp</strong> 1: 210-220.</div>
 
 </section>
 <section id="power-hayasaka2007">
-<h2>power_Hayasaka2007<a class="headerlink" href="#power-hayasaka2007" title="Permalink to this heading">¶</a></h2>
+<h2>power_Hayasaka2007<a class="headerlink" href="#power-hayasaka2007" title="Link to this heading">¶</a></h2>
 <dl class="py function">
 <dt class="sig sig-object py" id="power1d.prob.power_Hayasaka2007">
-<span class="sig-prename descclassname"><span class="pre">power1d.prob.</span></span><span class="sig-name descname"><span class="pre">power_Hayasaka2007</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">alpha</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Q</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fwhm</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">effect</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#power1d.prob.power_Hayasaka2007" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">power1d.prob.</span></span><span class="sig-name descname"><span class="pre">power_Hayasaka2007</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">alpha</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Q</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fwhm</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">effect</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#power1d.prob.power_Hayasaka2007" title="Link to this definition">¶</a></dt>
 <dd><p>Continuum-level power calculation using the non-central t method
 (Hayasaka et al. 2007)</p>
 <p>Arguments:</p>
@@ -313,10 +310,10 @@ non-central random field theory. <strong>NeuroImage</strong> 37(3), 721-730.</di
 
 </section>
 <section id="power">
-<h2>power<a class="headerlink" href="#power" title="Permalink to this heading">¶</a></h2>
+<h2>power<a class="headerlink" href="#power" title="Link to this heading">¶</a></h2>
 <dl class="py function">
 <dt class="sig sig-object py" id="power1d.prob.power">
-<span class="sig-prename descclassname"><span class="pre">power1d.prob.</span></span><span class="sig-name descname"><span class="pre">power</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">alpha</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Q</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fwhm</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">effect</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">method</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'nct'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#power1d.prob.power" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">power1d.prob.</span></span><span class="sig-name descname"><span class="pre">power</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">alpha</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Q</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fwhm</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">effect</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">method</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'nct'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#power1d.prob.power" title="Link to this definition">¶</a></dt>
 <dd><p>Continuum-level theoretical power calculations for one-sample t tests.</p>
 <p>This is a convenience function for generating comparable results for
 the “iv” and “nct” methods (see below). That is, the two methods define
@@ -342,26 +339,68 @@ two methods directly comparable.</p>
           </div>
         </div>
       </div>
-      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
         <div class="sphinxsidebarwrapper">
   <div>
     <h3><a href="../index.html">Table of Contents</a></h3>
     <ul>
 <li><a class="reference internal" href="#">power1d.prob</a><ul>
-<li><a class="reference internal" href="#ec-density-f">ec_density_f</a></li>
-<li><a class="reference internal" href="#ec-density-ncf">ec_density_ncf</a></li>
-<li><a class="reference internal" href="#ec-density-nct">ec_density_nct</a></li>
-<li><a class="reference internal" href="#ec-density-t">ec_density_t</a></li>
-<li><a class="reference internal" href="#exp-ncx">exp_ncx</a></li>
-<li><a class="reference internal" href="#f-isf">f_isf</a></li>
-<li><a class="reference internal" href="#f-sf">f_sf</a></li>
-<li><a class="reference internal" href="#ncf-sf">ncf_sf</a></li>
-<li><a class="reference internal" href="#nct-sf">nct_sf</a></li>
-<li><a class="reference internal" href="#t-isf">t_isf</a></li>
-<li><a class="reference internal" href="#t-sf">t_sf</a></li>
-<li><a class="reference internal" href="#power-friston1994">power_Friston1994</a></li>
-<li><a class="reference internal" href="#power-hayasaka2007">power_Hayasaka2007</a></li>
-<li><a class="reference internal" href="#power">power</a></li>
+<li><a class="reference internal" href="#ec-density-f">ec_density_f</a><ul>
+<li><a class="reference internal" href="#power1d.prob.ec_density_f"><code class="docutils literal notranslate"><span class="pre">ec_density_f()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#ec-density-ncf">ec_density_ncf</a><ul>
+<li><a class="reference internal" href="#power1d.prob.ec_density_ncf"><code class="docutils literal notranslate"><span class="pre">ec_density_ncf()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#ec-density-nct">ec_density_nct</a><ul>
+<li><a class="reference internal" href="#power1d.prob.ec_density_nct"><code class="docutils literal notranslate"><span class="pre">ec_density_nct()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#ec-density-t">ec_density_t</a><ul>
+<li><a class="reference internal" href="#power1d.prob.ec_density_t"><code class="docutils literal notranslate"><span class="pre">ec_density_t()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#exp-ncx">exp_ncx</a><ul>
+<li><a class="reference internal" href="#power1d.prob.exp_ncx"><code class="docutils literal notranslate"><span class="pre">exp_ncx()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#f-isf">f_isf</a><ul>
+<li><a class="reference internal" href="#power1d.prob.f_isf"><code class="docutils literal notranslate"><span class="pre">f_isf()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#f-sf">f_sf</a><ul>
+<li><a class="reference internal" href="#power1d.prob.f_sf"><code class="docutils literal notranslate"><span class="pre">f_sf()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#ncf-sf">ncf_sf</a><ul>
+<li><a class="reference internal" href="#power1d.prob.ncf_sf"><code class="docutils literal notranslate"><span class="pre">ncf_sf()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#nct-sf">nct_sf</a><ul>
+<li><a class="reference internal" href="#power1d.prob.nct_sf"><code class="docutils literal notranslate"><span class="pre">nct_sf()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#t-isf">t_isf</a><ul>
+<li><a class="reference internal" href="#power1d.prob.t_isf"><code class="docutils literal notranslate"><span class="pre">t_isf()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#t-sf">t_sf</a><ul>
+<li><a class="reference internal" href="#power1d.prob.t_sf"><code class="docutils literal notranslate"><span class="pre">t_sf()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#power-friston1994">power_Friston1994</a><ul>
+<li><a class="reference internal" href="#power1d.prob.power_Friston1994"><code class="docutils literal notranslate"><span class="pre">power_Friston1994()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#power-hayasaka2007">power_Hayasaka2007</a><ul>
+<li><a class="reference internal" href="#power1d.prob.power_Hayasaka2007"><code class="docutils literal notranslate"><span class="pre">power_Hayasaka2007()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#power">power</a><ul>
+<li><a class="reference internal" href="#power1d.prob.power"><code class="docutils literal notranslate"><span class="pre">power()</span></code></a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -384,7 +423,7 @@ two methods directly comparable.</p>
             rel="nofollow">Show Source</a></li>
     </ul>
    </div>
-<div id="searchbox" style="display: none" role="search">
+<search id="searchbox" style="display: none" role="search">
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="../search.html" method="get">
@@ -392,13 +431,13 @@ two methods directly comparable.</p>
       <input type="submit" value="Go" />
     </form>
     </div>
-</div>
+</search>
 <script>document.getElementById('searchbox').style.display = "block"</script>
         </div>
       </div>
       <div class="clearer"></div>
     </div>
-    <div class="related" role="navigation" aria-label="related navigation">
+    <div class="related" role="navigation" aria-label="Related">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -419,8 +458,8 @@ two methods directly comparable.</p>
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2023, Todd Pataky.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.0.2.
+    &#169; Copyright 2023, Todd Pataky.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.7.
     </div>
   </body>
 </html>

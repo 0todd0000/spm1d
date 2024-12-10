@@ -1,20 +1,17 @@
-
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="en" data-content_root="../">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>power1d.random &#8212; power1d 0.1.7 documentation</title>
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/pyramid.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/plot_directive.css" />
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../_static/doctools.js"></script>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=4848ba22" />
+    <link rel="stylesheet" type="text/css" href="../_static/pyramid.css?v=310c80ee" />
+    <link rel="stylesheet" type="text/css" href="../_static/plot_directive.css?v=7f9a90b1" />
+    <script src="../_static/documentation_options.js?v=ca7ad2ea"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="power1d.results" href="results.html" />
@@ -34,7 +31,7 @@
   </div>
 </div>
 
-    <div class="related" role="navigation" aria-label="related navigation">
+    <div class="related" role="navigation" aria-label="Related">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -61,7 +58,7 @@
           <div class="body" role="main">
             
   <section id="module-power1d.random">
-<span id="power1d-random"></span><span id="label-api-random"></span><h1>power1d.random<a class="headerlink" href="#module-power1d.random" title="Permalink to this heading">¶</a></h1>
+<span id="power1d-random"></span><span id="label-api-random"></span><h1>power1d.random<a class="headerlink" href="#module-power1d.random" title="Link to this heading">¶</a></h1>
 <p>Functions and classes for generating 1D random fields.
 The <strong>randn1d</strong> function is similar to the <strong>numpy.random.randn</strong> function
 but the former generates smooth (correlated) 1D Gaussian fields and the
@@ -75,10 +72,10 @@ SEE THE ORIGINAL DOCUMENTATION FOR MORE DETAILS:</p>
 <p>Pataky TC (2016) RFT1D: Smooth One-Dimensional Random Field Upcrossing Probabilities in Python.
 <strong>Journal of Statistical Software</strong> 71(7), 1-22. <a class="reference external" href="http://doi.org/10.18637/jss.v071.i07">http://doi.org/10.18637/jss.v071.i07</a></p>
 <section id="randn1d">
-<h2>randn1d<a class="headerlink" href="#randn1d" title="Permalink to this heading">¶</a></h2>
+<h2>randn1d<a class="headerlink" href="#randn1d" title="Link to this heading">¶</a></h2>
 <dl class="py function">
 <dt class="sig sig-object py" id="power1d.random.randn1d">
-<span class="sig-prename descclassname"><span class="pre">power1d.random.</span></span><span class="sig-name descname"><span class="pre">randn1d</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">nResponses</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nodes</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">FWHM</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pad</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#power1d.random.randn1d" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">power1d.random.</span></span><span class="sig-name descname"><span class="pre">randn1d</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">nResponses</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nodes</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">FWHM</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pad</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#power1d.random.randn1d" title="Link to this definition">¶</a></dt>
 <dd><p>Generate smooth Gaussian random fields.</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -105,10 +102,10 @@ SEE THE ORIGINAL DOCUMENTATION FOR MORE DETAILS:</p>
 
 </section>
 <section id="generator1d">
-<h2>Generator1D<a class="headerlink" href="#generator1d" title="Permalink to this heading">¶</a></h2>
+<h2>Generator1D<a class="headerlink" href="#generator1d" title="Link to this heading">¶</a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="power1d.random.Generator1D">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">power1d.random.</span></span><span class="sig-name descname"><span class="pre">Generator1D</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">nResponses</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nodes</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">101</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">FWHM</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pad</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#power1d.random.Generator1D" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">power1d.random.</span></span><span class="sig-name descname"><span class="pre">Generator1D</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">nResponses</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nodes</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">101</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">FWHM</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pad</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#power1d.random.Generator1D" title="Link to this definition">¶</a></dt>
 <dd><p>Generator of smooth Gaussian random fields.</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -142,14 +139,20 @@ SEE THE ORIGINAL DOCUMENTATION FOR MORE DETAILS:</p>
           </div>
         </div>
       </div>
-      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
         <div class="sphinxsidebarwrapper">
   <div>
     <h3><a href="../index.html">Table of Contents</a></h3>
     <ul>
 <li><a class="reference internal" href="#">power1d.random</a><ul>
-<li><a class="reference internal" href="#randn1d">randn1d</a></li>
-<li><a class="reference internal" href="#generator1d">Generator1D</a></li>
+<li><a class="reference internal" href="#randn1d">randn1d</a><ul>
+<li><a class="reference internal" href="#power1d.random.randn1d"><code class="docutils literal notranslate"><span class="pre">randn1d()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#generator1d">Generator1D</a><ul>
+<li><a class="reference internal" href="#power1d.random.Generator1D"><code class="docutils literal notranslate"><span class="pre">Generator1D</span></code></a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -172,7 +175,7 @@ SEE THE ORIGINAL DOCUMENTATION FOR MORE DETAILS:</p>
             rel="nofollow">Show Source</a></li>
     </ul>
    </div>
-<div id="searchbox" style="display: none" role="search">
+<search id="searchbox" style="display: none" role="search">
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="../search.html" method="get">
@@ -180,13 +183,13 @@ SEE THE ORIGINAL DOCUMENTATION FOR MORE DETAILS:</p>
       <input type="submit" value="Go" />
     </form>
     </div>
-</div>
+</search>
 <script>document.getElementById('searchbox').style.display = "block"</script>
         </div>
       </div>
       <div class="clearer"></div>
     </div>
-    <div class="related" role="navigation" aria-label="related navigation">
+    <div class="related" role="navigation" aria-label="Related">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -207,8 +210,8 @@ SEE THE ORIGINAL DOCUMENTATION FOR MORE DETAILS:</p>
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2023, Todd Pataky.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.0.2.
+    &#169; Copyright 2023, Todd Pataky.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.7.
     </div>
   </body>
 </html>

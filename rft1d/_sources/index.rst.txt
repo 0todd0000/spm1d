@@ -1,80 +1,51 @@
 
-Introduction
-========================================
 
-**power1d** is a software package for numerically estimating statistical
-power in experiments involving one-dimensional continua.
+One-Dimensional Random Field Theory
+============================================
 
-Dependencies:
-
-* Python 3.X
-* NumPy
-* SciPy
-* Matplotlib 
+**rft1d** is a Python package for exploring and validating Random Field Theory (RFT)
+expectations regarding upcrossings in univariate and multivariate 1D continua.
+These expectations can be used to make statistical inferences regarding signals
+observed in experimentally measured 1D continua including scalar and vector time series.
 
 
-**Please cite**:
+------------------------
 
-Pataky TC (2017) Power1D: A Python toolbox for numerical power estimates in experiments involving one-dimensional continua. PeerJ Computer Science 3: e125. DOI: 10.7717/peerj-cs.125
+**Please cite:**
 
-https://peerj.com/articles/cs-125/
-
-
-|
-|
-
-**Install**
-
-.. code-block:: bash
-
-    pip install power1d
-
-|
-|
-
-
-**Download**
-
-`Python source code <https://github.com/0todd0000/power1d/archive/master.zip>`_
-
-
-|
-|
+Pataky TC (2016) rft1d: Smooth One-Dimensional Random Field Upcrossing Probabilities in Python. **Journal of Statistical Software** 71 : i07.  http://dx.doi.org/10.18637/jss.v071.i07
 
 
 
-New Features (v0.1.7)
-========================================
+------------------------
 
-See the :ref:`Features <label-Features>` page.
+**Support**
 
-
-Walk-through tutorial (thank you Mark!)
-========================================
+Please submit bug reports and questions to `rft1d's GitHub site <https://github.com/0todd0000/rft1d/>`_.
 
 
-.. youtube:: 1o1UeqCJUeA
 
+
+------------------------
 
 Contents
-========================================
-
+=====================================
 
 .. toctree::
 	:maxdepth: 2
 
-	License.rst
-	Features.rst
+	Download.rst
+	Theory.rst
+
+.. toctree::
+	:maxdepth: 3
+
 	Examples.rst
+
+.. toctree::
+	:maxdepth: 2
+
 	API.rst
 	References.rst
 
 
-
-
-Indices and tables
-========================================
-
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`

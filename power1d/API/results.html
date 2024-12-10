@@ -1,20 +1,17 @@
-
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="en" data-content_root="../">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>power1d.results &#8212; power1d 0.1.7 documentation</title>
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/pyramid.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/plot_directive.css" />
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../_static/doctools.js"></script>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=4848ba22" />
+    <link rel="stylesheet" type="text/css" href="../_static/pyramid.css?v=310c80ee" />
+    <link rel="stylesheet" type="text/css" href="../_static/plot_directive.css?v=7f9a90b1" />
+    <script src="../_static/documentation_options.js?v=ca7ad2ea"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="power1d.roi" href="roi.html" />
@@ -34,7 +31,7 @@
   </div>
 </div>
 
-    <div class="related" role="navigation" aria-label="related navigation">
+    <div class="related" role="navigation" aria-label="Related">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -61,7 +58,7 @@
           <div class="body" role="main">
             
   <section id="module-power1d.results">
-<span id="power1d-results"></span><span id="label-api-results"></span><h1>power1d.results<a class="headerlink" href="#module-power1d.results" title="Permalink to this heading">¶</a></h1>
+<span id="power1d-results"></span><span id="label-api-results"></span><h1>power1d.results<a class="headerlink" href="#module-power1d.results" title="Link to this heading">¶</a></h1>
 <p>A module for probing, displaying and plotting <strong>power1d</strong>
 simulation results.</p>
 <p>This module contains the <strong>SimulationResults</strong> class which
@@ -107,117 +104,117 @@ using the “save” method and re-loaded using the
 <li><p>method names are followed by “( )” with arguments inside the parentheses, and all methods also have code snippets attached.</p></li>
 </ul>
 <section id="simulationresults">
-<h2>SimulationResults<a class="headerlink" href="#simulationresults" title="Permalink to this heading">¶</a></h2>
+<h2>SimulationResults<a class="headerlink" href="#simulationresults" title="Link to this heading">¶</a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="power1d.results.SimulationResults">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">power1d.results.</span></span><span class="sig-name descname"><span class="pre">SimulationResults</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Z0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Z1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dt</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">two_tailed</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alpha</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.05</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#power1d.results.SimulationResults" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">power1d.results.</span></span><span class="sig-name descname"><span class="pre">SimulationResults</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Z0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Z1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dt</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">two_tailed</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alpha</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.05</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#power1d.results.SimulationResults" title="Link to this definition">¶</a></dt>
 <dd><p>A class containing <strong>power1d</strong> simulation results
 including distributions and derived probabilities.</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="power1d.results.SimulationResults.Q">
-<span class="sig-name descname"><span class="pre">Q</span></span><a class="headerlink" href="#power1d.results.SimulationResults.Q" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">Q</span></span><a class="headerlink" href="#power1d.results.SimulationResults.Q" title="Link to this definition">¶</a></dt>
 <dd><p>continuum size</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="power1d.results.SimulationResults.Z0">
-<span class="sig-name descname"><span class="pre">Z0</span></span><a class="headerlink" href="#power1d.results.SimulationResults.Z0" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">Z0</span></span><a class="headerlink" href="#power1d.results.SimulationResults.Z0" title="Link to this definition">¶</a></dt>
 <dd><p>test statistic continua (“null” experiment)</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="power1d.results.SimulationResults.Z1">
-<span class="sig-name descname"><span class="pre">Z1</span></span><a class="headerlink" href="#power1d.results.SimulationResults.Z1" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">Z1</span></span><a class="headerlink" href="#power1d.results.SimulationResults.Z1" title="Link to this definition">¶</a></dt>
 <dd><p>test statistic continua (“alternative” experiment)</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="power1d.results.SimulationResults.alpha">
-<span class="sig-name descname"><span class="pre">alpha</span></span><a class="headerlink" href="#power1d.results.SimulationResults.alpha" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">alpha</span></span><a class="headerlink" href="#power1d.results.SimulationResults.alpha" title="Link to this definition">¶</a></dt>
 <dd><p>Type I error rate (default 0.05)</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="power1d.results.SimulationResults.coi">
-<span class="sig-name descname"><span class="pre">coi</span></span><a class="headerlink" href="#power1d.results.SimulationResults.coi" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">coi</span></span><a class="headerlink" href="#power1d.results.SimulationResults.coi" title="Link to this definition">¶</a></dt>
 <dd><p>continuum centers-of-interest (if any) for which summary powers will be displayed when printing results</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="power1d.results.SimulationResults.coir">
-<span class="sig-name descname"><span class="pre">coir</span></span><a class="headerlink" href="#power1d.results.SimulationResults.coir" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">coir</span></span><a class="headerlink" href="#power1d.results.SimulationResults.coir" title="Link to this definition">¶</a></dt>
 <dd><p>center-of-interest radius (for coi continuum, default 3)</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="power1d.results.SimulationResults.dt">
-<span class="sig-name descname"><span class="pre">dt</span></span><a class="headerlink" href="#power1d.results.SimulationResults.dt" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">dt</span></span><a class="headerlink" href="#power1d.results.SimulationResults.dt" title="Link to this definition">¶</a></dt>
 <dd><p>total simulation duration (s)</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="power1d.results.SimulationResults.k">
-<span class="sig-name descname"><span class="pre">k</span></span><a class="headerlink" href="#power1d.results.SimulationResults.k" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">k</span></span><a class="headerlink" href="#power1d.results.SimulationResults.k" title="Link to this definition">¶</a></dt>
 <dd><p>cluster extent (default 1);  clusters in the excursion set with smaller extents will be ignored when computing probabilities</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="power1d.results.SimulationResults.model0">
-<span class="sig-name descname"><span class="pre">model0</span></span><a class="headerlink" href="#power1d.results.SimulationResults.model0" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">model0</span></span><a class="headerlink" href="#power1d.results.SimulationResults.model0" title="Link to this definition">¶</a></dt>
 <dd><p>the “null” experiment model  (an instance of <strong>power1d.models.Experiment</strong>)</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="power1d.results.SimulationResults.model1">
-<span class="sig-name descname"><span class="pre">model1</span></span><a class="headerlink" href="#power1d.results.SimulationResults.model1" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">model1</span></span><a class="headerlink" href="#power1d.results.SimulationResults.model1" title="Link to this definition">¶</a></dt>
 <dd><p>the “alternative” experiment model   (an instance of <strong>power1d.models.Experiment</strong>)</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="power1d.results.SimulationResults.niters">
-<span class="sig-name descname"><span class="pre">niters</span></span><a class="headerlink" href="#power1d.results.SimulationResults.niters" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">niters</span></span><a class="headerlink" href="#power1d.results.SimulationResults.niters" title="Link to this definition">¶</a></dt>
 <dd><p>number of simulation iterations</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="power1d.results.SimulationResults.p1d_coi0">
-<span class="sig-name descname"><span class="pre">p1d_coi0</span></span><a class="headerlink" href="#power1d.results.SimulationResults.p1d_coi0" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">p1d_coi0</span></span><a class="headerlink" href="#power1d.results.SimulationResults.p1d_coi0" title="Link to this definition">¶</a></dt>
 <dd><p>COI probability continuum for the “null” experiment</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="power1d.results.SimulationResults.p1d_coi1">
-<span class="sig-name descname"><span class="pre">p1d_coi1</span></span><a class="headerlink" href="#power1d.results.SimulationResults.p1d_coi1" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">p1d_coi1</span></span><a class="headerlink" href="#power1d.results.SimulationResults.p1d_coi1" title="Link to this definition">¶</a></dt>
 <dd><p>COI probability continuum for the “alternative” experiment</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="power1d.results.SimulationResults.p1d_poi0">
-<span class="sig-name descname"><span class="pre">p1d_poi0</span></span><a class="headerlink" href="#power1d.results.SimulationResults.p1d_poi0" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">p1d_poi0</span></span><a class="headerlink" href="#power1d.results.SimulationResults.p1d_poi0" title="Link to this definition">¶</a></dt>
 <dd><p>POI probability continuum for the “null” experiment</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="power1d.results.SimulationResults.p1d_poi1">
-<span class="sig-name descname"><span class="pre">p1d_poi1</span></span><a class="headerlink" href="#power1d.results.SimulationResults.p1d_poi1" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">p1d_poi1</span></span><a class="headerlink" href="#power1d.results.SimulationResults.p1d_poi1" title="Link to this definition">¶</a></dt>
 <dd><p>POI probability continuum for the “alternative” experiment</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="power1d.results.SimulationResults.p_reject0">
-<span class="sig-name descname"><span class="pre">p_reject0</span></span><a class="headerlink" href="#power1d.results.SimulationResults.p_reject0" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">p_reject0</span></span><a class="headerlink" href="#power1d.results.SimulationResults.p_reject0" title="Link to this definition">¶</a></dt>
 <dd><p>omnibus null rejection probability for the “null” experiment (alpha by defintion)</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="power1d.results.SimulationResults.p_reject1">
-<span class="sig-name descname"><span class="pre">p_reject1</span></span><a class="headerlink" href="#power1d.results.SimulationResults.p_reject1" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">p_reject1</span></span><a class="headerlink" href="#power1d.results.SimulationResults.p_reject1" title="Link to this definition">¶</a></dt>
 <dd><p>omnibus null rejection probability for the “alternative” experiment (power by defintion)</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="power1d.results.SimulationResults.plot">
-<span class="sig-name descname"><span class="pre">plot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">q</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#power1d.results.SimulationResults.plot" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">plot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">q</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#power1d.results.SimulationResults.plot" title="Link to this definition">¶</a></dt>
 <dd><p>Plot simulation results.</p>
 <p>This will plot the “null” and “effect” experiment models along
 with their omnibus powers and their power continua.</p>
@@ -238,19 +235,19 @@ models.</p>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="power1d.results.SimulationResults.poi">
-<span class="sig-name descname"><span class="pre">poi</span></span><a class="headerlink" href="#power1d.results.SimulationResults.poi" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">poi</span></span><a class="headerlink" href="#power1d.results.SimulationResults.poi" title="Link to this definition">¶</a></dt>
 <dd><p>continuum points-of-interest (if any) for which summary powers will be displayed when printing results</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="power1d.results.SimulationResults.roi">
-<span class="sig-name descname"><span class="pre">roi</span></span><a class="headerlink" href="#power1d.results.SimulationResults.roi" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">roi</span></span><a class="headerlink" href="#power1d.results.SimulationResults.roi" title="Link to this definition">¶</a></dt>
 <dd><p>region(s) of interest (default: whole continuum)</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="power1d.results.SimulationResults.save">
-<span class="sig-name descname"><span class="pre">save</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#power1d.results.SimulationResults.save" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">save</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#power1d.results.SimulationResults.save" title="Link to this definition">¶</a></dt>
 <dd><p>Save simulation results.</p>
 <p>Arguments:</p>
 <p>filename —— full path to a file. Should have a “.npz” extension (numpy compressed format).  It must follow the rules of <strong>np.savez</strong>.</p>
@@ -262,7 +259,7 @@ models.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="power1d.results.SimulationResults.set_alpha">
-<span class="sig-name descname"><span class="pre">set_alpha</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">alpha</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#power1d.results.SimulationResults.set_alpha" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">set_alpha</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">alpha</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#power1d.results.SimulationResults.set_alpha" title="Link to this definition">¶</a></dt>
 <dd><p>Set the Type I error rate.</p>
 <p>After calling this method all probabilities will be re-computed automatically.</p>
 <p>Arguments:</p>
@@ -275,7 +272,7 @@ models.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="power1d.results.SimulationResults.set_cluster_size_threshold">
-<span class="sig-name descname"><span class="pre">set_cluster_size_threshold</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">k</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#power1d.results.SimulationResults.set_cluster_size_threshold" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">set_cluster_size_threshold</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">k</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#power1d.results.SimulationResults.set_cluster_size_threshold" title="Link to this definition">¶</a></dt>
 <dd><p>Set a cluster size threshold (<em>k</em>) for null hypothesis (H0) rejection.</p>
 <p>By default <em>k*=1 is used, in which case only the distribution of the
 continuum maximum is used as the H0 rejection criterion. For *k</em>
@@ -295,7 +292,7 @@ computations.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="power1d.results.SimulationResults.set_coi">
-<span class="sig-name descname"><span class="pre">set_coi</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">coi</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#power1d.results.SimulationResults.set_coi" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">set_coi</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">coi</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#power1d.results.SimulationResults.set_coi" title="Link to this definition">¶</a></dt>
 <dd><p>Set centers-of-interest (COIs) to be displayed when printing.</p>
 <p>An arbibtrary number of (location, radius) pairs specifying
 locations of empirical interest. These COI results will be
@@ -313,7 +310,7 @@ example below.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="power1d.results.SimulationResults.set_coi_radius">
-<span class="sig-name descname"><span class="pre">set_coi_radius</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">r</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#power1d.results.SimulationResults.set_coi_radius" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">set_coi_radius</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">r</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#power1d.results.SimulationResults.set_coi_radius" title="Link to this definition">¶</a></dt>
 <dd><p>Set centers-of-interest (COI) radius for the COI continuum results.</p>
 <p>When using the “plot” method COI continuum results will be displayed
 by default. These indicate power associated with small regions
@@ -335,7 +332,7 @@ equivalent to the point-of-interest (POI) power continuum.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="power1d.results.SimulationResults.set_poi">
-<span class="sig-name descname"><span class="pre">set_poi</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">poi</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#power1d.results.SimulationResults.set_poi" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">set_poi</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">poi</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#power1d.results.SimulationResults.set_poi" title="Link to this definition">¶</a></dt>
 <dd><p>Set points-of-interest (POIs) to be displayed when printing.</p>
 <p>The power associated with an arbibtrary number of continuum POIs 
 will be displayed when using the “print” command as indicated
@@ -352,7 +349,7 @@ in the example below.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="power1d.results.SimulationResults.set_roi">
-<span class="sig-name descname"><span class="pre">set_roi</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">roi</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#power1d.results.SimulationResults.set_roi" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">set_roi</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">roi</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#power1d.results.SimulationResults.set_roi" title="Link to this definition">¶</a></dt>
 <dd><p>Set region of interest (ROI).</p>
 <p>An ROI constrains the continuum extent of the null hypothesis (H0).
 By default the entire continuum is considered to be the ROI of
@@ -378,7 +375,7 @@ behaves the same as a single scalar dependent variable.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="power1d.results.SimulationResults.sf">
-<span class="sig-name descname"><span class="pre">sf</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">u</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#power1d.results.SimulationResults.sf" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">sf</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">u</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#power1d.results.SimulationResults.sf" title="Link to this definition">¶</a></dt>
 <dd><p>Survival function.</p>
 <p>The probability that the “effect” distribution exceeds an arbitrary
 threshold <em>u</em>.</p>
@@ -386,7 +383,7 @@ threshold <em>u</em>.</p>
 <p>u —— threshold (float)</p>
 <p>Example:</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span> <span class="nb">print</span><span class="p">(</span>  <span class="n">results</span><span class="o">.</span><span class="n">sf</span><span class="p">(</span> <span class="mf">3.0</span> <span class="p">)</span>  <span class="p">)</span>
-<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt;</span>
 <span class="gp">&gt;&gt;&gt; </span> <span class="n">u</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
 <span class="gp">&gt;&gt;&gt; </span> <span class="n">p</span> <span class="o">=</span> <span class="p">[</span><span class="n">results</span><span class="o">.</span><span class="n">sf</span><span class="p">(</span><span class="n">uu</span><span class="p">)</span> <span class="k">for</span> <span class="n">uu</span> <span class="ow">in</span> <span class="n">u</span><span class="p">]</span>
 <span class="gp">&gt;&gt;&gt; </span> <span class="nb">print</span><span class="p">(</span> <span class="n">p</span> <span class="p">)</span>
@@ -396,19 +393,19 @@ threshold <em>u</em>.</p>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="power1d.results.SimulationResults.z0">
-<span class="sig-name descname"><span class="pre">z0</span></span><a class="headerlink" href="#power1d.results.SimulationResults.z0" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">z0</span></span><a class="headerlink" href="#power1d.results.SimulationResults.z0" title="Link to this definition">¶</a></dt>
 <dd><p>distribution upon which omnibus H0 rejection decision is based (“null” model)</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="power1d.results.SimulationResults.z1">
-<span class="sig-name descname"><span class="pre">z1</span></span><a class="headerlink" href="#power1d.results.SimulationResults.z1" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">z1</span></span><a class="headerlink" href="#power1d.results.SimulationResults.z1" title="Link to this definition">¶</a></dt>
 <dd><p>distribution upon which omnibus H0 rejection decision is based (“alternative” model)</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="power1d.results.SimulationResults.zstar">
-<span class="sig-name descname"><span class="pre">zstar</span></span><a class="headerlink" href="#power1d.results.SimulationResults.zstar" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">zstar</span></span><a class="headerlink" href="#power1d.results.SimulationResults.zstar" title="Link to this definition">¶</a></dt>
 <dd><p>critical threshold for omnibus null (based on Z0max)</p>
 </dd></dl>
 
@@ -422,13 +419,49 @@ threshold <em>u</em>.</p>
           </div>
         </div>
       </div>
-      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
         <div class="sphinxsidebarwrapper">
   <div>
     <h3><a href="../index.html">Table of Contents</a></h3>
     <ul>
 <li><a class="reference internal" href="#">power1d.results</a><ul>
-<li><a class="reference internal" href="#simulationresults">SimulationResults</a></li>
+<li><a class="reference internal" href="#simulationresults">SimulationResults</a><ul>
+<li><a class="reference internal" href="#power1d.results.SimulationResults"><code class="docutils literal notranslate"><span class="pre">SimulationResults</span></code></a><ul>
+<li><a class="reference internal" href="#power1d.results.SimulationResults.Q"><code class="docutils literal notranslate"><span class="pre">SimulationResults.Q</span></code></a></li>
+<li><a class="reference internal" href="#power1d.results.SimulationResults.Z0"><code class="docutils literal notranslate"><span class="pre">SimulationResults.Z0</span></code></a></li>
+<li><a class="reference internal" href="#power1d.results.SimulationResults.Z1"><code class="docutils literal notranslate"><span class="pre">SimulationResults.Z1</span></code></a></li>
+<li><a class="reference internal" href="#power1d.results.SimulationResults.alpha"><code class="docutils literal notranslate"><span class="pre">SimulationResults.alpha</span></code></a></li>
+<li><a class="reference internal" href="#power1d.results.SimulationResults.coi"><code class="docutils literal notranslate"><span class="pre">SimulationResults.coi</span></code></a></li>
+<li><a class="reference internal" href="#power1d.results.SimulationResults.coir"><code class="docutils literal notranslate"><span class="pre">SimulationResults.coir</span></code></a></li>
+<li><a class="reference internal" href="#power1d.results.SimulationResults.dt"><code class="docutils literal notranslate"><span class="pre">SimulationResults.dt</span></code></a></li>
+<li><a class="reference internal" href="#power1d.results.SimulationResults.k"><code class="docutils literal notranslate"><span class="pre">SimulationResults.k</span></code></a></li>
+<li><a class="reference internal" href="#power1d.results.SimulationResults.model0"><code class="docutils literal notranslate"><span class="pre">SimulationResults.model0</span></code></a></li>
+<li><a class="reference internal" href="#power1d.results.SimulationResults.model1"><code class="docutils literal notranslate"><span class="pre">SimulationResults.model1</span></code></a></li>
+<li><a class="reference internal" href="#power1d.results.SimulationResults.niters"><code class="docutils literal notranslate"><span class="pre">SimulationResults.niters</span></code></a></li>
+<li><a class="reference internal" href="#power1d.results.SimulationResults.p1d_coi0"><code class="docutils literal notranslate"><span class="pre">SimulationResults.p1d_coi0</span></code></a></li>
+<li><a class="reference internal" href="#power1d.results.SimulationResults.p1d_coi1"><code class="docutils literal notranslate"><span class="pre">SimulationResults.p1d_coi1</span></code></a></li>
+<li><a class="reference internal" href="#power1d.results.SimulationResults.p1d_poi0"><code class="docutils literal notranslate"><span class="pre">SimulationResults.p1d_poi0</span></code></a></li>
+<li><a class="reference internal" href="#power1d.results.SimulationResults.p1d_poi1"><code class="docutils literal notranslate"><span class="pre">SimulationResults.p1d_poi1</span></code></a></li>
+<li><a class="reference internal" href="#power1d.results.SimulationResults.p_reject0"><code class="docutils literal notranslate"><span class="pre">SimulationResults.p_reject0</span></code></a></li>
+<li><a class="reference internal" href="#power1d.results.SimulationResults.p_reject1"><code class="docutils literal notranslate"><span class="pre">SimulationResults.p_reject1</span></code></a></li>
+<li><a class="reference internal" href="#power1d.results.SimulationResults.plot"><code class="docutils literal notranslate"><span class="pre">SimulationResults.plot()</span></code></a></li>
+<li><a class="reference internal" href="#power1d.results.SimulationResults.poi"><code class="docutils literal notranslate"><span class="pre">SimulationResults.poi</span></code></a></li>
+<li><a class="reference internal" href="#power1d.results.SimulationResults.roi"><code class="docutils literal notranslate"><span class="pre">SimulationResults.roi</span></code></a></li>
+<li><a class="reference internal" href="#power1d.results.SimulationResults.save"><code class="docutils literal notranslate"><span class="pre">SimulationResults.save()</span></code></a></li>
+<li><a class="reference internal" href="#power1d.results.SimulationResults.set_alpha"><code class="docutils literal notranslate"><span class="pre">SimulationResults.set_alpha()</span></code></a></li>
+<li><a class="reference internal" href="#power1d.results.SimulationResults.set_cluster_size_threshold"><code class="docutils literal notranslate"><span class="pre">SimulationResults.set_cluster_size_threshold()</span></code></a></li>
+<li><a class="reference internal" href="#power1d.results.SimulationResults.set_coi"><code class="docutils literal notranslate"><span class="pre">SimulationResults.set_coi()</span></code></a></li>
+<li><a class="reference internal" href="#power1d.results.SimulationResults.set_coi_radius"><code class="docutils literal notranslate"><span class="pre">SimulationResults.set_coi_radius()</span></code></a></li>
+<li><a class="reference internal" href="#power1d.results.SimulationResults.set_poi"><code class="docutils literal notranslate"><span class="pre">SimulationResults.set_poi()</span></code></a></li>
+<li><a class="reference internal" href="#power1d.results.SimulationResults.set_roi"><code class="docutils literal notranslate"><span class="pre">SimulationResults.set_roi()</span></code></a></li>
+<li><a class="reference internal" href="#power1d.results.SimulationResults.sf"><code class="docutils literal notranslate"><span class="pre">SimulationResults.sf()</span></code></a></li>
+<li><a class="reference internal" href="#power1d.results.SimulationResults.z0"><code class="docutils literal notranslate"><span class="pre">SimulationResults.z0</span></code></a></li>
+<li><a class="reference internal" href="#power1d.results.SimulationResults.z1"><code class="docutils literal notranslate"><span class="pre">SimulationResults.z1</span></code></a></li>
+<li><a class="reference internal" href="#power1d.results.SimulationResults.zstar"><code class="docutils literal notranslate"><span class="pre">SimulationResults.zstar</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -451,7 +484,7 @@ threshold <em>u</em>.</p>
             rel="nofollow">Show Source</a></li>
     </ul>
    </div>
-<div id="searchbox" style="display: none" role="search">
+<search id="searchbox" style="display: none" role="search">
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="../search.html" method="get">
@@ -459,13 +492,13 @@ threshold <em>u</em>.</p>
       <input type="submit" value="Go" />
     </form>
     </div>
-</div>
+</search>
 <script>document.getElementById('searchbox').style.display = "block"</script>
         </div>
       </div>
       <div class="clearer"></div>
     </div>
-    <div class="related" role="navigation" aria-label="related navigation">
+    <div class="related" role="navigation" aria-label="Related">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -486,8 +519,8 @@ threshold <em>u</em>.</p>
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2023, Todd Pataky.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.0.2.
+    &#169; Copyright 2023, Todd Pataky.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.7.
     </div>
   </body>
 </html>

@@ -1,6 +1,6 @@
 
 Introduction
-=====================================
+========================================
 
 **power1d** is a software package for numerically estimating statistical
 power in experiments involving one-dimensional continua.
@@ -42,15 +42,22 @@ https://peerj.com/articles/cs-125/
 |
 
 
+
 New Features (v0.1.7)
-=====================================
+========================================
 
 See the :ref:`Features <label-Features>` page.
 
 
+Walk-through tutorial (thank you Mark!)
+========================================
+
+
+.. youtube:: 1o1UeqCJUeA
+
 
 Contents
-=====================================
+========================================
 
 
 .. toctree::
@@ -66,7 +73,7 @@ Contents
 
 
 Indices and tables
-==================
+========================================
 
 * :ref:`genindex`
 * :ref:`modindex`

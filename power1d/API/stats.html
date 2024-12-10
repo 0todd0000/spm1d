@@ -1,20 +1,17 @@
-
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="en" data-content_root="../">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>power1d.stats &#8212; power1d 0.1.7 documentation</title>
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/pyramid.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/plot_directive.css" />
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../_static/doctools.js"></script>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=4848ba22" />
+    <link rel="stylesheet" type="text/css" href="../_static/pyramid.css?v=310c80ee" />
+    <link rel="stylesheet" type="text/css" href="../_static/plot_directive.css?v=7f9a90b1" />
+    <script src="../_static/documentation_options.js?v=ca7ad2ea"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="References" href="../References.html" />
@@ -34,7 +31,7 @@
   </div>
 </div>
 
-    <div class="related" role="navigation" aria-label="related navigation">
+    <div class="related" role="navigation" aria-label="Related">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -61,7 +58,7 @@
           <div class="body" role="main">
             
   <section id="module-power1d.stats">
-<span id="power1d-stats"></span><span id="label-api-stats"></span><h1>power1d.stats<a class="headerlink" href="#module-power1d.stats" title="Permalink to this heading">¶</a></h1>
+<span id="power1d-stats"></span><span id="label-api-stats"></span><h1>power1d.stats<a class="headerlink" href="#module-power1d.stats" title="Link to this heading">¶</a></h1>
 <p>A module containing test statistic functions for simple
 experiment designs.</p>
 <p>The following functions are available:</p>
@@ -95,12 +92,12 @@ freedom and matrix inversion results so they needn’t be
 re-computed.  This makes iterative simulation somewhat more
 efficient.</p>
 <section id="main-functions">
-<h2>Main functions<a class="headerlink" href="#main-functions" title="Permalink to this heading">¶</a></h2>
+<h2>Main functions<a class="headerlink" href="#main-functions" title="Link to this heading">¶</a></h2>
 <section id="t-1sample">
-<h3>t_1sample<a class="headerlink" href="#t-1sample" title="Permalink to this heading">¶</a></h3>
+<h3>t_1sample<a class="headerlink" href="#t-1sample" title="Link to this heading">¶</a></h3>
 <dl class="py function">
 <dt class="sig sig-object py" id="power1d.stats.t_1sample">
-<span class="sig-prename descclassname"><span class="pre">power1d.stats.</span></span><span class="sig-name descname"><span class="pre">t_1sample</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">y</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#power1d.stats.t_1sample" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">power1d.stats.</span></span><span class="sig-name descname"><span class="pre">t_1sample</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">y</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#power1d.stats.t_1sample" title="Link to this definition">¶</a></dt>
 <dd><p>t statistic for a one-sample test</p>
 <p>Arguments:</p>
 <p>y —— (J x Q) data sample array</p>
@@ -118,10 +115,10 @@ efficient.</p>
 
 </section>
 <section id="t-2sample">
-<h3>t_2sample<a class="headerlink" href="#t-2sample" title="Permalink to this heading">¶</a></h3>
+<h3>t_2sample<a class="headerlink" href="#t-2sample" title="Link to this heading">¶</a></h3>
 <dl class="py function">
 <dt class="sig sig-object py" id="power1d.stats.t_2sample">
-<span class="sig-prename descclassname"><span class="pre">power1d.stats.</span></span><span class="sig-name descname"><span class="pre">t_2sample</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">yA</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">yB</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#power1d.stats.t_2sample" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">power1d.stats.</span></span><span class="sig-name descname"><span class="pre">t_2sample</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">yA</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">yB</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#power1d.stats.t_2sample" title="Link to this definition">¶</a></dt>
 <dd><p>t statistic for a two-sample test</p>
 <p>Arguments:</p>
 <p>yA —— (J x Q) data sample array</p>
@@ -141,10 +138,10 @@ efficient.</p>
 
 </section>
 <section id="t-regress">
-<h3>t_regress<a class="headerlink" href="#t-regress" title="Permalink to this heading">¶</a></h3>
+<h3>t_regress<a class="headerlink" href="#t-regress" title="Link to this heading">¶</a></h3>
 <dl class="py function">
 <dt class="sig sig-object py" id="power1d.stats.t_regress">
-<span class="sig-prename descclassname"><span class="pre">power1d.stats.</span></span><span class="sig-name descname"><span class="pre">t_regress</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#power1d.stats.t_regress" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">power1d.stats.</span></span><span class="sig-name descname"><span class="pre">t_regress</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#power1d.stats.t_regress" title="Link to this definition">¶</a></dt>
 <dd><p>t statistic for linear regression</p>
 <p>Arguments:</p>
 <p>y —— (J x Q) data sample array</p>
@@ -164,10 +161,10 @@ efficient.</p>
 
 </section>
 <section id="f-anova1">
-<h3>f_anova1<a class="headerlink" href="#f-anova1" title="Permalink to this heading">¶</a></h3>
+<h3>f_anova1<a class="headerlink" href="#f-anova1" title="Link to this heading">¶</a></h3>
 <dl class="py function">
 <dt class="sig sig-object py" id="power1d.stats.f_anova1">
-<span class="sig-prename descclassname"><span class="pre">power1d.stats.</span></span><span class="sig-name descname"><span class="pre">f_anova1</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">yy</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#power1d.stats.f_anova1" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">power1d.stats.</span></span><span class="sig-name descname"><span class="pre">f_anova1</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">yy</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#power1d.stats.f_anova1" title="Link to this definition">¶</a></dt>
 <dd><p>F statistic for a one-way ANOVA</p>
 <p>Arguments:</p>
 <p>yy —— an arbitrary number of (J x Q) data sample arrays</p>
@@ -188,12 +185,12 @@ efficient.</p>
 </section>
 </section>
 <section id="efficient-functions">
-<h2>Efficient functions<a class="headerlink" href="#efficient-functions" title="Permalink to this heading">¶</a></h2>
+<h2>Efficient functions<a class="headerlink" href="#efficient-functions" title="Link to this heading">¶</a></h2>
 <section id="t-1sample-fn">
-<h3>t_1sample_fn<a class="headerlink" href="#t-1sample-fn" title="Permalink to this heading">¶</a></h3>
+<h3>t_1sample_fn<a class="headerlink" href="#t-1sample-fn" title="Link to this heading">¶</a></h3>
 <dl class="py function">
 <dt class="sig sig-object py" id="power1d.stats.t_1sample_fn">
-<span class="sig-prename descclassname"><span class="pre">power1d.stats.</span></span><span class="sig-name descname"><span class="pre">t_1sample_fn</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">J</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#power1d.stats.t_1sample_fn" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">power1d.stats.</span></span><span class="sig-name descname"><span class="pre">t_1sample_fn</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">J</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#power1d.stats.t_1sample_fn" title="Link to this definition">¶</a></dt>
 <dd><p>t statistic for a one-sample test</p>
 <p>Arguments:</p>
 <p>J —— sample size</p>
@@ -212,10 +209,10 @@ efficient.</p>
 
 </section>
 <section id="t-2sample-fn">
-<h3>t_2sample_fn<a class="headerlink" href="#t-2sample-fn" title="Permalink to this heading">¶</a></h3>
+<h3>t_2sample_fn<a class="headerlink" href="#t-2sample-fn" title="Link to this heading">¶</a></h3>
 <dl class="py function">
 <dt class="sig sig-object py" id="power1d.stats.t_2sample_fn">
-<span class="sig-prename descclassname"><span class="pre">power1d.stats.</span></span><span class="sig-name descname"><span class="pre">t_2sample_fn</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">JA</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">JB</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#power1d.stats.t_2sample_fn" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">power1d.stats.</span></span><span class="sig-name descname"><span class="pre">t_2sample_fn</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">JA</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">JB</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#power1d.stats.t_2sample_fn" title="Link to this definition">¶</a></dt>
 <dd><p>t statistic for a two-sample test</p>
 <p>Arguments:</p>
 <p>JA —— sample size for group A</p>
@@ -237,10 +234,10 @@ efficient.</p>
 
 </section>
 <section id="t-regress-fn">
-<h3>t_regress_fn<a class="headerlink" href="#t-regress-fn" title="Permalink to this heading">¶</a></h3>
+<h3>t_regress_fn<a class="headerlink" href="#t-regress-fn" title="Link to this heading">¶</a></h3>
 <dl class="py function">
 <dt class="sig sig-object py" id="power1d.stats.t_regress_fn">
-<span class="sig-prename descclassname"><span class="pre">power1d.stats.</span></span><span class="sig-name descname"><span class="pre">t_regress_fn</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#power1d.stats.t_regress_fn" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">power1d.stats.</span></span><span class="sig-name descname"><span class="pre">t_regress_fn</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#power1d.stats.t_regress_fn" title="Link to this definition">¶</a></dt>
 <dd><p>t statistic for linear regression</p>
 <p>Arguments:</p>
 <p>x —— (J,) array of independent variable values</p>
@@ -260,10 +257,10 @@ efficient.</p>
 
 </section>
 <section id="f-anova1-fn">
-<h3>f_anova1_fn<a class="headerlink" href="#f-anova1-fn" title="Permalink to this heading">¶</a></h3>
+<h3>f_anova1_fn<a class="headerlink" href="#f-anova1-fn" title="Link to this heading">¶</a></h3>
 <dl class="py function">
 <dt class="sig sig-object py" id="power1d.stats.f_anova1_fn">
-<span class="sig-prename descclassname"><span class="pre">power1d.stats.</span></span><span class="sig-name descname"><span class="pre">f_anova1_fn</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">JJ</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#power1d.stats.f_anova1_fn" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">power1d.stats.</span></span><span class="sig-name descname"><span class="pre">f_anova1_fn</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">JJ</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#power1d.stats.f_anova1_fn" title="Link to this definition">¶</a></dt>
 <dd><p>F statistic for a one-way ANOVA</p>
 <p>Arguments:</p>
 <p>JJ —— an arbitrary number sample sizes</p>
@@ -294,24 +291,48 @@ efficient.</p>
           </div>
         </div>
       </div>
-      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
         <div class="sphinxsidebarwrapper">
   <div>
     <h3><a href="../index.html">Table of Contents</a></h3>
     <ul>
 <li><a class="reference internal" href="#">power1d.stats</a><ul>
 <li><a class="reference internal" href="#main-functions">Main functions</a><ul>
-<li><a class="reference internal" href="#t-1sample">t_1sample</a></li>
-<li><a class="reference internal" href="#t-2sample">t_2sample</a></li>
-<li><a class="reference internal" href="#t-regress">t_regress</a></li>
-<li><a class="reference internal" href="#f-anova1">f_anova1</a></li>
+<li><a class="reference internal" href="#t-1sample">t_1sample</a><ul>
+<li><a class="reference internal" href="#power1d.stats.t_1sample"><code class="docutils literal notranslate"><span class="pre">t_1sample()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#t-2sample">t_2sample</a><ul>
+<li><a class="reference internal" href="#power1d.stats.t_2sample"><code class="docutils literal notranslate"><span class="pre">t_2sample()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#t-regress">t_regress</a><ul>
+<li><a class="reference internal" href="#power1d.stats.t_regress"><code class="docutils literal notranslate"><span class="pre">t_regress()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#f-anova1">f_anova1</a><ul>
+<li><a class="reference internal" href="#power1d.stats.f_anova1"><code class="docutils literal notranslate"><span class="pre">f_anova1()</span></code></a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li><a class="reference internal" href="#efficient-functions">Efficient functions</a><ul>
-<li><a class="reference internal" href="#t-1sample-fn">t_1sample_fn</a></li>
-<li><a class="reference internal" href="#t-2sample-fn">t_2sample_fn</a></li>
-<li><a class="reference internal" href="#t-regress-fn">t_regress_fn</a></li>
-<li><a class="reference internal" href="#f-anova1-fn">f_anova1_fn</a></li>
+<li><a class="reference internal" href="#t-1sample-fn">t_1sample_fn</a><ul>
+<li><a class="reference internal" href="#power1d.stats.t_1sample_fn"><code class="docutils literal notranslate"><span class="pre">t_1sample_fn()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#t-2sample-fn">t_2sample_fn</a><ul>
+<li><a class="reference internal" href="#power1d.stats.t_2sample_fn"><code class="docutils literal notranslate"><span class="pre">t_2sample_fn()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#t-regress-fn">t_regress_fn</a><ul>
+<li><a class="reference internal" href="#power1d.stats.t_regress_fn"><code class="docutils literal notranslate"><span class="pre">t_regress_fn()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#f-anova1-fn">f_anova1_fn</a><ul>
+<li><a class="reference internal" href="#power1d.stats.f_anova1_fn"><code class="docutils literal notranslate"><span class="pre">f_anova1_fn()</span></code></a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -336,7 +357,7 @@ efficient.</p>
             rel="nofollow">Show Source</a></li>
     </ul>
    </div>
-<div id="searchbox" style="display: none" role="search">
+<search id="searchbox" style="display: none" role="search">
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="../search.html" method="get">
@@ -344,13 +365,13 @@ efficient.</p>
       <input type="submit" value="Go" />
     </form>
     </div>
-</div>
+</search>
 <script>document.getElementById('searchbox').style.display = "block"</script>
         </div>
       </div>
       <div class="clearer"></div>
     </div>
-    <div class="related" role="navigation" aria-label="related navigation">
+    <div class="related" role="navigation" aria-label="Related">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -371,8 +392,8 @@ efficient.</p>
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2023, Todd Pataky.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.0.2.
+    &#169; Copyright 2023, Todd Pataky.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.7.
     </div>
   </body>
 </html>

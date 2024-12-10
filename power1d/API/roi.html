@@ -1,20 +1,17 @@
-
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="en" data-content_root="../">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>power1d.roi &#8212; power1d 0.1.7 documentation</title>
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/pyramid.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/plot_directive.css" />
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../_static/doctools.js"></script>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=4848ba22" />
+    <link rel="stylesheet" type="text/css" href="../_static/pyramid.css?v=310c80ee" />
+    <link rel="stylesheet" type="text/css" href="../_static/plot_directive.css?v=7f9a90b1" />
+    <script src="../_static/documentation_options.js?v=ca7ad2ea"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="power1d.stats" href="stats.html" />
@@ -34,7 +31,7 @@
   </div>
 </div>
 
-    <div class="related" role="navigation" aria-label="related navigation">
+    <div class="related" role="navigation" aria-label="Related">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -61,7 +58,7 @@
           <div class="body" role="main">
             
   <section id="module-power1d.roi">
-<span id="power1d-roi"></span><span id="label-api-roi"></span><h1>power1d.roi<a class="headerlink" href="#module-power1d.roi" title="Permalink to this heading">¶</a></h1>
+<span id="power1d-roi"></span><span id="label-api-roi"></span><h1>power1d.roi<a class="headerlink" href="#module-power1d.roi" title="Link to this heading">¶</a></h1>
 <p>Regions of interest (ROIs)</p>
 <p>ROIs define the continuum scope of the null hypothesis.</p>
 <p>Example:</p>
@@ -113,10 +110,10 @@
 <p>Since the ROI object limits the scope of the null hypothesis, power results pertain only to the continuum region(s) inside the ROI. In this example we see that the omnibus power is close to alpha because the ROI contains no signal. Simulating for a larger number of iterations will yield more precise convergence to alpha.</p>
 </div>
 <section id="regionofinterest">
-<h2>RegionOfInterest<a class="headerlink" href="#regionofinterest" title="Permalink to this heading">¶</a></h2>
+<h2>RegionOfInterest<a class="headerlink" href="#regionofinterest" title="Link to this heading">¶</a></h2>
 <dl class="py function">
 <dt class="sig sig-object py" id="power1d.roi.RegionOfInterest">
-<span class="sig-prename descclassname"><span class="pre">power1d.roi.</span></span><span class="sig-name descname"><span class="pre">RegionOfInterest</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#power1d.roi.RegionOfInterest" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">power1d.roi.</span></span><span class="sig-name descname"><span class="pre">RegionOfInterest</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#power1d.roi.RegionOfInterest" title="Link to this definition">¶</a></dt>
 <dd><p>Region of interest (ROI).</p>
 <p>Example:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -146,13 +143,16 @@
           </div>
         </div>
       </div>
-      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
         <div class="sphinxsidebarwrapper">
   <div>
     <h3><a href="../index.html">Table of Contents</a></h3>
     <ul>
 <li><a class="reference internal" href="#">power1d.roi</a><ul>
-<li><a class="reference internal" href="#regionofinterest">RegionOfInterest</a></li>
+<li><a class="reference internal" href="#regionofinterest">RegionOfInterest</a><ul>
+<li><a class="reference internal" href="#power1d.roi.RegionOfInterest"><code class="docutils literal notranslate"><span class="pre">RegionOfInterest()</span></code></a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -175,7 +175,7 @@
             rel="nofollow">Show Source</a></li>
     </ul>
    </div>
-<div id="searchbox" style="display: none" role="search">
+<search id="searchbox" style="display: none" role="search">
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="../search.html" method="get">
@@ -183,13 +183,13 @@
       <input type="submit" value="Go" />
     </form>
     </div>
-</div>
+</search>
 <script>document.getElementById('searchbox').style.display = "block"</script>
         </div>
       </div>
       <div class="clearer"></div>
     </div>
-    <div class="related" role="navigation" aria-label="related navigation">
+    <div class="related" role="navigation" aria-label="Related">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -210,8 +210,8 @@
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2023, Todd Pataky.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.0.2.
+    &#169; Copyright 2023, Todd Pataky.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.7.
     </div>
   </body>
 </html>

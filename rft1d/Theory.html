@@ -1,0 +1,327 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>RFT Overview &mdash; rft1d 0.2.0 documentation</title>
+  
+
+  
+  
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+    <link rel="stylesheet" href="_static/plot_directive.css" type="text/css" />
+  
+    <link rel="stylesheet" href="_static/theme.css" type="text/css" />
+  
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
+    <link rel="top" title="rft1d 0.2.0 documentation" href="index.html"/>
+        <link rel="next" title="Examples" href="Examples.html"/>
+        <link rel="prev" title="Download" href="Download.html"/> 
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div>
+		<!-- <a href="index.html"><img src="_static/rft1d.png" alt="rft1d.png"</a> -->
+		<!-- <img src="_static/rft1d.png" alt="rft1d.png"</img> -->
+		<img src="_static/rft1d.png" alt="rft1d.png"</img>
+      </div>
+
+
+      <div class="wy-side-nav-search">
+        <!-- <a href="index.html" class="fa fa-home"> rft1d</a> -->
+		
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        <a href="index.html" class="fa fa-home"> rft1d</a>
+		<!-- <img src="./rft1d.png" alt="rft1d.png"> -->
+		
+        
+            <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="Download.html">Download</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Download.html#automated-installation">Automated installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Download.html#source-code-download">Source code download</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Download.html#release-notes">Release Notes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Download.html#license-information">License information</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Download.html#license-agreement-for-rft1d">License agreement for rft1d</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">RFT Overview</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#gaussian-random-fields">Gaussian random fields</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#expected-field-maximum">Expected field maximum</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#upcrossings">Upcrossings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#expected-upcrossing-geometry">Expected upcrossing geometry</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Examples.html">Examples</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Examples/Basic.html">Basic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Examples/BrokenFields.html">Broken fields</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Examples/Validation.html">Validation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Examples/Application.html">Application</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Examples/Paper.html">Results from the paper</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Examples/List.html">Scripts (overview)</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="API.html">API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="API/data.html">rft1d.data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="API/distributions.html">rft1d.distributions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="API/geom.html">rft1d.geom</a></li>
+<li class="toctree-l2"><a class="reference internal" href="API/prob.html">rft1d.prob</a></li>
+<li class="toctree-l2"><a class="reference internal" href="API/random.html">rft1d.random</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="References.html">References</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="References.html#on-the-web">On the web</a></li>
+<li class="toctree-l2"><a class="reference internal" href="References.html#software">Software</a></li>
+<li class="toctree-l2"><a class="reference internal" href="References.html#literature">Literature</a></li>
+</ul>
+</li>
+</ul>
+
+        
+		
+      </div>
+	  
+	  
+      <!-- <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        <a href="index.html" class="fa fa-home"> rft1d</a>
+      </div> -->
+	  
+      <!-- <div class="wy-side-nav-search">
+        <a href="index.html" class="fa fa-home"> rft1d</a>
+		
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+      </div> -->
+	  
+	  
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="index.html">rft1d</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="index.html">Docs</a> &raquo;</li>
+      
+    <li>RFT Overview</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          <!-- <a href="_sources/Theory.rst.txt" rel="nofollow"> View page source</a> -->
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            
+  <section id="rft-overview">
+<h1>RFT Overview<a class="headerlink" href="#rft-overview" title="Permalink to this heading">¶</a></h1>
+<p>RFT describes the probabilities that smooth, random fields will:</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li><p>reach particular heights, and</p></li>
+<li><p>produce upcrossings which extend beyond particular heights and which have particular geometric features.</p></li>
+</ol>
+</div></blockquote>
+<p>The random fields can lie in arbitrary <em>n</em>-dimensional spaces, but <strong>rft1d</strong> considers
+only the relatively simple cases of broken (piecewise continuous) and unbroken (continuous) 1D fields.
+RFT probabilities stem from the expected Euler characteristic of thresholded Guassian random fields
+<a class="reference internal" href="References.html#label-rftliterature"><span class="std std-ref">(Adler and Hasofer, 1976)</span></a>, and this expectation leads to
+probabilistic descriptions of various geometric features of upcrossings
+<a class="reference internal" href="References.html#label-rftliterature"><span class="std std-ref">(see the Literature section for for other key papers)</span></a>.
+Since RFT extends the Gaussian distribution to 1D (and <em>n</em>D) fields, it allows one to generalize
+common parametric procedures like regression and ANOVA to the field level.</p>
+<section id="gaussian-random-fields">
+<h2>Gaussian random fields<a class="headerlink" href="#gaussian-random-fields" title="Permalink to this heading">¶</a></h2>
+<p>Gaussian fields (figure below) are Gaussian at each point in the field,
+and have arbitrary smoothness. To generate a 1D Gaussian field:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Produce a sequence of uncorrelated Gaussian values [Panel (a)]</p></li>
+<li><p>Convolve the uncorrelated Gaussian values with a Gaussian kernel of known FWHM</p></li>
+<li><p>Rescale the convolved field to unit variance based on the expected kernel variance.</p></li>
+</ul>
+</div></blockquote>
+<p>The FWHM is full-width-at-half-maximum of the smoothing kernel
+and is related to the standard deviation (<img class="math" src="_images/math/b52df27bfb0b1e3af0c2c68a7b9da459178c2a7d.png" alt="\sigma"/>) of the kernel via the identity:</p>
+<blockquote>
+<div><div class="math">
+<p><img src="_images/math/ca03f253a3c3ff23080ff0aad57302294a472ec9.png" alt="FWHM =  \sqrt{8 \log 2} \sigma \approx 2.4 \sigma"/></p>
+</div></div></blockquote>
+<p>Inifinitely smooth Gaussian fields [Panel (f) below] are equivalent to Gaussian scalars.
+In Python uncorrelated Gaussan fields can be produced using <strong>numpy.random.randn</strong>
+and they can be smoothed conveniently using <strong>scipy.ndimage.gaussian_filter1d</strong>
+as demonstrated in the <a class="reference internal" href="Examples/List.html#label-scripts-rfs"><span class="std std-ref">random field generation scripts</span></a>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Whereas a 0D Gaussian process is parameterized by only the mean <img class="math" src="_images/math/4a3598141469c2555591e66606a1b86d4ec6dca9.png" alt="\mu"/> and standard deviation <img class="math" src="_images/math/b52df27bfb0b1e3af0c2c68a7b9da459178c2a7d.png" alt="\sigma"/>, a smooth 1D Gaussian process is fully parameterized by just one additional parameter: the FHWM.</p>
+</div>
+<p>(<a class="reference download internal" download="" href="_downloads/c6963c170e22df33a093dcee77cb9b28/fig_continua1d.py"><code class="xref download docutils literal notranslate"><span class="pre">Source</span> <span class="pre">code</span></code></a>, <a class="reference download internal" download="" href="_downloads/2459f23927126b0b320b59e527e283f5/fig_continua1d.png"><code class="xref download docutils literal notranslate"><span class="pre">png</span></code></a>, <a class="reference download internal" download="" href="_downloads/042c6fa21b0723d49ab89af90eaa64d4/fig_continua1d.hires.png"><code class="xref download docutils literal notranslate"><span class="pre">hires.png</span></code></a>, <a class="reference download internal" download="" href="_downloads/37d86e39249db01b6d7617c6ccfa3787/fig_continua1d.pdf"><code class="xref download docutils literal notranslate"><span class="pre">pdf</span></code></a>)</p>
+<figure class="align-default">
+<img alt="_images/fig_continua1d.png" class="plot-directive" src="_images/fig_continua1d.png" />
+</figure>
+</section>
+<section id="expected-field-maximum">
+<h2>Expected field maximum<a class="headerlink" href="#expected-field-maximum" title="Permalink to this heading">¶</a></h2>
+<p>In the figure above it is apparent that random field extrema tend to become less extreme
+as the field gets smoother.
+The figure below emphasizes that the probability that the field maximum (z_max)
+reaches a particular height depends on field smoothness.</p>
+<p>(<a class="reference download internal" download="" href="_downloads/4980cd37ff16c4af0d37f0b6be3f0d67/fig_val_maxima_fwhm.py"><code class="xref download docutils literal notranslate"><span class="pre">Source</span> <span class="pre">code</span></code></a>, <a class="reference download internal" download="" href="_downloads/0e8cbe40450adf55db623c525a5d49a4/fig_val_maxima_fwhm.png"><code class="xref download docutils literal notranslate"><span class="pre">png</span></code></a>, <a class="reference download internal" download="" href="_downloads/f79829ae149a5600873b79c37d57e617/fig_val_maxima_fwhm.hires.png"><code class="xref download docutils literal notranslate"><span class="pre">hires.png</span></code></a>, <a class="reference download internal" download="" href="_downloads/4d03d0cce26ae1eab1df5abc09aa03d3/fig_val_maxima_fwhm.pdf"><code class="xref download docutils literal notranslate"><span class="pre">pdf</span></code></a>)</p>
+<figure class="align-default">
+<img alt="_images/fig_val_maxima_fwhm.png" class="plot-directive" src="_images/fig_val_maxima_fwhm.png" />
+</figure>
+</section>
+<section id="upcrossings">
+<span id="label-theory-upcrossings"></span><h2>Upcrossings<a class="headerlink" href="#upcrossings" title="Permalink to this heading">¶</a></h2>
+<p>After thresholding a random field at a particular height <em>u</em>,
+one or more “upcrossings” may survive that threshold as depicted in the figure below.
+An upcrossing may be described as a connected set or “cluster” of supra-threshold nodes.
+Each upcrossing possesses a number of geometrical features including especially: maximum height and extent.</p>
+<p>(<a class="reference download internal" download="" href="_downloads/6011d445a63d3ecc2df34b44b4b28049/fig_upcrossing.py"><code class="xref download docutils literal notranslate"><span class="pre">Source</span> <span class="pre">code</span></code></a>, <a class="reference download internal" download="" href="_downloads/cf9971cf69bf2f7dd009b7cd36376f53/fig_upcrossing.png"><code class="xref download docutils literal notranslate"><span class="pre">png</span></code></a>, <a class="reference download internal" download="" href="_downloads/68a913529e4722c7a0b24e35862fdffe/fig_upcrossing.hires.png"><code class="xref download docutils literal notranslate"><span class="pre">hires.png</span></code></a>, <a class="reference download internal" download="" href="_downloads/879d7ab2fe101056163bf1e251a39c1e/fig_upcrossing.pdf"><code class="xref download docutils literal notranslate"><span class="pre">pdf</span></code></a>)</p>
+<figure class="align-default">
+<img alt="_images/fig_upcrossing.png" class="plot-directive" src="_images/fig_upcrossing.png" />
+</figure>
+</section>
+<section id="expected-upcrossing-geometry">
+<h2>Expected upcrossing geometry<a class="headerlink" href="#expected-upcrossing-geometry" title="Permalink to this heading">¶</a></h2>
+<p>RFT describes not only the expected random field maxima, but also expected upcrossing geometry.
+Through those expectations RFT yields probabilities regarding various upcrossing features
+including extent. The figure below depicts the probability that Gaussian fields
+(<em>FWHM</em> = 10.0) will produce upcrossings with an extent (k) when thresholded at <em>u</em>.</p>
+<p><strong>rft1d</strong> contains functions and classes for exploring a variety of RFT probabilities
+and expectations. It also contains a number of scripts which validate
+these probabilities through simulation. Last, it demonstrates how these probabilities
+can be applied to make a variety of statistical inferences regarding experimental
+univariate and multivariate test statistic fields.</p>
+<p>(<a class="reference download internal" download="" href="_downloads/65f776f21e7c299d60172d7e2b1cb1d3/fig_expected_extents.py"><code class="xref download docutils literal notranslate"><span class="pre">Source</span> <span class="pre">code</span></code></a>, <a class="reference download internal" download="" href="_downloads/717a8fb3f99a22ebebee2c3fc8422430/fig_expected_extents.png"><code class="xref download docutils literal notranslate"><span class="pre">png</span></code></a>, <a class="reference download internal" download="" href="_downloads/54b44cd3e1ce2a7295d059852da06d80/fig_expected_extents.hires.png"><code class="xref download docutils literal notranslate"><span class="pre">hires.png</span></code></a>, <a class="reference download internal" download="" href="_downloads/ae0e6e8509a2a616e17a9a3ad61ef2f6/fig_expected_extents.pdf"><code class="xref download docutils literal notranslate"><span class="pre">pdf</span></code></a>)</p>
+<figure class="align-default">
+<img alt="_images/fig_expected_extents.png" class="plot-directive" src="_images/fig_expected_extents.png" />
+</figure>
+</section>
+</section>
+
+
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="Download.html" class="btn btn-neutral float-left" title="Download" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="Examples.html" class="btn btn-neutral float-right" title="Examples" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, Todd Pataky.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'0.2.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="_static/documentation_options.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+      <script type="text/javascript" src="_static/sphinx_highlight.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>
+
+

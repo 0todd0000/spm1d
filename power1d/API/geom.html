@@ -1,20 +1,17 @@
-
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="en" data-content_root="../">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>power1d.geom &#8212; power1d 0.1.7 documentation</title>
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/pyramid.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/plot_directive.css" />
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../_static/doctools.js"></script>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=4848ba22" />
+    <link rel="stylesheet" type="text/css" href="../_static/pyramid.css?v=310c80ee" />
+    <link rel="stylesheet" type="text/css" href="../_static/plot_directive.css?v=7f9a90b1" />
+    <script src="../_static/documentation_options.js?v=ca7ad2ea"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="power1d.io" href="io.html" />
@@ -34,7 +31,7 @@
   </div>
 </div>
 
-    <div class="related" role="navigation" aria-label="related navigation">
+    <div class="related" role="navigation" aria-label="Related">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -61,7 +58,7 @@
           <div class="body" role="main">
             
   <section id="module-power1d.geom">
-<span id="power1d-geom"></span><span id="label-api-geom"></span><h1>power1d.geom<a class="headerlink" href="#module-power1d.geom" title="Permalink to this heading">¶</a></h1>
+<span id="power1d-geom"></span><span id="label-api-geom"></span><h1>power1d.geom<a class="headerlink" href="#module-power1d.geom" title="Link to this heading">¶</a></h1>
 <p>One-dimensional (1D) continuum geometry primitives.</p>
 <p>The classes in this module represent a set of building blocks
 for constructing 1D baselines and signals.</p>
@@ -73,10 +70,10 @@ primitives through the standard operators: + - * / **</p>
 <img alt="../_images/all_geom.png" class="plot-directive" src="../_images/all_geom.png" />
 </figure>
 <section id="from-array">
-<span id="label-api-geom-from-array"></span><h2>from_array<a class="headerlink" href="#from-array" title="Permalink to this heading">¶</a></h2>
+<span id="label-api-geom-from-array"></span><h2>from_array<a class="headerlink" href="#from-array" title="Link to this heading">¶</a></h2>
 <dl class="py function">
 <dt class="sig sig-object py" id="power1d.geom.from_array">
-<span class="sig-prename descclassname"><span class="pre">power1d.geom.</span></span><span class="sig-name descname"><span class="pre">from_array</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#power1d.geom.from_array" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">power1d.geom.</span></span><span class="sig-name descname"><span class="pre">from_array</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#power1d.geom.from_array" title="Link to this definition">¶</a></dt>
 <dd><p>Create Continuum1D geometry object(s) from a 1D or 2D array.</p>
 <p>Arguments:</p>
 <p><em>x</em> —- 1- or 2-dimensional numpy array</p>
@@ -103,10 +100,10 @@ primitives through the standard operators: + - * / **</p>
 
 </section>
 <section id="from-file">
-<span id="label-api-geom-from-file"></span><h2>from_file<a class="headerlink" href="#from-file" title="Permalink to this heading">¶</a></h2>
+<span id="label-api-geom-from-file"></span><h2>from_file<a class="headerlink" href="#from-file" title="Link to this heading">¶</a></h2>
 <dl class="py function">
 <dt class="sig sig-object py" id="power1d.geom.from_file">
-<span class="sig-prename descclassname"><span class="pre">power1d.geom.</span></span><span class="sig-name descname"><span class="pre">from_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fpath</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#power1d.geom.from_file" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">power1d.geom.</span></span><span class="sig-name descname"><span class="pre">from_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fpath</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#power1d.geom.from_file" title="Link to this definition">¶</a></dt>
 <dd><p>Create Continuum1D geometry object(s) from a CSV file.</p>
 <p>Only CSV files are currently supported.</p>
 <p>1D arrays can be saved as either a single row or a
@@ -122,10 +119,10 @@ converted to a Continuum1D object</p>
 
 </section>
 <section id="continuum1d">
-<h2>Continuum1D<a class="headerlink" href="#continuum1d" title="Permalink to this heading">¶</a></h2>
+<h2>Continuum1D<a class="headerlink" href="#continuum1d" title="Link to this heading">¶</a></h2>
 <dl class="py function">
 <dt class="sig sig-object py" id="power1d.geom.Continuum1D">
-<span class="sig-prename descclassname"><span class="pre">power1d.geom.</span></span><span class="sig-name descname"><span class="pre">Continuum1D</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#power1d.geom.Continuum1D" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">power1d.geom.</span></span><span class="sig-name descname"><span class="pre">Continuum1D</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#power1d.geom.Continuum1D" title="Link to this definition">¶</a></dt>
 <dd><p>Manually defined one-dimensional continuum geometry.</p>
 <p>Arguments:</p>
 <p><em>value</em> —- one-dimensional numpy array</p>
@@ -146,10 +143,10 @@ converted to a Continuum1D object</p>
 
 </section>
 <section id="constant">
-<h2>Constant<a class="headerlink" href="#constant" title="Permalink to this heading">¶</a></h2>
+<h2>Constant<a class="headerlink" href="#constant" title="Link to this heading">¶</a></h2>
 <dl class="py function">
 <dt class="sig sig-object py" id="power1d.geom.Constant">
-<span class="sig-prename descclassname"><span class="pre">power1d.geom.</span></span><span class="sig-name descname"><span class="pre">Constant</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Q</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">101</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">amp</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#power1d.geom.Constant" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">power1d.geom.</span></span><span class="sig-name descname"><span class="pre">Constant</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Q</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">101</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">amp</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#power1d.geom.Constant" title="Link to this definition">¶</a></dt>
 <dd><p>Constant value continuum with amplitude <em>amp</em>.</p>
 <p>Keyword arguments:</p>
 <p><em>Q</em> —- continuum size (int) (default: 101)</p>
@@ -169,10 +166,10 @@ converted to a Continuum1D object</p>
 
 </section>
 <section id="exponential">
-<h2>Exponential<a class="headerlink" href="#exponential" title="Permalink to this heading">¶</a></h2>
+<h2>Exponential<a class="headerlink" href="#exponential" title="Link to this heading">¶</a></h2>
 <dl class="py function">
 <dt class="sig sig-object py" id="power1d.geom.Exponential">
-<span class="sig-prename descclassname"><span class="pre">power1d.geom.</span></span><span class="sig-name descname"><span class="pre">Exponential</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Q</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">101</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x0</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x1</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rate</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#power1d.geom.Exponential" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">power1d.geom.</span></span><span class="sig-name descname"><span class="pre">Exponential</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Q</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">101</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x0</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x1</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rate</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#power1d.geom.Exponential" title="Link to this definition">¶</a></dt>
 <dd><p>Exponentially increasing (or decreasing) continuum</p>
 <p>Keyword arguments:</p>
 <p><em>Q</em> —- continuum size (int) (default: 101)</p>
@@ -194,10 +191,10 @@ converted to a Continuum1D object</p>
 
 </section>
 <section id="exponentialsaw">
-<h2>ExponentialSaw<a class="headerlink" href="#exponentialsaw" title="Permalink to this heading">¶</a></h2>
+<h2>ExponentialSaw<a class="headerlink" href="#exponentialsaw" title="Link to this heading">¶</a></h2>
 <dl class="py function">
 <dt class="sig sig-object py" id="power1d.geom.ExponentialSaw">
-<span class="sig-prename descclassname"><span class="pre">power1d.geom.</span></span><span class="sig-name descname"><span class="pre">ExponentialSaw</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Q</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">101</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x0</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x1</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rate</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cutoff</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">70</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#power1d.geom.ExponentialSaw" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">power1d.geom.</span></span><span class="sig-name descname"><span class="pre">ExponentialSaw</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Q</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">101</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x0</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x1</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rate</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cutoff</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">70</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#power1d.geom.ExponentialSaw" title="Link to this definition">¶</a></dt>
 <dd><p>Exponentially increasing (or decreasing) continuum with a saw cutoff</p>
 <p>Keyword arguments:</p>
 <p><em>Q</em> —- continuum size (int) (default: 101)</p>
@@ -220,10 +217,10 @@ converted to a Continuum1D object</p>
 
 </section>
 <section id="gaussianpulse">
-<h2>GaussianPulse<a class="headerlink" href="#gaussianpulse" title="Permalink to this heading">¶</a></h2>
+<h2>GaussianPulse<a class="headerlink" href="#gaussianpulse" title="Link to this heading">¶</a></h2>
 <dl class="py function">
 <dt class="sig sig-object py" id="power1d.geom.GaussianPulse">
-<span class="sig-prename descclassname"><span class="pre">power1d.geom.</span></span><span class="sig-name descname"><span class="pre">GaussianPulse</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Q</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">101</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">q</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">50</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fwhm</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sigma</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">amp</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#power1d.geom.GaussianPulse" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">power1d.geom.</span></span><span class="sig-name descname"><span class="pre">GaussianPulse</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Q</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">101</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">q</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">50</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fwhm</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sigma</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">amp</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#power1d.geom.GaussianPulse" title="Link to this definition">¶</a></dt>
 <dd><p>A Gaussian pulse at a particular continuum location.</p>
 <p>NOTE: one of <em>fwhm</em> and <em>sigma</em> must be specified, and the other must be None.</p>
 <p>Keyword arguments:</p>
@@ -247,10 +244,10 @@ converted to a Continuum1D object</p>
 
 </section>
 <section id="linear">
-<h2>Linear<a class="headerlink" href="#linear" title="Permalink to this heading">¶</a></h2>
+<h2>Linear<a class="headerlink" href="#linear" title="Link to this heading">¶</a></h2>
 <dl class="py function">
 <dt class="sig sig-object py" id="power1d.geom.Linear">
-<span class="sig-prename descclassname"><span class="pre">power1d.geom.</span></span><span class="sig-name descname"><span class="pre">Linear</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Q</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">101</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x0</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x1</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">slope</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#power1d.geom.Linear" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">power1d.geom.</span></span><span class="sig-name descname"><span class="pre">Linear</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Q</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">101</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x0</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x1</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">slope</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#power1d.geom.Linear" title="Link to this definition">¶</a></dt>
 <dd><p>Linearly increasing (or decreasing) continuum</p>
 <p>NOTE: one of <em>x1</em> and <em>slope</em> must be specified, and the other must be None.</p>
 <p>Keyword arguments:</p>
@@ -273,10 +270,10 @@ converted to a Continuum1D object</p>
 
 </section>
 <section id="null">
-<h2>Null<a class="headerlink" href="#null" title="Permalink to this heading">¶</a></h2>
+<h2>Null<a class="headerlink" href="#null" title="Link to this heading">¶</a></h2>
 <dl class="py function">
 <dt class="sig sig-object py" id="power1d.geom.Null">
-<span class="sig-prename descclassname"><span class="pre">power1d.geom.</span></span><span class="sig-name descname"><span class="pre">Null</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Q</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">101</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#power1d.geom.Null" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">power1d.geom.</span></span><span class="sig-name descname"><span class="pre">Null</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Q</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">101</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#power1d.geom.Null" title="Link to this definition">¶</a></dt>
 <dd><p>Null continuum.  This is equivalent to a constant continuum with amp=0</p>
 <p>Keyword arguments:</p>
 <p><em>Q</em> —- continuum size (int) (default: 101)</p>
@@ -295,10 +292,10 @@ converted to a Continuum1D object</p>
 
 </section>
 <section id="sawpulse">
-<h2>SawPulse<a class="headerlink" href="#sawpulse" title="Permalink to this heading">¶</a></h2>
+<h2>SawPulse<a class="headerlink" href="#sawpulse" title="Link to this heading">¶</a></h2>
 <dl class="py function">
 <dt class="sig sig-object py" id="power1d.geom.SawPulse">
-<span class="sig-prename descclassname"><span class="pre">power1d.geom.</span></span><span class="sig-name descname"><span class="pre">SawPulse</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Q</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">101</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">q0</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">50</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">q1</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">75</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x0</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x1</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#power1d.geom.SawPulse" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">power1d.geom.</span></span><span class="sig-name descname"><span class="pre">SawPulse</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Q</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">101</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">q0</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">50</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">q1</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">75</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x0</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x1</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#power1d.geom.SawPulse" title="Link to this definition">¶</a></dt>
 <dd><p>Linearly increasing (or decreasing) continuum, cut-off at a particular point</p>
 <p>Keyword arguments:</p>
 <p><em>Q</em> —- continuum size (int) (default: 101)</p>
@@ -321,10 +318,10 @@ converted to a Continuum1D object</p>
 
 </section>
 <section id="sawtooth">
-<h2>SawTooth<a class="headerlink" href="#sawtooth" title="Permalink to this heading">¶</a></h2>
+<h2>SawTooth<a class="headerlink" href="#sawtooth" title="Link to this heading">¶</a></h2>
 <dl class="py function">
 <dt class="sig sig-object py" id="power1d.geom.SawTooth">
-<span class="sig-prename descclassname"><span class="pre">power1d.geom.</span></span><span class="sig-name descname"><span class="pre">SawTooth</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Q</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">101</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">q0</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">50</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">q1</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">75</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x0</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x1</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dq</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#power1d.geom.SawTooth" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">power1d.geom.</span></span><span class="sig-name descname"><span class="pre">SawTooth</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Q</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">101</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">q0</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">50</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">q1</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">75</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x0</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x1</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dq</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#power1d.geom.SawTooth" title="Link to this definition">¶</a></dt>
 <dd><p>Repeating saw pattern.</p>
 <p>Keyword arguments:</p>
 <p><em>Q</em> —- continuum size (int) (default: 101)</p>
@@ -348,10 +345,10 @@ converted to a Continuum1D object</p>
 
 </section>
 <section id="sigmoid">
-<h2>Sigmoid<a class="headerlink" href="#sigmoid" title="Permalink to this heading">¶</a></h2>
+<h2>Sigmoid<a class="headerlink" href="#sigmoid" title="Link to this heading">¶</a></h2>
 <dl class="py function">
 <dt class="sig sig-object py" id="power1d.geom.Sigmoid">
-<span class="sig-prename descclassname"><span class="pre">power1d.geom.</span></span><span class="sig-name descname"><span class="pre">Sigmoid</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Q</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">101</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">q0</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">50</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">q1</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">75</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x0</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x1</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#power1d.geom.Sigmoid" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">power1d.geom.</span></span><span class="sig-name descname"><span class="pre">Sigmoid</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Q</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">101</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">q0</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">50</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">q1</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">75</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x0</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x1</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#power1d.geom.Sigmoid" title="Link to this definition">¶</a></dt>
 <dd><p>Sigmoidal step pulse</p>
 <p>Keyword arguments:</p>
 <p><em>Q</em> —- continuum size (int) (default: 101)</p>
@@ -374,10 +371,10 @@ converted to a Continuum1D object</p>
 
 </section>
 <section id="sinusoid">
-<h2>Sinusoid<a class="headerlink" href="#sinusoid" title="Permalink to this heading">¶</a></h2>
+<h2>Sinusoid<a class="headerlink" href="#sinusoid" title="Link to this heading">¶</a></h2>
 <dl class="py function">
 <dt class="sig sig-object py" id="power1d.geom.Sinusoid">
-<span class="sig-prename descclassname"><span class="pre">power1d.geom.</span></span><span class="sig-name descname"><span class="pre">Sinusoid</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Q</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">101</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">q0</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">amp</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hz</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#power1d.geom.Sinusoid" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">power1d.geom.</span></span><span class="sig-name descname"><span class="pre">Sinusoid</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Q</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">101</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">q0</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">amp</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hz</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#power1d.geom.Sinusoid" title="Link to this definition">¶</a></dt>
 <dd><p>Repeating sinusoidal wave</p>
 <p>Keyword arguments:</p>
 <p><em>Q</em> —- continuum size (int) (default: 101)</p>
@@ -399,10 +396,10 @@ converted to a Continuum1D object</p>
 
 </section>
 <section id="squarepulse">
-<h2>SquarePulse<a class="headerlink" href="#squarepulse" title="Permalink to this heading">¶</a></h2>
+<h2>SquarePulse<a class="headerlink" href="#squarepulse" title="Link to this heading">¶</a></h2>
 <dl class="py function">
 <dt class="sig sig-object py" id="power1d.geom.SquarePulse">
-<span class="sig-prename descclassname"><span class="pre">power1d.geom.</span></span><span class="sig-name descname"><span class="pre">SquarePulse</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Q</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">101</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">q0</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">50</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">q1</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">75</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x0</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x1</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#power1d.geom.SquarePulse" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">power1d.geom.</span></span><span class="sig-name descname"><span class="pre">SquarePulse</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Q</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">101</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">q0</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">50</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">q1</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">75</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x0</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x1</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#power1d.geom.SquarePulse" title="Link to this definition">¶</a></dt>
 <dd><p>Square pulse</p>
 <p>Keyword arguments:</p>
 <p><em>Q</em> —- continuum size (int) (default: 101)</p>
@@ -425,10 +422,10 @@ converted to a Continuum1D object</p>
 
 </section>
 <section id="squaretooth">
-<h2>SquareTooth<a class="headerlink" href="#squaretooth" title="Permalink to this heading">¶</a></h2>
+<h2>SquareTooth<a class="headerlink" href="#squaretooth" title="Link to this heading">¶</a></h2>
 <dl class="py function">
 <dt class="sig sig-object py" id="power1d.geom.SquareTooth">
-<span class="sig-prename descclassname"><span class="pre">power1d.geom.</span></span><span class="sig-name descname"><span class="pre">SquareTooth</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Q</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">101</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">q0</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">q1</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">25</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x0</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x1</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dq</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#power1d.geom.SquareTooth" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">power1d.geom.</span></span><span class="sig-name descname"><span class="pre">SquareTooth</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Q</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">101</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">q0</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">q1</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">25</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x0</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x1</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dq</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#power1d.geom.SquareTooth" title="Link to this definition">¶</a></dt>
 <dd><p>Repeating square pulses</p>
 <p>Keyword arguments:</p>
 <p><em>Q</em> —- continuum size (int) (default: 101)</p>
@@ -452,10 +449,10 @@ converted to a Continuum1D object</p>
 
 </section>
 <section id="trianglepulse">
-<h2>TrianglePulse<a class="headerlink" href="#trianglepulse" title="Permalink to this heading">¶</a></h2>
+<h2>TrianglePulse<a class="headerlink" href="#trianglepulse" title="Link to this heading">¶</a></h2>
 <dl class="py function">
 <dt class="sig sig-object py" id="power1d.geom.TrianglePulse">
-<span class="sig-prename descclassname"><span class="pre">power1d.geom.</span></span><span class="sig-name descname"><span class="pre">TrianglePulse</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Q</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">101</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">q0</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">50</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">q1</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">75</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x0</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x1</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#power1d.geom.TrianglePulse" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">power1d.geom.</span></span><span class="sig-name descname"><span class="pre">TrianglePulse</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Q</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">101</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">q0</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">50</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">q1</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">75</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x0</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x1</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#power1d.geom.TrianglePulse" title="Link to this definition">¶</a></dt>
 <dd><p>Triangular pulse</p>
 <p>Keyword arguments:</p>
 <p><em>Q</em> —- continuum size (int) (default: 101)</p>
@@ -478,10 +475,10 @@ converted to a Continuum1D object</p>
 
 </section>
 <section id="triangletooth">
-<h2>TriangleTooth<a class="headerlink" href="#triangletooth" title="Permalink to this heading">¶</a></h2>
+<h2>TriangleTooth<a class="headerlink" href="#triangletooth" title="Link to this heading">¶</a></h2>
 <dl class="py function">
 <dt class="sig sig-object py" id="power1d.geom.TriangleTooth">
-<span class="sig-prename descclassname"><span class="pre">power1d.geom.</span></span><span class="sig-name descname"><span class="pre">TriangleTooth</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Q</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">101</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">q0</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">50</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">q1</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">75</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x0</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x1</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dq</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">20</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#power1d.geom.TriangleTooth" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">power1d.geom.</span></span><span class="sig-name descname"><span class="pre">TriangleTooth</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Q</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">101</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">q0</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">50</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">q1</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">75</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x0</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x1</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dq</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">20</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#power1d.geom.TriangleTooth" title="Link to this definition">¶</a></dt>
 <dd><p>Repeating triangular pulses</p>
 <p>Keyword arguments:</p>
 <p><em>Q</em> —- continuum size (int) (default: 101)</p>
@@ -511,29 +508,80 @@ converted to a Continuum1D object</p>
           </div>
         </div>
       </div>
-      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
         <div class="sphinxsidebarwrapper">
   <div>
     <h3><a href="../index.html">Table of Contents</a></h3>
     <ul>
 <li><a class="reference internal" href="#">power1d.geom</a><ul>
-<li><a class="reference internal" href="#from-array">from_array</a></li>
-<li><a class="reference internal" href="#from-file">from_file</a></li>
-<li><a class="reference internal" href="#continuum1d">Continuum1D</a></li>
-<li><a class="reference internal" href="#constant">Constant</a></li>
-<li><a class="reference internal" href="#exponential">Exponential</a></li>
-<li><a class="reference internal" href="#exponentialsaw">ExponentialSaw</a></li>
-<li><a class="reference internal" href="#gaussianpulse">GaussianPulse</a></li>
-<li><a class="reference internal" href="#linear">Linear</a></li>
-<li><a class="reference internal" href="#null">Null</a></li>
-<li><a class="reference internal" href="#sawpulse">SawPulse</a></li>
-<li><a class="reference internal" href="#sawtooth">SawTooth</a></li>
-<li><a class="reference internal" href="#sigmoid">Sigmoid</a></li>
-<li><a class="reference internal" href="#sinusoid">Sinusoid</a></li>
-<li><a class="reference internal" href="#squarepulse">SquarePulse</a></li>
-<li><a class="reference internal" href="#squaretooth">SquareTooth</a></li>
-<li><a class="reference internal" href="#trianglepulse">TrianglePulse</a></li>
-<li><a class="reference internal" href="#triangletooth">TriangleTooth</a></li>
+<li><a class="reference internal" href="#from-array">from_array</a><ul>
+<li><a class="reference internal" href="#power1d.geom.from_array"><code class="docutils literal notranslate"><span class="pre">from_array()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#from-file">from_file</a><ul>
+<li><a class="reference internal" href="#power1d.geom.from_file"><code class="docutils literal notranslate"><span class="pre">from_file()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#continuum1d">Continuum1D</a><ul>
+<li><a class="reference internal" href="#power1d.geom.Continuum1D"><code class="docutils literal notranslate"><span class="pre">Continuum1D()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#constant">Constant</a><ul>
+<li><a class="reference internal" href="#power1d.geom.Constant"><code class="docutils literal notranslate"><span class="pre">Constant()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#exponential">Exponential</a><ul>
+<li><a class="reference internal" href="#power1d.geom.Exponential"><code class="docutils literal notranslate"><span class="pre">Exponential()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#exponentialsaw">ExponentialSaw</a><ul>
+<li><a class="reference internal" href="#power1d.geom.ExponentialSaw"><code class="docutils literal notranslate"><span class="pre">ExponentialSaw()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#gaussianpulse">GaussianPulse</a><ul>
+<li><a class="reference internal" href="#power1d.geom.GaussianPulse"><code class="docutils literal notranslate"><span class="pre">GaussianPulse()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#linear">Linear</a><ul>
+<li><a class="reference internal" href="#power1d.geom.Linear"><code class="docutils literal notranslate"><span class="pre">Linear()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#null">Null</a><ul>
+<li><a class="reference internal" href="#power1d.geom.Null"><code class="docutils literal notranslate"><span class="pre">Null()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#sawpulse">SawPulse</a><ul>
+<li><a class="reference internal" href="#power1d.geom.SawPulse"><code class="docutils literal notranslate"><span class="pre">SawPulse()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#sawtooth">SawTooth</a><ul>
+<li><a class="reference internal" href="#power1d.geom.SawTooth"><code class="docutils literal notranslate"><span class="pre">SawTooth()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#sigmoid">Sigmoid</a><ul>
+<li><a class="reference internal" href="#power1d.geom.Sigmoid"><code class="docutils literal notranslate"><span class="pre">Sigmoid()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#sinusoid">Sinusoid</a><ul>
+<li><a class="reference internal" href="#power1d.geom.Sinusoid"><code class="docutils literal notranslate"><span class="pre">Sinusoid()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#squarepulse">SquarePulse</a><ul>
+<li><a class="reference internal" href="#power1d.geom.SquarePulse"><code class="docutils literal notranslate"><span class="pre">SquarePulse()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#squaretooth">SquareTooth</a><ul>
+<li><a class="reference internal" href="#power1d.geom.SquareTooth"><code class="docutils literal notranslate"><span class="pre">SquareTooth()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#trianglepulse">TrianglePulse</a><ul>
+<li><a class="reference internal" href="#power1d.geom.TrianglePulse"><code class="docutils literal notranslate"><span class="pre">TrianglePulse()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#triangletooth">TriangleTooth</a><ul>
+<li><a class="reference internal" href="#power1d.geom.TriangleTooth"><code class="docutils literal notranslate"><span class="pre">TriangleTooth()</span></code></a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -556,7 +604,7 @@ converted to a Continuum1D object</p>
             rel="nofollow">Show Source</a></li>
     </ul>
    </div>
-<div id="searchbox" style="display: none" role="search">
+<search id="searchbox" style="display: none" role="search">
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="../search.html" method="get">
@@ -564,13 +612,13 @@ converted to a Continuum1D object</p>
       <input type="submit" value="Go" />
     </form>
     </div>
-</div>
+</search>
 <script>document.getElementById('searchbox').style.display = "block"</script>
         </div>
       </div>
       <div class="clearer"></div>
     </div>
-    <div class="related" role="navigation" aria-label="related navigation">
+    <div class="related" role="navigation" aria-label="Related">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -591,8 +639,8 @@ converted to a Continuum1D object</p>
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2023, Todd Pataky.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.0.2.
+    &#169; Copyright 2023, Todd Pataky.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.7.
     </div>
   </body>
 </html>

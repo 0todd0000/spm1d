@@ -1,0 +1,435 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Basic &mdash; rft1d 0.2.0 documentation</title>
+  
+
+  
+  
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../_static/plot_directive.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../_static/theme.css" type="text/css" />
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="rft1d 0.2.0 documentation" href="../index.html"/>
+        <link rel="up" title="Examples" href="../Examples.html"/>
+        <link rel="next" title="Broken fields" href="BrokenFields.html"/>
+        <link rel="prev" title="Examples" href="../Examples.html"/> 
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div>
+		<!-- <a href="../index.html"><img src="_static/rft1d.png" alt="rft1d.png"</a> -->
+		<!-- <img src="_static/rft1d.png" alt="rft1d.png"</img> -->
+		<img src="../_static/rft1d.png" alt="rft1d.png"</img>
+      </div>
+
+
+      <div class="wy-side-nav-search">
+        <!-- <a href="../index.html" class="fa fa-home"> rft1d</a> -->
+		
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        <a href="../index.html" class="fa fa-home"> rft1d</a>
+		<!-- <img src="./rft1d.png" alt="rft1d.png"> -->
+		
+        
+            <ul>
+<li class="toctree-l1"><a class="reference internal" href="../Download.html">Download</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Download.html#automated-installation">Automated installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Download.html#source-code-download">Source code download</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Download.html#release-notes">Release Notes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Download.html#license-information">License information</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Download.html#license-agreement-for-rft1d">License agreement for rft1d</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../Theory.html">RFT Overview</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Theory.html#gaussian-random-fields">Gaussian random fields</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Theory.html#expected-field-maximum">Expected field maximum</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Theory.html#upcrossings">Upcrossings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Theory.html#expected-upcrossing-geometry">Expected upcrossing geometry</a></li>
+</ul>
+</li>
+</ul>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../Examples.html">Examples</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Basic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="BrokenFields.html">Broken fields</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Validation.html">Validation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Application.html">Application</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Paper.html">Results from the paper</a></li>
+<li class="toctree-l2"><a class="reference internal" href="List.html">Scripts (overview)</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../API.html">API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../API/data.html">rft1d.data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../API/distributions.html">rft1d.distributions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../API/geom.html">rft1d.geom</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../API/prob.html">rft1d.prob</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../API/random.html">rft1d.random</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../References.html">References</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../References.html#on-the-web">On the web</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../References.html#software">Software</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../References.html#literature">Literature</a></li>
+</ul>
+</li>
+</ul>
+
+        
+		
+      </div>
+	  
+	  
+      <!-- <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        <a href="../index.html" class="fa fa-home"> rft1d</a>
+      </div> -->
+	  
+      <!-- <div class="wy-side-nav-search">
+        <a href="../index.html" class="fa fa-home"> rft1d</a>
+		
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+      </div> -->
+	  
+	  
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../index.html">rft1d</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="../Examples.html">Examples</a> &raquo;</li>
+      
+    <li>Basic</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          <!-- <a href="../_sources/Examples/Basic.rst.txt" rel="nofollow"> View page source</a> -->
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            
+  <section id="basic">
+<h1>Basic<a class="headerlink" href="#basic" title="Permalink to this heading">¶</a></h1>
+<section id="generating-1d-gaussian-fields">
+<span id="label-examples-generatinggaussianfields"></span><h2>Generating 1D Gaussian fields<a class="headerlink" href="#generating-1d-gaussian-fields" title="Permalink to this heading">¶</a></h2>
+<p>Smooth 1D Gaussian fields can be generated using the <strong>rft1d.randn1d</strong> function:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">rft1d</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">nResponses</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">nNodes</span> <span class="o">=</span> <span class="mi">101</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">FWHM</span> <span class="o">=</span> <span class="mf">10.0</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">y</span> <span class="o">=</span> <span class="n">rft1d</span><span class="o">.</span><span class="n">randn1d</span><span class="p">(</span><span class="n">nResponses</span><span class="p">,</span> <span class="n">nNodes</span><span class="p">,</span> <span class="n">FWHM</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The generated fields are stored in a 2D NumPy array with shape = (<em>nResponses</em>, <em>nNodes</em>).
+They can thus be visualized easily using <strong>matplotlib</strong>:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pyplot</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">y</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>(<a class="reference download internal" download="" href="../_downloads/a62c8aca04e2e186ef8f579a50719f18/Basic-1.py"><code class="xref download docutils literal notranslate"><span class="pre">Source</span> <span class="pre">code</span></code></a>, <a class="reference download internal" download="" href="../_downloads/cd0f3a30887adab9ab39d757c207646e/Basic-1.png"><code class="xref download docutils literal notranslate"><span class="pre">png</span></code></a>, <a class="reference download internal" download="" href="../_downloads/7759dd150d411038f1c7111b99da227c/Basic-1.hires.png"><code class="xref download docutils literal notranslate"><span class="pre">hires.png</span></code></a>, <a class="reference download internal" download="" href="../_downloads/47cab64fbc2bad09e5d5df77b89cadba/Basic-1.pdf"><code class="xref download docutils literal notranslate"><span class="pre">pdf</span></code></a>)</p>
+<figure class="align-default">
+<img alt="../_images/Basic-1.png" class="plot-directive" src="../_images/Basic-1.png" />
+</figure>
+<p>If simulating random fields over many iterations the <strong>rft1d.Generator1D</strong> is slightly faster:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">g</span> <span class="o">=</span> <span class="n">rft1d</span><span class="o">.</span><span class="n">Generator1D</span><span class="p">(</span><span class="n">nResponses</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">nNodes</span><span class="o">=</span><span class="mi">101</span><span class="p">,</span> <span class="n">FWHM</span><span class="o">=</span><span class="mf">10.0</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">yA</span> <span class="o">=</span> <span class="n">g</span><span class="o">.</span><span class="n">generate_array</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">yB</span> <span class="o">=</span> <span class="n">g</span><span class="o">.</span><span class="n">generate_array</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">yC</span> <span class="o">=</span> <span class="n">g</span><span class="o">.</span><span class="n">generate_array</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Generating very smooth random fields requires field padding to adhere to RFT expectations. This can be done easily using the <em>pad</em> keyword argument, but this becomes increasingly slow as FWHM increases.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">y</span> <span class="o">=</span> <span class="n">rft1d</span><span class="o">.</span><span class="n">randn1d</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">101</span><span class="p">,</span> <span class="mf">80.0</span><span class="p">,</span> <span class="n">pad</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">g</span> <span class="o">=</span> <span class="n">rft1d</span><span class="o">.</span><span class="n">Generator1D</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">101</span><span class="p">,</span> <span class="mf">80.0</span><span class="p">,</span> <span class="n">pad</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">y</span> <span class="o">=</span> <span class="n">g</span><span class="o">.</span><span class="n">generate_array</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<p>Increasing the FWHM in this manner yields much smoother fields; below is an example of FWHM=80.0.</p>
+<p>(<a class="reference download internal" download="" href="../_downloads/589d3ba2128cf89fef025872067a44a1/Basic-2.py"><code class="xref download docutils literal notranslate"><span class="pre">Source</span> <span class="pre">code</span></code></a>, <a class="reference download internal" download="" href="../_downloads/f6b7bf46890d61f3d1e64e461fc33f50/Basic-2.png"><code class="xref download docutils literal notranslate"><span class="pre">png</span></code></a>, <a class="reference download internal" download="" href="../_downloads/8e36e59e506186ef097ea0253597c69b/Basic-2.hires.png"><code class="xref download docutils literal notranslate"><span class="pre">hires.png</span></code></a>, <a class="reference download internal" download="" href="../_downloads/0e850bbc173a8c666847c545e1953098/Basic-2.pdf"><code class="xref download docutils literal notranslate"><span class="pre">pdf</span></code></a>)</p>
+<figure class="align-default">
+<img alt="../_images/Basic-2.png" class="plot-directive" src="../_images/Basic-2.png" />
+</figure>
+</section>
+<section id="reproducing-1d-gaussian-fields">
+<span id="label-examples-reproducinggaussianfields"></span><h2>Reproducing 1D Gaussian fields<a class="headerlink" href="#reproducing-1d-gaussian-fields" title="Permalink to this heading">¶</a></h2>
+<p>To precisely reproduce partcular random fields, use <strong>np.random.seed</strong>:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">rft1d</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">rft1d</span><span class="o">.</span><span class="n">randn1d</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">101</span><span class="p">,</span> <span class="mf">20.0</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">b</span> <span class="o">=</span> <span class="n">rft1d</span><span class="o">.</span><span class="n">randn1d</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">101</span><span class="p">,</span> <span class="mf">20.0</span><span class="p">)</span>  <span class="c1"># a and b are different</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">c</span> <span class="o">=</span> <span class="n">rft1d</span><span class="o">.</span><span class="n">randn1d</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">101</span><span class="p">,</span> <span class="mf">20.0</span><span class="p">)</span>  <span class="c1"># a and c are identical</span>
+</pre></div>
+</div>
+</section>
+<section id="node-based-vs-element-based-sampling">
+<span id="label-nodebasedelementbased"></span><h2>Node-based vs. element-based sampling<a class="headerlink" href="#node-based-vs-element-based-sampling" title="Permalink to this heading">¶</a></h2>
+<p>Fields may be sampled either in a node-based sense or in an element-based sense.
+As suggested by the figure below, node-based sampling refers to discrete measurements
+at single instants in time or at single points in space. Element-based sampling, on
+the other hand, refers to measurements that span an interval.</p>
+<blockquote>
+<div><p>(<a class="reference download internal" download="" href="../_downloads/8bb03fde1d57a2e8ce2c3135237465e3/Basic-3.py"><code class="xref download docutils literal notranslate"><span class="pre">Source</span> <span class="pre">code</span></code></a>, <a class="reference download internal" download="" href="../_downloads/b42ba9b74f93d4febfbefe078f232c53/Basic-3.png"><code class="xref download docutils literal notranslate"><span class="pre">png</span></code></a>, <a class="reference download internal" download="" href="../_downloads/f26721507a89af3a2fa41af5e02877e5/Basic-3.hires.png"><code class="xref download docutils literal notranslate"><span class="pre">hires.png</span></code></a>, <a class="reference download internal" download="" href="../_downloads/b2a4e4e46552a8f4eadc8744e20c52ec/Basic-3.pdf"><code class="xref download docutils literal notranslate"><span class="pre">pdf</span></code></a>)</p>
+<figure class="align-default">
+<img alt="../_images/Basic-3.png" class="plot-directive" src="../_images/Basic-3.png" />
+</figure>
+</div></blockquote>
+<p>Some common examples of each:</p>
+<blockquote>
+<div><dl class="simple">
+<dt><strong>Node-based sampling</strong>:</dt><dd><ul class="simple">
+<li><p>Biomechanical time series (sampled at discrete instants)</p></li>
+<li><p>Ocean wave heights (sampled by discrete sensors)</p></li>
+</ul>
+</dd>
+<dt><strong>Element-based sampling</strong>:</dt><dd><ul class="simple">
+<li><p>Contact pressure distribution (average pressure acting over an area)</p></li>
+<li><p>Long-interval time series (sampled daily, weekly or monthly, where each sample represents one whole day, week or month)</p></li>
+</ul>
+</dd>
+</dl>
+</div></blockquote>
+<p>Node-based sampling is assumed by default in <strong>rft1d</strong>. Switching to element-based sampling can be done by setting the keyword “element_based” to True in relevant <strong>rft1d</strong> procedures.</p>
+</section>
+<section id="extracting-maxima">
+<h2>Extracting maxima<a class="headerlink" href="#extracting-maxima" title="Permalink to this heading">¶</a></h2>
+<p>Since the fields are NumPy arrays field maxima can be extracted using <strong>np.max</strong> and <strong>np.argmax</strong>:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">y</span> <span class="o">=</span> <span class="n">rft1d</span><span class="o">.</span><span class="n">randn1d</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">101</span><span class="p">,</span> <span class="mf">25.0</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ymax</span> <span class="o">=</span> <span class="n">y</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">y</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pyplot</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">y</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="s1">&#39;k&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pyplot</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">ymax</span><span class="p">,</span> <span class="s1">&#39;ro&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>(<a class="reference download internal" download="" href="../_downloads/b6b8bb0fe7c3eb907ebec1948ca4ad74/Basic-4.py"><code class="xref download docutils literal notranslate"><span class="pre">Source</span> <span class="pre">code</span></code></a>, <a class="reference download internal" download="" href="../_downloads/08f0f510d55ebcba0f1ce65d86cb597d/Basic-4.png"><code class="xref download docutils literal notranslate"><span class="pre">png</span></code></a>, <a class="reference download internal" download="" href="../_downloads/4258d76c669d04df60060921a0358398/Basic-4.hires.png"><code class="xref download docutils literal notranslate"><span class="pre">hires.png</span></code></a>, <a class="reference download internal" download="" href="../_downloads/e3767820a06be2f2df4347e7c9c80a93/Basic-4.pdf"><code class="xref download docutils literal notranslate"><span class="pre">pdf</span></code></a>)</p>
+<figure class="align-default">
+<img alt="../_images/Basic-4.png" class="plot-directive" src="../_images/Basic-4.png" />
+</figure>
+</section>
+<section id="computing-upcrossing-metrics">
+<span id="label-examples-computingupcrossingmetrics"></span><h2>Computing upcrossing metrics<a class="headerlink" href="#computing-upcrossing-metrics" title="Permalink to this heading">¶</a></h2>
+<p>Consider the following random field thresholded at a height of -0.2, for which there are three upcrossings.</p>
+<p>(<a class="reference download internal" download="" href="../_downloads/4dce999debbb4f359486f0b4315c7bed/Basic-5.py"><code class="xref download docutils literal notranslate"><span class="pre">Source</span> <span class="pre">code</span></code></a>, <a class="reference download internal" download="" href="../_downloads/fe0baacbbce9403bbb58fd015aedafc8/Basic-5.png"><code class="xref download docutils literal notranslate"><span class="pre">png</span></code></a>, <a class="reference download internal" download="" href="../_downloads/2ebb3b673a54e09bd472dcafd9d4fef9/Basic-5.hires.png"><code class="xref download docutils literal notranslate"><span class="pre">hires.png</span></code></a>, <a class="reference download internal" download="" href="../_downloads/8a3cdc84cb50892d4e16dcb586c3b5fd/Basic-5.pdf"><code class="xref download docutils literal notranslate"><span class="pre">pdf</span></code></a>)</p>
+<figure class="align-default">
+<img alt="../_images/Basic-5.png" class="plot-directive" src="../_images/Basic-5.png" />
+</figure>
+<p>Let’s zoom in on the first upcrossing to give a clearer context to upcrossing metric results below.</p>
+<p>(<a class="reference download internal" download="" href="../_downloads/7d5505f3be1bf6e65c1397e61307d7b9/Basic-6.py"><code class="xref download docutils literal notranslate"><span class="pre">Source</span> <span class="pre">code</span></code></a>, <a class="reference download internal" download="" href="../_downloads/3ee2704a49ff9b37f7ed2e7951d9f952/Basic-6.png"><code class="xref download docutils literal notranslate"><span class="pre">png</span></code></a>, <a class="reference download internal" download="" href="../_downloads/e3e36a6927bf35adf03b6b45cc29a84b/Basic-6.hires.png"><code class="xref download docutils literal notranslate"><span class="pre">hires.png</span></code></a>, <a class="reference download internal" download="" href="../_downloads/e7d634f9784070bb04adb8041cbd6ba0/Basic-6.pdf"><code class="xref download docutils literal notranslate"><span class="pre">pdf</span></code></a>)</p>
+<figure class="align-default">
+<img alt="../_images/Basic-6.png" class="plot-directive" src="../_images/Basic-6.png" />
+</figure>
+<p>To compute upcrossing metrics set a height <em>u</em> then use the <strong>rft1d.geom.ClusterMetricCalculator</strong> class.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span> <span class="n">y</span> <span class="o">=</span> <span class="n">rft1d</span><span class="o">.</span><span class="n">randn1d</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">101</span><span class="p">,</span> <span class="mf">20.0</span><span class="p">,</span> <span class="n">pad</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span> <span class="n">calc</span> <span class="o">=</span> <span class="n">rft1d</span><span class="o">.</span><span class="n">geom</span><span class="o">.</span><span class="n">ClusterMetricCalculator</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span> <span class="n">u</span> <span class="o">=</span> <span class="o">-</span><span class="mf">0.2</span>
+<span class="gp">&gt;&gt;&gt; </span> <span class="nb">print</span> <span class="n">calc</span><span class="o">.</span><span class="n">cluster_extents</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">u</span><span class="p">)</span> <span class="c1">#yields [3.54, 21.3, 18.2]</span>
+<span class="gp">&gt;&gt;&gt; </span> <span class="nb">print</span> <span class="n">calc</span><span class="o">.</span><span class="n">max_cluster_extent</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">u</span><span class="p">)</span> <span class="c1">#yields 21.3</span>
+<span class="gp">&gt;&gt;&gt; </span> <span class="nb">print</span> <span class="n">calc</span><span class="o">.</span><span class="n">mean_cluster_extent</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">u</span><span class="p">)</span> <span class="c1">#yields 14.4</span>
+<span class="gp">&gt;&gt;&gt; </span> <span class="nb">print</span> <span class="n">calc</span><span class="o">.</span><span class="n">nSuprathresholdNodes</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">u</span><span class="p">)</span> <span class="c1">#yields 45</span>
+<span class="gp">&gt;&gt;&gt; </span> <span class="nb">print</span> <span class="n">calc</span><span class="o">.</span><span class="n">nSuprathresholdResels</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">u</span><span class="p">,</span> <span class="n">fwhm</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span> <span class="c1">#yields 4.31</span>
+<span class="gp">&gt;&gt;&gt; </span> <span class="nb">print</span> <span class="n">calc</span><span class="o">.</span><span class="n">nUpcrossings</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">u</span><span class="p">)</span> <span class="c1">#yields 3</span>
+<span class="gp">&gt;&gt;&gt; </span> <span class="nb">print</span> <span class="n">calc</span><span class="o">.</span><span class="n">nUpcrossingsByExtent</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">u</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span> <span class="c1">#yields 2</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>There are four supra-threshold nodes in the first upcrossing shown above, but the length of the upcrossing (i.e. its extent) is less than four. From the procedures above, <strong>cluster_extents</strong> and <strong>nSuprathresholdResels</strong> are reported as lengths.</p>
+</div>
+<p>By default cluster extents are interpolated to the threshold <em>u</em>. Disabling interpolation using the keyword <strong>interp</strong> is faster, and will yield integer extents:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span> <span class="nb">print</span> <span class="n">calc</span><span class="o">.</span><span class="n">cluster_extents</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">u</span><span class="p">,</span> <span class="n">interp</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span> <span class="c1">#yields [3, 21, 18]</span>
+<span class="gp">&gt;&gt;&gt; </span> <span class="nb">print</span> <span class="n">calc</span><span class="o">.</span><span class="n">max_cluster_extent</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">u</span><span class="p">,</span> <span class="n">interp</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span> <span class="c1">#yields 21</span>
+<span class="gp">&gt;&gt;&gt; </span> <span class="nb">print</span> <span class="n">calc</span><span class="o">.</span><span class="n">mean_cluster_extent</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">u</span><span class="p">,</span> <span class="n">interp</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span> <span class="c1">#yields 14</span>
+</pre></div>
+</div>
+<div class="admonition danger">
+<p class="admonition-title">Danger</p>
+<p>Setting <em>interp</em> to False is faster, but it may cause disagreements between node-based and element-based sampling (if only one node exceeds <em>u</em>, the node-based extent is zero, but the element-based extent may be zero or one). If the upcrossing is large this difference is negligible, but for small upcrossing there may be strange results (i.e. upcrossing with an extent of zero). Recommendation: <strong>always interpolate</strong>.</p>
+</div>
+</section>
+<section id="checking-rft-expectations">
+<span id="label-examples-checkingrftexpectations"></span><h2>Checking RFT expectations<a class="headerlink" href="#checking-rft-expectations" title="Permalink to this heading">¶</a></h2>
+<p>RFT expectations regarding Gaussian random fields can be accessed via an interface
+similar to <strong>scipy.stats</strong>. As an example, in <strong>scipy</strong> the survival function for
+the standard normal distribution is given by:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span> <span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">stats</span>
+<span class="gp">&gt;&gt;&gt; </span> <span class="n">stats</span><span class="o">.</span><span class="n">norm</span><span class="o">.</span><span class="n">sf</span><span class="p">(</span><span class="mf">2.0</span><span class="p">)</span> <span class="c1">#yields 0.023</span>
+</pre></div>
+</div>
+<p>In <strong>rft1d</strong> the survival function for standard normal Gaussian fields is given by:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span> <span class="n">nNodes</span> <span class="o">=</span> <span class="mi">101</span>
+<span class="gp">&gt;&gt;&gt; </span> <span class="n">FWHM</span> <span class="o">=</span> <span class="mf">10.0</span>
+<span class="gp">&gt;&gt;&gt; </span> <span class="nb">print</span> <span class="n">rft1d</span><span class="o">.</span><span class="n">norm</span><span class="o">.</span><span class="n">sf</span><span class="p">(</span><span class="mf">2.0</span><span class="p">,</span> <span class="n">nNodes</span><span class="p">,</span> <span class="n">FWHM</span><span class="p">)</span> <span class="c1">#yields 0.320</span>
+</pre></div>
+</div>
+<p>Thus a 1D Gaussian random field with FWHM=10 and a field length of 100 is about 14 times more likely to reach
+a height of 2.0 than is a 0D Gaussian scalar.</p>
+<p>The most convenient way to explore RFT expectations and probabilities is with the <strong>rft1d.prob.RFTCalculator</strong> class:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">calc</span> <span class="o">=</span> <span class="n">rft1d</span><span class="o">.</span><span class="n">prob</span><span class="o">.</span><span class="n">RFTCalculator</span><span class="p">(</span><span class="s1">&#39;T&#39;</span><span class="p">,</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">8</span><span class="p">),</span> <span class="mi">101</span><span class="p">,</span> <span class="mf">15.0</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span> <span class="n">calc</span><span class="o">.</span><span class="n">expected</span><span class="o">.</span><span class="n">number_of_upcrossings</span><span class="p">(</span><span class="mf">1.0</span><span class="p">)</span> <span class="c1">#yields 1.343</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span> <span class="n">calc</span><span class="o">.</span><span class="n">expected</span><span class="o">.</span><span class="n">number_of_upcrossings</span><span class="p">(</span><span class="mf">4.5</span><span class="p">)</span> <span class="c1">#yields 0.0223</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span> <span class="n">calc</span><span class="o">.</span><span class="n">expected</span><span class="o">.</span><span class="n">nodes_per_upcrossing</span><span class="p">(</span><span class="mf">2.0</span><span class="p">)</span>  <span class="c1">#yields 10.419</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span> <span class="n">calc</span><span class="o">.</span><span class="n">p</span><span class="o">.</span><span class="n">upcrossing</span><span class="p">(</span><span class="mf">3.0</span><span class="p">)</span>  <span class="c1">#yields 0.126</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The minum value of <strong>expected.nodes_per_upcrossing</strong> is one because, if there is an upcrossing, it must have at least one node.</p>
+</div>
+</section>
+<section id="validating-rft-expectations">
+<span id="label-examples-validatingrftexpectations"></span><h2>Validating RFT expectations<a class="headerlink" href="#validating-rft-expectations" title="Permalink to this heading">¶</a></h2>
+<p>RFT expectations can be validated as follows:</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li><p>Use <strong>rft1d.prob.RFTCalculator</strong> to generate theoretical predictions <a class="reference internal" href="#label-examples-checkingrftexpectations"><span class="std std-ref">(see here)</span></a></p></li>
+<li><p>Then use <strong>rft1d.randn1d</strong> to generate random fields <a class="reference internal" href="#label-examples-generatinggaussianfields"><span class="std std-ref">(see here)</span></a></p></li>
+<li><p>For each random field use <strong>rft1d.geom.ClusterMetricCalculator</strong> to compute upcrossing metrics <a class="reference internal" href="#label-examples-computingupcrossingmetrics"><span class="std std-ref">(see here)</span></a></p></li>
+</ol>
+</div></blockquote>
+<p>The figure below depicts a validation for the
+expected number of upcrossings in Gaussian fields with FWHM=10. Click on the
+“source code” link below to see details.</p>
+<p>(<a class="reference download internal" download="" href="../_downloads/c623af20ac2f1560d835610d7a0f0b06/fig_val_nUpcrossings.py"><code class="xref download docutils literal notranslate"><span class="pre">Source</span> <span class="pre">code</span></code></a>, <a class="reference download internal" download="" href="../_downloads/6921d6bbc8c2f976c042afe07332475a/fig_val_nUpcrossings.png"><code class="xref download docutils literal notranslate"><span class="pre">png</span></code></a>, <a class="reference download internal" download="" href="../_downloads/c6c179250a3dba295f5c187d03d864d4/fig_val_nUpcrossings.hires.png"><code class="xref download docutils literal notranslate"><span class="pre">hires.png</span></code></a>, <a class="reference download internal" download="" href="../_downloads/b10e260b6c4b8d2dc80f052e91e5287c/fig_val_nUpcrossings.pdf"><code class="xref download docutils literal notranslate"><span class="pre">pdf</span></code></a>)</p>
+<figure class="align-default">
+<img alt="../_images/fig_val_nUpcrossings.png" class="plot-directive" src="../_images/fig_val_nUpcrossings.png" />
+</figure>
+</section>
+</section>
+
+
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../Examples.html" class="btn btn-neutral float-left" title="Examples" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="BrokenFields.html" class="btn btn-neutral float-right" title="Broken fields" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, Todd Pataky.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'0.2.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../_static/documentation_options.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="../_static/sphinx_highlight.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>
+
+

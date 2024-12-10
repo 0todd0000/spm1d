@@ -1,108 +1,71 @@
 
 .. _label-API-geom:
 
+rft1d.geom
+-------------
 
-power1d.geom
-=====================================
-
-.. automodule:: power1d.geom
-
+.. automodule:: rft1d.geom
 
 
-The figure below provides an overview of all geometric primitive types. Details regarding reach are listed below.
+
+Basic geometry functions:
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+----------------------------------
+bwlabel
+----------------------------------
+
+.. autofunction:: rft1d.geom.bwlabel
 
 
-.. plot:: pyplots/all_geom.py
+----------------------------------
+estimate_fwhm
+----------------------------------
 
+.. autofunction:: rft1d.geom.estimate_fwhm
 
-.. _label-API-geom-from_array:
+-----
 
-from_array
--------------------------------------
+Field geometry (resel counts)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. autofunction:: power1d.geom.from_array
+----------------------------------
+resel_counts
+----------------------------------
 
+.. autofunction:: rft1d.geom.resel_counts
 
-.. _label-API-geom-from_file:
+-----
 
-from_file
--------------------------------------
+----------------------------------
+resel conversion functions
+----------------------------------
 
-.. autofunction:: power1d.geom.from_file
+.. autofunction:: rft1d.geom.resels2fwhm
+.. autofunction:: rft1d.geom.resels2fwhm_masked
+.. autofunction:: rft1d.geom.resels2nelements
+.. autofunction:: rft1d.geom.resels2nnodes
+.. autofunction:: rft1d.geom.resels2fieldsize
 
+-----
 
-Continuum1D
--------------------------------------
+Upcrossing metric calculations
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. autofunction:: power1d.geom.Continuum1D
+----------------------------------
+rft1d.geom.ClusterMetricCalculator
+----------------------------------
 
+.. autoclass:: rft1d.geom.ClusterMetricCalculator
 
-Constant
--------------------------------------
+	.. automethod:: rft1d.geom.ClusterMetricCalculator.cluster_extents
+	.. automethod:: rft1d.geom.ClusterMetricCalculator.cluster_minima
+	.. automethod:: rft1d.geom.ClusterMetricCalculator.max_cluster_extent
+	.. automethod:: rft1d.geom.ClusterMetricCalculator.mean_cluster_extent
+	.. automethod:: rft1d.geom.ClusterMetricCalculator.nMaxima
+	.. automethod:: rft1d.geom.ClusterMetricCalculator.nSuprathresholdNodes
+	.. automethod:: rft1d.geom.ClusterMetricCalculator.nSuprathresholdResels
+	.. automethod:: rft1d.geom.ClusterMetricCalculator.nUpcrossings
+	.. automethod:: rft1d.geom.ClusterMetricCalculator.nUpcrossingsByExtent
+	.. automethod:: rft1d.geom.ClusterMetricCalculator.total_excursion_set_extent
 
-.. autofunction:: power1d.geom.Constant
-
-Exponential
--------------------------------------
-
-.. autofunction:: power1d.geom.Exponential
-
-ExponentialSaw
--------------------------------------
-
-.. autofunction:: power1d.geom.ExponentialSaw
-
-GaussianPulse
--------------------------------------
-
-.. autofunction:: power1d.geom.GaussianPulse
-
-Linear
--------------------------------------
-
-.. autofunction:: power1d.geom.Linear
-
-Null
--------------------------------------
-
-.. autofunction:: power1d.geom.Null
-
-SawPulse
--------------------------------------
-
-.. autofunction:: power1d.geom.SawPulse
-
-SawTooth
--------------------------------------
-
-.. autofunction:: power1d.geom.SawTooth
-
-Sigmoid
--------------------------------------
-
-.. autofunction:: power1d.geom.Sigmoid
-
-Sinusoid
--------------------------------------
-
-.. autofunction:: power1d.geom.Sinusoid
-
-SquarePulse
--------------------------------------
-
-.. autofunction:: power1d.geom.SquarePulse
-
-SquareTooth
--------------------------------------
-
-.. autofunction:: power1d.geom.SquareTooth
-
-TrianglePulse
--------------------------------------
-
-.. autofunction:: power1d.geom.TrianglePulse
-
-TriangleTooth
--------------------------------------
-
-.. autofunction:: power1d.geom.TriangleTooth

@@ -1,166 +1,280 @@
+
+
 <!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>References &mdash; rft1d 0.2.0 documentation</title>
+  
 
-<html lang="en" data-content_root="./">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+  
+  
 
-    <title>References &#8212; power1d 0.1.7 documentation</title>
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=4848ba22" />
-    <link rel="stylesheet" type="text/css" href="_static/pyramid.css?v=310c80ee" />
-    <link rel="stylesheet" type="text/css" href="_static/plot_directive.css?v=7f9a90b1" />
-    <script src="_static/documentation_options.js?v=ca7ad2ea"></script>
-    <script src="_static/doctools.js?v=9a2dae69"></script>
-    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
-    <link rel="index" title="Index" href="genindex.html" />
-    <link rel="search" title="Search" href="search.html" />
-    <link rel="prev" title="power1d.stats" href="API/stats.html" />
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Neuton&amp;subset=latin" type="text/css" media="screen" charset="utf-8" />
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nobile:regular,italic,bold,bolditalic&amp;subset=latin" type="text/css" media="screen" charset="utf-8" />
-<!--[if lte IE 6]>
-<link rel="stylesheet" href="_static/ie6.css" type="text/css" media="screen" charset="utf-8" />
-<![endif]-->
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
 
-  </head><body>
-<div class="header" role="banner">
-  <div class="logo">
-    <a href="index.html">
-      <img class="logo" src="_static/logo.png" border="0" alt="Logo"/>
-    </a>
-  </div>
-</div>
+  
+  
+    
 
-    <div class="related" role="navigation" aria-label="Related">
-      <h3>Navigation</h3>
-      <ul>
-        <li class="right" style="margin-right: 10px">
-          <a href="genindex.html" title="General Index"
-             accesskey="I">index</a></li>
-        <li class="right" >
-          <a href="py-modindex.html" title="Python Module Index"
-             >modules</a> |</li>
-        <li class="right" >
-          <a href="API/stats.html" title="power1d.stats"
-             accesskey="P">previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="index.html">power1d 0.1.7 documentation</a> &#187;</li>
-        <li class="nav-item nav-item-this"><a href="">References</a></li> 
-      </ul>
-    </div>  
+  
 
-    <div class="document">
-      <div class="documentwrapper">
-        <div class="bodywrapper">
-          <div class="body" role="main">
-            
-  <section id="references">
-<span id="label-references"></span><h1>References<a class="headerlink" href="#references" title="Link to this heading">¶</a></h1>
-<section id="literature">
-<span id="label-literature"></span><h2>Literature<a class="headerlink" href="#literature" title="Link to this heading">¶</a></h2>
-<ul class="simple">
-<li><p>Hasofer AM (1978) <a class="reference external" href="http://www.jstor.org/stable/1427002">Upcrossings of random fields.</a>
-<strong>Suppl Adv Appl Prob</strong> 10:14-21.</p></li>
-<li><p>Hayasaka S, Peiffer AM, Hugenschmidt CE, Laurienti PJ (2007).
-<a class="reference external" href="http://dx.doi.org/10.1016/j.neuroimage.2007.06.009">Power and sample size calculation for neuroimaging studies by
-non-central random field theory.</a>
-<strong>NeuroImage</strong> 37(3): 721-730.</p></li>
-<li><p>Friston KJ, Worsley KJ, Frackowiak RSJ, Mazziotta JC, Evans AC (1994).
-<a class="reference external" href="http://onlinelibrary.wiley.com/doi/10.1002/hbm.460010306/full">Assessing the significance of focal activations using their spatial
-extent.</a>
-<strong>Human Brain Mapp</strong> 1: 210-220.</p></li>
-<li><p>Friston KJ, Holmes A, Poline JB, Price CJ, Frith CD (1996).
-<a class="reference external" href="http://dx.doi.org/10.1006/nimg.1996.0074">Detecting Activations in PET and fMRI: Levels of Inference and Power.</a>
-<strong>NeuroImage</strong> 4(3): 223–235.</p></li>
-<li><p>Joyce KE, Hayasaka S (2012). <a class="reference external" href="http://dx.doi.org/10.1007/s12021-012-9152-3">Development of PowerMap: a Software
-Package for Statistical Power Calculation in Neuroimaging Studies.</a>
-<strong>Neuroinform</strong> 10: 351.</p></li>
-<li><p>Mumford J, Nichols TE (2008). <a class="reference external" href="http://dx.doi.org/10.1016/j.neuroimage.2007.07.061">Power Calculation for Group fMRI
-Studies Accounting for Arbitrary Design and Temporal Autocorrelation.</a>
-<strong>NeuroImage</strong> 39(1): 261–268.</p></li>
-<li><p>Pataky TC (2016). <a class="reference external" href="http://dx.doi.org/10.18637/jss.v071.i07">rft1d: Smooth one-dimensional random field
-upcrossing probabilities in Python</a>
-<strong>Journal of Statistical Software</strong> 71(7): i07.</p></li>
-<li><p>Pataky TC (in review). Power1D: A Python toolbox for numerical power
-estimates in experiments involving one-dimensional continua.
-<strong>PeerJ Computer Science</strong>.</p></li>
-<li><p>Ramsay JO, Silverman BW (2005). <a class="reference external" href="http://www.springer.com/us/book/9780387400808">Functional Data Analysis</a>
-Springer-Verlag, New York.</p></li>
-</ul>
-</section>
-<section id="software">
-<span id="label-software"></span><h2>Software<a class="headerlink" href="#software" title="Link to this heading">¶</a></h2>
-<ul class="simple">
-<li><p><a class="reference external" href="http://fmripower.org">fmripower</a></p></li>
-<li><p><a class="reference external" href="https://sourceforge.net/projects/powermap/">PowerMap</a></p></li>
-<li><p><a class="reference external" href="http://www.spm1d.org/rft1d/">rft1d</a></p></li>
-<li><p><a class="reference external" href="http://www.spm1d.org">spm1d</a></p></li>
-<li><p><a class="reference external" href="http://www.fil.ion.ucl.ac.uk/spm/software/spm12/">SPM12</a></p></li>
-</ul>
-</section>
-</section>
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
 
+  
+  
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+    <link rel="stylesheet" href="_static/plot_directive.css" type="text/css" />
+  
+    <link rel="stylesheet" href="_static/theme.css" type="text/css" />
+  
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
+    <link rel="top" title="rft1d 0.2.0 documentation" href="index.html"/>
+        <link rel="prev" title="rft1d.random" href="API/random.html"/> 
 
-            <div class="clearer"></div>
-          </div>
-        </div>
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div>
+		<!-- <a href="index.html"><img src="_static/rft1d.png" alt="rft1d.png"</a> -->
+		<!-- <img src="_static/rft1d.png" alt="rft1d.png"</img> -->
+		<img src="_static/rft1d.png" alt="rft1d.png"</img>
       </div>
-      <div class="sphinxsidebar" role="navigation" aria-label="Main">
-        <div class="sphinxsidebarwrapper">
-  <div>
-    <h3><a href="index.html">Table of Contents</a></h3>
-    <ul>
-<li><a class="reference internal" href="#">References</a><ul>
-<li><a class="reference internal" href="#literature">Literature</a></li>
-<li><a class="reference internal" href="#software">Software</a></li>
+
+
+      <div class="wy-side-nav-search">
+        <!-- <a href="index.html" class="fa fa-home"> rft1d</a> -->
+		
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        <a href="index.html" class="fa fa-home"> rft1d</a>
+		<!-- <img src="./rft1d.png" alt="rft1d.png"> -->
+		
+        
+            <ul>
+<li class="toctree-l1"><a class="reference internal" href="Download.html">Download</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Download.html#automated-installation">Automated installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Download.html#source-code-download">Source code download</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Download.html#release-notes">Release Notes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Download.html#license-information">License information</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Download.html#license-agreement-for-rft1d">License agreement for rft1d</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Theory.html">RFT Overview</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Theory.html#gaussian-random-fields">Gaussian random fields</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Theory.html#expected-field-maximum">Expected field maximum</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Theory.html#upcrossings">Upcrossings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Theory.html#expected-upcrossing-geometry">Expected upcrossing geometry</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Examples.html">Examples</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Examples/Basic.html">Basic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Examples/BrokenFields.html">Broken fields</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Examples/Validation.html">Validation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Examples/Application.html">Application</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Examples/Paper.html">Results from the paper</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Examples/List.html">Scripts (overview)</a></li>
+</ul>
+</li>
+</ul>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="API.html">API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="API/data.html">rft1d.data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="API/distributions.html">rft1d.distributions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="API/geom.html">rft1d.geom</a></li>
+<li class="toctree-l2"><a class="reference internal" href="API/prob.html">rft1d.prob</a></li>
+<li class="toctree-l2"><a class="reference internal" href="API/random.html">rft1d.random</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">References</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#on-the-web">On the web</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#software">Software</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#literature">Literature</a></li>
 </ul>
 </li>
 </ul>
 
-  </div>
-  <div>
-    <h4>Previous topic</h4>
-    <p class="topless"><a href="API/stats.html"
-                          title="previous chapter">power1d.stats</a></p>
-  </div>
-  <div role="note" aria-label="source link">
-    <h3>This Page</h3>
-    <ul class="this-page-menu">
-      <li><a href="_sources/References.rst.txt"
-            rel="nofollow">Show Source</a></li>
-    </ul>
-   </div>
-<search id="searchbox" style="display: none" role="search">
-  <h3 id="searchlabel">Quick search</h3>
-    <div class="searchformwrapper">
-    <form class="search" action="search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
-      <input type="submit" value="Go" />
-    </form>
+        
+		
+      </div>
+	  
+	  
+      <!-- <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        <a href="index.html" class="fa fa-home"> rft1d</a>
+      </div> -->
+	  
+      <!-- <div class="wy-side-nav-search">
+        <a href="index.html" class="fa fa-home"> rft1d</a>
+		
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+      </div> -->
+	  
+	  
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="index.html">rft1d</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="index.html">Docs</a> &raquo;</li>
+      
+    <li>References</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          <!-- <a href="_sources/References.rst.txt" rel="nofollow"> View page source</a> -->
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            
+  <section id="references">
+<span id="label-references"></span><h1>References<a class="headerlink" href="#references" title="Permalink to this heading">¶</a></h1>
+<section id="on-the-web">
+<h2>On the web<a class="headerlink" href="#on-the-web" title="Permalink to this heading">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="http://www.encyclopediaofmath.org/index.php/Random_field">“Random field” &#64; EncyclopediaOfMath</a></p></li>
+<li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Random_field">“Random field” &#64; Wikipedia</a></p></li>
+<li><p><a class="reference external" href="http://nbviewer.ipython.org/github/fperez/nipy-notebooks/blob/master/random_fields.ipynb">2D/3D RFT Overview &#64; ipython.org</a></p></li>
+</ul>
+</section>
+<section id="software">
+<span id="label-spmsoftware"></span><h2>Software<a class="headerlink" href="#software" title="Permalink to this heading">¶</a></h2>
+<p>All packages below implement RFT-based inference,
+and while they target primarily 3D field analysis,
+can also be applied to 1D/2D field analysis.</p>
+<ul class="simple">
+<li><p><a class="reference external" href="http://www.fil.ion.ucl.ac.uk/spm/">SPM8</a></p></li>
+<li><p><a class="reference external" href="https://github.com/matthew-brett/fmristat/">fmriStat</a></p></li>
+<li><p><a class="reference external" href="http://neuroimaging.scipy.org">NiPy</a></p></li>
+</ul>
+</section>
+<section id="literature">
+<span id="label-rftliterature"></span><h2>Literature<a class="headerlink" href="#literature" title="Permalink to this heading">¶</a></h2>
+<ol class="arabic simple">
+<li><p>Adler R, Hasofer A (1976). Level crossings for random fields. <em>The Annals of Probability</em> 4(1), 1–12.</p></li>
+<li><p>Adler RJ (1981). <em>The Geometry of Random Fields</em>. Wiley, New York.</p></li>
+<li><p>Adler RJ, Taylor JE (2007). <em>Random Fields and Geometry</em>. Springer, New York.</p></li>
+<li><p>Cao J (1999). The size of the connected components of excursion sets of X2, t and F fields. <em>Advances in Applied Probability</em> 31(3), 579–595.</p></li>
+<li><p>Cao J, Worsley KJ (1999). The detection of local shape changes via the geometry of Hotelling’s T2 fields. <em>Annals of Statistics</em> 27(3), 925–942.</p></li>
+<li><p>Carbonell F, Worsley KJ, Galan L (2011). The geometry of the Wilks’s Lambda random field. <em>Annals of the Institute of Statistical Mathematics</em> 63(1), 1–27.</p></li>
+<li><p>Friston K, Worsley K, Frackowiak R, Mazziotta J, Evans A (1994). Assessing the significance of focal activations using their spatial extent. <em>Human Brain Mapping</em> 1(3), 210–220.</p></li>
+<li><p>Friston KJ, Ashburner JT, Kiebel SJ, Nichols TE, Penny WD (Eds.) (2007) <em>Statistical Parametric Mapping: The Analysis of Functional Brain Images.</em> Elsevier, London.</p></li>
+<li><p>Hasofer A (1978). Upcrossings of random fields. <em>Advances in Applied Probability</em> 10, 14–21.</p></li>
+<li><p>Nichols T, Holmes A (2002). Nonparametric permutation tests for functional neuroimaging: a primer with examples. <em>Human Brain Mapping</em> 15(1), 1–25.</p></li>
+<li><p>Pataky TC (2015) RFT1D: Smooth One-Dimensional Random Field Upcrossing Probabilities in Python. <strong>Journal of Statistical Software</strong> (accepted for publication 18 April 2015).</p></li>
+<li><p>Taylor JE, Worsley KJ (2008). Random fields of multivariate test statistics, with applications to shape analysis. <em>Annals of Statistics</em> 36(1), 1–27.</p></li>
+<li><p>Worsley K, Taylor J, Tomaiuolo F, Lerch J. (2004). Unified univariate and multivariate random field theory. <em>NeuroImage</em> 23, S189–S195.</p></li>
+<li><p>Worsley K. (1994). Local maxima and the expected Euler characteristic of excursion sets of X2, F and t fields. <em>Advances in Applied Probability</em> 26(1), 13–42.</p></li>
+</ol>
+</section>
+</section>
+
+
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="API/random.html" class="btn btn-neutral float-left" title="rft1d.random" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
-</search>
-<script>document.getElementById('searchbox').style.display = "block"</script>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, Todd Pataky.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
         </div>
       </div>
-      <div class="clearer"></div>
-    </div>
-    <div class="related" role="navigation" aria-label="Related">
-      <h3>Navigation</h3>
-      <ul>
-        <li class="right" style="margin-right: 10px">
-          <a href="genindex.html" title="General Index"
-             >index</a></li>
-        <li class="right" >
-          <a href="py-modindex.html" title="Python Module Index"
-             >modules</a> |</li>
-        <li class="right" >
-          <a href="API/stats.html" title="power1d.stats"
-             >previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="index.html">power1d 0.1.7 documentation</a> &#187;</li>
-        <li class="nav-item nav-item-this"><a href="">References</a></li> 
-      </ul>
-    </div>
-    <div class="footer" role="contentinfo">
-    &#169; Copyright 2023, Todd Pataky.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.7.
-    </div>
-  </body>
+
+    </section>
+
+  </div>
+  
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'0.2.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="_static/documentation_options.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+      <script type="text/javascript" src="_static/sphinx_highlight.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
 </html>
+
+

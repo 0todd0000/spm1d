@@ -1,186 +1,297 @@
+
+
 <!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>rft1d.data &mdash; rft1d 0.2.0 documentation</title>
+  
 
-<html lang="en" data-content_root="../">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+  
+  
 
-    <title>power1d.data &#8212; power1d 0.1.7 documentation</title>
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=4848ba22" />
-    <link rel="stylesheet" type="text/css" href="../_static/pyramid.css?v=310c80ee" />
-    <link rel="stylesheet" type="text/css" href="../_static/plot_directive.css?v=7f9a90b1" />
-    <script src="../_static/documentation_options.js?v=ca7ad2ea"></script>
-    <script src="../_static/doctools.js?v=9a2dae69"></script>
-    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
-    <link rel="index" title="Index" href="../genindex.html" />
-    <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="power1d.geom" href="geom.html" />
-    <link rel="prev" title="API" href="../API.html" />
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Neuton&amp;subset=latin" type="text/css" media="screen" charset="utf-8" />
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nobile:regular,italic,bold,bolditalic&amp;subset=latin" type="text/css" media="screen" charset="utf-8" />
-<!--[if lte IE 6]>
-<link rel="stylesheet" href="../_static/ie6.css" type="text/css" media="screen" charset="utf-8" />
-<![endif]-->
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
 
-  </head><body>
-<div class="header" role="banner">
-  <div class="logo">
-    <a href="../index.html">
-      <img class="logo" src="../_static/logo.png" border="0" alt="Logo"/>
-    </a>
-  </div>
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../_static/plot_directive.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../_static/theme.css" type="text/css" />
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="rft1d 0.2.0 documentation" href="../index.html"/>
+        <link rel="up" title="API" href="../API.html"/>
+        <link rel="next" title="rft1d.distributions" href="distributions.html"/>
+        <link rel="prev" title="API" href="../API.html"/> 
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div>
+		<!-- <a href="../index.html"><img src="_static/rft1d.png" alt="rft1d.png"</a> -->
+		<!-- <img src="_static/rft1d.png" alt="rft1d.png"</img> -->
+		<img src="../_static/rft1d.png" alt="rft1d.png"</img>
+      </div>
+
+
+      <div class="wy-side-nav-search">
+        <!-- <a href="../index.html" class="fa fa-home"> rft1d</a> -->
+		
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
 </div>
+      </div>
 
-    <div class="related" role="navigation" aria-label="Related">
-      <h3>Navigation</h3>
-      <ul>
-        <li class="right" style="margin-right: 10px">
-          <a href="../genindex.html" title="General Index"
-             accesskey="I">index</a></li>
-        <li class="right" >
-          <a href="../py-modindex.html" title="Python Module Index"
-             >modules</a> |</li>
-        <li class="right" >
-          <a href="geom.html" title="power1d.geom"
-             accesskey="N">next</a> |</li>
-        <li class="right" >
-          <a href="../API.html" title="API"
-             accesskey="P">previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../index.html">power1d 0.1.7 documentation</a> &#187;</li>
-          <li class="nav-item nav-item-1"><a href="../API.html" accesskey="U">API</a> &#187;</li>
-        <li class="nav-item nav-item-this"><a href="">power1d.data</a></li> 
-      </ul>
-    </div>  
-
-    <div class="document">
-      <div class="documentwrapper">
-        <div class="bodywrapper">
-          <div class="body" role="main">
-            
-  <section id="module-power1d.data">
-<span id="power1d-data"></span><span id="label-api-data"></span><h1>power1d.data<a class="headerlink" href="#module-power1d.data" title="Link to this heading">¶</a></h1>
-<p>Datasets.</p>
-<p>Currently only one dataset is available:</p>
-<p>“weather”</p>
-<section id="weather">
-<h2>weather<a class="headerlink" href="#weather" title="Link to this heading">¶</a></h2>
-<dl class="py function">
-<dt class="sig sig-object py" id="power1d.data.weather">
-<span class="sig-prename descclassname"><span class="pre">power1d.data.</span></span><span class="sig-name descname"><span class="pre">weather</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#power1d.data.weather" title="Link to this definition">¶</a></dt>
-<dd><div class="line-block">
-<div class="line">This dataset was made available by Prof. James O. Ramsay
-of McGill University. The dataset was download from:</div>
-<div class="line"><a class="reference external" href="http://www.psych.mcgill.ca/misc/fda/downloads/FDAfuns/Matlab">http://www.psych.mcgill.ca/misc/fda/downloads/FDAfuns/Matlab</a></div>
-<div class="line">on 28 March 2017 (see the ./examples/weather directory).</div>
-</div>
-<p>The data have been converted from the original form in
-the “daily.mat” file to numpy format and saved in
-./power1d/data/weather/daily.npz</p>
-<p>This is a convenience function for loading those data.</p>
-<p>Arguments:</p>
-<p>(None)</p>
-<p>Outputs:</p>
-<p>A dictionary containing the following keys:</p>
-<ul class="simple">
-<li><p>“Atlantic”</p></li>
-<li><p>“Pacific”</p></li>
-<li><p>“Continental”</p></li>
-<li><p>“Arctic”</p></li>
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        <a href="../index.html" class="fa fa-home"> rft1d</a>
+		<!-- <img src="./rft1d.png" alt="rft1d.png"> -->
+		
+        
+            <ul>
+<li class="toctree-l1"><a class="reference internal" href="../Download.html">Download</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Download.html#automated-installation">Automated installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Download.html#source-code-download">Source code download</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Download.html#release-notes">Release Notes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Download.html#license-information">License information</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Download.html#license-agreement-for-rft1d">License agreement for rft1d</a></li>
 </ul>
-<p>Each item is a (J x 365) array where J is the number of
-stations per region.</p>
-<p>Example:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="kn">import</span> <span class="nn">power1d</span>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../Theory.html">RFT Overview</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Theory.html#gaussian-random-fields">Gaussian random fields</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Theory.html#expected-field-maximum">Expected field maximum</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Theory.html#upcrossings">Upcrossings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Theory.html#expected-upcrossing-geometry">Expected upcrossing geometry</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../Examples.html">Examples</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Examples/Basic.html">Basic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Examples/BrokenFields.html">Broken fields</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Examples/Validation.html">Validation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Examples/Application.html">Application</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Examples/Paper.html">Results from the paper</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Examples/List.html">Scripts (overview)</a></li>
+</ul>
+</li>
+</ul>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../API.html">API</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">rft1d.data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="distributions.html">rft1d.distributions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="geom.html">rft1d.geom</a></li>
+<li class="toctree-l2"><a class="reference internal" href="prob.html">rft1d.prob</a></li>
+<li class="toctree-l2"><a class="reference internal" href="random.html">rft1d.random</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../References.html">References</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../References.html#on-the-web">On the web</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../References.html#software">Software</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../References.html#literature">Literature</a></li>
+</ul>
+</li>
+</ul>
 
-<span class="n">data</span> <span class="o">=</span> <span class="n">power1d</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">weather</span><span class="p">()</span>   <span class="c1">#load data dictionary</span>
-<span class="n">y</span>    <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;Continental&#39;</span><span class="p">]</span>   <span class="c1">#extract one region</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">y</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;k&quot;</span><span class="p">)</span>
+        
+		
+      </div>
+	  
+	  
+      <!-- <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        <a href="../index.html" class="fa fa-home"> rft1d</a>
+      </div> -->
+	  
+      <!-- <div class="wy-side-nav-search">
+        <a href="../index.html" class="fa fa-home"> rft1d</a>
+		
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+      </div> -->
+	  
+	  
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../index.html">rft1d</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="../API.html">API</a> &raquo;</li>
+      
+    <li>rft1d.data</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          <!-- <a href="../_sources/API/data.rst.txt" rel="nofollow"> View page source</a> -->
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            
+  <section id="module-rft1d.data">
+<span id="rft1d-data"></span><span id="label-api-data"></span><h1>rft1d.data<a class="headerlink" href="#module-rft1d.data" title="Permalink to this heading">¶</a></h1>
+<p>Example datasets</p>
+<p>Current datasets include:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Weather (Ramsay &amp; Silverman, 2005)</p></li>
+</ul>
+</div></blockquote>
+<section id="weather">
+<h2>Weather<a class="headerlink" href="#weather" title="Permalink to this heading">¶</a></h2>
+<dl class="py method">
+<dt class="sig sig-object py" id="rft1d.data.weather">
+<span class="sig-prename descclassname"><span class="pre">data.</span></span><span class="sig-name descname"><span class="pre">weather</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#rft1d.data.weather" title="Permalink to this definition">¶</a></dt>
+<dd><p>This dataset was made available by Prof. James O. Ramsay
+of McGill University. The dataset was download from:
+<a class="reference external" href="http://www.psych.mcgill.ca/misc/fda/downloads/FDAfuns/Matlab">http://www.psych.mcgill.ca/misc/fda/downloads/FDAfuns/Matlab</a>
+on 16 August 2014 (see the <cite>./examples/weather</cite> directory).</p>
+<p>No license was found with that dataset. Only “daily.m” and
+“daily.mat” from that dataset are redistributed here, on
+the condition that the original source be acknowledged.</p>
+<p>The dataset is described here:
+<a class="reference external" href="http://www.psych.mcgill.ca/misc/fda/ex-weather-a1.html">http://www.psych.mcgill.ca/misc/fda/ex-weather-a1.html</a>
+and also in:
+Ramsay JO, Silverman BW (2005). Functional Data Analysis
+(Second Edition), Springer, New York.
+Chapter 13: “Modelling functional responses with
+multivariate covariates”</p>
+<p>Data subsets include:</p>
+<ul class="simple">
+<li><p>‘Atlantic’</p></li>
+<li><p>‘Pacific’</p></li>
+<li><p>‘Continental’</p></li>
+<li><p>‘Arctic’</p></li>
+</ul>
+<dl class="field-list simple">
+<dt class="field-odd">Example use<span class="colon">:</span></dt>
+<dd class="field-odd"><p></p></dd>
+</dl>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">weather</span> <span class="o">=</span> <span class="n">rft1d</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">weather</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">y</span> <span class="o">=</span> <span class="n">weather</span><span class="p">[</span><span class="s1">&#39;Atlantic&#39;</span><span class="p">]</span>  <span class="c1"># (15 x 365) numpy array</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pyplot</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">y</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>(<a class="reference external" href="../API/data-1.py">Source code</a>, <a class="reference external" href="../API/data-1.png">png</a>, <a class="reference external" href="../API/data-1.hires.png">hires.png</a>, <a class="reference external" href="../API/data-1.pdf">pdf</a>)</p>
+</dd></dl>
+
+<p>(<a class="reference download internal" download="" href="../_downloads/58ee41a68d61aa73dde0a772f4e58bac/data-1.py"><code class="xref download docutils literal notranslate"><span class="pre">Source</span> <span class="pre">code</span></code></a>, <a class="reference download internal" download="" href="../_downloads/35df75f3c923fe5828b55417e7a7976d/data-1.png"><code class="xref download docutils literal notranslate"><span class="pre">png</span></code></a>, <a class="reference download internal" download="" href="../_downloads/99628a7cb2f91587cb05ac8ffd2ff121/data-1.hires.png"><code class="xref download docutils literal notranslate"><span class="pre">hires.png</span></code></a>, <a class="reference download internal" download="" href="../_downloads/838b0cd6c550929ed23568e2a6226d13/data-1.pdf"><code class="xref download docutils literal notranslate"><span class="pre">pdf</span></code></a>)</p>
 <figure class="align-default">
 <img alt="../_images/data-1.png" class="plot-directive" src="../_images/data-1.png" />
 </figure>
-</dd></dl>
-
 </section>
 </section>
 
 
-            <div class="clearer"></div>
           </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../API.html" class="btn btn-neutral float-left" title="API" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="distributions.html" class="btn btn-neutral float-right" title="rft1d.distributions" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, Todd Pataky.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
         </div>
       </div>
-      <div class="sphinxsidebar" role="navigation" aria-label="Main">
-        <div class="sphinxsidebarwrapper">
-  <div>
-    <h3><a href="../index.html">Table of Contents</a></h3>
-    <ul>
-<li><a class="reference internal" href="#">power1d.data</a><ul>
-<li><a class="reference internal" href="#weather">weather</a><ul>
-<li><a class="reference internal" href="#power1d.data.weather"><code class="docutils literal notranslate"><span class="pre">weather()</span></code></a></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
+
+    </section>
 
   </div>
-  <div>
-    <h4>Previous topic</h4>
-    <p class="topless"><a href="../API.html"
-                          title="previous chapter">API</a></p>
-  </div>
-  <div>
-    <h4>Next topic</h4>
-    <p class="topless"><a href="geom.html"
-                          title="next chapter">power1d.geom</a></p>
-  </div>
-  <div role="note" aria-label="source link">
-    <h3>This Page</h3>
-    <ul class="this-page-menu">
-      <li><a href="../_sources/API/data.rst.txt"
-            rel="nofollow">Show Source</a></li>
-    </ul>
-   </div>
-<search id="searchbox" style="display: none" role="search">
-  <h3 id="searchlabel">Quick search</h3>
-    <div class="searchformwrapper">
-    <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
-      <input type="submit" value="Go" />
-    </form>
-    </div>
-</search>
-<script>document.getElementById('searchbox').style.display = "block"</script>
-        </div>
-      </div>
-      <div class="clearer"></div>
-    </div>
-    <div class="related" role="navigation" aria-label="Related">
-      <h3>Navigation</h3>
-      <ul>
-        <li class="right" style="margin-right: 10px">
-          <a href="../genindex.html" title="General Index"
-             >index</a></li>
-        <li class="right" >
-          <a href="../py-modindex.html" title="Python Module Index"
-             >modules</a> |</li>
-        <li class="right" >
-          <a href="geom.html" title="power1d.geom"
-             >next</a> |</li>
-        <li class="right" >
-          <a href="../API.html" title="API"
-             >previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../index.html">power1d 0.1.7 documentation</a> &#187;</li>
-          <li class="nav-item nav-item-1"><a href="../API.html" >API</a> &#187;</li>
-        <li class="nav-item nav-item-this"><a href="">power1d.data</a></li> 
-      </ul>
-    </div>
-    <div class="footer" role="contentinfo">
-    &#169; Copyright 2023, Todd Pataky.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.7.
-    </div>
-  </body>
+  
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'0.2.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../_static/documentation_options.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="../_static/sphinx_highlight.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
 </html>
+
+
