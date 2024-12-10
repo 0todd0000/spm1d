@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>power1d.stats &#8212; power1d 0.1.7 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=4848ba22" />
+    <link rel="stylesheet" type="text/css" href="../_static/pyramid.css?v=310c80ee" />
+    <link rel="stylesheet" type="text/css" href="../_static/plot_directive.css?v=7f9a90b1" />
+    <script src="../_static/documentation_options.js?v=ca7ad2ea"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="References" href="../References.html" />
+    <link rel="prev" title="power1d.roi" href="roi.html" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Neuton&amp;subset=latin" type="text/css" media="screen" charset="utf-8" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nobile:regular,italic,bold,bolditalic&amp;subset=latin" type="text/css" media="screen" charset="utf-8" />
+<!--[if lte IE 6]>
+<link rel="stylesheet" href="../_static/ie6.css" type="text/css" media="screen" charset="utf-8" />
+<![endif]-->
+
+  </head><body>
+<div class="header" role="banner">
+  <div class="logo">
+    <a href="../index.html">
+      <img class="logo" src="../_static/logo.png" border="0" alt="Logo"/>
+    </a>
+  </div>
+</div>
+
+    <div class="related" role="navigation" aria-label="Related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="../References.html" title="References"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="roi.html" title="power1d.roi"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">power1d 0.1.7 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../API.html" accesskey="U">API</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">power1d.stats</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="module-power1d.stats">
+<span id="power1d-stats"></span><span id="label-api-stats"></span><h1>power1d.stats<a class="headerlink" href="#module-power1d.stats" title="Link to this heading">¶</a></h1>
+<p>A module containing test statistic functions for simple
+experiment designs.</p>
+<p>The following functions are available:</p>
+<ul class="simple">
+<li><p>t_1sample_fn  —— one sample t test</p></li>
+<li><p>t_2sample_fn —— two sample t test</p></li>
+<li><p>t_regress_fn —— linear regression</p></li>
+<li><p>f_anova1_fn —— one-way ANOVA</p></li>
+</ul>
+<p>All functions accept two-dimensional numpy arrays as
+the dependent variable input argument(s). The arrays
+must have shape (J,Q) where:</p>
+<ul class="simple">
+<li><p>J —— sample size</p></li>
+<li><p>Q —— continuum size</p></li>
+</ul>
+<p>All functions return a test statistic continuum as a
+one-dimensional numpy array of size Q.</p>
+<p>Slightly more efficient versions of the functions above
+are also available:</p>
+<ul class="simple">
+<li><p>t_1sample_fn</p></li>
+<li><p>t_2sample_fn</p></li>
+<li><p>t_regress_fn</p></li>
+<li><p>f_anova1_fn</p></li>
+</ul>
+<p>The output from each of these functions is itself a function
+whose input arguments are identical to the normal versions above.
+However, the _fn versions store information like degrees of
+freedom and matrix inversion results so they needn’t be
+re-computed.  This makes iterative simulation somewhat more
+efficient.</p>
+<section id="main-functions">
+<h2>Main functions<a class="headerlink" href="#main-functions" title="Link to this heading">¶</a></h2>
+<section id="t-1sample">
+<h3>t_1sample<a class="headerlink" href="#t-1sample" title="Link to this heading">¶</a></h3>
+<dl class="py function">
+<dt class="sig sig-object py" id="power1d.stats.t_1sample">
+<span class="sig-prename descclassname"><span class="pre">power1d.stats.</span></span><span class="sig-name descname"><span class="pre">t_1sample</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">y</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#power1d.stats.t_1sample" title="Link to this definition">¶</a></dt>
+<dd><p>t statistic for a one-sample test</p>
+<p>Arguments:</p>
+<p>y —— (J x Q) data sample array</p>
+<p>Outputs:</p>
+<p>t continuum as a numpy array with shape = (Q,)</p>
+<p>Example:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">power1d</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">J</span><span class="p">,</span><span class="n">Q</span>   <span class="o">=</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">101</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">y</span>     <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span> <span class="n">J</span><span class="p">,</span> <span class="n">Q</span> <span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">t</span>     <span class="o">=</span> <span class="n">power1d</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">t_1sample</span><span class="p">(</span> <span class="n">y</span> <span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</section>
+<section id="t-2sample">
+<h3>t_2sample<a class="headerlink" href="#t-2sample" title="Link to this heading">¶</a></h3>
+<dl class="py function">
+<dt class="sig sig-object py" id="power1d.stats.t_2sample">
+<span class="sig-prename descclassname"><span class="pre">power1d.stats.</span></span><span class="sig-name descname"><span class="pre">t_2sample</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">yA</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">yB</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#power1d.stats.t_2sample" title="Link to this definition">¶</a></dt>
+<dd><p>t statistic for a two-sample test</p>
+<p>Arguments:</p>
+<p>yA —— (J x Q) data sample array</p>
+<p>yB —— (J x Q) data sample array</p>
+<p>Outputs:</p>
+<p>t continuum as a numpy array with shape = (Q,)</p>
+<p>Example:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">power1d</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">J</span><span class="p">,</span><span class="n">Q</span>   <span class="o">=</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">101</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">yA</span>    <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span> <span class="n">J</span><span class="p">,</span> <span class="n">Q</span> <span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">yB</span>    <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span> <span class="n">J</span><span class="p">,</span> <span class="n">Q</span> <span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">t</span>     <span class="o">=</span> <span class="n">power1d</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">t_2sample</span><span class="p">(</span> <span class="n">yA</span><span class="p">,</span> <span class="n">yB</span> <span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</section>
+<section id="t-regress">
+<h3>t_regress<a class="headerlink" href="#t-regress" title="Link to this heading">¶</a></h3>
+<dl class="py function">
+<dt class="sig sig-object py" id="power1d.stats.t_regress">
+<span class="sig-prename descclassname"><span class="pre">power1d.stats.</span></span><span class="sig-name descname"><span class="pre">t_regress</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#power1d.stats.t_regress" title="Link to this definition">¶</a></dt>
+<dd><p>t statistic for linear regression</p>
+<p>Arguments:</p>
+<p>y —— (J x Q) data sample array</p>
+<p>x —— (J,) array of independent variable values</p>
+<p>Outputs:</p>
+<p>t continuum as a numpy array with shape = (Q,)</p>
+<p>Example:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">power1d</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">J</span><span class="p">,</span><span class="n">Q</span>   <span class="o">=</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">101</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">y</span>     <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span> <span class="n">J</span><span class="p">,</span> <span class="n">Q</span> <span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span>     <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span> <span class="n">J</span> <span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">t</span>     <span class="o">=</span> <span class="n">power1d</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">t_regress</span><span class="p">(</span> <span class="n">y</span><span class="p">,</span> <span class="n">x</span> <span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</section>
+<section id="f-anova1">
+<h3>f_anova1<a class="headerlink" href="#f-anova1" title="Link to this heading">¶</a></h3>
+<dl class="py function">
+<dt class="sig sig-object py" id="power1d.stats.f_anova1">
+<span class="sig-prename descclassname"><span class="pre">power1d.stats.</span></span><span class="sig-name descname"><span class="pre">f_anova1</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">yy</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#power1d.stats.f_anova1" title="Link to this definition">¶</a></dt>
+<dd><p>F statistic for a one-way ANOVA</p>
+<p>Arguments:</p>
+<p>yy —— an arbitrary number of (J x Q) data sample arrays</p>
+<p>Outputs:</p>
+<p>f continuum as a numpy array with shape = (Q,)</p>
+<p>Example:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">power1d</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">Q</span>     <span class="o">=</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">101</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">yA</span>    <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span> <span class="mi">8</span><span class="p">,</span> <span class="n">Q</span> <span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">yB</span>    <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span> <span class="mi">5</span><span class="p">,</span> <span class="n">Q</span> <span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">yC</span>    <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span> <span class="mi">12</span><span class="p">,</span> <span class="n">Q</span> <span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">f</span>     <span class="o">=</span> <span class="n">power1d</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">f_anova1</span><span class="p">(</span> <span class="n">yA</span><span class="p">,</span> <span class="n">yB</span><span class="p">,</span> <span class="n">yC</span> <span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</section>
+</section>
+<section id="efficient-functions">
+<h2>Efficient functions<a class="headerlink" href="#efficient-functions" title="Link to this heading">¶</a></h2>
+<section id="t-1sample-fn">
+<h3>t_1sample_fn<a class="headerlink" href="#t-1sample-fn" title="Link to this heading">¶</a></h3>
+<dl class="py function">
+<dt class="sig sig-object py" id="power1d.stats.t_1sample_fn">
+<span class="sig-prename descclassname"><span class="pre">power1d.stats.</span></span><span class="sig-name descname"><span class="pre">t_1sample_fn</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">J</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#power1d.stats.t_1sample_fn" title="Link to this definition">¶</a></dt>
+<dd><p>t statistic for a one-sample test</p>
+<p>Arguments:</p>
+<p>J —— sample size</p>
+<p>Outputs:</p>
+<p>A function for computing the t statistic.</p>
+<p>Example:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">power1d</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">J</span><span class="p">,</span><span class="n">Q</span>   <span class="o">=</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">101</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">y</span>     <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span> <span class="n">J</span><span class="p">,</span> <span class="n">Q</span> <span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fn</span>    <span class="o">=</span> <span class="n">power1d</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">t_1sample_fn</span><span class="p">(</span> <span class="n">J</span> <span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">t</span>     <span class="o">=</span> <span class="n">fn</span><span class="p">(</span> <span class="n">y</span> <span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</section>
+<section id="t-2sample-fn">
+<h3>t_2sample_fn<a class="headerlink" href="#t-2sample-fn" title="Link to this heading">¶</a></h3>
+<dl class="py function">
+<dt class="sig sig-object py" id="power1d.stats.t_2sample_fn">
+<span class="sig-prename descclassname"><span class="pre">power1d.stats.</span></span><span class="sig-name descname"><span class="pre">t_2sample_fn</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">JA</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">JB</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#power1d.stats.t_2sample_fn" title="Link to this definition">¶</a></dt>
+<dd><p>t statistic for a two-sample test</p>
+<p>Arguments:</p>
+<p>JA —— sample size for group A</p>
+<p>JB —— sample size for group B</p>
+<p>Outputs:</p>
+<p>A function for computing the t statistic.</p>
+<p>Example:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">power1d</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">JA</span><span class="p">,</span><span class="n">JB</span> <span class="o">=</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">10</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">Q</span>     <span class="o">=</span> <span class="mi">101</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">yA</span>    <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span> <span class="n">J</span><span class="p">,</span> <span class="n">Q</span> <span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">yB</span>    <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span> <span class="n">J</span><span class="p">,</span> <span class="n">Q</span> <span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fn</span>    <span class="o">=</span> <span class="n">power1d</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">t_2sample_fn</span><span class="p">(</span> <span class="n">JA</span><span class="p">,</span> <span class="n">JB</span> <span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">t</span>     <span class="o">=</span> <span class="n">fn</span><span class="p">(</span> <span class="n">yA</span><span class="p">,</span> <span class="n">yB</span> <span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</section>
+<section id="t-regress-fn">
+<h3>t_regress_fn<a class="headerlink" href="#t-regress-fn" title="Link to this heading">¶</a></h3>
+<dl class="py function">
+<dt class="sig sig-object py" id="power1d.stats.t_regress_fn">
+<span class="sig-prename descclassname"><span class="pre">power1d.stats.</span></span><span class="sig-name descname"><span class="pre">t_regress_fn</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#power1d.stats.t_regress_fn" title="Link to this definition">¶</a></dt>
+<dd><p>t statistic for linear regression</p>
+<p>Arguments:</p>
+<p>x —— (J,) array of independent variable values</p>
+<p>Outputs:</p>
+<p>A function for computing the t statistic.</p>
+<p>Example:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">power1d</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">J</span><span class="p">,</span><span class="n">Q</span>   <span class="o">=</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">101</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">y</span>     <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span> <span class="n">J</span><span class="p">,</span> <span class="n">Q</span> <span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span>     <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span> <span class="n">J</span> <span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fn</span>    <span class="o">=</span> <span class="n">power1d</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">t_regress_fn</span><span class="p">(</span> <span class="n">x</span> <span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">t</span>     <span class="o">=</span> <span class="n">fn</span><span class="p">(</span> <span class="n">y</span> <span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</section>
+<section id="f-anova1-fn">
+<h3>f_anova1_fn<a class="headerlink" href="#f-anova1-fn" title="Link to this heading">¶</a></h3>
+<dl class="py function">
+<dt class="sig sig-object py" id="power1d.stats.f_anova1_fn">
+<span class="sig-prename descclassname"><span class="pre">power1d.stats.</span></span><span class="sig-name descname"><span class="pre">f_anova1_fn</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">JJ</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#power1d.stats.f_anova1_fn" title="Link to this definition">¶</a></dt>
+<dd><p>F statistic for a one-way ANOVA</p>
+<p>Arguments:</p>
+<p>JJ —— an arbitrary number sample sizes</p>
+<p>Outputs:</p>
+<p>A function for computing the f statistic.</p>
+<p>Example:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">power1d</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">JA</span>    <span class="o">=</span> <span class="mi">8</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">JB</span>    <span class="o">=</span> <span class="mi">12</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">JC</span>    <span class="o">=</span> <span class="mi">9</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">Q</span>     <span class="o">=</span> <span class="mi">101</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">yA</span>    <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span> <span class="n">JA</span><span class="p">,</span> <span class="n">Q</span> <span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">yB</span>    <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span> <span class="n">JB</span><span class="p">,</span> <span class="n">Q</span> <span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">yC</span>    <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span> <span class="n">JC</span><span class="p">,</span> <span class="n">Q</span> <span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fn</span>    <span class="o">=</span> <span class="n">power1d</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">f_anova1_fn</span><span class="p">(</span> <span class="n">JA</span><span class="p">,</span> <span class="n">JB</span><span class="p">,</span> <span class="n">JC</span> <span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">f</span>     <span class="o">=</span> <span class="n">fn</span><span class="p">(</span> <span class="n">yA</span><span class="p">,</span> <span class="n">yB</span><span class="p">,</span> <span class="n">yC</span> <span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</section>
+</section>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+  <div>
+    <h3><a href="../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">power1d.stats</a><ul>
+<li><a class="reference internal" href="#main-functions">Main functions</a><ul>
+<li><a class="reference internal" href="#t-1sample">t_1sample</a><ul>
+<li><a class="reference internal" href="#power1d.stats.t_1sample"><code class="docutils literal notranslate"><span class="pre">t_1sample()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#t-2sample">t_2sample</a><ul>
+<li><a class="reference internal" href="#power1d.stats.t_2sample"><code class="docutils literal notranslate"><span class="pre">t_2sample()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#t-regress">t_regress</a><ul>
+<li><a class="reference internal" href="#power1d.stats.t_regress"><code class="docutils literal notranslate"><span class="pre">t_regress()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#f-anova1">f_anova1</a><ul>
+<li><a class="reference internal" href="#power1d.stats.f_anova1"><code class="docutils literal notranslate"><span class="pre">f_anova1()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#efficient-functions">Efficient functions</a><ul>
+<li><a class="reference internal" href="#t-1sample-fn">t_1sample_fn</a><ul>
+<li><a class="reference internal" href="#power1d.stats.t_1sample_fn"><code class="docutils literal notranslate"><span class="pre">t_1sample_fn()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#t-2sample-fn">t_2sample_fn</a><ul>
+<li><a class="reference internal" href="#power1d.stats.t_2sample_fn"><code class="docutils literal notranslate"><span class="pre">t_2sample_fn()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#t-regress-fn">t_regress_fn</a><ul>
+<li><a class="reference internal" href="#power1d.stats.t_regress_fn"><code class="docutils literal notranslate"><span class="pre">t_regress_fn()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#f-anova1-fn">f_anova1_fn</a><ul>
+<li><a class="reference internal" href="#power1d.stats.f_anova1_fn"><code class="docutils literal notranslate"><span class="pre">f_anova1_fn()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="roi.html"
+                          title="previous chapter">power1d.roi</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="../References.html"
+                          title="next chapter">References</a></p>
+  </div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/API/stats.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="Related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="../References.html" title="References"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="roi.html" title="power1d.roi"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">power1d 0.1.7 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../API.html" >API</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">power1d.stats</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+    &#169; Copyright 2023, Todd Pataky.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.7.
+    </div>
+  </body>
+</html>

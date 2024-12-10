@@ -1,47 +1,21 @@
 
 .. _label-API-random:
 
-rft1d.random
--------------
 
-.. automodule:: rft1d.random
+power1d.random
+=====================================
+
+.. automodule:: power1d.random
 
 
 randn1d
-^^^^^^^^^^^^^^^^^^^^
+___________________
 
-.. autofunction:: rft1d.random.randn1d
-
-multirandn1d
-^^^^^^^^^^^^^^^^^^^^
-
-.. autofunction:: rft1d.random.multirandn1d
+.. autofunction:: power1d.random.randn1d
 
 
 Generator1D
-^^^^^^^^^^^^^^^^^^^^
+___________________
 
-.. autoclass:: rft1d.random.Generator1D
-
-
-GeneratorMulti1D
-^^^^^^^^^^^^^^^^^^^^
-
-.. autoclass:: rft1d.random.GeneratorMulti1D
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+.. autoclass:: power1d.random.Generator1D
 

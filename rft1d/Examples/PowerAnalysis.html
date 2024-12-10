@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Power analysis &#8212; power1d 0.1.7 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=4848ba22" />
+    <link rel="stylesheet" type="text/css" href="../_static/pyramid.css?v=310c80ee" />
+    <link rel="stylesheet" type="text/css" href="../_static/plot_directive.css?v=7f9a90b1" />
+    <script src="../_static/documentation_options.js?v=ca7ad2ea"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Manual sample size calculation" href="SampleSize.html" />
+    <link rel="prev" title="Data sample modeling" href="DataSample.html" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Neuton&amp;subset=latin" type="text/css" media="screen" charset="utf-8" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nobile:regular,italic,bold,bolditalic&amp;subset=latin" type="text/css" media="screen" charset="utf-8" />
+<!--[if lte IE 6]>
+<link rel="stylesheet" href="../_static/ie6.css" type="text/css" media="screen" charset="utf-8" />
+<![endif]-->
+
+  </head><body>
+<div class="header" role="banner">
+  <div class="logo">
+    <a href="../index.html">
+      <img class="logo" src="../_static/logo.png" border="0" alt="Logo"/>
+    </a>
+  </div>
+</div>
+
+    <div class="related" role="navigation" aria-label="Related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="SampleSize.html" title="Manual sample size calculation"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="DataSample.html" title="Data sample modeling"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">power1d 0.1.7 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../Examples.html" accesskey="U">Examples</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Power analysis</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="power-analysis">
+<span id="label-examples-poweranalysis"></span><h1>Power analysis<a class="headerlink" href="#power-analysis" title="Link to this heading">¶</a></h1>
+<section id="one-sample">
+<span id="label-examples-poweranalysis-onesample"></span><h2>One-sample<a class="headerlink" href="#one-sample" title="Link to this heading">¶</a></h2>
+<p>Here the Canadian temperature dataset from
+<a class="reference internal" href="#label-examples-poweranalysis"><span class="std std-ref">the previous section</span></a>
+will be used to demonstrate one-sample power analysis.</p>
+<p>A full script for one-sample power analysis appears below,
+and immediately below that we shall consider it
+in more detail.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">power1d</span>
+
+<span class="n">J</span>        <span class="o">=</span> <span class="mi">8</span>    <span class="c1"># sample size</span>
+<span class="n">Q</span>        <span class="o">=</span> <span class="mi">365</span>  <span class="c1"># continuum size</span>
+
+<span class="c1"># construct baseline geometry:</span>
+<span class="n">g0</span>       <span class="o">=</span> <span class="n">power1d</span><span class="o">.</span><span class="n">geom</span><span class="o">.</span><span class="n">GaussianPulse</span><span class="p">(</span> <span class="n">Q</span> <span class="p">,</span> <span class="n">q</span><span class="o">=</span><span class="mi">200</span> <span class="p">,</span> <span class="n">fwhm</span><span class="o">=</span><span class="mi">190</span> <span class="p">,</span> <span class="n">amp</span><span class="o">=</span><span class="mi">40</span> <span class="p">)</span>
+<span class="n">g1</span>       <span class="o">=</span> <span class="n">power1d</span><span class="o">.</span><span class="n">geom</span><span class="o">.</span><span class="n">Constant</span><span class="p">(</span> <span class="n">Q</span> <span class="p">,</span> <span class="n">amp</span><span class="o">=</span><span class="mi">23</span> <span class="p">)</span>
+<span class="n">baseline</span> <span class="o">=</span> <span class="n">g0</span> <span class="o">-</span> <span class="n">g1</span>  <span class="c1"># subtract the geometries</span>
+
+<span class="c1"># construct signal geometry:</span>
+<span class="n">signal0</span>  <span class="o">=</span> <span class="n">power1d</span><span class="o">.</span><span class="n">geom</span><span class="o">.</span><span class="n">Null</span><span class="p">(</span> <span class="n">Q</span> <span class="p">)</span>
+<span class="n">signal1</span>  <span class="o">=</span> <span class="n">power1d</span><span class="o">.</span><span class="n">geom</span><span class="o">.</span><span class="n">GaussianPulse</span><span class="p">(</span> <span class="n">Q</span> <span class="p">,</span> <span class="n">q</span><span class="o">=</span><span class="mi">200</span> <span class="p">,</span> <span class="n">fwhm</span><span class="o">=</span><span class="mi">100</span> <span class="p">,</span> <span class="n">amp</span><span class="o">=</span><span class="mi">5</span> <span class="p">)</span>
+
+<span class="c1"># construct noise model:</span>
+<span class="n">noise0</span>   <span class="o">=</span> <span class="n">power1d</span><span class="o">.</span><span class="n">noise</span><span class="o">.</span><span class="n">Gaussian</span><span class="p">(</span> <span class="n">J</span> <span class="p">,</span> <span class="n">Q</span> <span class="p">,</span> <span class="n">mu</span> <span class="o">=</span> <span class="mi">0</span> <span class="p">,</span> <span class="n">sigma</span> <span class="o">=</span> <span class="mf">0.3</span> <span class="p">)</span>
+<span class="n">noise1</span>   <span class="o">=</span> <span class="n">power1d</span><span class="o">.</span><span class="n">noise</span><span class="o">.</span><span class="n">SmoothGaussian</span><span class="p">(</span> <span class="n">J</span> <span class="p">,</span> <span class="n">Q</span> <span class="p">,</span> <span class="n">mu</span> <span class="o">=</span> <span class="mi">0</span> <span class="p">,</span> <span class="n">sigma</span> <span class="o">=</span> <span class="mi">3</span> <span class="p">,</span> <span class="n">fwhm</span> <span class="o">=</span> <span class="mi">70</span> <span class="p">)</span>
+<span class="n">noise</span>    <span class="o">=</span> <span class="n">power1d</span><span class="o">.</span><span class="n">noise</span><span class="o">.</span><span class="n">Additive</span><span class="p">(</span> <span class="n">noise0</span> <span class="p">,</span> <span class="n">noise1</span> <span class="p">)</span>
+
+<span class="c1"># create data sample models:</span>
+<span class="n">model0</span>   <span class="o">=</span> <span class="n">power1d</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">DataSample</span><span class="p">(</span> <span class="n">baseline</span><span class="p">,</span> <span class="n">signal0</span><span class="p">,</span> <span class="n">noise</span><span class="p">,</span> <span class="n">J</span><span class="o">=</span><span class="n">J</span> <span class="p">)</span>
+<span class="n">model1</span>   <span class="o">=</span> <span class="n">power1d</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">DataSample</span><span class="p">(</span> <span class="n">baseline</span><span class="p">,</span> <span class="n">signal1</span><span class="p">,</span> <span class="n">noise</span><span class="p">,</span> <span class="n">J</span><span class="o">=</span><span class="n">J</span> <span class="p">)</span>
+
+<span class="c1"># create experiment models:</span>
+<span class="n">teststat</span> <span class="o">=</span> <span class="n">power1d</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">t_1sample</span>
+<span class="n">emodel0</span>  <span class="o">=</span> <span class="n">power1d</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">Experiment</span><span class="p">(</span> <span class="n">model0</span> <span class="p">,</span> <span class="n">teststat</span> <span class="p">)</span>    <span class="c1"># null hypothesis</span>
+<span class="n">emodel1</span>  <span class="o">=</span> <span class="n">power1d</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">Experiment</span><span class="p">(</span> <span class="n">model1</span> <span class="p">,</span> <span class="n">teststat</span> <span class="p">)</span>    <span class="c1"># alternative hypothesis</span>
+
+<span class="c1"># simulate the experiments:</span>
+<span class="n">sim</span>      <span class="o">=</span> <span class="n">power1d</span><span class="o">.</span><span class="n">ExperimentSimulator</span><span class="p">(</span> <span class="n">emodel0</span> <span class="p">,</span> <span class="n">emodel1</span> <span class="p">)</span>
+<span class="n">results</span>  <span class="o">=</span> <span class="n">sim</span><span class="o">.</span><span class="n">simulate</span><span class="p">(</span> <span class="mi">5000</span><span class="p">,</span> <span class="n">progress_bar</span><span class="o">=</span><span class="kc">True</span> <span class="p">)</span>
+
+<span class="c1"># visualize the power results:</span>
+<span class="n">results</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>(<a class="reference external" href="../Examples/PowerAnalysis-1.py">Source code</a>, <a class="reference external" href="../Examples/PowerAnalysis-1.png">png</a>, <a class="reference external" href="../Examples/PowerAnalysis-1.hires.png">hires.png</a>, <a class="reference external" href="../Examples/PowerAnalysis-1.pdf">pdf</a>)</p>
+<figure class="align-default">
+<img alt="../_images/PowerAnalysis-1.png" class="plot-directive" src="../_images/PowerAnalysis-1.png" />
+</figure>
+<p>All of the commands from the code above up until “# create experiment models” are
+describe in
+<a class="reference internal" href="#label-examples-poweranalysis"><span class="std std-ref">the previous section regarding data modeling</span></a>.
+The only difference is that here two signals and two data sample models are created:
+one representing the null hypothesis and one representing the alternative hypothesis.
+In <strong>power1d</strong> the “Null” geometry is a null continuum (i.e. a continuum with all zero
+values) as seen <a class="reference internal" href="../API/geom.html#label-api-geom"><span class="std std-ref">here</span></a>.</p>
+<p>Once the signals and data samples are constructed, the next step is to add them
+to a <strong>power1d.models.Experiment</strong> object along with a test statistic function.
+When there is just one data sample model the test statistic function should accept a
+(J x Q) data array and return a (Q,) array representing the test statistic
+continuum.  Test statistic functions for a variety of common experimental
+designs are available in <a class="reference internal" href="../API/stats.html#label-api-stats"><span class="std std-ref">power1d.stats</span></a>.</p>
+<p>Next the two <strong>Experiment</strong> models, representing the null and alternative hypotheses
+are added to an <strong>ExperimentSimulator</strong> object. When the <em>simulate</em> method is called
+for <em>N</em> iterations (here <em>N$=5000) the simulator will simualte both the null and the
+alternative experiments for *N</em> iterations and store the test statistic continua for
+both as (N x Q) arrays in the <strong>results.Z0</strong> and <strong>results.Z1</strong> attributes,
+respectively.</p>
+<p>Last, the simulation results are summarized graphically using the <em>plot</em> method.</p>
+<p>The top left panel of the results depicts the null and alternative models and
+lists their omnibus powers.  By definition the ‘power’ of the null model is
+alpha, and alpha is 0.05 by default. Alpha and all other power-relevant
+parameters can be changed using the the <em>results.set_</em> methods as summarized in
+<a class="reference internal" href="../API/results.html#label-api-results"><span class="std std-ref">the power1d.results API</span></a>.</p>
+<p>Here the alternative model has an omnibus power of 0.843. This sugges that, if
+our noise models are correct, we will reject the null hypothesis
+(of null signal) with a probability of 0.843. However, this doesn’t imply that
+we will detect the modeled signal with a probability of 0.843 because
+occassionally we will detect ‘signal’ which randomly appears in continuum
+regions outside of the signal region. This point is emphasized in the
+point-of-interest (POI) and center-of-interest (COI) power continua in the
+lower right panel. The POI continuum indicates the probability of rejecting
+the null hypothesis at particular continuum points, and the COI continuum indicates
+the same but extends the search region to a certain radius (here 3 points) around
+the POI. The POI and COI continuum results suggest that we are only about 70%
+likely to detect the signal we have modeled, even though the omnibus power is
+greater than 80%.</p>
+<p>If we were to broaden the COI radius to the full continuum
+size of $Q$=365 using <em>results.set_coi_radius(365)</em>, the COI continuum would
+plateau at the omnbus power of 0.843. Thus the POI and COI continua quantify
+the regional specificity of the omnibus power results.</p>
+</section>
+<section id="two-sample">
+<h2>Two-sample<a class="headerlink" href="#two-sample" title="Link to this heading">¶</a></h2>
+<p>A slightly simpler model than the one above will be used to demonstrate power
+calculations for two-sample and other experiments.</p>
+<p>In the example below signal is modeled as a GaussianPulse at point 65 in a
+continuum of length 101 and noise is modeled as uncorreletated Gaussian.
+The two-sample test statistic function (<strong>power1d.stats.t_2sample_fn</strong>) is
+used to calculate the test statistic continuum</p>
+<p>Note that <strong>power1d.stats</strong> functions with “_fn” appended to the end
+are slightly more efficient calculators than are those without “_fn”
+appended. This is because the “_fn” functions store calculations results
+like matrix inversion results so that they don’t have to be repeated
+across every single simulation iteration. More details regarding this
+are provided in <a class="reference internal" href="../API/stats.html#label-api-stats"><span class="std std-ref">power1d.stats</span></a>.</p>
+<p>Also note that, unlike the one-sample results above, <strong>power1d</strong>
+separates the null and alternative models into separate panels.
+This is done to prevent single-panel clutter.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">power1d</span>
+
+<span class="c1">#(0) Create geometry and noise models:</span>
+<span class="n">JA</span><span class="p">,</span><span class="n">JB</span><span class="p">,</span><span class="n">Q</span>   <span class="o">=</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">101</span>
+<span class="n">baseline</span>  <span class="o">=</span> <span class="n">power1d</span><span class="o">.</span><span class="n">geom</span><span class="o">.</span><span class="n">Null</span><span class="p">(</span><span class="n">Q</span><span class="o">=</span><span class="n">Q</span><span class="p">)</span>
+<span class="n">signal0</span>   <span class="o">=</span> <span class="n">power1d</span><span class="o">.</span><span class="n">geom</span><span class="o">.</span><span class="n">Null</span><span class="p">(</span><span class="n">Q</span><span class="o">=</span><span class="n">Q</span><span class="p">)</span>
+<span class="n">signal1</span>   <span class="o">=</span> <span class="n">power1d</span><span class="o">.</span><span class="n">geom</span><span class="o">.</span><span class="n">GaussianPulse</span><span class="p">(</span><span class="n">Q</span><span class="o">=</span><span class="mi">101</span><span class="p">,</span> <span class="n">q</span><span class="o">=</span><span class="mi">65</span><span class="p">,</span> <span class="n">amp</span><span class="o">=</span><span class="mf">2.5</span><span class="p">,</span> <span class="n">sigma</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">noise</span>     <span class="o">=</span> <span class="n">power1d</span><span class="o">.</span><span class="n">noise</span><span class="o">.</span><span class="n">Gaussian</span><span class="p">(</span><span class="n">J</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">Q</span><span class="o">=</span><span class="mi">101</span><span class="p">,</span> <span class="n">sigma</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="c1">#(1) Create data sample models:</span>
+<span class="n">modelA0</span>   <span class="o">=</span> <span class="n">power1d</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">DataSample</span><span class="p">(</span><span class="n">baseline</span><span class="p">,</span> <span class="n">signal0</span><span class="p">,</span> <span class="n">noise</span><span class="p">,</span> <span class="n">J</span><span class="o">=</span><span class="n">JA</span><span class="p">)</span> <span class="c1">#null A</span>
+<span class="n">modelB0</span>   <span class="o">=</span> <span class="n">power1d</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">DataSample</span><span class="p">(</span><span class="n">baseline</span><span class="p">,</span> <span class="n">signal0</span><span class="p">,</span> <span class="n">noise</span><span class="p">,</span> <span class="n">J</span><span class="o">=</span><span class="n">JB</span><span class="p">)</span> <span class="c1">#null N</span>
+<span class="n">modelA1</span>   <span class="o">=</span> <span class="n">power1d</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">DataSample</span><span class="p">(</span><span class="n">baseline</span><span class="p">,</span> <span class="n">signal0</span><span class="p">,</span> <span class="n">noise</span><span class="p">,</span> <span class="n">J</span><span class="o">=</span><span class="n">JA</span><span class="p">)</span> <span class="c1">#alternative A</span>
+<span class="n">modelB1</span>   <span class="o">=</span> <span class="n">power1d</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">DataSample</span><span class="p">(</span><span class="n">baseline</span><span class="p">,</span> <span class="n">signal1</span><span class="p">,</span> <span class="n">noise</span><span class="p">,</span> <span class="n">J</span><span class="o">=</span><span class="n">JB</span><span class="p">)</span> <span class="c1">#alternative B</span>
+
+<span class="c1">#(2) Create experiment models:</span>
+<span class="n">teststat</span>  <span class="o">=</span> <span class="n">power1d</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">t_2sample_fn</span><span class="p">(</span><span class="n">JA</span><span class="p">,</span> <span class="n">JB</span><span class="p">)</span>
+<span class="n">expmodel0</span> <span class="o">=</span> <span class="n">power1d</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">Experiment</span><span class="p">([</span><span class="n">modelA0</span><span class="p">,</span> <span class="n">modelB0</span><span class="p">],</span> <span class="n">teststat</span><span class="p">)</span> <span class="c1">#null</span>
+<span class="n">expmodel1</span> <span class="o">=</span> <span class="n">power1d</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">Experiment</span><span class="p">([</span><span class="n">modelA1</span><span class="p">,</span> <span class="n">modelB1</span><span class="p">],</span> <span class="n">teststat</span><span class="p">)</span> <span class="c1">#alternative</span>
+
+<span class="c1">#(3) Simulate experiments:</span>
+<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">sim</span>       <span class="o">=</span> <span class="n">power1d</span><span class="o">.</span><span class="n">ExperimentSimulator</span><span class="p">(</span><span class="n">expmodel0</span><span class="p">,</span> <span class="n">expmodel1</span><span class="p">)</span>
+<span class="n">results</span>   <span class="o">=</span> <span class="n">sim</span><span class="o">.</span><span class="n">simulate</span><span class="p">(</span><span class="mi">1000</span><span class="p">,</span> <span class="n">progress_bar</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">results</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>(<a class="reference external" href="../Examples/PowerAnalysis-2.py">Source code</a>, <a class="reference external" href="../Examples/PowerAnalysis-2.png">png</a>, <a class="reference external" href="../Examples/PowerAnalysis-2.hires.png">hires.png</a>, <a class="reference external" href="../Examples/PowerAnalysis-2.pdf">pdf</a>)</p>
+<figure class="align-default">
+<img alt="../_images/PowerAnalysis-2.png" class="plot-directive" src="../_images/PowerAnalysis-2.png" />
+</figure>
+</section>
+<section id="regression">
+<h2>Regression<a class="headerlink" href="#regression" title="Link to this heading">¶</a></h2>
+<p>Regression can be implemented using the “regressor” keyword
+argument when constructing a <strong>DataSample</strong> model as indicated below.</p>
+<p>Note that regression models are plotted with a different color scheme
+from those above: dark and bright colors correspond to small and large
+regressor values, respectively. In the “Alternative” model below (top
+right panel) it is apparent that dependent variable values get larger
+in the vicinity of Q=65 as the regressor values get larger,
+implying positive correlation between the independent and dependent
+variables in this vicinity.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">power1d</span>
+
+<span class="c1">#(0) Create geometry and noise models:</span>
+<span class="n">J</span><span class="p">,</span><span class="n">Q</span>       <span class="o">=</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">101</span>
+<span class="n">x</span>         <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">J</span><span class="p">)</span>  <span class="c1">#regressor (must have J values)</span>
+<span class="n">baseline</span>  <span class="o">=</span> <span class="n">power1d</span><span class="o">.</span><span class="n">geom</span><span class="o">.</span><span class="n">Null</span><span class="p">(</span><span class="n">Q</span><span class="o">=</span><span class="n">Q</span><span class="p">)</span>
+<span class="n">signal0</span>   <span class="o">=</span> <span class="n">power1d</span><span class="o">.</span><span class="n">geom</span><span class="o">.</span><span class="n">Null</span><span class="p">(</span><span class="n">Q</span><span class="o">=</span><span class="n">Q</span><span class="p">)</span>
+<span class="n">signal1</span>   <span class="o">=</span> <span class="n">power1d</span><span class="o">.</span><span class="n">geom</span><span class="o">.</span><span class="n">GaussianPulse</span><span class="p">(</span><span class="n">Q</span><span class="o">=</span><span class="mi">101</span><span class="p">,</span> <span class="n">q</span><span class="o">=</span><span class="mi">65</span><span class="p">,</span> <span class="n">amp</span><span class="o">=</span><span class="mf">2.0</span><span class="p">,</span> <span class="n">sigma</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">noise</span>     <span class="o">=</span> <span class="n">power1d</span><span class="o">.</span><span class="n">noise</span><span class="o">.</span><span class="n">Gaussian</span><span class="p">(</span><span class="n">J</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">Q</span><span class="o">=</span><span class="mi">101</span><span class="p">,</span> <span class="n">sigma</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="c1">#(1) Create data sample models:</span>
+<span class="n">model0</span>    <span class="o">=</span> <span class="n">power1d</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">DataSample</span><span class="p">(</span><span class="n">baseline</span><span class="p">,</span> <span class="n">signal0</span><span class="p">,</span> <span class="n">noise</span><span class="p">,</span> <span class="n">J</span><span class="o">=</span><span class="n">J</span><span class="p">,</span> <span class="n">regressor</span><span class="o">=</span><span class="n">x</span><span class="p">)</span>
+<span class="n">model1</span>    <span class="o">=</span> <span class="n">power1d</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">DataSample</span><span class="p">(</span><span class="n">baseline</span><span class="p">,</span> <span class="n">signal1</span><span class="p">,</span> <span class="n">noise</span><span class="p">,</span> <span class="n">J</span><span class="o">=</span><span class="n">J</span><span class="p">,</span> <span class="n">regressor</span><span class="o">=</span><span class="n">x</span><span class="p">)</span>
+
+<span class="c1">#(2) Create experiment models:</span>
+<span class="n">teststat</span>  <span class="o">=</span> <span class="n">power1d</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">t_regress_fn</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="n">expmodel0</span> <span class="o">=</span> <span class="n">power1d</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">Experiment</span><span class="p">(</span><span class="n">model0</span><span class="p">,</span> <span class="n">teststat</span><span class="p">)</span>
+<span class="n">expmodel1</span> <span class="o">=</span> <span class="n">power1d</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">Experiment</span><span class="p">(</span><span class="n">model1</span><span class="p">,</span> <span class="n">teststat</span><span class="p">)</span>
+
+<span class="c1">#(3) Simulate experiments:</span>
+<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">sim</span>       <span class="o">=</span> <span class="n">power1d</span><span class="o">.</span><span class="n">ExperimentSimulator</span><span class="p">(</span><span class="n">expmodel0</span><span class="p">,</span> <span class="n">expmodel1</span><span class="p">)</span>
+<span class="n">results</span>   <span class="o">=</span> <span class="n">sim</span><span class="o">.</span><span class="n">simulate</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="n">progress_bar</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">results</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>(<a class="reference external" href="../Examples/PowerAnalysis-3.py">Source code</a>, <a class="reference external" href="../Examples/PowerAnalysis-3.png">png</a>, <a class="reference external" href="../Examples/PowerAnalysis-3.hires.png">hires.png</a>, <a class="reference external" href="../Examples/PowerAnalysis-3.pdf">pdf</a>)</p>
+<figure class="align-default">
+<img alt="../_images/PowerAnalysis-3.png" class="plot-directive" src="../_images/PowerAnalysis-3.png" />
+</figure>
+</section>
+<section id="one-way-anova">
+<h2>One-way ANOVA<a class="headerlink" href="#one-way-anova" title="Link to this heading">¶</a></h2>
+<p>Power analyses for one-way ANOVA can be conducted almost identically
+to the two-sample analysis described above. The only difference is
+that more <strong>DataSample</strong> models are needed to represent each of the
+groups.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">power1d</span>
+
+<span class="c1">#(0) Create geometry and noise models:</span>
+<span class="n">JA</span><span class="p">,</span><span class="n">JB</span><span class="p">,</span><span class="n">JC</span><span class="p">,</span><span class="n">Q</span> <span class="o">=</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">101</span>
+<span class="n">baseline</span>   <span class="o">=</span> <span class="n">power1d</span><span class="o">.</span><span class="n">geom</span><span class="o">.</span><span class="n">Null</span><span class="p">(</span><span class="n">Q</span><span class="o">=</span><span class="n">Q</span><span class="p">)</span>
+<span class="n">signal0</span>    <span class="o">=</span> <span class="n">power1d</span><span class="o">.</span><span class="n">geom</span><span class="o">.</span><span class="n">Null</span><span class="p">(</span><span class="n">Q</span><span class="o">=</span><span class="n">Q</span><span class="p">)</span>
+<span class="n">signal1</span>    <span class="o">=</span> <span class="n">power1d</span><span class="o">.</span><span class="n">geom</span><span class="o">.</span><span class="n">GaussianPulse</span><span class="p">(</span><span class="n">Q</span><span class="o">=</span><span class="mi">101</span><span class="p">,</span> <span class="n">q</span><span class="o">=</span><span class="mi">65</span><span class="p">,</span> <span class="n">amp</span><span class="o">=</span><span class="mf">1.5</span><span class="p">,</span> <span class="n">sigma</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">noise</span>      <span class="o">=</span> <span class="n">power1d</span><span class="o">.</span><span class="n">noise</span><span class="o">.</span><span class="n">Gaussian</span><span class="p">(</span><span class="n">J</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">Q</span><span class="o">=</span><span class="mi">101</span><span class="p">,</span> <span class="n">sigma</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="c1">#(1) Create data sample models:</span>
+<span class="n">modelA0</span>   <span class="o">=</span> <span class="n">power1d</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">DataSample</span><span class="p">(</span><span class="n">baseline</span><span class="p">,</span> <span class="n">signal0</span><span class="p">,</span> <span class="n">noise</span><span class="p">,</span> <span class="n">J</span><span class="o">=</span><span class="n">JA</span><span class="p">)</span>  <span class="c1">#null A</span>
+<span class="n">modelB0</span>   <span class="o">=</span> <span class="n">power1d</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">DataSample</span><span class="p">(</span><span class="n">baseline</span><span class="p">,</span> <span class="n">signal0</span><span class="p">,</span> <span class="n">noise</span><span class="p">,</span> <span class="n">J</span><span class="o">=</span><span class="n">JB</span><span class="p">)</span>  <span class="c1">#null B</span>
+<span class="n">modelC0</span>   <span class="o">=</span> <span class="n">power1d</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">DataSample</span><span class="p">(</span><span class="n">baseline</span><span class="p">,</span> <span class="n">signal0</span><span class="p">,</span> <span class="n">noise</span><span class="p">,</span> <span class="n">J</span><span class="o">=</span><span class="n">JC</span><span class="p">)</span>  <span class="c1">#null C</span>
+<span class="n">modelA1</span>   <span class="o">=</span> <span class="n">power1d</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">DataSample</span><span class="p">(</span><span class="n">baseline</span><span class="p">,</span> <span class="n">signal0</span><span class="p">,</span> <span class="n">noise</span><span class="p">,</span> <span class="n">J</span><span class="o">=</span><span class="n">JA</span><span class="p">)</span>  <span class="c1">#alternative A</span>
+<span class="n">modelB1</span>   <span class="o">=</span> <span class="n">power1d</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">DataSample</span><span class="p">(</span><span class="n">baseline</span><span class="p">,</span> <span class="n">signal0</span><span class="p">,</span> <span class="n">noise</span><span class="p">,</span> <span class="n">J</span><span class="o">=</span><span class="n">JB</span><span class="p">)</span>  <span class="c1">#alternative B</span>
+<span class="n">modelC1</span>   <span class="o">=</span> <span class="n">power1d</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">DataSample</span><span class="p">(</span><span class="n">baseline</span><span class="p">,</span> <span class="n">signal1</span><span class="p">,</span> <span class="n">noise</span><span class="p">,</span> <span class="n">J</span><span class="o">=</span><span class="n">JC</span><span class="p">)</span>  <span class="c1">#alternative C</span>
+
+<span class="c1">#(2) Create experiment models:</span>
+<span class="n">teststat</span>  <span class="o">=</span> <span class="n">power1d</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">f_anova1_fn</span><span class="p">(</span><span class="n">JA</span><span class="p">,</span> <span class="n">JB</span><span class="p">,</span> <span class="n">JC</span><span class="p">)</span>
+<span class="n">expmodel0</span> <span class="o">=</span> <span class="n">power1d</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">Experiment</span><span class="p">([</span><span class="n">modelA0</span><span class="p">,</span> <span class="n">modelB0</span><span class="p">,</span> <span class="n">modelC0</span><span class="p">],</span> <span class="n">teststat</span><span class="p">)</span>
+<span class="n">expmodel1</span> <span class="o">=</span> <span class="n">power1d</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">Experiment</span><span class="p">([</span><span class="n">modelA1</span><span class="p">,</span> <span class="n">modelB1</span><span class="p">,</span> <span class="n">modelC1</span><span class="p">],</span> <span class="n">teststat</span><span class="p">)</span>
+
+<span class="c1">#(3) Simulate experiments:</span>
+<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">sim</span>       <span class="o">=</span> <span class="n">power1d</span><span class="o">.</span><span class="n">ExperimentSimulator</span><span class="p">(</span><span class="n">expmodel0</span><span class="p">,</span> <span class="n">expmodel1</span><span class="p">)</span>
+<span class="n">results</span>   <span class="o">=</span> <span class="n">sim</span><span class="o">.</span><span class="n">simulate</span><span class="p">(</span><span class="mi">500</span><span class="p">,</span> <span class="n">progress_bar</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">results</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>(<a class="reference external" href="../Examples/PowerAnalysis-4.py">Source code</a>, <a class="reference external" href="../Examples/PowerAnalysis-4.png">png</a>, <a class="reference external" href="../Examples/PowerAnalysis-4.hires.png">hires.png</a>, <a class="reference external" href="../Examples/PowerAnalysis-4.pdf">pdf</a>)</p>
+<figure class="align-default">
+<img alt="../_images/PowerAnalysis-4.png" class="plot-directive" src="../_images/PowerAnalysis-4.png" />
+</figure>
+</section>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+  <div>
+    <h3><a href="../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">Power analysis</a><ul>
+<li><a class="reference internal" href="#one-sample">One-sample</a></li>
+<li><a class="reference internal" href="#two-sample">Two-sample</a></li>
+<li><a class="reference internal" href="#regression">Regression</a></li>
+<li><a class="reference internal" href="#one-way-anova">One-way ANOVA</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="DataSample.html"
+                          title="previous chapter">Data sample modeling</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="SampleSize.html"
+                          title="next chapter">Manual sample size calculation</a></p>
+  </div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/Examples/PowerAnalysis.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="Related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="SampleSize.html" title="Manual sample size calculation"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="DataSample.html" title="Data sample modeling"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">power1d 0.1.7 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../Examples.html" >Examples</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Power analysis</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+    &#169; Copyright 2023, Todd Pataky.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.7.
+    </div>
+  </body>
+</html>

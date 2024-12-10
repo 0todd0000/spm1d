@@ -1,196 +1,81 @@
-
-
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
-  <title>rft1d.random &mdash; rft1d 0.2.0 documentation</title>
-  
 
-  
-  
+<html lang="en" data-content_root="../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  
-  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+    <title>power1d.random &#8212; power1d 0.1.7 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=4848ba22" />
+    <link rel="stylesheet" type="text/css" href="../_static/pyramid.css?v=310c80ee" />
+    <link rel="stylesheet" type="text/css" href="../_static/plot_directive.css?v=7f9a90b1" />
+    <script src="../_static/documentation_options.js?v=ca7ad2ea"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="power1d.results" href="results.html" />
+    <link rel="prev" title="power1d.prob" href="prob.html" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Neuton&amp;subset=latin" type="text/css" media="screen" charset="utf-8" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nobile:regular,italic,bold,bolditalic&amp;subset=latin" type="text/css" media="screen" charset="utf-8" />
+<!--[if lte IE 6]>
+<link rel="stylesheet" href="../_static/ie6.css" type="text/css" media="screen" charset="utf-8" />
+<![endif]-->
 
-  
-  
-    
-
-  
-
-  
-  
-    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-  
-
-  
-  
-    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-  
-    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-  
-    <link rel="stylesheet" href="../_static/plot_directive.css" type="text/css" />
-  
-    <link rel="stylesheet" href="../_static/theme.css" type="text/css" />
-  
-        <link rel="index" title="Index"
-              href="../genindex.html"/>
-        <link rel="search" title="Search" href="../search.html"/>
-    <link rel="top" title="rft1d 0.2.0 documentation" href="../index.html"/>
-        <link rel="up" title="API" href="../API.html"/>
-        <link rel="next" title="References" href="../References.html"/>
-        <link rel="prev" title="rft1d.prob" href="prob.html"/> 
-
-  
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
-
-</head>
-
-<body class="wy-body-for-nav" role="document">
-
-  <div class="wy-grid-for-nav">
-
-    
-    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
-      <div>
-		<!-- <a href="../index.html"><img src="_static/rft1d.png" alt="rft1d.png"</a> -->
-		<!-- <img src="_static/rft1d.png" alt="rft1d.png"</img> -->
-		<img src="../_static/rft1d.png" alt="rft1d.png"</img>
-      </div>
-
-
-      <div class="wy-side-nav-search">
-        <!-- <a href="../index.html" class="fa fa-home"> rft1d</a> -->
-		
-<div role="search">
-  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
-    <input type="hidden" name="check_keywords" value="yes" />
-    <input type="hidden" name="area" value="default" />
-  </form>
+  </head><body>
+<div class="header" role="banner">
+  <div class="logo">
+    <a href="../index.html">
+      <img class="logo" src="../_static/logo.png" border="0" alt="Logo"/>
+    </a>
+  </div>
 </div>
-      </div>
 
-      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-        <a href="../index.html" class="fa fa-home"> rft1d</a>
-		<!-- <img src="./rft1d.png" alt="rft1d.png"> -->
-		
-        
-            <ul>
-<li class="toctree-l1"><a class="reference internal" href="../Download.html">Download</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../Download.html#automated-installation">Automated installation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../Download.html#source-code-download">Source code download</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../Download.html#release-notes">Release Notes</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../Download.html#license-information">License information</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../Download.html#license-agreement-for-rft1d">License agreement for rft1d</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="../Theory.html">RFT Overview</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../Theory.html#gaussian-random-fields">Gaussian random fields</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../Theory.html#expected-field-maximum">Expected field maximum</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../Theory.html#upcrossings">Upcrossings</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../Theory.html#expected-upcrossing-geometry">Expected upcrossing geometry</a></li>
-</ul>
-</li>
-</ul>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../Examples.html">Examples</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../Examples/Basic.html">Basic</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../Examples/BrokenFields.html">Broken fields</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../Examples/Validation.html">Validation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../Examples/Application.html">Application</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../Examples/Paper.html">Results from the paper</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../Examples/List.html">Scripts (overview)</a></li>
-</ul>
-</li>
-</ul>
-<ul class="current">
-<li class="toctree-l1 current"><a class="reference internal" href="../API.html">API</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="data.html">rft1d.data</a></li>
-<li class="toctree-l2"><a class="reference internal" href="distributions.html">rft1d.distributions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="geom.html">rft1d.geom</a></li>
-<li class="toctree-l2"><a class="reference internal" href="prob.html">rft1d.prob</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">rft1d.random</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="../References.html">References</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../References.html#on-the-web">On the web</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../References.html#software">Software</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../References.html#literature">Literature</a></li>
-</ul>
-</li>
-</ul>
+    <div class="related" role="navigation" aria-label="Related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="results.html" title="power1d.results"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="prob.html" title="power1d.prob"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">power1d 0.1.7 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../API.html" accesskey="U">API</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">power1d.random</a></li> 
+      </ul>
+    </div>  
 
-        
-		
-      </div>
-	  
-	  
-      <!-- <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-        <a href="../index.html" class="fa fa-home"> rft1d</a>
-      </div> -->
-	  
-      <!-- <div class="wy-side-nav-search">
-        <a href="../index.html" class="fa fa-home"> rft1d</a>
-		
-<div role="search">
-  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
-    <input type="hidden" name="check_keywords" value="yes" />
-    <input type="hidden" name="area" value="default" />
-  </form>
-</div>
-      </div> -->
-	  
-	  
-      &nbsp;
-    </nav>
-
-    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
-
-      
-      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
-        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-        <a href="../index.html">rft1d</a>
-      </nav>
-
-
-      
-      <div class="wy-nav-content">
-        <div class="rst-content">
-          <div role="navigation" aria-label="breadcrumbs navigation">
-  <ul class="wy-breadcrumbs">
-    <li><a href="../index.html">Docs</a> &raquo;</li>
-      
-          <li><a href="../API.html">API</a> &raquo;</li>
-      
-    <li>rft1d.random</li>
-      <li class="wy-breadcrumbs-aside">
-        
-          <!-- <a href="../_sources/API/random.rst.txt" rel="nofollow"> View page source</a> -->
-        
-      </li>
-  </ul>
-  <hr/>
-</div>
-          <div role="main">
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
             
-  <section id="module-rft1d.random">
-<span id="rft1d-random"></span><span id="label-api-random"></span><h1>rft1d.random<a class="headerlink" href="#module-rft1d.random" title="Permalink to this heading">¶</a></h1>
+  <section id="module-power1d.random">
+<span id="power1d-random"></span><span id="label-api-random"></span><h1>power1d.random<a class="headerlink" href="#module-power1d.random" title="Link to this heading">¶</a></h1>
 <p>Functions and classes for generating 1D random fields.
-The functions <strong>randn1d</strong> and <strong>multirandn1d</strong> are similar to the
-<strong>numpy.random.randn</strong> and <strong>np.random.multivariate_normal</strong> functions.
-If a large number of random fields are required (e.g. for RFT validations)
-it may be more efficient to use the <strong>Generator1D</strong> and <strong>GeneratorMulti1D</strong> classes.</p>
+The <strong>randn1d</strong> function is similar to the <strong>numpy.random.randn</strong> function
+but the former generates smooth (correlated) 1D Gaussian fields and the
+latter generates rough (uncorrelated) fields.</p>
+<p>If a large number of random fields are required (e.g. for validation simulations)
+it may be more efficient to use the <strong>Generator1D</strong> class.</p>
+<p>THIS FILE IS COPIED DIRECLY FROM THE <strong>rft1d</strong> SOFTWARE PACKAGE.
+SEE THE ORIGINAL DOCUMENTATION FOR MORE DETAILS:</p>
+<p><a class="reference external" href="http://www.spm1d.org/rft1d">http://www.spm1d.org/rft1d</a></p>
+<p>Reference:</p>
+<p>Pataky TC (2016) RFT1D: Smooth One-Dimensional Random Field Upcrossing Probabilities in Python.
+<strong>Journal of Statistical Software</strong> 71(7), 1-22. <a class="reference external" href="http://doi.org/10.18637/jss.v071.i07">http://doi.org/10.18637/jss.v071.i07</a></p>
 <section id="randn1d">
-<h2>randn1d<a class="headerlink" href="#randn1d" title="Permalink to this heading">¶</a></h2>
+<h2>randn1d<a class="headerlink" href="#randn1d" title="Link to this heading">¶</a></h2>
 <dl class="py function">
-<dt class="sig sig-object py" id="rft1d.random.randn1d">
-<span class="sig-prename descclassname"><span class="pre">rft1d.random.</span></span><span class="sig-name descname"><span class="pre">randn1d</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">nResponses</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nodes</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">FWHM</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pad</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rft1d.random.randn1d" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="power1d.random.randn1d">
+<span class="sig-prename descclassname"><span class="pre">power1d.random.</span></span><span class="sig-name descname"><span class="pre">randn1d</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">nResponses</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nodes</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">FWHM</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pad</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#power1d.random.randn1d" title="Link to this definition">¶</a></dt>
 <dd><p>Generate smooth Gaussian random fields.</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -203,58 +88,24 @@ it may be more efficient to use the <strong>Generator1D</strong> and <strong>Gen
 <dd class="field-even"><p>A 2D numpy array with shape:  (<em>nResponses</em>, <em>nodes</em>)</p>
 </dd>
 <dt class="field-odd">Examples<span class="colon">:</span></dt>
-<dd class="field-odd"><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">y</span> <span class="o">=</span> <span class="n">rft1d</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn1d</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">101</span><span class="p">,</span> <span class="mf">15.0</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">y</span> <span class="o">=</span> <span class="n">rft1d</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn1d</span><span class="p">(</span><span class="mi">1000</span><span class="p">,</span> <span class="mi">101</span><span class="p">,</span> <span class="mf">75.0</span><span class="p">,</span> <span class="n">pad</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<dd class="field-odd"><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">y</span> <span class="o">=</span> <span class="n">power1d</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn1d</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">101</span><span class="p">,</span> <span class="mf">15.0</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">y</span> <span class="o">=</span> <span class="n">power1d</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn1d</span><span class="p">(</span><span class="mi">1000</span><span class="p">,</span> <span class="mi">101</span><span class="p">,</span> <span class="mf">75.0</span><span class="p">,</span> <span class="n">pad</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
 </dd>
 </dl>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p>Padding is slow but necessary when 2 <em>FWHM</em> &gt; <em>nodes</em></p>
+<p>Padding is slow but necessary when (2 x <em>FWHM</em>) is greater than the number of nodes</p>
 </div>
-</dd></dl>
-
-</section>
-<section id="multirandn1d">
-<h2>multirandn1d<a class="headerlink" href="#multirandn1d" title="Permalink to this heading">¶</a></h2>
-<dl class="py function">
-<dt class="sig sig-object py" id="rft1d.random.multirandn1d">
-<span class="sig-prename descclassname"><span class="pre">rft1d.random.</span></span><span class="sig-name descname"><span class="pre">multirandn1d</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">nResponses</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nodes</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nComponents</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">FWHM</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">W</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pad</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rft1d.random.multirandn1d" title="Permalink to this definition">¶</a></dt>
-<dd><p>Generate smooth Gaussian multivariate random fields.</p>
-<dl class="field-list">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><em>nResponses</em> – number of fields (int)</p>
-<p><em>nodes</em> – number of field nodes (int) OR a binary field (boolean array)</p>
-<p><em>nComponents</em> – number of vector components (int)</p>
-<p><em>FWHM</em> – field smoothness (float)</p>
-<p><em>W</em> – covariance matrix (<em>nComponents</em> x <em>nComponents</em> array)</p>
-<p><em>pad</em> – pad prior to smoothing (bool)</p>
-</dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>A 3D numpy array with shape:  (<em>nResponses</em>, <em>nodes</em>, <em>nComponents</em>)</p>
-</dd>
-<dt class="field-odd">Notes<span class="colon">:</span></dt>
-<dd class="field-odd"><ol class="arabic simple">
-<li><p>The default <em>W</em> is the identity matrix.</p></li>
-<li><p>Padding is slow but necessary when 2 <em>FWHM</em> &gt; <em>nodes</em></p></li>
-</ol>
-</dd>
-<dt class="field-even">Examples<span class="colon">:</span></dt>
-<dd class="field-even"><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">y</span> <span class="o">=</span> <span class="n">rft1d</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">multirandn1d</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">101</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mf">15.0</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">y</span> <span class="o">=</span> <span class="n">rft1d</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">multirandn1d</span><span class="p">(</span><span class="mi">1000</span><span class="p">,</span> <span class="mi">101</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mf">65.0</span><span class="p">,</span> <span class="n">W</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="mi">5</span><span class="p">),</span> <span class="n">pad</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-</pre></div>
-</div>
-</dd>
-</dl>
 </dd></dl>
 
 </section>
 <section id="generator1d">
-<h2>Generator1D<a class="headerlink" href="#generator1d" title="Permalink to this heading">¶</a></h2>
+<h2>Generator1D<a class="headerlink" href="#generator1d" title="Link to this heading">¶</a></h2>
 <dl class="py class">
-<dt class="sig sig-object py" id="rft1d.random.Generator1D">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">rft1d.random.</span></span><span class="sig-name descname"><span class="pre">Generator1D</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">nResponses</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nodes</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">101</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">FWHM</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pad</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rft1d.random.Generator1D" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="power1d.random.Generator1D">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">power1d.random.</span></span><span class="sig-name descname"><span class="pre">Generator1D</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">nResponses</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nodes</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">101</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">FWHM</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pad</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#power1d.random.Generator1D" title="Link to this definition">¶</a></dt>
 <dd><p>Generator of smooth Gaussian random fields.</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -272,40 +123,7 @@ it may be more efficient to use the <strong>Generator1D</strong> and <strong>Gen
 </ol>
 </dd>
 <dt class="field-even">Examples<span class="colon">:</span></dt>
-<dd class="field-even"><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">g</span> <span class="o">=</span> <span class="n">rft1d</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">Generator1D</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">101</span><span class="p">,</span> <span class="mf">15.0</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">y</span> <span class="o">=</span> <span class="n">g</span><span class="o">.</span><span class="n">generate_sample</span><span class="p">()</span>
-</pre></div>
-</div>
-</dd>
-</dl>
-</dd></dl>
-
-</section>
-<section id="generatormulti1d">
-<h2>GeneratorMulti1D<a class="headerlink" href="#generatormulti1d" title="Permalink to this heading">¶</a></h2>
-<dl class="py class">
-<dt class="sig sig-object py" id="rft1d.random.GeneratorMulti1D">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">rft1d.random.</span></span><span class="sig-name descname"><span class="pre">GeneratorMulti1D</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">nResponses</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nodes</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">101</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nComponents</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">FWHM</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">W</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pad</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rft1d.random.GeneratorMulti1D" title="Permalink to this definition">¶</a></dt>
-<dd><p>Generator of smooth multivariate Gaussian random fields.</p>
-<dl class="field-list">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><em>nResponses</em> – number of fields (int)</p>
-<p><em>nodes</em> – number of field nodes (int) OR a binary field (boolean array)</p>
-<p><em>nComponents</em> – number of vector components (int)</p>
-<p><em>FWHM</em> – field smoothness (float)</p>
-<p><em>W</em> – covariance matrix (<em>nComponents</em> x <em>nComponents</em> array)</p>
-<p><em>pad</em> – pad prior to smoothing (bool)</p>
-</dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>A GeneratorMulti1D object</p>
-</dd>
-<dt class="field-odd">Notes<span class="colon">:</span></dt>
-<dd class="field-odd"><ol class="arabic simple">
-<li><p>GeneratorMulti1D is faster than multirandn1d for iteratively generating many random samples.</p></li>
-</ol>
-</dd>
-<dt class="field-even">Examples<span class="colon">:</span></dt>
-<dd class="field-even"><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">g</span> <span class="o">=</span> <span class="n">rft1d</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">GeneratorMulti1D</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">101</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mf">15.0</span><span class="p">)</span>
+<dd class="field-even"><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">g</span> <span class="o">=</span> <span class="n">power1d</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">Generator1D</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">101</span><span class="p">,</span> <span class="mf">15.0</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">y</span> <span class="o">=</span> <span class="n">g</span><span class="o">.</span><span class="n">generate_sample</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -317,64 +135,83 @@ it may be more efficient to use the <strong>Generator1D</strong> and <strong>Gen
 </section>
 
 
+            <div class="clearer"></div>
           </div>
-          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="prob.html" class="btn btn-neutral float-left" title="rft1d.prob" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="../References.html" class="btn btn-neutral float-right" title="References" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
-    </div>
-
-  <hr/>
-
-  <div role="contentinfo">
-    <p>&#169; Copyright 2022, Todd Pataky.</p>
-  </div>
-
-  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
-    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
-    provided by <a href="https://readthedocs.org">Read the Docs</a>.
-   
-
-</footer>
         </div>
       </div>
-
-    </section>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+  <div>
+    <h3><a href="../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">power1d.random</a><ul>
+<li><a class="reference internal" href="#randn1d">randn1d</a><ul>
+<li><a class="reference internal" href="#power1d.random.randn1d"><code class="docutils literal notranslate"><span class="pre">randn1d()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#generator1d">Generator1D</a><ul>
+<li><a class="reference internal" href="#power1d.random.Generator1D"><code class="docutils literal notranslate"><span class="pre">Generator1D</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
 
   </div>
-  
-
-  
-
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'../',
-            VERSION:'0.2.0',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true
-        };
-    </script>
-      <script type="text/javascript" src="../_static/documentation_options.js"></script>
-      <script type="text/javascript" src="../_static/doctools.js"></script>
-      <script type="text/javascript" src="../_static/sphinx_highlight.js"></script>
-
-  
-
-  
-  
-    <script type="text/javascript" src="../_static/js/theme.js"></script>
-  
-
-  
-  
-  <script type="text/javascript">
-      jQuery(function () {
-          SphinxRtdTheme.StickyNav.enable();
-      });
-  </script>
-   
-
-</body>
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="prob.html"
+                          title="previous chapter">power1d.prob</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="results.html"
+                          title="next chapter">power1d.results</a></p>
+  </div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/API/random.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="Related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="results.html" title="power1d.results"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="prob.html" title="power1d.prob"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">power1d 0.1.7 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../API.html" >API</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">power1d.random</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+    &#169; Copyright 2023, Todd Pataky.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.7.
+    </div>
+  </body>
 </html>
-
-

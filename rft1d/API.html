@@ -1,237 +1,324 @@
-
-
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
-  <title>API &mdash; rft1d 0.2.0 documentation</title>
-  
 
-  
-  
+<html lang="en" data-content_root="./">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  
-  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+    <title>API &#8212; power1d 0.1.7 documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=4848ba22" />
+    <link rel="stylesheet" type="text/css" href="_static/pyramid.css?v=310c80ee" />
+    <link rel="stylesheet" type="text/css" href="_static/plot_directive.css?v=7f9a90b1" />
+    <script src="_static/documentation_options.js?v=ca7ad2ea"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="power1d.data" href="API/data.html" />
+    <link rel="prev" title="Automated sample size calculation" href="Examples/SampleSizeAuto.html" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Neuton&amp;subset=latin" type="text/css" media="screen" charset="utf-8" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nobile:regular,italic,bold,bolditalic&amp;subset=latin" type="text/css" media="screen" charset="utf-8" />
+<!--[if lte IE 6]>
+<link rel="stylesheet" href="_static/ie6.css" type="text/css" media="screen" charset="utf-8" />
+<![endif]-->
 
-  
-  
-    
-
-  
-
-  
-  
-    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
-  
-
-  
-  
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-  
-    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
-  
-    <link rel="stylesheet" href="_static/plot_directive.css" type="text/css" />
-  
-    <link rel="stylesheet" href="_static/theme.css" type="text/css" />
-  
-        <link rel="index" title="Index"
-              href="genindex.html"/>
-        <link rel="search" title="Search" href="search.html"/>
-    <link rel="top" title="rft1d 0.2.0 documentation" href="index.html"/>
-        <link rel="next" title="rft1d.data" href="API/data.html"/>
-        <link rel="prev" title="Scripts (overview)" href="Examples/List.html"/> 
-
-  
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
-
-</head>
-
-<body class="wy-body-for-nav" role="document">
-
-  <div class="wy-grid-for-nav">
-
-    
-    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
-      <div>
-		<!-- <a href="index.html"><img src="_static/rft1d.png" alt="rft1d.png"</a> -->
-		<!-- <img src="_static/rft1d.png" alt="rft1d.png"</img> -->
-		<img src="_static/rft1d.png" alt="rft1d.png"</img>
-      </div>
-
-
-      <div class="wy-side-nav-search">
-        <!-- <a href="index.html" class="fa fa-home"> rft1d</a> -->
-		
-<div role="search">
-  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
-    <input type="hidden" name="check_keywords" value="yes" />
-    <input type="hidden" name="area" value="default" />
-  </form>
+  </head><body>
+<div class="header" role="banner">
+  <div class="logo">
+    <a href="index.html">
+      <img class="logo" src="_static/logo.png" border="0" alt="Logo"/>
+    </a>
+  </div>
 </div>
-      </div>
 
-      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-        <a href="index.html" class="fa fa-home"> rft1d</a>
-		<!-- <img src="./rft1d.png" alt="rft1d.png"> -->
-		
-        
-            <ul>
-<li class="toctree-l1"><a class="reference internal" href="Download.html">Download</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="Download.html#automated-installation">Automated installation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Download.html#source-code-download">Source code download</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Download.html#release-notes">Release Notes</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Download.html#license-information">License information</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Download.html#license-agreement-for-rft1d">License agreement for rft1d</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="Theory.html">RFT Overview</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="Theory.html#gaussian-random-fields">Gaussian random fields</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Theory.html#expected-field-maximum">Expected field maximum</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Theory.html#upcrossings">Upcrossings</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Theory.html#expected-upcrossing-geometry">Expected upcrossing geometry</a></li>
-</ul>
-</li>
-</ul>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="Examples.html">Examples</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="Examples/Basic.html">Basic</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Examples/BrokenFields.html">Broken fields</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Examples/Validation.html">Validation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Examples/Application.html">Application</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Examples/Paper.html">Results from the paper</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Examples/List.html">Scripts (overview)</a></li>
-</ul>
-</li>
-</ul>
-<ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="#">API</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="API/data.html">rft1d.data</a></li>
-<li class="toctree-l2"><a class="reference internal" href="API/distributions.html">rft1d.distributions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="API/geom.html">rft1d.geom</a></li>
-<li class="toctree-l2"><a class="reference internal" href="API/prob.html">rft1d.prob</a></li>
-<li class="toctree-l2"><a class="reference internal" href="API/random.html">rft1d.random</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="References.html">References</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="References.html#on-the-web">On the web</a></li>
-<li class="toctree-l2"><a class="reference internal" href="References.html#software">Software</a></li>
-<li class="toctree-l2"><a class="reference internal" href="References.html#literature">Literature</a></li>
-</ul>
-</li>
-</ul>
+    <div class="related" role="navigation" aria-label="Related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="API/data.html" title="power1d.data"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="Examples/SampleSizeAuto.html" title="Automated sample size calculation"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">power1d 0.1.7 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">API</a></li> 
+      </ul>
+    </div>  
 
-        
-		
-      </div>
-	  
-	  
-      <!-- <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-        <a href="index.html" class="fa fa-home"> rft1d</a>
-      </div> -->
-	  
-      <!-- <div class="wy-side-nav-search">
-        <a href="index.html" class="fa fa-home"> rft1d</a>
-		
-<div role="search">
-  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
-    <input type="hidden" name="check_keywords" value="yes" />
-    <input type="hidden" name="area" value="default" />
-  </form>
-</div>
-      </div> -->
-	  
-	  
-      &nbsp;
-    </nav>
-
-    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
-
-      
-      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
-        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-        <a href="index.html">rft1d</a>
-      </nav>
-
-
-      
-      <div class="wy-nav-content">
-        <div class="rst-content">
-          <div role="navigation" aria-label="breadcrumbs navigation">
-  <ul class="wy-breadcrumbs">
-    <li><a href="index.html">Docs</a> &raquo;</li>
-      
-    <li>API</li>
-      <li class="wy-breadcrumbs-aside">
-        
-          <!-- <a href="_sources/API.rst.txt" rel="nofollow"> View page source</a> -->
-        
-      </li>
-  </ul>
-  <hr/>
-</div>
-          <div role="main">
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
             
   <section id="api">
-<span id="label-api"></span><h1>API<a class="headerlink" href="#api" title="Permalink to this heading">¶</a></h1>
+<span id="label-api"></span><h1>API<a class="headerlink" href="#api" title="Link to this heading">¶</a></h1>
 <div class="toctree-wrapper compound">
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="API/data.html">rft1d.data</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="API/data.html#weather">Weather</a></li>
-</ul>
-</li>
-</ul>
-</div>
-<div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="API/distributions.html">rft1d.distributions</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="API/distributions.html#gaussian-rft1d-norm">Gaussian (<strong>rft1d.norm</strong>)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="API/distributions.html#student-s-t-rft1d-t">Student’s t (<strong>rft1d.t</strong>)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="API/distributions.html#chi-squared-rft1d-chi2">Chi-squared (<strong>rft1d.chi2</strong>)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="API/distributions.html#fisher-snedecor-f-rft1d-f">Fisher-Snedecor F (<strong>rft1d.f</strong>)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="API/distributions.html#hotelling-s-t2-rft1d-t2">Hotelling’s T2 (<strong>rft1d.T2</strong>)</a></li>
-</ul>
-</li>
-</ul>
-</div>
-<div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="API/geom.html">rft1d.geom</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="API/geom.html#basic-geometry-functions">Basic geometry functions:</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="API/geom.html#bwlabel">bwlabel</a></li>
-<li class="toctree-l3"><a class="reference internal" href="API/geom.html#estimate-fwhm">estimate_fwhm</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="API/geom.html#field-geometry-resel-counts">Field geometry (resel counts)</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="API/geom.html#resel-counts">resel_counts</a></li>
-<li class="toctree-l3"><a class="reference internal" href="API/geom.html#resel-conversion-functions">resel conversion functions</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="API/geom.html#upcrossing-metric-calculations">Upcrossing metric calculations</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="API/geom.html#rft1d-geom-clustermetriccalculator">rft1d.geom.ClusterMetricCalculator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="API/data.html">power1d.data</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="API/data.html#weather">weather</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="API/data.html#power1d.data.weather"><code class="docutils literal notranslate"><span class="pre">weather()</span></code></a></li>
 </ul>
 </li>
 </ul>
 </li>
-</ul>
-</div>
-<div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="API/prob.html">rft1d.prob</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="API/prob.html#core-rft-computations">Core RFT computations</a></li>
-<li class="toctree-l2"><a class="reference internal" href="API/prob.html#high-level-interface-to-rft-computations">High-level interface to RFT computations</a></li>
-<li class="toctree-l2"><a class="reference internal" href="API/prob.html#bonferroni-correction">Bonferroni correction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="API/geom.html">power1d.geom</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="API/geom.html#from-array">from_array</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="API/geom.html#power1d.geom.from_array"><code class="docutils literal notranslate"><span class="pre">from_array()</span></code></a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="API/random.html">rft1d.random</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="API/random.html#randn1d">randn1d</a></li>
-<li class="toctree-l2"><a class="reference internal" href="API/random.html#multirandn1d">multirandn1d</a></li>
-<li class="toctree-l2"><a class="reference internal" href="API/random.html#generator1d">Generator1D</a></li>
-<li class="toctree-l2"><a class="reference internal" href="API/random.html#generatormulti1d">GeneratorMulti1D</a></li>
+<li class="toctree-l2"><a class="reference internal" href="API/geom.html#from-file">from_file</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="API/geom.html#power1d.geom.from_file"><code class="docutils literal notranslate"><span class="pre">from_file()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="API/geom.html#continuum1d">Continuum1D</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="API/geom.html#power1d.geom.Continuum1D"><code class="docutils literal notranslate"><span class="pre">Continuum1D()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="API/geom.html#constant">Constant</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="API/geom.html#power1d.geom.Constant"><code class="docutils literal notranslate"><span class="pre">Constant()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="API/geom.html#exponential">Exponential</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="API/geom.html#power1d.geom.Exponential"><code class="docutils literal notranslate"><span class="pre">Exponential()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="API/geom.html#exponentialsaw">ExponentialSaw</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="API/geom.html#power1d.geom.ExponentialSaw"><code class="docutils literal notranslate"><span class="pre">ExponentialSaw()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="API/geom.html#gaussianpulse">GaussianPulse</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="API/geom.html#power1d.geom.GaussianPulse"><code class="docutils literal notranslate"><span class="pre">GaussianPulse()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="API/geom.html#linear">Linear</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="API/geom.html#power1d.geom.Linear"><code class="docutils literal notranslate"><span class="pre">Linear()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="API/geom.html#null">Null</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="API/geom.html#power1d.geom.Null"><code class="docutils literal notranslate"><span class="pre">Null()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="API/geom.html#sawpulse">SawPulse</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="API/geom.html#power1d.geom.SawPulse"><code class="docutils literal notranslate"><span class="pre">SawPulse()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="API/geom.html#sawtooth">SawTooth</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="API/geom.html#power1d.geom.SawTooth"><code class="docutils literal notranslate"><span class="pre">SawTooth()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="API/geom.html#sigmoid">Sigmoid</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="API/geom.html#power1d.geom.Sigmoid"><code class="docutils literal notranslate"><span class="pre">Sigmoid()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="API/geom.html#sinusoid">Sinusoid</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="API/geom.html#power1d.geom.Sinusoid"><code class="docutils literal notranslate"><span class="pre">Sinusoid()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="API/geom.html#squarepulse">SquarePulse</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="API/geom.html#power1d.geom.SquarePulse"><code class="docutils literal notranslate"><span class="pre">SquarePulse()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="API/geom.html#squaretooth">SquareTooth</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="API/geom.html#power1d.geom.SquareTooth"><code class="docutils literal notranslate"><span class="pre">SquareTooth()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="API/geom.html#trianglepulse">TrianglePulse</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="API/geom.html#power1d.geom.TrianglePulse"><code class="docutils literal notranslate"><span class="pre">TrianglePulse()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="API/geom.html#triangletooth">TriangleTooth</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="API/geom.html#power1d.geom.TriangleTooth"><code class="docutils literal notranslate"><span class="pre">TriangleTooth()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="API/io.html">power1d.io</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="API/io.html#file2geom">file2geom</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="API/io.html#power1d.io.file2geom"><code class="docutils literal notranslate"><span class="pre">file2geom()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="API/io.html#file2datasamplemodel">file2datasamplemodel</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="API/io.html#power1d.io.file2datasamplemodel"><code class="docutils literal notranslate"><span class="pre">file2datasamplemodel()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="API/models.html">power1d.models</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="API/models.html#datasample-from-array">datasample_from_array</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="API/models.html#power1d.models.datasample_from_array"><code class="docutils literal notranslate"><span class="pre">datasample_from_array()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="API/models.html#datasample">DataSample</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="API/models.html#power1d.models.DataSample"><code class="docutils literal notranslate"><span class="pre">DataSample</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="API/models.html#experiment">Experiment</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="API/models.html#power1d.models.Experiment"><code class="docutils literal notranslate"><span class="pre">Experiment</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="API/models.html#experimentsimulator">ExperimentSimulator</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="API/models.html#power1d.models.ExperimentSimulator"><code class="docutils literal notranslate"><span class="pre">ExperimentSimulator</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="API/noise.html">power1d.noise</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="API/noise.html#from-array">from_array</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="API/noise.html#power1d.noise.from_array"><code class="docutils literal notranslate"><span class="pre">from_array()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="API/noise.html#from-residuals">from_residuals</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="API/noise.html#power1d.noise.from_residuals"><code class="docutils literal notranslate"><span class="pre">from_residuals()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="API/noise.html#additive">Additive</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="API/noise.html#power1d.noise.Additive"><code class="docutils literal notranslate"><span class="pre">Additive()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="API/noise.html#constantgaussian">ConstantGaussian</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="API/noise.html#power1d.noise.ConstantGaussian"><code class="docutils literal notranslate"><span class="pre">ConstantGaussian()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="API/noise.html#constantuniform">ConstantUniform</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="API/noise.html#power1d.noise.ConstantUniform"><code class="docutils literal notranslate"><span class="pre">ConstantUniform()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="API/noise.html#gaussian">Gaussian</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="API/noise.html#power1d.noise.Gaussian"><code class="docutils literal notranslate"><span class="pre">Gaussian()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="API/noise.html#mixture">Mixture</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="API/noise.html#power1d.noise.Mixture"><code class="docutils literal notranslate"><span class="pre">Mixture()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="API/noise.html#scaled">Scaled</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="API/noise.html#power1d.noise.Scaled"><code class="docutils literal notranslate"><span class="pre">Scaled()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="API/noise.html#signaldependent">SignalDependent</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="API/noise.html#power1d.noise.SignalDependent"><code class="docutils literal notranslate"><span class="pre">SignalDependent()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="API/noise.html#power1d.noise.Skewed"><code class="docutils literal notranslate"><span class="pre">Skewed()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="API/noise.html#smoothgaussian">SmoothGaussian</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="API/noise.html#power1d.noise.SmoothGaussian"><code class="docutils literal notranslate"><span class="pre">SmoothGaussian()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="API/noise.html#smoothskewed">SmoothSkewed</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="API/noise.html#power1d.noise.SmoothSkewed"><code class="docutils literal notranslate"><span class="pre">SmoothSkewed()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="API/noise.html#uniform">Uniform</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="API/noise.html#power1d.noise.Uniform"><code class="docutils literal notranslate"><span class="pre">Uniform()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="API/prob.html">power1d.prob</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="API/prob.html#ec-density-f">ec_density_f</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="API/prob.html#power1d.prob.ec_density_f"><code class="docutils literal notranslate"><span class="pre">ec_density_f()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="API/prob.html#ec-density-ncf">ec_density_ncf</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="API/prob.html#power1d.prob.ec_density_ncf"><code class="docutils literal notranslate"><span class="pre">ec_density_ncf()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="API/prob.html#ec-density-nct">ec_density_nct</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="API/prob.html#power1d.prob.ec_density_nct"><code class="docutils literal notranslate"><span class="pre">ec_density_nct()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="API/prob.html#ec-density-t">ec_density_t</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="API/prob.html#power1d.prob.ec_density_t"><code class="docutils literal notranslate"><span class="pre">ec_density_t()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="API/prob.html#exp-ncx">exp_ncx</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="API/prob.html#power1d.prob.exp_ncx"><code class="docutils literal notranslate"><span class="pre">exp_ncx()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="API/prob.html#f-isf">f_isf</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="API/prob.html#power1d.prob.f_isf"><code class="docutils literal notranslate"><span class="pre">f_isf()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="API/prob.html#f-sf">f_sf</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="API/prob.html#power1d.prob.f_sf"><code class="docutils literal notranslate"><span class="pre">f_sf()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="API/prob.html#ncf-sf">ncf_sf</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="API/prob.html#power1d.prob.ncf_sf"><code class="docutils literal notranslate"><span class="pre">ncf_sf()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="API/prob.html#nct-sf">nct_sf</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="API/prob.html#power1d.prob.nct_sf"><code class="docutils literal notranslate"><span class="pre">nct_sf()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="API/prob.html#t-isf">t_isf</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="API/prob.html#power1d.prob.t_isf"><code class="docutils literal notranslate"><span class="pre">t_isf()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="API/prob.html#t-sf">t_sf</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="API/prob.html#power1d.prob.t_sf"><code class="docutils literal notranslate"><span class="pre">t_sf()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="API/prob.html#power-friston1994">power_Friston1994</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="API/prob.html#power1d.prob.power_Friston1994"><code class="docutils literal notranslate"><span class="pre">power_Friston1994()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="API/prob.html#power-hayasaka2007">power_Hayasaka2007</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="API/prob.html#power1d.prob.power_Hayasaka2007"><code class="docutils literal notranslate"><span class="pre">power_Hayasaka2007()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="API/prob.html#power">power</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="API/prob.html#power1d.prob.power"><code class="docutils literal notranslate"><span class="pre">power()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="API/random.html">power1d.random</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="API/random.html#randn1d">randn1d</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="API/random.html#power1d.random.randn1d"><code class="docutils literal notranslate"><span class="pre">randn1d()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="API/random.html#generator1d">Generator1D</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="API/random.html#power1d.random.Generator1D"><code class="docutils literal notranslate"><span class="pre">Generator1D</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="API/results.html">power1d.results</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="API/results.html#simulationresults">SimulationResults</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="API/results.html#power1d.results.SimulationResults"><code class="docutils literal notranslate"><span class="pre">SimulationResults</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="API/roi.html">power1d.roi</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="API/roi.html#regionofinterest">RegionOfInterest</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="API/roi.html#power1d.roi.RegionOfInterest"><code class="docutils literal notranslate"><span class="pre">RegionOfInterest()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="API/stats.html">power1d.stats</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="API/stats.html#main-functions">Main functions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="API/stats.html#t-1sample">t_1sample</a></li>
+<li class="toctree-l3"><a class="reference internal" href="API/stats.html#t-2sample">t_2sample</a></li>
+<li class="toctree-l3"><a class="reference internal" href="API/stats.html#t-regress">t_regress</a></li>
+<li class="toctree-l3"><a class="reference internal" href="API/stats.html#f-anova1">f_anova1</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="API/stats.html#efficient-functions">Efficient functions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="API/stats.html#t-1sample-fn">t_1sample_fn</a></li>
+<li class="toctree-l3"><a class="reference internal" href="API/stats.html#t-2sample-fn">t_2sample_fn</a></li>
+<li class="toctree-l3"><a class="reference internal" href="API/stats.html#t-regress-fn">t_regress_fn</a></li>
+<li class="toctree-l3"><a class="reference internal" href="API/stats.html#f-anova1-fn">f_anova1_fn</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -239,64 +326,65 @@
 </section>
 
 
+            <div class="clearer"></div>
           </div>
-          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="Examples/List.html" class="btn btn-neutral float-left" title="Scripts (overview)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="API/data.html" class="btn btn-neutral float-right" title="rft1d.data" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
-    </div>
-
-  <hr/>
-
-  <div role="contentinfo">
-    <p>&#169; Copyright 2022, Todd Pataky.</p>
-  </div>
-
-  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
-    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
-    provided by <a href="https://readthedocs.org">Read the Docs</a>.
-   
-
-</footer>
         </div>
       </div>
-
-    </section>
-
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="Examples/SampleSizeAuto.html"
+                          title="previous chapter">Automated sample size calculation</a></p>
   </div>
-  
-
-  
-
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'./',
-            VERSION:'0.2.0',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true
-        };
-    </script>
-      <script type="text/javascript" src="_static/documentation_options.js"></script>
-      <script type="text/javascript" src="_static/doctools.js"></script>
-      <script type="text/javascript" src="_static/sphinx_highlight.js"></script>
-
-  
-
-  
-  
-    <script type="text/javascript" src="_static/js/theme.js"></script>
-  
-
-  
-  
-  <script type="text/javascript">
-      jQuery(function () {
-          SphinxRtdTheme.StickyNav.enable();
-      });
-  </script>
-   
-
-</body>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="API/data.html"
+                          title="next chapter">power1d.data</a></p>
+  </div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/API.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="Related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="API/data.html" title="power1d.data"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="Examples/SampleSizeAuto.html" title="Automated sample size calculation"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">power1d 0.1.7 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">API</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+    &#169; Copyright 2023, Todd Pataky.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.7.
+    </div>
+  </body>
 </html>
-
-

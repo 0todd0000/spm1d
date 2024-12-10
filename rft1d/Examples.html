@@ -1,319 +1,139 @@
-
-
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
-  <title>Examples &mdash; rft1d 0.2.0 documentation</title>
-  
 
-  
-  
+<html lang="en" data-content_root="./">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  
-  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+    <title>Examples &#8212; power1d 0.1.7 documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=4848ba22" />
+    <link rel="stylesheet" type="text/css" href="_static/pyramid.css?v=310c80ee" />
+    <link rel="stylesheet" type="text/css" href="_static/plot_directive.css?v=7f9a90b1" />
+    <script src="_static/documentation_options.js?v=ca7ad2ea"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Data sample modeling" href="Examples/DataSample.html" />
+    <link rel="prev" title="New Features (v0.1.7)" href="Features.html" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Neuton&amp;subset=latin" type="text/css" media="screen" charset="utf-8" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nobile:regular,italic,bold,bolditalic&amp;subset=latin" type="text/css" media="screen" charset="utf-8" />
+<!--[if lte IE 6]>
+<link rel="stylesheet" href="_static/ie6.css" type="text/css" media="screen" charset="utf-8" />
+<![endif]-->
 
-  
-  
-    
-
-  
-
-  
-  
-    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
-  
-
-  
-  
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-  
-    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
-  
-    <link rel="stylesheet" href="_static/plot_directive.css" type="text/css" />
-  
-    <link rel="stylesheet" href="_static/theme.css" type="text/css" />
-  
-        <link rel="index" title="Index"
-              href="genindex.html"/>
-        <link rel="search" title="Search" href="search.html"/>
-    <link rel="top" title="rft1d 0.2.0 documentation" href="index.html"/>
-        <link rel="next" title="Basic" href="Examples/Basic.html"/>
-        <link rel="prev" title="RFT Overview" href="Theory.html"/> 
-
-  
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
-
-</head>
-
-<body class="wy-body-for-nav" role="document">
-
-  <div class="wy-grid-for-nav">
-
-    
-    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
-      <div>
-		<!-- <a href="index.html"><img src="_static/rft1d.png" alt="rft1d.png"</a> -->
-		<!-- <img src="_static/rft1d.png" alt="rft1d.png"</img> -->
-		<img src="_static/rft1d.png" alt="rft1d.png"</img>
-      </div>
-
-
-      <div class="wy-side-nav-search">
-        <!-- <a href="index.html" class="fa fa-home"> rft1d</a> -->
-		
-<div role="search">
-  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
-    <input type="hidden" name="check_keywords" value="yes" />
-    <input type="hidden" name="area" value="default" />
-  </form>
+  </head><body>
+<div class="header" role="banner">
+  <div class="logo">
+    <a href="index.html">
+      <img class="logo" src="_static/logo.png" border="0" alt="Logo"/>
+    </a>
+  </div>
 </div>
-      </div>
 
-      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-        <a href="index.html" class="fa fa-home"> rft1d</a>
-		<!-- <img src="./rft1d.png" alt="rft1d.png"> -->
-		
-        
-            <ul>
-<li class="toctree-l1"><a class="reference internal" href="Download.html">Download</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="Download.html#automated-installation">Automated installation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Download.html#source-code-download">Source code download</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Download.html#release-notes">Release Notes</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Download.html#license-information">License information</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Download.html#license-agreement-for-rft1d">License agreement for rft1d</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="Theory.html">RFT Overview</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="Theory.html#gaussian-random-fields">Gaussian random fields</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Theory.html#expected-field-maximum">Expected field maximum</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Theory.html#upcrossings">Upcrossings</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Theory.html#expected-upcrossing-geometry">Expected upcrossing geometry</a></li>
-</ul>
-</li>
-</ul>
-<ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Examples</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="Examples/Basic.html">Basic</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Examples/BrokenFields.html">Broken fields</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Examples/Validation.html">Validation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Examples/Application.html">Application</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Examples/Paper.html">Results from the paper</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Examples/List.html">Scripts (overview)</a></li>
-</ul>
-</li>
-</ul>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="API.html">API</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="API/data.html">rft1d.data</a></li>
-<li class="toctree-l2"><a class="reference internal" href="API/distributions.html">rft1d.distributions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="API/geom.html">rft1d.geom</a></li>
-<li class="toctree-l2"><a class="reference internal" href="API/prob.html">rft1d.prob</a></li>
-<li class="toctree-l2"><a class="reference internal" href="API/random.html">rft1d.random</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="References.html">References</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="References.html#on-the-web">On the web</a></li>
-<li class="toctree-l2"><a class="reference internal" href="References.html#software">Software</a></li>
-<li class="toctree-l2"><a class="reference internal" href="References.html#literature">Literature</a></li>
-</ul>
-</li>
-</ul>
+    <div class="related" role="navigation" aria-label="Related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="Examples/DataSample.html" title="Data sample modeling"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="Features.html" title="New Features (v0.1.7)"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">power1d 0.1.7 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Examples</a></li> 
+      </ul>
+    </div>  
 
-        
-		
-      </div>
-	  
-	  
-      <!-- <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-        <a href="index.html" class="fa fa-home"> rft1d</a>
-      </div> -->
-	  
-      <!-- <div class="wy-side-nav-search">
-        <a href="index.html" class="fa fa-home"> rft1d</a>
-		
-<div role="search">
-  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
-    <input type="hidden" name="check_keywords" value="yes" />
-    <input type="hidden" name="area" value="default" />
-  </form>
-</div>
-      </div> -->
-	  
-	  
-      &nbsp;
-    </nav>
-
-    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
-
-      
-      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
-        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-        <a href="index.html">rft1d</a>
-      </nav>
-
-
-      
-      <div class="wy-nav-content">
-        <div class="rst-content">
-          <div role="navigation" aria-label="breadcrumbs navigation">
-  <ul class="wy-breadcrumbs">
-    <li><a href="index.html">Docs</a> &raquo;</li>
-      
-    <li>Examples</li>
-      <li class="wy-breadcrumbs-aside">
-        
-          <!-- <a href="_sources/Examples.rst.txt" rel="nofollow"> View page source</a> -->
-        
-      </li>
-  </ul>
-  <hr/>
-</div>
-          <div role="main">
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
             
   <section id="examples">
-<span id="label-examples"></span><h1>Examples<a class="headerlink" href="#examples" title="Permalink to this heading">¶</a></h1>
-<p>Scripts for reproducing all examples below are available in <strong>./rft1d/examples</strong>.
-These scripts are listed alphabetically <a class="reference internal" href="Examples/List.html#label-scripts"><span class="std std-ref">here</span></a>.</p>
+<span id="label-examples"></span><h1>Examples<a class="headerlink" href="#examples" title="Link to this heading">¶</a></h1>
 <div class="toctree-wrapper compound">
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="Examples/Basic.html">Basic</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="Examples/Basic.html#generating-1d-gaussian-fields">Generating 1D Gaussian fields</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Examples/Basic.html#reproducing-1d-gaussian-fields">Reproducing 1D Gaussian fields</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Examples/Basic.html#node-based-vs-element-based-sampling">Node-based vs. element-based sampling</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Examples/Basic.html#extracting-maxima">Extracting maxima</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Examples/Basic.html#computing-upcrossing-metrics">Computing upcrossing metrics</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Examples/Basic.html#checking-rft-expectations">Checking RFT expectations</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Examples/Basic.html#validating-rft-expectations">Validating RFT expectations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Examples/DataSample.html">Data sample modeling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Examples/PowerAnalysis.html">Power analysis</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Examples/PowerAnalysis.html#one-sample">One-sample</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Examples/PowerAnalysis.html#two-sample">Two-sample</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Examples/PowerAnalysis.html#regression">Regression</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Examples/PowerAnalysis.html#one-way-anova">One-way ANOVA</a></li>
 </ul>
 </li>
-</ul>
-</div>
-<div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="Examples/BrokenFields.html">Broken fields</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="Examples/BrokenFields.html#broken-field-generation">Broken field generation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Examples/BrokenFields.html#validations-for-broken-fields">Validations for broken fields</a></li>
-</ul>
-</li>
-</ul>
-</div>
-<div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="Examples/Validation.html">Validation</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="Examples/Validation/FieldMaxima.html">Field maxima (Gaussian)</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="Examples/Validation/FieldMaxima.html#as-a-function-of-threshold-height">As a function of threshold height</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Examples/Validation/FieldMaxima.html#as-a-function-of-fwhm">As a function of FWHM</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="Examples/Validation/SetLevel.html">Set-level inference (Gaussian)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Examples/Validation/ClusterLevel.html">Cluster-level inference (Gaussian)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Examples/Validation/TestStatistic.html">Test statistic field maxima</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="Examples/Validation/TestStatistic.html#univariate">Univariate</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Examples/Validation/TestStatistic.html#multivariate">Multivariate</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="Examples/Validation/Conjugation.html">Conjugation analysis</a></li>
-</ul>
-</li>
-</ul>
-</div>
-<div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="Examples/Application.html">Application</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="Examples/Application.html#example-dataset">Example dataset</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Examples/Application.html#parametric-inference-using-rft">Parametric inference using RFT</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Examples/Application.html#non-parametric-inference">Non-parametric inference</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Examples/Application.html#field-wrapping">Field wrapping</a></li>
-</ul>
-</li>
-</ul>
-</div>
-<div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="Examples/Paper.html">Results from the paper</a></li>
-</ul>
-</div>
-<div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="Examples/List.html">Scripts (overview)</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="Examples/List.html#random-field-generation">Random field generation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Examples/List.html#broken-random-field-generation">Broken random field generation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Examples/List.html#field-smoothness-estimation">Field smoothness estimation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Examples/List.html#validation-conjunction-analysis">Validation (conjunction analysis)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Examples/List.html#validation-field-maxima">Validation (field maxima)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Examples/List.html#validation-upcrossing-extents">Validation (upcrossing extents)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Examples/List.html#example-application">Example application</a></li>
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="Examples/SampleSize.html">Manual sample size calculation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Examples/SampleSizeAuto.html">Automated sample size calculation</a></li>
 </ul>
 </div>
 </section>
 
 
+            <div class="clearer"></div>
           </div>
-          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="Theory.html" class="btn btn-neutral float-left" title="RFT Overview" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="Examples/Basic.html" class="btn btn-neutral float-right" title="Basic" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
-    </div>
-
-  <hr/>
-
-  <div role="contentinfo">
-    <p>&#169; Copyright 2022, Todd Pataky.</p>
-  </div>
-
-  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
-    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
-    provided by <a href="https://readthedocs.org">Read the Docs</a>.
-   
-
-</footer>
         </div>
       </div>
-
-    </section>
-
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="Features.html"
+                          title="previous chapter">New Features (v0.1.7)</a></p>
   </div>
-  
-
-  
-
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'./',
-            VERSION:'0.2.0',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true
-        };
-    </script>
-      <script type="text/javascript" src="_static/documentation_options.js"></script>
-      <script type="text/javascript" src="_static/doctools.js"></script>
-      <script type="text/javascript" src="_static/sphinx_highlight.js"></script>
-
-  
-
-  
-  
-    <script type="text/javascript" src="_static/js/theme.js"></script>
-  
-
-  
-  
-  <script type="text/javascript">
-      jQuery(function () {
-          SphinxRtdTheme.StickyNav.enable();
-      });
-  </script>
-   
-
-</body>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="Examples/DataSample.html"
+                          title="next chapter">Data sample modeling</a></p>
+  </div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/Examples.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="Related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="Examples/DataSample.html" title="Data sample modeling"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="Features.html" title="New Features (v0.1.7)"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">power1d 0.1.7 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Examples</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+    &#169; Copyright 2023, Todd Pataky.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.7.
+    </div>
+  </body>
 </html>
-
-

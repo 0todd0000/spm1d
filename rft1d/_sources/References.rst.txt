@@ -2,70 +2,75 @@
 .. _label-References:
 
 References
-============================================
+=====================================
 
 
-On the web
----------------------------------
-
-* `"Random field" @ EncyclopediaOfMath <http://www.encyclopediaofmath.org/index.php/Random_field>`_
-
-* `"Random field" @ Wikipedia <https://en.wikipedia.org/wiki/Random_field>`_
-
-* `2D/3D RFT Overview @ ipython.org <http://nbviewer.ipython.org/github/fperez/nipy-notebooks/blob/master/random_fields.ipynb>`_
-
-
-
-
-.. _label-SPMsoftware:
-
-Software
----------------------------------
-
-All packages below implement RFT-based inference,
-and while they target primarily 3D field analysis,
-can also be applied to 1D/2D field analysis. 
-
-* `SPM8 <http://www.fil.ion.ucl.ac.uk/spm/>`_
-* `fmriStat <https://github.com/matthew-brett/fmristat/>`_
-* `NiPy <http://neuroimaging.scipy.org>`_
-
-
-
-
-.. _label-RFTliterature:
+.. _label-literature:
 
 Literature
----------------------------------
+-----------------------------
+
+* Hasofer AM (1978) `Upcrossings of random fields.
+  <http://www.jstor.org/stable/1427002>`_
+  **Suppl Adv Appl Prob** 10:14-21.
+
+* Hayasaka S, Peiffer AM, Hugenschmidt CE, Laurienti PJ (2007).
+  `Power and sample size calculation for neuroimaging studies by
+  non-central random field theory.
+  <http://dx.doi.org/10.1016/j.neuroimage.2007.06.009>`_
+  **NeuroImage** 37(3): 721-730.
+
+* Friston KJ, Worsley KJ, Frackowiak RSJ, Mazziotta JC, Evans AC (1994).
+  `Assessing the significance of focal activations using their spatial
+  extent. <http://onlinelibrary.wiley.com/doi/10.1002/hbm.460010306/full>`_
+  **Human Brain Mapp** 1: 210-220.  
+
+* Friston KJ, Holmes A, Poline JB, Price CJ, Frith CD (1996).
+  `Detecting Activations in PET and fMRI: Levels of Inference and Power.
+  <http://dx.doi.org/10.1006/nimg.1996.0074>`_
+  **NeuroImage** 4(3): 223--235.
+
+* Joyce KE, Hayasaka S (2012). `Development of PowerMap: a Software
+  Package for Statistical Power Calculation in Neuroimaging Studies.
+  <http://dx.doi.org/10.1007/s12021-012-9152-3>`_
+  **Neuroinform** 10: 351.
+
+* Mumford J, Nichols TE (2008). `Power Calculation for Group fMRI
+  Studies Accounting for Arbitrary Design and Temporal Autocorrelation.
+  <http://dx.doi.org/10.1016/j.neuroimage.2007.07.061>`_
+  **NeuroImage** 39(1): 261–268.
+
+* Pataky TC (2016). `rft1d: Smooth one-dimensional random field
+  upcrossing probabilities in Python
+  <http://dx.doi.org/10.18637/jss.v071.i07>`_
+  **Journal of Statistical Software** 71(7): i07.
+
+* Pataky TC (in review). Power1D: A Python toolbox for numerical power
+  estimates in experiments involving one-dimensional continua.
+  **PeerJ Computer Science**.
+
+* Ramsay JO, Silverman BW (2005). `Functional Data Analysis
+  <http://www.springer.com/us/book/9780387400808>`_
+  Springer-Verlag, New York.
+
+ 
 
 
-#.  Adler R, Hasofer A (1976). Level crossings for random fields. *The Annals of Probability* 4(1), 1–12.
+.. _label-software:
 
-#.  Adler RJ (1981). *The Geometry of Random Fields*. Wiley, New York.
+Software
+-----------------------------
 
-#.  Adler RJ, Taylor JE (2007). *Random Fields and Geometry*. Springer, New York.
+* `fmripower <http://fmripower.org>`_
 
-#. Cao J (1999). The size of the connected components of excursion sets of X2, t and F fields. *Advances in Applied Probability* 31(3), 579–595.
+* `PowerMap <https://sourceforge.net/projects/powermap/>`_
 
-#. Cao J, Worsley KJ (1999). The detection of local shape changes via the geometry of Hotelling's T2 fields. *Annals of Statistics* 27(3), 925–942.
+* `rft1d <http://www.spm1d.org/rft1d/>`_
 
-#. Carbonell F, Worsley KJ, Galan L (2011). The geometry of the Wilks’s Lambda random field. *Annals of the Institute of Statistical Mathematics* 63(1), 1–27.
+* `spm1d <http://www.spm1d.org>`_
 
-#. Friston K, Worsley K, Frackowiak R, Mazziotta J, Evans A (1994). Assessing the significance of focal activations using their spatial extent. *Human Brain Mapping* 1(3), 210–220.
+* `SPM12 <http://www.fil.ion.ucl.ac.uk/spm/software/spm12/>`_
 
-#. Friston KJ, Ashburner JT, Kiebel SJ, Nichols TE, Penny WD (Eds.) (2007) *Statistical Parametric Mapping: The Analysis of Functional Brain Images.* Elsevier, London.
-
-#. Hasofer A (1978). Upcrossings of random fields. *Advances in Applied Probability* 10, 14–21.
-
-#. Nichols T, Holmes A (2002). Nonparametric permutation tests for functional neuroimaging: a primer with examples. *Human Brain Mapping* 15(1), 1–25.
-
-#. Pataky TC (2015) RFT1D: Smooth One-Dimensional Random Field Upcrossing Probabilities in Python. **Journal of Statistical Software** (accepted for publication 18 April 2015).
-
-#. Taylor JE, Worsley KJ (2008). Random fields of multivariate test statistics, with applications to shape analysis. *Annals of Statistics* 36(1), 1–27.
-
-#. Worsley K, Taylor J, Tomaiuolo F, Lerch J. (2004). Unified univariate and multivariate random field theory. *NeuroImage* 23, S189–S195.
-
-#. Worsley K. (1994). Local maxima and the expected Euler characteristic of excursion sets of X2, F and t fields. *Advances in Applied Probability* 26(1), 13–42.
 
 
 
