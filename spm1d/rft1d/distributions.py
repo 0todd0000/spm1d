@@ -3,104 +3,104 @@
 SciPy-like interface to 1D RFT distributions.
 Currently implemented distributions include:
 
-	* Gaussian
-	* Student's t
-	* :math:`\chi^2`
-	* Fisher-Snedecor F
-	* Hotelling's T\ :sup:`2`
-	
+    * Gaussian
+    * Student's t
+    * Chi-squared
+    * Fisher-Snedecor F
+    * Hotelling's T2
+
 
 All distributions share the following functions:
 
 :Methods:
 
-	**isf** --- RFT inverse survival function (critical height)
-	
-	**isf0d** --- Common (0D) inverse survival function (critical height)
-	
-	**p_cluster** --- RFT cluster-level inference
-	
-	**p_set** --- RFT set-level inference
+    **isf** --- RFT inverse survival function (critical height)
 
-	**sf** --- RFT survival function
-	
-	**sf0d** --- Common (0D) survival function.
+    **isf0d** --- Common (0D) inverse survival function (critical height)
+
+    **p_cluster** --- RFT cluster-level inference
+
+    **p_set** --- RFT set-level inference
+
+    **sf** --- RFT survival function
+
+    **sf0d** --- Common (0D) survival function.
 
 
 :Basic use:
 
-	All distributions can be accessed directly from **rft1d** as follows:
-	
-		>>> height = 3.0
-		>>> nodes = 101
-		>>> FWHM = 10.0
-		>>> rft1d.norm.sf(height, nodes, FWHM)
-		>>> rft1d.norm.sf0d(height)
+    All distributions can be accessed directly from **rft1d** as follows:
+
+        >>> height = 3.0
+        >>> nodes = 101
+        >>> FWHM = 10.0
+        >>> rft1d.norm.sf(height, nodes, FWHM)
+        >>> rft1d.norm.sf0d(height)
 
 :Unbroken and broken fields:
 
-	If the field is unbroken (i.e. continuous) between the start and the
-	end of the field, then the "nodes" argument to all methods should be
-	an integer representing the number of field nodes:
+    If the field is unbroken (i.e. continuous) between the start and the
+    end of the field, then the "nodes" argument to all methods should be
+    an integer representing the number of field nodes:
 
-		>>> height = 3.0
-		>>> nodes = 101
-		>>> FWHM = 10.0
-		>>> rft1d.norm.sf(height, nodes, FWHM)
-		
-	However, if the field is broken (i.e. piecewise continuous), then the
-	"nodes" argument should be a 1D mask:  a boolean array (size: nodes)
-	where False specifies nodes which are masked out:
+        >>> height = 3.0
+        >>> nodes = 101
+        >>> FWHM = 10.0
+        >>> rft1d.norm.sf(height, nodes, FWHM)
 
-		>>> height = 3.0
-		>>> nodes = np.array([True]*20 + [False]*30 + [True]*51)
-		>>> FWHM = 10.0
-		>>> rft1d.norm.sf(height, nodes, FWHM)
+    However, if the field is broken (i.e. piecewise continuous), then the
+    "nodes" argument should be a 1D mask:  a boolean array (size: nodes)
+    where False specifies nodes which are masked out:
+
+        >>> height = 3.0
+        >>> nodes = np.array([True]*20 + [False]*30 + [True]*51)
+        >>> FWHM = 10.0
+        >>> rft1d.norm.sf(height, nodes, FWHM)
 
 
 :Very rough fields and the Bonferroni correction:
 
-	When the fields are very rough (e.g. *FWHM* < 2),
-	the Bonferroni correction may be less severe than the RFT correction.
-	While both are vaild, it is generally best to use the less-severe
-	threshold to maintain statistical power.
-	To adopt the less-severe threshold use the keyword argument
-	*withBonf* as follows:
+    When the fields are very rough (e.g. *FWHM* < 2),
+    the Bonferroni correction may be less severe than the RFT correction.
+    While both are vaild, it is generally best to use the less-severe
+    threshold to maintain statistical power.
+    To adopt the less-severe threshold use the keyword argument
+    *withBonf* as follows:
 
-		>>> rft1d.norm.sf(3, 101, 1.5, withBonf=False) #yields 0.179
-		>>> rft1d.norm.sf(3, 101, 1.5, withBonf=True)  #yields 0.136
+        >>> rft1d.norm.sf(3, 101, 1.5, withBonf=False) #yields 0.179
+        >>> rft1d.norm.sf(3, 101, 1.5, withBonf=True)  #yields 0.136
 
-	By default the *withBonf* argument is False.
-	
-		>>> rft1d.norm.sf(3, 101, 1.5)  #yields 0.179
-	
-	For smooth fields the keyword argument will have no effect:
-	
-		>>> rft1d.norm.sf(3, 101, 5.0, withBonf=False) #yields 0.0590
-		>>> rft1d.norm.sf(3, 101, 5.0, withBonf=True)  #yields 0.0590
-		
+    By default the *withBonf* argument is False.
+
+        >>> rft1d.norm.sf(3, 101, 1.5)  #yields 0.179
+
+    For smooth fields the keyword argument will have no effect:
+
+        >>> rft1d.norm.sf(3, 101, 5.0, withBonf=False) #yields 0.0590
+        >>> rft1d.norm.sf(3, 101, 5.0, withBonf=True)  #yields 0.0590
+
 
 :Very smooth fields:
 
-	When Gaussian fields become very smooth, they start to behave like
-	Gaussian scalars. Theoretically RFT results are equivalent to scalar
-	results when smoothness is infinite. Thus raising the *FWHM* value
-	systematically will cause the RFT results to converge to typical 0D results:
+    When Gaussian fields become very smooth, they start to behave like
+    Gaussian scalars. Theoretically RFT results are equivalent to scalar
+    results when smoothness is infinite. Thus raising the *FWHM* value
+    systematically will cause the RFT results to converge to typical 0D results:
 
-		>>> scipy.stats.norm.sf(2)  #yields 0.02275
-		>>> rft1d.norm.sf(3, 101, 10.0) #yields 0.31710
-		>>> rft1d.norm.sf(3, 101, 100.0) #yields 0.05693
-		>>> rft1d.norm.sf(3, 101, 1000.0) #yields 0.02599
-		>>> rft1d.norm.sf(3, 101, 10000.0) #yields 0.02284
-		>>> rft1d.norm.sf(3, 101, 100000.0) #yields 0.02275
+        >>> scipy.stats.norm.sf(2)  #yields 0.02275
+        >>> rft1d.norm.sf(3, 101, 10.0) #yields 0.31710
+        >>> rft1d.norm.sf(3, 101, 100.0) #yields 0.05693
+        >>> rft1d.norm.sf(3, 101, 1000.0) #yields 0.02599
+        >>> rft1d.norm.sf(3, 101, 10000.0) #yields 0.02284
+        >>> rft1d.norm.sf(3, 101, 100000.0) #yields 0.02275
 
-	Setting the smoothness to infinite will return the same result:
-	
-		>>> rft1d.norm.sf(3, 101, np.inf) #yields 0.02275
+    Setting the smoothness to infinite will return the same result:
+
+        >>> rft1d.norm.sf(3, 101, np.inf) #yields 0.02275
 
 '''
 
-# Copyright (C) 2016  Todd Pataky
+# Copyright (C) 2025  Todd Pataky
 
 
 import numpy as np
