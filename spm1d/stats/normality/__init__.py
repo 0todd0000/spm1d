@@ -3,7 +3,7 @@
 Normality tests for 1D data 
 '''
 
-# Copyright (C) 2016  Todd Pataky
+# Copyright (C) 2025  Todd Pataky
 
 from . import k2,sw
 

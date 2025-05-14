@@ -1,5 +1,5 @@
 
-# Copyright (C) 2023  Todd Pataky
+# Copyright (C) 2025  Todd Pataky
 
 from math import log
 import numpy as np

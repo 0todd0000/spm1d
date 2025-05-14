@@ -3,7 +3,7 @@
 Non-parametric hypothesis tests for 1D data (Statistical non-Parametric Mapping)
 '''
 
-# Copyright (C) 2016  Todd Pataky
+# Copyright (C) 2025  Todd Pataky
 
 __all__ = ['stats']
 

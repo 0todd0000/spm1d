@@ -7,7 +7,7 @@ All procedures fit the given model, calculate residuals then
 on the residuals.
 '''
 
-# Copyright (C) 2016  Todd Pataky
+# Copyright (C) 2025  Todd Pataky
 
 from math import log
 import numpy as np
@@ -56,7 +56,7 @@ def k2_single_node(x):
 	
 	------------ LICENSE -------------------------------------------
 	
-	Copyright (c) 2015, Antonio Trujillo-Ortiz
+	Copyright (C) 2015, Antonio Trujillo-Ortiz
 	All rights reserved.
 
 	Redistribution and use in source and binary forms, with or without

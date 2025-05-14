@@ -11,18 +11,18 @@ one-dimensional measurements.
 '''
 
 setup(
-	name             = 'spm1d',
-	version          = '0.4.35',
-	description      = 'One-Dimensional Statistical Parametric Mapping',
-	author           = 'Todd Pataky',
-	author_email     = 'spm1d.mail@gmail.com',
-	url              = 'https://github.com/0todd0000/spm1d',
-	download_url     = 'https://github.com/0todd0000/spm1d/archive/master.zip',
-	packages         = ['spm1d'],
-	package_data     = {'spm1d' : ['examples/*.*', 'data/*.*'] },
-	include_package_data = True,
-	long_description = long_description,
-	keywords         = ['statistics', 'time series analysis'],
-	classifiers      = [],
-	install_requires = ["numpy", "scipy", "matplotlib"]
+    name             = 'spm1d',
+    version          = '0.4.36',
+    description      = 'One-Dimensional Statistical Parametric Mapping',
+    author           = 'Todd Pataky',
+    author_email     = 'spm1d.mail@gmail.com',
+    url              = 'https://github.com/0todd0000/spm1d',
+    download_url     = 'https://github.com/0todd0000/spm1d/archive/master.zip',
+    packages         = ['spm1d'],
+    package_data     = {'spm1d' : ['examples/*.*', 'data/*.*'] },
+    include_package_data = True,
+    long_description = long_description,
+    keywords         = ['statistics', 'time series analysis'],
+    classifiers      = [],
+    install_requires = ["numpy", "scipy", "matplotlib"]
 )

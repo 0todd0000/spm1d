@@ -5,7 +5,7 @@ Confidence intervals
 If the CI cloud starting from the "datum" reaches the "criterion", the null hypothesis is rejected.
 '''
 
-# Copyright (C) 2016  Todd Pataky
+# Copyright (C) 2025  Todd Pataky
 
 
 import numpy as np

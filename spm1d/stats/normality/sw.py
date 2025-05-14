@@ -4,7 +4,7 @@ Normality testing using the Shapiro-Wilks statistic
 
 '''
 
-# Copyright (C) 2016  Todd Pataky
+# Copyright (C) 2025  Todd Pataky
 
 import numpy as np
 from scipy import stats

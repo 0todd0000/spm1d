@@ -5,7 +5,7 @@ This module contains classes for low-level plotting.
 Users should access plotting functions through spm1d.plot (not spm1d._plot).
 '''
 
-# Copyright (C) 2016  Todd Pataky
+# Copyright (C) 2025  Todd Pataky
 # updated (2016/10/01) todd
 
 

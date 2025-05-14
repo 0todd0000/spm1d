@@ -2,7 +2,7 @@
 ANOVA computational core using an R-like linear model interface.
 '''
 
-# Copyright (C) 2016  Todd Pataky
+# Copyright (C) 2025  Todd Pataky
 
 
 

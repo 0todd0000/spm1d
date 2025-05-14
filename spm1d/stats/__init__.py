@@ -18,7 +18,7 @@ Specifically:
 
 '''
 
-# Copyright (C) 2021  Todd Pataky
+# Copyright (C) 2025  Todd Pataky
 
 
 

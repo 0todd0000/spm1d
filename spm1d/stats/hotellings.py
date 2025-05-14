@@ -1,5 +1,5 @@
 
-# Copyright (C) 2018  Todd Pataky
+# Copyright (C) 2025  Todd Pataky
 
 
 import numpy as np

@@ -12,7 +12,7 @@ This module contains a variety of convenience functions, including:
 - smooth
 '''
 
-# Copyright (C) 2022  Todd Pataky
+# Copyright (C) 2025  Todd Pataky
 # updated (2022/02/06) todd
 
 

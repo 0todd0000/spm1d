@@ -2,7 +2,7 @@
 High-level ANOVA user interface using an R-like aov function.
 '''
 
-# Copyright (C) 2016  Todd Pataky
+# Copyright (C) 2025  Todd Pataky
 
 
 

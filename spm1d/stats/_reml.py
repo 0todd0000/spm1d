@@ -16,7 +16,7 @@ Specific version details:
     authors: John Ashburner & Karl Friston
 '''
 
-# Copyright (C) 2016  Todd Pataky
+# Copyright (C) 2025  Todd Pataky
 
 
 
