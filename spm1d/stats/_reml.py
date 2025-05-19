@@ -175,68 +175,6 @@ def estimate_df_anova2(Y, X, eij, Q, C):
     return df1, df2
 
 
-# def reml(YY, X, Q, N=1, K=128):
-#     n     = X.shape[0]
-#     W     = deepcopy(Q)
-#
-#     q     = np.asarray(np.all(YY<np.inf, axis=0)).flatten()
-#     Q     = [QQ[q,:][:,q]   for QQ in Q]
-#
-#     m     = len(Q)
-#     h     = np.matrix([float(np.any(np.diag(QQ)))  for QQ in Q]).T
-#     X0    = np.linalg.qr(X)[0]
-#     dFdhh = np.zeros((m,m))
-#
-#     hE   = np.matrix(np.zeros((m,1)))
-#     hP   = np.eye(m)/exp(32)
-#
-#     dF  = np.inf
-#     for k in range(K):
-#         C    = np.matrix(np.zeros((n,n)))
-#         for i in range(m):
-#             C   += Q[i] * float(h[i])
-#         iC   = np.linalg.inv(C) + np.eye(n)/exp(32)
-#         iCX  = iC*X0
-#         Cq   = np.linalg.inv(X0.T*iCX)
-#
-#         # Gradient dF/dh (first derivatives)
-#         P    = iC - iCX*Cq*iCX.T
-#         U    = np.eye(n) - P*YY/N
-#
-#         PQ   = [P*QQ for QQ in Q]
-#         dFdh = np.matrix([-np.trace(PQQ*U)*0.5*N   for PQQ in PQ]).T
-#
-#         # Expected curvature E{dF/dhh} (second derivatives)
-#         for i in range(m):
-#             for j in range(m):
-#                     dFdhh[i,j] = -np.trace(PQ[i]*PQ[j])*0.5*N
-#                     dFdhh[j,i] =  dFdhh[i,j]
-#
-#         #add hyper-priors
-#         e     = h - hE
-#         dFdh -= hP*e
-#         dFdhh -= hP
-#
-#         # Fisher scoring
-#         dh    = -np.linalg.inv(dFdhh)*dFdh / log(k+3)
-#         h    += dh
-#         dF    = float(dFdh.T*dh)
-#         #final covariance estimate (with missing data points)
-#         if dF < 0.1:
-#             V     = 0
-#             for i in range(m):
-#                 hh = h[i]
-#                 hh = float(hh[0]) if isinstance(hh, np.ndarray) else float(hh)
-#                 V += Q[i]*hh
-#             return V, h
-#     # maximum iterations reached:
-#     V     = 0
-#     for i in range(m):
-#         hh = h[i]
-#         hh = float(hh[0]) if isinstance(hh, np.ndarray) else float(hh)
-#         V += Q[i]*hh
-#     return V, h
-
 
 def reml(YY, X, Q, N=1, K=128):
     '''
@@ -303,39 +241,92 @@ def reml(YY, X, Q, N=1, K=128):
 
 
 
+class MatrixWithProjections(object):  # following spm_sp:  Orthogonal (design) matrix space setting & manipulation
+    def __init__(self, X):
+        self.X   = X
+        self.u   = None
+        self.ds  = None
+        self.v   = None
+        self.tol = None
+        self._svd()
+        self.tol = max( X.shape ) * max(np.abs(self.ds)) * np.finfo(float).eps
+        self.rk  = (self.ds > self.tol).sum()
+
+    @property
+    def m(self):
+        return self.X.shape[0]
+    @property
+    def n(self):
+        return self.X.shape[1]
+
+    def _svd(self):
+        from scipy.linalg import svd
+        X  = self.X
+        if X.shape[0] < X.shape[1]:
+            v,s,u = svd(X.T, full_matrices=False, lapack_driver='gesvd')
+        else:
+            u,s,v = svd(X, full_matrices=False)
+        self.u   = u
+        self.ds  = s
+        self.v   = v.T
 
 
 
-
-
-
-def traceMV(V, X, c):
-    rankX       = _rank(X)
-    u,ds,v      = np.linalg.svd(X)
-    u           = np.matrix(u[:,:rankX])
-    ukX1o       = (np.matrix(np.diag(1/ds)) * np.matrix(v).T)*c
-    ukX1o       = ukX1o[:rankX]
-    X1o         = u * ukX1o
-    ###
-    rnk1        = _rank(X1o)
-    u1,ds1,v1   = np.linalg.svd(X1o)
-    u1          = np.matrix(u1[:,:rnk1])
-    Vu          = V*u1
-    trMV        = (np.asarray(u1)*np.asarray(Vu)).sum()
-    trMVMV      = np.linalg.norm(u1.T*Vu,  ord='fro')**2
+def traceMV(V, X):  # a bit different from traceMV in _cov.py
+    sX     = MatrixWithProjections( X )
+    rk     = sX.rk
+    u      = sX.u[:,:rk]
+    Vu     = V @ u
+    trMV   = (u.T * ( u.T @ V )).sum()
+    trMVMV = np.linalg.norm( u.T @ Vu , ord='fro')**2
     return trMV, trMVMV
 
-def traceRV(V, X):
-    # rk   = _rank(X);
-    rk   = np.linalg.matrix_rank(X)
-    sL   = X.shape[0]
-    u    = np.linalg.qr(X)[0]
 
-    Vu      = V@u
+
+def traceRV(V, X):
+    rank    = np.linalg.matrix_rank
+    rk      = rank(X)
+    sL      = X.shape[0]
+    u       = np.linalg.qr(X)[0]
+    Vu      = V @ u
     trV     = np.trace(V)
     trRVRV  = np.linalg.norm(V,  ord='fro')**2
     trRVRV -= 2*np.linalg.norm(Vu, ord='fro')**2
-    trRVRV += np.linalg.norm(u.T@Vu, ord='fro')**2
-    trMV    = np.sum(np.array(u)*np.array(Vu))
+    trRVRV += np.linalg.norm(u.T @ Vu, ord='fro')**2
+    trMV    = np.sum(  u * Vu  )  # element-wise multiplication (see spm8/spm_SpUtil.m, Line 550)
     trRV    = trV - trMV
     return trRV, trRVRV
+
+
+
+#
+# def traceMV(V, X, c):
+#     rankX       = _rank(X)
+#     u,ds,v      = np.linalg.svd(X)
+#     u           = np.matrix(u[:,:rankX])
+#     ukX1o       = (np.matrix(np.diag(1/ds)) * np.matrix(v).T)*c
+#     ukX1o       = ukX1o[:rankX]
+#     X1o         = u * ukX1o
+#     ###
+#     rnk1        = _rank(X1o)
+#     u1,ds1,v1   = np.linalg.svd(X1o)
+#     u1          = np.matrix(u1[:,:rnk1])
+#     Vu          = V*u1
+#     trMV        = (np.asarray(u1)*np.asarray(Vu)).sum()
+#     trMVMV      = np.linalg.norm(u1.T*Vu,  ord='fro')**2
+#     return trMV, trMVMV
+#
+# def traceRV(V, X):
+#     # rk   = _rank(X);
+#     rk   = np.linalg.matrix_rank(X)
+#     sL   = X.shape[0]
+#     u    = np.linalg.qr(X)[0]
+#
+#     Vu      = V@u
+#     trV     = np.trace(V)
+#     trRVRV  = np.linalg.norm(V,  ord='fro')**2
+#     trRVRV -= 2*np.linalg.norm(Vu, ord='fro')**2
+#     trRVRV += np.linalg.norm(u.T@Vu, ord='fro')**2
+#     trMV    = np.sum(np.array(u)*np.array(Vu))
+#     trRV    = trV - trMV
+#     return trRV, trRVRV
