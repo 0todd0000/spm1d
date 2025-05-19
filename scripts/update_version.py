@@ -4,7 +4,7 @@ import datetime
 
 
 # v  = '0.4.35'  # 2025-05-13
-version_str  = '0.4.37'
+version_str  = '0.4.38'
 
 
 
