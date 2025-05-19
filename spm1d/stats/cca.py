@@ -16,53 +16,31 @@ from . import _mvbase, _spm
 ##########################################
 
 
-# def max_effect_direction_singlenode(y, x):
-# 	nObserv    = y.shape[0]
-# 	nCompon    = y.shape[1]
-# 	x,Y        = np.matrix(x.T).T, np.matrix(y)
-# 
-# 	Z          = np.matrix(np.ones(nObserv)).T
-# 	Rz         = np.eye(nObserv) - Z*np.linalg.inv(Z.T*Z)*Z.T
-# 	xStar      = Rz * x
-# 	YStar      = Rz * Y
-# 
-# 	p          = x.shape[1] #nContrasts
-# 	m          = nObserv - p
-# 	H          = YStar.T * xStar  *  np.linalg.inv( xStar.T * xStar  )  * xStar.T * YStar / p
-# 	W          = YStar.T  * (np.eye(nObserv)  -  xStar*np.linalg.inv(xStar.T*xStar)*xStar.T) * YStar  / m
-# 
-# 	F          = np.linalg.inv(W)*H
-# 	# ff         = np.linalg.eigvals(  F  )
-# 	vals,vecs  = np.linalg.eig(F)
-# 	ind        = np.argmax(vals)
-# 	r          = vecs[:,ind]
-# 	return r
 
 
 
 def cca_single_node(y, x):
-	N          = y.shape[0]
-	X,Y        = np.matrix(x.T).T, np.matrix(y)
-	Z          = np.matrix(np.ones(N)).T
-	Rz         = np.eye(N) - Z*np.linalg.inv(Z.T*Z)*Z.T
-	XStar      = Rz * X
-	YStar      = Rz * Y
-	p,r        = 1.0, 1.0   #nContrasts, nNuisanceFactors
-	m          = N - p - r
-	H          = YStar.T * XStar  *  np.linalg.inv( XStar.T * XStar  )  * XStar.T * YStar / p
-	W          = YStar.T  * (np.eye(N)  -  XStar*np.linalg.inv(XStar.T*XStar)*XStar.T) * YStar  / m
-	#estimate maximum canonical correlation:
-	F          = np.linalg.inv(W)*H
-	ff         = np.linalg.eigvals(  F  )
-	fmax       = float( np.real(ff.max()) )
-	r2max      = fmax * p  / (m + fmax*p)
-	rmax       = sqrt(r2max)
-	### compute test statistic:
-	m          = y.shape[1]
-	x2         = -(N-1-0.5*(m+2)) * log(  (1-rmax**2) )
-	# df         = m
-	return x2
-
+    N          = y.shape[0]
+    X          = x[:,np.newaxis] if x.ndim==1 else x
+    Y          = y[:,np.newaxis] if y.ndim==1 else y
+    Z          = np.ones((N,1))
+    Rz         = np.eye(N) - Z @ np.linalg.inv(Z.T@Z) @ Z.T
+    XStar      = Rz @ X
+    YStar      = Rz @ Y
+    p,r        = 1.0, 1.0   #nContrasts, nNuisanceFactors
+    m          = N - p - r
+    H          = YStar.T @ XStar  @  np.linalg.inv( XStar.T @ XStar  )  @ XStar.T @ YStar / p
+    W          = YStar.T  @ (np.eye(nResponses)  -  XStar@np.linalg.inv(XStar.T@XStar)@XStar.T) @ YStar  / m
+    #estimate maximum canonical correlation:
+    F          = np.linalg.inv(W) @ H
+    ff         = np.linalg.eigvals(  F  )
+    fmax       = float( np.real(ff.max()) )
+    r2max      = fmax * p  / (m + fmax*p)
+    rmax       = sqrt(r2max)
+    ### compute test statistic:
+    p,m        = float(N), float(y.shape[1])
+    x2         = -(p-1-0.5*(m+2)) * log(  (1-rmax**2) )
+    return x2
 
 
 # def cca(y, x):

@@ -91,41 +91,41 @@ def glm(Y, X, c, Q=None, roi=None):
 
 
 def regress(Y, x, roi=None):
-	'''
-	Simple linear regression.
-	
-	:Parameters:
-	
-	- *Y* --- (J x Q) numpy array (dependent variable)
-	- *x* --- J-component list or array (independent variable)
-	
-	:Returns:
-	
-	- An **spm1d._spm.SPM_T** object.
-	
-	:Example:
-	
-	>>> Y  = np.random.rand(10, 101)
-	>>> Y  = spm1d.util.smooth(Y, fwhm=10)
-	>>> x  = np.random.rand(10)
-	>>> t  = spm1d.stats.regress(Y, x)
-	>>> ti = t.inference(alpha=0.05)
-	>>> ti.plot()
-	
-	:Notes:
-		- the correlation coefficient is retrievable as "t.r" where "t" is the output from **spm1d.stats.regress**
-		- statistical inferences are based on *t*, not on *r*
-	'''
-	Y              = _datachecks.asarray(Y, dtype=float)
-	_datachecks.check('regress', Y, x)
-	J              = Y.shape[0]
-	X              = np.ones((J,2))
-	X[:,0]         = x
-	c              = [1,0]
-	spmt           = glm(Y, X, c, roi=roi)
-	spmt.r         = spmt.z / (  (J - 2 + spmt.z**2)**0.5)  #t = r * ((J-2)/(1-r*r) )**0.5
-	spmt.isregress = True
-	return spmt
+    '''
+    Simple linear regression.
+
+    :Parameters:
+
+    - *Y* --- (J x Q) numpy array (dependent variable)
+    - *x* --- J-component list or array (independent variable)
+
+    :Returns:
+
+    - An **spm1d._spm.SPM_T** object.
+
+    :Example:
+
+    >>> Y  = np.random.rand(10, 101)
+    >>> Y  = spm1d.util.smooth(Y, fwhm=10)
+    >>> x  = np.random.rand(10)
+    >>> t  = spm1d.stats.regress(Y, x)
+    >>> ti = t.inference(alpha=0.05)
+    >>> ti.plot()
+
+    :Notes:
+        - the correlation coefficient is retrievable as "t.r" where "t" is the output from **spm1d.stats.regress**
+        - statistical inferences are based on *t*, not on *r*
+    '''
+    Y              = _datachecks.asarray(Y, dtype=float)
+    _datachecks.check('regress', Y, x)
+    J              = Y.shape[0]
+    X              = np.ones((J,2))
+    X[:,0]         = x
+    c              = [1,0]
+    spmt           = glm(Y, X, c, roi=roi)
+    spmt.r         = spmt.z / (  (J - 2 + spmt.z**2)**0.5)  #t = r * ((J-2)/(1-r*r) )**0.5
+    spmt.isregress = True
+    return spmt
 
 
 
@@ -133,112 +133,112 @@ def regress(Y, x, roi=None):
 
 
 def ttest(Y, y0=None, roi=None):
-	'''
-	One-sample t test.
-	
-	:Parameters:
-	
-	- *Y* --- (J x Q) data array  (J responses, Q nodes)
-	- *y0* --- optional Q-component datum array (default is the null continuum)
-	
-	:Returns:
-	
-	- An **spm1d._spm.SPM_T** object.
-	
-	:Example:
-	
-	>>> Y  = np.random.randn(8, 101)
-	>>> Y  = spm1d.util.smooth(Y, fwhm=15)
-	>>> t  = spm1d.stats.ttest(Y)
-	>>> ti = t.inference(alpha=0.05, two_tailed=True)
-	>>> ti.plot()
-	'''
-	Y       = _datachecks.asarray(Y, dtype=float)
-	_datachecks.check('ttest', Y, y0)
-	J       = Y.shape[0]
-	Ytemp   = Y.copy()
-	if y0 is not None:
-		Ytemp -= y0
-	X       = np.ones((J,1))
-	c       = (1)
-	### compute SPM{t}:
-	return glm(Ytemp, X, c, roi=roi)
+    '''
+    One-sample t test.
+
+    :Parameters:
+
+    - *Y* --- (J x Q) data array  (J responses, Q nodes)
+    - *y0* --- optional Q-component datum array (default is the null continuum)
+
+    :Returns:
+
+    - An **spm1d._spm.SPM_T** object.
+
+    :Example:
+
+    >>> Y  = np.random.randn(8, 101)
+    >>> Y  = spm1d.util.smooth(Y, fwhm=15)
+    >>> t  = spm1d.stats.ttest(Y)
+    >>> ti = t.inference(alpha=0.05, two_tailed=True)
+    >>> ti.plot()
+    '''
+    Y       = _datachecks.asarray(Y, dtype=float)
+    _datachecks.check('ttest', Y, y0)
+    J       = Y.shape[0]
+    Ytemp   = Y.copy()
+    if y0 is not None:
+        Ytemp -= y0
+    X       = np.ones((J,1))
+    c       = (1)
+    ### compute SPM{t}:
+    return glm(Ytemp, X, c, roi=roi)
 
 
 
 def ttest_paired(YA, YB, roi=None):
-	'''
-	Paired t test.
-	
-	:Parameters:
-	
-	- *YA* --- (J x Q) data array  (J responses, Q nodes)
-	- *YB* --- (J x Q) data array  (J responses, Q nodes)
+    '''
+    Paired t test.
 
-	:Returns:
-	
-	- An **spm1d._spm.SPM_T** object.
-	
-	:Example:
-	
-	>>> YA,YB  = np.random.randn(8, 101), np.random.randn(8, 101)
-	>>> YA,YB  = spm1d.util.smooth(Y, fwhm=10), spm1d.util.smooth(Y, fwhm=10)
-	
-	>>> t      = spm1d.stats.ttest_paired(YA, YB)
-	>>> ti = t.inference(alpha=0.05)
-	>>> ti.plot()
-	'''
-	YA,YB    = _datachecks.asarray(YA, dtype=float), _datachecks.asarray(YB, dtype=float)
-	_datachecks.check('ttest_paired', YA, YB)
-	return ttest(YA-YB, roi=roi)
+    :Parameters:
+
+    - *YA* --- (J x Q) data array  (J responses, Q nodes)
+    - *YB* --- (J x Q) data array  (J responses, Q nodes)
+
+    :Returns:
+
+    - An **spm1d._spm.SPM_T** object.
+
+    :Example:
+
+    >>> YA,YB  = np.random.randn(8, 101), np.random.randn(8, 101)
+    >>> YA,YB  = spm1d.util.smooth(Y, fwhm=10), spm1d.util.smooth(Y, fwhm=10)
+
+    >>> t      = spm1d.stats.ttest_paired(YA, YB)
+    >>> ti = t.inference(alpha=0.05)
+    >>> ti.plot()
+    '''
+    YA,YB    = _datachecks.asarray(YA, dtype=float), _datachecks.asarray(YB, dtype=float)
+    _datachecks.check('ttest_paired', YA, YB)
+    return ttest(YA-YB, roi=roi)
 
 
 
 def ttest2(YA, YB, equal_var=False, roi=None):
-	'''
-	Two-sample t test.
-	
-	:Parameters:
-	
-	- *YA* --- (J x Q) data array  (J responses, Q nodes)
-	- *YB* --- (J x Q) data array  (J responses, Q nodes)
-	- *equal_var* --- If *True*, equal group variance will be assumed
-	
-	:Returns:
-	
-	- An **spm1d._spm.SPM_T** object.
-	
-	:Example:
-	
-	>>> YA,YB  = np.random.randn(8, 101), np.random.randn(8, 101)
-	>>> YA,YB  = spm1d.util.smooth(Y, fwhm=10), spm1d.util.smooth(Y, fwhm=10)
-	
-	>>> t  = spm1d.stats.ttest2(YA, YB)
-	>>> ti = t.inference(alpha=0.05)
-	>>> ti.plot()
-	'''
-	### check data:
-	YA,YB    = _datachecks.asarray(YA, dtype=float), _datachecks.asarray(YB, dtype=float)
-	_datachecks.check('ttest2', YA, YB)
-	### assemble data
-	JA,JB    = YA.shape[0], YB.shape[0]
-	Y        = np.vstack(  (YA, YB)  )
-	### specify design and contrast:
-	X        = np.zeros( (JA+JB, 2) )
-	X[:JA,0] = 1
-	X[JA:,1] = 1
-	c        = (1, -1)
-	### non-sphericity:
-	Q        = None
-	if not equal_var:
-		J           = JA + JB
-		q0,q1       = np.eye(JA), np.eye(JB)
-		Q0,Q1       = np.matrix(np.zeros((J,J))), np.matrix(np.zeros((J,J)))
-		Q0[:JA,:JA] = q0
-		Q1[JA:,JA:] = q1
-		Q           = [Q0, Q1]
-	### compute SPM{t}:
-	return glm(Y, X, c, Q, roi=roi)
+    '''
+    Two-sample t test.
+
+    :Parameters:
+
+    - *YA* --- (J x Q) data array  (J responses, Q nodes)
+    - *YB* --- (J x Q) data array  (J responses, Q nodes)
+    - *equal_var* --- If *True*, equal group variance will be assumed
+
+    :Returns:
+
+    - An **spm1d._spm.SPM_T** object.
+
+    :Example:
+
+    >>> YA,YB  = np.random.randn(8, 101), np.random.randn(8, 101)
+    >>> YA,YB  = spm1d.util.smooth(Y, fwhm=10), spm1d.util.smooth(Y, fwhm=10)
+
+    >>> t  = spm1d.stats.ttest2(YA, YB)
+    >>> ti = t.inference(alpha=0.05)
+    >>> ti.plot()
+    '''
+    ### check data:
+    YA,YB    = _datachecks.asarray(YA, dtype=float), _datachecks.asarray(YB, dtype=float)
+    _datachecks.check('ttest2', YA, YB)
+    ### assemble data
+    JA,JB    = YA.shape[0], YB.shape[0]
+    Y        = np.vstack(  (YA, YB)  )
+    ### specify design and contrast:
+    X        = np.zeros( (JA+JB, 2) )
+    X[:JA,0] = 1
+    X[JA:,1] = 1
+    c        = (1, -1)
+    ### non-sphericity:
+    Q        = None
+    if not equal_var:
+        J           = JA + JB
+        q0,q1       = np.eye(JA), np.eye(JB)
+        Q0,Q1       = np.zeros((J,J)), np.zeros((J,J))
+        Q0[:JA,:JA] = q0
+        Q1[JA:,JA:] = q1
+        Q           = [Q0, Q1]
+    ### compute SPM{t}:
+    return glm(Y, X, c, Q, roi=roi)
 
 
 

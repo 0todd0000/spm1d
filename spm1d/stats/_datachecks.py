@@ -14,10 +14,6 @@ import numpy as np
 
 
 
-# def asmatrix(Y, dtype=None):
-#     Y = np.asarray(Y, dtype=dtype)
-#     return np.matrix(Y).T if Y.ndim==1 else np.matrix(Y)
-
 def asarray(Y, dtype=None):
 	return np.asarray([Y], dtype=dtype).T if Y.ndim==1 else np.asarray(Y, dtype=dtype)
 
