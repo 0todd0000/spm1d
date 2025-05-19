@@ -73,8 +73,6 @@ class DesignBuilder(object):
 class _Design(object):
 	def _get_column_const(self):
 		return np.ones(  (self.J, 1)  )
-    # def _get_column_const(self):
-    #     return np.matrix( np.ones(self.J) ).T
 
 	def get_design_label(self):
 		return self.__class__.__name__

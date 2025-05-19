@@ -88,8 +88,6 @@ class Factor(object):
 
 
 
-    # def get_Q(self):  #non-sphericity components
-    #     return [np.matrix(np.diag(self.A==u), dtype=float) for u in self.u]
 	def get_Q(self):  #non-sphericity components
 		return [np.array(np.diag(self.A==u), dtype=float) for u in self.u]
 	

@@ -233,7 +233,6 @@ def ttest2(YA, YB, equal_var=False, roi=None):
     if not equal_var:
         J           = JA + JB
         q0,q1       = np.eye(JA), np.eye(JB)
-        # Q0,Q1       = np.matrix(np.zeros((J,J))), np.matrix(np.zeros((J,J)))
         Q0,Q1       = np.zeros((J,J)), np.zeros((J,J))
         Q0[:JA,:JA] = q0
         Q1[JA:,JA:] = q1

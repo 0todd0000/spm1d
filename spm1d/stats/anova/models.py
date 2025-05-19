@@ -39,8 +39,6 @@ class LinearModel(object):
         self.term_labels = None
         self.Fterms      = None
 
-    # def _asmatrix(self, Y):
-    #     return np.matrix(Y).T if Y.ndim==1 else np.matrix(Y)
     def _asmatrix(self, Y, dtype=float):
         return np.asarray([Y], dtype=dtype).T if Y.ndim==1 else np.asarray(Y, dtype=dtype)
 
