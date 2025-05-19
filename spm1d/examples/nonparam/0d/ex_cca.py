@@ -14,6 +14,7 @@ y,x     = [a[:10]  for a in [y,x]]
 
 
 #(1) Conduct non-parametric test:
+np.random.seed(123)
 alpha      = 0.05
 x2         = spm1d.stats.nonparam.cca(y, x)
 x2i        = x2.inference(alpha, iterations=1000)

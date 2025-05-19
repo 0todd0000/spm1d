@@ -36,9 +36,9 @@ class CalculatorTtest(_CalculatorOneSample):
 
 class CalculatorHotellings0D(_CalculatorOneSample):
     def get_test_stat_mu_subtracted(self, y):
-        m       = np.matrix( y.mean(axis=0) )       #estimated mean
-        W       = np.matrix( np.cov(y.T, ddof=1) )  #estimated covariance
-        T2      = self.J * m * np.linalg.inv(W) * m.T
+        m       = y.mean(axis=0)       # estimated mean
+        W       = np.cov(y.T, ddof=1)  # estimated covariance
+        T2      = self.J * m @ np.linalg.inv(W) @ m.T
         return float(T2)
 
 class CalculatorHotellings1D(_CalculatorOneSample):
@@ -46,11 +46,10 @@ class CalculatorHotellings1D(_CalculatorOneSample):
         if np.ma.is_masked(y):
             T2   = 0
         else:
-            y    = np.matrix(y)
             n    = y.shape[0]      #nResponses
             m    = y.mean(axis=0)  #mean vector
             W    = np.cov(y.T) + eps  #covariance
-            T2   = n * m * np.linalg.inv(W) * m.T
+            T2   = n * m @ np.linalg.inv(W) @ m.T
         return float(T2)
 
     def get_test_stat_mu_subtracted(self, y):
@@ -90,11 +89,10 @@ class CalculatorHotellings20D( _CalculatorTwoSample ):
         super(CalculatorHotellings20D, self).__init__(nA, nB)
         self.nABAB       = (nA * nB) / float( nA + nB )
     def get_test_stat(self, yA, yB):
-        yA,yB     = np.matrix(yA), np.matrix(yB)
         mA,mB     = yA.mean(axis=0), yB.mean(axis=0)
         WA,WB     = np.cov(yA.T), np.cov(yB.T)
         W         = (self.nA1*WA + self.nB1*WB) / self.df + eps
-        T2        = self.nABAB  * (mB-mA) * np.linalg.inv(W) * (mB-mA).T
+        T2        = self.nABAB  * (mB-mA) @ np.linalg.inv(W) @ (mB-mA).T
         return float(T2)
 
 class CalculatorHotellings21D( _CalculatorTwoSample ):
@@ -106,13 +104,12 @@ class CalculatorHotellings21D( _CalculatorTwoSample ):
         if np.ma.is_masked(yA):
             T2   = 0
         else:
-            yA,yB    = np.matrix(yA), np.matrix(yB)
             mA,mB    = yA.mean(axis=0), yB.mean(axis=0)  #means
             WA,WB    = np.cov(yA.T), np.cov(yB.T)
             W        = (self.nA1*WA + self.nB1*WB) / self.df + eps
-            T2       = self.nABAB  * (mB-mA) * np.linalg.inv(W) * (mB-mA).T
+            T2       = self.nABAB  * (mB-mA) @ np.linalg.inv(W) @ (mB-mA).T
         return float(T2)
-
+        
     def get_test_stat(self, yA, yB):
         T2      = [self._T2_twosample_singlenode( yA[:,i,:], yB[:,i,:] )   for i in range(yA.shape[1])]
         return np.asarray(T2)
@@ -129,30 +126,27 @@ class CalculatorMANOVA10D( object ):
         nGroups     = u.size
         self.n1pk   = -((J-1) - 0.5*(I + nGroups))
         ### design matrix:
-        X           = np.zeros((J, nGroups))
+        self.X      = np.zeros((J, nGroups))
         for i,uu in enumerate(u):
-            X[A==uu, i] = 1
-        self.X      = np.matrix(X)
+            self.X[A==uu, i] = 1
         self.Xi     = np.linalg.pinv( self.X )
         ### reduced design matrix:
-        self.X0     = np.matrix(  np.ones(J)  ).T
+        self.X0     = np.ones((J,1))
         self.X0i    = np.linalg.pinv( self.X0 )
 
     def get_test_stat(self, Y):
         ### SS for original design:
-        Y     = np.matrix(Y)
-        b     = self.Xi * Y
-        R     = Y - self.X*b
-        R     = R.T * R
+        b     = self.Xi @ Y
+        R     = Y - self.X @ b
+        R     = R.T @ R
         ### SS for reduced design:
-        b0    = self.X0i * Y
-        R0    = Y - self.X0*b0
-        R0    = R0.T * R0
+        b0    = self.X0i @ Y
+        R0    = Y - self.X0 @ b0
+        R0    = R0.T @ R0
         ### Wilk's lambda:
         lam   = np.linalg.det(R) / (np.linalg.det(R0) + eps)
         x2    = self.n1pk * log(lam)
         return x2
-
 
 class CalculatorMANOVA11D( CalculatorMANOVA10D ):
     def get_test_stat(self, Y):
@@ -177,35 +171,31 @@ class CalculatorRegress0D(object):
         self.J           = self.x.size
         self.df          = self.J - 2     #degrees of freedom
         ### design matrix:
-        X                = np.ones( (self.J, 2) )
-        X[:,0]           = self.x
-        self.X           = np.matrix(X)
-        self.Xi          = np.linalg.pinv(X)
-        self.c           = np.matrix([1,0]).T
-        self.cXXc        = float(  self.c.T * np.linalg.inv(self.X.T*self.X) * self.c  )
+        self.X           = np.ones( (self.J, 2) )
+        self.X[:,0]      = self.x
+        self.Xi          = np.linalg.pinv(self.X)
+        self.c           = [1,0]
+        self.cXXc        = float(  self.c @ np.linalg.inv(self.X.T @ self.X) @ self.c  )
 
     def get_test_stat(self, y):
-        Y      = np.matrix(y).T
-        b      = self.Xi * Y            #parameters
-        eij    = Y - self.X*b           #residuals
-        R      = eij.T*eij              #residual sum of squares
+        b      = self.Xi @ y            #parameters
+        eij    = y - self.X @ b         #residuals
+        R      = eij.T @ eij            #residual sum of squares
         sigma2 = float(R) / self.df     #variance
-        t      = float(self.c.T*b)  /   (sigma2*self.cXXc)**0.5
+        t      = float(self.c @ b)  /   (sigma2*self.cXXc)**0.5
         return t
-
 
 class CalculatorRegress1D(CalculatorRegress0D):
     def get_test_stat(self, y):
-        Y      = np.matrix(y)
-        b      = self.Xi * Y            #parameters
-        eij    = Y - self.X*b           #residuals
+        b      = self.Xi @ y            #parameters
+        eij    = y - self.X @ b           #residuals
         # # previous sigma2 calculation (slow when Q get large: about 5 ms for Q=1000 and about 900 ms for Q=10000! )
         # R      = eij.T@eij              #residuals: sum of squares
         # sigma2 = np.diag(R)/df          #variance
-        # new sigam2 calculation (using eigensum trick)
+        # new sigma2 calculation (using eigensum trick)
         diagR  = np.einsum('ij,ji->i', eij.T, eij)  # residual sum of squares (eigensum trick)
         sigma2 = diagR / self.df          #variance
-        t      = np.array(self.c.T*b).flatten()  /   ((sigma2*self.cXXc)**0.5 + eps)
+        t      = np.array(self.c @ b).flatten()  /   ((sigma2*self.cXXc)**0.5 + eps)
         return t
 
 
@@ -213,13 +203,13 @@ class CalculatorCCA0D(object):
     def __init__(self, x):
         self.x           = np.asarray(x, dtype=float)
         self.J           = x.size
-        self.X           = np.matrix(x).T
-        Z                = np.matrix( np.ones(self.J) ).T
-        self.Rz          = np.eye(self.J) - Z * np.linalg.inv(Z.T*Z) * Z.T
-        XStar            = self.Rz * self.X
-        self.XXXiX       = XStar  *  np.linalg.inv( XStar.T * XStar  )  * XStar.T
-        self.p           = 1.0   #nContrasts
-        self.r           = 1.0   #nNuisanceFactors
+        self.X           = x[:,np.newaxis] if x.ndim==1 else x
+        Z                = np.ones((self.J,1))
+        self.Rz          = np.eye(self.J) - Z @ np.linalg.inv(Z.T@Z) @ Z.T
+        XStar            = self.Rz @ self.X
+        self.XXXiX       = XStar  @  np.linalg.inv( XStar.T @ XStar  )  @ XStar.T
+        self.p           = 1.0   # nContrasts
+        self.r           = 1.0   # nNuisanceFactors
         self.m           = self.J - self.p - self.r
 
     def get_test_stat(self, y):
@@ -227,11 +217,10 @@ class CalculatorCCA0D(object):
             x2     = 0
         else:
             ### estimate maximum canonical correlation:
-            Y          = np.matrix(y)
-            YStar      = self.Rz * Y
-            H          = YStar.T * self.XXXiX * YStar / self.p
-            W          = YStar.T  * (np.eye(self.J)  -  self.XXXiX) * YStar  / self.m
-            F          = np.linalg.inv(W) * H
+            YStar      = self.Rz @ y
+            H          = YStar.T @ self.XXXiX @ YStar / self.p
+            W          = YStar.T  @ (np.eye(self.J)  -  self.XXXiX) @ YStar  / self.m
+            F          = np.linalg.inv(W) @ H
             ff         = np.linalg.eigvals( F )
             fmax       = float( np.real(ff.max()) )
             r2max      = fmax * self.p  / (self.m + fmax*self.p)
