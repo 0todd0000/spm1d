@@ -102,7 +102,6 @@ class _SnPM0D(_SnPM):
 class SnPM0D_T(_SnPM0D):
     STAT = 'T'
     def inference(self, alpha=0.05, two_tailed=True, iterations=-1, force_iterations=False):
-        self.permuter.set_two_tailed( two_tailed )
         self._check_iterations(iterations, alpha, force_iterations, self.permuter.nPermTotal)
         self.permuter.build_pdf(iterations)
         alpha0    = 0.5*alpha if two_tailed else alpha
@@ -243,12 +242,10 @@ class _SnPM1D(_SnPM, _spm._SPM):
     def inference(self, alpha=0.05, iterations=-1, two_tailed=False, interp=True, circular=False, force_iterations=False, cluster_metric='MaxClusterIntegral'):
         self._check_iterations(iterations, alpha, force_iterations, self.permuter.nPermTotal)
         ### build primary PDF:
-        if self.STAT == 'T':
-            self.permuter.set_two_tailed(two_tailed)
         self.permuter.build_pdf(iterations)
         ### compute critical threshold:
         # a          = 0.5*alpha if two_tailed else alpha  #adjusted alpha (if two-tailed)
-        zstar      = self.permuter.get_z_critical(alpha)
+        zstar      = self.permuter.get_z_critical(alpha, two_tailed)
         zstar      = zstar[1] if np.size([zstar])==2 else zstar
         ### build secondary PDF:
         self.permuter.set_metric( cluster_metric )
