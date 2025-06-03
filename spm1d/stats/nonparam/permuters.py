@@ -30,6 +30,14 @@ class MultiFactorPermuter(object):
         iters    = [permutations_without_repetition(f.A) for f in self._factors]
         for a in itertools.product( *iters ):
             yield a
+            
+    @property
+    def combinations_half(self):
+        iters    = [permutations_without_repetition(f.A) for f in self._factors]
+        for i,a in enumerate( itertools.product( *iters ) ):
+            if i < self.ncomb/2:
+                yield a
+        
 
     def random(self):
         return tuple(f.random_permutation() for f in self._factors)

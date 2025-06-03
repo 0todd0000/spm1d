@@ -240,7 +240,7 @@ class _SnPM1D(_SnPM, _spm._SPM):
 
     def _cluster_inference(self, alpha, clusters, two_tailed=False):
         for cluster in clusters:
-            cluster.inference(alpha, self.permuter.Z2, two_tailed)
+            cluster.inference(alpha, self.mgr.Z2, two_tailed)
         return clusters
 
     def _get_clusters(self, zstar, two_tailed, interp, circular, iterations, cluster_metric, z=None):
@@ -273,24 +273,14 @@ class _SnPM1D(_SnPM, _spm._SPM):
     def inference(self, alpha=0.05, iterations=-1, two_tailed=False, interp=True, circular=False, force_iterations=False, cluster_metric='MaxClusterIntegral'):
         self._check_iterations(iterations, alpha, force_iterations, self.permuter.nPermTotal)
         ### build primary PDF:
-        self.mgr.permute( niter=iterations )
+        self.mgr.permute( niter=iterations, two_tailed=two_tailed )
         zstar  = self.mgr.inference(alpha, two_tailed=two_tailed)
-        # self.permuter.build_pdf(iterations)
-        ### compute critical threshold:
-        # a          = 0.5*alpha if two_tailed else alpha  #adjusted alpha (if two-tailed)
-        # zstar      = self.permuter.get_z_critical(alpha, two_tailed)
-        # zstar      = zstar[1] if np.size([zstar])==2 else zstar
-
-
         # ### build secondary PDF:
-        # self.mgr.set_metric( cluster_metric )
-        # self.mgr.build_secondary_pdf( zstar, circular )
-        # ### assemble clusters and conduct cluster-level inference:
-        # clusters   = self._get_clusters(zstar, two_tailed, interp, circular, iterations, cluster_metric)
-        # clusters   = self._cluster_inference(alpha, clusters, two_tailed)
-
-
-        clusters = []
+        self.mgr.set_metric( cluster_metric )
+        self.mgr.build_secondary_pdf( zstar, circular )
+        ### assemble clusters and conduct cluster-level inference:
+        clusters   = self._get_clusters(zstar, two_tailed, interp, circular, iterations, cluster_metric)
+        clusters   = self._cluster_inference(alpha, clusters, two_tailed)
         if self.isanova:
             Fi     = SnPMiF(self, alpha, zstar, clusters)
         else:
