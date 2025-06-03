@@ -8,7 +8,6 @@ from . util import permutations_without_repetition
 class MultiFactorPermuter(object):
     def __init__(self, *args):
         self._factors = [Factor(x) for x in args]
-        self.roi      = None
 
     @property
     def ncomb(self):

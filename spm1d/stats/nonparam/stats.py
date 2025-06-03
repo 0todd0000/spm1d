@@ -27,5 +27,5 @@ def ttest2(y0, y1):
     mgr.set_permuter( perm )
     mgr.set_teststat_fn( _tstat_ind )
     z        = _tstat_ind(y, A)
-    return _snpm.SnPM_T(z, perm)
+    return _snpm.SnPM_T(z, mgr)
     

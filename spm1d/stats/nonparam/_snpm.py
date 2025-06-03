@@ -204,15 +204,26 @@ class _SnPM1D(_SnPM, _spm._SPM):
 
     dim           = 1
 
-    def __init__(self, z, perm, isinlist=False):
+    def __init__(self, z, mgr, isinlist=False):
         # z[np.isnan(z)]      = 0
-        self.permuter       = perm             #permuter (for conducting inference)
-        self.Q              = z.size           #field size
-        self.nPermUnique    = perm.nPermTotal  #number of unique permutations possible
-        self.roi            = perm.roi         #region(s) of interest
-        self.z              = z                #test statistic
+        self.mgr            = mgr              # permutation test manager
+        self.permuter       = mgr.permuter     # permuter
+        self.Q              = z.size           # field size
+        self.nPermUnique    = mgr.permuter.ncomb  # number of unique permutations possible
+        self.roi            = mgr.roi          # region(s) of interest
+        self.z              = z                # test statistic
         self.isinlist       = isinlist
         self._ClusterClass  = ClusterNonparam
+
+    # def __init__(self, z, perm, isinlist=False):
+    #     # z[np.isnan(z)]      = 0
+    #     self.permuter       = perm             #permuter (for conducting inference)
+    #     self.Q              = z.size           #field size
+    #     self.nPermUnique    = perm.nPermTotal  #number of unique permutations possible
+    #     self.roi            = perm.roi         #region(s) of interest
+    #     self.z              = z                #test statistic
+    #     self.isinlist       = isinlist
+    #     self._ClusterClass  = ClusterNonparam
 
     def __repr__(self):
         stat     = self.STAT
@@ -239,25 +250,57 @@ class _SnPM1D(_SnPM, _spm._SPM):
             c.set_metric(metric, iterations, self.nPermUnique, two_tailed)
         return clusters
 
+    # def inference(self, alpha=0.05, iterations=-1, two_tailed=False, interp=True, circular=False, force_iterations=False, cluster_metric='MaxClusterIntegral'):
+    #     self._check_iterations(iterations, alpha, force_iterations, self.permuter.nPermTotal)
+    #     ### build primary PDF:
+    #     self.permuter.build_pdf(iterations)
+    #     ### compute critical threshold:
+    #     # a          = 0.5*alpha if two_tailed else alpha  #adjusted alpha (if two-tailed)
+    #     zstar      = self.permuter.get_z_critical(alpha, two_tailed)
+    #     zstar      = zstar[1] if np.size([zstar])==2 else zstar
+    #     ### build secondary PDF:
+    #     self.permuter.set_metric( cluster_metric )
+    #     self.permuter.build_secondary_pdf( zstar, circular )
+    #     ### assemble clusters and conduct cluster-level inference:
+    #     clusters   = self._get_clusters(zstar, two_tailed, interp, circular, iterations, cluster_metric)
+    #     clusters   = self._cluster_inference(alpha, clusters, two_tailed)
+    #     if self.isanova:
+    #         Fi     = SnPMiF(self, alpha, zstar, clusters)
+    #     else:
+    #         Fi     = SnPMinference(self, alpha, zstar, two_tailed, clusters)
+    #     return Fi
+
     def inference(self, alpha=0.05, iterations=-1, two_tailed=False, interp=True, circular=False, force_iterations=False, cluster_metric='MaxClusterIntegral'):
         self._check_iterations(iterations, alpha, force_iterations, self.permuter.nPermTotal)
         ### build primary PDF:
-        self.permuter.build_pdf(iterations)
+        self.mgr.permute( niter=iterations )
+        zstar  = self.mgr.inference(alpha, two_tailed=two_tailed)
+        # self.permuter.build_pdf(iterations)
         ### compute critical threshold:
         # a          = 0.5*alpha if two_tailed else alpha  #adjusted alpha (if two-tailed)
-        zstar      = self.permuter.get_z_critical(alpha, two_tailed)
-        zstar      = zstar[1] if np.size([zstar])==2 else zstar
-        ### build secondary PDF:
-        self.permuter.set_metric( cluster_metric )
-        self.permuter.build_secondary_pdf( zstar, circular )
-        ### assemble clusters and conduct cluster-level inference:
-        clusters   = self._get_clusters(zstar, two_tailed, interp, circular, iterations, cluster_metric)
-        clusters   = self._cluster_inference(alpha, clusters, two_tailed)
+        # zstar      = self.permuter.get_z_critical(alpha, two_tailed)
+        # zstar      = zstar[1] if np.size([zstar])==2 else zstar
+
+
+        # ### build secondary PDF:
+        # self.mgr.set_metric( cluster_metric )
+        # self.mgr.build_secondary_pdf( zstar, circular )
+        # ### assemble clusters and conduct cluster-level inference:
+        # clusters   = self._get_clusters(zstar, two_tailed, interp, circular, iterations, cluster_metric)
+        # clusters   = self._cluster_inference(alpha, clusters, two_tailed)
+
+
+        clusters = []
         if self.isanova:
             Fi     = SnPMiF(self, alpha, zstar, clusters)
         else:
             Fi     = SnPMinference(self, alpha, zstar, two_tailed, clusters)
         return Fi
+    
+
+
+        
+        # zc = mgr.inference(0.05, two_tailed=True)
 
     def plot_design(self, **kwdargs):
         msg        = '\n'
@@ -297,10 +340,10 @@ class SnPM_T2(_SnPM1Donetailed):
 
 class SnPMinference(_SnPM1D, _spm._SPMinference):
     def __init__(self, spm, alpha, zstar, two_tailed, clusters):
-        super(SnPMinference, self).__init__(spm.z, spm.permuter)
+        super(SnPMinference, self).__init__(spm.z, spm.mgr)
         self.STAT           = spm.STAT
-        self.PDF0           = self.permuter.Z        #primary permutation PDF
-        self.PDF1           = self.permuter.Z2       #secondary PDF (cluster-level)
+        self.PDF0           = self.mgr.Z        #primary permutation PDF
+        self.PDF1           = self.mgr.Z2       #secondary PDF (cluster-level)
         self.alpha          = alpha               #Type I error rate
         self.clusters       = clusters            #supra-threshold cluster information
         self.nClusters      = len(clusters)         #number of supra-threshold clusters

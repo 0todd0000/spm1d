@@ -3,10 +3,13 @@ import numpy as np
 
 
 class PermutationTestManager(object):
-    def __init__(self, y):
+    def __init__(self, y, roi=None):
         self.Z        = None  # permutation teststat distribution
+        self.Z2       = None  # secondary permutation distribution
+        self.metric   = None  # metric for secondary distribution
         self.permuter = None  # permuter object
         self.fn       = None  # test stat calculation function
+        self.roi      = roi
         self.y        = y     # dv array
 
         
