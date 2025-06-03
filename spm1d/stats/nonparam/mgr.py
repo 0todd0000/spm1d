@@ -7,6 +7,7 @@ class PermutationTestManager(object):
         self.ZZ       = None  # all permuted test statistic fields
         self.Z        = None  # permutation teststat distribution
         self.Z2       = None  # secondary (cluster metric) permutation distribution
+        self.calc     = None  # test statistic calculator
         self.metric   = None  # metric for secondary distribution
         self.permuter = None  # permuter object
         self.fn       = None  # test stat calculation function
@@ -50,15 +51,29 @@ class PermutationTestManager(object):
             else:
                 return self._inference_1d(alpha)
     
+    # def permute(self, niter=-1, two_tailed=False):
+    #     perm = self.permuter
+    #     if niter == -1:
+    #         if two_tailed:
+    #             self.ZZ = np.array([self.fn(self.y, *c)  for c in perm.combinations_half])
+    #         else:
+    #             self.ZZ = np.array([self.fn(self.y, *c)  for c in perm.combinations])
+    #     else:
+    #         self.ZZ = np.array([self.fn(self.y, *perm.random())  for i in range(niter)])
+    
+    
     def permute(self, niter=-1, two_tailed=False):
         perm = self.permuter
         if niter == -1:
             if two_tailed:
-                self.ZZ = np.array([self.fn(self.y, *c)  for c in perm.combinations_half])
+                self.ZZ = np.array([self.calc.get_test_stat(self.y, *c)  for c in perm.combinations_half])
             else:
-                self.ZZ = np.array([self.fn(self.y, *c)  for c in perm.combinations])
+                self.ZZ = np.array([self.calc.get_test_stat(self.y, *c)  for c in perm.combinations])
         else:
-            self.ZZ = np.array([self.fn(self.y, *perm.random())  for i in range(niter)])
+            self.ZZ = np.array([self.calc.get_test_stat(self.y, *perm.random())  for i in range(niter)])
+    
+    def set_calculator(self, calc):
+        self.calc = calc
     
     def set_metric(self, metric_name):
         from . metrics import metric_dict

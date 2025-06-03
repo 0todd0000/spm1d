@@ -18,14 +18,30 @@ def _tstat_ind(y, A):
 
 
 
+# def ttest2(y0, y1):
+#     n0,n1    = y0.shape[0], y1.shape[0]
+#     y        = np.vstack([y0,y1])
+#     A        = np.array(  [0]*n0 + [1]*n1 )
+#     mgr      = PermutationTestManager(y)
+#     perm     = MultiFactorPermuter(A)
+#     mgr.set_permuter( perm )
+#     mgr.set_teststat_fn( _tstat_ind )
+#     z        = _tstat_ind(y, A)
+#     return _snpm.SnPM_T(z, mgr)
+
+
 def ttest2(y0, y1):
+    from . calculators import CalculatorTtest2
     n0,n1    = y0.shape[0], y1.shape[0]
     y        = np.vstack([y0,y1])
     A        = np.array(  [0]*n0 + [1]*n1 )
+
+    calc     = CalculatorTtest2(n0, n1)
     mgr      = PermutationTestManager(y)
     perm     = MultiFactorPermuter(A)
+    
+    mgr.set_calculator( calc )
     mgr.set_permuter( perm )
     mgr.set_teststat_fn( _tstat_ind )
     z        = _tstat_ind(y, A)
     return _snpm.SnPM_T(z, mgr)
-    
