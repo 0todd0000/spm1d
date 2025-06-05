@@ -1,8 +1,65 @@
 
 
 import itertools
+from math import factorial
+import numpy as np
 from . factors import Factor
 from . util import permutations_without_repetition
+
+
+
+class RegressionPermuter(object):
+    def __init__(self, n):
+        self.n = n
+
+    @property
+    def ncomb(self):
+        return factorial( self.n )
+
+    @property
+    def nPermTotal(self):
+        return self.ncomb
+
+    @property
+    def combinations(self):
+        for c in itertools.permutations( range(self.n) ):
+            yield (list(c),) 
+
+    @property
+    def combinations_half(self):
+        for i,c in enumerate( itertools.permutations( range(self.n) ) ):
+            if i < self.ncomb/2:
+                yield (list(c),)
+                
+    def random(self):
+        return np.random.permutation( self.n )
+
+
+class SingleSamplePermuter(object):
+    def __init__(self, n):
+        self.n = n
+
+    @property
+    def ncomb(self):
+        return 2**self.n
+
+    @property
+    def nPermTotal(self):
+        return self.ncomb
+
+    @property
+    def combinations(self):
+        for c in itertools.product((-1,1), repeat=self.n):
+            yield (c,) 
+
+    @property
+    def combinations_half(self):
+        for i,c in enumerate( itertools.product((-1,1), repeat=self.n) ):
+            if i < self.ncomb/2:
+                yield (c,)
+                
+    def random(self):
+        return 2*np.random.binomial(1, 0.5, self.n) - 1
 
 
 class MultiFactorPermuter(object):
@@ -45,6 +102,16 @@ class MultiFactorPermuter(object):
 
 if __name__ == '__main__':
     import numpy as np
+    
+    # perm = SingleSamplePermuter( 5 )
+    # for i,c in enumerate(perm.combinations):
+    #     print( i, c )
+    # print( perm.ncomb )
+    # print( perm.random() )
+    # print( perm.random() )
+    # print( perm.random() )
+    
+    
     A        = np.array([0, 0, 0, 0,    1, 1, 1, 1])
     B        = np.array([0, 0, 1, 1,    0, 0, 1, 1])
     permuter = MultiFactorPermuter(A)

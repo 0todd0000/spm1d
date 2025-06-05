@@ -10,7 +10,6 @@ class PermutationTestManager(object):
         self.calc     = None  # test statistic calculator
         self.metric   = None  # metric for secondary distribution
         self.permuter = None  # permuter object
-        self.fn       = None  # test stat calculation function
         self.roi      = roi
         self.y        = y     # dv array
 
@@ -18,7 +17,6 @@ class PermutationTestManager(object):
     @property
     def dim(self):
         return self.y.ndim - 1
-    
 
 
     def _inference_0d(self, alpha):
@@ -51,26 +49,15 @@ class PermutationTestManager(object):
             else:
                 return self._inference_1d(alpha)
     
-    # def permute(self, niter=-1, two_tailed=False):
-    #     perm = self.permuter
-    #     if niter == -1:
-    #         if two_tailed:
-    #             self.ZZ = np.array([self.fn(self.y, *c)  for c in perm.combinations_half])
-    #         else:
-    #             self.ZZ = np.array([self.fn(self.y, *c)  for c in perm.combinations])
-    #     else:
-    #         self.ZZ = np.array([self.fn(self.y, *perm.random())  for i in range(niter)])
-    
-    
     def permute(self, niter=-1, two_tailed=False):
         perm = self.permuter
         if niter == -1:
             if two_tailed:
-                self.ZZ = np.array([self.calc.get_test_stat(self.y, *c)  for c in perm.combinations_half])
+                self.ZZ = np.array([self.calc.teststat(self.y, *c)  for c in perm.combinations_half])
             else:
-                self.ZZ = np.array([self.calc.get_test_stat(self.y, *c)  for c in perm.combinations])
+                self.ZZ = np.array([self.calc.teststat(self.y, *c)  for c in perm.combinations])
         else:
-            self.ZZ = np.array([self.calc.get_test_stat(self.y, *perm.random())  for i in range(niter)])
+            self.ZZ = np.array([self.calc.teststat(self.y, *perm.random())  for i in range(niter)])
     
     def set_calculator(self, calc):
         self.calc = calc
@@ -82,7 +69,5 @@ class PermutationTestManager(object):
     def set_permuter(self, obj):
         self.permuter = obj
         
-    def set_teststat_fn(self, fn):
-        self.fn = fn
 
     
