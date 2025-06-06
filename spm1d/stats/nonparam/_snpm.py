@@ -120,8 +120,8 @@ class SnPM0D_T(_SnPM0D):
     def inference(self, alpha=0.05, two_tailed=True, iterations=-1, force_iterations=False):
         self._check_iterations(iterations, alpha, force_iterations, self.permuter.nPermTotal)
         self.mgr.permute(iterations, two_tailed)
-        alpha0    = 0.5*alpha if two_tailed else alpha
-        zstar    = self.mgr.inference(alpha0, two_tailed)
+        # alpha0    = 0.5*alpha if two_tailed else alpha
+        zstar    = self.mgr.inference(alpha, two_tailed)
         # zstar     = self.permuter.get_z_critical(alpha0, two_tailed)
         p         = self.mgr.get_p_value_0d(self.z, zstar, alpha)
         return SnPM0Dinference(self, alpha, zstar, p, two_tailed)

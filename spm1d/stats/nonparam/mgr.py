@@ -39,7 +39,7 @@ class PermutationTestManager(object):
 
     def _inference_0d_twotailed(self, alpha):
         print("_inference_0d_twotailed")
-        zc0,zc1 = np.percentile(self.Z, [100*0.5*alpha,100*(1-0.5*alpha)], interpolation='midpoint', axis=0)
+        zc0,zc1 = np.percentile(self.Z, [100*0.5*alpha,100*(1-0.5*alpha)], interpolation='midpoint')
         return float(zc0), float(zc1)
 
     def _inference_1d(self, alpha):
@@ -47,6 +47,7 @@ class PermutationTestManager(object):
         return np.percentile(self.Z, 100*(1-alpha), interpolation='midpoint')
 
     def _inference_1d_twotailed(self, alpha):
+        # since abs(z) is used alpha mustn't be multiplied by 0.5
         self.Z = np.abs(self.ZZ).max(axis=1)
         return np.percentile(self.Z, 100*(1-alpha), interpolation='midpoint')
 
