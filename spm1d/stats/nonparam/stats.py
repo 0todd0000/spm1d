@@ -4,6 +4,11 @@ from . import _snpm
 from . mgr import PermutationTestManager
 
 
+def _spm_object(STAT, z, mgr):
+    if STAT=='T':
+        return _snpm.SnPM_T(z, mgr) if (mgr.dim==1) else _snpm.SnPM0D_T(z, mgr)
+
+
 
 
 def regress(y, x, roi=None):
@@ -16,7 +21,7 @@ def regress(y, x, roi=None):
     mgr.set_permuter( perm )
     mgr.set_calculator( calc )
     z        = calc.teststat(y, list(range(n)))
-    return _snpm.SnPM_T(z, mgr)
+    return _spm_object('T', z, mgr)
     
 def ttest(y, mu=None, roi=None):
     from . permuters import SingleSamplePermuter
@@ -28,7 +33,7 @@ def ttest(y, mu=None, roi=None):
     mgr.set_permuter( perm )
     mgr.set_calculator( calc )
     z        = calc.teststat(y, np.ones(n))
-    return _snpm.SnPM_T(z, mgr)
+    return _spm_object('T', z, mgr)
 
 def ttest_paired(yA, yB, roi=None):
     return ttest(yA-yB, 0, roi=roi)
@@ -45,4 +50,4 @@ def ttest2(y0, y1, roi=None):
     mgr.set_permuter( perm )
     mgr.set_calculator( calc )
     z        = calc.teststat(y, A)
-    return _snpm.SnPM_T(z, mgr)
+    return _spm_object('T', z, mgr)

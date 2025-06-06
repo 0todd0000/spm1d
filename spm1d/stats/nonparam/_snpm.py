@@ -58,10 +58,11 @@ class _SnPM(object):
 
 class _SnPM0D(_SnPM):
     '''Parent class for all 0D non-parametric SPM classes.'''
-    def __init__(self, z, perm=None, isinlist=False):
+    def __init__(self, z, mgr, isinlist=False):
         z                   = 0 if np.isnan(z) else z
-        self.permuter       = perm             #permuter (for conducting inference)
-        self.nPermUnique    = None if isinlist else perm.nPermTotal  #number of unique permutations possible
+        self.mgr            = mgr
+        self.permuter       = mgr.permuter     #permuter (for conducting inference)
+        self.nPermUnique    = None if isinlist else self.permuter.nPermTotal  #number of unique permutations possible
         self.z              = z                #test statistic
         self.isinlist       = isinlist         #is this object in a list (i.e. two- or three-way ANOVA)
 
@@ -94,7 +95,22 @@ class _SnPM0D(_SnPM):
             snpm  = SnPM0Dinference(self, alpha, zstar, p)
         return snpm
 
-
+    # def inference(self, alpha=0.05, iterations=-1, two_tailed=False, interp=True, circular=False, force_iterations=False, cluster_metric='MaxClusterIntegral'):
+    #     self._check_iterations(iterations, alpha, force_iterations, self.permuter.nPermTotal)
+    #     ### build primary PDF:
+    #     self.mgr.permute( niter=iterations, two_tailed=two_tailed )
+    #     zstar  = self.mgr.inference(alpha, two_tailed=two_tailed)
+    #     # ### build secondary PDF:
+    #     self.mgr.set_metric( cluster_metric )
+    #     self.mgr.build_secondary_pdf( zstar, circular )
+    #     ### assemble clusters and conduct cluster-level inference:
+    #     clusters   = self._get_clusters(zstar, two_tailed, interp, circular, iterations, cluster_metric)
+    #     clusters   = self._cluster_inference(alpha, clusters, two_tailed)
+    #     if self.isanova:
+    #         Fi     = SnPMiF(self, alpha, zstar, clusters)
+    #     else:
+    #         Fi     = SnPMinference(self, alpha, zstar, two_tailed, clusters)
+    #     return Fi
 
 
 
@@ -103,10 +119,11 @@ class SnPM0D_T(_SnPM0D):
     STAT = 'T'
     def inference(self, alpha=0.05, two_tailed=True, iterations=-1, force_iterations=False):
         self._check_iterations(iterations, alpha, force_iterations, self.permuter.nPermTotal)
-        self.permuter.build_pdf(iterations)
+        self.mgr.permute(iterations, two_tailed)
         alpha0    = 0.5*alpha if two_tailed else alpha
-        zstar     = self.permuter.get_z_critical(alpha0, two_tailed)
-        p         = self.permuter.get_p_value(self.z, zstar, alpha)
+        zstar    = self.mgr.inference(alpha, two_tailed)
+        # zstar     = self.permuter.get_z_critical(alpha0, two_tailed)
+        p         = self.mgr.get_p_value_0d(self.z, zstar, alpha)
         return SnPM0Dinference(self, alpha, zstar, p, two_tailed)
 
 class SnPM0D_F(_SnPM0D, _SPMF):
@@ -129,11 +146,11 @@ class SnPM0Dinference(_SnPM0D):
     isanova = False
 
     def __init__(self, spm, alpha, zstar, p, two_tailed=False, isinlist=False):
-        super(SnPM0Dinference, self).__init__(spm.z, spm.permuter, isinlist=isinlist)
+        super(SnPM0Dinference, self).__init__(spm.z, spm.mgr, isinlist=isinlist)
         self.STAT           = spm.STAT
-        self.PDF            = None if isinlist else self.permuter.Z       #permutation PDF
+        self.PDF            = None if isinlist else self.mgr.Z       #permutation PDF
         self.alpha          = alpha                 #Type I error rate
-        self.nPerm          = None if isinlist else self.permuter.Z.size  #number of permutations
+        self.nPerm          = None if isinlist else self.mgr.Z.size  #number of permutations
         self.p              = p                     #P values for each cluster
         self.two_tailed     = two_tailed            #two-tailed test boolean
         self.h0reject       = None                  #null rejection decision

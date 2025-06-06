@@ -18,6 +18,21 @@ class PermutationTestManager(object):
     def dim(self):
         return self.y.ndim - 1
 
+    def _constrain_p(self, alpha, zstar, z, p):
+        two_tailed    = isinstance(zstar, tuple)
+        ### set miminum and maximum p values:
+        minp     = 1 / self.Z.size
+        maxp     = 1 - minp
+        ### adjust the p value to alpha if (z > z*) but (p > alpha)
+        zc0,zc1       = zstar if two_tailed else (-np.inf, zstar)
+        if (z > zc1) and (p > alpha):
+            p         = alpha
+        elif (z < zc0) and (p > alpha):
+            p         = alpha
+        ### substitute with min/max p value if applicable:
+        p = min( max(p, minp), maxp )
+        return p
+
 
     def _inference_0d(self, alpha):
         return np.percentile(self.Z, 100*(1-alpha), interpolation='midpoint')
@@ -36,6 +51,18 @@ class PermutationTestManager(object):
 
     def build_secondary_pdf(self, zstar, circular=False):
         self.Z2 = np.array([self.metric.get_max_metric(z, zstar, circular)   for z in self.ZZ])
+    
+    def get_p_value_0d(self, z, zstar, alpha):
+        if isinstance(zstar, tuple):  # two-tailed
+            if z>0:
+                p = 2 * (self.Z > z).mean()
+            else:
+                p = 2 * (self.Z < z).mean()
+        else:
+            p = (self.Z > z).mean()
+        p = self._constrain_p(alpha, zstar, z, p)
+        return p
+        
     
     def inference(self, alpha, two_tailed=False):
         if self.dim == 0:
