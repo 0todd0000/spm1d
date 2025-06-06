@@ -32,7 +32,7 @@ class RegressionPermuter(object):
                 yield (list(c),)
                 
     def random(self):
-        return np.random.permutation( self.n )
+        return (np.random.permutation( self.n ),)
 
 
 class SingleSamplePermuter(object):
@@ -59,7 +59,7 @@ class SingleSamplePermuter(object):
                 yield (c,)
                 
     def random(self):
-        return 2*np.random.binomial(1, 0.5, self.n) - 1
+        return (2*np.random.binomial(1, 0.5, self.n) - 1, )
 
 
 class MultiFactorPermuter(object):

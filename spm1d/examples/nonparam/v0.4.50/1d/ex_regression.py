@@ -17,7 +17,7 @@ y,x        = y[:n], x[:n]
 
 # conduct inference:
 two_tailed = True
-niter      = -1
+niter      = 1000
 alpha      = 0.05
 spmi       = spm1d.stats.regress(y, x).inference(alpha, two_tailed=two_tailed)
 snpmi      = spm1d.stats.nonparam.regress(y, x).inference(alpha, iterations=niter, two_tailed=two_tailed)
