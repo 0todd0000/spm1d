@@ -42,7 +42,7 @@ def ttest2(y0, y1, roi=None):
     from . permuters import MultiFactorPermuter
     from . calculators import CalculatorTtest2
     n0,n1    = y0.shape[0], y1.shape[0]
-    y        = np.vstack([y0,y1])
+    y        = np.hstack([y0.T, y1.T]).T
     A        = np.array(  [0]*n0 + [1]*n1 )
     mgr      = PermutationTestManager(y)
     perm     = MultiFactorPermuter(A)
