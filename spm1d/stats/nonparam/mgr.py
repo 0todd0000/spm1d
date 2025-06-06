@@ -38,7 +38,9 @@ class PermutationTestManager(object):
         return np.percentile(self.Z, 100*(1-alpha), interpolation='midpoint')
 
     def _inference_0d_twotailed(self, alpha):
-        return tuple(np.percentile(self.Z, [100*0.5*alpha,100*(1-0.5*alpha)], interpolation='midpoint'))
+        print("_inference_0d_twotailed")
+        zc0,zc1 = np.percentile(self.Z, [100*0.5*alpha,100*(1-0.5*alpha)], interpolation='midpoint', axis=0)
+        return float(zc0), float(zc1)
 
     def _inference_1d(self, alpha):
         self.Z = self.ZZ.max(axis=1)
@@ -79,7 +81,7 @@ class PermutationTestManager(object):
     def permute(self, niter=-1, two_tailed=False):
         perm = self.permuter
         if niter == -1:
-            if two_tailed:
+            if two_tailed and self.dim==1:
                 Z = np.array([self.calc.teststat(self.y, *c)  for c in perm.combinations_half])
             else:
                 Z = np.array([self.calc.teststat(self.y, *c)  for c in perm.combinations])

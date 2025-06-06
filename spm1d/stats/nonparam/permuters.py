@@ -49,12 +49,12 @@ class SingleSamplePermuter(object):
 
     @property
     def combinations(self):
-        for c in itertools.product((-1,1), repeat=self.n):
+        for c in itertools.product((1,-1), repeat=self.n):
             yield (c,) 
 
     @property
     def combinations_half(self):
-        for i,c in enumerate( itertools.product((-1,1), repeat=self.n) ):
+        for i,c in enumerate( itertools.product((1,-1), repeat=self.n) ):
             if i < self.ncomb/2:
                 yield (c,)
                 
