@@ -4,19 +4,31 @@ import numpy as np
 
 class PermutationTestManager(object):
     def __init__(self, y, roi=None):
+        self.I        = 1
+        self.J        = y.shape[0]
+        self.Q        = y.shape[1]
         self.ZZ       = None  # all permuted test statistic fields
         self.Z        = None  # permutation teststat distribution
         self.Z2       = None  # secondary (cluster metric) permutation distribution
         self.calc     = None  # test statistic calculator
         self.metric   = None  # metric for secondary distribution
         self.permuter = None  # permuter object
-        self.roi      = roi
+        self.roi      = None
+        self._roin    = None
         self.y        = y     # dv array
+        self._set_roi( roi )
 
         
     @property
     def dim(self):
         return self.y.ndim - 1
+
+    @property
+    def hasroi(self):
+        return self.roi is not None
+
+    def ismultivariate(self):
+        return self.y.ndim == 3
 
     def _constrain_p(self, alpha, zstar, z, p):
         two_tailed    = isinstance(zstar, tuple)
@@ -51,6 +63,16 @@ class PermutationTestManager(object):
         self.Z = np.abs(self.ZZ).max(axis=1)
         return np.percentile(self.Z, 100*(1-alpha), interpolation='midpoint')
 
+
+    def _set_roi(self, roi):
+        print("_set_roi", roi)
+        if roi is not None:
+            self.roi    = np.asarray(roi, dtype=bool)
+            self._roin  = np.logical_not( self.roi )
+            roi         = np.asarray( [self.roi]*self.J, dtype=bool )
+            if self.ismultivariate:
+                roi     = np.dstack( [roi]*self.I )
+            self.y      = np.ma.masked_array( self.y, np.logical_not(roi)  )
 
     def build_secondary_pdf(self, zstar, circular=False):
         self.Z2 = np.array([self.metric.get_max_metric(z, zstar, circular)   for z in self.ZZ])

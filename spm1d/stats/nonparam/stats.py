@@ -27,7 +27,7 @@ def ttest(y, mu=None, roi=None):
     from . permuters import SingleSamplePermuter
     from . calculators import CalculatorTtest
     n        = y.shape[0]
-    mgr      = PermutationTestManager(y)
+    mgr      = PermutationTestManager(y, roi=roi)
     perm     = SingleSamplePermuter(n)
     calc     = CalculatorTtest(n, mu)
     mgr.set_permuter( perm )
