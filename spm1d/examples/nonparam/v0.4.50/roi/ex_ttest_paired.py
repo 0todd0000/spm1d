@@ -17,14 +17,19 @@ y0,y1        = dataset.get_data()
 # y1 = spm1d.util.smooth(y1, 8)
 
 
+# define region of interest(ROI):
+roi        = np.array( [False]*y0.shape[1] )
+roi[70:80] = True
+
+
 
 # conduct inference:
 two_tailed = True
 niter      = -1
 alpha      = 0.05
-spmi       = spm1d.stats.ttest_paired(y1, y0).inference(alpha, two_tailed=two_tailed)
-snpmi      = spm1d.stats.nonparam.ttest_paired(y1, y0).inference(alpha, iterations=niter, two_tailed=two_tailed)
-snpmio     = spm1d.stats.nonparam_old.ttest_paired(y1, y0).inference(alpha, iterations=niter, two_tailed=two_tailed)
+spmi       = spm1d.stats.ttest_paired(y1, y0, roi=roi).inference(alpha, two_tailed=two_tailed)
+snpmi      = spm1d.stats.nonparam.ttest_paired(y1, y0, roi=roi).inference(alpha, iterations=niter, two_tailed=two_tailed)
+snpmio     = spm1d.stats.nonparam_old.ttest_paired(y1, y0, roi=roi).inference(alpha, iterations=niter, two_tailed=two_tailed)
 print( 'Critical thresholds:')
 print( f'   Parametric:           {spmi.zstar:.5f}')
 print( f'   Nonparametric:        {snpmi.zstar:.5f}')

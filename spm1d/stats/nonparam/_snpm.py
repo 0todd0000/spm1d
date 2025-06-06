@@ -95,23 +95,6 @@ class _SnPM0D(_SnPM):
             snpm  = SnPM0Dinference(self, alpha, zstar, p)
         return snpm
 
-    # def inference(self, alpha=0.05, iterations=-1, two_tailed=False, interp=True, circular=False, force_iterations=False, cluster_metric='MaxClusterIntegral'):
-    #     self._check_iterations(iterations, alpha, force_iterations, self.permuter.nPermTotal)
-    #     ### build primary PDF:
-    #     self.mgr.permute( niter=iterations, two_tailed=two_tailed )
-    #     zstar  = self.mgr.inference(alpha, two_tailed=two_tailed)
-    #     # ### build secondary PDF:
-    #     self.mgr.set_metric( cluster_metric )
-    #     self.mgr.build_secondary_pdf( zstar, circular )
-    #     ### assemble clusters and conduct cluster-level inference:
-    #     clusters   = self._get_clusters(zstar, two_tailed, interp, circular, iterations, cluster_metric)
-    #     clusters   = self._cluster_inference(alpha, clusters, two_tailed)
-    #     if self.isanova:
-    #         Fi     = SnPMiF(self, alpha, zstar, clusters)
-    #     else:
-    #         Fi     = SnPMinference(self, alpha, zstar, two_tailed, clusters)
-    #     return Fi
-
 
 
 
@@ -123,7 +106,7 @@ class SnPM0D_T(_SnPM0D):
         # alpha0    = 0.5*alpha if two_tailed else alpha
         zstar    = self.mgr.inference(alpha, two_tailed)
         # zstar     = self.permuter.get_z_critical(alpha0, two_tailed)
-        p         = self.mgr.get_p_value_0d(self.z, zstar, alpha)
+        p         = self.mgr.get_p_value(self.z, zstar, alpha)
         return SnPM0Dinference(self, alpha, zstar, p, two_tailed)
 
 class SnPM0D_F(_SnPM0D, _SPMF):

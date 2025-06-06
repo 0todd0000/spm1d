@@ -15,13 +15,19 @@ y,x        = y[:n], x[:n]
 
 
 
+# define region of interest(ROI):
+roi        = np.array( [False]*y.shape[1] )
+roi[70:80] = True
+
+
+
 # conduct inference:
 two_tailed = True
 niter      = 1000
 alpha      = 0.05
-spmi       = spm1d.stats.regress(y, x).inference(alpha, two_tailed=two_tailed)
-snpmi      = spm1d.stats.nonparam.regress(y, x).inference(alpha, iterations=niter, two_tailed=two_tailed)
-snpmio     = spm1d.stats.nonparam_old.regress(y, x).inference(alpha, iterations=niter, two_tailed=two_tailed)
+spmi       = spm1d.stats.regress(y, x, roi=roi).inference(alpha, two_tailed=two_tailed)
+snpmi      = spm1d.stats.nonparam.regress(y, x, roi=roi).inference(alpha, iterations=niter, two_tailed=two_tailed)
+snpmio     = spm1d.stats.nonparam_old.regress(y, x, roi=roi).inference(alpha, iterations=niter, two_tailed=two_tailed)
 print( 'Critical thresholds:')
 print( f'   Parametric:           {spmi.zstar:.5f}')
 print( f'   Nonparametric:        {snpmi.zstar:.5f}')
