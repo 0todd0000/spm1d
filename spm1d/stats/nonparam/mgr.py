@@ -20,10 +20,10 @@ class PermutationTestManager(object):
 
 
     def _inference_0d(self, alpha):
-        pass
+        return np.percentile(self.Z, 100*(1-alpha), interpolation='midpoint')
 
     def _inference_0d_twotailed(self, alpha):
-        pass
+        return tuple(np.percentile(self.Z, [100*0.5*alpha,100*(1-0.5*alpha)], interpolation='midpoint'))
 
     def _inference_1d(self, alpha):
         self.Z = self.ZZ.max(axis=1)
@@ -53,11 +53,15 @@ class PermutationTestManager(object):
         perm = self.permuter
         if niter == -1:
             if two_tailed:
-                self.ZZ = np.array([self.calc.teststat(self.y, *c)  for c in perm.combinations_half])
+                Z = np.array([self.calc.teststat(self.y, *c)  for c in perm.combinations_half])
             else:
-                self.ZZ = np.array([self.calc.teststat(self.y, *c)  for c in perm.combinations])
+                Z = np.array([self.calc.teststat(self.y, *c)  for c in perm.combinations])
         else:
-            self.ZZ = np.array([self.calc.teststat(self.y, *perm.random())  for i in range(niter)])
+            Z = np.array([self.calc.teststat(self.y, *perm.random())  for i in range(niter)])
+        if self.dim == 1:
+            self.ZZ = Z
+        else:
+            self.Z  = Z
     
     def set_calculator(self, calc):
         self.calc = calc
