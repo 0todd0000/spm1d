@@ -208,8 +208,8 @@ class CalculatorRegress1D(CalculatorRegress0D):
         y      = y[ind]
         # b      = self.Xi @ y            #parameters
         # eij    = y - self.X @ b           #residuals
-        b      = np.dot(self.Xi, y)            #parameters
-        eij    = y - np.dot(self.X, b)           #residuals
+        b      = np.ma.dot(self.Xi, y)            #parameters
+        eij    = y - np.ma.dot(self.X, b)           #residuals
         # # previous sigma2 calculation (slow when Q get large: about 5 ms for Q=1000 and about 900 ms for Q=10000! )
         # R      = eij.T@eij              #residuals: sum of squares
         # sigma2 = np.diag(R)/df          #variance
@@ -217,7 +217,7 @@ class CalculatorRegress1D(CalculatorRegress0D):
         diagR  = np.einsum('ij,ji->i', eij.T, eij)  # residual sum of squares (eigensum trick)
         sigma2 = diagR / self.df          #variance
         # t      = np.array(self.c @ b).flatten()  /   ((sigma2*self.cXXc)**0.5 + eps)
-        t      = np.array(np.dot(self.c, b)).flatten()  /   ((sigma2*self.cXXc)**0.5 + eps)
+        t      = np.array(np.ma.dot(self.c, b)).flatten()  /   ((sigma2*self.cXXc)**0.5 + eps)
         return t
 
 

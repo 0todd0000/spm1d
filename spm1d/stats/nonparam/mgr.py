@@ -89,6 +89,16 @@ class PermutationTestManager1D(_PermutationTestManager):
     def hasroi(self):
         return self.roi is not None
 
+    # def _mask_dv(self):
+    #     y = self.y
+    #     if self.roi is not None:
+    #         roi = self.roi
+    #         if self.ismultivariate:
+    #             roi     = np.dstack( [roi]*self.I )
+    #         y = np.ma.masked_array( y, np.logical_not(roi)  )
+    #     return y
+            
+    
     def _set_roi(self, roi):
         if roi is not None:
             self.roi    = np.asarray(roi, dtype=bool)
