@@ -64,5 +64,7 @@ plt.show()
 
 
 
-
-
+import pytest
+spm,snpm = spmi, snpmi
+b = np.array(spm.z) == pytest.approx(np.array(snpm.z), abs=1e-4)
+print( b )

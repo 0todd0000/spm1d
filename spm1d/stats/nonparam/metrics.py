@@ -52,7 +52,7 @@ class MaxClusterHeight(_Metric):
 class MaxClusterIntegral(_Metric):
     def get_single_cluster_metric(self, z, thresh, i):
         if i.sum()==1:
-            x = float(z[i]) - thresh
+            x = float(z[i][0]) - thresh
         else:
             x = np.trapz(  z[i]-thresh  )
         return x

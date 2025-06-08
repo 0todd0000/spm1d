@@ -1,10 +1,13 @@
 
 import numpy as np
 
+percentile = lambda x,perc: np.percentile(x, perc, method='linear')
+
 
 
 class _PermutationTestManager(object):
     def __init__(self, y, mv=False):
+        self._two_tailed    = False
         self.J              = y.shape[0]
         self.Z              = None  # permutation teststat distribution
         self.calc           = None  # test statistic calculator
@@ -15,6 +18,17 @@ class _PermutationTestManager(object):
     @property
     def dim(self):
         return self.y.ndim - 1
+
+    @property
+    def minp(self):  # minimum possible p-value given the number of permutations
+        p = None if (self.Z is None) else (1 / self.nPermActual)
+        if self._two_tailed:
+            p /= 2
+        return p
+
+    @property
+    def nPermActual(self):
+        return None if (self.Z is None) else self.Z.shape[0]
 
     def _constrain_p(self, alpha, zstar, z, p):
         two_tailed    = isinstance(zstar, tuple)
@@ -45,11 +59,12 @@ class PermutationTestManager0D(_PermutationTestManager):
         self.I = y.shape[1] if mv else 1
 
     def inference(self, alpha, two_tailed=False):
+        self._two_tailed = two_tailed
         if two_tailed:
-            zc0,zc1 = np.percentile(self.Z, [100*0.5*alpha,100*(1-0.5*alpha)], interpolation='midpoint')
+            zc0,zc1 = percentile(self.Z, [100*0.5*alpha,100*(1-0.5*alpha)])
             return float(zc0), float(zc1)
         else:
-            return float( np.percentile(self.Z, 100*(1-alpha), interpolation='midpoint') )
+            return float( percentile(self.Z, 100*(1-alpha)) )
     
     def get_p_value(self, z, zstar, alpha):
         if isinstance(zstar, tuple):  # two-tailed
@@ -64,6 +79,7 @@ class PermutationTestManager0D(_PermutationTestManager):
         
 
     def permute(self, niter=-1, two_tailed=False):
+        self._two_tailed = two_tailed
         perm = self.permuter
         if niter == -1:
             self.Z = np.array([self.calc.teststat(self.y, *c)  for c in perm.combinations])
@@ -114,16 +130,18 @@ class PermutationTestManager1D(_PermutationTestManager):
         self.Z2 = np.array([self.metric.get_max_metric(z, zstar, circular)   for z in np.array(self.ZZ)])
     
     def inference(self, alpha, two_tailed=False):
+        self._two_tailed = two_tailed
         if two_tailed:
             # since abs(z) is used alpha mustn't be multiplied by 0.5
             # self.Z = np.abs(self.ZZ).max(axis=1)
             self.Z = np.array(  np.ma.abs(self.ZZ).max(axis=1)  ) # convert masked array to array if needed
         else:
             self.Z = np.array( self.ZZ.max(axis=1) ) # convert masked array to array if needed
-        zc = np.percentile(self.Z, 100*(1-alpha), interpolation='midpoint')
+        zc = percentile(self.Z, 100*(1-alpha))
         return zc
             
     def permute(self, niter=-1, two_tailed=False):
+        self._two_tailed = two_tailed
         perm = self.permuter
         if niter == -1:
             if two_tailed:

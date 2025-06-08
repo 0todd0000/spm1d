@@ -18,13 +18,13 @@ def plot_other_thresholds(ax, spms, colors):
 # load data
 dataset      = spm1d.data.uv1d.t2.SmallSampleLargePosNegEffects()
 y0,y1        = dataset.get_data()
-# # OR create a random dataset:
-# np.random.seed(0)
-# n  = 4
-# y0 = np.random.randn(n,101)
-# y1 = np.random.randn(n,101) + 2*np.sin( np.linspace(0,10,101) )
-# y0 = spm1d.util.smooth(y0, 8)
-# y1 = spm1d.util.smooth(y1, 8)
+# OR create a random dataset:
+np.random.seed(0)
+n  = 6
+y0 = np.random.randn(n,101)
+y1 = np.random.randn(n,101) + 2*np.sin( np.linspace(0,10,101) )
+y0 = spm1d.util.smooth(y0, 8)
+y1 = spm1d.util.smooth(y1, 8)
 
 
 # define region of interest(ROI):
