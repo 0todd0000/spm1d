@@ -86,9 +86,12 @@ class _SnPM0D(_SnPM):
         if self.isinlist:
             raise( NotImplementedError( 'Non-parametric inference must be conducted using the parent SnPMList (for two- and three-way ANOVA).' ) )
         self._check_iterations(iterations, alpha, force_iterations, self.permuter.nPermTotal)
-        self.permuter.build_pdf(iterations)
-        zstar     = self.permuter.get_z_critical(alpha)
-        p         = self.permuter.get_p_value(self.z, zstar, alpha)
+        # self.permuter.build_pdf(iterations)
+        # zstar     = self.permuter.get_z_critical(alpha)
+        # p         = self.permuter.get_p_value(self.z, zstar, alpha)
+        self.mgr.permute(iterations)
+        zstar    = self.mgr.inference(alpha)
+        p        = self.mgr.get_p_value(self.z, zstar, alpha)
         if self.isanova:
             snpm  = SnPM0DiF(self, alpha, zstar, p)
         else:
