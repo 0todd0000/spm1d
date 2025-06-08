@@ -3,7 +3,7 @@
 
 import numpy as np
 from ... rft1d.geom import bwlabel
-
+trapezoid = np.trapezoid if hasattr(np, 'trapezoid') else np.trapz
 
 
 class _Metric(object):
@@ -54,14 +54,14 @@ class MaxClusterIntegral(_Metric):
         if i.sum()==1:
             x = float(z[i][0]) - thresh
         else:
-            x = np.trapz(  z[i]-thresh  )
+            x = trapezoid(  z[i]-thresh  )
         return x
 
     def get_single_cluster_metric_xz(self, x, z, zstar, two_tailed=False):
         if x.size==1:
             m = float(z - zstar)
         else:
-            m = np.trapz(  z - zstar  )
+            m = trapezoid(  z - zstar  )
         if two_tailed and (m < 0):
             m *= -1
         return m
