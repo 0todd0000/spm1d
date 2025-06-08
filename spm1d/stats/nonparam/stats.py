@@ -32,19 +32,39 @@ def anova1(y, A, roi=None):
     return _spm_object('F', z, mgr)
 
 
-def anova1rm(y, A, S, roi=None):
-    from .. nonparam_old import anova1rm as anova1rm_old
-    return anova1rm_old(y, A, S, roi=roi)
-    
-    # from . permuters import MultiFactorPermuter
-    # from . calculators import CalculatorANOVA1rm
-    # mgr      = get_perm_mgr(y, mv=False, roi=roi)
-    # perm     = MultiFactorPermuter(A)
-    # calc     = CalculatorANOVA1rm(A, S)
-    # mgr.set_permuter( perm )
-    # mgr.set_calculator( calc )
-    # z        = calc.teststat(mgr.y, A, S)  # use mgr.y bacause it may be masked via roi
-    # return _spm_object('F', z, mgr)
+'''
+anova1rm and higher-order designs can not yet be implemented
+because spm1d v0.4.X requires design balance
+'''
+
+from .. nonparam_old import anova1rm
+
+from .. nonparam_old import anova2
+from .. nonparam_old import anova2nested
+from .. nonparam_old import anova2onerm
+from .. nonparam_old import anova2rm
+
+from .. nonparam_old import anova3
+from .. nonparam_old import anova3nested
+from .. nonparam_old import anova3onerm
+from .. nonparam_old import anova3tworm
+from .. nonparam_old import anova3rm
+
+
+# def anova1rm(y, A, S, roi=None):
+#     from .. nonparam_old import anova1rm as anova1rm_old
+#     return anova1rm_old(y, A, S, roi=roi)
+#
+#     # from . permuters import MultiFactorPermuter
+#     # from . calculators import CalculatorANOVA1rm
+#     # mgr      = get_perm_mgr(y, mv=False, roi=roi)
+#     # perm     = MultiFactorPermuter(A)
+#     # calc     = CalculatorANOVA1rm(A, S)
+#     # mgr.set_permuter( perm )
+#     # mgr.set_calculator( calc )
+#     # z        = calc.teststat(mgr.y, A, S)  # use mgr.y bacause it may be masked via roi
+#     # return _spm_object('F', z, mgr)
+
 
 
 def regress(y, x, roi=None):
