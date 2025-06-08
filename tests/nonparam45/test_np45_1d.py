@@ -46,7 +46,7 @@ def test_ttest():
         assert spm.z == pytest.approx(snpm.z, abs=1e-4)
         assert spm.zstar == pytest.approx(snpm.zstar, abs=zctol)
         for p in snpm.p:
-            assert (p>=snpm.mgr.minp) and (p<=alpha) 
+            assert (p>=snpm.mgr.minp) and (p<=alpha)
 
 def test_ttest_paired():
     alpha       = 0.05
@@ -64,7 +64,7 @@ def test_ttest_paired():
         assert spm.z == pytest.approx(snpm.z, abs=1e-4)
         assert spm.zstar == pytest.approx(snpm.zstar, abs=zctol)
         for p in snpm.p:
-            assert (p>=snpm.mgr.minp) and (p<=alpha) 
+            assert (p>=snpm.mgr.minp) and (p<=alpha)
 
 def test_ttest2():
     alpha       = 0.05

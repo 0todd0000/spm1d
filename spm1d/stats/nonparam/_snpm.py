@@ -242,7 +242,7 @@ class _SnPM1D(_SnPM, _spm._SPM):
         for cluster in clusters:
             cluster.inference(alpha, self.mgr.Z2, two_tailed)
             if two_tailed:
-                cluster.P *= 2
+                cluster.P = min(alpha, 2*cluster.P)
         return clusters
 
     def _get_clusters(self, zstar, two_tailed, interp, circular, iterations, cluster_metric, z=None):
