@@ -5,6 +5,15 @@ import spm1d
 import spm1d.stats.nonparam_old
 
 
+def plot_other_thresholds(ax, spms, colors):
+    from spm1d._plot import SPMiPlotter
+    plotter0 = SPMiPlotter(snpmi, ax=ax)
+    plotter1 = SPMiPlotter(snpmio, ax=ax)
+    h0 = plotter0.plot_threshold( color=colors[0])[0][0]
+    h1 = plotter1.plot_threshold( color=colors[1])[0][0]
+    return h0,h1
+
+
 # load data
 dataset    = spm1d.data.uv1d.t1.Random()
 dataset    = spm1d.data.uv1d.t1.SimulatedPataky2015a()
@@ -26,7 +35,7 @@ roi[70:80] = True
 
 
 # conduct inference:
-two_tailed = True
+two_tailed = False
 niter      = -1
 alpha      = 0.05
 spmi       = spm1d.stats.ttest(y, mu, roi=roi).inference(alpha, two_tailed=two_tailed)
@@ -41,14 +50,16 @@ print( f'   Nonparametric (old):  {snpmio.zstar:.5f}')
 
 # plot:
 plt.close('all')
-fig,axs = plt.subplots(1, 2, figsize=(8,3), tight_layout=True)
-axs[0].plot(y.T, 'k', lw=0.5)
-ax = axs[1]
-spmi.plot(ax=ax)
-ax.plot( snpmi.z, 'c' )
-ax.axhline(snpmi.zstar, color='c', linestyle='--', label='SnPM')
-ax.axhline(snpmio.zstar, color='r', linestyle='--', label='SnPM (old)')
-ax.legend()
+fig,axs = plt.subplots(2, 2, figsize=(8,6), tight_layout=True)
+axs[0,0].plot(y.T, 'k', lw=0.5)
+labels = ['SPM', 'SnPM', 'SnPM (Old)']
+for ax,spm,label in zip(axs.ravel()[1:], [spmi, snpmi, snpmio], labels):
+    spm.plot(ax=ax)
+    ax.set_title( label )
+    ax.set_ylabel('t-value')
+ax = axs[0,1]
+h0,h1 = plot_other_thresholds(ax, [snpmi, snpmio], ['c','r'])
+ax.legend([h0,h1],['SnPM', 'SnPM (Old)'])
 plt.show()
 
 

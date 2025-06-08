@@ -81,8 +81,9 @@ class PermutationTestManager1D(_PermutationTestManager):
         self.ZZ       = None  # all permuted test statistic fields
         self.Z2       = None  # secondary (cluster metric) permutation distribution
         self.metric   = None  # metric for secondary distribution
+        self.msk      = None
         self.roi      = None
-        self._roin    = None
+        # self._roin    = None
         self._set_roi( roi )
         
     @property
@@ -102,34 +103,42 @@ class PermutationTestManager1D(_PermutationTestManager):
     def _set_roi(self, roi):
         if roi is not None:
             self.roi    = np.asarray(roi, dtype=bool)
-            self._roin  = np.logical_not( self.roi )
-            roi         = np.asarray( [self.roi]*self.J, dtype=bool )
+            # self._roin  = np.logical_not( self.roi )
+            self.msk    = np.logical_not(self.roi)
+            msk         = np.asarray( [self.msk]*self.J, dtype=bool )
             if self.ismultivariate:
-                roi     = np.dstack( [roi]*self.I )
-            self.y      = np.ma.masked_array( self.y, np.logical_not(roi)  )
+                msk     = np.dstack( [msk]*self.I )
+            self.y      = np.ma.masked_array( self.y, msk  )
     
     def build_secondary_pdf(self, zstar, circular=False):
-        self.Z2 = np.array([self.metric.get_max_metric(z, zstar, circular)   for z in self.ZZ])
+        self.Z2 = np.array([self.metric.get_max_metric(z, zstar, circular)   for z in np.array(self.ZZ)])
     
     def inference(self, alpha, two_tailed=False):
         if two_tailed:
             # since abs(z) is used alpha mustn't be multiplied by 0.5
-            self.Z = np.abs(self.ZZ).max(axis=1)
-            zc = np.percentile(self.Z, 100*(1-alpha), interpolation='midpoint')
+            # self.Z = np.abs(self.ZZ).max(axis=1)
+            self.Z = np.array(  np.ma.abs(self.ZZ).max(axis=1)  ) # convert masked array to array if needed
         else:
-            self.Z = self.ZZ.max(axis=1)
-            zc = np.percentile(self.Z, 100*(1-alpha), interpolation='midpoint')
+            self.Z = np.array( self.ZZ.max(axis=1) ) # convert masked array to array if needed
+        zc = np.percentile(self.Z, 100*(1-alpha), interpolation='midpoint')
         return zc
             
     def permute(self, niter=-1, two_tailed=False):
         perm = self.permuter
         if niter == -1:
             if two_tailed:
-                self.ZZ = np.array([self.calc.teststat(self.y, *c)  for c in perm.combinations_half])
+                ZZ = [self.calc.teststat(self.y, *c)  for c in perm.combinations_half]
             else:
-                self.ZZ = np.array([self.calc.teststat(self.y, *c)  for c in perm.combinations])
+                ZZ = [self.calc.teststat(self.y, *c)  for c in perm.combinations]
         else:
-            self.ZZ = np.array([self.calc.teststat(self.y, *perm.random())  for i in range(niter)])
+            ZZ = [self.calc.teststat(self.y, *perm.random())  for i in range(niter)]
+        if self.hasroi:
+            msk     = np.asarray( [self.msk]*len(ZZ), dtype=bool )
+            self.ZZ = np.ma.masked_array( ZZ, msk )
+        else:
+            self.ZZ = np.array(ZZ)
+            
+            
 
     def set_metric(self, metric_name):
         from . metrics import metric_dict

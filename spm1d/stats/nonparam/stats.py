@@ -21,7 +21,7 @@ def regress(y, x, roi=None):
     calc     = CalculatorRegress1D(x) if mgr.dim==1 else CalculatorRegress0D(x)
     mgr.set_permuter( perm )
     mgr.set_calculator( calc )
-    z        = calc.teststat(y, list(range(n)))
+    z        = calc.teststat(mgr.y, list(range(n)))  # use mgr.y bacause it may be masked via roi
     return _spm_object('T', z, mgr)
     
 def ttest(y, mu=None, roi=None):
@@ -33,7 +33,7 @@ def ttest(y, mu=None, roi=None):
     calc     = CalculatorTtest(n, mu)
     mgr.set_permuter( perm )
     mgr.set_calculator( calc )
-    z        = calc.teststat(y, np.ones(n))
+    z        = calc.teststat(mgr.y, np.ones(n))  # use mgr.y bacause it may be masked via roi
     return _spm_object('T', z, mgr)
 
 def ttest_paired(yA, yB, roi=None):
@@ -50,5 +50,5 @@ def ttest2(y0, y1, roi=None):
     calc     = CalculatorTtest2(n0, n1)
     mgr.set_permuter( perm )
     mgr.set_calculator( calc )
-    z        = calc.teststat(y, A)
+    z        = calc.teststat(mgr.y, A)  # use mgr.y bacause it may be masked via roi
     return _spm_object('T', z, mgr)
