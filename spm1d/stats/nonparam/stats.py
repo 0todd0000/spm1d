@@ -1,15 +1,50 @@
 
 import numpy as np
-from . import _snpm
-# from . mgr import PermutationTestManager0D, PermutationTestManager1D
 from . mgr import get_perm_mgr
 
 
 def _spm_object(STAT, z, mgr):
     if STAT=='T':
-        return _snpm.SnPM_T(z, mgr) if (mgr.dim==1) else _snpm.SnPM0D_T(z, mgr)
+        from . _snpm import SnPM_T, SnPM0D_T
+        snpm = SnPM_T(z, mgr) if (mgr.dim==1) else SnPM0D_T(z, mgr)
+    elif STAT=='F':
+        if isinstance(z, list):
+            from . _snpmlist import SnPMFList, SnPMFList0D
+            n    = mgr.nfactors
+            snpm = SnPMFList(z, mgr, nFactors=n) if (mgr.dim==1) else SnPMFList0D(z, mgr, nFactors=n)
+        else:
+            from . _snpm import SnPM_F, SnPM0D_F
+            snpm = SnPM_F(z, mgr) if (mgr.dim==1) else SnPM0D_F(z, mgr)
+    return snpm
 
 
+
+
+def anova1(y, A, roi=None):
+    from . permuters import MultiFactorPermuter
+    from . calculators import CalculatorANOVA1
+    mgr      = get_perm_mgr(y, mv=False, roi=roi)
+    perm     = MultiFactorPermuter(A)
+    calc     = CalculatorANOVA1(A)
+    mgr.set_permuter( perm )
+    mgr.set_calculator( calc )
+    z        = calc.teststat(mgr.y, A)  # use mgr.y bacause it may be masked via roi
+    return _spm_object('F', z, mgr)
+
+
+def anova1rm(y, A, S, roi=None):
+    from .. nonparam_old import anova1rm as anova1rm_old
+    return anova1rm_old(y, A, S, roi=roi)
+    
+    # from . permuters import MultiFactorPermuter
+    # from . calculators import CalculatorANOVA1rm
+    # mgr      = get_perm_mgr(y, mv=False, roi=roi)
+    # perm     = MultiFactorPermuter(A)
+    # calc     = CalculatorANOVA1rm(A, S)
+    # mgr.set_permuter( perm )
+    # mgr.set_calculator( calc )
+    # z        = calc.teststat(mgr.y, A, S)  # use mgr.y bacause it may be masked via roi
+    # return _spm_object('F', z, mgr)
 
 
 def regress(y, x, roi=None):

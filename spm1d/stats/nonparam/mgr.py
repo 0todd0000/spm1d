@@ -27,6 +27,10 @@ class _PermutationTestManager(object):
         return p
 
     @property
+    def nfactors(self):
+        return self.permuter.nfactors
+
+    @property
     def nPermActual(self):
         return None if (self.Z is None) else self.Z.shape[0]
 

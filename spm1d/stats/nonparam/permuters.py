@@ -10,7 +10,8 @@ from . util import permutations_without_repetition
 
 class RegressionPermuter(object):
     def __init__(self, n):
-        self.n = n
+        self.n        = n
+        self.nfactors = 1
 
     @property
     def ncomb(self):
@@ -37,7 +38,8 @@ class RegressionPermuter(object):
 
 class SingleSamplePermuter(object):
     def __init__(self, n):
-        self.n = n
+        self.n        = n
+        self.nfactors = 1
 
     @property
     def ncomb(self):

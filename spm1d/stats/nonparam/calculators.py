@@ -257,42 +257,57 @@ class CalculatorRegress1D(CalculatorRegress0D):
 #     def teststat(self, y):
 #         x2         = [super(CalculatorCCA1D, self).teststat(y[:,i,:])   for i in range(y.shape[1])]
 #         return np.array(x2)
-#
-#
-#
-#
-#
-#
-#
-#
-# #---------------------------------------------------------------------------------
-# #  ANOVA TEST STATISTIC CALCULATORS
-# #---------------------------------------------------------------------------------
-#
+
+
+
+
+
+
+
+
+#---------------------------------------------------------------------------------
+#  ANOVA TEST STATISTIC CALCULATORS
+#---------------------------------------------------------------------------------
+
 # class _CalculatorANOVAsingleF(object):
-#     def teststat(self, y):
-#         model   = models.LinearModel(y, self.design.X)
+#     def teststat(self, y, A):
+#         self.design = designs.ANOVA1(A)
+#         model       = models.LinearModel(y, self.design.X)
 #         model.fit()
-#         F       = aov(model, self.design.contrasts, self.design.f_terms)[0]
+#         F           = aov(model, self.design.contrasts, self.design.f_terms)[0]
 #         return F.z
-#
-# class _CalculatorANOVAmultiF(object):
-#     def teststat(self, y):
-#         model   = models.LinearModel(y, self.design.X)
-#         model.fit()
-#         FF      = aov(model, self.design.contrasts, self.design.f_terms)
-#         return [F.z for F in FF]
-#
-#
-#
-# class CalculatorANOVA1(_CalculatorANOVAsingleF):
-#     def __init__(self, A):
-#         self.design      = designs.ANOVA1(A)
-# class CalculatorANOVA1rm(_CalculatorANOVAsingleF):
-#     def __init__(self, A, SUBJ):
-#         self.design      = designs.ANOVA1rm(A, SUBJ)
-#
-#
+
+class _CalculatorANOVAmultiF(object):
+    def teststat(self, y, A, S):
+        model   = models.LinearModel(y, self.design.X)
+        model.fit()
+        FF      = aov(model, self.design.contrasts, self.design.f_terms)
+        return [F.z for F in FF]
+
+
+
+class CalculatorANOVA1(object):
+    def __init__(self, A):
+        self.design      = designs.ANOVA1(A)
+        
+    def teststat(self, y, A):
+        self.design = designs.ANOVA1(A)
+        model       = models.LinearModel(y, self.design.X)
+        model.fit()
+        F           = aov(model, self.design.contrasts, self.design.f_terms)[0]
+        return F.z
+        
+class CalculatorANOVA1rm(object):
+    def __init__(self, A, S):
+        self.design      = designs.ANOVA1rm(A, S)
+        
+    def teststat(self, y, A, S):
+        self.design = designs.ANOVA1rm(A, S)
+        model       = models.LinearModel(y, self.design.X)
+        model.fit()
+        F           = aov(model, self.design.contrasts, self.design.f_terms)[0]
+        return F.z
+
 #
 # class CalculatorANOVA2(_CalculatorANOVAmultiF):
 #     def __init__(self, A, B):

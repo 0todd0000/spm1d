@@ -241,6 +241,8 @@ class _SnPM1D(_SnPM, _spm._SPM):
     def _cluster_inference(self, alpha, clusters, two_tailed=False):
         for cluster in clusters:
             cluster.inference(alpha, self.mgr.Z2, two_tailed)
+            if two_tailed:
+                cluster.P *= 2
         return clusters
 
     def _get_clusters(self, zstar, two_tailed, interp, circular, iterations, cluster_metric, z=None):

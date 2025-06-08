@@ -9,7 +9,7 @@ Non-parametric hypothesis tests for 1D data (Statistical non-Parametric Mapping)
 
 
 
-
+from . stats import anova1, anova1rm
 from . stats import ttest, ttest2, ttest_paired, regress
 from . ci import ci_onesample, ci_pairedsample, ci_twosample
 
