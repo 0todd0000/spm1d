@@ -7,10 +7,10 @@ import spm1d.stats.nonparam_old
 
 # load data
 dataset    = spm1d.data.uv1d.t1.Random()
-# dataset    = spm1d.data.uv1d.t1.SimulatedPataky2015a()
-# dataset    = spm1d.data.uv1d.t1.SimulatedPataky2015b()
+dataset    = spm1d.data.uv1d.t1.SimulatedPataky2015a()
+dataset    = spm1d.data.uv1d.t1.SimulatedPataky2015b()
 y,mu       = dataset.get_data()
-# OR create a random dataset:
+# # OR create a random dataset:
 # np.random.seed(3)
 # n          = 6
 # y          = np.random.randn(n,101) + 2*np.sin( np.linspace(0,10,101) )
