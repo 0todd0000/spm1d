@@ -28,7 +28,12 @@ jobs:
         pip install setuptools wheel twine
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
 
-    - name: TESTS no_fpr
+    - name: TESTS 0d
       run: |
         export PYTHONPATH="./"
-        pytest tests
+        pytest tests/0d
+
+    - name: TESTS nonparam45
+      run: |
+        export PYTHONPATH="./"
+        pytest tests/nonparam45
