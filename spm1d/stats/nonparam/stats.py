@@ -1,136 +1,122 @@
 
-# Copyright (C) 2025  Todd Pataky
-
 import numpy as np
-from . import permuters, _snpm, _snpmlist
+from . mgr import get_perm_mgr
+
+
+'''
+anova1rm and higher-order designs can not yet be implemented
+because spm1d v0.4.X requires design balance
+
+mv procedures are unaffected by two-sample bug
+'''
+
+from .. nonparam_old import anova1rm
+
+from .. nonparam_old import anova2
+from .. nonparam_old import anova2nested
+from .. nonparam_old import anova2onerm
+from .. nonparam_old import anova2rm
+
+from .. nonparam_old import anova3
+from .. nonparam_old import anova3nested
+from .. nonparam_old import anova3onerm
+from .. nonparam_old import anova3tworm
+from .. nonparam_old import anova3rm
+
+from .. nonparam_old import cca
+from .. nonparam_old import hotellings
+from .. nonparam_old import hotellings_paired
+from .. nonparam_old import hotellings2
+from .. nonparam_old import manova1
 
 
 
-def _get_data_dim(y, ismultivariate=False):
-	n = np.asarray(y).ndim
-	return (n - 2) if ismultivariate else (n - 1)
+# --------- NEW PROCEDURES ---------
 
-def _get_snpm(STAT, perm, nFactors=None):
-	z            = perm.get_test_stat_original()
-	if STAT == 'T':
-		snpm     = _snpm.SnPM0D_T(z, perm) if perm.dim==0 else _snpm.SnPM_T(z, perm)
-	elif STAT == 'T2':
-		snpm     = _snpm.SnPM0D_T2(z, perm) if perm.dim==0 else _snpm.SnPM_T2(z, perm)
-	elif STAT == 'X2':
-		snpm     = _snpm.SnPM0D_X2(z, perm) if perm.dim==0 else _snpm.SnPM_X2(z, perm)
-	elif STAT == 'F':
-		if isinstance(z, list):
-			snpm = _snpmlist.SnPMFList0D(z, perm, nFactors=nFactors) if perm.dim==0 else _snpmlist.SnPMFList(z, perm, nFactors=nFactors)
-		else:
-			snpm = _snpm.SnPM0D_F(z, perm) if perm.dim==0 else _snpm.SnPM_F(z, perm)
-	return snpm
 
+
+def _spm_object(STAT, z, mgr):
+    if STAT=='T':
+        from . _snpm import SnPM_T, SnPM0D_T
+        snpm = SnPM_T(z, mgr) if (mgr.dim==1) else SnPM0D_T(z, mgr)
+    elif STAT=='F':
+        if isinstance(z, list):
+            from . _snpmlist import SnPMFList, SnPMFList0D
+            n    = mgr.nfactors
+            snpm = SnPMFList(z, mgr, nFactors=n) if (mgr.dim==1) else SnPMFList0D(z, mgr, nFactors=n)
+        else:
+            from . _snpm import SnPM_F, SnPM0D_F
+            snpm = SnPM_F(z, mgr) if (mgr.dim==1) else SnPM0D_F(z, mgr)
+    return snpm
 
 
 
 
-### One-way ANOVA:
 def anova1(y, A, roi=None):
-	dim     = _get_data_dim(y)
-	perm    = permuters.PermuterANOVA10D(y, A) if dim==0 else permuters.PermuterANOVA11D(y, roi, A)
-	return _get_snpm( 'F', perm )
-def anova1rm(y, A, SUBJ, roi=None):
-	dim     = _get_data_dim(y)
-	perm    = permuters.PermuterANOVA1rm0D(y, A, SUBJ) if dim==0 else permuters.PermuterANOVA1rm1D(y, roi, A, SUBJ)
-	return _get_snpm( 'F', perm )
+    from . permuters import MultiFactorPermuter
+    from . calculators import CalculatorANOVA1
+    mgr      = get_perm_mgr(y, mv=False, roi=roi)
+    perm     = MultiFactorPermuter(A)
+    calc     = CalculatorANOVA1(A)
+    mgr.set_permuter( perm )
+    mgr.set_calculator( calc )
+    z        = calc.teststat(mgr.y, A)  # use mgr.y bacause it may be masked via roi
+    return _spm_object('F', z, mgr)
 
-### Two-way ANOVA:
-def anova2(y, A, B, roi=None):
-	dim     = _get_data_dim(y)
-	perm    = permuters.PermuterANOVA20D(y, A, B) if dim==0 else permuters.PermuterANOVA21D(y, roi, A, B)
-	return _get_snpm( 'F', perm, nFactors=2 )
-def anova2nested(y, A, B, roi=None):
-	dim     = _get_data_dim(y)
-	perm    = permuters.PermuterANOVA2nested0D(y, A, B) if dim==0 else permuters.PermuterANOVA2nested1D(y, roi, A, B)
-	return _get_snpm( 'F', perm, nFactors=2 )
-def anova2onerm(y, A, B, SUBJ, roi=None):
-	dim     = _get_data_dim(y)
-	perm    = permuters.PermuterANOVA2onerm0D(y, A, B, SUBJ) if dim==0 else permuters.PermuterANOVA2onerm1D(y, roi, A, B, SUBJ)
-	return _get_snpm( 'F', perm, nFactors=2 )
-def anova2rm(y, A, B, SUBJ, roi=None):
-	dim     = _get_data_dim(y)
-	perm    = permuters.PermuterANOVA2rm0D(y, A, B, SUBJ) if dim==0 else permuters.PermuterANOVA2rm1D(y, roi, A, B, SUBJ)
-	return _get_snpm( 'F', perm, nFactors=2 )
 
-### Three-way ANOVA:
-def anova3(y, A, B, C, roi=None):
-	dim     = _get_data_dim(y)
-	perm    = permuters.PermuterANOVA30D(y, A, B, C) if dim==0 else permuters.PermuterANOVA31D(y, roi, A, B, C)
-	return _get_snpm( 'F', perm, nFactors=3 )
-def anova3nested(y, A, B, C, roi=None):
-	dim     = _get_data_dim(y)
-	perm    = permuters.PermuterANOVA3nested0D(y, A, B, C) if dim==0 else permuters.PermuterANOVA3nested1D(y, roi, A, B, C)
-	return _get_snpm( 'F', perm, nFactors=3 )
-def anova3onerm(y, A, B, C, SUBJ, roi=None):
-	dim     = _get_data_dim(y)
-	perm    = permuters.PermuterANOVA3onerm0D(y, A, B, C, SUBJ) if dim==0 else permuters.PermuterANOVA3onerm1D(y, roi, A, B, C, SUBJ)
-	return _get_snpm( 'F', perm, nFactors=3 )
-def anova3tworm(y, A, B, C, SUBJ, roi=None):
-	dim     = _get_data_dim(y)
-	perm    = permuters.PermuterANOVA3tworm0D(y, A, B, C, SUBJ) if dim==0 else permuters.PermuterANOVA3tworm1D(y, roi, A, B, C, SUBJ)
-	return _get_snpm( 'F', perm, nFactors=3 )
-def anova3rm(y, A, B, C, SUBJ, roi=None):
-	dim     = _get_data_dim(y)
-	perm    = permuters.PermuterANOVA3rm0D(y, A, B, C, SUBJ) if dim==0 else permuters.PermuterANOVA3rm1D(y, roi, A, B, C, SUBJ)
-	return _get_snpm( 'F', perm, nFactors=3 )
-	
+# def anova1rm(y, A, S, roi=None):
+#     from .. nonparam_old import anova1rm as anova1rm_old
+#     return anova1rm_old(y, A, S, roi=roi)
+#
+#     # from . permuters import MultiFactorPermuter
+#     # from . calculators import CalculatorANOVA1rm
+#     # mgr      = get_perm_mgr(y, mv=False, roi=roi)
+#     # perm     = MultiFactorPermuter(A)
+#     # calc     = CalculatorANOVA1rm(A, S)
+#     # mgr.set_permuter( perm )
+#     # mgr.set_calculator( calc )
+#     # z        = calc.teststat(mgr.y, A, S)  # use mgr.y bacause it may be masked via roi
+#     # return _spm_object('F', z, mgr)
 
 
 
-
-
-### Basic multivariate tests:
-def cca(y, x, roi=None):
-	dim     = _get_data_dim(y, ismultivariate=True)
-	perm    = permuters.PermuterCCA1D(y, x, roi=roi) if dim==1 else permuters.PermuterCCA0D(y, x)
-	return _get_snpm('X2', perm)
-
-def hotellings(y, mu=None, roi=None):
-	dim     = _get_data_dim(y, ismultivariate=True)
-	perm    = permuters.PermuterHotellings1D(y, mu, roi=roi) if dim==1 else permuters.PermuterHotellings0D(y, mu)
-	return _get_snpm('T2', perm)
-
-def hotellings_paired(yA, yB, roi=None):
-	return hotellings( yA - yB, roi=roi )
-
-def hotellings2(yA, yB, roi=None):
-	dim     = _get_data_dim(yA, ismultivariate=True)
-	perm    = permuters.PermuterHotellings21D(yA, yB, roi=roi) if dim==1 else permuters.PermuterHotellings20D(yA, yB)
-	return _get_snpm('T2', perm)
-
-def manova1(y, A, roi=None):
-	dim     = _get_data_dim(y, ismultivariate=True)
-	perm    = permuters.PermuterMANOVA10D(y, A) if dim==0 else permuters.PermuterMANOVA11D(y, roi, A)
-	return _get_snpm( 'X2', perm )
-
-
-
-
-
-### Basic univariate tests:
 def regress(y, x, roi=None):
-	dim     = _get_data_dim(y)
-	perm    = permuters.PermuterRegress1D(y, x, roi=roi) if dim==1 else permuters.PermuterRegress0D(y, x)
-	return _get_snpm('T', perm)
-
-def ttest(y, mu=0, roi=None):
-	dim     = _get_data_dim(y)
-	perm    = permuters.PermuterTtest1D(y, mu, roi=roi) if dim==1 else permuters.PermuterTtest0D(y, mu)
-	return _get_snpm('T', perm)
+    from . permuters import RegressionPermuter
+    from . calculators import CalculatorRegress0D, CalculatorRegress1D
+    n        = y.shape[0]
+    mgr      = get_perm_mgr(y, mv=False, roi=roi)
+    perm     = RegressionPermuter(n)
+    calc     = CalculatorRegress1D(x) if mgr.dim==1 else CalculatorRegress0D(x)
+    mgr.set_permuter( perm )
+    mgr.set_calculator( calc )
+    z        = calc.teststat(mgr.y, list(range(n)))  # use mgr.y bacause it may be masked via roi
+    return _spm_object('T', z, mgr)
+    
+def ttest(y, mu=None, roi=None):
+    from . permuters import SingleSamplePermuter
+    from . calculators import CalculatorTtest
+    n        = y.shape[0]
+    mgr      = get_perm_mgr(y, mv=False, roi=roi)
+    perm     = SingleSamplePermuter(n)
+    calc     = CalculatorTtest(n, mu)
+    mgr.set_permuter( perm )
+    mgr.set_calculator( calc )
+    z        = calc.teststat(mgr.y, np.ones(n))  # use mgr.y bacause it may be masked via roi
+    return _spm_object('T', z, mgr)
 
 def ttest_paired(yA, yB, roi=None):
-	return ttest(yA-yB, 0, roi=roi)
+    return ttest(yA-yB, 0, roi=roi)
 
-def ttest2(yA, yB, roi=None):
-	dim     = _get_data_dim(yA)
-	perm    = permuters.PermuterTtest21D(yA, yB, roi=roi) if dim==1 else permuters.PermuterTtest20D(yA, yB)
-	return _get_snpm('T', perm)
-
-
-
-
+def ttest2(y0, y1, roi=None):
+    from . permuters import MultiFactorPermuter
+    from . calculators import CalculatorTtest2
+    n0,n1    = y0.shape[0], y1.shape[0]
+    y        = np.hstack([y0.T, y1.T]).T
+    A        = np.array(  [0]*n0 + [1]*n1 )
+    mgr      = get_perm_mgr(y, mv=False, roi=roi)
+    perm     = MultiFactorPermuter(A)
+    calc     = CalculatorTtest2(n0, n1)
+    mgr.set_permuter( perm )
+    mgr.set_calculator( calc )
+    z        = calc.teststat(mgr.y, A)  # use mgr.y bacause it may be masked via roi
+    return _spm_object('T', z, mgr)

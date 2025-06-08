@@ -2,7 +2,7 @@
 [![Numpy](https://img.shields.io/badge/Numpy-777BB4?style=for-the-badge&logo=numpy&logoColor=white)](https://numpy.org)
 [![Scipy](https://img.shields.io/badge/SciPy-654FF0?style=for-the-badge&logo=SciPy&logoColor=white)](https://scipy.org)
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
-![version](https://img.shields.io/badge/version-0.4.38-blue)
+![version](https://img.shields.io/badge/version-0.4.50-blue)
 
 spm1d
 =====
@@ -17,6 +17,15 @@ Software documentation:
 
 MATLAB source code:
 https://github.com/0todd0000/spm1dmatlab
+
+
+
+Bug
+-------
+
+A bug in nonparametric inference for small sample sizes was discovered in May 2025. Thank you very much to Dr. Jeremy Eekhoff for reporting the bug! This bug was fixed on 3 June 2025. A description of the bug and its fix is available in [this notebook](notebooks/nonparam_bug_fix.ipynb)
+
+
 
 
 Issues

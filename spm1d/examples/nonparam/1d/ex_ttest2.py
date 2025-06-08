@@ -7,9 +7,9 @@ import spm1d
 
 
 #(0) Load dataset:
-dataset      = spm1d.data.uv1d.t2.PlantarArchAngle()
+dataset      = spm1d.data.uv1d.t2.PlantarArchAngle()  # normal and fast walking
 # dataset      = spm1d.data.uv1d.t2.SimulatedTwoLocalMax()
-yB,yA        = dataset.get_data()  #normal and fast walking
+yB,yA        = dataset.get_data()  
 
 
 
