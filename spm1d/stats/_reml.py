@@ -81,7 +81,8 @@ def estimate_df_anova1(Y, X, eij, Q, c):
     trRV,trRVRV   = traceRV(V, X)
     df2           = trRV**2 / trRVRV
     ### effective degrees of freedom (numerator):
-    trMV,trMVMV   = traceMV(V, X, c)
+    # trMV,trMVMV   = traceMV(V, X, c)
+    trMV,trMVMV   = traceMV(V, X)
     df1           =  trMV**2 / trMVMV
     df1           = max(df1,1.0)
     return df1, df2
