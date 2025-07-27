@@ -2,7 +2,7 @@
 
 import pytest
 import spm1d
-
+from spm1d.data.get import iter_datasets
 
 
 def _assert_p(p0, p1, tol=1e-5):
@@ -18,6 +18,14 @@ def _assert_p(p0, p1, tol=1e-5):
         assert p0 == pytest.approx(p1, abs=tol)
 
 
+
+# def test_ttest():
+#     for dataset in iter_datasets(dim=0, testname='ttest'):
+#         y,mu    = dataset.get_data()
+#         spm     = spm1d.stats.ttest(y, mu).inference(0.05, two_tailed=False)
+#         assert dataset.z == pytest.approx(spm.z, abs=1e-4)
+#         assert dataset.df == pytest.approx(spm.df, abs=1e-4)
+#         assert dataset.p == pytest.approx(spm.p, abs=1e-4)
 
 def test_ttest():
     datasets = []

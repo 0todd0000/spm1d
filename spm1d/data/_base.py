@@ -17,6 +17,7 @@ class _Dataset(object):
     STAT              = 'Z'    #test statistic
     design            = ''     #design string (e.g. "One-way ANOVA")
     dim               = 0      #data dimensionality
+    testname          = None   #spm1d.stats test name
 
     def __init__(self):
         self._rtol    = 0.001  #relative tolerance (for unit tests)
@@ -34,6 +35,7 @@ class _Dataset(object):
         s     += '   Name      : "%s"\n' %self.name
         s     += '   Design    :  %s\n' %self.design
         s     += '   Data dim  :  %d\n' %self.dim
+        s     += '   testname  :  %s\n' %self.testname
         if self.cite:
             s += '   Reference :  %s\n' %self.cite
         if self.www:
@@ -115,7 +117,8 @@ class DatasetANOVA1(_DatasetANOVA):
     def __init__(self):
         self.rm       = False  #repeated measures
         super(DatasetANOVA1, self).__init__()
-        self.design = 'One-way ANOVA'
+        self.design   = 'One-way ANOVA'
+        self.testname = 'anova1'
     def get_data(self):
         return self.Y, self.A
     # def get_expected_df(self, type='sphericity_assumed'):
@@ -141,7 +144,8 @@ class DatasetANOVA1rm(_DatasetANOVA):
     def __init__(self):
         self.rm       = True  #repeated measures
         super(DatasetANOVA1rm, self).__init__()
-        self.design = 'One-way repeated measures ANOVA'
+        self.design   = 'One-way repeated measures ANOVA'
+        self.testname = 'anova1rm'
     def get_data(self):
         return self.Y, self.A, self.SUBJ
 
@@ -149,7 +153,8 @@ class DatasetANOVA2(_DatasetANOVA):
     def __init__(self):
         self.rm       = False  #repeated measures
         super(DatasetANOVA2, self).__init__()
-        self.design = 'Two-way ANOVA'
+        self.design   = 'Two-way ANOVA'
+        self.testname = 'anova2'
     def get_data(self):
         return self.Y, self.A, self.B
     def print_variables_R_format(self):
@@ -157,18 +162,21 @@ class DatasetANOVA2(_DatasetANOVA):
 class DatasetANOVA2nested(DatasetANOVA2):
     def __init__(self):
         super(DatasetANOVA2nested, self).__init__()
-        self.design = 'Two-way ANOVA (nested)'
+        self.design   = 'Two-way ANOVA (nested)'
+        self.testname = 'anova1nested'
 class DatasetANOVA2rm(DatasetANOVA2):
     def __init__(self):
         self.rm       = True  #repeated measures
         super(DatasetANOVA2rm, self).__init__()
-        self.design = 'Two-way repeated measures ANOVA'
+        self.design   = 'Two-way repeated measures ANOVA'
+        self.testname = 'anova2rm'
     def get_data(self):
         return self.Y, self.A, self.B, self.SUBJ
 class DatasetANOVA2onerm(DatasetANOVA2rm):
     def __init__(self):
         super(DatasetANOVA2onerm, self).__init__()
-        self.design = 'Two-way ANOVA (repeated measures on one factor)'
+        self.design   = 'Two-way ANOVA (repeated measures on one factor)'
+        self.testname = 'anova1onerm'
 
 
 
@@ -176,18 +184,21 @@ class DatasetANOVA3(_DatasetANOVA):
     def __init__(self):
         self.rm       = False  #repeated measures
         super(DatasetANOVA3, self).__init__()
-        self.design = 'Three-way ANOVA'
+        self.design   = 'Three-way ANOVA'
+        self.testname = 'anova3'
     def get_data(self):
         return self.Y, self.A, self.B, self.C
 class DatasetANOVA3nested(DatasetANOVA3):
     def __init__(self):
         super(DatasetANOVA3nested, self).__init__()
-        self.design = 'Three-way ANOVA (nested)'
+        self.design   = 'Three-way ANOVA (nested)'
+        self.testname = 'anova3nested'
 class DatasetANOVA3rm(DatasetANOVA3):
     def __init__(self):
         self.rm       = True  #repeated measures
         super(DatasetANOVA3rm, self).__init__()
-        self.design = 'Three-way ANOVA (repeated measures on all factors)'
+        self.design   = 'Three-way ANOVA (repeated measures on all factors)'
+        self.testname = 'anova3rm'
     def get_data(self):
         return self.Y, self.A, self.B, self.C, self.SUBJ
     def print_variables_R_format(self):
@@ -196,11 +207,13 @@ class DatasetANOVA3onerm(DatasetANOVA3rm):
     def __init__(self):
         self.rm       = True  #repeated measures
         super(DatasetANOVA3onerm, self).__init__()
-        self.design = 'Three-way ANOVA (repeated measures on one factor)'
+        self.design   = 'Three-way ANOVA (repeated measures on one factor)'
+        self.testname = 'anova3onerm'
 class DatasetANOVA3tworm(DatasetANOVA3rm):
     def __init__(self):
         super(DatasetANOVA3tworm, self).__init__()
-        self.design = 'Three-way ANOVA (repeated measures on two factors)'
+        self.design   = 'Three-way ANOVA (repeated measures on two factors)'
+        self.testname = 'anova3tworm'
 
 
 
@@ -209,7 +222,8 @@ class DatasetANOVA3tworm(DatasetANOVA3rm):
 class DatasetCCA(_DatasetX2):
     def __init__(self):
         super(DatasetCCA, self).__init__()
-        self.design = "Canonical Correlation Analysis"
+        self.design   = "Canonical Correlation Analysis"
+        self.testname = 'cca'
     def get_data(self):
         return self.Y, self.x
 
@@ -218,26 +232,30 @@ class DatasetCCA(_DatasetX2):
 class DatasetHotellings1(_DatasetT2):
     def __init__(self):
         super(DatasetHotellings1, self).__init__()
-        self.design = "One-sample Hotelling's T2 test"
+        self.design   = "One-sample Hotelling's T2 test"
+        self.testname = 'hotellings'
     def get_data(self):
         return self.Y, self.mu
 class DatasetHotellings2(_DatasetT2):
     def __init__(self):
         super(DatasetHotellings2, self).__init__()
-        self.design = "Two-sample Hotelling's T2 test"
+        self.design   = "Two-sample Hotelling's T2 test"
+        self.testname = 'hotellings2'
     def get_data(self):
         return self.YA, self.YB
 class DatasetHotellingsPaired(DatasetHotellings2):
     def __init__(self):
         super(DatasetHotellingsPaired, self).__init__()
-        self.design = "Paired Hotelling's T2 test"
+        self.design   = "Paired Hotelling's T2 test"
+        self.testname = 'hotellings_paired'
 
 
 
 class DatasetMANOVA1(_DatasetX2):
     def __init__(self):
         super(DatasetMANOVA1, self).__init__()
-        self.design = "One-way MANOVA"
+        self.design   = "One-way MANOVA"
+        self.testname = 'manova1'
     def get_data(self):
         return self.Y, self.A
 
@@ -251,23 +269,26 @@ class _CI(object):
         return s
 
 class DatasetCI1(_CI, _DatasetT):
-    design  = 'One-sample CI'
-    mu      = 0
-    ci      = (0, 0)
+    design   = 'One-sample CI'
+    testname = 'ci_onesample'
+    mu       = 0
+    ci       = (0, 0)
     def get_data(self):
         return self.Y, self.mu
 
 class DatasetCIpaired(_CI, _DatasetT):
-    design  = 'Paired-sample CI'
-    YA      = None
-    YB      = None
+    design   = 'Paired-sample CI'
+    testname = 'ci_pairedsample'
+    YA       = None
+    YB       = None
     def get_data(self):
         return self.YA, self.YB
 
 class DatasetCI2(_CI, _DatasetT):
-    design  = 'Two-sample CI'
-    YA      = None
-    YB      = None
+    design   = 'Two-sample CI'
+    testname = 'ci_twosample'
+    YA       = None
+    YB       = None
     def get_data(self):
         return self.YA, self.YB
 
@@ -278,21 +299,24 @@ class DatasetCI2(_CI, _DatasetT):
 
 
 class DatasetT1(_DatasetT):
-    design  = 'One-sample t test'
-    mu      = None
+    design   = 'One-sample t test'
+    testname = 'ttest'
+    mu       = None
     def get_data(self):
         return self.Y, self.mu
 
 class DatasetT2(_DatasetT):
-    design  = 'Two-sample t test'
-    YA      = None
-    YB      = None
-    A       = None
+    design   = 'Two-sample t test'
+    testname = 'ttest2'
+    YA       = None
+    YB       = None
+    A        = None
     def get_data(self):
         return self.YA, self.YB
 
 class DatasetTpaired(DatasetT2):
-    design  = 'Paired t test'
+    design   = 'Paired t test'
+    testname = 'ttest_paired'
 
 class DatasetRegress(_DatasetT):
     design  = 'Simple linear regression OK?'
