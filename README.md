@@ -3,11 +3,13 @@
 [![Scipy](https://img.shields.io/badge/SciPy-654FF0?style=for-the-badge&logo=SciPy&logoColor=white)](https://scipy.org)
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 ![version](https://img.shields.io/badge/version-0.4.53-blue)
+![downloads](https://static.pepy.tech/badge/spm1d/month)
+
 
 spm1d
 =====
 
-One-Dimensional <b>Statistical Parametric Mapping</b> in Python and MATLAB.
+One-Dimensional <b>Statistical Parametric Mapping</b> in Python.
 
 
 spm1d uses <b>Random Field Theory</b> expectations regarding the behavior of smooth, one-dimensional Gaussian fields to make statistical inferences regarding a set of one-dimensional continua.
