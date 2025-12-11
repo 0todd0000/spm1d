@@ -3,20 +3,18 @@
 
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="en" data-content_root="../../">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>Test outputs &#8212; spm1d 0.4 documentation</title>
-    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/bootstrap-sphinx.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/plot_directive.css" />
-    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
-    <script src="../../_static/jquery.js"></script>
-    <script src="../../_static/underscore.js"></script>
-    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../../_static/doctools.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../_static/bootstrap-sphinx.css?v=4468db6d" />
+    <link rel="stylesheet" type="text/css" href="../../_static/plot_directive.css?v=7f9a90b1" />
+    <script src="../../_static/documentation_options.js?v=7f00635f"></script>
+    <script src="../../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../../_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
@@ -146,7 +144,7 @@
 
 <div class="container">
   <div class="row">
-      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
         <div class="sphinxsidebarwrapper"><ul>
 <li><a class="reference internal" href="#">Test outputs</a><ul>
 <li><a class="reference internal" href="#raw-spms">Raw SPMs</a></li>
@@ -173,22 +171,22 @@
 </form>
         </div>
       </div>
-    <div class="body col-md-12 content" role="main">
+    <div class="body col-md-9 content" role="main">
       
   <section id="test-outputs">
-<span id="label-examples-statsoutputs"></span><h1>Test outputs<a class="headerlink" href="#test-outputs" title="Permalink to this heading">¶</a></h1>
+<span id="label-examples-statsoutputs"></span><h1>Test outputs<a class="headerlink" href="#test-outputs" title="Link to this heading">¶</a></h1>
 <p>Outputs from statistical tests conducted in <strong>spm1d</strong> contain details which may be accessed in two ways:</p>
 <ul class="simple">
 <li><p>Interactively using the <strong>print</strong> command</p></li>
 <li><p>Programmatically using SPM object attributes</p></li>
 </ul>
 <p>As examples let us revisit the <a class="reference internal" href="onetwosample.html#label-stats-one-sample-t-test"><span class="std std-ref">one-sample t test</span></a>.</p>
-<p>(<a class="reference external" href="../../pyplots/stats1d/ex_ttest.py">Source code</a>, <a class="reference external" href="../../pyplots/stats1d/ex_ttest.png">png</a>, <a class="reference external" href="../../pyplots/stats1d/ex_ttest.hires.png">hires.png</a>, <a class="reference external" href="../../pyplots/stats1d/ex_ttest.pdf">pdf</a>)</p>
+<p>(<a class="reference download internal" download="" href="../../_downloads/79f252d051d98212159541a644525186/ex_ttest.py"><code class="xref download docutils literal notranslate"><span class="pre">Source</span> <span class="pre">code</span></code></a>, <a class="reference download internal" download="" href="../../_downloads/5d1b4ba35e4b961b10b91e06c8df62df/ex_ttest.png"><code class="xref download docutils literal notranslate"><span class="pre">png</span></code></a>, <a class="reference download internal" download="" href="../../_downloads/0cc21afa69457d5e91aaefeffda79d7d/ex_ttest.hires.png"><code class="xref download docutils literal notranslate"><span class="pre">hires.png</span></code></a>, <a class="reference download internal" download="" href="../../_downloads/d4f38b3bdc78e25000b2ad21bf3a6bba/ex_ttest.pdf"><code class="xref download docutils literal notranslate"><span class="pre">pdf</span></code></a>)</p>
 <figure class="align-default">
 <img alt="../../_images/ex_ttest.png" class="plot-directive" src="../../_images/ex_ttest.png" />
 </figure>
 <section id="raw-spms">
-<h2>Raw SPMs<a class="headerlink" href="#raw-spms" title="Permalink to this heading">¶</a></h2>
+<h2>Raw SPMs<a class="headerlink" href="#raw-spms" title="Link to this heading">¶</a></h2>
 <p>The single output of all statistical tests in <strong>spm1d.stats</strong> is a test statistic continuum (or SPM) object, which can be explored interactively using the <em>print</em> command:</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">t</span>  <span class="o">=</span> <span class="n">spm1d</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">ttest</span><span class="p">(</span><span class="n">Y</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span> <span class="n">t</span> <span class="p">)</span>
@@ -228,7 +226,7 @@
 </div>
 </section>
 <section id="inference-spms">
-<span id="label-spmobject-details"></span><h2>Inference SPMs<a class="headerlink" href="#inference-spms" title="Permalink to this heading">¶</a></h2>
+<span id="label-spmobject-details"></span><h2>Inference SPMs<a class="headerlink" href="#inference-spms" title="Link to this heading">¶</a></h2>
 <p>The output of the <strong>inference</strong> method is an inference continuum (or inference SPM) object:</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">t</span>  <span class="o">=</span> <span class="n">spm1d</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">ttest</span><span class="p">(</span><span class="n">Y</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">ti</span> <span class="o">=</span> <span class="n">t</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.05</span><span class="p">)</span>
@@ -276,7 +274,7 @@
 </div></blockquote>
 </section>
 <section id="suprathreshold-clusters">
-<h2>Suprathreshold clusters<a class="headerlink" href="#suprathreshold-clusters" title="Permalink to this heading">¶</a></h2>
+<h2>Suprathreshold clusters<a class="headerlink" href="#suprathreshold-clusters" title="Link to this heading">¶</a></h2>
 <p>All inference SPM objects have an attribute called “clusters” which contains a list of <strong>cluster</strong> objects.</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">t</span>  <span class="o">=</span> <span class="n">spm1d</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">ttest</span><span class="p">(</span><span class="n">Y</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">ti</span> <span class="o">=</span> <span class="n">t</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.05</span><span class="p">)</span>
@@ -334,8 +332,8 @@
       
     </p>
     <p>
-        &copy; Copyright 2022, Todd Pataky.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.0.2.<br/>
+        &copy; Copyright 2025, Todd Pataky.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 9.0.4.<br/>
     </p>
   </div>
 </footer>

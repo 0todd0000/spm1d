@@ -3,19 +3,17 @@
 
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="en" data-content_root="../../">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>spm1d.io &#8212; spm1d 0.4 documentation</title>
-    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/bootstrap-sphinx.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/plot_directive.css" />
-    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
-    <script src="../../_static/jquery.js"></script>
-    <script src="../../_static/underscore.js"></script>
-    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../../_static/doctools.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../_static/bootstrap-sphinx.css?v=4468db6d" />
+    <link rel="stylesheet" type="text/css" href="../../_static/plot_directive.css?v=7f9a90b1" />
+    <script src="../../_static/documentation_options.js?v=7f00635f"></script>
+    <script src="../../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../../_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
@@ -135,7 +133,7 @@
 
 <div class="container">
   <div class="row">
-      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
         <div class="sphinxsidebarwrapper">
 <form action="../../search.html" method="get">
  <div class="form-group">
@@ -146,7 +144,7 @@
 </form>
         </div>
       </div>
-    <div class="body col-md-12 content" role="main">
+    <div class="body col-md-9 content" role="main">
       
   <h1>Source code for spm1d.io</h1><div class="highlight"><pre>
 <span></span>
@@ -173,41 +171,65 @@
 
 
 
-<span class="k">class</span> <span class="nc">Deprecated</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
-	<span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">f</span><span class="p">):</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">Deprecated</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+	<span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">f</span><span class="p">):</span>
 		<span class="n">fnname</span>     <span class="o">=</span> <span class="s1">&#39;spm1d.io.&#39;</span> <span class="o">+</span> <span class="n">f</span><span class="o">.</span><span class="vm">__name__</span>
 		<span class="bp">self</span><span class="o">.</span><span class="n">msg</span>   <span class="o">=</span> <span class="s1">&#39;&quot;</span><span class="si">%s</span><span class="s1">&quot; has been deprecated.  The &quot;spm1d.io&quot; module will be removed in the future.&#39;</span> <span class="o">%</span><span class="n">fnname</span>
-	<span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">):</span>
+	<span class="k">def</span><span class="w"> </span><span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">):</span>
 		<span class="k">raise</span><span class="p">(</span> <span class="ne">DeprecationWarning</span><span class="p">(</span> <span class="bp">self</span><span class="o">.</span><span class="n">msg</span> <span class="p">)</span> <span class="p">)</span>
 
 
 
-<div class="viewcode-block" id="load"><a class="viewcode-back" href="../../doc/API/io.html#spm1d.io.load">[docs]</a><span class="nd">@Deprecated</span>
-<span class="k">def</span> <span class="nf">load</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">):</span>
+<div class="viewcode-block" id="load">
+<a class="viewcode-back" href="../../doc/API/io.html#spm1d.io.load">[docs]</a>
+<span class="nd">@Deprecated</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">load</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">):</span>
 	<span class="k">pass</span></div>
-<div class="viewcode-block" id="loadmat"><a class="viewcode-back" href="../../doc/API/io.html#spm1d.io.loadmat">[docs]</a><span class="nd">@Deprecated</span>
-<span class="k">def</span> <span class="nf">loadmat</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">):</span>
+
+<div class="viewcode-block" id="loadmat">
+<a class="viewcode-back" href="../../doc/API/io.html#spm1d.io.loadmat">[docs]</a>
+<span class="nd">@Deprecated</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">loadmat</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">):</span>
 	<span class="k">pass</span></div>
-<div class="viewcode-block" id="loadspm"><a class="viewcode-back" href="../../doc/API/io.html#spm1d.io.loadspm">[docs]</a><span class="nd">@Deprecated</span>
-<span class="k">def</span> <span class="nf">loadspm</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">):</span>
+
+<div class="viewcode-block" id="loadspm">
+<a class="viewcode-back" href="../../doc/API/io.html#spm1d.io.loadspm">[docs]</a>
+<span class="nd">@Deprecated</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">loadspm</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">):</span>
 	<span class="k">pass</span></div>
-<div class="viewcode-block" id="loadtxt"><a class="viewcode-back" href="../../doc/API/io.html#spm1d.io.loadtxt">[docs]</a><span class="nd">@Deprecated</span>
-<span class="k">def</span> <span class="nf">loadtxt</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">):</span>
+
+<div class="viewcode-block" id="loadtxt">
+<a class="viewcode-back" href="../../doc/API/io.html#spm1d.io.loadtxt">[docs]</a>
+<span class="nd">@Deprecated</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">loadtxt</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">):</span>
 	<span class="k">pass</span></div>
 
 
-<div class="viewcode-block" id="save"><a class="viewcode-back" href="../../doc/API/io.html#spm1d.io.save">[docs]</a><span class="nd">@Deprecated</span>
-<span class="k">def</span> <span class="nf">save</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">):</span>
+
+<div class="viewcode-block" id="save">
+<a class="viewcode-back" href="../../doc/API/io.html#spm1d.io.save">[docs]</a>
+<span class="nd">@Deprecated</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">save</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">):</span>
 	<span class="k">pass</span></div>
-<div class="viewcode-block" id="savemat"><a class="viewcode-back" href="../../doc/API/io.html#spm1d.io.savemat">[docs]</a><span class="nd">@Deprecated</span>
-<span class="k">def</span> <span class="nf">savemat</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">):</span>
+
+<div class="viewcode-block" id="savemat">
+<a class="viewcode-back" href="../../doc/API/io.html#spm1d.io.savemat">[docs]</a>
+<span class="nd">@Deprecated</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">savemat</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">):</span>
 	<span class="k">pass</span></div>
-<div class="viewcode-block" id="savespm"><a class="viewcode-back" href="../../doc/API/io.html#spm1d.io.savespm">[docs]</a><span class="nd">@Deprecated</span>
-<span class="k">def</span> <span class="nf">savespm</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">):</span>
+
+<div class="viewcode-block" id="savespm">
+<a class="viewcode-back" href="../../doc/API/io.html#spm1d.io.savespm">[docs]</a>
+<span class="nd">@Deprecated</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">savespm</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">):</span>
 	<span class="k">pass</span></div>
-<div class="viewcode-block" id="savetxt"><a class="viewcode-back" href="../../doc/API/io.html#spm1d.io.savetxt">[docs]</a><span class="nd">@Deprecated</span>
-<span class="k">def</span> <span class="nf">savetxt</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">):</span>
+
+<div class="viewcode-block" id="savetxt">
+<a class="viewcode-back" href="../../doc/API/io.html#spm1d.io.savetxt">[docs]</a>
+<span class="nd">@Deprecated</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">savetxt</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">):</span>
 	<span class="k">pass</span></div>
+
 
 
 </pre></div>
@@ -224,7 +246,7 @@
     </p>
     <p>
         &copy; Copyright 2022, Todd Pataky.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.0.2.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 9.0.4.<br/>
     </p>
   </div>
 </footer>

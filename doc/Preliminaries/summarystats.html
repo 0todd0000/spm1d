@@ -3,20 +3,18 @@
 
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="en" data-content_root="../../">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>Summary statistics &#8212; spm1d 0.4 documentation</title>
-    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/bootstrap-sphinx.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/plot_directive.css" />
-    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
-    <script src="../../_static/jquery.js"></script>
-    <script src="../../_static/underscore.js"></script>
-    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../../_static/doctools.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../_static/bootstrap-sphinx.css?v=4468db6d" />
+    <link rel="stylesheet" type="text/css" href="../../_static/plot_directive.css?v=7f9a90b1" />
+    <script src="../../_static/documentation_options.js?v=7f00635f"></script>
+    <script src="../../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../../_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
@@ -145,7 +143,7 @@
 
 <div class="container">
   <div class="row">
-      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
         <div class="sphinxsidebarwrapper"><ul>
 <li><a class="reference internal" href="#">Summary statistics</a><ul>
 <li><a class="reference internal" href="#means-and-sd-clouds">Means and SD clouds</a></li>
@@ -171,13 +169,13 @@
 </form>
         </div>
       </div>
-    <div class="body col-md-12 content" role="main">
+    <div class="body col-md-9 content" role="main">
       
   <section id="summary-statistics">
-<span id="label-examples-summarystats"></span><h1>Summary statistics<a class="headerlink" href="#summary-statistics" title="Permalink to this heading">¶</a></h1>
+<span id="label-examples-summarystats"></span><h1>Summary statistics<a class="headerlink" href="#summary-statistics" title="Link to this heading">¶</a></h1>
 <p>The examples below describe <strong>spm1d</strong>’s basic summary statistic functionality, which is housed in <strong>spm1d.plot</strong>.</p>
 <section id="means-and-sd-clouds">
-<h2>Means and SD clouds<a class="headerlink" href="#means-and-sd-clouds" title="Permalink to this heading">¶</a></h2>
+<h2>Means and SD clouds<a class="headerlink" href="#means-and-sd-clouds" title="Link to this heading">¶</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">./spm1d/examples/summarystats/ex_plot_meansd.py</span></code></p>
 <p>Load data:</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">dataset</span> <span class="o">=</span> <span class="n">spm1d</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">uv0d</span><span class="o">.</span><span class="n">anova</span><span class="o">.</span><span class="n">SpeedGRFcategorical</span><span class="p">()</span>
@@ -193,13 +191,13 @@
 <span class="gp">&gt;&gt;&gt; </span><span class="n">spm1d</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">plot_mean_sd</span><span class="p">(</span><span class="n">Y2</span><span class="p">,</span> <span class="n">linecolor</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mf">0.7</span><span class="p">,</span><span class="mf">0.7</span><span class="p">),</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Fast&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>(<a class="reference external" href="../../pyplots/summarystats/ex_plot_meansd.py">Source code</a>, <a class="reference external" href="../../pyplots/summarystats/ex_plot_meansd.png">png</a>, <a class="reference external" href="../../pyplots/summarystats/ex_plot_meansd.hires.png">hires.png</a>, <a class="reference external" href="../../pyplots/summarystats/ex_plot_meansd.pdf">pdf</a>)</p>
+<p>(<a class="reference download internal" download="" href="../../_downloads/73bb9b30c31c1d03d55b6934de13a7c4/ex_plot_meansd.py"><code class="xref download docutils literal notranslate"><span class="pre">Source</span> <span class="pre">code</span></code></a>, <a class="reference download internal" download="" href="../../_downloads/c1bc2c8e7fd14de0bfa757cf1548d31c/ex_plot_meansd.png"><code class="xref download docutils literal notranslate"><span class="pre">png</span></code></a>, <a class="reference download internal" download="" href="../../_downloads/387d559debe7671bcf021c7307d3e410/ex_plot_meansd.hires.png"><code class="xref download docutils literal notranslate"><span class="pre">hires.png</span></code></a>, <a class="reference download internal" download="" href="../../_downloads/42c1dec4e12484b445a9f7148127b6d6/ex_plot_meansd.pdf"><code class="xref download docutils literal notranslate"><span class="pre">pdf</span></code></a>)</p>
 <figure class="align-default">
 <img alt="../../_images/ex_plot_meansd.png" class="plot-directive" src="../../_images/ex_plot_meansd.png" />
 </figure>
 </section>
 <section id="arbitrary-variance-clouds">
-<span id="label-examples-arbitraryvar"></span><h2>Arbitrary variance clouds<a class="headerlink" href="#arbitrary-variance-clouds" title="Permalink to this heading">¶</a></h2>
+<span id="label-examples-arbitraryvar"></span><h2>Arbitrary variance clouds<a class="headerlink" href="#arbitrary-variance-clouds" title="Link to this heading">¶</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">./spm1d/examples/summarystats/ex_plot_errorcloud.py</span></code></p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">Y0</span><span class="p">,</span><span class="n">Y1</span><span class="p">,</span><span class="n">Y2</span> <span class="o">=</span> <span class="n">spm1d</span><span class="o">.</span><span class="n">util</span><span class="o">.</span><span class="n">get_dataset</span><span class="p">(</span><span class="s1">&#39;speed-kinematics-categorical&#39;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">datum</span>    <span class="o">=</span> <span class="n">Y1</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>   <span class="c1">#arbitrary datum</span>
@@ -208,7 +206,7 @@
 <span class="gp">&gt;&gt;&gt; </span><span class="n">spm1d</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">plot_errorcloud</span><span class="p">(</span><span class="n">datum</span><span class="p">,</span> <span class="n">err</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>(<a class="reference external" href="../../pyplots/summarystats/ex_plot_errorcloud.py">Source code</a>, <a class="reference external" href="../../pyplots/summarystats/ex_plot_errorcloud.png">png</a>, <a class="reference external" href="../../pyplots/summarystats/ex_plot_errorcloud.hires.png">hires.png</a>, <a class="reference external" href="../../pyplots/summarystats/ex_plot_errorcloud.pdf">pdf</a>)</p>
+<p>(<a class="reference download internal" download="" href="../../_downloads/6507af7d57c6aed1daf52fdac16fa1e4/ex_plot_errorcloud.py"><code class="xref download docutils literal notranslate"><span class="pre">Source</span> <span class="pre">code</span></code></a>, <a class="reference download internal" download="" href="../../_downloads/ae2657e9e9879321ab78863ae1030748/ex_plot_errorcloud.png"><code class="xref download docutils literal notranslate"><span class="pre">png</span></code></a>, <a class="reference download internal" download="" href="../../_downloads/2f26ab594078af7d9848e9f0359fb99d/ex_plot_errorcloud.hires.png"><code class="xref download docutils literal notranslate"><span class="pre">hires.png</span></code></a>, <a class="reference download internal" download="" href="../../_downloads/9f04104d153e8959092dd9e5eb7dc97c/ex_plot_errorcloud.pdf"><code class="xref download docutils literal notranslate"><span class="pre">pdf</span></code></a>)</p>
 <figure class="align-default">
 <img alt="../../_images/ex_plot_errorcloud.png" class="plot-directive" src="../../_images/ex_plot_errorcloud.png" />
 </figure>
@@ -227,8 +225,8 @@
       
     </p>
     <p>
-        &copy; Copyright 2022, Todd Pataky.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.0.2.<br/>
+        &copy; Copyright 2025, Todd Pataky.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 9.0.4.<br/>
     </p>
   </div>
 </footer>

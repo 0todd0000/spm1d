@@ -3,20 +3,18 @@
 
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="en" data-content_root="../../">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>spm1d.util &#8212; spm1d 0.4 documentation</title>
-    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/bootstrap-sphinx.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/plot_directive.css" />
-    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
-    <script src="../../_static/jquery.js"></script>
-    <script src="../../_static/underscore.js"></script>
-    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../../_static/doctools.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../_static/bootstrap-sphinx.css?v=4468db6d" />
+    <link rel="stylesheet" type="text/css" href="../../_static/plot_directive.css?v=7f9a90b1" />
+    <script src="../../_static/documentation_options.js?v=7f00635f"></script>
+    <script src="../../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../../_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
@@ -112,11 +110,26 @@
       role="menu"
       aria-labelledby="dLabelLocalToc"><ul>
 <li><a class="reference internal" href="#">spm1d.util</a><ul>
-<li><a class="reference internal" href="#get-dataset">get_dataset</a></li>
-<li><a class="reference internal" href="#interp">interp</a></li>
-<li><a class="reference internal" href="#p-corrected-bonf">p_corrected_bonf</a></li>
-<li><a class="reference internal" href="#p-critical-bonf">p_critical_bonf</a></li>
-<li><a class="reference internal" href="#smooth">smooth</a></li>
+<li><a class="reference internal" href="#get-dataset">get_dataset</a><ul>
+<li><a class="reference internal" href="#spm1d.util.get_dataset"><code class="docutils literal notranslate"><span class="pre">get_dataset()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#interp">interp</a><ul>
+<li><a class="reference internal" href="#spm1d.util.interp"><code class="docutils literal notranslate"><span class="pre">interp()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#p-corrected-bonf">p_corrected_bonf</a><ul>
+<li><a class="reference internal" href="#spm1d.util.p_corrected_bonf"><code class="docutils literal notranslate"><span class="pre">p_corrected_bonf()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#p-critical-bonf">p_critical_bonf</a><ul>
+<li><a class="reference internal" href="#spm1d.util.p_critical_bonf"><code class="docutils literal notranslate"><span class="pre">p_critical_bonf()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#smooth">smooth</a><ul>
+<li><a class="reference internal" href="#spm1d.util.smooth"><code class="docutils literal notranslate"><span class="pre">smooth()</span></code></a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -148,14 +161,29 @@
 
 <div class="container">
   <div class="row">
-      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
         <div class="sphinxsidebarwrapper"><ul>
 <li><a class="reference internal" href="#">spm1d.util</a><ul>
-<li><a class="reference internal" href="#get-dataset">get_dataset</a></li>
-<li><a class="reference internal" href="#interp">interp</a></li>
-<li><a class="reference internal" href="#p-corrected-bonf">p_corrected_bonf</a></li>
-<li><a class="reference internal" href="#p-critical-bonf">p_critical_bonf</a></li>
-<li><a class="reference internal" href="#smooth">smooth</a></li>
+<li><a class="reference internal" href="#get-dataset">get_dataset</a><ul>
+<li><a class="reference internal" href="#spm1d.util.get_dataset"><code class="docutils literal notranslate"><span class="pre">get_dataset()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#interp">interp</a><ul>
+<li><a class="reference internal" href="#spm1d.util.interp"><code class="docutils literal notranslate"><span class="pre">interp()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#p-corrected-bonf">p_corrected_bonf</a><ul>
+<li><a class="reference internal" href="#spm1d.util.p_corrected_bonf"><code class="docutils literal notranslate"><span class="pre">p_corrected_bonf()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#p-critical-bonf">p_critical_bonf</a><ul>
+<li><a class="reference internal" href="#spm1d.util.p_critical_bonf"><code class="docutils literal notranslate"><span class="pre">p_critical_bonf()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#smooth">smooth</a><ul>
+<li><a class="reference internal" href="#spm1d.util.smooth"><code class="docutils literal notranslate"><span class="pre">smooth()</span></code></a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -177,10 +205,10 @@
 </form>
         </div>
       </div>
-    <div class="body col-md-12 content" role="main">
+    <div class="body col-md-9 content" role="main">
       
   <section id="module-spm1d.util">
-<span id="spm1d-util"></span><span id="label-api-util"></span><h1>spm1d.util<a class="headerlink" href="#module-spm1d.util" title="Permalink to this heading">¶</a></h1>
+<span id="spm1d-util"></span><span id="label-api-util"></span><h1>spm1d.util<a class="headerlink" href="#module-spm1d.util" title="Link to this heading">¶</a></h1>
 <p>Utility module</p>
 <p>This module contains a variety of convenience functions, including:</p>
 <ul class="simple">
@@ -192,10 +220,10 @@
 </ul>
 <hr class="docutils" />
 <section id="get-dataset">
-<h2>get_dataset<a class="headerlink" href="#get-dataset" title="Permalink to this heading">¶</a></h2>
+<h2>get_dataset<a class="headerlink" href="#get-dataset" title="Link to this heading">¶</a></h2>
 <dl class="py function">
 <dt class="sig sig-object py" id="spm1d.util.get_dataset">
-<span class="sig-prename descclassname"><span class="pre">spm1d.util.</span></span><span class="sig-name descname"><span class="pre">get_dataset</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/spm1d/util.html#get_dataset"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spm1d.util.get_dataset" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">spm1d.util.</span></span><span class="sig-name descname"><span class="pre">get_dataset</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/spm1d/util.html#get_dataset"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spm1d.util.get_dataset" title="Link to this definition">¶</a></dt>
 <dd><div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>Deprecated</p>
@@ -206,10 +234,10 @@
 </section>
 <hr class="docutils" />
 <section id="interp">
-<h2>interp<a class="headerlink" href="#interp" title="Permalink to this heading">¶</a></h2>
+<h2>interp<a class="headerlink" href="#interp" title="Link to this heading">¶</a></h2>
 <dl class="py function">
 <dt class="sig sig-object py" id="spm1d.util.interp">
-<span class="sig-prename descclassname"><span class="pre">spm1d.util.</span></span><span class="sig-name descname"><span class="pre">interp</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Q</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">101</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/spm1d/util.html#interp"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spm1d.util.interp" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">spm1d.util.</span></span><span class="sig-name descname"><span class="pre">interp</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Q</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">101</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/spm1d/util.html#interp"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spm1d.util.interp" title="Link to this definition">¶</a></dt>
 <dd><p>Simple linear interpolation to <em>n</em> values.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -244,10 +272,10 @@
 </section>
 <hr class="docutils" />
 <section id="p-corrected-bonf">
-<h2>p_corrected_bonf<a class="headerlink" href="#p-corrected-bonf" title="Permalink to this heading">¶</a></h2>
+<h2>p_corrected_bonf<a class="headerlink" href="#p-corrected-bonf" title="Link to this heading">¶</a></h2>
 <dl class="py function">
 <dt class="sig sig-object py" id="spm1d.util.p_corrected_bonf">
-<span class="sig-prename descclassname"><span class="pre">spm1d.util.</span></span><span class="sig-name descname"><span class="pre">p_corrected_bonf</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">p</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/spm1d/util.html#p_corrected_bonf"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spm1d.util.p_corrected_bonf" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">spm1d.util.</span></span><span class="sig-name descname"><span class="pre">p_corrected_bonf</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">p</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/spm1d/util.html#p_corrected_bonf"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spm1d.util.p_corrected_bonf" title="Link to this definition">¶</a></dt>
 <dd><p>Bonferroni-corrected <em>p</em> value.</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
@@ -280,10 +308,10 @@
 </section>
 <hr class="docutils" />
 <section id="p-critical-bonf">
-<h2>p_critical_bonf<a class="headerlink" href="#p-critical-bonf" title="Permalink to this heading">¶</a></h2>
+<h2>p_critical_bonf<a class="headerlink" href="#p-critical-bonf" title="Link to this heading">¶</a></h2>
 <dl class="py function">
 <dt class="sig sig-object py" id="spm1d.util.p_critical_bonf">
-<span class="sig-prename descclassname"><span class="pre">spm1d.util.</span></span><span class="sig-name descname"><span class="pre">p_critical_bonf</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">alpha</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/spm1d/util.html#p_critical_bonf"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spm1d.util.p_critical_bonf" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">spm1d.util.</span></span><span class="sig-name descname"><span class="pre">p_critical_bonf</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">alpha</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/spm1d/util.html#p_critical_bonf"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spm1d.util.p_critical_bonf" title="Link to this definition">¶</a></dt>
 <dd><p>Bonferroni-corrected critical Type I error rate.</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
@@ -316,10 +344,10 @@
 </section>
 <hr class="docutils" />
 <section id="smooth">
-<h2>smooth<a class="headerlink" href="#smooth" title="Permalink to this heading">¶</a></h2>
+<h2>smooth<a class="headerlink" href="#smooth" title="Link to this heading">¶</a></h2>
 <dl class="py function">
 <dt class="sig sig-object py" id="spm1d.util.smooth">
-<span class="sig-prename descclassname"><span class="pre">spm1d.util.</span></span><span class="sig-name descname"><span class="pre">smooth</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fwhm</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5.0</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/spm1d/util.html#smooth"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spm1d.util.smooth" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">spm1d.util.</span></span><span class="sig-name descname"><span class="pre">smooth</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fwhm</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5.0</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/spm1d/util.html#smooth"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spm1d.util.smooth" title="Link to this definition">¶</a></dt>
 <dd><p>Smooth a set of 1D continua.
 This method uses <strong>scipy.ndimage.filters.gaussian_filter1d</strong> but uses the <em>fwhm</em>
 instead of the standard deviation.</p>
@@ -370,8 +398,8 @@ instead of the standard deviation.</p>
       
     </p>
     <p>
-        &copy; Copyright 2022, Todd Pataky.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.0.2.<br/>
+        &copy; Copyright 2025, Todd Pataky.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 9.0.4.<br/>
     </p>
   </div>
 </footer>

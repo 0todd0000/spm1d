@@ -3,20 +3,18 @@
 
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="en" data-content_root="../../">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>One- and two-sample tests &#8212; spm1d 0.4 documentation</title>
-    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/bootstrap-sphinx.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/plot_directive.css" />
-    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
-    <script src="../../_static/jquery.js"></script>
-    <script src="../../_static/underscore.js"></script>
-    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../../_static/doctools.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../_static/bootstrap-sphinx.css?v=4468db6d" />
+    <link rel="stylesheet" type="text/css" href="../../_static/plot_directive.css?v=7f9a90b1" />
+    <script src="../../_static/documentation_options.js?v=7f00635f"></script>
+    <script src="../../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../../_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
@@ -148,7 +146,7 @@
 
 <div class="container">
   <div class="row">
-      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
         <div class="sphinxsidebarwrapper"><ul>
 <li><a class="reference internal" href="#">One- and two-sample tests</a><ul>
 <li><a class="reference internal" href="#one-sample-t-test">One-sample t test</a></li>
@@ -177,7 +175,7 @@
 </form>
         </div>
       </div>
-    <div class="body col-md-12 content" role="main">
+    <div class="body col-md-9 content" role="main">
       
   <div class="admonition note" id="label-stats1donetwosample">
 <p class="admonition-title">Note</p>
@@ -186,12 +184,12 @@
 <p>Q = number of nodes to which the 1D responses have been resampled</p>
 </div>
 <section id="one-and-two-sample-tests">
-<h1>One- and two-sample tests<a class="headerlink" href="#one-and-two-sample-tests" title="Permalink to this heading">¶</a></h1>
+<h1>One- and two-sample tests<a class="headerlink" href="#one-and-two-sample-tests" title="Link to this heading">¶</a></h1>
 <section id="one-sample-t-test">
-<span id="label-stats-one-sample-t-test"></span><h2>One-sample t test<a class="headerlink" href="#one-sample-t-test" title="Permalink to this heading">¶</a></h2>
+<span id="label-stats-one-sample-t-test"></span><h2>One-sample t test<a class="headerlink" href="#one-sample-t-test" title="Link to this heading">¶</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">./spm1d/examples/stats1d/ex_ttest.py</span></code></p>
 <p>Import necessary packages:</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">spm1d</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">spm1d</span>
 </pre></div>
 </div>
 <p>Load a dataset:</p>
@@ -213,13 +211,13 @@
 <p><strong>two_tailed</strong> : Whether or not to conduct two-tailed inference (True {default} or False). This is applicable only to one- and two-sample tests.</p>
 <p><strong>interp</strong> : Interpolate clusters to the critical threshold (True {default} or False).</p>
 </div>
-<p>(<a class="reference external" href="../../pyplots/stats1d/ex_ttest.py">Source code</a>, <a class="reference external" href="../../pyplots/stats1d/ex_ttest.png">png</a>, <a class="reference external" href="../../pyplots/stats1d/ex_ttest.hires.png">hires.png</a>, <a class="reference external" href="../../pyplots/stats1d/ex_ttest.pdf">pdf</a>)</p>
+<p>(<a class="reference download internal" download="" href="../../_downloads/79f252d051d98212159541a644525186/ex_ttest.py"><code class="xref download docutils literal notranslate"><span class="pre">Source</span> <span class="pre">code</span></code></a>, <a class="reference download internal" download="" href="../../_downloads/5d1b4ba35e4b961b10b91e06c8df62df/ex_ttest.png"><code class="xref download docutils literal notranslate"><span class="pre">png</span></code></a>, <a class="reference download internal" download="" href="../../_downloads/0cc21afa69457d5e91aaefeffda79d7d/ex_ttest.hires.png"><code class="xref download docutils literal notranslate"><span class="pre">hires.png</span></code></a>, <a class="reference download internal" download="" href="../../_downloads/d4f38b3bdc78e25000b2ad21bf3a6bba/ex_ttest.pdf"><code class="xref download docutils literal notranslate"><span class="pre">pdf</span></code></a>)</p>
 <figure class="align-default">
 <img alt="../../_images/ex_ttest.png" class="plot-directive" src="../../_images/ex_ttest.png" />
 </figure>
 </section>
 <section id="paired-t-test">
-<span id="label-stats-paired-t-test"></span><h2>Paired t test<a class="headerlink" href="#paired-t-test" title="Permalink to this heading">¶</a></h2>
+<span id="label-stats-paired-t-test"></span><h2>Paired t test<a class="headerlink" href="#paired-t-test" title="Link to this heading">¶</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">./spm1d/examples/stats1d/ex_ttest_paired.py</span></code></p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -230,13 +228,13 @@
 </pre></div>
 </div>
 </div>
-<p>(<a class="reference external" href="../../pyplots/stats1d/ex_ttest_paired.py">Source code</a>, <a class="reference external" href="../../pyplots/stats1d/ex_ttest_paired.png">png</a>, <a class="reference external" href="../../pyplots/stats1d/ex_ttest_paired.hires.png">hires.png</a>, <a class="reference external" href="../../pyplots/stats1d/ex_ttest_paired.pdf">pdf</a>)</p>
+<p>(<a class="reference download internal" download="" href="../../_downloads/c1e58875fdd5bb0804ae53fc190f61ad/ex_ttest_paired.py"><code class="xref download docutils literal notranslate"><span class="pre">Source</span> <span class="pre">code</span></code></a>, <a class="reference download internal" download="" href="../../_downloads/f6fc9bc5d7aae22858e7413fd3703098/ex_ttest_paired.png"><code class="xref download docutils literal notranslate"><span class="pre">png</span></code></a>, <a class="reference download internal" download="" href="../../_downloads/28dac527c2e4e42afc27bc5aec7b1a33/ex_ttest_paired.hires.png"><code class="xref download docutils literal notranslate"><span class="pre">hires.png</span></code></a>, <a class="reference download internal" download="" href="../../_downloads/d6af13f6b3754d063787ad7409c4e447/ex_ttest_paired.pdf"><code class="xref download docutils literal notranslate"><span class="pre">pdf</span></code></a>)</p>
 <figure class="align-default">
 <img alt="../../_images/ex_ttest_paired.png" class="plot-directive" src="../../_images/ex_ttest_paired.png" />
 </figure>
 </section>
 <section id="two-sample-t-test">
-<span id="label-stats-two-sample-t-test"></span><h2>Two-sample t test<a class="headerlink" href="#two-sample-t-test" title="Permalink to this heading">¶</a></h2>
+<span id="label-stats-two-sample-t-test"></span><h2>Two-sample t test<a class="headerlink" href="#two-sample-t-test" title="Link to this heading">¶</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">./spm1d/examples/stats1d/ex_ttest2.py</span></code></p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -256,13 +254,13 @@
 </div>
 <p><strong>ttest2 options</strong>:</p>
 <p><em>equal_var</em>  : Whether or not to assume equal variance.  True or False (default).</p>
-<p>(<a class="reference external" href="../../pyplots/stats1d/ex_ttest2.py">Source code</a>, <a class="reference external" href="../../pyplots/stats1d/ex_ttest2.png">png</a>, <a class="reference external" href="../../pyplots/stats1d/ex_ttest2.hires.png">hires.png</a>, <a class="reference external" href="../../pyplots/stats1d/ex_ttest2.pdf">pdf</a>)</p>
+<p>(<a class="reference download internal" download="" href="../../_downloads/3ed86445af2e8f9e67a6ad8d74c36147/ex_ttest2.py"><code class="xref download docutils literal notranslate"><span class="pre">Source</span> <span class="pre">code</span></code></a>, <a class="reference download internal" download="" href="../../_downloads/a93d20ddc88a37e0a39d40aa60e9ee44/ex_ttest2.png"><code class="xref download docutils literal notranslate"><span class="pre">png</span></code></a>, <a class="reference download internal" download="" href="../../_downloads/34bbf54a62e1b63b7c720e7854e1670c/ex_ttest2.hires.png"><code class="xref download docutils literal notranslate"><span class="pre">hires.png</span></code></a>, <a class="reference download internal" download="" href="../../_downloads/3cb66ced10b7d4a42b4cc35c47cc492c/ex_ttest2.pdf"><code class="xref download docutils literal notranslate"><span class="pre">pdf</span></code></a>)</p>
 <figure class="align-default">
 <img alt="../../_images/ex_ttest2.png" class="plot-directive" src="../../_images/ex_ttest2.png" />
 </figure>
 </section>
 <section id="regression">
-<span id="label-stats-regression"></span><h2>Regression<a class="headerlink" href="#regression" title="Permalink to this heading">¶</a></h2>
+<span id="label-stats-regression"></span><h2>Regression<a class="headerlink" href="#regression" title="Link to this heading">¶</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">./spm1d/examples/stats1d/ex_regression.py</span></code></p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -275,13 +273,13 @@
 </div>
 <p>These results are from:</p>
 <p>Pataky, T. C., Vanrenterghem, J., &amp; Robinson, M. A. (2015). Zero- vs. one-dimensional, parametric vs. non-parametric, and confidence interval vs. hypothesis testing procedures in one-dimensional biomechanical trajectory analysis. Journal of Biomechanics, 1–9. <a class="reference external" href="http://doi.org/10.1016/j.jbiomech.2015.02.051">http://doi.org/10.1016/j.jbiomech.2015.02.051</a></p>
-<p>(<a class="reference external" href="../../pyplots/stats1d/ex_regression.py">Source code</a>, <a class="reference external" href="../../pyplots/stats1d/ex_regression.png">png</a>, <a class="reference external" href="../../pyplots/stats1d/ex_regression.hires.png">hires.png</a>, <a class="reference external" href="../../pyplots/stats1d/ex_regression.pdf">pdf</a>)</p>
+<p>(<a class="reference download internal" download="" href="../../_downloads/bd335a67badee8dbdcdbb2aa470aed94/ex_regression.py"><code class="xref download docutils literal notranslate"><span class="pre">Source</span> <span class="pre">code</span></code></a>, <a class="reference download internal" download="" href="../../_downloads/ca4cb51ea8bbbe42a7c456fb7f8e43d5/ex_regression.png"><code class="xref download docutils literal notranslate"><span class="pre">png</span></code></a>, <a class="reference download internal" download="" href="../../_downloads/0db04e71e9ef38184a426515f9589bfa/ex_regression.hires.png"><code class="xref download docutils literal notranslate"><span class="pre">hires.png</span></code></a>, <a class="reference download internal" download="" href="../../_downloads/7fc2c193be93c542dd52a3bdb021023b/ex_regression.pdf"><code class="xref download docutils literal notranslate"><span class="pre">pdf</span></code></a>)</p>
 <figure class="align-default">
 <img alt="../../_images/ex_regression.png" class="plot-directive" src="../../_images/ex_regression.png" />
 </figure>
 </section>
 <section id="general-linear-model-glm">
-<span id="label-stats-glm"></span><h2>General linear model (GLM)<a class="headerlink" href="#general-linear-model-glm" title="Permalink to this heading">¶</a></h2>
+<span id="label-stats-glm"></span><h2>General linear model (GLM)<a class="headerlink" href="#general-linear-model-glm" title="Link to this heading">¶</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">./spm1d/examples/stats1d/ex_glm.py</span></code></p>
 <div class="admonition danger">
 <p class="admonition-title">Danger</p>
@@ -305,7 +303,7 @@
 <span class="gp">&gt;&gt;&gt; </span><span class="n">ti</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>(<a class="reference external" href="../../pyplots/stats1d/ex_glm.py">Source code</a>, <a class="reference external" href="../../pyplots/stats1d/ex_glm.png">png</a>, <a class="reference external" href="../../pyplots/stats1d/ex_glm.hires.png">hires.png</a>, <a class="reference external" href="../../pyplots/stats1d/ex_glm.pdf">pdf</a>)</p>
+<p>(<a class="reference download internal" download="" href="../../_downloads/1b1f280b08263c2e0b8edf0bbfd913cd/ex_glm.py"><code class="xref download docutils literal notranslate"><span class="pre">Source</span> <span class="pre">code</span></code></a>, <a class="reference download internal" download="" href="../../_downloads/7e0175af1200de759ec1b3442f970dba/ex_glm.png"><code class="xref download docutils literal notranslate"><span class="pre">png</span></code></a>, <a class="reference download internal" download="" href="../../_downloads/a9b6ac7e87a11ec4df4e83f54e6b3ecc/ex_glm.hires.png"><code class="xref download docutils literal notranslate"><span class="pre">hires.png</span></code></a>, <a class="reference download internal" download="" href="../../_downloads/4d9efc0c9c5ba840253263af741b653a/ex_glm.pdf"><code class="xref download docutils literal notranslate"><span class="pre">pdf</span></code></a>)</p>
 <figure class="align-default">
 <img alt="../../_images/ex_glm.png" class="plot-directive" src="../../_images/ex_glm.png" />
 </figure>
@@ -324,8 +322,8 @@
       
     </p>
     <p>
-        &copy; Copyright 2022, Todd Pataky.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.0.2.<br/>
+        &copy; Copyright 2025, Todd Pataky.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 9.0.4.<br/>
     </p>
   </div>
 </footer>

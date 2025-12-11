@@ -3,20 +3,18 @@
 
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="en" data-content_root="../../">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>spm1d.io &#8212; spm1d 0.4 documentation</title>
-    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/bootstrap-sphinx.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/plot_directive.css" />
-    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
-    <script src="../../_static/jquery.js"></script>
-    <script src="../../_static/underscore.js"></script>
-    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../../_static/doctools.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../_static/bootstrap-sphinx.css?v=4468db6d" />
+    <link rel="stylesheet" type="text/css" href="../../_static/plot_directive.css?v=7f9a90b1" />
+    <script src="../../_static/documentation_options.js?v=7f00635f"></script>
+    <script src="../../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../../_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
@@ -112,14 +110,38 @@
       role="menu"
       aria-labelledby="dLabelLocalToc"><ul>
 <li><a class="reference internal" href="#">spm1d.io</a><ul>
-<li><a class="reference internal" href="#load">load</a></li>
-<li><a class="reference internal" href="#loadmat">loadmat</a></li>
-<li><a class="reference internal" href="#loadtxt">loadtxt</a></li>
-<li><a class="reference internal" href="#loadspm">loadspm</a></li>
-<li><a class="reference internal" href="#save">save</a></li>
-<li><a class="reference internal" href="#savemat">savemat</a></li>
-<li><a class="reference internal" href="#savetxt">savetxt</a></li>
-<li><a class="reference internal" href="#savespm">savespm</a></li>
+<li><a class="reference internal" href="#load">load</a><ul>
+<li><a class="reference internal" href="#spm1d.io.load"><code class="docutils literal notranslate"><span class="pre">load()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#loadmat">loadmat</a><ul>
+<li><a class="reference internal" href="#spm1d.io.loadmat"><code class="docutils literal notranslate"><span class="pre">loadmat()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#loadtxt">loadtxt</a><ul>
+<li><a class="reference internal" href="#spm1d.io.loadtxt"><code class="docutils literal notranslate"><span class="pre">loadtxt()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#loadspm">loadspm</a><ul>
+<li><a class="reference internal" href="#spm1d.io.loadspm"><code class="docutils literal notranslate"><span class="pre">loadspm()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#save">save</a><ul>
+<li><a class="reference internal" href="#spm1d.io.save"><code class="docutils literal notranslate"><span class="pre">save()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#savemat">savemat</a><ul>
+<li><a class="reference internal" href="#spm1d.io.savemat"><code class="docutils literal notranslate"><span class="pre">savemat()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#savetxt">savetxt</a><ul>
+<li><a class="reference internal" href="#spm1d.io.savetxt"><code class="docutils literal notranslate"><span class="pre">savetxt()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#savespm">savespm</a><ul>
+<li><a class="reference internal" href="#spm1d.io.savespm"><code class="docutils literal notranslate"><span class="pre">savespm()</span></code></a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -151,17 +173,41 @@
 
 <div class="container">
   <div class="row">
-      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
         <div class="sphinxsidebarwrapper"><ul>
 <li><a class="reference internal" href="#">spm1d.io</a><ul>
-<li><a class="reference internal" href="#load">load</a></li>
-<li><a class="reference internal" href="#loadmat">loadmat</a></li>
-<li><a class="reference internal" href="#loadtxt">loadtxt</a></li>
-<li><a class="reference internal" href="#loadspm">loadspm</a></li>
-<li><a class="reference internal" href="#save">save</a></li>
-<li><a class="reference internal" href="#savemat">savemat</a></li>
-<li><a class="reference internal" href="#savetxt">savetxt</a></li>
-<li><a class="reference internal" href="#savespm">savespm</a></li>
+<li><a class="reference internal" href="#load">load</a><ul>
+<li><a class="reference internal" href="#spm1d.io.load"><code class="docutils literal notranslate"><span class="pre">load()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#loadmat">loadmat</a><ul>
+<li><a class="reference internal" href="#spm1d.io.loadmat"><code class="docutils literal notranslate"><span class="pre">loadmat()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#loadtxt">loadtxt</a><ul>
+<li><a class="reference internal" href="#spm1d.io.loadtxt"><code class="docutils literal notranslate"><span class="pre">loadtxt()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#loadspm">loadspm</a><ul>
+<li><a class="reference internal" href="#spm1d.io.loadspm"><code class="docutils literal notranslate"><span class="pre">loadspm()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#save">save</a><ul>
+<li><a class="reference internal" href="#spm1d.io.save"><code class="docutils literal notranslate"><span class="pre">save()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#savemat">savemat</a><ul>
+<li><a class="reference internal" href="#spm1d.io.savemat"><code class="docutils literal notranslate"><span class="pre">savemat()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#savetxt">savetxt</a><ul>
+<li><a class="reference internal" href="#spm1d.io.savetxt"><code class="docutils literal notranslate"><span class="pre">savetxt()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#savespm">savespm</a><ul>
+<li><a class="reference internal" href="#spm1d.io.savespm"><code class="docutils literal notranslate"><span class="pre">savespm()</span></code></a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -183,10 +229,10 @@
 </form>
         </div>
       </div>
-    <div class="body col-md-12 content" role="main">
+    <div class="body col-md-9 content" role="main">
       
   <section id="module-spm1d.io">
-<span id="spm1d-io"></span><span id="label-api-io"></span><h1>spm1d.io<a class="headerlink" href="#module-spm1d.io" title="Permalink to this heading">¶</a></h1>
+<span id="spm1d-io"></span><span id="label-api-io"></span><h1>spm1d.io<a class="headerlink" href="#module-spm1d.io" title="Link to this heading">¶</a></h1>
 <p>Input/Output module</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
@@ -205,73 +251,73 @@ data IO has been made redundant. Consider using the following functions:</p>
 </div>
 <hr class="docutils" />
 <section id="load">
-<h2>load<a class="headerlink" href="#load" title="Permalink to this heading">¶</a></h2>
+<h2>load<a class="headerlink" href="#load" title="Link to this heading">¶</a></h2>
 <dl class="py function">
 <dt class="sig sig-object py" id="spm1d.io.load">
-<span class="sig-prename descclassname"><span class="pre">spm1d.io.</span></span><span class="sig-name descname"><span class="pre">load</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/spm1d/io.html#load"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spm1d.io.load" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">spm1d.io.</span></span><span class="sig-name descname"><span class="pre">load</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/spm1d/io.html#load"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spm1d.io.load" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </section>
 <hr class="docutils" />
 <section id="loadmat">
-<h2>loadmat<a class="headerlink" href="#loadmat" title="Permalink to this heading">¶</a></h2>
+<h2>loadmat<a class="headerlink" href="#loadmat" title="Link to this heading">¶</a></h2>
 <dl class="py function">
 <dt class="sig sig-object py" id="spm1d.io.loadmat">
-<span class="sig-prename descclassname"><span class="pre">spm1d.io.</span></span><span class="sig-name descname"><span class="pre">loadmat</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/spm1d/io.html#loadmat"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spm1d.io.loadmat" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">spm1d.io.</span></span><span class="sig-name descname"><span class="pre">loadmat</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/spm1d/io.html#loadmat"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spm1d.io.loadmat" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </section>
 <hr class="docutils" />
 <section id="loadtxt">
-<h2>loadtxt<a class="headerlink" href="#loadtxt" title="Permalink to this heading">¶</a></h2>
+<h2>loadtxt<a class="headerlink" href="#loadtxt" title="Link to this heading">¶</a></h2>
 <dl class="py function">
 <dt class="sig sig-object py" id="spm1d.io.loadtxt">
-<span class="sig-prename descclassname"><span class="pre">spm1d.io.</span></span><span class="sig-name descname"><span class="pre">loadtxt</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/spm1d/io.html#loadtxt"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spm1d.io.loadtxt" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">spm1d.io.</span></span><span class="sig-name descname"><span class="pre">loadtxt</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/spm1d/io.html#loadtxt"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spm1d.io.loadtxt" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </section>
 <hr class="docutils" />
 <section id="loadspm">
-<h2>loadspm<a class="headerlink" href="#loadspm" title="Permalink to this heading">¶</a></h2>
+<h2>loadspm<a class="headerlink" href="#loadspm" title="Link to this heading">¶</a></h2>
 <dl class="py function">
 <dt class="sig sig-object py" id="spm1d.io.loadspm">
-<span class="sig-prename descclassname"><span class="pre">spm1d.io.</span></span><span class="sig-name descname"><span class="pre">loadspm</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/spm1d/io.html#loadspm"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spm1d.io.loadspm" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">spm1d.io.</span></span><span class="sig-name descname"><span class="pre">loadspm</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/spm1d/io.html#loadspm"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spm1d.io.loadspm" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </section>
 <hr class="docutils" />
 <section id="save">
-<h2>save<a class="headerlink" href="#save" title="Permalink to this heading">¶</a></h2>
+<h2>save<a class="headerlink" href="#save" title="Link to this heading">¶</a></h2>
 <dl class="py function">
 <dt class="sig sig-object py" id="spm1d.io.save">
-<span class="sig-prename descclassname"><span class="pre">spm1d.io.</span></span><span class="sig-name descname"><span class="pre">save</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/spm1d/io.html#save"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spm1d.io.save" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">spm1d.io.</span></span><span class="sig-name descname"><span class="pre">save</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/spm1d/io.html#save"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spm1d.io.save" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </section>
 <hr class="docutils" />
 <section id="savemat">
-<h2>savemat<a class="headerlink" href="#savemat" title="Permalink to this heading">¶</a></h2>
+<h2>savemat<a class="headerlink" href="#savemat" title="Link to this heading">¶</a></h2>
 <dl class="py function">
 <dt class="sig sig-object py" id="spm1d.io.savemat">
-<span class="sig-prename descclassname"><span class="pre">spm1d.io.</span></span><span class="sig-name descname"><span class="pre">savemat</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/spm1d/io.html#savemat"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spm1d.io.savemat" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">spm1d.io.</span></span><span class="sig-name descname"><span class="pre">savemat</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/spm1d/io.html#savemat"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spm1d.io.savemat" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </section>
 <hr class="docutils" />
 <section id="savetxt">
-<h2>savetxt<a class="headerlink" href="#savetxt" title="Permalink to this heading">¶</a></h2>
+<h2>savetxt<a class="headerlink" href="#savetxt" title="Link to this heading">¶</a></h2>
 <dl class="py function">
 <dt class="sig sig-object py" id="spm1d.io.savetxt">
-<span class="sig-prename descclassname"><span class="pre">spm1d.io.</span></span><span class="sig-name descname"><span class="pre">savetxt</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/spm1d/io.html#savetxt"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spm1d.io.savetxt" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">spm1d.io.</span></span><span class="sig-name descname"><span class="pre">savetxt</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/spm1d/io.html#savetxt"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spm1d.io.savetxt" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </section>
 <hr class="docutils" />
 <section id="savespm">
-<h2>savespm<a class="headerlink" href="#savespm" title="Permalink to this heading">¶</a></h2>
+<h2>savespm<a class="headerlink" href="#savespm" title="Link to this heading">¶</a></h2>
 <dl class="py function">
 <dt class="sig sig-object py" id="spm1d.io.savespm">
-<span class="sig-prename descclassname"><span class="pre">spm1d.io.</span></span><span class="sig-name descname"><span class="pre">savespm</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/spm1d/io.html#savespm"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spm1d.io.savespm" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">spm1d.io.</span></span><span class="sig-name descname"><span class="pre">savespm</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/spm1d/io.html#savespm"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spm1d.io.savespm" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </section>
@@ -289,8 +335,8 @@ data IO has been made redundant. Consider using the following functions:</p>
       
     </p>
     <p>
-        &copy; Copyright 2022, Todd Pataky.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.0.2.<br/>
+        &copy; Copyright 2025, Todd Pataky.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 9.0.4.<br/>
     </p>
   </div>
 </footer>

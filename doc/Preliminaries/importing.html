@@ -3,20 +3,18 @@
 
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="en" data-content_root="../../">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>Importing data &#8212; spm1d 0.4 documentation</title>
-    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/bootstrap-sphinx.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/plot_directive.css" />
-    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
-    <script src="../../_static/jquery.js"></script>
-    <script src="../../_static/underscore.js"></script>
-    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../../_static/doctools.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../_static/bootstrap-sphinx.css?v=4468db6d" />
+    <link rel="stylesheet" type="text/css" href="../../_static/plot_directive.css?v=7f9a90b1" />
+    <script src="../../_static/documentation_options.js?v=7f00635f"></script>
+    <script src="../../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../../_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
@@ -146,7 +144,7 @@
 
 <div class="container">
   <div class="row">
-      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
         <div class="sphinxsidebarwrapper"><ul>
 <li><a class="reference internal" href="#">Importing data</a><ul>
 <li><a class="reference internal" href="#importing-ascii-data">Importing ASCII data</a></li>
@@ -173,10 +171,10 @@
 </form>
         </div>
       </div>
-    <div class="body col-md-12 content" role="main">
+    <div class="body col-md-9 content" role="main">
       
   <section id="importing-data">
-<span id="label-examples-io"></span><h1>Importing data<a class="headerlink" href="#importing-data" title="Permalink to this heading">¶</a></h1>
+<span id="label-examples-io"></span><h1>Importing data<a class="headerlink" href="#importing-data" title="Link to this heading">¶</a></h1>
 <p>To conduct univariate <strong>spm1d</strong> analysis the data should be arranged as a (J x Q) array, where J is the number of 1D responses (i.e. trials or subjects) and Q is the number of nodes in the 1D continuum.</p>
 <p>To conduct multivariate <strong>spm1d</strong> analysis the data should be arranged as a (J x Q X I) array, where I is the number of vector components in the 1D continuum.</p>
 <div class="admonition danger">
@@ -195,18 +193,18 @@
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">fname</span> <span class="o">=</span> <span class="s1">&#39;C:</span><span class="se">\\</span><span class="s1">Temp</span><span class="se">\\</span><span class="s1">MyData</span><span class="se">\\</span><span class="s1">ex_kinematics.txt&#39;</span>
 </pre></div>
 </div>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">os</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">fname</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s1">&#39;C:\Temp&#39;</span><span class="p">,</span> <span class="s1">&#39;MyData&#39;</span><span class="p">,</span> <span class="s1">&#39;ex_kinematics.txt&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <section id="importing-ascii-data">
-<h2>Importing ASCII data<a class="headerlink" href="#importing-ascii-data" title="Permalink to this heading">¶</a></h2>
+<h2>Importing ASCII data<a class="headerlink" href="#importing-ascii-data" title="Link to this heading">¶</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">./spm1d/examples/io/ex_import_txt.py</span></code></p>
 <p>If ASCII data are arranged in a (J x Q) tab-delimited array:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">matplotlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">pyplot</span>
 
 
 <span class="c1"># load plain-text data (30 rows, 100 columns):</span>
@@ -222,16 +220,16 @@
 <span class="c1"># pyplot.show()</span>
 </pre></div>
 </div>
-<p>(<a class="reference external" href="../../pyplots/ex_import_txt.py">Source code</a>, <a class="reference external" href="../../pyplots/ex_import_txt.png">png</a>, <a class="reference external" href="../../pyplots/ex_import_txt.hires.png">hires.png</a>, <a class="reference external" href="../../pyplots/ex_import_txt.pdf">pdf</a>)</p>
+<p>(<a class="reference download internal" download="" href="../../_downloads/6806cf1de35ed09925aa9dfd7c206112/ex_import_txt.py"><code class="xref download docutils literal notranslate"><span class="pre">Source</span> <span class="pre">code</span></code></a>, <a class="reference download internal" download="" href="../../_downloads/af03ee6d8550febf6dada47deba65b92/ex_import_txt.png"><code class="xref download docutils literal notranslate"><span class="pre">png</span></code></a>, <a class="reference download internal" download="" href="../../_downloads/db1d7e919ce53d570494903c1efa1baa/ex_import_txt.hires.png"><code class="xref download docutils literal notranslate"><span class="pre">hires.png</span></code></a>, <a class="reference download internal" download="" href="../../_downloads/f3d94f06b543da3231c747f52edcfcab/ex_import_txt.pdf"><code class="xref download docutils literal notranslate"><span class="pre">pdf</span></code></a>)</p>
 <figure class="align-default">
 <img alt="../../_images/ex_import_txt.png" class="plot-directive" src="../../_images/ex_import_txt.png" />
 </figure>
 </section>
 <section id="importing-matlab-data">
-<h2>Importing MATLAB data<a class="headerlink" href="#importing-matlab-data" title="Permalink to this heading">¶</a></h2>
+<h2>Importing MATLAB data<a class="headerlink" href="#importing-matlab-data" title="Link to this heading">¶</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">./spm1d/examples/io/ex_import_mat.py</span></code></p>
 <p>MATLAB data files containing arbitrary variables can be imported as follows:</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">scipy.io</span> <span class="kn">import</span> <span class="n">loadmat</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">scipy.io</span><span class="w"> </span><span class="kn">import</span> <span class="n">loadmat</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">M</span> <span class="o">=</span> <span class="n">loadmat</span><span class="p">(</span><span class="s1">&#39;myfile.mat&#39;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">M</span><span class="p">[</span><span class="s1">&#39;VariableA&#39;</span><span class="p">]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">b</span> <span class="o">=</span> <span class="n">M</span><span class="p">[</span><span class="s1">&#39;VariableB&#39;</span><span class="p">]</span>
@@ -239,9 +237,9 @@
 </pre></div>
 </div>
 <p>Example script:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
-<span class="kn">import</span> <span class="nn">scipy.io</span>
-<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">scipy.io</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">matplotlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">pyplot</span>
 
 
 
@@ -258,13 +256,13 @@
 <span class="c1"># pyplot.show()</span>
 </pre></div>
 </div>
-<p>(<a class="reference external" href="../../pyplots/ex_import_mat.py">Source code</a>, <a class="reference external" href="../../pyplots/ex_import_mat.png">png</a>, <a class="reference external" href="../../pyplots/ex_import_mat.hires.png">hires.png</a>, <a class="reference external" href="../../pyplots/ex_import_mat.pdf">pdf</a>)</p>
+<p>(<a class="reference download internal" download="" href="../../_downloads/3728c0874a67fc264c619cdef2195ce0/ex_import_mat.py"><code class="xref download docutils literal notranslate"><span class="pre">Source</span> <span class="pre">code</span></code></a>, <a class="reference download internal" download="" href="../../_downloads/6ab81ebce609264780f15569110b110b/ex_import_mat.png"><code class="xref download docutils literal notranslate"><span class="pre">png</span></code></a>, <a class="reference download internal" download="" href="../../_downloads/ffc40e51dc3884a8051393e2909a8c6c/ex_import_mat.hires.png"><code class="xref download docutils literal notranslate"><span class="pre">hires.png</span></code></a>, <a class="reference download internal" download="" href="../../_downloads/ac24e6eb7be0562d9fb0ec24c178b14e/ex_import_mat.pdf"><code class="xref download docutils literal notranslate"><span class="pre">pdf</span></code></a>)</p>
 <figure class="align-default">
 <img alt="../../_images/ex_import_mat.png" class="plot-directive" src="../../_images/ex_import_mat.png" />
 </figure>
 </section>
 <section id="importing-hdf5-data-deprecated">
-<h2>Importing HDF5 data (deprecated)<a class="headerlink" href="#importing-hdf5-data-deprecated" title="Permalink to this heading">¶</a></h2>
+<h2>Importing HDF5 data (deprecated)<a class="headerlink" href="#importing-hdf5-data-deprecated" title="Link to this heading">¶</a></h2>
 <p>(HDF5 is no longer supported)</p>
 </section>
 </section>
@@ -281,8 +279,8 @@
       
     </p>
     <p>
-        &copy; Copyright 2022, Todd Pataky.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.0.2.<br/>
+        &copy; Copyright 2025, Todd Pataky.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 9.0.4.<br/>
     </p>
   </div>
 </footer>

@@ -4,12 +4,12 @@
 Support
 =====================================
 
-We provide (i) free support in online forums and (ii) paid support via email consultancy.
+Free support is available in online forums. Paid email consultancy is also available.
 
 
 .. _label-TypesOfSupport:
 
-Online forums (free)
+Online forums
 ----------------------------
 
 * `Main forum <https://github.com/0todd0000/spm1d/issues/>`_ (General SPM issues)
@@ -46,9 +46,7 @@ Forum Guidelines
 Consultancy
 ----------------------------
 
-We also provide **paid** consultancy services.
-
-If the free forums are unsuitable for your needs please contact the Consulting Team at consulting@spm1d.org for a consultation quote.
+For **paid** consultancy services please contact: consulting@jiku.pro
 
 
 

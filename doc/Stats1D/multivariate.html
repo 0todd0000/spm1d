@@ -3,20 +3,18 @@
 
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="en" data-content_root="../../">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>Multivariate tests &#8212; spm1d 0.4 documentation</title>
-    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/bootstrap-sphinx.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/plot_directive.css" />
-    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
-    <script src="../../_static/jquery.js"></script>
-    <script src="../../_static/underscore.js"></script>
-    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../../_static/doctools.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../_static/bootstrap-sphinx.css?v=4468db6d" />
+    <link rel="stylesheet" type="text/css" href="../../_static/plot_directive.css?v=7f9a90b1" />
+    <script src="../../_static/documentation_options.js?v=7f00635f"></script>
+    <script src="../../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../../_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
@@ -148,7 +146,7 @@
 
 <div class="container">
   <div class="row">
-      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
         <div class="sphinxsidebarwrapper"><ul>
 <li><a class="reference internal" href="#">Multivariate tests</a><ul>
 <li><a class="reference internal" href="#one-sample-hotelling-s-t2-test">One-sample Hotelling’s T<sup>2</sup> test</a></li>
@@ -177,10 +175,10 @@
 </form>
         </div>
       </div>
-    <div class="body col-md-12 content" role="main">
+    <div class="body col-md-9 content" role="main">
       
   <section id="multivariate-tests">
-<span id="label-stats1dmultivariate"></span><h1>Multivariate tests<a class="headerlink" href="#multivariate-tests" title="Permalink to this heading">¶</a></h1>
+<span id="label-stats1dmultivariate"></span><h1>Multivariate tests<a class="headerlink" href="#multivariate-tests" title="Link to this heading">¶</a></h1>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>In all multivariate 1D tests dependent variables are (<em>J</em> x <em>Q</em> x <em>I</em>) arrays</p>
@@ -194,7 +192,7 @@
 <p>These techniques are suitable mainly for <em>J</em> much larger than <em>I</em>.</p>
 </div>
 <section id="one-sample-hotelling-s-t2-test">
-<span id="label-stats1d-hotellings1"></span><h2>One-sample Hotelling’s T<sup>2</sup> test<a class="headerlink" href="#one-sample-hotelling-s-t2-test" title="Permalink to this heading">¶</a></h2>
+<span id="label-stats1d-hotellings1"></span><h2>One-sample Hotelling’s T<sup>2</sup> test<a class="headerlink" href="#one-sample-hotelling-s-t2-test" title="Link to this heading">¶</a></h2>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>We do not yet have any real data examples to show.</p>
@@ -206,7 +204,7 @@
 </div>
 </section>
 <section id="paired-hotelling-s-t2-test">
-<span id="label-stats1d-hotellingspaired"></span><h2>Paired Hotelling’s T<sup>2</sup> test<a class="headerlink" href="#paired-hotelling-s-t2-test" title="Permalink to this heading">¶</a></h2>
+<span id="label-stats1d-hotellingspaired"></span><h2>Paired Hotelling’s T<sup>2</sup> test<a class="headerlink" href="#paired-hotelling-s-t2-test" title="Link to this heading">¶</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">./spm1d/examples/stats1d/ex_hotellings_paired_Pataky2014.py</span></code></p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">T2</span>    <span class="o">=</span> <span class="n">spm1d</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">hotellings_paired</span><span class="p">(</span><span class="n">YA</span><span class="p">,</span> <span class="n">YB</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">T2i</span>   <span class="o">=</span> <span class="n">T2</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="mf">0.05</span><span class="p">)</span>
@@ -215,13 +213,13 @@
 </div>
 <p>These results come from:</p>
 <p>Pataky, T. C., Robinson, M. A., Vanrenterghem, J., Savage, R., Bates, K. T., &amp; Crompton, R. H. (2014). Vector field statistics for objective center-of-pressure trajectory analysis during gait, with evidence of scalar sensitivity to small coordinate system rotations. Gait and Posture, 1–4. <a class="reference external" href="http://doi.org/10.1016/j.gaitpost.2014.01.023">http://doi.org/10.1016/j.gaitpost.2014.01.023</a></p>
-<p>(<a class="reference external" href="../../pyplots/stats1d/ex_hotellings_paired.py">Source code</a>, <a class="reference external" href="../../pyplots/stats1d/ex_hotellings_paired.png">png</a>, <a class="reference external" href="../../pyplots/stats1d/ex_hotellings_paired.hires.png">hires.png</a>, <a class="reference external" href="../../pyplots/stats1d/ex_hotellings_paired.pdf">pdf</a>)</p>
+<p>(<a class="reference download internal" download="" href="../../_downloads/971e3bdbccea7539253d1ffc01348cd0/ex_hotellings_paired.py"><code class="xref download docutils literal notranslate"><span class="pre">Source</span> <span class="pre">code</span></code></a>, <a class="reference download internal" download="" href="../../_downloads/88ba06c08737cf5938223c50ef5a9a05/ex_hotellings_paired.png"><code class="xref download docutils literal notranslate"><span class="pre">png</span></code></a>, <a class="reference download internal" download="" href="../../_downloads/b4d2445632c67fdce1f52f9e9b2a788b/ex_hotellings_paired.hires.png"><code class="xref download docutils literal notranslate"><span class="pre">hires.png</span></code></a>, <a class="reference download internal" download="" href="../../_downloads/e4baa026de86ba20ae0390dfdec38acf/ex_hotellings_paired.pdf"><code class="xref download docutils literal notranslate"><span class="pre">pdf</span></code></a>)</p>
 <figure class="align-default">
 <img alt="../../_images/ex_hotellings_paired.png" class="plot-directive" src="../../_images/ex_hotellings_paired.png" />
 </figure>
 </section>
 <section id="two-sample-hotelling-s-t2-test">
-<span id="label-stats1d-hotellings2"></span><h2>Two-sample Hotelling’s T<sup>2</sup> test<a class="headerlink" href="#two-sample-hotelling-s-t2-test" title="Permalink to this heading">¶</a></h2>
+<span id="label-stats1d-hotellings2"></span><h2>Two-sample Hotelling’s T<sup>2</sup> test<a class="headerlink" href="#two-sample-hotelling-s-t2-test" title="Link to this heading">¶</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">./spm1d/examples/stats1d/ex_hotellings2_Besier2009muscleforces.py</span></code></p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">T2</span>    <span class="o">=</span> <span class="n">spm1d</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">hotellings2</span><span class="p">(</span><span class="n">YA</span><span class="p">,</span> <span class="n">YB</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">T2i</span>   <span class="o">=</span> <span class="n">T2</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="mf">0.05</span><span class="p">)</span>
@@ -232,13 +230,13 @@
 <p>Besier, T. F., Fredericson, M., Gold, G. E., Beaupré, G. S., &amp; Delp, S. L. (2009). Knee muscle forces during walking and running in patellofemoral pain patients and pain-free controls. Journal of Biomechanics, 42(7), 898–905. <a class="reference external" href="http://doi.org/10.1016/j.jbiomech.2009.01.032">http://doi.org/10.1016/j.jbiomech.2009.01.032</a></p>
 <p>Results appear in:</p>
 <p>Pataky, T., Robinson, M., &amp; Vanrenterghem, J. (2015). Journal of Biomechanics. Journal of Biomechanics, 48(1), 190–192. <a class="reference external" href="http://doi.org/10.1016/j.jbiomech.2014.09.025">http://doi.org/10.1016/j.jbiomech.2014.09.025</a></p>
-<p>(<a class="reference external" href="../../pyplots/stats1d/ex_hotellings2.py">Source code</a>, <a class="reference external" href="../../pyplots/stats1d/ex_hotellings2.png">png</a>, <a class="reference external" href="../../pyplots/stats1d/ex_hotellings2.hires.png">hires.png</a>, <a class="reference external" href="../../pyplots/stats1d/ex_hotellings2.pdf">pdf</a>)</p>
+<p>(<a class="reference download internal" download="" href="../../_downloads/2eac72dc8c90cdb03dbd96c2db189142/ex_hotellings2.py"><code class="xref download docutils literal notranslate"><span class="pre">Source</span> <span class="pre">code</span></code></a>, <a class="reference download internal" download="" href="../../_downloads/3ec8c6d5186f8299b9806bfbb38d3dc5/ex_hotellings2.png"><code class="xref download docutils literal notranslate"><span class="pre">png</span></code></a>, <a class="reference download internal" download="" href="../../_downloads/a462a20cb2f93dbeed7e84d71a8d5541/ex_hotellings2.hires.png"><code class="xref download docutils literal notranslate"><span class="pre">hires.png</span></code></a>, <a class="reference download internal" download="" href="../../_downloads/656b9adbd0e95548d6317871fdfaaa29/ex_hotellings2.pdf"><code class="xref download docutils literal notranslate"><span class="pre">pdf</span></code></a>)</p>
 <figure class="align-default">
 <img alt="../../_images/ex_hotellings2.png" class="plot-directive" src="../../_images/ex_hotellings2.png" />
 </figure>
 </section>
 <section id="canonical-correlation-analysis">
-<span id="label-stats1d-cca"></span><h2>Canonical correlation analysis<a class="headerlink" href="#canonical-correlation-analysis" title="Permalink to this heading">¶</a></h2>
+<span id="label-stats1d-cca"></span><h2>Canonical correlation analysis<a class="headerlink" href="#canonical-correlation-analysis" title="Link to this heading">¶</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">./spm1d/examples/stats1d/ex_cca_Dorn2012.py</span></code></p>
 <p>The second input <strong>x</strong> must be a Jx1 vector of scalars.</p>
 <p><strong>spm1d</strong> currently does not support multivariate regressors.</p>
@@ -251,13 +249,13 @@
 <p>Dorn, T. W., Schache, A. G., &amp; Pandy, M. G. (2012). Muscular strategy shift in human running: dependence of running speed on hip and ankle muscle performance. Journal of Experimental Biology, 215(11), 1944–1956. <a class="reference external" href="http://doi.org/10.1242/jeb.064527">http://doi.org/10.1242/jeb.064527</a></p>
 <p>Results appear in:</p>
 <p>Pataky, T., Robinson, M., &amp; Vanrenterghem, J. (2015). Journal of Biomechanics. Journal of Biomechanics, 48(1), 190–192. <a class="reference external" href="http://doi.org/10.1016/j.jbiomech.2014.09.025">http://doi.org/10.1016/j.jbiomech.2014.09.025</a></p>
-<p>(<a class="reference external" href="../../pyplots/stats1d/ex_cca.py">Source code</a>, <a class="reference external" href="../../pyplots/stats1d/ex_cca.png">png</a>, <a class="reference external" href="../../pyplots/stats1d/ex_cca.hires.png">hires.png</a>, <a class="reference external" href="../../pyplots/stats1d/ex_cca.pdf">pdf</a>)</p>
+<p>(<a class="reference download internal" download="" href="../../_downloads/d987caf1b6bc1ba1b7a5e5d66e2c29df/ex_cca.py"><code class="xref download docutils literal notranslate"><span class="pre">Source</span> <span class="pre">code</span></code></a>, <a class="reference download internal" download="" href="../../_downloads/96e69bdccc6d092ab3d7372cacb18bd4/ex_cca.png"><code class="xref download docutils literal notranslate"><span class="pre">png</span></code></a>, <a class="reference download internal" download="" href="../../_downloads/490d954677670181ac51dfbbb7e9ab0d/ex_cca.hires.png"><code class="xref download docutils literal notranslate"><span class="pre">hires.png</span></code></a>, <a class="reference download internal" download="" href="../../_downloads/54592efc6f36c3cd503739af3cf1f995/ex_cca.pdf"><code class="xref download docutils literal notranslate"><span class="pre">pdf</span></code></a>)</p>
 <figure class="align-default">
 <img alt="../../_images/ex_cca.png" class="plot-directive" src="../../_images/ex_cca.png" />
 </figure>
 </section>
 <section id="one-way-manova">
-<span id="label-stats1d-manova1"></span><h2>One-way MANOVA<a class="headerlink" href="#one-way-manova" title="Permalink to this heading">¶</a></h2>
+<span id="label-stats1d-manova1"></span><h2>One-way MANOVA<a class="headerlink" href="#one-way-manova" title="Link to this heading">¶</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">./spm1d/examples/stats1d/ex_manova1_Dorn2012.py</span></code></p>
 <p>This example is the same as the CCA example immediately above, but treats the independent variable (running speed) as categorical instead of continuous.</p>
 <p>Here the variable <strong>A</strong> is a (J x 1) vector of integers specifying the group to which each observation belongs.</p>
@@ -268,7 +266,7 @@
 </div>
 <p>The data in this example come from:</p>
 <p>Dorn, T. W., Schache, A. G., &amp; Pandy, M. G. (2012). Muscular strategy shift in human running: dependence of running speed on hip and ankle muscle performance. Journal of Experimental Biology, 215(11), 1944–1956. <a class="reference external" href="http://doi.org/10.1242/jeb.064527">http://doi.org/10.1242/jeb.064527</a></p>
-<p>(<a class="reference external" href="../../pyplots/stats1d/ex_manova1.py">Source code</a>, <a class="reference external" href="../../pyplots/stats1d/ex_manova1.png">png</a>, <a class="reference external" href="../../pyplots/stats1d/ex_manova1.hires.png">hires.png</a>, <a class="reference external" href="../../pyplots/stats1d/ex_manova1.pdf">pdf</a>)</p>
+<p>(<a class="reference download internal" download="" href="../../_downloads/9799ab4de1b2c7a04589276cd5cb52cf/ex_manova1.py"><code class="xref download docutils literal notranslate"><span class="pre">Source</span> <span class="pre">code</span></code></a>, <a class="reference download internal" download="" href="../../_downloads/9525870ef775cc129b6eecf8ca6635ff/ex_manova1.png"><code class="xref download docutils literal notranslate"><span class="pre">png</span></code></a>, <a class="reference download internal" download="" href="../../_downloads/894ef27727a36035ddac79613b97f2f1/ex_manova1.hires.png"><code class="xref download docutils literal notranslate"><span class="pre">hires.png</span></code></a>, <a class="reference download internal" download="" href="../../_downloads/f6fffeaad013be78987aa69d7a4dba99/ex_manova1.pdf"><code class="xref download docutils literal notranslate"><span class="pre">pdf</span></code></a>)</p>
 <figure class="align-default">
 <img alt="../../_images/ex_manova1.png" class="plot-directive" src="../../_images/ex_manova1.png" />
 </figure>
@@ -287,8 +285,8 @@
       
     </p>
     <p>
-        &copy; Copyright 2022, Todd Pataky.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.0.2.<br/>
+        &copy; Copyright 2025, Todd Pataky.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 9.0.4.<br/>
     </p>
   </div>
 </footer>

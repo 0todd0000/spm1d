@@ -3,20 +3,18 @@
 
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="en" data-content_root="../../">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>Data processing basics &#8212; spm1d 0.4 documentation</title>
-    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/bootstrap-sphinx.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/plot_directive.css" />
-    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
-    <script src="../../_static/jquery.js"></script>
-    <script src="../../_static/underscore.js"></script>
-    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../../_static/doctools.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../_static/bootstrap-sphinx.css?v=4468db6d" />
+    <link rel="stylesheet" type="text/css" href="../../_static/plot_directive.css?v=7f9a90b1" />
+    <script src="../../_static/documentation_options.js?v=7f00635f"></script>
+    <script src="../../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../../_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
@@ -145,7 +143,7 @@
 
 <div class="container">
   <div class="row">
-      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
         <div class="sphinxsidebarwrapper"><ul>
 <li><a class="reference internal" href="#">Data processing basics</a><ul>
 <li><a class="reference internal" href="#interpolation">Interpolation</a></li>
@@ -171,10 +169,10 @@
 </form>
         </div>
       </div>
-    <div class="body col-md-12 content" role="main">
+    <div class="body col-md-9 content" role="main">
       
   <section id="data-processing-basics">
-<span id="label-examples-processing"></span><h1>Data processing basics<a class="headerlink" href="#data-processing-basics" title="Permalink to this heading">¶</a></h1>
+<span id="label-examples-processing"></span><h1>Data processing basics<a class="headerlink" href="#data-processing-basics" title="Link to this heading">¶</a></h1>
 <p>The examples below detail pre-processing functionality in <strong>spm1d.util</strong>.</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
@@ -184,7 +182,7 @@
 </ul>
 </div>
 <section id="interpolation">
-<h2>Interpolation<a class="headerlink" href="#interpolation" title="Permalink to this heading">¶</a></h2>
+<h2>Interpolation<a class="headerlink" href="#interpolation" title="Link to this heading">¶</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">./spm1d/examples/processing/ex_interpolate.py</span></code></p>
 <p>Linear interpolation to <em>n</em> points:</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">y0</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">51</span><span class="p">)</span>
@@ -196,19 +194,19 @@
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">Y</span>  <span class="o">=</span> <span class="n">spm1d</span><span class="o">.</span><span class="n">util</span><span class="o">.</span><span class="n">interp</span><span class="p">(</span><span class="n">Y</span><span class="p">,</span> <span class="n">Q</span><span class="o">=</span><span class="mi">101</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>(<a class="reference external" href="../../pyplots/processing/ex_interpolate.py">Source code</a>, <a class="reference external" href="../../pyplots/processing/ex_interpolate.png">png</a>, <a class="reference external" href="../../pyplots/processing/ex_interpolate.hires.png">hires.png</a>, <a class="reference external" href="../../pyplots/processing/ex_interpolate.pdf">pdf</a>)</p>
+<p>(<a class="reference download internal" download="" href="../../_downloads/435fce2a5cbd6f289a6c493a4add5227/ex_interpolate.py"><code class="xref download docutils literal notranslate"><span class="pre">Source</span> <span class="pre">code</span></code></a>, <a class="reference download internal" download="" href="../../_downloads/bd6097b578fea1e304308b82751b4c6a/ex_interpolate.png"><code class="xref download docutils literal notranslate"><span class="pre">png</span></code></a>, <a class="reference download internal" download="" href="../../_downloads/64bff52163f2050e2602313d3ccfd5d7/ex_interpolate.hires.png"><code class="xref download docutils literal notranslate"><span class="pre">hires.png</span></code></a>, <a class="reference download internal" download="" href="../../_downloads/8804231538ced7c291c4000858875835/ex_interpolate.pdf"><code class="xref download docutils literal notranslate"><span class="pre">pdf</span></code></a>)</p>
 <figure class="align-default">
 <img alt="../../_images/ex_interpolate.png" class="plot-directive" src="../../_images/ex_interpolate.png" />
 </figure>
 </section>
 <section id="smoothing">
-<h2>Smoothing<a class="headerlink" href="#smoothing" title="Permalink to this heading">¶</a></h2>
+<h2>Smoothing<a class="headerlink" href="#smoothing" title="Link to this heading">¶</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">./spm1d/examples/processing/ex_smooth.py</span></code></p>
 <p>Convolution with a Gaussian kernel having a given FWHM (full-width at half-maximum):</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">Y_smoothed</span> <span class="o">=</span> <span class="n">spm1d</span><span class="o">.</span><span class="n">util</span><span class="o">.</span><span class="n">smooth</span><span class="p">(</span><span class="n">Y0</span><span class="p">,</span> <span class="n">fwhm</span><span class="o">=</span><span class="mf">5.0</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>(<a class="reference external" href="../../pyplots/processing/ex_smooth.py">Source code</a>, <a class="reference external" href="../../pyplots/processing/ex_smooth.png">png</a>, <a class="reference external" href="../../pyplots/processing/ex_smooth.hires.png">hires.png</a>, <a class="reference external" href="../../pyplots/processing/ex_smooth.pdf">pdf</a>)</p>
+<p>(<a class="reference download internal" download="" href="../../_downloads/f6d0ca2ab6922c0c7bbdcfaf11c215dc/ex_smooth.py"><code class="xref download docutils literal notranslate"><span class="pre">Source</span> <span class="pre">code</span></code></a>, <a class="reference download internal" download="" href="../../_downloads/675d8366d15d67a8ffb3278c81e17913/ex_smooth.png"><code class="xref download docutils literal notranslate"><span class="pre">png</span></code></a>, <a class="reference download internal" download="" href="../../_downloads/28847d9cf5a1d1aee9a6901dcbbbb1c9/ex_smooth.hires.png"><code class="xref download docutils literal notranslate"><span class="pre">hires.png</span></code></a>, <a class="reference download internal" download="" href="../../_downloads/aa0f484aa129ec28df243c9a266b558e/ex_smooth.pdf"><code class="xref download docutils literal notranslate"><span class="pre">pdf</span></code></a>)</p>
 <figure class="align-default">
 <img alt="../../_images/ex_smooth.png" class="plot-directive" src="../../_images/ex_smooth.png" />
 </figure>
@@ -227,8 +225,8 @@
       
     </p>
     <p>
-        &copy; Copyright 2022, Todd Pataky.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.0.2.<br/>
+        &copy; Copyright 2025, Todd Pataky.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 9.0.4.<br/>
     </p>
   </div>
 </footer>

@@ -3,20 +3,18 @@
 
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="en" data-content_root="../../">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>One- vs. two-tailed inference &#8212; spm1d 0.4 documentation</title>
-    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/bootstrap-sphinx.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/plot_directive.css" />
-    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
-    <script src="../../_static/jquery.js"></script>
-    <script src="../../_static/underscore.js"></script>
-    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../../_static/doctools.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../_static/bootstrap-sphinx.css?v=4468db6d" />
+    <link rel="stylesheet" type="text/css" href="../../_static/plot_directive.css?v=7f9a90b1" />
+    <script src="../../_static/documentation_options.js?v=7f00635f"></script>
+    <script src="../../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../../_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
@@ -141,7 +139,7 @@
 
 <div class="container">
   <div class="row">
-      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
         <div class="sphinxsidebarwrapper"><ul>
 <li><a class="reference internal" href="#">One- vs. two-tailed inference</a></li>
 </ul>
@@ -163,10 +161,10 @@
 </form>
         </div>
       </div>
-    <div class="body col-md-12 content" role="main">
+    <div class="body col-md-9 content" role="main">
       
   <section id="one-vs-two-tailed-inference">
-<span id="label-theory-onetwotailed"></span><h1>One- vs. two-tailed inference<a class="headerlink" href="#one-vs-two-tailed-inference" title="Permalink to this heading">¶</a></h1>
+<span id="label-theory-onetwotailed"></span><h1>One- vs. two-tailed inference<a class="headerlink" href="#one-vs-two-tailed-inference" title="Link to this heading">¶</a></h1>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>This discussion is applicable only to one- and two-sample tests involving the t statistic including t tests and regression.</p>
@@ -175,8 +173,8 @@
 <p>By default <strong>spm1d</strong> conducts two-tailed inference for one- and two-sample tests.</p>
 <p>To force one-tailed inference use the keyword <em>two_tailed</em>, as in the following example.</p>
 <p>Import necessary packages:</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">spm1d</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">spm1d</span>
 </pre></div>
 </div>
 <p>Generate ten smooth, random 1D continua sampled at 100 nodes:</p>
@@ -212,7 +210,7 @@ Protecting against this increased likelihood, and retaining <strong>alpha</stron
 <p class="admonition-title">Warning</p>
 <p>Choosing one- vs. two-tailed inference must be done in an <em>a priori</em> manner, before conducting an experiment. If you are unsure which to choose, then you should conduct two-tailed inference. More specifically, if you don’t have a specific hypothesis regarding the direction of a particular effect (e.g. Group A has a greater value than Group B), then it is most objective to expect that the effects could be in either direction.</p>
 </div>
-<p>(<a class="reference external" href="../../doc/Theory/twotailed-1.py">Source code</a>, <a class="reference external" href="../../doc/Theory/twotailed-1.png">png</a>, <a class="reference external" href="../../doc/Theory/twotailed-1.hires.png">hires.png</a>, <a class="reference external" href="../../doc/Theory/twotailed-1.pdf">pdf</a>)</p>
+<p>(<a class="reference download internal" download="" href="../../_downloads/11938efbde6a3c76486e00b59f3b4fa6/twotailed-1.py"><code class="xref download docutils literal notranslate"><span class="pre">Source</span> <span class="pre">code</span></code></a>, <a class="reference download internal" download="" href="../../_downloads/a6896629ecaebdea1788f520dc6ac599/twotailed-1.png"><code class="xref download docutils literal notranslate"><span class="pre">png</span></code></a>, <a class="reference download internal" download="" href="../../_downloads/9a1c713241e548eaa5b709962b22a59d/twotailed-1.hires.png"><code class="xref download docutils literal notranslate"><span class="pre">hires.png</span></code></a>, <a class="reference download internal" download="" href="../../_downloads/4ca8a2a6d62cfe3dc4510dca92bcd6bb/twotailed-1.pdf"><code class="xref download docutils literal notranslate"><span class="pre">pdf</span></code></a>)</p>
 <figure class="align-default">
 <img alt="../../_images/twotailed-1.png" class="plot-directive" src="../../_images/twotailed-1.png" />
 </figure>
@@ -230,8 +228,8 @@ Protecting against this increased likelihood, and retaining <strong>alpha</stron
       
     </p>
     <p>
-        &copy; Copyright 2022, Todd Pataky.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.0.2.<br/>
+        &copy; Copyright 2025, Todd Pataky.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 9.0.4.<br/>
     </p>
   </div>
 </footer>
