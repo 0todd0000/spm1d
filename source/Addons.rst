@@ -38,8 +38,6 @@ Compute ANOVA and *post hoc* tests from anova1 to anova3rm, with a non-parametri
 
 Ready-to-use GUI for spm1d, requiring no programming knowledge.
 
-Currently only available in Chinese (as of 2026 Feb.)
-
 `Repostiory @ GitHub <https://github.com/shanshanfagu/SPM1D-Analysis-Wrapper-Program>`_
 
 
