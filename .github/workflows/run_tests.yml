@@ -2,7 +2,7 @@ name: pytest
 
 on:
   push:
-    branches: [ permfix ]
+    branches: [ master ]
 
 
 jobs:
