@@ -216,6 +216,9 @@ def test_anova3onerm():
     datasets = []
     datasets.append(  spm1d.data.uv0d.anova3onerm.NYUCaffeine()  )
     datasets.append(  spm1d.data.uv0d.anova3onerm.Southampton3onerm()  )
+    datasets.append(  spm1d.data.uv0d.anova3onerm.UCLAExercise()  )
+    datasets.append(  spm1d.data.uv0d.anova3onerm.RS3onerm()  )
+    datasets.append(  spm1d.data.uv0d.anova3onerm.DatariumPerformance()  )
 
     for dataset in datasets:
         y,A,B,C,S = dataset.get_data()
@@ -246,6 +249,7 @@ def test_anova3tworm():
     datasets = []
     datasets.append(   spm1d.data.uv0d.anova3tworm.NYUHiringExperience()   )
     datasets.append(   spm1d.data.uv0d.anova3tworm.Southampton3tworm()   )
+    datasets.append(   spm1d.data.uv0d.anova3tworm.RS3tworm()  )
 
 
     for dataset in datasets:

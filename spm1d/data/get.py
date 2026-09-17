@@ -81,13 +81,17 @@ def iter_all():
     from . uv0d.anova3nested import SouthamptonNested3
     datasets.append( SouthamptonNested3 )
 
-    from . uv0d.anova3onerm import NYUCaffeine, Southampton3onerm
+    from . uv0d.anova3onerm import NYUCaffeine, Southampton3onerm, UCLAExercise, RS3onerm, DatariumPerformance
     datasets.append( NYUCaffeine )
     datasets.append( Southampton3onerm )
+    datasets.append( UCLAExercise )
+    datasets.append( RS3onerm )
+    datasets.append( DatariumPerformance )
 
-    from . uv0d.anova3tworm import NYUHiringExperience, Southampton3tworm
+    from . uv0d.anova3tworm import NYUHiringExperience, Southampton3tworm, RS3tworm
     datasets.append( NYUHiringExperience )
     datasets.append( Southampton3tworm )
+    datasets.append( RS3tworm )
 
     from . uv0d.anova3rm import SPM1D2x2x2, SPM1D2x3x5, SPM1D3x3x3
     datasets.append( SPM1D2x2x2 )
