@@ -7,7 +7,7 @@ Geometry module
 
 '''
 
-# Copyright (C) 2025  Todd Pataky
+# Copyright (C) 2026  Todd Pataky
 # updated (2024/08/08) todd
 
 

@@ -16,11 +16,11 @@ www.fil.ion.ucl.ac.uk/spm/
 probabilities in Python, Journal of Statistical Software 71(7), 1–22.
 
 
-Copyright (C) 2025  Todd Pataky
+Copyright (C) 2026  Todd Pataky
 '''
 
 
-__version__ = '0.4.53'  # 2025-07-27
+__version__ = '0.4.54'  # 2026-09-17
 
 
 __all__ = ['data', 'io', 'plot', 'rft1d', 'stats', 'util']

@@ -3,7 +3,7 @@
 High-level ANOVA designs.
 '''
 
-# Copyright (C) 2025  Todd Pataky
+# Copyright (C) 2026  Todd Pataky
 
 
 
@@ -11,7 +11,7 @@ import warnings
 import numpy as np
 from matplotlib import pyplot
 from . factors import Factor,FactorNested,FactorNested2,FactorNestedTwoWay #FactorRM,FactorSubject
-
+from .. import _datachecks
 
 
 
@@ -48,6 +48,10 @@ class DesignBuilder(object):
 
 
 	def add_main_columns(self, label, X):
+		X                = np.asarray(X)
+		if (X.ndim < 2) or (X.shape[1] == 0):
+			msg          = '\n\nThe "%s" term has no columns, so this design cannot be built.\n\nFor the repeated-measures procedures this happens when only one subject is submitted;  at least two are needed.\n\n' %label
+			raise _datachecks.SPM1DError(msg)
 		self.XD[label]   = X
 		i0,n             = self.ncol, X.shape[1]
 		self.colD[label] = np.arange(i0, i0+n)

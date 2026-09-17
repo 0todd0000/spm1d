@@ -2,7 +2,7 @@
 [![Numpy](https://img.shields.io/badge/Numpy-777BB4?style=for-the-badge&logo=numpy&logoColor=white)](https://numpy.org)
 [![Scipy](https://img.shields.io/badge/SciPy-654FF0?style=for-the-badge&logo=SciPy&logoColor=white)](https://scipy.org)
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
-![version](https://img.shields.io/badge/version-0.4.53-blue)
+![version](https://img.shields.io/badge/version-0.4.54-blue)
 ![downloads](https://static.pepy.tech/badge/spm1d/month)
 
 
@@ -41,7 +41,7 @@ License
 
 spm1d is a package for one-dimensional Statistical Parametric Mapping (SPM). spm1d uses random field theory expectations regarding smooth, one-dimensional (random) Gaussian fields to make statistical inferences regarding a set of 1D measurements.
 
-    Copyright (C) 2025  Todd Pataky
+    Copyright (C) 2026  Todd Pataky
     
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by

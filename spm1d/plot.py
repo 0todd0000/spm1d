@@ -23,7 +23,7 @@ These include:
 - plot_mean_sd
 '''
 
-# Copyright (C) 2025  Todd Pataky
+# Copyright (C) 2026  Todd Pataky
 # updated (2016/10/01) todd
 
 

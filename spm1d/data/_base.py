@@ -2,7 +2,7 @@
 Base classes for all built-in datasets.
 '''
 
-# Copyright (C) 2025  Todd Pataky
+# Copyright (C) 2026  Todd Pataky
 
 
 import os

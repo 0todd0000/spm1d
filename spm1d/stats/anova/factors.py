@@ -3,7 +3,7 @@
 Factor classes for ANOVA.
 '''
 
-# Copyright (C) 2025  Todd Pataky
+# Copyright (C) 2026  Todd Pataky
 
 
 
@@ -312,9 +312,9 @@ class FactorNestedTwoWay(Factor):
 		A,B,C,S  = self.NEST0.A, self.NEST1.A, other.A, self.A
 		X        = []
 		for uA in self.NEST0.u:
-			for uB in self.NEST1.u[1:]:
-				for uC in other.u:
-					uS = np.unique( S[(A==uA)&(B==uB)&(C==uC)] )
+			for uB in self.NEST1.u:
+				uS = np.unique( S[(A==uA)&(B==uB)] )
+				for uC in other.u[1:]:
 					for uuS in uS[1:]:
 						x      = np.zeros(self.J)
 						x[(A==uA)&(B==uB)&(C==uC)&(S==uuS)] =  1

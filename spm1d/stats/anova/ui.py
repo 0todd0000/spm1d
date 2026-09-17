@@ -2,7 +2,7 @@
 High-level ANOVA user interface using an R-like aov function.
 '''
 
-# Copyright (C) 2025  Todd Pataky
+# Copyright (C) 2026  Todd Pataky
 
 
 
@@ -34,7 +34,10 @@ def aov(model, contrasts, f_terms, nFactors=1):
         else:
             i       = contrasts.term_labels.index(term1)
             ss1,df1 = SS[i], DF[i]
-            ms1     = ss1 / df1
+            ms1     = (ss1 / df1) if (df1 > 0) else None
+        if df1 == 0:
+            msg     = '\n\nThe "%s" effect has no error term:  the "%s" term has zero degrees of freedom.\n\nThis happens when the design is saturated -- one observation per cell -- so that nothing is left over with which to estimate error.  Add replicate observations.\n\n' %(term0, term1)
+            raise _datachecks.SPM1DError(msg)
         f           = ms0 / ms1
         if model.dim == 0:
             ss0,ss1,ms0,ms1 = [_as_scalar(x) for x in (ss0, ss1, ms0, ms1)]
