@@ -2,7 +2,7 @@
 Tests for variance.
 '''
 
-# Copyright (C) 2025  Todd Pataky
+# Copyright (C) 2026  Todd Pataky
 
 import numpy as np
 from .. import rft1d

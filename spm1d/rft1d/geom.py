@@ -5,7 +5,7 @@ This module contains functions for computing various geomtric characteristics
 of 1D fields and upcrossings.
 '''
 
-# Copyright (C) 2025  Todd Pataky
+# Copyright (C) 2026  Todd Pataky
 
 
 from math import log

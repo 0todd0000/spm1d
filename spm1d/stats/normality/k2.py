@@ -7,7 +7,7 @@ All procedures fit the given model, calculate residuals then
 on the residuals.
 '''
 
-# Copyright (C) 2025  Todd Pataky
+# Copyright (C) 2026  Todd Pataky
 
 from math import log
 import numpy as np

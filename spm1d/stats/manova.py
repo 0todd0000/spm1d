@@ -2,7 +2,7 @@
 MANOVA
 '''
 
-# Copyright (C) 2025  Todd Pataky
+# Copyright (C) 2026  Todd Pataky
 
 
 

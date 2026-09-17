@@ -16,7 +16,7 @@ www.fil.ion.ucl.ac.uk/spm/
 probabilities in Python, Journal of Statistical Software 71(7), 1–22.
 
 
-Copyright (C) 2025  Todd Pataky
+Copyright (C) 2026  Todd Pataky
 '''
 
 

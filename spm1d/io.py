@@ -17,7 +17,7 @@ Input/Output module
 	* scipy.io.savemat
 '''
 
-# Copyright (C) 2025  Todd Pataky
+# Copyright (C) 2026  Todd Pataky
 # updated (2016/10/01) todd
 
 
