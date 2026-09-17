@@ -60,7 +60,7 @@ class LinearModel(object):
         Xi              = np.linalg.pinv(X)         #design matrix pseudoinverse
         self._beta      = Xi @ Y                      #estimated parameters
         self._R         = np.eye(J) - X @ Xi          #residual forming matrix
-        self._rankR     = self._rank(self._R)
+        self._rankR     = J - self._rank(X)           #rank of the residual forming matrix (exact;  R is a projection)
         # self._SSE       = np.diag( Y.T @ self._R @ Y )  # old SSE calculation
         self._SSE       = np.einsum('ij,ji->i', Y.T @ self._R, Y) # new SSE calculation, 2024-05-30 (using Einstein summation trick)
         self._dfE       = self._rankR
