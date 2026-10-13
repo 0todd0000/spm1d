@@ -74,7 +74,7 @@ Two-way ANOVA
 
 Example:
 
-   >>> FF  = spm1d.stats.anova2(Y, A, B, equal_var=False)
+   >>> FF  = spm1d.stats.anova2(Y, A, B, equal_var=True)
    >>> FFi = [F.inference(alpha=0.05)   for F in FF]
    >>> FFi[0].plot()   #Factor A main effect
    >>> FFi[1].plot()   #Factor B main effect
@@ -92,7 +92,7 @@ Two-way nested ANOVA
 .. note:: We do not yet have any real data examples to show. 
 	The factor B is nested inside factor A.
 
-   >>> F  = spm1d.stats.anova2nested( Y, A, B, equal_var=False )
+   >>> F  = spm1d.stats.anova2nested( Y, A, B, equal_var=True )
    
 
 
@@ -141,7 +141,7 @@ Three-way ANOVA
 
 .. note:: We do not yet have any real data examples to show. 
 
-   >>> F  = spm1d.stats.anova3( Y, A, B, C, equal_var=False )
+   >>> F  = spm1d.stats.anova3( Y, A, B, C, equal_var=True )
 
 
 
@@ -156,7 +156,7 @@ Three-way nested ANOVA
 	
 	**spm1d** currently does not support partial nesting.
 
-   >>> F  = spm1d.stats.anova3nested( Y, A, B, C, equal_var=False )
+   >>> F  = spm1d.stats.anova3nested( Y, A, B, C, equal_var=True )
 
 
 
