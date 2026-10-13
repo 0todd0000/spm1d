@@ -48,12 +48,17 @@ One-way repeated-measures ANOVA
 
 Repeated-measures ANOVA, also called "Within-subjects ANOVA", can be conducted using :ref:`Method 1 above<label-Stats-anova>` and an additional (Jx1) vector of integers which specifies subjects.
 
-   >>> F  = spm1d.stats.anova1rm( Y, A, SUBJ, equal_var=False )
+   >>> F  = spm1d.stats.anova1rm( Y, A, SUBJ, equal_var=True )
    >>> Fi = F.inference(alpha=0.05)
    >>> Fi.plot()
 
 
 .. plot:: pyplots/stats1d/ex_anova1rm.py
+
+
+.. danger:: Non-sphericity corrections are not yet implemented for this design.
+
+	Since non-sphericity corrections weaken results with respect to assumed sphericity, interpret results cautiously, especially when close to alpha.
 
 
 
