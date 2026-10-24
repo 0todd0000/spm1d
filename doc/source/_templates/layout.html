@@ -1,0 +1,33 @@
+
+
+
+{% extends "!layout.html" %}
+
+{# GoatCounter visit counting (spm1d.goatcounter.com) #}
+{% block extrahead %}
+{{ super() }}
+<script data-goatcounter="https://spm1d.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+{% endblock %}
+
+
+<!-- <a href="{{ pathto('index') }}">Home</a> -->
+
+{% block rootrellink %}
+	<li><a href="{{ pathto('index') }}">Home</a>|&nbsp;</li>
+{% endblock %}
+
+
+
+
+{% block relbar1 %}
+
+<div style="background-color: white; text-align: left; padding: 10px 10px 15px 15px">
+<a href="{{ pathto('index') }}"><img src="{{
+pathto("logo.png", 1) }}" border="0" alt="spm1d"/></a>
+</div>
+{{ super() }}
+{% endblock %}
+
+{# put the sidebar before the body #}
+{% block sidebar1 %}{{ sidebar() }}{% endblock %}
+{% block sidebar2 %}{% endblock %}
